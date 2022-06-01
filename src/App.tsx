@@ -1,9 +1,15 @@
+import { Button, Typography } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./Theme/theme";
 
 function App() {
   return (
-    <div >
-      <h1>Hello Dream Team</h1>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Typography variant="h1">Hello dream</Typography>
+      </div>
+      <Button variant="contained">primary</Button>
+    </ThemeProvider>
   );
 }
 
