@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  flex-direction: row;
+}
+
+.input {
+  flex: 2;
+  padding: 1rem;
+  background-color: white;
+  border: none;
+}
+
+.button {
+  flex: 1;
+}
+
+.button:hover {
+  background-color: #333;
+}
+
+.svg > svg {
+  margin: 0 0.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.svg > svg:hover {
+  color: #f03637;
+}
