@@ -17,7 +17,7 @@ const ProductHeader = () => {
   return (
     <Box>
       <StyledProducts>
-        <Typography variant="h5" component="h2" fontWeight={400}>
+        <Typography variant="h5" component="h2" fontWeight="bold">
           TOP PRODUCTS
         </Typography>
         <Box>

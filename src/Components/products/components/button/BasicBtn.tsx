@@ -7,13 +7,9 @@ const CenterBox = styled(Box)(({ theme }) => ({
 }));
 
 const StyledBtn = styled(Button)`
-background: '#333';
-padding: 0.889rem 3rem;
+padding: 0.899rem 3.2rem;
+font-size: 16px;
 textTransform: 'uppercase';
-background-color: #333;
-  &:hover {
-    background-color: #FF0015;
-  }
 `;
 
 const BasicBtn = () => {
