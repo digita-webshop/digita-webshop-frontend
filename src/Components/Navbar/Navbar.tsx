@@ -2,6 +2,12 @@ import { AppBar, Box, Container, Tab, Tabs, Toolbar } from "@mui/material";
 import logoImg from "../../Assets/Images/digita-logo.png";
 import { navbarItems } from "../../Assets/Data/Data";
 import { styled } from "@mui/material/styles";
+import {
+  LocalGroceryStoreOutlined,
+  SearchOutlined,
+  LoginOutlined,
+  FavoriteBorderOutlined,
+} from "@mui/icons-material";
 
 interface StyledTabProps {
   label: string;
@@ -48,6 +54,24 @@ function Navbar() {
               <AntTab label={item.name} sx={{ height: "90px" }} />
             ))}
           </AntTabs>
+          <Box marginLeft={"auto"}>
+            <SearchOutlined color="primary" fontSize={"large"} />
+            <LoginOutlined
+              color="primary"
+              sx={{ marginLeft: "6px" }}
+              fontSize={"large"}
+            />
+            <FavoriteBorderOutlined
+              color="primary"
+              sx={{ marginLeft: "6px" }}
+              fontSize={"large"}
+            />
+            <LocalGroceryStoreOutlined
+              color="primary"
+              sx={{ marginLeft: "6px" }}
+              fontSize={"large"}
+            />
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
