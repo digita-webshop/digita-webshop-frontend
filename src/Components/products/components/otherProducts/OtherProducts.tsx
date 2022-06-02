@@ -17,12 +17,12 @@ const OtherProducts = () => {
         >
           <CardContent sx={{ padding: "2rem", width: "250px" }}>
             <Typography
-              sx={{ fontSize: 20, textTransform: "uppercase" }}
+              sx={{ fontSize: 20, textTransform: "uppercase", color: '#fff' }}
               gutterBottom
             >
               Limited Edition
             </Typography>
-            <Typography variant="h4" component="h3">
+            <Typography variant="h4" component="h3" color="white" fontWeight='bold'>
               Virtual Reality Glasses
             </Typography>
             <ButtonOther />
@@ -42,12 +42,12 @@ const OtherProducts = () => {
         >
           <CardContent sx={{ padding: "2rem", width: "250px" }}>
             <Typography
-              sx={{ fontSize: 20, textTransform: "uppercase" }}
+              sx={{ fontSize: 20, textTransform: "uppercase", color: '#fff' }}
               gutterBottom
             >
               Collection SS21
             </Typography>
-            <Typography variant="h4" component="h3">
+            <Typography variant="h4" component="h3" color="white" fontWeight='bold'>
               Put The World On Mute
             </Typography>
             <ButtonOther />

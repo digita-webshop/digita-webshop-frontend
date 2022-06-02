@@ -1,11 +1,12 @@
 import { Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
+import Products from "./Components/products/Products";
 import { theme } from "./Theme/theme";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Typography>Hello</Typography>
+      <Products />
     </ThemeProvider>
   );
 }

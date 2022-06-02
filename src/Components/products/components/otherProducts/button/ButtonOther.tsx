@@ -5,13 +5,12 @@ const CenterBox = styled(Box)(({ theme }) => ({
 }));
 
 const StyledBtn = styled(Button)`
-background: '#333';
-padding: 0.889rem 3rem;
+padding: 0.780rem 2.6rem;
 textTransform: 'uppercase';
+font-size: 16px;
 background-color: #fff;
 color: #000;
   &:hover {
-    background-color: #FF0015;
     color: #fff;
   }
 `;
