@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigation, Pagination, A11y } from "swiper";
+import { Navigation, Pagination, A11y, Grid } from "swiper";
 import CategoriesCard from "../CategoriesCard/CategoriesCard";
 import "../../Swiper/Swiper.css";
 
@@ -12,10 +12,21 @@ import "swiper/css/pagination";
 function Slider() {
   return (
     <Swiper
-      modules={[Navigation, Pagination, A11y]}
-      slidesPerView={4}
-      spaceBetween={0}
+      breakpoints={{
+        640: {
+          width: 640,
+          slidesPerView: 2,
+        },
+        1024: {
+          width: 1024,
+          slidesPerView: 3,
+        },
+      }}
+      centeredSlides={true}
+      modules={[Navigation, Pagination, A11y, Grid]}
       navigation
+      slidesPerView={1}
+      spaceBetween={-15}
       loop={true}
       pagination={{ clickable: true }}
     >
