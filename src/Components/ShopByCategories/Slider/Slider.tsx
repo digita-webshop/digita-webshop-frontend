@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigation, Pagination, A11y } from "swiper";
 import CategoriesCard from "../CategoriesCard/CategoriesCard";
-import "../Swiper.css";
+import "../../Swiper/Swiper.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
