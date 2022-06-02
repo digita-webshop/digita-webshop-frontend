@@ -9,10 +9,11 @@ function CategoriesCard() {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      width="15rem"
-      height="15rem"
-      mx="4rem"
-      mb={8}
+      width="17rem"
+      height="17rem"
+      ml="14%"
+      mr="12%"
+      mb="4rem"
       sx={{
         cursor: "pointer",
       }}

@@ -28,3 +28,18 @@
 .swiper-pagination-bullet-active {
   background-color: #ccc !important;
 }
+.swiper-container {
+  width: 480px;
+}
+
+@media screen and (min-width: 640px) {
+  .swiper-container {
+    width: 640px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .swiper-container {
+    width: 1024px;
+  }
+}
