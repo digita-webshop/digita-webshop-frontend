@@ -1,12 +1,18 @@
 import React from "react";
-import { Typography, Link } from "@mui/material";
+import { Typography, Link, Grid } from "@mui/material";
 import styles from "./FooterList.module.css";
 
 const links = ["About us", "Contact us", "Blog", "Terms of Use", "Careers"];
 
 function FooterList() {
   return (
-    <div className={styles.container}>
+    <Grid
+      display="flex"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+      flexDirection="column"
+      p="1rem"
+    >
       <Typography variant="h6" mb={2.5} color="white">
         COMPANY INFO
       </Typography>
@@ -15,14 +21,15 @@ function FooterList() {
           key={index}
           href="#"
           underline="none"
-          mb={2}
+          mb={1.5}
           color="lightslategray"
           className={styles.links}
+          variant="body1"
         >
           &#62; {link}
         </Link>
       ))}
-    </div>
+    </Grid>
   );
 }
 
