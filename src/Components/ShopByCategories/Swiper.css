@@ -1,0 +1,30 @@
+.swiper-button-next {
+  background-image: url(../../Assets/Icons/ArrowRight.svg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  transform: scale(1.5);
+}
+
+.swiper-button-next::after {
+  display: none;
+}
+
+.swiper-button-prev {
+  background-image: url(../../Assets/Icons/ArrowLeft.svg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  transform: scale(1.5);
+}
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-pagination-bullet {
+  background-color: #fff !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ccc !important;
+}
