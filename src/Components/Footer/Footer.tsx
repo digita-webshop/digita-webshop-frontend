@@ -2,7 +2,8 @@ import React from "react";
 import FooterList from "./FooterList/FooterList";
 import Subscription from "./Subscription/Subscription";
 import styles from "./Footer.module.css";
-import { Grid } from "@mui/material";
+import { Grid, Typography, Link } from "@mui/material";
+import Line from "./Line/Line";
 
 function Footer() {
   return (
@@ -27,6 +28,19 @@ function Footer() {
         <Grid item xs={12} sm={12} md={12} lg={4}>
           <Subscription />
         </Grid>
+        <Line />
+
+        <Typography
+          variant="body1"
+          color="lightslategray"
+          className={styles.copyright}
+          my={4}
+          mx={2}
+          textAlign="center"
+        >
+          Copyright © 2022 <Link>Digita</Link> - All Rights Reserved - Powered
+          by <Link>Digita</Link>.
+        </Typography>
       </Grid>
     </div>
   );
