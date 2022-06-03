@@ -6,6 +6,13 @@ import {
   Tabs,
   Toolbar,
   Badge,
+  Drawer,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  InputBase,
 } from "@mui/material";
 import logoImg from "../../Assets/Images/digita-logo.png";
 import { navbarItems } from "../../Assets/Data/Data";
@@ -15,10 +22,11 @@ import {
   SearchOutlined,
   LoginOutlined,
   FavoriteBorderOutlined,
-  Menu,
   MenuRounded,
+  CloseRounded,
 } from "@mui/icons-material";
-import { useState } from "react";
+import { Fragment, useState } from "react";
+
 interface StyledTabProps {
   label: string;
 }
@@ -62,6 +70,7 @@ const navbarIcons = {
 };
 function Navbar() {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [displayDrawer, setDisplayDrawer] = useState(false);
   return (
     <AppBar sx={{ backgroundColor: "white" }}>
       <Container maxWidth={"xl"}>
@@ -72,11 +81,95 @@ function Navbar() {
           disableGutters
         >
           <Box>
-            <MenuRounded
-              fontSize={"large"}
-              color="primary"
-              sx={{ display: { sx: "block", md: "none" } }}
-            />
+            <Box
+              onClick={() =>
+                setDisplayDrawer((prevDisplayDrawer) => !prevDisplayDrawer)
+              }
+            >
+              <MenuRounded
+                fontSize={"large"}
+                color="primary"
+                sx={{
+                  display: {
+                    sx: "block",
+                    md: "none",
+                    cursor: "pointer",
+                    "&:hover": { color: "#f03637" },
+                  },
+                }}
+              />
+            </Box>
+            <Drawer
+              open={displayDrawer}
+              onClose={() => setDisplayDrawer(false)}
+            >
+              <Box
+                sx={{
+                  backgroundColor: "#f03637",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                paddingY={2}
+              >
+                <Typography
+                  color={"white"}
+                  variant="body2"
+                  sx={{
+                    textTransform: "uppercase ",
+                    marginLeft: "15px",
+                    display: "flex",
+                    alignItems: "center",
+                    cursor: "pointer",
+                  }}
+                >
+                  <CloseRounded sx={{ color: "white" }} />
+                  Quick Navigation
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  width: "90%",
+                  textAlign: "center",
+                  display: "flex",
+                  alignItems: "center",
+                  backgroundColor: "#EAEAEA",
+                  margin: "25px auto",
+                }}
+              >
+                <InputBase
+                  placeholder="Search"
+                  sx={{
+                    width: "100%",
+                    padding: "6px",
+                    borderRadius: "3px",
+                  }}
+                />
+                <SearchOutlined
+                  sx={{
+                    cursor: "pointer",
+                    marginRight: "4px",
+                  }}
+                />
+              </Box>
+              <List>
+                {navbarItems.map((item) => (
+                  <Fragment>
+                    <ListItem>
+                      <ListItemText
+                        primary={item.name}
+                        sx={{
+                          width: { xs: "200px", sm: "300px" },
+                          cursor: "pointer",
+                          textTransform: "capitalize",
+                          "&:hover": { color: "#f03637" },
+                        }}
+                      />
+                    </ListItem>
+                    <Divider sx={{ borderColor: "rgba(0,0,0,0.08)" }} />
+                  </Fragment>
+                ))}
+              </List>
+            </Drawer>
           </Box>
           <Box sx={{ marginRight: { sx: "0", md: "30px" } }}>
             <img src={logoImg} alt="digita-logo" />
