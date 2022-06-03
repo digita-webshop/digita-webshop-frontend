@@ -15,16 +15,21 @@ import {
   SearchOutlined,
   LoginOutlined,
   FavoriteBorderOutlined,
+  Menu,
+  MenuRounded,
 } from "@mui/icons-material";
 import { useState } from "react";
 interface StyledTabProps {
   label: string;
 }
-const AntTabs = styled(Tabs)({
+const AntTabs = styled(Tabs)(({ theme }) => ({
   "& .MuiTabs-indicator": {
     backgroundColor: "#f03637",
   },
-});
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
 const AntTab = styled((props: StyledTabProps) => (
   <Tab disableRipple {...props} />
 ))(({ theme }) => ({
@@ -60,8 +65,20 @@ function Navbar() {
   return (
     <AppBar sx={{ backgroundColor: "white" }}>
       <Container maxWidth={"xl"}>
-        <Toolbar>
-          <Box marginRight={5}>
+        <Toolbar
+          sx={{
+            justifyContent: "space-between",
+          }}
+          disableGutters
+        >
+          <Box>
+            <MenuRounded
+              fontSize={"large"}
+              color="primary"
+              sx={{ display: { sx: "block", md: "none" } }}
+            />
+          </Box>
+          <Box sx={{ marginRight: { sx: "0", md: "30px" } }}>
             <img src={logoImg} alt="digita-logo" />
           </Box>
           <AntTabs
@@ -72,18 +89,53 @@ function Navbar() {
               <AntTab label={item.name} sx={{ height: "90px" }} />
             ))}
           </AntTabs>
-          <Box marginLeft={"auto"}>
-            <Badge showZero>
+          <Box marginLeft={"auto"} sx={{ marginLeft: { sx: "0", md: "auto" } }}>
+            <Badge
+              showZero
+              sx={{
+                display: {
+                  xs: "none",
+                  md: "inline-flex",
+                },
+              }}
+            >
               <SearchOutlined color="primary" sx={navbarIcons} />
             </Badge>
-            <Badge showZero>
+            <Badge
+              showZero
+              sx={{
+                display: {
+                  xs: "none",
+                  md: "inline-flex",
+                },
+              }}
+            >
               <LoginOutlined color="primary" sx={navbarIcons} />
             </Badge>
-            <Badge badgeContent={4} overlap="circular" color="error">
+            <Badge
+              badgeContent={4}
+              overlap="circular"
+              color="error"
+              sx={{
+                display: {
+                  xs: "none",
+                  md: "inline-flex",
+                },
+              }}
+            >
               <FavoriteBorderOutlined color="primary" sx={navbarIcons} />
             </Badge>
             <Badge badgeContent={4} overlap="circular" color="error">
-              <LocalGroceryStoreOutlined color="primary" sx={navbarIcons} />
+              <LocalGroceryStoreOutlined
+                color="primary"
+                sx={{
+                  marginLeft: "12px",
+                  transition: "all 200ms",
+                  cursor: "pointer",
+                  fontSize: "28px",
+                  "&:hover": { color: "#f03637" },
+                }}
+              />
             </Badge>
           </Box>
         </Toolbar>
