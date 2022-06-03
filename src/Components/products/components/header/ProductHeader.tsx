@@ -9,15 +9,27 @@ const StyledProducts = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
   },
+  Button: {
+    "&:hover": {
+      transition: 'all 0.4s',
+      backgroundColor: 'transparent',
+      color: '#f03637',
+    }
+  }
 }));
 
+const titleStyle = {
+  fontWeight: "bold", 
+  fontSize: '26px',
+  color: '#333',
+}
 
 
 const ProductHeader = () => {
   return (
     <Box>
       <StyledProducts>
-        <Typography variant="h5" component="h2" fontWeight="bold">
+        <Typography component="h2" sx={titleStyle}>
           TOP PRODUCTS
         </Typography>
         <Box>
