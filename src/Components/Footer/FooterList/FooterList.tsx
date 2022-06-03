@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography, Link, Grid } from "@mui/material";
-import styles from "./FooterList.module.css";
 
 const links = ["About us", "Contact us", "Blog", "Terms of Use", "Careers"];
 
@@ -18,12 +17,12 @@ function FooterList() {
       </Typography>
       {links.map((link, index) => (
         <Link
+          sx={{ "&:hover": { color: "#f03637" } }}
           key={index}
           href="#"
           underline="none"
           mb={1.5}
           color="lightslategray"
-          className={styles.links}
           variant="body1"
         >
           &#62; {link}

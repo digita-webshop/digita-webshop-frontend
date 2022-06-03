@@ -1,7 +1,12 @@
 import React from "react";
-import { Grid, Typography, Button } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Button,
+  FormControl,
+  TextField,
+} from "@mui/material";
 import { Facebook, Twitter, Instagram, Pinterest } from "@mui/icons-material";
-
 import styles from "./Subscription.module.css";
 
 function Subscription() {
@@ -21,18 +26,38 @@ function Subscription() {
         10% off bill offers.
       </Typography>
       <Grid width="100%">
-        <form className={styles.form}>
-          <input
-            type="email"
-            placeholder="Email"
-            className={styles.input}
-          ></input>
-          <Button className={styles.button} variant="contained" color="error">
+        <FormControl
+          sx={{ width: "100%", display: "flex", flexDirection: "row" }}
+        >
+          <TextField
+            sx={{
+              flex: "2",
+              backgroundColor: "#fff",
+              border: "3px solid #fff",
+              "& .MuiInput-underline:after": {
+                border: "2px solid #fff",
+              },
+            }}
+            required
+            label="Email"
+            variant="standard"
+          ></TextField>
+          <Button
+            sx={{ flex: 1, "&:hover": { backgroundColor: "#333" } }}
+            variant="contained"
+            color="error"
+          >
             Subscribe
           </Button>
-        </form>
+        </FormControl>
       </Grid>
-      <Typography mt={1.5} variant="body1" mb={2.5} color="lightslategray">
+      <Typography
+        component={"span"}
+        mt={1.5}
+        variant="body1"
+        mb={2.5}
+        color="lightslategray"
+      >
         <Grid
           display="flex"
           justifyContent="space-around"
