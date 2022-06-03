@@ -8,3 +8,8 @@ export const productData = [
     { id: 7, name: 'SIRUM 360 Mobile Holder Trip', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-8-330x330.jpg', offPrice: 0, price: 12.00, sold: false, starRate: 5 },
     { id: 8, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
 ]
+
+export const otherProductData = [
+    {id: 1, title: 'LIMITED EDITION', name: 'Virtual Reality Glasses', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner1.jpg'},
+    {id: 2, title: 'LIMITED EDITION', name: 'Put The World On Mute', image: ' https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner2.jpg'},
+]
