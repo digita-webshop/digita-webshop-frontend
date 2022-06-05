@@ -76,11 +76,28 @@ const navbarIcons = {
 };
 function Navbar() {
   const [selectedTab, setSelectedTab] = useState(0);
-  const [displayDrawer, setDisplayDrawer] = useState(false);
   const [displayMenu, setDisplayMenu] = useState(false);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
-  console.log(matches);
+  const [displayDrawer, setDisplayDrawer] = useState({
+    left: false,
+    right: false,
+  });
+  type Anchor = "left" | "right";
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
+      ) {
+        return;
+      }
+
+      setDisplayDrawer({ ...displayDrawer, [anchor]: open });
+    };
+
   const handleClick = () => {
     if (matches) {
       setDisplayMenu(true);
@@ -95,7 +112,9 @@ function Navbar() {
     <AppBar sx={{ backgroundColor: "white" }}>
       <Container
         maxWidth={"xl"}
-        sx={{ position: "relative" }}
+        sx={{
+          position: "relative",
+        }}
         onMouseEnter={handleClose}
       >
         <Toolbar
@@ -105,11 +124,7 @@ function Navbar() {
           disableGutters
         >
           <Box>
-            <Box
-              onClick={() =>
-                setDisplayDrawer((prevDisplayDrawer) => !prevDisplayDrawer)
-              }
-            >
+            <Box onClick={toggleDrawer("left", true)} className="box">
               <MenuRounded
                 fontSize={"large"}
                 color="primary"
@@ -124,8 +139,9 @@ function Navbar() {
               />
             </Box>
             <Drawer
-              open={displayDrawer}
-              onClose={() => setDisplayDrawer(false)}
+              anchor="left"
+              open={displayDrawer["left"]}
+              onClose={toggleDrawer("left", false)}
             >
               <Box
                 sx={{
@@ -145,6 +161,7 @@ function Navbar() {
                     alignItems: "center",
                     cursor: "pointer",
                   }}
+                  onClick={toggleDrawer("left", false)}
                 >
                   <CloseRounded sx={{ color: "white" }} />
                   Quick Navigation
@@ -252,12 +269,15 @@ function Navbar() {
                 <FavoriteBorderOutlined color="primary" sx={navbarIcons} />
               </Badge>
             </Box>
-            <Box onMouseEnter={handleClick}>
+            <Box
+              onMouseEnter={handleClick}
+              onClick={toggleDrawer("right", true)}
+            >
               <Badge
                 badgeContent={4}
                 overlap="circular"
                 color="error"
-                sx={{ margin: "auto  " }}
+                sx={{ margin: "auto" }}
               >
                 <LocalGroceryStoreOutlined
                   color="primary"
@@ -271,6 +291,128 @@ function Navbar() {
                 />
               </Badge>
             </Box>
+            <Drawer
+              anchor="right"
+              open={displayDrawer["right"]}
+              onClose={toggleDrawer("right", false)}
+            >
+              <Box padding={2} position={"relative"}>
+                <Box
+                  position={"absolute"}
+                  right={4}
+                  top={6}
+                  sx={{ cursor: "pointer" }}
+                  onClick={toggleDrawer("right", false)}
+                >
+                  <CloseRounded fontSize="large" color="secondary" />
+                </Box>
+                <Box textAlign={"center"} marginBottom={2}>
+                  <Typography variant="h6" color="primary" fontWeight={600}>
+                    CART
+                  </Typography>
+                  <Divider
+                    sx={{
+                      width: "40px",
+                      marginX: "auto",
+                      marginTop: "10px",
+                      borderBottomWidth: "2px",
+                    }}
+                  />
+                </Box>
+                <Divider />
+                <List sx={{ maxHeight: "360px", overflow: "auto" }}>
+                  <ListItem disableGutters>
+                    <img
+                      src="https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg"
+                      alt="product"
+                      width={75}
+                      height={75}
+                    />
+                    <ListItemText
+                      sx={{ marginLeft: "16px", marginRight: "40px" }}
+                    >
+                      <Typography variant="body2" color={"primary"}>
+                        Samsung Galaxy V21
+                      </Typography>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "4px",
+                        }}
+                      >
+                        <Typography variant="subtitle1" color={"secondary"}>
+                          1 x{" "}
+                        </Typography>
+                        <Typography variant="body2" color={"primary"}>
+                          $75.00{" "}
+                        </Typography>
+                      </Box>
+                    </ListItemText>
+                    <ListItemIcon>
+                      <Box>
+                        <CloseRounded
+                          sx={{
+                            border: "1px solid black",
+                            borderRadius: "50%",
+                            display: "flex",
+                            justifyContent: "center",
+                            padding: "3px",
+                            "&:hover": {
+                              border: "1px solid red",
+                              color: "red",
+                            },
+                            cursor: "pointer",
+                          }}
+                        />
+                      </Box>
+                    </ListItemIcon>
+                  </ListItem>
+                  <Divider />
+                </List>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    padding: "13px",
+                  }}
+                >
+                  <Typography
+                    variant="subtitle2"
+                    color={"secondary"}
+                    fontWeight={400}
+                  >
+                    SUBTOTAL:
+                  </Typography>
+                  <Typography variant="subtitle2" color={"primary"}>
+                    $325:00
+                  </Typography>
+                </Box>
+                <Divider />
+                <Box
+                  sx={{
+                    display: "flex",
+                    paddingY: "20px",
+                    justifyContent: "space-between",
+                    gap: "10px",
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    fullWidth={true}
+                    color="error"
+                    sx={{
+                      "&:hover": { backgroundColor: "#333333" },
+                    }}
+                  >
+                    VIEW CARD
+                  </Button>
+                  <Button variant="contained" fullWidth={true}>
+                    CHECKOUT
+                  </Button>
+                </Box>
+              </Box>
+            </Drawer>
           </Box>
         </Toolbar>
         <Box
