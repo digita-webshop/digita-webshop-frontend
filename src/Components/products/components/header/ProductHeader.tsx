@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button, styled, Typography } from "@mui/material";
 
-const StyledProducts = styled(Box)(({ theme }) => ({
+export const StyledProducts = styled(Box)(({ theme }) => ({
   paddingTop: "3rem",
   display: "flex",
   justifyContent: "space-between",
@@ -11,7 +11,7 @@ const StyledProducts = styled(Box)(({ theme }) => ({
   },
 }));
 
-const navStyle = {
+export const navStyle = {
   Button: {
     "&:hover": {
       transition: 'all 0.4s',
@@ -25,7 +25,7 @@ const navStyle = {
   }
 }
 
-const titleStyle = {
+export const titleStyle = {
   fontWeight: "bold", 
   fontSize: '26px',
   color: '#333',
