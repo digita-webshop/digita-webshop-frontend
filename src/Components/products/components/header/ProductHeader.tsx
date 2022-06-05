@@ -27,7 +27,7 @@ export const navStyle = {
 
 export const titleStyle = {
   fontWeight: "bold", 
-  fontSize: '26px',
+  fontSize: '30px',
   color: '#333',
 }
 

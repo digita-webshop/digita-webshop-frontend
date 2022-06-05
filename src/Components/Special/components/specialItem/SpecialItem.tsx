@@ -11,20 +11,44 @@ import {
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 
+const cardStyle = {
+  display: "flex",
+  width: "350px",
+  height: "150px",
+};
+
+const contentStyle = {
+  Button: {
+    margin: "0.9rem 0",
+  },
+};
+
 const SpecialItem = () => {
   return (
-    <Grid item xs={6} sm={4} md={3}>
-      <Card sx={{ display: "flex", border: "1px solid red" }}>
-        <Box>
-          <CardMedia
-            component="img"
-            sx={{ width: "100%", height: "100%" }}
-            image="https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg"
-            alt="Live from space album cover"
-          />
-        </Box>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
+    <Grid item xs={8} sm={6} md={5} lg={4}>
+      <Card sx={cardStyle}>
+        <CardMedia
+          component="img"
+          sx={{ width: "40%", height: "100%" }}
+          image="https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg"
+          alt="Live from space album cover"
+        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            border: "1px solid #e8e8e8",
+            borderLeft: "#fff",
+            width: '250px'
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              p: "0.5rem 0 0 0.9rem",
+            }}
+          >
             <Rating
               name="text-feedback"
               size="small"
@@ -36,22 +60,27 @@ const SpecialItem = () => {
               }
             />
           </Box>
-          <CardContent>
+          <CardContent sx={contentStyle}>
             <Typography
               gutterBottom
               variant="body2"
               component="div"
-              sx={{ margin: "0.2rem" }}
-              fontWeight={500}
+              fontWeight={700}
             >
               Beats by the studio
             </Typography>
-            <Box
-              component="span"
-              sx={{ marginRight: "0.5rem", textDecoration: "line-through" }}
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ margin: "0.2rem" }}
             >
-              {`&77.00`}
-            </Box>
+              <Box component="span" sx={{ textDecoration: "line-through" }}>
+                {`&77.00`}
+              </Box>
+              <Box component="span" sx={{ marginLeft: '5px',color: "red", fontWeight: "bold" }}>
+                {`$77.00`}
+              </Box>
+            </Typography>
             <Button variant="contained">Add to cart</Button>
           </CardContent>
         </Box>

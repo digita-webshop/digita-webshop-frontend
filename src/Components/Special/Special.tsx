@@ -11,6 +11,14 @@ const Special = () => {
       <Box>
         <Grid container spacing={{ xs: 2, md: 3 }}>
           <SpecialItem />
+          <SpecialItem />
+          <SpecialItem />
+          <SpecialItem />
+          <SpecialItem />
+          <SpecialItem />
+          <SpecialItem />
+          <SpecialItem />
+          <SpecialItem />
         </Grid>
       </Box>
     </Container>
