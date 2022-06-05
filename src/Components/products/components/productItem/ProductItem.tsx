@@ -19,8 +19,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 type Props = {
   name: string;
@@ -53,15 +52,19 @@ const StyledIcons = styled("div")(({ theme }) => ({
   borderRadius: "7px",
 }));
 
+const defultStyle = {
+  position: "relative",
+};
+
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
   gap: 3,
   width: 300,
   bgcolor: "background.paper",
@@ -69,11 +72,11 @@ const style = {
   boxShadow: 24,
   p: 4,
   Button: {
-    width : '100%',
-    display: 'flex',
-    padding: '1rem 0',
-    textTransform: 'uppercase'
-  }
+    width: "100%",
+    display: "flex",
+    padding: "1rem 0",
+    textTransform: "uppercase",
+  },
 };
 
 const ProductItem = ({
@@ -85,16 +88,26 @@ const ProductItem = ({
   sold,
   starRate,
 }: Props) => {
+  const [show, setShow] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [openWish, setOpenWish] = useState(false);
+  const [addWish, setAddWish] = useState(false);
 
+  const handleWishList = () => {
+    setOpenWish(false);
+    setTimeout(() => {
+      setAddWish(true);
+    }, 500);
+  };
   return (
     <Grid item xs={6} sm={4} md={3} key={id}>
       <Card
-        sx={{ maxWidth: 270, boxShadow: "5px 4px 10px 1px rgba(0,0,0,0.12)" }}
+        onMouseEnter={() => setShow(true)}
+        onMouseLeave={() => setShow(false)}
+        sx={{ maxWidth: 270, boxShadow: "5px 4px 10px 1px rgba(0,0,0,0.12)"}}
       >
         <CardActionArea>
-          <Box sx={{ position: "relative" }}>
+          <Box sx={defultStyle}>
             <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div>
             <CardMedia
               component="img"
@@ -104,26 +117,32 @@ const ProductItem = ({
             />
 
             {/* Product Item Icons */}
-            <StyledIcons>
-              <Stack direction="row">
-                <IconButton sx={{ color: "gray" }} aria-label="delete">
-                  <ShoppingCartIcon fontSize="small" />
-                </IconButton>
-                <IconButton sx={{ color: "gray" }} aria-label="delete" onClick={() => setOpenWish(true)}>
-                  <FavoriteBorderIcon fontSize="small" />
-                </IconButton>
-                <IconButton sx={{ color: "gray" }} aria-label="add an alarm">
-                  <CompareArrowsIcon fontSize="small" />
-                </IconButton>
-                <IconButton
-                  sx={{ color: "gray" }}
-                  aria-label="add to shopping cart"
-                  onClick={() => setOpenView(true)}
-                >
-                  <VisibilityIcon fontSize="small" />
-                </IconButton>
-              </Stack>
-            </StyledIcons>
+            {show && (
+              <StyledIcons>
+                <Stack direction="row">
+                  <IconButton sx={{ color: "gray" }} aria-label="delete">
+                    <ShoppingCartIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton
+                    sx={{ color: "gray" }}
+                    aria-label="delete"
+                    onClick={() => setOpenWish(true)}
+                  >
+                    <FavoriteBorderIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton sx={{ color: "gray" }} aria-label="add an alarm">
+                    <CompareArrowsIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton
+                    sx={{ color: "gray" }}
+                    aria-label="add to shopping cart"
+                    onClick={() => setOpenView(true)}
+                  >
+                    <VisibilityIcon fontSize="small" />
+                  </IconButton>
+                </Stack>
+              </StyledIcons>
+            )}
             {/* Product Item Icons */}
           </Box>
 
@@ -131,19 +150,21 @@ const ProductItem = ({
 
           <Modal
             open={openWish}
-            onClose={() => setOpenWish(false)}
+            onClose={handleWishList}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              
-              <FavoriteIcon sx={{ fontSize: 50, color: '#f03637' }} />
+              <FavoriteIcon sx={{ fontSize: 50, color: "#f03637" }} />
               <Typography id="modal-modal-title" variant="h5" component="h2">
-                Product added to Wishlist
+                {addWish
+                  ? "Product already in a Wishlist"
+                  : "Product added to Wishlist"}
               </Typography>
               <Button variant="contained">
-                <FavoriteBorderIcon sx={{marginRight: '0.3rem'}}/>
-                View Wishlist</Button>
+                <FavoriteBorderIcon sx={{ marginRight: "0.3rem" }} />
+                View Wishlist
+              </Button>
             </Box>
           </Modal>
           {/* =========== Wishlist ======== */}
@@ -156,20 +177,20 @@ const ProductItem = ({
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <img src={image} alt='productImage'/>
+              <img src={image} alt="productImage" />
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 {name}
               </Typography>
               <Rating
-              name="text-feedback"
-              size="small"
-              value={starRate}
-              readOnly
-              precision={0.5}
-              emptyIcon={
-                <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-              }
-            />
+                name="text-feedback"
+                size="small"
+                value={starRate}
+                readOnly
+                precision={0.5}
+                emptyIcon={
+                  <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                }
+              />
               <Typography variant="h3">${price}</Typography>
               <Button variant="contained">Add to Cart</Button>
             </Box>
