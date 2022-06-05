@@ -9,14 +9,21 @@ const StyledProducts = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
   },
+}));
+
+const navStyle = {
   Button: {
     "&:hover": {
       transition: 'all 0.4s',
       backgroundColor: 'transparent',
       color: '#f03637',
+    },
+    "&:focus": {
+      backgroundColor: '#FFE1E1',
+      color: '#f03637'
     }
   }
-}));
+}
 
 const titleStyle = {
   fontWeight: "bold", 
@@ -32,14 +39,14 @@ const ProductHeader = () => {
         <Typography component="h2" sx={titleStyle}>
           TOP PRODUCTS
         </Typography>
-        <Box>
-          <Button variant="text" sx={{ color: "gray", fontSize: '0.9rem' }}>
+        <Box sx={navStyle}>
+          <Button variant="text" sx={{ color: "gray", fontSize: '0.85rem' }}>
             AUDIO & VIDEO GAME
           </Button>
-          <Button variant="text" sx={{ color: "gray",fontSize: '0.9rem' }}>
+          <Button variant="text" sx={{ color: "gray",fontSize: '0.85rem' }}>
             CAMERA & PHOTO
           </Button>
-          <Button variant="text" sx={{ color: "gray",fontSize: '0.9rem' }}>
+          <Button variant="text" sx={{ color: "gray",fontSize: '0.85rem' }}>
             HEADPHONE
           </Button>
         </Box>

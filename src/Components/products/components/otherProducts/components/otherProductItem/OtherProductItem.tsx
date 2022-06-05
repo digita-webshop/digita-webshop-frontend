@@ -7,6 +7,11 @@ type Props = {
   image: string;
 };
 
+const cardContent = {
+  padding: "2rem",
+  width: "250px" 
+}
+
 
 
 const OtherProductItem = ({ title, name, image }: Props) => {
@@ -15,16 +20,17 @@ const OtherProductItem = ({ title, name, image }: Props) => {
     height: 340,
     background:
     `url(${image}) no-repeat center`,
-    backgroundSize: "contain",
+    backgroundSize: "stretch",
     "&:hover": {
       transition: "1s",
     },
   };
 
+  
   return (
     <Grid item xs={8} md={6}>
       <Card sx={cardStyle}>
-        <CardContent sx={{ padding: "2rem", width: "250px" }}>
+        <CardContent sx={cardContent}>
           <Typography
             sx={{ fontSize: 20, textTransform: "uppercase", color: "#fff" }}
             gutterBottom
@@ -47,7 +53,4 @@ const OtherProductItem = ({ title, name, image }: Props) => {
 };
 
 
-/* 
-  background:
-    `url(https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner1.jpg) no-repeat center`, */
 export default OtherProductItem;
