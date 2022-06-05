@@ -2,70 +2,26 @@ import {
   AppBar,
   Box,
   Container,
-  Tab,
-  Tabs,
   Toolbar,
   Badge,
-  Drawer,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Divider,
-  InputBase,
-  ImageListItem,
-  Menu,
-  MenuItem,
-  Button,
-  ListItemIcon,
   useMediaQuery,
 } from "@mui/material";
 import logoImg from "../../Assets/Images/digita-logo.png";
 import { navbarItems } from "../../Assets/Data/Data";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
+
 import {
   LocalGroceryStoreOutlined,
   SearchOutlined,
   LoginOutlined,
   FavoriteBorderOutlined,
   MenuRounded,
-  CloseRounded,
 } from "@mui/icons-material";
-import { Fragment, useState } from "react";
-
-interface StyledTabProps {
-  label: string;
-}
-const AntTabs = styled(Tabs)(({ theme }) => ({
-  "& .MuiTabs-indicator": {
-    backgroundColor: "#f03637",
-  },
-  [theme.breakpoints.down("md")]: {
-    display: "none",
-  },
-}));
-const AntTab = styled((props: StyledTabProps) => (
-  <Tab disableRipple {...props} />
-))(({ theme }) => ({
-  textTransform: "capitalize",
-  minWidth: 0,
-  [theme.breakpoints.up("sm")]: {
-    minWidth: 0,
-  },
-  fontWeight: theme.typography.fontWeightMedium,
-  fontSize: 15,
-  marginRight: theme.spacing(1),
-  color: "rgba(0, 0, 0, 0.85)",
-  borderBottom: "3px solid white",
-
-  "&:hover": {
-    color: "#f03637",
-    borderBottom: "3px solid #f03637",
-  },
-  "&.Mui-selected": {
-    color: "#333333",
-  },
-}));
+import { useState } from "react";
+import { AntTab, AntTabs } from "../../Styles/Appbar";
+import TabDrawer from "./TabDrawer/TabDrawer";
+import ShopDrawer from "./ShopDrawer/ShopDrawer";
+import ShopMenuCard from "./ShopMenuCard/ShopMenuCard";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -84,28 +40,14 @@ function Navbar() {
     right: false,
   });
   type Anchor = "left" | "right";
-  const toggleDrawer =
-    (anchor: Anchor, open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === "keydown" &&
-        ((event as React.KeyboardEvent).key === "Tab" ||
-          (event as React.KeyboardEvent).key === "Shift")
-      ) {
-        return;
-      }
 
-      setDisplayDrawer({ ...displayDrawer, [anchor]: open });
-    };
-
-  const handleClick = () => {
-    if (matches) {
-      setDisplayMenu(true);
-    }
+  const toggleDrawer = (anchor: Anchor, open: boolean) => {
+    setDisplayDrawer({ ...displayDrawer, [anchor]: open });
   };
-  const handleClose = () => {
+
+  const displayMenuHandler = (display: boolean) => {
     if (matches) {
-      setDisplayMenu(false);
+      setDisplayMenu(display);
     }
   };
   return (
@@ -115,7 +57,7 @@ function Navbar() {
         sx={{
           position: "relative",
         }}
-        onMouseEnter={handleClose}
+        onMouseEnter={() => displayMenuHandler(false)}
       >
         <Toolbar
           sx={{
@@ -124,7 +66,7 @@ function Navbar() {
           disableGutters
         >
           <Box>
-            <Box onClick={toggleDrawer("left", true)} className="box">
+            <Box onClick={() => toggleDrawer("left", true)}>
               <MenuRounded
                 fontSize={"large"}
                 color="primary"
@@ -138,79 +80,10 @@ function Navbar() {
                 }}
               />
             </Box>
-            <Drawer
-              anchor="left"
-              open={displayDrawer["left"]}
-              onClose={toggleDrawer("left", false)}
-            >
-              <Box
-                sx={{
-                  backgroundColor: "#f03637",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-                paddingY={2}
-              >
-                <Typography
-                  color={"white"}
-                  variant="body2"
-                  sx={{
-                    textTransform: "uppercase ",
-                    marginLeft: "15px",
-                    display: "flex",
-                    alignItems: "center",
-                    cursor: "pointer",
-                  }}
-                  onClick={toggleDrawer("left", false)}
-                >
-                  <CloseRounded sx={{ color: "white" }} />
-                  Quick Navigation
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  width: "90%",
-                  textAlign: "center",
-                  display: "flex",
-                  alignItems: "center",
-                  backgroundColor: "#EAEAEA",
-                  margin: "25px auto",
-                }}
-              >
-                <InputBase
-                  placeholder="Search"
-                  sx={{
-                    width: "100%",
-                    padding: "6px",
-                    borderRadius: "3px",
-                  }}
-                />
-                <SearchOutlined
-                  sx={{
-                    cursor: "pointer",
-                    marginRight: "4px",
-                  }}
-                />
-              </Box>
-              <List>
-                {navbarItems.map((item) => (
-                  <Fragment key={item.id}>
-                    <ListItem>
-                      <ListItemText
-                        primary={item.name}
-                        sx={{
-                          width: { xs: "200px", sm: "300px" },
-                          cursor: "pointer",
-                          textTransform: "capitalize",
-                          "&:hover": { color: "#f03637" },
-                        }}
-                      />
-                    </ListItem>
-                    <Divider sx={{ borderColor: "rgba(0,0,0,0.08)" }} />
-                  </Fragment>
-                ))}
-              </List>
-            </Drawer>
+            <TabDrawer
+              displayDrawer={displayDrawer}
+              toggleDrawer={toggleDrawer}
+            />
           </Box>
           <Box sx={{ marginRight: { sx: "0", md: "30px" } }}>
             <img src={logoImg} alt="digita-logo" />
@@ -253,7 +126,11 @@ function Navbar() {
             >
               <LoginOutlined color="primary" sx={navbarIcons} />
             </Badge>
-            <Box display={"flex"} height={"100%"} onMouseEnter={handleClose}>
+            <Box
+              display={"flex"}
+              height={"100%"}
+              onMouseEnter={() => displayMenuHandler(false)}
+            >
               <Badge
                 badgeContent={4}
                 overlap="circular"
@@ -270,8 +147,8 @@ function Navbar() {
               </Badge>
             </Box>
             <Box
-              onMouseEnter={handleClick}
-              onClick={toggleDrawer("right", true)}
+              onMouseEnter={() => displayMenuHandler(true)}
+              onClick={() => toggleDrawer("right", true)}
             >
               <Badge
                 badgeContent={4}
@@ -291,224 +168,16 @@ function Navbar() {
                 />
               </Badge>
             </Box>
-            <Drawer
-              anchor="right"
-              open={displayDrawer["right"]}
-              onClose={toggleDrawer("right", false)}
-            >
-              <Box padding={2} position={"relative"}>
-                <Box
-                  position={"absolute"}
-                  right={4}
-                  top={6}
-                  sx={{ cursor: "pointer" }}
-                  onClick={toggleDrawer("right", false)}
-                >
-                  <CloseRounded fontSize="large" color="secondary" />
-                </Box>
-                <Box textAlign={"center"} marginBottom={2}>
-                  <Typography variant="h6" color="primary" fontWeight={600}>
-                    CART
-                  </Typography>
-                  <Divider
-                    sx={{
-                      width: "40px",
-                      marginX: "auto",
-                      marginTop: "10px",
-                      borderBottomWidth: "2px",
-                    }}
-                  />
-                </Box>
-                <Divider />
-                <List sx={{ maxHeight: "360px", overflow: "auto" }}>
-                  <ListItem disableGutters>
-                    <img
-                      src="https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg"
-                      alt="product"
-                      width={75}
-                      height={75}
-                    />
-                    <ListItemText
-                      sx={{ marginLeft: "16px", marginRight: "40px" }}
-                    >
-                      <Typography variant="body2" color={"primary"}>
-                        Samsung Galaxy V21
-                      </Typography>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "4px",
-                        }}
-                      >
-                        <Typography variant="subtitle1" color={"secondary"}>
-                          1 x{" "}
-                        </Typography>
-                        <Typography variant="body2" color={"primary"}>
-                          $75.00{" "}
-                        </Typography>
-                      </Box>
-                    </ListItemText>
-                    <ListItemIcon>
-                      <Box>
-                        <CloseRounded
-                          sx={{
-                            border: "1px solid black",
-                            borderRadius: "50%",
-                            display: "flex",
-                            justifyContent: "center",
-                            padding: "3px",
-                            "&:hover": {
-                              border: "1px solid red",
-                              color: "red",
-                            },
-                            cursor: "pointer",
-                          }}
-                        />
-                      </Box>
-                    </ListItemIcon>
-                  </ListItem>
-                  <Divider />
-                </List>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    padding: "13px",
-                  }}
-                >
-                  <Typography
-                    variant="subtitle2"
-                    color={"secondary"}
-                    fontWeight={400}
-                  >
-                    SUBTOTAL:
-                  </Typography>
-                  <Typography variant="subtitle2" color={"primary"}>
-                    $325:00
-                  </Typography>
-                </Box>
-                <Divider />
-                <Box
-                  sx={{
-                    display: "flex",
-                    paddingY: "20px",
-                    justifyContent: "space-between",
-                    gap: "10px",
-                  }}
-                >
-                  <Button
-                    variant="contained"
-                    fullWidth={true}
-                    color="error"
-                    sx={{
-                      "&:hover": { backgroundColor: "#333333" },
-                    }}
-                  >
-                    VIEW CARD
-                  </Button>
-                  <Button variant="contained" fullWidth={true}>
-                    CHECKOUT
-                  </Button>
-                </Box>
-              </Box>
-            </Drawer>
+            <ShopDrawer
+              displayDrawer={displayDrawer}
+              toggleDrawer={toggleDrawer}
+            />
           </Box>
         </Toolbar>
-        <Box
-          display={`${displayMenu ? "inline-block" : "none"}`}
-          sx={{
-            position: "absolute",
-            right: "10px",
-            top: "72px ",
-            padding: "15px",
-          }}
-          onMouseLeave={handleClose}
-        >
-          <List sx={{ maxHeight: "360px", overflow: "auto" }}>
-            <ListItem disableGutters>
-              <img
-                src="https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg"
-                alt="product"
-                width={75}
-                height={75}
-              />
-              <ListItemText sx={{ marginLeft: "16px", marginRight: "40px" }}>
-                <Typography variant="body2" color={"primary"}>
-                  Samsung Galaxy V21
-                </Typography>
-                <Box sx={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                  <Typography variant="subtitle1" color={"secondary"}>
-                    1 x{" "}
-                  </Typography>
-                  <Typography variant="body2" color={"primary"}>
-                    $75.00{" "}
-                  </Typography>
-                </Box>
-              </ListItemText>
-              <ListItemIcon>
-                <Box>
-                  <CloseRounded
-                    sx={{
-                      border: "1px solid black",
-                      borderRadius: "50%",
-                      display: "flex",
-                      justifyContent: "center",
-                      padding: "3px",
-                      "&:hover": {
-                        border: "1px solid red",
-                        color: "red",
-                      },
-                      cursor: "pointer",
-                    }}
-                  />
-                </Box>
-              </ListItemIcon>
-            </ListItem>
-            <Divider />
-          </List>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: "13px",
-            }}
-          >
-            <Typography
-              variant="subtitle2"
-              color={"secondary"}
-              fontWeight={400}
-            >
-              SUBTOTAL:
-            </Typography>
-            <Typography variant="subtitle2" color={"primary"}>
-              $325:00
-            </Typography>
-          </Box>
-          <Divider />
-          <Box
-            sx={{
-              display: "flex",
-              paddingY: "20px",
-              justifyContent: "space-between",
-              gap: "10px",
-            }}
-          >
-            <Button
-              variant="contained"
-              fullWidth={true}
-              color="error"
-              sx={{
-                "&:hover": { backgroundColor: "#333333" },
-              }}
-            >
-              VIEW CARD
-            </Button>
-            <Button variant="contained" fullWidth={true}>
-              CHECKOUT
-            </Button>
-          </Box>
-        </Box>
+        <ShopMenuCard
+          displayMenu={displayMenu}
+          displayMenuHandler={displayMenuHandler}
+        />
       </Container>
     </AppBar>
   );
