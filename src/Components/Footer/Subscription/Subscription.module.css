@@ -1,0 +1,8 @@
+.svg > svg {
+  margin: 0 0.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.svg > svg:hover {
+  color: #f03637;
+}
