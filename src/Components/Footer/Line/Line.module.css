@@ -1,0 +1,7 @@
+.line {
+  margin: 0 auto;
+  height: 1px;
+  width: 90%;
+  background-color: #fff;
+  opacity: 0.7;
+}
