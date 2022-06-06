@@ -11,26 +11,37 @@ import {
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 
+type Props = {
+  id: number;
+  name: string;
+  image: string;
+  offPrice: number | null;
+  price: number;
+  starRate: number;
+}
+
 const cardStyle = {
   display: "flex",
   width: "350px",
   height: "150px",
+  overflow: 'hidden'
 };
 
 const contentStyle = {
+  paddingTop: '0.4rem',
   Button: {
     margin: "0.9rem 0",
   },
 };
 
-const SpecialItem = () => {
+const SpecialItem = ({id, name, image, offPrice, price, starRate}: Props ) => {
   return (
-    <Grid item xs={8} sm={6} md={5} lg={4}>
+    <Grid item xs={8} sm={6} md={4} lg={4}>
       <Card sx={cardStyle}>
         <CardMedia
           component="img"
           sx={{ width: "40%", height: "100%" }}
-          image="https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg"
+          image={`${image}`}
           alt="Live from space album cover"
         />
         <Box
@@ -52,7 +63,7 @@ const SpecialItem = () => {
             <Rating
               name="text-feedback"
               size="small"
-              value={5}
+              value={starRate}
               readOnly
               precision={0.5}
               emptyIcon={
@@ -67,7 +78,7 @@ const SpecialItem = () => {
               component="div"
               fontWeight={700}
             >
-              Beats by the studio
+              {name}
             </Typography>
             <Typography
               variant="body2"
@@ -75,10 +86,10 @@ const SpecialItem = () => {
               sx={{ margin: "0.2rem" }}
             >
               <Box component="span" sx={{ textDecoration: "line-through" }}>
-                {`&77.00`}
+              {offPrice !== 0 && `$${offPrice}.00`}
               </Box>
               <Box component="span" sx={{ marginLeft: '5px',color: "red", fontWeight: "bold" }}>
-                {`$77.00`}
+              {`$${price}.00`}
               </Box>
             </Typography>
             <Button variant="contained">Add to cart</Button>
