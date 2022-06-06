@@ -3,6 +3,7 @@ import React from "react";
 import SpecialHeader from "./components/header/SpecialHeader";
 import SpecialItem from "./components/specialItem/SpecialItem";
 import {specialProducts} from '../../Services/Utils/data'
+import SupportItems from "./components/supportItems/SupportItems";
 
 const Special = () => {
   return (
@@ -23,6 +24,7 @@ const Special = () => {
           ))}
         </Grid>
       </Box>
+      <SupportItems />
     </Container>
   );
 };
