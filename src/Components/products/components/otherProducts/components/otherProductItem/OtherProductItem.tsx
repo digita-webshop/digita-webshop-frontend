@@ -1,5 +1,10 @@
 import { Card, CardContent, Grid, Typography } from "@mui/material";
-import ButtonOther from "../button/ButtonOther";
+import ButtonOther from "../Button/ButtonOther";
+
+const cardContent = {
+  padding: "2rem",
+  width: "250px",
+};
 
 type Props = {
   title: string;
@@ -7,18 +12,10 @@ type Props = {
   image: string;
 };
 
-const cardContent = {
-  padding: "2rem",
-  width: "250px" 
-}
-
-
-
 const OtherProductItem = ({ title, name, image }: Props) => {
   const cardStyle = {
     height: 340,
-    background:
-    `url(${image}) no-repeat center`,
+    background: `url(${image}) no-repeat center`,
     backgroundSize: "100%",
     transition: "1s",
     "&:hover": {
@@ -27,7 +24,6 @@ const OtherProductItem = ({ title, name, image }: Props) => {
     },
   };
 
-  
   return (
     <Grid item xs={8} md={6}>
       <Card sx={cardStyle}>
@@ -52,6 +48,5 @@ const OtherProductItem = ({ title, name, image }: Props) => {
     </Grid>
   );
 };
-
 
 export default OtherProductItem;

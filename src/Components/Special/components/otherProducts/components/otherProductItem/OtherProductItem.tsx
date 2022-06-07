@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, Typography, Grid } from "@mui/material";
-import ButtonOther from "../../../../../products/components/otherProducts/components/button/ButtonOther";
+import ButtonOther from "../../../../../Products/Components/OtherProducts/Components/Button/ButtonOther";
 
 
 type Props = {
