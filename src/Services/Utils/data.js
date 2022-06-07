@@ -22,6 +22,6 @@ export const specialProducts = [
     {id: 5, name: 'Samsung Galaxy Note...', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg',offPrice: 62, price: 52, starRate: 5},
     {id: 6, name: 'Samsung Galaxy M21', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg',offPrice: 70, price: 55, starRate: 0},
     {id: 7, name: 'Samsung Galaxy V21', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg',offPrice: 0, price: 75, starRate: 5},
-    {id: 8, name: 'SIRUM 360 Mobile Holder...', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-8-330x330.jpg',offPrice: 0, price: 12, starRate: 5},
+    {id: 8, name: 'SIRUM 360 Holder...', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-8-330x330.jpg',offPrice: 0, price: 12, starRate: 5},
     {id: 9, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg',offPrice: 0, price: 75, starRate: 5},
 ]

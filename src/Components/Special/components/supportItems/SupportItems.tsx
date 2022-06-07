@@ -35,7 +35,7 @@ const itemStyle = {
 const SupportItems = () => {
   return (
     <Grid container sx={supportStyle}>
-      <Grid item xs={8} sm={5.5} md={4} lg={2.9}>
+      <Grid item xs={8} sm={5.5} md={4} lg={3}>
         {/* ======== ITEM ======= */}
         <Box sx={itemStyle}>
           <LocalShippingIcon sx={{ color: "#f03637", fontSize: "40px" }} />
@@ -59,7 +59,7 @@ const SupportItems = () => {
       {/* ======== Item ============ */}
 
       {/* ======== ITEM ======= */}
-      <Grid item xs={8} sm={5.5} md={4} lg={2.9}>
+      <Grid item xs={8} sm={5.5} md={4} lg={3}>
         <Box sx={itemStyle}>
           <CurrencyExchangeIcon sx={{ color: "#f03637", fontSize: "40px" }} />
           <Box sx={{ marginLeft: "0.6rem" }}>
@@ -82,7 +82,7 @@ const SupportItems = () => {
       {/* ======== Item ============ */}
 
       {/* ======== ITEM ======= */}
-      <Grid item xs={8} sm={5.5} md={4} lg={2.9}>
+      <Grid item xs={8} sm={5.5} md={4} lg={3}>
         <Box sx={itemStyle}>
           <PaymentIcon sx={{ color: "#f03637", fontSize: "40px" }} />
           <Box sx={{ marginLeft: "0.6rem" }}>
@@ -105,7 +105,7 @@ const SupportItems = () => {
       {/* ======== Item ============ */}
 
       {/* ======== ITEM ======= */}
-      <Grid item xs={8} sm={5.5} md={4} lg={2.9}>
+      <Grid item xs={8} sm={5.5} md={4} lg={3}>
         <Box sx={itemStyle}>
           <SupportAgentIcon sx={{ color: "#f03637", fontSize: "40px" }} />
           <Box sx={{ marginLeft: "0.6rem" }}>
