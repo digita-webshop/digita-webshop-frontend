@@ -4,10 +4,66 @@ import {
   Typography,
   Button,
   FormControl,
-  TextField,
+  InputBase,
+  Box,
 } from "@mui/material";
-import { Facebook, Twitter, Instagram, Pinterest } from "@mui/icons-material";
+import { Facebook, Twitter, Google, Pinterest } from "@mui/icons-material";
 import styles from "./Subscription.module.css";
+
+const icons = [
+  {
+    icon: (
+      <Facebook
+        sx={{
+          height: "1rem",
+          width: "1rem",
+          cursor: "pointer",
+          "&:hover": { opacity: "0.7" },
+        }}
+      />
+    ),
+    color: "#3b5998",
+  },
+  {
+    icon: (
+      <Twitter
+        sx={{
+          height: "1rem",
+          width: "1rem",
+          cursor: "pointer",
+          "&:hover": { opacity: "0.7" },
+        }}
+      />
+    ),
+    color: "#1da1f2",
+  },
+  {
+    icon: (
+      <Google
+        sx={{
+          height: "1rem",
+          width: "1rem",
+          cursor: "pointer",
+          "&:hover": { opacity: "0.7" },
+        }}
+      />
+    ),
+    color: "#dd4b39",
+  },
+  {
+    icon: (
+      <Pinterest
+        sx={{
+          height: "1rem",
+          width: "1rem",
+          cursor: "pointer",
+          "&:hover": { opacity: "0.7" },
+        }}
+      />
+    ),
+    color: "#bd081c",
+  },
+];
 
 function Subscription() {
   return (
@@ -29,19 +85,17 @@ function Subscription() {
         <FormControl
           sx={{ width: "100%", display: "flex", flexDirection: "row" }}
         >
-          <TextField
+          <InputBase
             sx={{
               flex: "2",
+              padding: "0.5rem",
+              height: "3.4rem",
               backgroundColor: "#fff",
               border: "3px solid #fff",
-              "& .MuiInput-underline:after": {
-                border: "2px solid #fff",
-              },
             }}
+            placeholder="Enter your email"
             required
-            label="Email"
-            variant="standard"
-          ></TextField>
+          ></InputBase>
           <Button
             sx={{ flex: 1, "&:hover": { backgroundColor: "#333" } }}
             variant="contained"
@@ -64,8 +118,26 @@ function Subscription() {
           alignItems="center"
           className={styles.svg}
         >
-          Follow us on:
-          <Facebook /> <Twitter /> <Instagram /> <Pinterest />
+          Or Follow us:
+          {"  "}
+          {icons.map((icon, index) => (
+            <Box
+              key={index}
+              sx={{
+                height: "1.6rem",
+                width: "1.6rem",
+                display: "inline-flex",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "50%",
+                color: "#fff",
+                margin: "0 0.2rem",
+              }}
+              bgcolor={icon.color}
+            >
+              {icon.icon}
+            </Box>
+          ))}
         </Grid>
       </Typography>
     </Grid>
