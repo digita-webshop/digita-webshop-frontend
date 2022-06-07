@@ -19,7 +19,15 @@ function CategoriesCard() {
       }}
     >
       <img src={image} alt="cate1" width="100%" height="100%" />
-      <Typography variant="body1" mt={-6}>
+      <Typography
+        variant="body1"
+        textTransform="uppercase"
+        mt={-6}
+        sx={{
+          "&:hover": { color: "#f03637" },
+          transition: "all 0.3s ease-in-out",
+        }}
+      >
         SmartPhone & Ipad
       </Typography>
     </Box>
