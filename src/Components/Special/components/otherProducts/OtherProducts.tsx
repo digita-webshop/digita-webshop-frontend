@@ -1,5 +1,5 @@
 import React from "react";
-import OtherProductItem from "./components/otherProductItem/OtherProductItem";
+import OtherProductItem from "./Components/OtherProductItem/OtherProductItem";
 import { Grid } from "@mui/material";
 import { otherSpecialData } from "../../../../Services/Utils/data";
 

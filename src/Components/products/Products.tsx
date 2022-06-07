@@ -1,10 +1,10 @@
 import { Box, Container, Grid } from "@mui/material";
 import React from "react";
-import ProductHeader from "./components/header/ProductHeader";
-import ProductItem from "./components/productItem/ProductItem";
-import BasicBtn from "./components/button/BasicBtn";
+import ProductHeader from "./Components/Header/ProductHeader";
+import ProductItem from "./Components/ProductItem/ProductItem";
+import BasicBtn from "./Components/Button/BasicBtn";
 import { productData } from "../../Services/Utils/data";
-import OtherProducts from "./components/otherProducts/OtherProducts";
+import OtherProducts from "./Components/OtherProducts/OtherProducts";
 
 const Products = () => {
   return (

@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
-import { navStyle, StyledProducts, titleStyle } from '../../../products/components/header/ProductHeader'
+import { navStyle, StyledProducts, titleStyle } from '../../../Products/Components/Header/ProductHeader'
 
 const SpecialHeader = () => {
   return (

@@ -1,10 +1,10 @@
 import { Container, Grid, Box } from "@mui/material";
 import React from "react";
-import SpecialHeader from "./components/header/SpecialHeader";
-import SpecialItem from "./components/specialItem/SpecialItem";
+import SpecialHeader from "./Components/Header/SpecialHeader";
+import SpecialItem from "./Components/SpecialItem/SpecialItem";
 import {specialProducts} from '../../Services/Utils/data'
-import SupportItems from "./components/supportItems/SupportItems";
-import OtherProducts from "./components/otherProducts/OtherProducts";
+import SupportItems from "./Components/SupportItems/SupportItems";
+import OtherProducts from "./Components/OtherProducts/OtherProducts";
 
 const Special = () => {
   return (

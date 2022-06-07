@@ -57,7 +57,7 @@ const defultStyle = {
 };
 
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -65,12 +65,10 @@ const style = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  gap: 3,
-  width: 300,
+  gap: 1,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  padding: 2,
   Button: {
     width: "100%",
     display: "flex",
@@ -93,18 +91,25 @@ const ProductItem = ({
   const [openWish, setOpenWish] = useState(false);
   const [addWish, setAddWish] = useState(false);
 
+  //! Bug in here ======== this doesn't work
+  const cardIconStyles = {
+    opacity: "show ? 1 : 0",
+    transition: "opacity 1s ease-in-out",
+  };
+
   const handleWishList = () => {
     setOpenWish(false);
     setTimeout(() => {
       setAddWish(true);
     }, 500);
   };
+
   return (
     <Grid item xs={6} sm={4} md={3} key={id}>
       <Card
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
-        sx={{ maxWidth: 270, boxShadow: "5px 4px 10px 1px rgba(0,0,0,0.12)"}}
+        sx={{ maxWidth: 270, boxShadow: "5px 4px 10px 1px rgba(0,0,0,0.12)" }}
       >
         <CardActionArea>
           <Box sx={defultStyle}>
@@ -118,7 +123,7 @@ const ProductItem = ({
 
             {/* Product Item Icons */}
             {show && (
-              <StyledIcons>
+              <StyledIcons sx={cardIconStyles}>
                 <Stack direction="row">
                   <IconButton sx={{ color: "gray" }} aria-label="delete">
                     <ShoppingCartIcon fontSize="small" />
@@ -177,21 +182,24 @@ const ProductItem = ({
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <img src={image} alt="productImage" />
+              <img src={image} alt="productImage" width="300" height="300"/>
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 {name}
               </Typography>
-              <Rating
-                name="text-feedback"
-                size="small"
-                value={starRate}
-                readOnly
-                precision={0.5}
-                emptyIcon={
-                  <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                }
-              />
-              <Typography variant="h3">${price}</Typography>
+              <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                <Rating
+                  name="text-feedback"
+                  size="small"
+                  value={starRate}
+                  readOnly
+                  precision={0.5}
+                  emptyIcon={
+                    <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                  }
+                />
+                <Box sx={{ color: '#777', marginLeft: '0.4rem'}}>(1 customer review)</Box>
+              </Box>
+              <Typography variant="h4">${price}</Typography>
               <Button variant="contained">Add to Cart</Button>
             </Box>
           </Modal>

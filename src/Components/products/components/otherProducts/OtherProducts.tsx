@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import OtherProductItem from "./components/otherProductItem/OtherProductItem";
+import OtherProductItem from "./Components/OtherProductItem/OtherProductItem";
 import { otherProductData } from '../../../../Services/Utils/data';
 
 const OtherProducts = () => {
