@@ -8,7 +8,6 @@ import {
   Box,
 } from "@mui/material";
 import { Facebook, Twitter, Google, Pinterest } from "@mui/icons-material";
-import styles from "./Subscription.module.css";
 
 const icons = [
   {
@@ -112,12 +111,7 @@ function Subscription() {
         mb={2.5}
         color="lightslategray"
       >
-        <Grid
-          display="flex"
-          justifyContent="space-around"
-          alignItems="center"
-          className={styles.svg}
-        >
+        <Grid display="flex" justifyContent="space-around" alignItems="center">
           Or Follow us:
           {"  "}
           {icons.map((icon, index) => (
