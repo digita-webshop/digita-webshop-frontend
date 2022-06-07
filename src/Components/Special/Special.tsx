@@ -4,6 +4,7 @@ import SpecialHeader from "./components/header/SpecialHeader";
 import SpecialItem from "./components/specialItem/SpecialItem";
 import {specialProducts} from '../../Services/Utils/data'
 import SupportItems from "./components/supportItems/SupportItems";
+import OtherProducts from "./components/otherProducts/OtherProducts";
 
 const Special = () => {
   return (
@@ -24,6 +25,7 @@ const Special = () => {
           ))}
         </Grid>
       </Box>
+      <OtherProducts />
       <SupportItems />
     </Container>
   );
