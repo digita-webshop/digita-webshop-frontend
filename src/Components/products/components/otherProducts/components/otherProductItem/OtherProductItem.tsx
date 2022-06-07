@@ -16,13 +16,14 @@ const cardContent = {
 
 const OtherProductItem = ({ title, name, image }: Props) => {
   const cardStyle = {
-    minWidth: 450,
     height: 340,
     background:
     `url(${image}) no-repeat center`,
-    backgroundSize: "stretch",
+    backgroundSize: "100%",
+    transition: "1s",
     "&:hover": {
-      transition: "1s",
+      backgroundSize: "120%",
+      filter: "brightness(70%)",
     },
   };
 

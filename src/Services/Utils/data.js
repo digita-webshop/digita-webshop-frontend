@@ -14,6 +14,12 @@ export const otherProductData = [
     {id: 2, title: 'LIMITED EDITION', name: 'Put The World On Mute', image: ' https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner2.jpg'},
 ]
 
+export const otherSpecialData = [
+    {id: 1, title: 'LIMITED EDITION', name: 'Xbox One X',image: 'https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner3.jpg'},
+    {id: 2, title: 'SMART WATCH', name: 'Zeblaze Thor Five Pro',image: 'https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner4.jpg'},
+]
+
+
 export const specialProducts = [
     {id: 1, name: 'Beats By Dr. Dre studio...', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg',offPrice: 79, price: 69, starRate: 5},
     {id: 2, name: 'Crosair HS35...', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg',offPrice: 0, price: 70, starRate: 5},

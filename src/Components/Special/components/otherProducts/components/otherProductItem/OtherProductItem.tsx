@@ -1,16 +1,23 @@
 import React from "react";
-import { Card, Box, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, Typography, Grid } from "@mui/material";
 import ButtonOther from "../../../../../products/components/otherProducts/components/button/ButtonOther";
+
+
+type Props = {
+  title: string;
+  name: string;
+  image: string;
+};
 
 const contentStyle = {
   padding: "2.5rem 2rem",
   width: "250px",
 };
 
-const OtherProductItem = () => {
+const OtherProductItem = ({ title, name, image }: Props) => {
   const cardStyle = {
     height: 340,
-    background: `url(https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner3.jpg) no-repeat center`,
+    background: `url(${image}) no-repeat center`,
     backgroundSize: "100%",
     transition: "1s",
     "&:hover": {
@@ -20,14 +27,14 @@ const OtherProductItem = () => {
   };
 
   return (
-    <Box>
+    <Grid item xs={8} md={6}>
       <Card sx={cardStyle}>
         <CardContent sx={contentStyle}>
           <Typography
             sx={{ fontSize: 20, textTransform: "uppercase", color: "#fff" }}
             gutterBottom
           >
-            limited edition
+            {title}
           </Typography>
           <Typography
             variant="h4"
@@ -35,12 +42,12 @@ const OtherProductItem = () => {
             color="white"
             fontWeight="bold"
           >
-            Xbox One S
+            {name}
           </Typography>
           <ButtonOther />
         </CardContent>
       </Card>
-    </Box>
+    </Grid>
   );
 };
 
