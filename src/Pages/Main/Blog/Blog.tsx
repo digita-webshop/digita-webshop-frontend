@@ -1,10 +1,10 @@
-import MainLayout from "../../Layouts/MainLayout/MainLayout";
+import MainLayout from "../../../Layouts/MainLayout/MainLayout";
 
 function Blog() {
   return (
     <>
       <MainLayout>
-        <div>blog page</div>;
+        <div>blog page</div>
       </MainLayout>
     </>
   );
