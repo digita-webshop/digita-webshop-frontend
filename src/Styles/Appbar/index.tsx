@@ -13,6 +13,7 @@ export const AntTab = styled((props: StyledTabProps) => (
   [theme.breakpoints.up("sm")]: {
     minWidth: 0,
   },
+  height: "90px",
   fontWeight: theme.typography.fontWeightMedium,
   fontSize: 15,
   marginRight: theme.spacing(1),

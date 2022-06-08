@@ -9,7 +9,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import logoImg from "../../Assets/Images/digita-logo.png";
-import { navbarItems } from "../../Assets/Data/Data";
+import { navbarItems } from "../../Services/Utils/Data/Data";
 import { useTheme } from "@mui/material/styles";
 
 import {
@@ -25,6 +25,7 @@ import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
 import ShopMenuCard from "./ShopMenuCard/ShopMenuCard";
 import SearchBar from "./SearchBar/SearchBar";
+import { Link } from "react-router-dom";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -112,11 +113,7 @@ function Navbar() {
                 onChange={(event, newValue) => setSelectedTab(newValue)}
               >
                 {navbarItems.map((item) => (
-                  <AntTab
-                    key={item.id}
-                    label={item.name}
-                    sx={{ height: "90px" }}
-                  />
+                  <AntTab key={item.id} label={item.name} />
                 ))}
               </AntTabs>
               <Box

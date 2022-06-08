@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { Fragment } from "react";
-import { navbarItems } from "../../../Assets/Data/Data";
+import { navbarItems } from "../../../Services/Utils/Data/Data";
 
 type Anchor = "left" | "right";
 type TabDrawerProps = {

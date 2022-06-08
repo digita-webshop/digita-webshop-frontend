@@ -1,10 +1,10 @@
-import MainLayout from "../../Layouts/MainLayout/MainLayout";
+import MainLayout from "../../../Layouts/MainLayout/MainLayout";
 
 function ContactUs() {
   return (
     <>
       <MainLayout>
-        <div>contact us page</div>;
+        <div>contact us page</div>
       </MainLayout>
     </>
   );

@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./Theme/theme";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AboutUs, Blog, ContactUs, Home, Shop } from "./Pages";
+import { AboutUs, Blog, ContactUs, Home, Shop } from "./Pages/Main";
 
 function App() {
   return (
