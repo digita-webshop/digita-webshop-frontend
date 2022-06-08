@@ -67,7 +67,7 @@ function Navbar() {
     setOpenSearchBar((prevOpenSearchBar) => !prevOpenSearchBar);
   };
   return (
-    <AppBar sx={{ backgroundColor: "white" }}>
+    <AppBar sx={{ backgroundColor: "white", position: "relative" }}>
       <Container
         maxWidth={"xl"}
         sx={{
