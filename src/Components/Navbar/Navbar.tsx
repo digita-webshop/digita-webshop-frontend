@@ -25,7 +25,7 @@ import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
 import ShopMenuCard from "./ShopMenuCard/ShopMenuCard";
 import SearchBar from "./SearchBar/SearchBar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -35,10 +35,10 @@ const navbarIcons = {
   "&:hover": { color: "#f03637" },
 };
 function Navbar() {
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTab] = useState("/");
   const [displayMenu, setDisplayMenu] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
-
+  console.log(selectedTab);
   const [displayDrawer, setDisplayDrawer] = useState({
     left: false,
     right: false,
@@ -47,6 +47,7 @@ function Navbar() {
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const { pathname } = useLocation();
 
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     console.log(event.target.value);
@@ -67,6 +68,7 @@ function Navbar() {
   const openSearchBarHandler = () => {
     setOpenSearchBar((prevOpenSearchBar) => !prevOpenSearchBar);
   };
+
   return (
     <AppBar sx={{ backgroundColor: "white", position: "relative" }}>
       <Container
@@ -108,12 +110,15 @@ function Navbar() {
 
           {!openSearchBar && (
             <Fragment>
-              <AntTabs
-                value={selectedTab}
-                onChange={(event, newValue) => setSelectedTab(newValue)}
-              >
+              <AntTabs value={pathname}>
                 {navbarItems.map((item) => (
-                  <AntTab key={item.id} label={item.name} />
+                  <AntTab
+                    key={item.id}
+                    label={item.name}
+                    component={Link}
+                    value={`${item.route}`}
+                    to={`${item.route}`}
+                  />
                 ))}
               </AntTabs>
               <Box
