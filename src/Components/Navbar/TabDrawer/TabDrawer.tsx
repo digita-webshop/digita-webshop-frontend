@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { Fragment } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { navbarItems } from "../../../Services/Utils/Data/Data";
 
 type Anchor = "left" | "right";
@@ -19,6 +20,12 @@ type TabDrawerProps = {
 };
 
 function TabDrawer({ displayDrawer, toggleDrawer }: TabDrawerProps) {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const listItemHandler = (route: string) => {
+    toggleDrawer("left", false);
+    navigate(`${route}`);
+  };
   return (
     <Drawer
       anchor="left"
@@ -77,12 +84,13 @@ function TabDrawer({ displayDrawer, toggleDrawer }: TabDrawerProps) {
       <List>
         {navbarItems.map((item) => (
           <Fragment key={item.id}>
-            <ListItem>
+            <ListItem onClick={() => listItemHandler(item.route)}>
               <ListItemText
                 primary={item.name}
                 sx={{
                   width: { xs: "200px", sm: "300px" },
                   cursor: "pointer",
+                  color: pathname === item.route ? "#f03637" : "",
                   textTransform: "capitalize",
                   "&:hover": { color: "#f03637" },
                 }}

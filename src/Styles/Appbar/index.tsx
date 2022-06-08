@@ -3,6 +3,9 @@ import { Tab, Tabs } from "@mui/material";
 
 interface StyledTabProps {
   label: string;
+  component: any;
+  to: string;
+  value: string;
 }
 
 export const AntTab = styled((props: StyledTabProps) => (
