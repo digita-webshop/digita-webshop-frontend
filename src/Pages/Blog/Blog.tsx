@@ -1,5 +1,13 @@
+import MainLayout from "../../Layouts/MainLayout/MainLayout";
+
 function Blog() {
-  return <div>blog page</div>;
+  return (
+    <>
+      <MainLayout>
+        <div>blog page</div>;
+      </MainLayout>
+    </>
+  );
 }
 
 export default Blog;

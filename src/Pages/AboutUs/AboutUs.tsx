@@ -1,5 +1,13 @@
+import MainLayout from "../../Layouts/MainLayout/MainLayout";
+
 function AboutUs() {
-  return <div>about us page</div>;
+  return (
+    <>
+      <MainLayout>
+        <div>about us page</div>;
+      </MainLayout>
+    </>
+  );
 }
 
 export default AboutUs;
