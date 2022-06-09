@@ -1,14 +1,14 @@
 import React from "react";
-import OtherProductItem from "./Components/OtherProductItem/OtherProductItem";
+import SpecialCard from "../SpecialCard/SpecialCard";
 import { Grid } from "@mui/material";
-import { otherSpecialData } from "../../../../Services/Utils/data";
+import { otherSpecialData } from "../../../../Services/Utils/Data";
 
-const OtherProducts = () => {
+const SpecialCards = () => {
   return (
     <>
       <Grid container spacing={3} sx={{ marginTop: "1rem" }}>
         {otherSpecialData.map((item) => (
-          <OtherProductItem
+          <SpecialCard
             title={item.title}
             name={item.name}
             image={item.image}
@@ -19,4 +19,4 @@ const OtherProducts = () => {
   );
 };
 
-export default OtherProducts;
+export default SpecialCards;

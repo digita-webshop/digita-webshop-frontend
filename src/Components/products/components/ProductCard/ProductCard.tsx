@@ -1,7 +1,10 @@
-import React from "react";
-import { Card, CardContent, Typography, Grid } from "@mui/material";
-import ButtonOther from "../../../../../Products/Components/OtherProducts/Components/Button/ButtonOther";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
+import ButtonOther from "../ButtonCard/ButtonCard";
 
+const cardContent = {
+  padding: "2rem",
+  width: "250px",
+};
 
 type Props = {
   title: string;
@@ -9,12 +12,7 @@ type Props = {
   image: string;
 };
 
-const contentStyle = {
-  padding: "2.5rem 2rem",
-  width: "250px",
-};
-
-const OtherProductItem = ({ title, name, image }: Props) => {
+const ProductCard = ({ title, name, image }: Props) => {
   const cardStyle = {
     height: 340,
     background: `url(${image}) no-repeat center`,
@@ -29,7 +27,7 @@ const OtherProductItem = ({ title, name, image }: Props) => {
   return (
     <Grid item xs={8} md={6}>
       <Card sx={cardStyle}>
-        <CardContent sx={contentStyle}>
+        <CardContent sx={cardContent}>
           <Typography
             sx={{ fontSize: 20, textTransform: "uppercase", color: "#fff" }}
             gutterBottom
@@ -51,4 +49,4 @@ const OtherProductItem = ({ title, name, image }: Props) => {
   );
 };
 
-export default OtherProductItem;
+export default ProductCard;

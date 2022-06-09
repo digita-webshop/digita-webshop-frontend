@@ -2,9 +2,9 @@ import { Container, Grid, Box } from "@mui/material";
 import React from "react";
 import SpecialHeader from "./Components/Header/SpecialHeader";
 import SpecialItem from "./Components/SpecialItem/SpecialItem";
-import {specialProducts} from '../../Services/Utils/data'
+import {specialProducts} from '../../Services/Utils/Data'
 import SupportItems from "./Components/SupportItems/SupportItems";
-import OtherProducts from "./Components/OtherProducts/OtherProducts";
+import SpecialCards from "./Components/SpecialCards/SpecialCards";
 
 const Special = () => {
   return (
@@ -25,7 +25,7 @@ const Special = () => {
           ))}
         </Grid>
       </Box>
-      <OtherProducts />
+      <SpecialCards />
       <SupportItems />
     </Container>
   );

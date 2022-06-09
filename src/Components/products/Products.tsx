@@ -3,8 +3,8 @@ import React from "react";
 import ProductHeader from "./Components/Header/ProductHeader";
 import ProductItem from "./Components/ProductItem/ProductItem";
 import BasicBtn from "./Components/Button/BasicBtn";
-import { productData } from "../../Services/Utils/data";
-import OtherProducts from "./Components/OtherProducts/OtherProducts";
+import { productData } from "../../Services/Utils/Data";
+import ProductCards from "./Components/ProductCards/ProductCards";
 
 const Products = () => {
   return (
@@ -27,7 +27,7 @@ const Products = () => {
         </Grid>
       </Box>
       <BasicBtn />
-      <OtherProducts />
+      <ProductCards />
     </Container>
   );
 };
