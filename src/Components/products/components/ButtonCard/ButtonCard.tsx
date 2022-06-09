@@ -15,7 +15,7 @@ color: #000;
   }
 `;
 
-const ButtonOther = () => {
+const ButtonCard = () => {
   return (
     <CenterBox>
       <StyledBtn variant="contained">shop now</StyledBtn>
@@ -23,4 +23,4 @@ const ButtonOther = () => {
   );
 };
 
-export default ButtonOther;
+export default ButtonCard;

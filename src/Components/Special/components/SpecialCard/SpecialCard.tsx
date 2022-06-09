@@ -1,10 +1,6 @@
-import { Card, CardContent, Grid, Typography } from "@mui/material";
-import ButtonOther from "../Button/ButtonOther";
-
-const cardContent = {
-  padding: "2rem",
-  width: "250px",
-};
+import React from "react";
+import { Card, CardContent, Typography, Grid, Box } from "@mui/material";
+import ButtonOther from "../../../Products/Components/ButtonCard/ButtonCard";
 
 type Props = {
   title: string;
@@ -12,7 +8,16 @@ type Props = {
   image: string;
 };
 
-const OtherProductItem = ({ title, name, image }: Props) => {
+const styleFix = {
+  paddingLeft: '1.5rem',
+}
+
+const contentStyle = {
+  padding: "2.5rem 2rem",
+  width: "250px",
+};
+
+const SpecialCard = ({ title, name, image }: Props) => {
   const cardStyle = {
     height: 340,
     background: `url(${image}) no-repeat center`,
@@ -27,7 +32,8 @@ const OtherProductItem = ({ title, name, image }: Props) => {
   return (
     <Grid item xs={8} md={6}>
       <Card sx={cardStyle}>
-        <CardContent sx={cardContent}>
+        <CardContent sx={contentStyle}></CardContent>
+        <Box sx={styleFix}>
           <Typography
             sx={{ fontSize: 20, textTransform: "uppercase", color: "#fff" }}
             gutterBottom
@@ -43,10 +49,10 @@ const OtherProductItem = ({ title, name, image }: Props) => {
             {name}
           </Typography>
           <ButtonOther />
-        </CardContent>
+        </Box>
       </Card>
     </Grid>
   );
 };
 
-export default OtherProductItem;
+export default SpecialCard;
