@@ -1,11 +1,15 @@
 import { styled } from "@mui/material/styles";
-import { Tab, Tabs } from "@mui/material";
+import { Tab, Tabs, Paper } from "@mui/material";
+import { SyntheticEvent } from "react";
 
 interface StyledTabProps {
   label: string;
   component: any;
   to: string;
   value: string;
+  icon: any;
+  iconPosition: any;
+  onMouseEnter: (event: SyntheticEvent) => void;
 }
 
 export const AntTab = styled((props: StyledTabProps) => (
@@ -39,4 +43,11 @@ export const AntTabs = styled(Tabs)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     display: "none",
   },
+}));
+
+export const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(2),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
 }));

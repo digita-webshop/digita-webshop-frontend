@@ -9,7 +9,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import logoImg from "../../Assets/Images/digita-logo.png";
-import { navbarItems } from "../../Services/Utils/Data/Data";
+import { navbarItems } from "../../Services/Utils/Data/data";
 import { useTheme } from "@mui/material/styles";
 
 import {
@@ -18,14 +18,16 @@ import {
   LoginOutlined,
   FavoriteBorderOutlined,
   MenuRounded,
+  KeyboardArrowDown,
 } from "@mui/icons-material";
 import { Fragment, useState } from "react";
 import { AntTab, AntTabs } from "../../Styles/Appbar";
 import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
-import ShopMenuCard from "./ShopMenuCard/ShopMenuCard";
+import ShopMenuCard from "./ShopCart/ShopCart";
 import SearchBar from "./SearchBar/SearchBar";
 import { Link, useLocation } from "react-router-dom";
+import ShopMenu from "./ShopMenu/ShopMenu";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -35,10 +37,10 @@ const navbarIcons = {
   "&:hover": { color: "#f03637" },
 };
 function Navbar() {
-  const [selectedTab] = useState("/");
   const [displayMenu, setDisplayMenu] = useState(false);
+  const [displayShopMenu, setDisplayShopMenu] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
-  console.log(selectedTab);
+
   const [displayDrawer, setDisplayDrawer] = useState({
     left: false,
     right: false,
@@ -67,6 +69,14 @@ function Navbar() {
   };
   const openSearchBarHandler = () => {
     setOpenSearchBar((prevOpenSearchBar) => !prevOpenSearchBar);
+  };
+
+  const showShopMenuHandler = (tabName: string) => {
+    if (tabName === "shop") {
+      setDisplayShopMenu(true);
+    } else {
+      setDisplayShopMenu(false);
+    }
   };
 
   return (
@@ -116,8 +126,21 @@ function Navbar() {
                     key={item.id}
                     label={item.name}
                     component={Link}
+                    icon={item.name === "shop" && <KeyboardArrowDown />}
+                    iconPosition="right"
                     value={`${item.route}`}
                     to={`${item.route}`}
+                    onMouseEnter={() => showShopMenuHandler(item.name)}
+                    sx={{
+                      color:
+                        displayShopMenu && item.name === "shop"
+                          ? "#f03637"
+                          : "",
+                      borderBottom:
+                        displayShopMenu && item.name === "shop"
+                          ? "3px solid #f03637"
+                          : "",
+                    }}
                   />
                 ))}
               </AntTabs>
@@ -223,6 +246,25 @@ function Navbar() {
           displayMenu={displayMenu}
           displayMenuHandler={displayMenuHandler}
         />
+        <Fade
+          style={{ display: displayShopMenu ? "block" : "none" }}
+          in={displayShopMenu}
+        >
+          <Box
+            paddingY={3}
+            paddingX={1}
+            sx={{
+              border: "1px solid #dedede",
+              boxSizing: "border-box",
+              backgroundColor: "white",
+              position: "absolute",
+              left: 0,
+              right: 0,
+            }}
+          >
+            <ShopMenu />
+          </Box>
+        </Fade>
       </Container>
     </AppBar>
   );

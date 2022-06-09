@@ -10,11 +10,11 @@ import {
   Typography,
 } from "@mui/material";
 
-type ShopMenuCardProps = {
+type ShopCartProps = {
   displayMenu: boolean;
   displayMenuHandler: (display: boolean) => void;
 };
-function ShopMenuCard({ displayMenu, displayMenuHandler }: ShopMenuCardProps) {
+function ShopCart({ displayMenu, displayMenuHandler }: ShopCartProps) {
   return (
     <Box
       display={`${displayMenu ? "inline-block" : "none"}`}
@@ -23,6 +23,7 @@ function ShopMenuCard({ displayMenu, displayMenuHandler }: ShopMenuCardProps) {
         right: "10px",
         top: "72px ",
         padding: "15px",
+        backgroundColor: "white",
       }}
       onMouseLeave={() => displayMenuHandler(false)}
     >
@@ -109,4 +110,4 @@ function ShopMenuCard({ displayMenu, displayMenuHandler }: ShopMenuCardProps) {
   );
 }
 
-export default ShopMenuCard;
+export default ShopCart;
