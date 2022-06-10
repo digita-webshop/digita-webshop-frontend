@@ -11,7 +11,7 @@ function ShopMenu() {
     <Grid container>
       <Grid item xs={4} sx={{ borderRight: "1px solid #dedede" }}>
         <Grid container>
-          <Grid xs={6}>
+          <Grid xs={6} paddingLeft={1}>
             <Typography
               textTransform={"uppercase"}
               color="primary"
@@ -31,6 +31,7 @@ function ShopMenu() {
                     cursor: "pointer",
                     marginBottom: "4px",
                     transition: "all 150ms ease-in",
+                    fontSize: { md: "15px", lg: "16px" },
                   }}
                 >
                   {item.name}
@@ -45,6 +46,7 @@ function ShopMenu() {
               flexDirection: "column",
               justifyContent: "space-between",
             }}
+            paddingLeft={1}
           >
             <Box>
               <Typography
@@ -66,6 +68,7 @@ function ShopMenu() {
                       cursor: "pointer",
                       marginBottom: "4px",
                       transition: "all 150ms ease-in",
+                      fontSize: { md: "15px", lg: "16px" },
                     }}
                   >
                     {item.name}
@@ -93,6 +96,7 @@ function ShopMenu() {
                       cursor: "pointer",
                       marginBottom: "4px",
                       transition: "all 150ms ease-in",
+                      fontSize: { md: "15px", lg: "16px" },
                     }}
                   >
                     {item.name}
