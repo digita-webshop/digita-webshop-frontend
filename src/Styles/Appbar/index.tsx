@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Tab, Tabs, Paper } from "@mui/material";
+import { Tab, Tabs, Paper, Box } from "@mui/material";
 import { SyntheticEvent } from "react";
 
 interface StyledTabProps {
@@ -45,9 +45,10 @@ export const AntTabs = styled(Tabs)(({ theme }) => ({
   },
 }));
 
-export const Item = styled(Paper)(({ theme }) => ({
+export const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(2),
   textAlign: "center",
   color: theme.palette.text.secondary,
+  position: "relative",
 }));

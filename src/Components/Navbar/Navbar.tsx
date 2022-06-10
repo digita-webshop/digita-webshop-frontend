@@ -261,6 +261,7 @@ function Navbar() {
               left: 0,
               right: 0,
             }}
+            onMouseLeave={() => setDisplayShopMenu(false)}
           >
             <ShopMenu />
           </Box>
