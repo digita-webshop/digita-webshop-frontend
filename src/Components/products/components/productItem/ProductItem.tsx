@@ -58,6 +58,7 @@ const defultStyle = {
 };
 
 /*  ============ Main Modal ========== */
+
 const modalStyle = {
   position: "absolute",
   top: "50%",
@@ -74,16 +75,22 @@ const modalStyle = {
     padding: "0.8rem 0",
     textTransform: "uppercase",
   },
-};
+}
+
+
+  
+
 
 const modalImg = {
   width: "100%",
-  height: "100%",
+  height: "60%",
   objectFit: "cover",
 };
 const modalLeft = {
+  overflow: "hidden",
+  overflowY: 'scroll',
   width: "50%",
-  height: "70%",
+  height: "100%",
 };
 const modalRight = {
   width: "50%",
@@ -315,6 +322,20 @@ const ProductItem = ({
                   alt="green iguana"
                   sx={modalImg}
                 />
+                <CardMedia
+                  component="img"
+                  height="260"
+                  image={image}
+                  alt="green iguana"
+                  sx={modalImg}
+                />
+                <CardMedia
+                  component="img"
+                  height="260"
+                  image={image}
+                  alt="green iguana"
+                  sx={modalImg}
+                />
               </Box>
               <Box sx={modalRight}>
                 <Typography
@@ -375,7 +396,7 @@ const ProductItem = ({
                     gap: 1,
                   }}
                 >
-                  <Box sx={{ display: "flex", height: "2rem" }}>
+                  <Box sx={{ display: "flex", height: "3rem"}}>
                     <Button variant="outlined" sx={{ fontSize: 20 }}>
                       +
                     </Button>
