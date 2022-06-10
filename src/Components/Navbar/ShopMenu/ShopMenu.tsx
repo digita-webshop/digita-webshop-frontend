@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import {
   shopMenuItems,
@@ -108,7 +108,7 @@ function ShopMenu() {
           textTransform={"uppercase"}
           color="primary"
           fontWeight={600}
-          sx={{ marginLeft: "20px", marginBottom: "15px" }}
+          sx={{ marginLeft: "10%", marginBottom: "15px" }}
         >
           feature by category
         </Typography>
@@ -151,7 +151,82 @@ function ShopMenu() {
       </Grid>
       <Grid item xs={4}>
         <Item>
-          <Box></Box>
+          <Box
+            sx={{
+              position: "relative",
+              "&:hover": {
+                "& .bg-box": {
+                  backgroundColor: "rgba(0,0,0,0.2)",
+                },
+                "& .pc-img": {
+                  transform: "scale(1.12)",
+                },
+              },
+            }}
+          >
+            <Box
+              sx={{
+                height: "250px",
+                img: {
+                  width: "100%",
+                  height: "250px",
+                  transition: "all 800ms ease-in-out",
+                },
+                overflow: "hidden",
+              }}
+            >
+              <img
+                src="https://demo-61.woovinapro.com/wp-content/uploads/2021/01/image-mega.jpg"
+                alt="gaming-pc"
+                className="pc-img"
+              />
+            </Box>
+            <Box
+              sx={{
+                position: "absolute",
+                top: "0",
+                right: "0",
+                left: "0",
+                bottom: "0",
+                padding: "20px ",
+                textAlign: "left",
+                transition: "all 800ms ease-in",
+              }}
+              className="bg-box"
+            >
+              <Typography
+                variant="body1"
+                color={"white"}
+                textTransform={"uppercase"}
+              >
+                limited edition{" "}
+              </Typography>
+              <Typography
+                variant="h4"
+                fontWeight={500}
+                color={"white"}
+                textTransform={"capitalize"}
+              >
+                best gaming pc 2022
+              </Typography>
+              <Button
+                sx={{
+                  backgroundColor: "transparent",
+                  border: "1px solid white",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "white",
+                    color: "#f03637",
+                  },
+                  transition: "all 200ms ease-in",
+                  width: "100px",
+                  marginTop: "25px",
+                }}
+              >
+                Shop Now
+              </Button>
+            </Box>
+          </Box>
         </Item>
       </Grid>
     </Grid>
