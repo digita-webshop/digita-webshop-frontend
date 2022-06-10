@@ -1,7 +1,7 @@
 import { Box, Button, styled } from "@mui/material";
 
 const CenterBox = styled(Box)(({ theme }) => ({
-  margin: "3.5rem 0",
+  margin: "2.2rem 0",
 }));
 
 const StyledBtn = styled(Button)`

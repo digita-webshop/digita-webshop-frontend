@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, CardContent, Typography, Grid, Box } from "@mui/material";
-import ButtonOther from "../../../Products/Components/ButtonCard/ButtonCard";
+import { Card, Typography, Grid, Box } from "@mui/material";
+import ButtonCard from "../../../Products/Components/ButtonCard/ButtonCard";
 
 type Props = {
   title: string;
@@ -8,34 +8,57 @@ type Props = {
   image: string;
 };
 
-const styleFix = {
-  paddingLeft: '1.5rem',
-}
+const styleContent = {
+  padding: "2.2rem 2rem",
+  position: "absolute",
+  top: "0",
+  right: "0",
+  left: "0",
+  bottom: "0",
+  textAlign: "left",
+  transition: "all 0.8 ease-in",
+};
+
+const cardStyle = {
+  position: "relative",
+  transition: "1s ease-in-out",
+  "&:hover": {
+    "& .img-card": {
+      filter: "brightness(80%)",
+      transform: "scale(1.17)",
+    },
+    "& .card-content": {
+      transition: "0.8s",
+      transform: "translateY(15px)",
+    },
+  },
+};
 
 const contentStyle = {
-  padding: "2.5rem 2rem",
-  width: "250px",
+  height: "340px",
+  img: {
+    width: "100%",
+    height: "340px",
+    transition: "all 800ms ease-in-out",
+  },
+  overflow: "hidden",
 };
 
 const SpecialCard = ({ title, name, image }: Props) => {
-  const cardStyle = {
-    height: 340,
-    background: `url(${image}) no-repeat center`,
-    backgroundSize: "100%",
-    transition: "1s",
-    "&:hover": {
-      backgroundSize: "120%",
-      filter: "brightness(70%)",
-    },
-  };
-
   return (
-    <Grid item xs={8} md={6}>
+    <Grid item xs={12} sm={9} md={6}>
       <Card sx={cardStyle}>
-        <CardContent sx={contentStyle}></CardContent>
-        <Box sx={styleFix}>
+        <Box sx={contentStyle} className="box">
+          <img src={image} alt="img" className="img-card" />
+        </Box>
+        <Box sx={styleContent} className="card-content">
           <Typography
-            sx={{ fontSize: 20, textTransform: "uppercase", color: "#fff" }}
+            sx={{
+              fontSize: 16,
+              fontWeight: "500",
+              textTransform: "uppercase",
+              color: "#fff",
+            }}
             gutterBottom
           >
             {title}
@@ -45,10 +68,11 @@ const SpecialCard = ({ title, name, image }: Props) => {
             component="h3"
             color="white"
             fontWeight="bold"
+            sx={{ width: "250px" }}
           >
             {name}
           </Typography>
-          <ButtonOther />
+          <ButtonCard />
         </Box>
       </Card>
     </Grid>

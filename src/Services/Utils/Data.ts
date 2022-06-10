@@ -9,13 +9,13 @@ export const productData = [
     { id: 8, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
 ]
 
-export const otherProductData = [
+export const productCardData = [
     {id: 1, title: 'LIMITED EDITION', name: 'Virtual Reality Glasses', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner1.jpg'},
     {id: 2, title: 'LIMITED EDITION', name: 'Put The World On Mute', image: ' https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner2.jpg'},
 ]
 
-export const otherSpecialData = [
-    {id: 1, title: 'LIMITED EDITION', name: 'Xbox One X',image: 'https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner3.jpg'},
+export const specialCardData = [
+    {id: 1, title: 'LIMITED EDITION', name: 'The Best Xbox One Prices',image: 'https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner3.jpg'},
     {id: 2, title: 'SMART WATCH', name: 'Zeblaze Thor Five Pro',image: 'https://demo-61.woovinapro.com/wp-content/uploads/2022/04/banner4.jpg'},
 ]
 
