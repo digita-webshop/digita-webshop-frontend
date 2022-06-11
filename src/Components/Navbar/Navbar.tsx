@@ -246,27 +246,28 @@ function Navbar() {
           displayMenu={displayMenu}
           displayMenuHandler={displayMenuHandler}
         />
-        <Fade
-          style={{ display: displayShopMenu ? "block" : "none" }}
-          in={displayShopMenu}
-        >
-          <Box
-            paddingY={3}
-            paddingX={1}
-            sx={{
-              border: "1px solid #dedede",
-              boxSizing: "border-box",
-              backgroundColor: "white",
-              position: "absolute",
-              left: 0,
-              right: 0,
-            }}
-            onMouseLeave={() => setDisplayShopMenu(false)}
-          >
-            <ShopMenu />
-          </Box>
-        </Fade>
       </Container>
+      <Fade
+        style={{ display: displayShopMenu ? "block" : "none" }}
+        in={displayShopMenu}
+      >
+        <Box
+          paddingY={3}
+          paddingX={1}
+          sx={{
+            border: "1px solid #dedede",
+            boxSizing: "border-box",
+            backgroundColor: "white",
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: 90,
+          }}
+          onMouseLeave={() => setDisplayShopMenu(false)}
+        >
+          <ShopMenu />
+        </Box>
+      </Fade>
     </AppBar>
   );
 }
