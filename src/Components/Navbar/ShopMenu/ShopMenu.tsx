@@ -8,7 +8,7 @@ import { Item } from "../../../Styles/Appbar";
 
 function ShopMenu() {
   return (
-    <Grid container>
+    <Grid container maxWidth={"xl"} marginX={"auto"}>
       <Grid item xs={4} sx={{ borderRight: "1px solid #dedede" }}>
         <Grid container>
           <Grid xs={6} paddingLeft={1}>
@@ -29,7 +29,7 @@ function ShopMenu() {
                   sx={{
                     "&:hover": { color: "#f03637" },
                     cursor: "pointer",
-                    marginBottom: "4px",
+                    marginBottom: "6px",
                     transition: "all 150ms ease-in",
                     fontSize: { md: "15px", lg: "16px" },
                   }}
@@ -66,7 +66,7 @@ function ShopMenu() {
                     sx={{
                       "&:hover": { color: "#f03637" },
                       cursor: "pointer",
-                      marginBottom: "4px",
+                      marginBottom: "6px",
                       transition: "all 150ms ease-in",
                       fontSize: { md: "15px", lg: "16px" },
                     }}
@@ -94,7 +94,7 @@ function ShopMenu() {
                     sx={{
                       "&:hover": { color: "#f03637" },
                       cursor: "pointer",
-                      marginBottom: "4px",
+                      marginBottom: "6px",
                       transition: "all 150ms ease-in",
                       fontSize: { md: "15px", lg: "16px" },
                     }}
@@ -123,7 +123,7 @@ function ShopMenu() {
                 sx={{
                   display: "flex",
                   justifyContent: "center",
-                  img: { width: "80px" },
+                  img: { width: { md: "80px", lg: "100px" } },
                   cursor: "pointer",
                   marginBottom: "5px",
                 }}
@@ -170,10 +170,10 @@ function ShopMenu() {
           >
             <Box
               sx={{
-                height: "250px",
+                height: { md: "260px", lg: "290px" },
                 img: {
                   width: "100%",
-                  height: "250px",
+                  height: "100%",
                   transition: "all 800ms ease-in-out",
                 },
                 overflow: "hidden",
@@ -202,6 +202,7 @@ function ShopMenu() {
                 variant="body1"
                 color={"white"}
                 textTransform={"uppercase"}
+                marginTop={1}
               >
                 limited edition{" "}
               </Typography>
@@ -210,6 +211,7 @@ function ShopMenu() {
                 fontWeight={500}
                 color={"white"}
                 textTransform={"capitalize"}
+                sx={{ fontSize: { md: "32px", lg: "46px" } }}
               >
                 best gaming pc 2022
               </Typography>
@@ -223,7 +225,7 @@ function ShopMenu() {
                     color: "#f03637",
                   },
                   transition: "all 200ms ease-in",
-                  width: "100px",
+                  width: { md: "100px", lg: "120px" },
                   marginTop: "25px",
                 }}
               >
