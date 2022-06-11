@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Tab, Tabs, Paper, Box } from "@mui/material";
+import { Tab, Tabs, Paper, Box, Typography, Button } from "@mui/material";
 import { SyntheticEvent } from "react";
 
 interface StyledTabProps {
@@ -51,4 +51,38 @@ export const Item = styled(Box)(({ theme }) => ({
   textAlign: "center",
   color: theme.palette.text.secondary,
   position: "relative",
+}));
+
+export const ShopSubTitle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.text.secondary,
+  textTransform: "capitalize",
+  [theme.breakpoints.up("md")]: {
+    fontSize: "15px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    fontSize: "16px",
+  },
+  fontWeight: 400,
+  transition: "all 150ms ease-in",
+  cursor: "pointer",
+  marginBottom: "6px",
+  "&:hover": { color: "#f03637" },
+}));
+
+export const ShopMenuButton = styled(Button)(({ theme }) => ({
+  backgroundColor: "transparent",
+  border: "1px solid white",
+  color: "white",
+  "&:hover": {
+    backgroundColor: "white",
+    color: "#f03637",
+  },
+  transition: "all 200ms ease-in",
+  marginTop: "25px",
+  [theme.breakpoints.up("md")]: {
+    width: "100px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    width: "120px",
+  },
 }));
