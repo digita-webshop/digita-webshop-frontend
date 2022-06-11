@@ -8,7 +8,7 @@ import ProductCards from "./Components/ProductCards/ProductCards";
 
 const Products = () => {
   return (
-    <Container>
+    <Container sx={{padding:"0 0 2rem 0"}}>
       <ProductHeader />
 
       <Box>

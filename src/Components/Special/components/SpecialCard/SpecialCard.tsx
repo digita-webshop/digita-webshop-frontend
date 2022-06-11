@@ -15,7 +15,6 @@ const styleContent = {
   right: "0",
   left: "0",
   bottom: "0",
-  textAlign: "left",
   transition: "all 0.8 ease-in",
 };
 
@@ -24,7 +23,7 @@ const cardStyle = {
   transition: "1s ease-in-out",
   "&:hover": {
     "& .img-card": {
-      filter: "brightness(80%)",
+      filter: "brightness(70%)",
       transform: "scale(1.17)",
     },
     "& .card-content": {

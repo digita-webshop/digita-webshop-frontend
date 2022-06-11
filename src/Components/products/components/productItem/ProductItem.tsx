@@ -20,7 +20,8 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import CartModal from "../Modals/CartModal/CartModal";
+import ModalView from "../Modals/ModalView/ModalView";
 
 type Props = {
   name: string;
@@ -57,84 +58,6 @@ const defultStyle = {
   position: "relative",
 };
 
-/*  ============ Main Modal ========== */
-
-const modalStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  height: "80%",
-  width: "70%",
-  display: "flex",
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  Button: {
-    width: "40%",
-    display: "flex",
-    padding: "0.8rem 0",
-    textTransform: "uppercase",
-  },
-}
-
-
-  
-
-
-const modalImg = {
-  width: "100%",
-  height: "60%",
-  objectFit: "cover",
-};
-const modalLeft = {
-  overflow: "hidden",
-  overflowY: 'scroll',
-  width: "50%",
-  height: "100%",
-};
-const modalRight = {
-  width: "50%",
-  p: "2rem",
-  display: "flex",
-  flexDirection: "column",
-  overflow: "hidden",
-  overflowY: "scroll",
-};
-
-const label = {
-  display: "flex",
-  alignItems: "center",
-  cursor: "pointer",
-  gap: 1,
-  transition: "0.3s",
-  p: {
-    fontSize: "20px",
-  },
-  "&:hover": {
-    color: "#f03637",
-  },
-};
-
-/*  ============ Main Modal ========== */
-
-/* ============= cart modal ================ */
-const cartModal = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "450px",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: 1,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 3,
-};
-/* ============= cart modal ================ */
-
 const wishListStyle = {
   position: "absolute",
   top: "50%",
@@ -165,11 +88,8 @@ const ProductItem = ({
   const [addWish, setAddWish] = useState(false);
   const [openCart, setOpenCart] = useState(false);
 
-  //! Bug in here ======== this doesn't work
   const cardIconStyles = {
     backgroundColor: "#fff",
-    height: show ? "36px" : "0px",
-    transition: "opacity 1s ease-in-out",
   };
 
   const handleWishList = () => {
@@ -196,7 +116,7 @@ const ProductItem = ({
               alt="green iguana"
             />
 
-            {/* Product Item Icons */}
+            {/* ========= Product Item Icons ==========*/}
             {show && (
               <StyledIcons sx={cardIconStyles}>
                 <Stack direction="row">
@@ -224,60 +144,22 @@ const ProductItem = ({
                 </Stack>
               </StyledIcons>
             )}
-            {/* Product Item Icons */}
+            {/* ========== Product Item Icons ========= */}
           </Box>
 
           {/* ============= CART MODAL ============ */}
-
           <Modal
             open={openCart}
             onClose={() => setOpenCart(false)}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={cartModal}>
-              <CheckCircleRoundedIcon
-                sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }}
-              />
-              <Typography id="modal-modal-title" variant="h5" component="h2">
-                Item added to your cart
-              </Typography>
-              <Typography
-                id="modal-modal-title"
-                variant="body2"
-                component="h2"
-                sx={{ margin: "0.8rem 0", color: "#777" }}
-              >
-                1 ITEMS IN THE CART (${price}00)
-              </Typography>
-              <Box sx={{ display: "flex", gap: 3, margin: "0.5rem 0" }}>
-                <Button
-                  variant="contained"
-                  sx={{ p: "0.8rem 2.2rem", background: "#f03637" }}
-                >
-                  Continue Shopping
-                </Button>
-                <Button variant="contained" sx={{ p: "0.8rem 2.2rem" }}>
-                   Go To The Cart  
-                </Button>
-              </Box>
-              <Typography
-                sx={{
-                  display: "flex",
-                  gap: 1,
-                  color: "#777",
-                  p: "1rem 0 0.3rem 0",
-                }}
-              >
-                Buy for <Box sx={{ color: "red" }}>$448.00</Box> more and get
-                free shipping
-              </Typography>
-            </Box>
+            <CartModal price={price} />
           </Modal>
           {/* ============= CART Modal ============ */}
 
-          {/* =========== Wishlist ======== */}
 
+          {/* =========== Wishlist Modal ======== */}
           <Modal
             open={openWish}
             onClose={handleWishList}
@@ -304,132 +186,20 @@ const ProductItem = ({
               </Button>
             </Box>
           </Modal>
-          {/* =========== Wishlist ======== */}
+          {/* =========== Wishlist Modal ======== */}
 
-          {/* ============ MODAL ============*/}
+
+
+          {/* ============ MODAL VIEW ============*/}
           <Modal
             open={openView}
             onClose={() => setOpenView(false)}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={modalStyle}>
-              <Box sx={modalLeft}>
-                <CardMedia
-                  component="img"
-                  height="260"
-                  image={image}
-                  alt="green iguana"
-                  sx={modalImg}
-                />
-                <CardMedia
-                  component="img"
-                  height="260"
-                  image={image}
-                  alt="green iguana"
-                  sx={modalImg}
-                />
-                <CardMedia
-                  component="img"
-                  height="260"
-                  image={image}
-                  alt="green iguana"
-                  sx={modalImg}
-                />
-              </Box>
-              <Box sx={modalRight}>
-                <Typography
-                  variant="h5"
-                  component="h2"
-                  sx={{ fontWeight: "500", color: "#444" }}
-                >
-                  {name}
-                </Typography>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  <Rating
-                    name="text-feedback"
-                    size="small"
-                    value={starRate}
-                    readOnly
-                    precision={0.5}
-                    emptyIcon={
-                      <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                    }
-                  />
-                  <Box
-                    sx={{ color: "#777", margin: "0.6rem 0", fontSize: "13px" }}
-                  >
-                    (1 customer review)
-                  </Box>
-                </Box>
-                <Box sx={{ display: "flex", gap: 3, alignItems: "center" }}>
-                  <Typography variant="h4" sx={{ margin: "0.8rem 0" }}>
-                    {`$${price}.00`}
-                  </Typography>
-                  <Box sx={{ textDecoration: "line-through", color: "#555" }}>
-                    {offPrice !== 0 && `$${offPrice}.00`}
-                  </Box>
-                </Box>
-                <Typography
-                  variant="body2"
-                  component="p"
-                  sx={{ margin: "0.8rem 0", color: "#777" }}
-                >
-                  The slick and designed Solar t-shirt by romi. features an
-                  intricate triangle print and tops stitched chest pocket in
-                  contrast colouring.
-                </Typography>
-
-                <Typography
-                  variant="body2"
-                  component="p"
-                  sx={{ margin: "0.8rem 0", color: "#777" }}
-                >
-                  The cotton blend t-shirt comes in a regular fit.Record
-                  smoother, clearer videos. Local Heroes Transparent Heart Sweat
-                </Typography>
-                <Box
-                  sx={{
-                    p: "1rem 0",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  <Box sx={{ display: "flex", height: "3rem"}}>
-                    <Button variant="outlined" sx={{ fontSize: 20 }}>
-                      +
-                    </Button>
-                    <Typography
-                      variant="body2"
-                      sx={{ border: "1px solid #444", padding: "1rem" }}
-                    >
-                      1
-                    </Typography>
-                    <Button variant="outlined" sx={{ fontSize: 20 }}>
-                      -
-                    </Button>
-                  </Box>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      width: "100%",
-                      display: "flex",
-                      p: "1rem 0",
-                    }}
-                  >
-                    Add to Cart
-                  </Button>
-                </Box>
-                <Box sx={label}>
-                  <FavoriteBorderIcon fontSize="small" />
-                  <p>Wishlist</p>
-                </Box>
-              </Box>
-            </Box>
+            <ModalView name={name} image={image} starRate={starRate} price={price} offPrice={offPrice} sold={sold}/>
           </Modal>
-
-          {/* ============ MODAL ============*/}
+          {/* ============ MODAL VIEW ============*/}
 
           <CardContent>
             <Rating
@@ -472,5 +242,4 @@ const ProductItem = ({
     </Grid>
   );
 };
-
 export default ProductItem;

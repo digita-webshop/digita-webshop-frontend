@@ -8,7 +8,7 @@ import SpecialCards from "./Components/SpecialCards/SpecialCards";
 
 const Special = () => {
   return (
-    <Container>
+    <Container sx={{padding:"0 0 2rem 0"}}>
       <SpecialHeader />
 
       <Box>
