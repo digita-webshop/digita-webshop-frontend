@@ -1,46 +1,12 @@
 import React from "react";
 import { Card, Typography, Grid, Box } from "@mui/material";
 import ButtonCard from "../../../Products/Components/ButtonCard/ButtonCard";
+import { styleContent, cardStyle, contentStyle } from '../../../../Styles/Special'
 
 type Props = {
   title: string;
   name: string;
   image: string;
-};
-
-const styleContent = {
-  padding: "2.2rem 2rem",
-  position: "absolute",
-  top: "0",
-  right: "0",
-  left: "0",
-  bottom: "0",
-  transition: "all 0.8 ease-in",
-};
-
-const cardStyle = {
-  position: "relative",
-  transition: "1s ease-in-out",
-  "&:hover": {
-    "& .img-card": {
-      filter: "brightness(70%)",
-      transform: "scale(1.17)",
-    },
-    "& .card-content": {
-      transition: "0.8s",
-      transform: "translateY(15px)",
-    },
-  },
-};
-
-const contentStyle = {
-  height: "340px",
-  img: {
-    width: "100%",
-    height: "340px",
-    transition: "all 800ms ease-in-out",
-  },
-  overflow: "hidden",
 };
 
 const SpecialCard = ({ title, name, image }: Props) => {

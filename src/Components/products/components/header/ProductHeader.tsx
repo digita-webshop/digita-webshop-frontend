@@ -1,52 +1,25 @@
 import React from "react";
-import { Box, Button, styled, Typography } from "@mui/material";
-
-export const StyledProducts = styled(Box)(({ theme }) => ({
-  paddingTop: "3rem",
-  display: "flex",
-  justifyContent: "space-between",
-  paddingBottom: "1.5rem",
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-  },
-}));
-
-export const navStyle = {
-  Button: {
-    "&:hover": {
-      transition: 'all 0.4s',
-      backgroundColor: 'transparent',
-      color: '#f03637',
-    },
-    "&:focus": {
-      backgroundColor: '#FFE1E1',
-      color: '#f03637'
-    }
-  }
-}
-
-export const titleStyle = {
-  fontWeight: "bold", 
-  fontSize: '30px',
-  color: '#333',
-}
-
+import { Box, Button, Typography } from "@mui/material";
+import { StyledProducts, navStyle } from "../../../../Styles/Products/index";
 
 const ProductHeader = () => {
   return (
     <Box>
       <StyledProducts>
-        <Typography component="h2" sx={titleStyle}>
+        <Typography
+          component="h2"
+          sx={{ fontWeight: "bold", fontSize: "30px", color: "#333" }}
+        >
           TOP PRODUCTS
         </Typography>
         <Box sx={navStyle}>
-          <Button variant="text" sx={{ color: "gray", fontSize: '0.85rem' }}>
+          <Button variant="text" sx={{ color: "gray", fontSize: "0.85rem" }}>
             AUDIO & VIDEO GAME
           </Button>
-          <Button variant="text" sx={{ color: "gray",fontSize: '0.85rem' }}>
+          <Button variant="text" sx={{ color: "gray", fontSize: "0.85rem" }}>
             CAMERA & PHOTO
           </Button>
-          <Button variant="text" sx={{ color: "gray",fontSize: '0.85rem' }}>
+          <Button variant="text" sx={{ color: "gray", fontSize: "0.85rem" }}>
             HEADPHONE
           </Button>
         </Box>
@@ -54,5 +27,4 @@ const ProductHeader = () => {
     </Box>
   );
 };
-
 export default ProductHeader;
