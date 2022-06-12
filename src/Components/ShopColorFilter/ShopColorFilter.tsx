@@ -21,7 +21,7 @@ function ShopColorFilter() {
   };
   return (
     <Box
-      sx={{ padding: "20px", border: "1px solid #e9e9e9", marginTop: "50px" }}
+      sx={{ padding: "20px", border: "1px solid #e9e9e9", marginTop: "40px" }}
     >
       <FilterTitleWrapper>
         <Typography
