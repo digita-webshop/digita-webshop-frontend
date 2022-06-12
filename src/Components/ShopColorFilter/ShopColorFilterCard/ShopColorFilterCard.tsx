@@ -24,7 +24,7 @@ function ShopColorFilterCard({
       secondaryAction={
         <Box
           sx={{
-            bgcolor: isChecked ? "#f03637" : "#5454540D",
+            bgcolor: isChecked ? "red" : "#5454540D",
             color: isChecked ? "white" : "#333333 ",
             paddingY: "2.5px",
             paddingX: "12px",
