@@ -8,7 +8,6 @@ import {
   CardMedia,
   Grid,
   Rating,
-  styled,
   Typography,
 } from "@mui/material";
 import Modal from "@mui/material/Modal";
@@ -22,6 +21,9 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import CartModal from "../Modals/CartModal/CartModal";
 import ModalView from "../Modals/ModalView/ModalView";
+import { Div, StyledIcons, wishStyle } from "../../../../Styles/Products/index";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { closeStyle } from "../../../../Styles/Products";
 
 type Props = {
   name: string;
@@ -31,46 +33,6 @@ type Props = {
   price: number;
   sold: boolean;
   starRate: number;
-};
-
-const Div = styled("div")(({ theme }) => ({
-  position: "absolute",
-  top: "10px",
-  left: "10px",
-  ...theme.typography.button,
-  backgroundColor: theme.palette.error.main,
-  padding: "0 5px",
-  color: "#fff",
-}));
-
-const StyledIcons = styled("div")(({ theme }) => ({
-  position: "absolute",
-  top: "85%",
-  left: "50%",
-  transform: "translate(-50%,-50%)",
-
-  backgroundColor: "#E9E9E9",
-  width: "150px",
-  borderRadius: "7px",
-}));
-
-const defultStyle = {
-  position: "relative",
-};
-
-const wishListStyle = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: 1,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 3,
 };
 
 const ProductItem = ({
@@ -88,10 +50,6 @@ const ProductItem = ({
   const [addWish, setAddWish] = useState(false);
   const [openCart, setOpenCart] = useState(false);
 
-  const cardIconStyles = {
-    backgroundColor: "#fff",
-  };
-
   const handleWishList = () => {
     setOpenWish(false);
     setTimeout(() => {
@@ -107,7 +65,7 @@ const ProductItem = ({
         sx={{ maxWidth: 270, boxShadow: "5px 4px 10px 1px rgba(0,0,0,0.12)" }}
       >
         <CardActionArea>
-          <Box sx={defultStyle}>
+          <Box sx={{ position: "relative" }}>
             <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div>
             <CardMedia
               component="img"
@@ -118,7 +76,7 @@ const ProductItem = ({
 
             {/* ========= Product Item Icons ==========*/}
             {show && (
-              <StyledIcons sx={cardIconStyles}>
+              <StyledIcons sx={{ backgroundColor: "#fff" }}>
                 <Stack direction="row">
                   <IconButton
                     sx={{ color: "gray" }}
@@ -158,7 +116,6 @@ const ProductItem = ({
           </Modal>
           {/* ============= CART Modal ============ */}
 
-
           {/* =========== Wishlist Modal ======== */}
           <Modal
             open={openWish}
@@ -166,29 +123,34 @@ const ProductItem = ({
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <Box sx={wishListStyle}>
+            <Box sx={wishStyle}>
+              <Box sx={closeStyle} onClick={handleWishList}>
+                <CloseRoundedIcon fontSize="medium" />
+              </Box>
               {!addWish && (
                 <FavoriteIcon sx={{ fontSize: 50, color: "#f03637" }} />
               )}
+
               <Typography
                 id="modal-modal-title"
                 variant="h5"
                 component="h2"
-                sx={{ margin: "0.8rem 0" }}
+                sx={{ padding: "1.4rem 0" }}
               >
                 {addWish
-                  ? "Product already in a Wishlist"
+                  ? "Product already in Wishlist"
                   : "Product added to Wishlist"}
               </Typography>
-              <Button variant="contained">
+              <Button
+                variant="contained"
+                sx={{ width: "100%", padding: "0.8rem 0" }}
+              >
                 <FavoriteBorderIcon sx={{ marginRight: "0.3rem" }} />
                 View Wishlist
               </Button>
             </Box>
           </Modal>
           {/* =========== Wishlist Modal ======== */}
-
-
 
           {/* ============ MODAL VIEW ============*/}
           <Modal
@@ -197,10 +159,17 @@ const ProductItem = ({
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <ModalView name={name} image={image} starRate={starRate} price={price} offPrice={offPrice} sold={sold}/>
+            <ModalView
+              name={name}
+              image={image}
+              starRate={starRate}
+              price={price}
+              offPrice={offPrice}
+              sold={sold}
+              handleClose={() => setOpenView(false)}
+            />
           </Modal>
           {/* ============ MODAL VIEW ============*/}
-
           <CardContent>
             <Rating
               name="text-feedback"

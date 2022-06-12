@@ -10,6 +10,7 @@ import {
   Button,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
+import { itemContent } from '../../../../Styles/Special'
 
 type Props = {
   id: number;
@@ -18,26 +19,19 @@ type Props = {
   offPrice: number | null;
   price: number;
   starRate: number;
-}
-
-const cardStyle = {
-  display: "flex",
-  width: "350px",
-  height: "150px",
-  overflow: 'hidden'
 };
 
-const contentStyle = {
-  paddingTop: '0.4rem',
-  Button: {
-    margin: "0.9rem 0",
-  },
-};
-
-const SpecialItem = ({id, name, image, offPrice, price, starRate}: Props ) => {
+const SpecialItem = ({ id, name, image, offPrice, price, starRate }: Props) => {
   return (
-    <Grid item xs={8} sm={6} md={4} lg={4}>
-      <Card sx={cardStyle}>
+    <Grid item xs={8} sm={6} md={4} lg={4} key={id}>
+      <Card
+        sx={{
+          display: "flex",
+          width: "350px",
+          height: "150px",
+          overflow: "hidden",
+        }}
+      >
         <CardMedia
           component="img"
           sx={{ width: "40%", height: "100%" }}
@@ -50,7 +44,7 @@ const SpecialItem = ({id, name, image, offPrice, price, starRate}: Props ) => {
             flexDirection: "column",
             border: "1px solid #e8e8e8",
             borderLeft: "#fff",
-            width: '250px'
+            width: "250px",
           }}
         >
           <Box
@@ -71,7 +65,7 @@ const SpecialItem = ({id, name, image, offPrice, price, starRate}: Props ) => {
               }
             />
           </Box>
-          <CardContent sx={contentStyle}>
+          <CardContent sx={itemContent}>
             <Typography
               gutterBottom
               variant="body2"
@@ -86,10 +80,13 @@ const SpecialItem = ({id, name, image, offPrice, price, starRate}: Props ) => {
               sx={{ margin: "0.2rem" }}
             >
               <Box component="span" sx={{ textDecoration: "line-through" }}>
-              {offPrice !== 0 && `$${offPrice}.00`}
+                {offPrice !== 0 && `$${offPrice}.00`}
               </Box>
-              <Box component="span" sx={{ marginLeft: '5px',color: "red", fontWeight: "bold" }}>
-              {`$${price}.00`}
+              <Box
+                component="span"
+                sx={{ marginLeft: "5px", color: "red", fontWeight: "bold" }}
+              >
+                {`$${price}.00`}
               </Box>
             </Typography>
             <Button variant="contained">Add to cart</Button>
@@ -99,5 +96,4 @@ const SpecialItem = ({id, name, image, offPrice, price, starRate}: Props ) => {
     </Grid>
   );
 };
-
 export default SpecialItem;

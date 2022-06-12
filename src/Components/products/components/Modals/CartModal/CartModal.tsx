@@ -1,26 +1,11 @@
 import { Box, Typography, Button } from "@mui/material";
 import React from "react";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import { cartModal } from "../../../../../Styles/Products";
 
 type T = {
     price: number;
 }
-/* ============= cart modal ================ */
-const cartModal = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "450px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 1,
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    p: 3,
-  };
 
 const CartModal = ({price}: T) => {
   return (
@@ -42,7 +27,7 @@ const CartModal = ({price}: T) => {
       <Box sx={{ display: "flex", gap: 3, margin: "0.5rem 0" }}>
         <Button
           variant="contained"
-          sx={{ p: "0.8rem 2.2rem", background: "#f03637" }}
+          sx={{ p: "0.8rem 2.2rem", background: "#f03637","&:hover":{background: '#333'} }}
         >
           Continue Shopping
         </Button>
@@ -64,5 +49,4 @@ const CartModal = ({price}: T) => {
     </Box>
   );
 };
-
 export default CartModal;

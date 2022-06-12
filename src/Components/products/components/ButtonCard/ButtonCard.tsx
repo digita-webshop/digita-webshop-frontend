@@ -1,25 +1,11 @@
-import { Box, Button, styled } from "@mui/material";
-
-const CenterBox = styled(Box)(({ theme }) => ({
-  margin: "2.2rem 0",
-}));
-
-const StyledBtn = styled(Button)`
-padding: 0.780rem 2.6rem;
-textTransform: 'uppercase';
-font-size: 16px;
-background-color: #fff;
-color: #000;
-  &:hover {
-    color: #fff;
-  }
-`;
+import { Box} from "@mui/material";
+import { StyledBtn } from "../../../../Styles/Products"
 
 const ButtonCard = () => {
   return (
-    <CenterBox>
+    <Box sx={{ margin: "2.2rem 0" }}>
       <StyledBtn variant="contained">shop now</StyledBtn>
-    </CenterBox>
+    </Box>
   );
 };
 
