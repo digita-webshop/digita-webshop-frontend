@@ -1,7 +1,9 @@
+import {Header} from "../../../Components";
+
 function Home() {
   return (
     <>
-      <div>home page</div>
+        <Header/>
     </>
   );
 }
