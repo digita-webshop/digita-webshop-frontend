@@ -1,4 +1,4 @@
-import { Box, ListItemText } from "@mui/material";
+import { Box, ListItemText, Slider } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const FilterTitleWrapper = styled(Box)(({ theme }) => ({
@@ -36,5 +36,27 @@ export const FilterListItemText = styled(ListItemText)(({ theme }) => ({
     top: "18px",
     backgroundColor: "#999999",
     transition: "all 200ms ease-in",
+  },
+}));
+
+export const PriceSlider = styled(Slider)(({ theme }) => ({
+  color: "#f03637",
+  height: 3,
+  padding: "13px 0",
+  "& .MuiSlider-thumb": {
+    boxShadow: "none",
+    width: "15px",
+    height: "15px",
+    "&:hover": {
+      boxShadow: "none",
+    },
+  },
+  "& .MuiSlider-track": {
+    height: 3,
+  },
+  "& .MuiSlider-rail": {
+    color: "#EBEBEB",
+    opacity: 1,
+    height: 6,
   },
 }));
