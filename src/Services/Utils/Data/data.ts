@@ -152,3 +152,22 @@ export const categoriesList=[
         name:'xbox console'
     },
 ]
+
+export const colorFilterData=[
+    {
+        id:1,
+        color:'black'
+    },
+    {
+        id:2,
+        color:'blue'
+    },
+    {
+        id:3,
+        color:'red'
+    },
+    {
+        id:4,
+        color:'white'
+    },
+]

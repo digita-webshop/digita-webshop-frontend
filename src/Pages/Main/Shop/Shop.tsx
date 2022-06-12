@@ -1,5 +1,5 @@
 import { Grid, Container } from "@mui/material";
-import { ShopCategoriesFilter } from "../../../Components";
+import { ShopCategoriesFilter, ShopColorFilter } from "../../../Components";
 
 function Shop() {
   return (
@@ -7,6 +7,7 @@ function Shop() {
       <Grid container columnSpacing={4}>
         <Grid item xs={3.5}>
           <ShopCategoriesFilter />
+          <ShopColorFilter />
         </Grid>
         <Grid item xs={8.5}>
           ddd
