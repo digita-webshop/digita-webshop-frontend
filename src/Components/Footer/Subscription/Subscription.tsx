@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Grid,
   Typography,
@@ -76,7 +75,7 @@ function Subscription() {
       <Typography variant="h6" mb={2.5} color="white">
         COMPANY INFO
       </Typography>
-      <Typography variant="body1" mb={2.5} color="lightslategray">
+      <Typography variant="subtitle1" mb={2.5} color="#C1C4C9CC">
         Subscribe to the weekly newsletter for all the latest updates & get a
         10% off bill offers.
       </Typography>
@@ -88,7 +87,7 @@ function Subscription() {
             sx={{
               flex: "2",
               padding: "0.5rem",
-              height: "3.4rem",
+              height: "3.2rem",
               backgroundColor: "#fff",
               border: "3px solid #fff",
             }}
@@ -108,11 +107,16 @@ function Subscription() {
         component={"span"}
         mt={1.5}
         variant="body1"
-        mb={2.5}
+        mb={3.6}
         color="lightslategray"
       >
-        <Grid display="flex" justifyContent="space-around" alignItems="center">
-          Or Follow us:
+        <Grid
+          display="flex"
+          justifyContent="space-around"
+          alignItems="center"
+          color="#C1C4C9CC"
+        >
+          Or Follow Us:
           {"  "}
           {icons.map((icon, index) => (
             <Box
