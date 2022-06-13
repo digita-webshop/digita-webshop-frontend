@@ -94,7 +94,7 @@ export const StyledModal = styled("div")(({ theme }) => ({
     flexDirection: "column",
     "& .img-box": {
       width: "100%",
-      height: "100%",
+      height: "200px",
       objectFit: "cover",
     },
     "& .box": {

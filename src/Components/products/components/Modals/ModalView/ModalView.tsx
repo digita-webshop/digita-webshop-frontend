@@ -1,4 +1,15 @@
-import { Box, Button, Typography, Rating, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  Rating,
+  TextField,
+  FormControl,
+  MenuItem,
+  Select,
+  InputLabel,
+  FormHelperText,
+} from "@mui/material";
 import React, { useState } from "react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import StarIcon from "@mui/icons-material/Star";
@@ -33,7 +44,7 @@ const customBtn = {
   height: "80%",
   background: "#333",
   fontSize: "20px",
-  userSelect: 'none'
+  userSelect: "none",
 };
 
 const ModalView = ({
@@ -46,6 +57,8 @@ const ModalView = ({
   handleClose,
 }: T) => {
   const [value, setValue] = useState(1);
+  const [size, setSize] = useState();
+  const [color, setColor] = useState();
 
   const handleDecValue = () => {
     if (value > 0) {
@@ -55,6 +68,12 @@ const ModalView = ({
   const handleIncValue = () => {
     setValue((prev) => prev + 1);
   };
+  const handleChange = (e: any) => {
+    setColor(e.target.value);
+  };
+  const handleSizeChange = (e: any) => {
+    setSize(e.target.value)
+  }
 
   return (
     <Box sx={modalStyle}>
@@ -125,6 +144,49 @@ const ModalView = ({
             The cotton blend t-shirt comes in a regular fit.Record smoother,
             clearer videos. Local Heroes Transparent Heart Sweat
           </Typography>
+
+          <FormControl sx={{ minWidth: "100%" }} size="small">
+            <InputLabel id="demo-simple-select-helper-label">Color</InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              value={color}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Black</MenuItem>
+              <MenuItem value={20}>Red</MenuItem>
+              <MenuItem value={30}>White</MenuItem>
+            </Select>
+            <FormHelperText></FormHelperText>
+          </FormControl>
+
+          <Box
+            sx={{ borderBottom: "1px solid #d2d2d2", paddingBottom: "0.5rem" }}
+          >
+            <FormControl sx={{mt:1, minWidth: "100%" }} size="small">
+              <InputLabel id="demo-simple-select-helper-label">Size</InputLabel>
+              <Select
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+                value={size}
+                label="Age"
+                onChange={handleChange}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={10}>L</MenuItem>
+                <MenuItem value={20}>M</MenuItem>
+                <MenuItem value={30}>S</MenuItem>
+              </Select>
+              <FormHelperText></FormHelperText>
+            </FormControl>
+          </Box>
+
           <Box
             sx={{
               p: "1rem 0",
@@ -153,8 +215,13 @@ const ModalView = ({
             </Button>
           </Box>
           <Box sx={label}>
-            <FavoriteBorderIcon fontSize="small"/>
-            <Typography className="wish" sx={{fontSize: '23px', color: '#333'}}>Wishlist</Typography>
+            <FavoriteBorderIcon fontSize="small" />
+            <Typography
+              className="wish"
+              sx={{ fontSize: "23px", color: "#333" }}
+            >
+              Wishlist
+            </Typography>
           </Box>
         </Box>
       </StyledModal>
