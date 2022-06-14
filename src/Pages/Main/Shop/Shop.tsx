@@ -33,8 +33,8 @@ function Shop() {
             toggleDrawer={toggleDrawer}
           />
         )}
-        <Grid item xs={8.5}>
-          <ShopToolbar />
+        <Grid item xs={12} md={8.5}>
+          <ShopToolbar matches={matches} />
         </Grid>
       </Grid>
     </Container>
