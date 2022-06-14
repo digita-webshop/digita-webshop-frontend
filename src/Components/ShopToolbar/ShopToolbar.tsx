@@ -42,9 +42,16 @@ function ShopToolbar({ matches }: { matches: Boolean }) {
         marginBottom: "20px",
         display: "flex",
         justifyContent: "space-between",
+        flexWrap: "wrap",
       }}
     >
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          width: { xs: "100%", sm: "auto" },
+        }}
+      >
         <Button
           startIcon={<FilterList sx={{ fontSize: "25px" }} />}
           onClick={() => setSelectedLayout({ grid: true, list: false })}
@@ -59,7 +66,10 @@ function ShopToolbar({ matches }: { matches: Boolean }) {
         >
           Filter
         </Button>
-        <Box onClick={() => setSelectedLayout({ grid: true, list: false })}>
+        <Box
+          onClick={() => setSelectedLayout({ grid: true, list: false })}
+          sx={{ marginLeft: "auto" }}
+        >
           <GridView
             sx={{
               color: selectedLayout["grid"] ? "#f03637" : "inherit",
@@ -111,7 +121,7 @@ function ShopToolbar({ matches }: { matches: Boolean }) {
           </ToolbarButton>
         </Box>
       </Box>
-      <FormControl sx={{ width: "200px" }} size="small">
+      <FormControl sx={{ width: { xs: "100%", sm: "200px" } }} size="small">
         <Select
           variant="outlined"
           displayEmpty
