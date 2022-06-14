@@ -1,7 +1,10 @@
+import { Products, Special } from "../../../Components";
+
 function Home() {
   return (
     <>
-      <div>home page</div>
+      <Products />
+      <Special />
     </>
   );
 }
