@@ -1,9 +1,17 @@
-import { Box, Typography } from "@mui/material";
-import { GridView, TableRows } from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  FormControl,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Typography,
+} from "@mui/material";
+import { FilterList, GridView, TableRows } from "@mui/icons-material";
 import { useState } from "react";
 import { ToolbarButton } from "../../Styles/ShopPage";
 
-function ShopToolbar() {
+function ShopToolbar({ matches }: { matches: Boolean }) {
   const [selectedLayout, setSelectedLayout] = useState({
     grid: true,
     list: false,
@@ -13,6 +21,7 @@ function ShopToolbar() {
     twentyFour: false,
     all: false,
   });
+  const [selectedSorting, setSelectedSorting] = useState("");
 
   const productNumberHandler = (amount: string) => {
     setProductNumber({
@@ -22,15 +31,34 @@ function ShopToolbar() {
       [amount]: true,
     });
   };
+  const selectedSortingHandler = (event: SelectChangeEvent) => {
+    setSelectedSorting(event.target.value);
+  };
   return (
     <Box
       sx={{
         borderBottom: "1px solid rgba(0, 0, 0, 0.15)",
         paddingBottom: "15px",
         marginBottom: "20px",
+        display: "flex",
+        justifyContent: "space-between",
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Button
+          startIcon={<FilterList sx={{ fontSize: "25px" }} />}
+          onClick={() => setSelectedLayout({ grid: true, list: false })}
+          sx={{
+            "&:hover": { color: "#f03637", backgroundColor: "white" },
+            cursor: "pointer",
+            transition: "all 100ms ease-in",
+            display: { xs: "flex", md: "none" },
+            marginRight: "6px",
+            fontSize: "18px",
+          }}
+        >
+          Filter
+        </Button>
         <Box onClick={() => setSelectedLayout({ grid: true, list: false })}>
           <GridView
             sx={{
@@ -53,7 +81,13 @@ function ShopToolbar() {
             }}
           />
         </Box>
-        <Box sx={{ display: "flex", alignItems: "center", marginLeft: "20px" }}>
+        <Box
+          sx={{
+            display: { xs: "none", sm: "flex" },
+            alignItems: "center",
+            marginLeft: "20px",
+          }}
+        >
           <Typography>View: </Typography>
           <ToolbarButton
             className={productNumber["twelve"] ? "active" : ""}
@@ -77,6 +111,25 @@ function ShopToolbar() {
           </ToolbarButton>
         </Box>
       </Box>
+      <FormControl sx={{ width: "200px" }} size="small">
+        <Select
+          variant="outlined"
+          displayEmpty
+          value={selectedSorting}
+          onChange={selectedSortingHandler}
+        >
+          <MenuItem value="">Default Sorting</MenuItem>
+          <MenuItem value={"popularity"}>Sort By Popularity</MenuItem>
+          <MenuItem value={"rating"}>Sort By Average Rating </MenuItem>
+          <MenuItem value={"latest"}>Sort By Latest </MenuItem>
+          <MenuItem value={"price-low-to-high"}>
+            Sort By Price: low to high{" "}
+          </MenuItem>
+          <MenuItem value={"price-high-to-low"}>
+            Sort By Price:high to low{" "}
+          </MenuItem>
+        </Select>
+      </FormControl>
     </Box>
   );
 }
