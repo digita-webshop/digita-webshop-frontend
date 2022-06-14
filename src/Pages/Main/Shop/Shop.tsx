@@ -1,4 +1,4 @@
-import { Grid, Container, useMediaQuery } from "@mui/material";
+import { Grid, Container, useMediaQuery, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import {
@@ -6,6 +6,7 @@ import {
   ShopColorFilter,
   ShopPriceFilter,
   ShopFiltersDrawer,
+  ShopToolbar,
 } from "../../../Components";
 
 function Shop() {
@@ -32,7 +33,9 @@ function Shop() {
             toggleDrawer={toggleDrawer}
           />
         )}
-        <Grid item xs={8.5}></Grid>
+        <Grid item xs={8.5}>
+          <ShopToolbar />
+        </Grid>
       </Grid>
     </Container>
   );
