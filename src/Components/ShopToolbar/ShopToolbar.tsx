@@ -1,24 +1,27 @@
 import { Box, Typography } from "@mui/material";
-import { GridView, Preview, TableRows } from "@mui/icons-material";
+import { GridView, TableRows } from "@mui/icons-material";
 import { useState } from "react";
 import { ToolbarButton } from "../../Styles/ShopPage";
 
 function ShopToolbar() {
-  const [selectedValue, setSelectedValue] = useState({
+  const [selectedLayout, setSelectedLayout] = useState({
+    grid: true,
+    list: false,
+  });
+  const [productNumber, setProductNumber] = useState({
     twelve: true,
     twentyFour: false,
     all: false,
   });
 
   const productNumberHandler = (amount: string) => {
-    setSelectedValue({
+    setProductNumber({
       twelve: false,
       twentyFour: false,
       all: false,
       [amount]: true,
     });
   };
-  console.log(selectedValue);
   return (
     <Box
       sx={{
@@ -28,39 +31,46 @@ function ShopToolbar() {
       }}
     >
       <Box sx={{ display: "flex", alignItems: "center" }}>
-        <GridView
-          sx={{
-            "&:hover": { color: "#f03637" },
-            cursor: "pointer",
-            transition: "all 100ms ease-in",
-          }}
-        />
-        <TableRows
-          sx={{
-            marginLeft: "10px",
-            "&:hover": { color: "#f03637" },
-            cursor: "pointer",
-            transition: "all 100ms ease-in",
-          }}
-        />
+        <Box onClick={() => setSelectedLayout({ grid: true, list: false })}>
+          <GridView
+            sx={{
+              color: selectedLayout["grid"] ? "#f03637" : "inherit",
+              "&:hover": { color: "#f03637" },
+              cursor: "pointer",
+              transition: "all 100ms ease-in",
+            }}
+          />
+        </Box>
+        <Box onClick={() => setSelectedLayout({ grid: false, list: true })}>
+          <TableRows
+            sx={{
+              color: selectedLayout["list"] ? "#f03637" : "inherit",
+
+              marginLeft: "10px",
+              "&:hover": { color: "#f03637" },
+              cursor: "pointer",
+              transition: "all 100ms ease-in",
+            }}
+          />
+        </Box>
         <Box sx={{ display: "flex", alignItems: "center", marginLeft: "20px" }}>
           <Typography>View: </Typography>
           <ToolbarButton
-            className={selectedValue["twelve"] ? "active" : ""}
+            className={productNumber["twelve"] ? "active" : ""}
             onClick={() => productNumberHandler("twelve")}
           >
             12
           </ToolbarButton>
           /
           <ToolbarButton
-            className={selectedValue["twentyFour"] ? "active" : ""}
+            className={productNumber["twentyFour"] ? "active" : ""}
             onClick={() => productNumberHandler("twentyFour")}
           >
             24{" "}
           </ToolbarButton>
           /
           <ToolbarButton
-            className={selectedValue["all"] ? "active" : ""}
+            className={productNumber["all"] ? "active" : ""}
             onClick={() => productNumberHandler("all")}
           >
             All
