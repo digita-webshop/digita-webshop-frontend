@@ -102,7 +102,7 @@ export const StyledModal = styled("div")(({ theme }) => ({
       objectFit: 'cover'
     },
     "& .rightBox": {
-      width: '85%',
+      width: '84%',
     }
   },
 }));
