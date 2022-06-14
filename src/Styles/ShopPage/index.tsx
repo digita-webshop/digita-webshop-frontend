@@ -1,4 +1,12 @@
-import { Box, ListItemText, Slider } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonBase,
+  Link,
+  ListItemText,
+  Slider,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const FilterTitleWrapper = styled(Box)(({ theme }) => ({
@@ -58,5 +66,24 @@ export const PriceSlider = styled(Slider)(({ theme }) => ({
     color: "#EBEBEB",
     opacity: 1,
     height: 6,
+  },
+}));
+export const ToolbarButton = styled(Link)(({ theme }) => ({
+  color: "#999999",
+  fontSize: "16px",
+  fontWeight: "400",
+  minWidth: "unset",
+  boxShadow: "none",
+  cursor: "pointer",
+  textDecoration: "none",
+  fontFamily: "jost",
+  paddingRight: "5px",
+  paddingLeft: "5px",
+  "&:hover": {
+    backgroundColor: "white",
+    color: theme.palette.text.primary,
+  },
+  "&.active": {
+    color: theme.palette.text.primary,
   },
 }));
