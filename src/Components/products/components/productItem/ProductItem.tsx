@@ -181,15 +181,24 @@ const ProductItem = ({
                 <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
               }
             />
-            <Typography
-              gutterBottom
-              variant="body2"
-              component="div"
-              sx={{ margin: "0.2rem" }}
-              fontWeight={500}
+            <Box
+              sx={{
+                width: "250px",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
             >
-              {name}
-            </Typography>
+              <Typography
+                gutterBottom
+                variant="body2"
+                component="div"
+                sx={{ margin: "0.2rem" }}
+                fontWeight={500}
+              >
+                {name}
+              </Typography>
+            </Box>
             <Typography
               variant="body2"
               color="text.secondary"

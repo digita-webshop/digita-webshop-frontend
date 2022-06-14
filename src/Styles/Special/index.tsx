@@ -6,7 +6,7 @@ export const styleContent = {
   right: "0",
   left: "0",
   bottom: "0",
-  transition: "all 0.8 ease-in",
+  transition: "0.8s",
 };
 
 export const cardStyle = {
@@ -18,7 +18,6 @@ export const cardStyle = {
       transform: "scale(1.17)",
     },
     "& .card-content": {
-      transition: "0.8s",
       transform: "translateY(15px)",
     },
   },
