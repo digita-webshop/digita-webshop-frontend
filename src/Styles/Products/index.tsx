@@ -17,8 +17,7 @@ export const StyledIcons = styled("div")(({ theme }) => ({
   top: "85%",
   left: "50%",
   transform: "translate(-50%,-50%)",
-
-  backgroundColor: "#E9E9E9",
+  transition: 'all 0.3s',
   width: "150px",
   borderRadius: "7px",
 }));
@@ -94,13 +93,16 @@ export const StyledModal = styled("div")(({ theme }) => ({
     flexDirection: "column",
     "& .img-box": {
       width: "100%",
-      height: "200px",
+      height: "500px",
       objectFit: "cover",
     },
     "& .box": {
       width: "100%",
-      height: "100%",
+      height: "1100px",
       objectFit: 'cover'
+    },
+    "& .rightBox": {
+      width: '80%',
     }
   },
 }));

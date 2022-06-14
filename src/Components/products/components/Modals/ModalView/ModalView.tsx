@@ -38,11 +38,11 @@ const customBtn = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: "#fff",
+  color: "#555",
   width: "40px",
   cursor: "pointer",
   height: "80%",
-  background: "#333",
+  background: "#d9d9d9",
   fontSize: "20px",
   userSelect: "none",
 };
@@ -93,7 +93,7 @@ const ModalView = ({
           <img src={image} className="img-box" alt="" />
           <img src={image} className="img-box" alt="" />
         </Box>
-        <Box sx={modalRight}>
+        <Box sx={modalRight} className="rightBox">
           <Box sx={closeStyle} onClick={handleClose}>
             <CloseRoundedIcon fontSize="medium" />
           </Box>
@@ -174,7 +174,7 @@ const ModalView = ({
                 id="demo-simple-select-helper"
                 value={size}
                 label="Age"
-                onChange={handleChange}
+                onChange={handleSizeChange}
               >
                 <MenuItem value="">
                   <em>None</em>
