@@ -1,9 +1,11 @@
-import React from "react";
 import { Typography, Link, Grid } from "@mui/material";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-const links = ["About us", "Contact us", "Blog", "Terms of Use", "Careers"];
-
-function FooterList() {
+interface FooterListProps {
+  title: string;
+  links: string[];
+}
+function FooterList({ title, links }: FooterListProps) {
   return (
     <Grid
       display="flex"
@@ -12,20 +14,30 @@ function FooterList() {
       flexDirection="column"
       p="1rem"
     >
-      <Typography variant="h6" mb={2.5} color="white">
-        COMPANY INFO
+      <Typography
+        variant="h6"
+        mb={2.5}
+        color="white"
+        textTransform={"uppercase"}
+      >
+        {title}
       </Typography>
       {links.map((link, index) => (
         <Link
-          sx={{ "&:hover": { color: "#f03637" } }}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            textTransform: "capitalize",
+            "&:hover": { color: "#f03637" },
+          }}
           key={index}
           href="#"
           underline="none"
           mb={1.5}
-          color="lightslategray"
-          variant="body1"
+          color="#C1C4C9CC"
+          variant="subtitle1"
         >
-          &#62; {link}
+          <ChevronRightIcon sx={{ fontSize: "20px" }} /> {link}
         </Link>
       ))}
     </Grid>
