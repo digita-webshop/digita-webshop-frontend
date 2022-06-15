@@ -1,10 +1,11 @@
+import { Container } from "@mui/system";
 import { Footer, Navbar } from "../../Components";
 
 function MainLayout({ children }: any) {
   return (
     <>
       <Navbar />
-      {children}
+      <Container maxWidth={"xl"}>{children}</Container>
       <Footer />
     </>
   );
