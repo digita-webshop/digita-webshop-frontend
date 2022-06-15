@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 
 /* ============== Product Item =============== */
 export const Div = styled("div")(({ theme }) => ({
@@ -14,12 +15,12 @@ export const Div = styled("div")(({ theme }) => ({
 
 export const StyledIcons = styled("div")(({ theme }) => ({
   position: "absolute",
-  top: "85%",
+  top: "80%",
   left: "50%",
   transform: "translate(-50%,-50%)",
-  transition: 'all 0.3s',
-  width: "150px",
+  transition: "all 0.3s",
   borderRadius: "7px",
+  padding: "10px 20px",
 }));
 
 export const wishStyle = {
@@ -35,56 +36,53 @@ export const wishStyle = {
   bgcolor: "background.paper",
   boxShadow: 24,
   padding: 3,
-}
+};
 /* ============== Product Item =============== */
 
 /*  ============= Header =============   */
 export const StyledProducts = styled("div")(({ theme }) => ({
-    paddingTop: "3rem",
-    display: "flex",
-    justifyContent: "space-between",
-    paddingBottom: "1.5rem",
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column",
-    },
-  }));
+  paddingTop: "3rem",
+  display: "flex",
+  justifyContent: "space-between",
+  paddingBottom: "1.5rem",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
+}));
 
-  export const navStyle = {
-    Button: {
-      "&:hover": {
-        transition: "all 0.4s",
-        backgroundColor: "transparent",
-        color: "#f03637",
-      },
-      "&:focus": {
-        backgroundColor: "#FFE1E1",
-        color: "#f03637",
-      },
+export const navStyle = {
+  Button: {
+    "&:hover": {
+      transition: "all 0.4s",
+      backgroundColor: "transparent",
+      color: "#f03637",
     },
-  };
+    "&:focus": {
+      backgroundColor: "#FFE1E1",
+      color: "#f03637",
+    },
+  },
+};
 /*  ============= Header =============   */
 
 /* ============== ButtonCard =============*/
 export const StyledBtn = styled(Button)`
-padding: 0.780rem 2.6rem;
-textTransform: 'uppercase';
-font-size: 16px;
-background-color: #fff;
-color: #000;
+  padding: 0.78rem 2.6rem;
+  texttransform: "uppercase";
+  font-size: 16px;
+  background-color: #fff;
+  color: #000;
   &:hover {
     color: #fff;
   }
 `;
 /* ============== ButtonCard =============*/
 
-
-
 /*  ============= ProductCard =============   */
 /*  ============= ProductCard =============   */
 
 /*  ============= Product Cards =============   */
 /*  ============= Product Cards =============   */
-
 
 /*  ============= Modal View =============   */
 export const StyledModal = styled("div")(({ theme }) => ({
@@ -99,11 +97,11 @@ export const StyledModal = styled("div")(({ theme }) => ({
     "& .box": {
       width: "100%",
       height: "1100px",
-      objectFit: 'cover'
+      objectFit: "cover",
     },
     "& .rightBox": {
-      width: '84%',
-    }
+      width: "84%",
+    },
   },
 }));
 
@@ -164,7 +162,7 @@ export const label = {
     "& .wish": {
       transition: "0.3s",
       color: "#f03637",
-    }
+    },
   },
 };
 
@@ -178,7 +176,6 @@ export const IconDiv = styled("div")(({ theme }) => ({
   color: "#fff",
 }));
 /*  ============= Modal View =============   */
-
 
 /* ============== Cart MODAL =============== */
 export const closeStyle = {
@@ -211,3 +208,17 @@ export const cartModal = {
   p: 3,
 };
 /* ============== Cart MODAL =============== */
+
+export const RedTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} arrow classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: "#f03637",
+    color: "white",
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+  },
+  [`& .${tooltipClasses.arrow}`]: {
+    color: "#f03637",
+  },
+}));

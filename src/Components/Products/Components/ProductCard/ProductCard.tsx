@@ -31,6 +31,7 @@ const contentStyle = {
     width: "100%",
     height: "340px",
     transition: "all 800ms ease-in-out",
+    objectFit: "cover",
   },
   overflow: "hidden",
 };
@@ -48,9 +49,14 @@ const ProductCard = ({ title, name, image }: Props) => {
         <Box sx={contentStyle} className="box">
           <img src={image} alt="img" className="img-card" />
         </Box>
-        <Box  sx={styleContent} className="card-content">
+        <Box sx={styleContent} className="card-content">
           <Typography
-            sx={{ fontSize: 16,fontWeight: "500", textTransform: "uppercase", color: "#fff" }}
+            sx={{
+              fontSize: 16,
+              fontWeight: "500",
+              textTransform: "uppercase",
+              color: "#fff",
+            }}
             gutterBottom
           >
             {title}
