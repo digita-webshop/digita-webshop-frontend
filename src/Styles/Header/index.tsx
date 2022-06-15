@@ -2,23 +2,30 @@ import {styled} from "@mui/material/styles";
 import {Box, Button} from "@mui/material";
 import header1 from "../../Assets/Images/header1.jpg";
 import header2 from "../../Assets/Images/header2.jpg";
+import navigationIcon from "../../Assets/Icons/right-arrow.svg";
 
 export const Container = styled(Box)(({theme}) => ({
+    "&:hover .swiper-button-next":{
+        opacity: "1",
+    },
+    "&:hover .swiper-button-prev":{
+        opacity: "1",
+    },
     ".swiper-slide img": {
         width: '100%'
     },
     ".swiper-pagination-bullet": {
         background: 'white',
         opacity: 1,
-        margin:'10px!important'
+        margin: '10px!important'
     },
-    ".swiper-horizontal>.swiper-pagination-bullets":{
-        bottom:'170px'
+    ".swiper-horizontal>.swiper-pagination-bullets": {
+        bottom: '170px'
     },
     ".swiper-pagination-bullet-active": {
         position: 'relative',
         '&::before': {
-            animation:'spin-dot 2s linear infinite',
+            animation: 'spin-dot 2s linear infinite',
             top: '-103%',
             left: '-103%',
             borderRadius: '50%',
@@ -31,6 +38,29 @@ export const Container = styled(Box)(({theme}) => ({
             borderTop: '2px solid white',
             borderBottom: '2px solid white',
         }
+    },
+    ".swiper-button-next,.swiper-button-prev": {
+        opacity: "0",
+        border: '1px solid rgba(255, 255, 255, 0.3)',
+        width: '43px',
+        height: '43px',
+        '&::after': {
+            backgroundImage: `url(${navigationIcon})`,
+            backgroundSize: "contain",
+            opacity: "0.3",
+            width: '24px',
+            height: '24px',
+            content: '""'
+        },
+        "&:hover": {
+            border: '1px solid rgba(255, 255, 255, 1)',
+            '&:after': {
+                opacity: "1",
+            }
+        }
+    },
+    ".swiper-button-prev": {
+        transform: ' scale(-1, 1)'
     },
     "@keyframes spin-dot": {
         "0%": {
@@ -68,10 +98,10 @@ export const SlideItem = styled(Box)(({theme}) => ({
     },
     ".header": {
         [theme.breakpoints.down('sm')]: {
-            maxWidth:"100%",
+            maxWidth: "100%",
         },
         [theme.breakpoints.up('sm')]: {
-            maxWidth:"43%",
+            maxWidth: "43%",
         },
         position: 'absolute',
         top: "22%",
