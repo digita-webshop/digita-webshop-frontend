@@ -1,5 +1,5 @@
 import { Container, Grid, Box } from "@mui/material";
-import React from "react";
+import React, { Fragment } from "react";
 import SpecialHeader from "./Components/Header/SpecialHeader";
 import SpecialItem from "./Components/SpecialItem/SpecialItem";
 import { specialProducts } from "../../Services/Utils/Data/data";
@@ -8,7 +8,7 @@ import SpecialCards from "./Components/SpecialCards/SpecialCards";
 
 const Special = () => {
   return (
-    <Container sx={{ padding: "0 0 2rem 0" }}>
+    <Container maxWidth={"lg"}>
       <SpecialHeader />
 
       <Box>

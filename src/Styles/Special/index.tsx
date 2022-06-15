@@ -29,12 +29,11 @@ export const contentStyle = {
     width: "100%",
     height: "340px",
     transition: "all 800ms ease-in-out",
+    objectFit: "cover",
   },
   overflow: "hidden",
 };
 /* ============ Special Card ============== */
-
-
 
 /* ============ Special Item ============== */
 export const itemContent = {
@@ -44,8 +43,6 @@ export const itemContent = {
   },
 };
 /* ============ Special Item ============== */
-
-
 
 /* ============ SupportItems Item ============== */
 export const supportStyle = {
@@ -66,12 +63,9 @@ export const supportStyle = {
 };
 
 export const itemStyle = {
-    padding: "1.5rem",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    Box: {
-      paddingLeft: "0.5rem",
-    },
-  };
+  padding: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
 /* ============ SupportItems Item ============== */
