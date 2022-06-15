@@ -1,3 +1,4 @@
+import OurBlog from "../../../Components/OurBlog/OurBlog";
 import WhatClientSay from "../../../Components/WhatClientSay/WhatClientSay";
 
 function Home() {
@@ -5,6 +6,7 @@ function Home() {
     <>
       <div>home page</div>
       <WhatClientSay />
+      <OurBlog />
     </>
   );
 }
