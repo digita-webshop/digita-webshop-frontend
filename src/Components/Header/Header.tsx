@@ -14,8 +14,9 @@ const Header = () => {
     return (
         <Container>
             <Swiper
-                autoplay={{delay: 50000}}
+                autoplay={{delay: 5000}}
                 spaceBetween={30}
+                navigation
                 effect={"fade"}
                 pagination={{
                     clickable: true,
