@@ -8,18 +8,31 @@ const ProductHeader = () => {
       <StyledProducts>
         <Typography
           component="h2"
-          sx={{ fontWeight: "bold", fontSize: "30px", color: "#333" }}
+          sx={{
+            fontWeight: "bold",
+            fontSize: { xs: "25px", md: "30px" },
+            color: "#333",
+          }}
         >
           TOP PRODUCTS
         </Typography>
         <Box sx={navStyle}>
-          <Button variant="text" sx={{ color: "gray", fontSize: "0.85rem" }}>
+          <Button
+            variant="text"
+            sx={{ color: "gray", fontSize: { xs: "0.70rem", sm: "0.85rem" } }}
+          >
             AUDIO & VIDEO GAME
           </Button>
-          <Button variant="text" sx={{ color: "gray", fontSize: "0.85rem" }}>
+          <Button
+            variant="text"
+            sx={{ color: "gray", fontSize: { xs: "0.70rem", sm: "0.85rem" } }}
+          >
             CAMERA & PHOTO
           </Button>
-          <Button variant="text" sx={{ color: "gray", fontSize: "0.85rem" }}>
+          <Button
+            variant="text"
+            sx={{ color: "gray", fontSize: { xs: "0.70rem", sm: "0.85rem" } }}
+          >
             HEADPHONE
           </Button>
         </Box>

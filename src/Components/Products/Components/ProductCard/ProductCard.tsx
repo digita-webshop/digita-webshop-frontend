@@ -44,7 +44,7 @@ type Props = {
 
 const ProductCard = ({ title, name, image }: Props) => {
   return (
-    <Grid item xs={12} sm={9} md={6}>
+    <Grid item xs={12} sm={6} md={6}>
       <Card sx={cardStyle}>
         <Box sx={contentStyle} className="box">
           <img src={image} alt="img" className="img-card" />

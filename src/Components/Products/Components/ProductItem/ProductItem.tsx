@@ -3,17 +3,14 @@ import {
   Box,
   Button,
   Card,
-  CardActionArea,
   CardContent,
   CardMedia,
   Grid,
   Rating,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Stack from "@mui/material/Stack";
-import IconButton from "@mui/material/IconButton";
 import StarIcon from "@mui/icons-material/Star";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -78,9 +75,9 @@ const ProductItem = ({
           <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div>
           <CardMedia
             component="img"
-            height="260"
             image={image}
             alt="green iguana"
+            sx={{ height: { xs: "200px", sm: "220px", md: "260px" } }}
           />
 
           {/* ========= Product Item Icons ==========*/}
@@ -227,14 +224,7 @@ const ProductItem = ({
               <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
             }
           />
-          <Box
-            sx={{
-              width: "250px",
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-          >
+          <Box>
             <Typography
               gutterBottom
               variant="body2"
@@ -243,6 +233,9 @@ const ProductItem = ({
                 margin: "0.2rem",
                 transition: "all 150ms ease-in",
                 "&:hover": { color: "#f03637" },
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
               fontWeight={500}
             >
