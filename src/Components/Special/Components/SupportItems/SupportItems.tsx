@@ -4,12 +4,12 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
-import { supportStyle, itemStyle } from "../../../../Styles/Special"
+import { supportStyle, itemStyle } from "../../../../Styles/Special";
 
 const SupportItems = () => {
   return (
     <Grid container sx={supportStyle}>
-      <Grid item xs={8} sm={5.5} md={4} lg={3}>
+      <Grid item xs={12} sm={6} lg={3}>
         {/* ======== ITEM ======= */}
         <Box sx={itemStyle}>
           <LocalShippingIcon sx={{ color: "#f03637", fontSize: "40px" }} />
@@ -31,7 +31,7 @@ const SupportItems = () => {
       </Grid>
 
       {/* ======== ITEM ======= */}
-      <Grid item xs={8} sm={5.5} md={4} lg={3}>
+      <Grid item xs={12} sm={6} lg={3}>
         <Box sx={itemStyle}>
           <CurrencyExchangeIcon sx={{ color: "#f03637", fontSize: "40px" }} />
           <Box sx={{ marginLeft: "0.6rem" }}>
@@ -51,7 +51,7 @@ const SupportItems = () => {
         </Box>
       </Grid>
 
-      <Grid item xs={8} sm={5.5} md={4} lg={3}>
+      <Grid item xs={12} sm={6} lg={3}>
         <Box sx={itemStyle}>
           <PaymentIcon sx={{ color: "#f03637", fontSize: "40px" }} />
           <Box sx={{ marginLeft: "0.6rem" }}>
@@ -71,7 +71,7 @@ const SupportItems = () => {
         </Box>
       </Grid>
 
-      <Grid item xs={8} sm={5.5} md={4} lg={3}>
+      <Grid item xs={12} sm={6} lg={3}>
         <Box sx={itemStyle}>
           <SupportAgentIcon sx={{ color: "#f03637", fontSize: "40px" }} />
           <Box sx={{ marginLeft: "0.6rem" }}>

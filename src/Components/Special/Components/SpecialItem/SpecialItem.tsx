@@ -10,7 +10,7 @@ import {
   Button,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import { itemContent } from '../../../../Styles/Special'
+import { itemContent } from "../../../../Styles/Special";
 
 type Props = {
   id: number;
@@ -23,13 +23,11 @@ type Props = {
 
 const SpecialItem = ({ id, name, image, offPrice, price, starRate }: Props) => {
   return (
-    <Grid item xs={8} sm={6} md={4} lg={4} key={id}>
-      <Card
+    <Grid item xs={12} sm={6} lg={4} key={id}>
+      <Box
         sx={{
           display: "flex",
-          width: "350px",
           height: "150px",
-          overflow: "hidden",
         }}
       >
         <CardMedia
@@ -44,7 +42,7 @@ const SpecialItem = ({ id, name, image, offPrice, price, starRate }: Props) => {
             flexDirection: "column",
             border: "1px solid #e8e8e8",
             borderLeft: "#fff",
-            width: "250px",
+            width: "60%",
           }}
         >
           <Box
@@ -71,6 +69,11 @@ const SpecialItem = ({ id, name, image, offPrice, price, starRate }: Props) => {
               variant="body2"
               component="div"
               fontWeight={700}
+              sx={{
+                whiteSpace: "nowrap",
+                textOverflow: "ellipsis",
+                overflow: "hidden",
+              }}
             >
               {name}
             </Typography>
@@ -92,7 +95,7 @@ const SpecialItem = ({ id, name, image, offPrice, price, starRate }: Props) => {
             <Button variant="contained">Add to cart</Button>
           </CardContent>
         </Box>
-      </Card>
+      </Box>
     </Grid>
   );
 };

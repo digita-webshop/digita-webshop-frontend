@@ -8,9 +8,8 @@ import ProductCards from "./Components/ProductCards/ProductCards";
 
 const Products = () => {
   return (
-    <Fragment>
+    <Container maxWidth={"lg"}>
       <ProductHeader />
-
       <Box>
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {productData.map((item) => (
@@ -28,7 +27,7 @@ const Products = () => {
       </Box>
       <BasicBtn />
       <ProductCards />
-    </Fragment>
+    </Container>
   );
 };
 
