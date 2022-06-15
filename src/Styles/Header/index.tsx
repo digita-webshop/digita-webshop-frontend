@@ -91,16 +91,19 @@ export const SlideItem = styled(Box)(({theme}) => ({
     color: '#ffffff',
     width: '100%',
     [theme.breakpoints.down('sm')]: {
-        height: '700px',
+        height: '450px',
     },
     [theme.breakpoints.up('sm')]: {
+        height: '700px',
+    },
+    [theme.breakpoints.up('md')]: {
         height: '867px',
     },
     ".header": {
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('md')]: {
             maxWidth: "100%",
         },
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             maxWidth: "43%",
         },
         position: 'absolute',
