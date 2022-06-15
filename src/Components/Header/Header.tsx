@@ -17,6 +17,7 @@ const Header = () => {
                 autoplay={{delay: 5000, disableOnInteraction: false}}
                 spaceBetween={30}
                 navigation
+                loop={true}
                 effect={"fade"}
                 pagination={{
                     clickable: true,
