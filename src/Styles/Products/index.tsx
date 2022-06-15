@@ -17,6 +17,9 @@ export const StyledIcons = styled("div")(({ theme }) => ({
   position: "absolute",
   top: "80%",
   left: "50%",
+  [theme.breakpoints.down("md")]: {
+    top: "75%",
+  },
   transform: "translate(-50%,-50%)",
   transition: "all 0.3s",
   borderRadius: "7px",
@@ -45,7 +48,7 @@ export const StyledProducts = styled("div")(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   paddingBottom: "1.5rem",
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("md")]: {
     flexDirection: "column",
   },
 }));

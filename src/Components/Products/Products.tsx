@@ -1,5 +1,5 @@
 import { Box, Container, Grid } from "@mui/material";
-import React from "react";
+import React, { Fragment } from "react";
 import ProductHeader from "./Components/Header/ProductHeader";
 import ProductItem from "./Components/ProductItem/ProductItem";
 import BasicBtn from "./Components/Button/BasicBtn";
@@ -8,7 +8,7 @@ import ProductCards from "./Components/ProductCards/ProductCards";
 
 const Products = () => {
   return (
-    <Container sx={{ padding: "0 0 2rem 0" }}>
+    <Fragment>
       <ProductHeader />
 
       <Box>
@@ -28,7 +28,7 @@ const Products = () => {
       </Box>
       <BasicBtn />
       <ProductCards />
-    </Container>
+    </Fragment>
   );
 };
 
