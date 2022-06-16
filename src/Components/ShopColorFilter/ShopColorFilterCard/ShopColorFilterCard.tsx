@@ -9,6 +9,7 @@ import {
 
 type ColorFilterProps = {
   isChecked: boolean;
+  drawer: boolean;
   color: string;
   labelId: string;
   handleToggle: (value: string) => any;
@@ -18,6 +19,7 @@ function ShopColorFilterCard({
   color,
   labelId,
   handleToggle,
+  drawer,
 }: ColorFilterProps) {
   return (
     <ListItem
@@ -41,7 +43,7 @@ function ShopColorFilterCard({
       sx={{
         "&:hover": {
           color: "#f03637",
-          backgroundColor: "white",
+          backgroundColor: drawer ? "white" : "#f7f7f7",
           cursor: "pointer",
           transition: "all 200ms ease-in",
           "& .filter-color-text": {

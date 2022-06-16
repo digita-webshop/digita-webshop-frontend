@@ -4,7 +4,7 @@ import { colorFilterData } from "../../Services/Utils/Data/data";
 import { FilterTitleWrapper } from "../../Styles/ShopPage";
 import ShopColorFilterCard from "./ShopColorFilterCard/ShopColorFilterCard";
 
-function ShopColorFilter() {
+function ShopColorFilter({ drawer }: { drawer: boolean }) {
   const [checked, setChecked] = useState([""]);
 
   const handleToggle = (value: string) => () => {
@@ -21,9 +21,13 @@ function ShopColorFilter() {
   };
   return (
     <Box
-      sx={{ padding: "20px", border: "1px solid #e9e9e9", marginTop: "40px" }}
+      sx={{
+        padding: "20px",
+        border: drawer ? "1px solid #e9e9e9" : "",
+        marginTop: drawer ? "40px" : "20px",
+      }}
     >
-      <FilterTitleWrapper>
+      <FilterTitleWrapper className={`${drawer && "underline"}`}>
         <Typography
           component={"h4"}
           variant="body1"
@@ -37,7 +41,7 @@ function ShopColorFilter() {
         sx={{
           width: "100%",
           maxWidth: 360,
-          bgcolor: "background.paper",
+          bgcolor: drawer ? "background.paper" : "#f7f7f7",
           marginTop: "6px",
           marginLeft: "12px",
         }}
@@ -52,6 +56,7 @@ function ShopColorFilter() {
               labelId={labelId}
               color={color}
               handleToggle={handleToggle}
+              drawer={drawer}
             />
           );
         })}

@@ -26,8 +26,8 @@ function Shop() {
           {matches && (
             <Grid item xs={3.5}>
               <ShopCategoriesFilter />
-              <ShopColorFilter />
-              <ShopPriceFilter />
+              <ShopColorFilter drawer={true} />
+              <ShopPriceFilter drawer={true} />
             </Grid>
           )}
           {!matches && (
@@ -37,7 +37,7 @@ function Shop() {
             />
           )}
           <Grid item xs={12} md={8.5}>
-            <ShopToolbar matches={matches} />
+            <ShopToolbar matches={matches} toggleDrawer={toggleDrawer} />
           </Grid>
         </Grid>
       </Container>
