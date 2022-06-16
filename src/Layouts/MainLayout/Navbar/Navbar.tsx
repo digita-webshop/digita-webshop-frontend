@@ -8,8 +8,8 @@ import {
   Fade,
   SelectChangeEvent,
 } from "@mui/material";
-import logoImg from "../../Assets/Images/digita-logo.png";
-import { navbarItems } from "../../Services/Utils/Data/data";
+import logoImg from "../../../Assets/Images/digita-logo.png";
+import { navbarItems } from "../../../Services/Utils/Data/data";
 import { useTheme } from "@mui/material/styles";
 
 import {
@@ -21,7 +21,7 @@ import {
   KeyboardArrowDown,
 } from "@mui/icons-material";
 import { Fragment, useState } from "react";
-import { AntTab, AntTabs } from "../../Styles/Appbar";
+import { AntTab, AntTabs } from "../../../Styles/Appbar";
 import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
 import ShopMenuCard from "./ShopCart/ShopCart";

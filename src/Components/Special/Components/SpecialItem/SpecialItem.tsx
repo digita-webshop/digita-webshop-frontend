@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Grid,
   Rating,
@@ -6,7 +5,6 @@ import {
   CardMedia,
   CardContent,
   Box,
-  Card,
   Button,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
