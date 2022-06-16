@@ -7,6 +7,7 @@ import {
   ShopPriceFilter,
   ShopFiltersDrawer,
   ShopToolbar,
+  BreadcrumbsCp,
 } from "../../../Components";
 
 function Shop() {
@@ -18,26 +19,29 @@ function Shop() {
     setDisplayDrawer(open);
   };
   return (
-    <Container sx={{ marginY: "50px" }}>
-      <Grid container columnSpacing={4}>
-        {matches && (
-          <Grid item xs={3.5}>
-            <ShopCategoriesFilter />
-            <ShopColorFilter />
-            <ShopPriceFilter />
+    <>
+      <BreadcrumbsCp title={"products"} />
+      <Container sx={{ marginY: "50px" }}>
+        <Grid container columnSpacing={4}>
+          {matches && (
+            <Grid item xs={3.5}>
+              <ShopCategoriesFilter />
+              <ShopColorFilter />
+              <ShopPriceFilter />
+            </Grid>
+          )}
+          {!matches && (
+            <ShopFiltersDrawer
+              displayDrawer={displayDrawer}
+              toggleDrawer={toggleDrawer}
+            />
+          )}
+          <Grid item xs={12} md={8.5}>
+            <ShopToolbar matches={matches} />
           </Grid>
-        )}
-        {!matches && (
-          <ShopFiltersDrawer
-            displayDrawer={displayDrawer}
-            toggleDrawer={toggleDrawer}
-          />
-        )}
-        <Grid item xs={12} md={8.5}>
-          <ShopToolbar matches={matches} />
         </Grid>
-      </Grid>
-    </Container>
+      </Container>
+    </>
   );
 }
 
