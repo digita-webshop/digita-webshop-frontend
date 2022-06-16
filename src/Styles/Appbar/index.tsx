@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Tab, Tabs, Paper, Box, Typography, Button } from "@mui/material";
+import { Tab, Tabs, Box, Typography, Button } from "@mui/material";
 import { SyntheticEvent } from "react";
 
 interface StyledTabProps {
