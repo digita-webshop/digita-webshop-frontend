@@ -1,5 +1,4 @@
 import { Container, Grid, Box } from "@mui/material";
-import React, { Fragment } from "react";
 import SpecialHeader from "./Components/Header/SpecialHeader";
 import SpecialItem from "./Components/SpecialItem/SpecialItem";
 import { specialProducts } from "../../Services/Utils/Data/data";
