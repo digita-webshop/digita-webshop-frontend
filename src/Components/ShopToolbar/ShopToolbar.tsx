@@ -11,7 +11,12 @@ import { FilterList, GridView, TableRows } from "@mui/icons-material";
 import { useState } from "react";
 import { ToolbarButton } from "../../Styles/ShopPage";
 
-function ShopToolbar({ matches }: { matches: Boolean }) {
+type ShopToolbarProps = {
+  matches: boolean;
+  toggleDrawer: (open: boolean) => void;
+};
+
+function ShopToolbar({ matches, toggleDrawer }: ShopToolbarProps) {
   const [selectedLayout, setSelectedLayout] = useState({
     grid: true,
     list: false,
@@ -54,7 +59,7 @@ function ShopToolbar({ matches }: { matches: Boolean }) {
       >
         <Button
           startIcon={<FilterList sx={{ fontSize: "25px" }} />}
-          onClick={() => setSelectedLayout({ grid: true, list: false })}
+          onClick={() => toggleDrawer(true)}
           sx={{
             "&:hover": { color: "#f03637", backgroundColor: "white" },
             cursor: "pointer",

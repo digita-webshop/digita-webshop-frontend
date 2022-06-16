@@ -5,7 +5,7 @@ import { FilterListItemText, FilterTitleWrapper } from "../../Styles/ShopPage";
 function ShopCategoriesFilter() {
   return (
     <Box sx={{ padding: "20px", border: "1px solid #e9e9e9" }}>
-      <FilterTitleWrapper>
+      <FilterTitleWrapper className="underline">
         <Typography
           component={"h4"}
           variant="body1"

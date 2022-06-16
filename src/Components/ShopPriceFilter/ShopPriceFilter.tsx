@@ -2,18 +2,21 @@ import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
 import { FilterTitleWrapper, PriceSlider } from "../../Styles/ShopPage";
 
-function ShopPriceFilter() {
+function ShopPriceFilter({ drawer }: { drawer: boolean }) {
   const [value, setValue] = useState<number[]>([10, 1000]);
 
-  console.log(value);
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
   };
   return (
     <Box
-      sx={{ padding: "20px", border: "1px solid #e9e9e9", marginTop: "40px" }}
+      sx={{
+        padding: "20px",
+        border: drawer ? "1px solid #e9e9e9" : "",
+        marginTop: drawer ? "40px" : "20px",
+      }}
     >
-      <FilterTitleWrapper>
+      <FilterTitleWrapper className={`${drawer && "underline"}`}>
         <Typography
           component={"h4"}
           variant="body1"
