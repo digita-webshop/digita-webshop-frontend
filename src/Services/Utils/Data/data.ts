@@ -180,6 +180,16 @@ export const productData = [
     { id: 6, name: 'Samsung Galaxy V21', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
     { id: 7, name: 'SIRUM 360 Mobile Holder Trip', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-8-330x330.jpg', offPrice: 0, price: 12.00, sold: false, starRate: 5 },
     { id: 8, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
+    { id: 9, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
+    { id: 10, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
+    { id: 11, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
+    { id: 12, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
+    { id: 13, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
+    { id: 14, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
+    { id: 16, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
+    { id: 17, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
+    { id: 18, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
+    { id: 19, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg', offPrice: 0, price: 75.00, sold: false, starRate: 5 },
 ]
 
 export const productCardData = [
