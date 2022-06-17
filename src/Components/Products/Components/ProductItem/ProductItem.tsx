@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Box,
   Button,
   Card,
   CardContent,
   CardMedia,
-  Grid,
   Rating,
   Typography,
 } from "@mui/material";
@@ -36,6 +35,8 @@ type Props = {
   price: number;
   sold: boolean;
   starRate: number;
+  description: string;
+  listView: boolean;
 };
 
 const ProductItem = ({
@@ -46,6 +47,8 @@ const ProductItem = ({
   price,
   sold,
   starRate,
+  description,
+  listView,
 }: Props) => {
   const [openView, setOpenView] = useState(false);
   const [openWish, setOpenWish] = useState(false);
@@ -62,12 +65,14 @@ const ProductItem = ({
   return (
     <Card
       sx={{
-        maxWidth: 270,
+        maxWidth: listView ? "none" : 270,
         boxShadow: "5px 4px 10px 1px rgba(0,0,0,0.12)",
         cursor: "pointer",
         "&:hover .icon-card": {
           transform: "translateX(-50%) scaleY(1)",
         },
+        display: listView ? "flex" : "inherit",
+        flexDirection: { xs: "column", sm: "row" },
       }}
     >
       <Box sx={{ position: "relative" }}>
@@ -76,7 +81,14 @@ const ProductItem = ({
           component="img"
           image={image}
           alt="green iguana"
-          sx={{ height: { xs: "200px", sm: "220px", md: "260px" } }}
+          sx={{
+            height: {
+              xs: listView ? "none" : "200px",
+              sm: "220px",
+              md: "260px",
+            },
+            width: listView ? { xs: "100%", sm: "220px", md: "260px" } : "none",
+          }}
         />
 
         {/* ========= Product Item Icons ==========*/}
@@ -251,6 +263,15 @@ const ProductItem = ({
             {`$${price}.00`}
           </Box>
         </Typography>
+        {listView && (
+          <Typography
+            component={"p"}
+            variant="body2"
+            sx={{ color: "#666666", marginTop: "25px", textAlign: "justify" }}
+          >
+            {description}
+          </Typography>
+        )}
       </CardContent>
     </Card>
   );

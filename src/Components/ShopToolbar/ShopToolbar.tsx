@@ -14,13 +14,16 @@ import { ToolbarButton } from "../../Styles/ShopPage";
 type ShopToolbarProps = {
   matches: boolean;
   toggleDrawer: (open: boolean) => void;
+  setSelectedLayout: any;
+  selectedLayout: { grid: boolean; list: boolean };
 };
 
-function ShopToolbar({ matches, toggleDrawer }: ShopToolbarProps) {
-  const [selectedLayout, setSelectedLayout] = useState({
-    grid: true,
-    list: false,
-  });
+function ShopToolbar({
+  matches,
+  toggleDrawer,
+  setSelectedLayout,
+  selectedLayout,
+}: ShopToolbarProps) {
   const [productNumber, setProductNumber] = useState({
     twelve: true,
     twentyFour: false,
