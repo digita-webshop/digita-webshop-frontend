@@ -1,6 +1,6 @@
-import { Grid, Container, useMediaQuery } from "@mui/material";
+import { Grid, Container, useMediaQuery, Fade } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import {
   ShopCategoriesFilter,
   ShopColorFilter,
@@ -18,6 +18,10 @@ function Shop() {
   const [products] = useState(productData);
   const [productsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedLayout, setSelectedLayout] = useState({
+    grid: true,
+    list: false,
+  });
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
@@ -53,20 +57,50 @@ function Shop() {
             />
           )}
           <Grid item xs={12} md={8.5}>
-            <ShopToolbar matches={matches} toggleDrawer={toggleDrawer} />
+            <ShopToolbar
+              matches={matches}
+              toggleDrawer={toggleDrawer}
+              setSelectedLayout={setSelectedLayout}
+              selectedLayout={selectedLayout}
+            />
             <Grid container spacing={{ xs: 2, md: 3 }}>
               {currentProducts.map((item) => (
-                <Grid item xs={6} sm={4} md={4} key={item.id}>
-                  <ProductItem
-                    id={item.id}
-                    name={item.name}
-                    image={item.image}
-                    offPrice={item.offPrice}
-                    price={item.price}
-                    sold={item.sold}
-                    starRate={item.starRate}
-                  />
-                </Grid>
+                <Fragment>
+                  {selectedLayout.grid && (
+                    <Fade in={selectedLayout.grid}>
+                      <Grid item xs={6} sm={4} md={4} key={item.id}>
+                        <ProductItem
+                          id={item.id}
+                          name={item.name}
+                          image={item.image}
+                          offPrice={item.offPrice}
+                          price={item.price}
+                          sold={item.sold}
+                          starRate={item.starRate}
+                          description={item.description}
+                          listView={false}
+                        />
+                      </Grid>
+                    </Fade>
+                  )}
+                  {selectedLayout.list && (
+                    <Fade in={selectedLayout.list}>
+                      <Grid item xs={12}>
+                        <ProductItem
+                          id={item.id}
+                          name={item.name}
+                          image={item.image}
+                          offPrice={item.offPrice}
+                          price={item.price}
+                          sold={item.sold}
+                          starRate={item.starRate}
+                          description={item.description}
+                          listView={true}
+                        />
+                      </Grid>
+                    </Fade>
+                  )}
+                </Fragment>
               ))}
             </Grid>
             <Pagination

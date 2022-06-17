@@ -21,6 +21,8 @@ const Products = () => {
                 price={item.price}
                 sold={item.sold}
                 starRate={item.starRate}
+                description={item.description}
+                listView={false}
               />
             </Grid>
           ))}
