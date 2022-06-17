@@ -1,6 +1,6 @@
 import { Grid, Container, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import {
   ShopCategoriesFilter,
   ShopColorFilter,
@@ -15,8 +15,8 @@ import { productData } from "../../../Services/Utils/Data/data";
 
 function Shop() {
   const [displayDrawer, setDisplayDrawer] = useState(false);
-  const [products, setProducts] = useState(productData);
-  const [productsPerPage, setProductsPerPage] = useState(12);
+  const [products] = useState(productData);
+  const [productsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(1);
 
   const theme = useTheme();
@@ -29,16 +29,11 @@ function Shop() {
     indexOfLastProduct
   );
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-  // const pagesNumber = Math.ceil(products.length / productsPerPage);
-  // console.log(currentProducts);
-  // console.log(products.length / productsPerPage);
+
   const toggleDrawer = (open: boolean) => {
     setDisplayDrawer(open);
   };
-  const handleChange = (event: ChangeEvent<unknown>, value: number) => {
-    console.log(value);
-    setCurrentPage(value);
-  };
+
   return (
     <>
       <BreadcrumbsCp title={"products"} />
