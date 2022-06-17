@@ -1,6 +1,6 @@
-import { Grid, Container, useMediaQuery, Box } from "@mui/material";
+import { Grid, Container, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import {
   ShopCategoriesFilter,
   ShopColorFilter,
@@ -8,17 +8,36 @@ import {
   ShopFiltersDrawer,
   ShopToolbar,
   BreadcrumbsCp,
+  Pagination,
 } from "../../../Components";
 import ProductItem from "../../../Components/Products/Components/ProductItem/ProductItem";
 import { productData } from "../../../Services/Utils/Data/data";
 
 function Shop() {
   const [displayDrawer, setDisplayDrawer] = useState(false);
+  const [products, setProducts] = useState(productData);
+  const [productsPerPage, setProductsPerPage] = useState(12);
+  const [currentPage, setCurrentPage] = useState(1);
+
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
 
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  // const pagesNumber = Math.ceil(products.length / productsPerPage);
+  // console.log(currentProducts);
+  // console.log(products.length / productsPerPage);
   const toggleDrawer = (open: boolean) => {
     setDisplayDrawer(open);
+  };
+  const handleChange = (event: ChangeEvent<unknown>, value: number) => {
+    console.log(value);
+    setCurrentPage(value);
   };
   return (
     <>
@@ -41,7 +60,7 @@ function Shop() {
           <Grid item xs={12} md={8.5}>
             <ShopToolbar matches={matches} toggleDrawer={toggleDrawer} />
             <Grid container spacing={{ xs: 2, md: 3 }}>
-              {productData.map((item) => (
+              {currentProducts.map((item) => (
                 <Grid item xs={6} sm={4} md={4} key={item.id}>
                   <ProductItem
                     id={item.id}
@@ -55,6 +74,13 @@ function Shop() {
                 </Grid>
               ))}
             </Grid>
+            <Pagination
+              productsPerPage={productsPerPage}
+              totalProducts={products.length}
+              paginate={paginate}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
           </Grid>
         </Grid>
       </Container>
