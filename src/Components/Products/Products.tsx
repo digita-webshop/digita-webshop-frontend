@@ -12,15 +12,17 @@ const Products = () => {
       <Box>
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {productData.map((item) => (
-            <ProductItem
-              id={item.id}
-              name={item.name}
-              image={item.image}
-              offPrice={item.offPrice}
-              price={item.price}
-              sold={item.sold}
-              starRate={item.starRate}
-            />
+            <Grid item xs={6} sm={4} md={3} key={item.id}>
+              <ProductItem
+                id={item.id}
+                name={item.name}
+                image={item.image}
+                offPrice={item.offPrice}
+                price={item.price}
+                sold={item.sold}
+                starRate={item.starRate}
+              />
+            </Grid>
           ))}
         </Grid>
       </Box>
