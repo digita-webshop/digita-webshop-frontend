@@ -1,38 +1,6 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
-
-const List = styled("ul")({
-  listStyle: "none",
-  padding: 0,
-  margin: 0,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-});
-const ListItem = styled("li")({
-  listStyle: "none",
-  padding: 0,
-  margin: 6,
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  backgroundColor: "#F6F6F6",
-  width: "40px",
-  height: "40px",
-  cursor: "pointer",
-  fontFamily: "jost",
-  color: "#333333",
-  transition: "all 150ms ease-in",
-  "&:hover": {
-    backgroundColor: "#f03637",
-    color: "white",
-  },
-  "&.active": {
-    backgroundColor: "#f03637",
-    color: "white",
-  },
-});
+import { PaginationList, PaginationListItem } from "../../Styles/Pagination";
 
 type PaginationProps = {
   productsPerPage: number;
@@ -56,31 +24,31 @@ function Pagination({
   }
   return (
     <Box marginTop={4}>
-      <List>
-        <ListItem
+      <PaginationList>
+        <PaginationListItem
           onClick={() => setCurrentPage(currentPage - 1)}
           sx={{ display: currentPage === 1 ? "none" : "flex" }}
         >
           <ChevronLeft />
-        </ListItem>
+        </PaginationListItem>
 
         {pageNumber.map((number, index) => (
-          <ListItem
+          <PaginationListItem
             key={index}
             onClick={() => paginate(number)}
             className={`${number === currentPage && "active"}`}
           >
             {number}
-          </ListItem>
+          </PaginationListItem>
         ))}
 
-        <ListItem
+        <PaginationListItem
           onClick={() => setCurrentPage(currentPage + 1)}
           sx={{ display: currentPage === pageNumber.length ? "none" : "flex" }}
         >
           <ChevronRight />
-        </ListItem>
-      </List>
+        </PaginationListItem>
+      </PaginationList>
     </Box>
   );
 }
