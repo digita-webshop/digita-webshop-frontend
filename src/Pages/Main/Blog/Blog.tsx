@@ -1,5 +1,6 @@
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
 import { Grid, Typography } from '@mui/material';
 import IMAGES from '../../../Assets/Images';
 import CustomSeparator from '../../../Components/CustomSeparator/CustomSeparator';
@@ -12,6 +13,7 @@ import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import InputBase from '@mui/material/InputBase';
+
 const bgStyles = {
   display: 'flex',
   flexDirection: 'column',
@@ -42,6 +44,7 @@ const Item = styled(Paper)(({ theme }) => ({
 function Blog() {
   return (
     <>
+      {/* // * header */}
       <Grid container sx={bgStyles}>
         <Typography
           align='center'
@@ -53,14 +56,19 @@ function Blog() {
         </Typography>
         <CustomSeparator name='Blog'></CustomSeparator>
       </Grid>
+      {/* // TODO: Should be optimized and separated into separate components */}
+      {/* // * General Container for articles and Search parts, etc */}
       <Grid
         container
         sx={{ py: 6.25, px: '15px', maxWidth: '1200px', mx: 'auto', my: 0 }}
       >
+        {/* // * articles */}
+
         <Grid item md={9}>
           <Grid container>
             <Grid item xs={12} sm={6} px={'15px'} mb={'35px'}>
               <Card>
+                {/* card image */}
                 <Link href='#'>
                   <CardMedia
                     component='img'
@@ -68,7 +76,14 @@ function Blog() {
                     alt='On Salvatore Ferragamo’s New Chapter'
                   />
                 </Link>
-                <Box display='flex' flexDirection='row' alignItems='flex-end'>
+                {/* card description */}
+                <Box
+                  display='flex'
+                  flexDirection='row'
+                  flexWrap='wrap'
+                  alignItems='flex-end'
+                >
+                  {/* Author article */}
                   <Item>
                     <Box display='flex' alignItems='flex-end'>
                       <PersonOutlineOutlinedIcon
@@ -90,6 +105,7 @@ function Blog() {
                       </Link>
                     </Box>
                   </Item>
+                  {/* Release date article */}
                   <Item>
                     <Box display='flex'>
                       &nbsp;
@@ -100,6 +116,7 @@ function Blog() {
                       &nbsp;July 9, 2019 -
                     </Box>
                   </Item>
+                  {/* Folder article */}
                   <Item>
                     <Box display='flex'>
                       &nbsp;
@@ -123,6 +140,7 @@ function Blog() {
                     </Box>
                   </Item>
                 </Box>
+                {/* card title */}
                 <Link
                   sx={{
                     '&:hover': { color: '#f03637', transition: 'all 500ms' },
@@ -147,7 +165,12 @@ function Blog() {
                     alt='On Salvatore Ferragamo’s New Chapter'
                   />
                 </Link>
-                <Box display='flex' flexDirection='row' alignItems='flex-end'>
+                <Box
+                  display='flex'
+                  flexDirection='row'
+                  flexWrap='wrap'
+                  alignItems='flex-end'
+                >
                   <Item>
                     <Box display='flex' alignItems='flex-end'>
                       <PersonOutlineOutlinedIcon
@@ -226,7 +249,12 @@ function Blog() {
                     alt='On Salvatore Ferragamo’s New Chapter'
                   />
                 </Link>
-                <Box display='flex' flexDirection='row' alignItems='flex-end'>
+                <Box
+                  display='flex'
+                  flexDirection='row'
+                  flexWrap='wrap'
+                  alignItems='flex-end'
+                >
                   <Item>
                     <Box display='flex' alignItems='flex-end'>
                       <PersonOutlineOutlinedIcon
@@ -305,7 +333,12 @@ function Blog() {
                     alt='On Salvatore Ferragamo’s New Chapter'
                   />
                 </Link>
-                <Box display='flex' flexDirection='row' alignItems='flex-end'>
+                <Box
+                  display='flex'
+                  flexDirection='row'
+                  flexWrap='wrap'
+                  alignItems='flex-end'
+                >
                   <Item>
                     <Box display='flex' alignItems='flex-end'>
                       <PersonOutlineOutlinedIcon
@@ -384,7 +417,12 @@ function Blog() {
                     alt='On Salvatore Ferragamo’s New Chapter'
                   />
                 </Link>
-                <Box display='flex' flexDirection='row' alignItems='flex-end'>
+                <Box
+                  display='flex'
+                  flexDirection='row'
+                  flexWrap='wrap'
+                  alignItems='flex-end'
+                >
                   <Item>
                     <Box display='flex' alignItems='flex-end'>
                       <PersonOutlineOutlinedIcon
@@ -463,7 +501,12 @@ function Blog() {
                     alt='On Salvatore Ferragamo’s New Chapter'
                   />
                 </Link>
-                <Box display='flex' flexDirection='row' alignItems='flex-end'>
+                <Box
+                  display='flex'
+                  flexDirection='row'
+                  flexWrap='wrap'
+                  alignItems='flex-end'
+                >
                   <Item>
                     <Box display='flex' alignItems='flex-end'>
                       <PersonOutlineOutlinedIcon
@@ -534,8 +577,20 @@ function Blog() {
             </Grid>
           </Grid>
         </Grid>
+
+        {/* // * search parts, etc */}
+
         <Grid item xs={12} md={3}>
-          <Box sx={{ border: '1px solid #e9e9e9', p: '20px' }}>
+          {/* Search section */}
+          <Box
+            sx={{
+              border: '1px solid #e9e9e9',
+              px: '20px',
+              pt: '20px',
+              pb: '30px',
+              mb: '30px',
+            }}
+          >
             <Typography
               variant='subtitle2'
               sx={{
@@ -560,6 +615,213 @@ function Blog() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Box>
+          {/* Recent posts section*/}
+          <Box
+            sx={{
+              border: '1px solid #e9e9e9',
+              px: '20px',
+              pt: '20px',
+              pb: '30px',
+              mb: '30px',
+            }}
+          >
+            <Typography
+              variant='subtitle2'
+              sx={{
+                width: 40,
+                pb: '20px',
+                borderBottom: '3px solid #f03637',
+              }}
+            >
+              RECENT&nbsp;POSTS
+            </Typography>
+            <Divider sx={{ mb: '14px' }} />
+            {/* list articles */}
+
+            <Card sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Link
+                href='#'
+                sx={{
+                  '&:hover': {
+                    filter: 'brightness(70%)',
+                    transition: 'all 500ms',
+                  },
+                }}
+              >
+                <CardMedia
+                  component='img'
+                  sx={{ width: 80, height: 60 }}
+                  image={`${IMAGES.blog6}`}
+                  alt='On Salvatore Ferragamo’s New Chapter'
+                />
+              </Link>
+              <Box>
+                <CardContent
+                  sx={{
+                    px: 0,
+                  }}
+                >
+                  <Link
+                    underline='none'
+                    href='#'
+                    sx={{
+                      '&:hover': {
+                        color: '#f03637',
+                        transition: 'all 500ms',
+                      },
+                    }}
+                  >
+                    <Typography variant='subtitle2'>
+                      On Salvatore Ferragamo’s New Chapter
+                    </Typography>
+                  </Link>
+                  <Typography variant='body2' color='text.secondary' mt={'6px'}>
+                    July 9, 2019
+                  </Typography>
+                </CardContent>
+              </Box>
+            </Card>
+
+            <Divider sx={{ mb: '14px' }} />
+
+            <Card sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Link
+                href='#'
+                sx={{
+                  '&:hover': {
+                    filter: 'brightness(70%)',
+                    transition: 'all 500ms',
+                  },
+                }}
+              >
+                <CardMedia
+                  component='img'
+                  sx={{ width: 80, height: 60 }}
+                  image={`${IMAGES.blog5}`}
+                  alt='Decoding #OOTD Pose in The Modeling Industry'
+                />
+              </Link>
+              <Box>
+                <CardContent
+                  sx={{
+                    px: 0,
+                  }}
+                >
+                  <Link
+                    underline='none'
+                    href='#'
+                    sx={{
+                      '&:hover': {
+                        color: '#f03637',
+                        transition: 'all 500ms',
+                      },
+                    }}
+                  >
+                    <Typography variant='subtitle2'>
+                      Decoding #OOTD Pose in The Modeling Industry
+                    </Typography>
+                  </Link>
+                  <Typography variant='body2' color='text.secondary' mt={'6px'}>
+                    October 5, 2018
+                  </Typography>
+                </CardContent>
+              </Box>
+            </Card>
+
+            <Divider sx={{ mb: '14px' }} />
+
+            <Card sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Link
+                href='#'
+                sx={{
+                  '&:hover': {
+                    filter: 'brightness(70%)',
+                    transition: 'all 500ms',
+                  },
+                }}
+              >
+                <CardMedia
+                  component='img'
+                  sx={{ width: 80, height: 60 }}
+                  image={`${IMAGES.blog4}`}
+                  alt='8 Fashion Photographers in UK'
+                />
+              </Link>
+              <Box>
+                <CardContent
+                  sx={{
+                    px: 0,
+                  }}
+                >
+                  <Link
+                    underline='none'
+                    href='#'
+                    sx={{
+                      '&:hover': {
+                        color: '#f03637',
+                        transition: 'all 500ms',
+                      },
+                    }}
+                  >
+                    <Typography variant='subtitle2'>
+                      8 Fashion Photographers in UK
+                    </Typography>
+                  </Link>
+                  <Typography variant='body2' color='text.secondary' mt={'6px'}>
+                    June 10, 2018
+                  </Typography>
+                </CardContent>
+              </Box>
+            </Card>
+
+            <Divider sx={{ mb: '14px' }} />
+
+            <Card sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Link
+                href='#'
+                sx={{
+                  '&:hover': {
+                    filter: 'brightness(70%)',
+                    transition: 'all 500ms',
+                  },
+                }}
+              >
+                <CardMedia
+                  component='img'
+                  sx={{ width: 80, height: 60 }}
+                  image={`${IMAGES.blog3}`}
+                  alt='Sample post with format chat'
+                />
+              </Link>
+              <Box>
+                <CardContent
+                  sx={{
+                    px: 0,
+                  }}
+                >
+                  <Link
+                    underline='none'
+                    href='#'
+                    sx={{
+                      '&:hover': {
+                        color: '#f03637',
+                        transition: 'all 500ms',
+                      },
+                    }}
+                  >
+                    <Typography variant='subtitle2'>
+                      Sample post with format chat
+                    </Typography>
+                  </Link>
+                  <Typography variant='body2' color='text.secondary' mt={'6px'}>
+                    June 8, 2018
+                  </Typography>
+                </CardContent>
+              </Box>
+            </Card>
+          </Box>
+
+          {/* Recent comments section */}
         </Grid>
       </Grid>
     </>
