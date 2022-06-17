@@ -594,13 +594,12 @@ function Blog() {
             <Typography
               variant='subtitle2'
               sx={{
-                width: 40,
                 pb: '20px',
-                borderBottom: '3px solid #f03637',
               }}
             >
               SEARCH
             </Typography>
+            <Box sx={{ width: 40, borderBottom: '3px solid #f03637' }}></Box>
             <Divider sx={{ mb: '14px' }} />
             <InputBase
               sx={{
@@ -628,15 +627,14 @@ function Blog() {
             <Typography
               variant='subtitle2'
               sx={{
-                width: 40,
                 pb: '20px',
-                borderBottom: '3px solid #f03637',
               }}
             >
-              RECENT&nbsp;POSTS
+              RECENT POSTS
             </Typography>
+            <Box sx={{ width: 40, borderBottom: '3px solid #f03637' }}></Box>
             <Divider sx={{ mb: '14px' }} />
-            {/* list articles */}
+            {/* articles list*/}
 
             <Card sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
               <Link
@@ -822,6 +820,103 @@ function Blog() {
           </Box>
 
           {/* Recent comments section */}
+
+          <Box
+            sx={{
+              border: '1px solid #e9e9e9',
+              px: '20px',
+              pt: '20px',
+              pb: '30px',
+              mb: '30px',
+            }}
+          >
+            <Typography
+              variant='subtitle2'
+              sx={{
+                pb: '20px',
+              }}
+            >
+              RECENT COMMENTS
+            </Typography>
+            <Box sx={{ width: 40, borderBottom: '3px solid #f03637' }}></Box>
+            <Divider sx={{ mb: '14px' }} />
+            {/* comments list */}
+            <Typography variant='body2' color='text.secondary'>
+              Peter Giroud on&nbsp;
+              <Link
+                underline='none'
+                href='#'
+                sx={{
+                  '&:hover': {
+                    color: '#f03637',
+                    transition: 'all 500ms',
+                  },
+                }}
+              >
+                Samsung Galaxy V21
+              </Link>
+            </Typography>
+            <Typography variant='body2' color='text.secondary' pt={2}>
+              Peter Giroud on&nbsp;
+              <Link
+                underline='none'
+                href='#'
+                sx={{
+                  '&:hover': {
+                    color: '#f03637',
+                    transition: 'all 500ms',
+                  },
+                }}
+              >
+                Beats by Dr. Dre Studio (Orange)
+              </Link>
+            </Typography>
+            <Typography variant='body2' color='text.secondary' pt={2}>
+              Peter Giroud on&nbsp;
+              <Link
+                underline='none'
+                href='#'
+                sx={{
+                  '&:hover': {
+                    color: '#f03637',
+                    transition: 'all 500ms',
+                  },
+                }}
+              >
+                PC Gaming Mainboard B460
+              </Link>
+            </Typography>
+            <Typography variant='body2' color='text.secondary' pt={2}>
+              Peter Giroud on&nbsp;
+              <Link
+                underline='none'
+                href='#'
+                sx={{
+                  '&:hover': {
+                    color: '#f03637',
+                    transition: 'all 500ms',
+                  },
+                }}
+              >
+                Sony SYS-XB10 Bluetooth Speaker
+              </Link>
+            </Typography>
+            <Typography variant='body2' color='text.secondary' pt={2}>
+              Peter Giroud on&nbsp;
+              <Link
+                underline='none'
+                href='#'
+                sx={{
+                  '&:hover': {
+                    color: '#f03637',
+                    transition: 'all 500ms',
+                  },
+                }}
+              >
+                Microsoft Xbox One S Bl
+              </Link>
+            </Typography>
+          </Box>
         </Grid>
       </Grid>
     </>
