@@ -10,7 +10,8 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import Box from '@mui/material/Box';
-
+import Divider from '@mui/material/Divider';
+import InputBase from '@mui/material/InputBase';
 const bgStyles = {
   display: 'flex',
   flexDirection: 'column',
@@ -52,10 +53,13 @@ function Blog() {
         </Typography>
         <CustomSeparator name='Blog'></CustomSeparator>
       </Grid>
-      <Grid container sx={{ py: 6.25, px: 2 }}>
+      <Grid
+        container
+        sx={{ py: 6.25, px: '15px', maxWidth: '1200px', mx: 'auto', my: 0 }}
+      >
         <Grid item md={9}>
-          <Grid container rowSpacing={5} columnSpacing={3}>
-            <Grid item xs={12} sm={6}>
+          <Grid container>
+            <Grid item xs={12} sm={6} px={'15px'} mb={'35px'}>
               <Card>
                 <Link href='#'>
                   <CardMedia
@@ -134,7 +138,7 @@ function Blog() {
               </Card>
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} px={'15px'} mb={'35px'}>
               <Card>
                 <Link href='#'>
                   <CardMedia
@@ -213,7 +217,7 @@ function Blog() {
               </Card>
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} px={'15px'} mb={'35px'}>
               <Card>
                 <Link href='#'>
                   <CardMedia
@@ -292,7 +296,7 @@ function Blog() {
               </Card>
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} px={'15px'} mb={'35px'}>
               <Card>
                 <Link href='#'>
                   <CardMedia
@@ -371,7 +375,7 @@ function Blog() {
               </Card>
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} px={'15px'} mb={'35px'}>
               <Card>
                 <Link href='#'>
                   <CardMedia
@@ -450,7 +454,7 @@ function Blog() {
               </Card>
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} px={'15px'} mb={'35px'}>
               <Card>
                 <Link href='#'>
                   <CardMedia
@@ -530,7 +534,33 @@ function Blog() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item md={3}></Grid>
+        <Grid item xs={12} md={3}>
+          <Box sx={{ border: '1px solid #e9e9e9', p: '20px' }}>
+            <Typography
+              variant='subtitle2'
+              sx={{
+                width: 40,
+                pb: '20px',
+                borderBottom: '3px solid #f03637',
+              }}
+            >
+              SEARCH
+            </Typography>
+            <Divider sx={{ mb: '14px' }} />
+            <InputBase
+              sx={{
+                backgroundColor: '#e9e9e9',
+                borderRadius: '4px',
+                py: '6px',
+                px: '12px',
+                fontSize: '14px',
+                width: '100%',
+              }}
+              placeholder='Search'
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Box>
+        </Grid>
       </Grid>
     </>
   );
