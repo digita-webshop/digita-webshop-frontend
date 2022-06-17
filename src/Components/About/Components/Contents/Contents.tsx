@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
 
 const titleStyle = {
-  padding: "1rem 0",
-  fontWeight: "600",
-  color: "#333",
-  fontSize: "20px",
+    padding: '1rem 0',
+    fontWeight: "600",
+    color: "#333",
+    fontSize: "30px",
 };
 
 const Contents = () => {
