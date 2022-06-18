@@ -38,7 +38,6 @@ const navbarIcons = {
   "&:hover": { color: "#f03637" },
 };
 function Navbar() {
-  const [displayMenu, setDisplayMenu] = useState(false);
   const [displayShopMenu, setDisplayShopMenu] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const [collapse, setCollapse] = useState(true);
@@ -61,14 +60,11 @@ function Navbar() {
   type Anchor = "left" | "right";
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => {
-    setDisplayDrawer({ ...displayDrawer, [anchor]: open });
-  };
-
-  const displayMenuHandler = (display: boolean) => {
-    if (matches) {
-      setDisplayMenu(display);
+    if (!matches) {
+      setDisplayDrawer({ ...displayDrawer, [anchor]: open });
     }
   };
+
   const openSearchBarHandler = () => {
     setOpenSearchBar((prevOpenSearchBar) => !prevOpenSearchBar);
   };
@@ -109,7 +105,6 @@ function Navbar() {
             sx={{
               position: "relative",
             }}
-            onMouseEnter={() => displayMenuHandler(false)}
           >
             <Toolbar
               sx={{
@@ -199,11 +194,7 @@ function Navbar() {
                     >
                       <LoginOutlined color="primary" sx={navbarIcons} />
                     </Badge>
-                    <Box
-                      display={"flex"}
-                      height={"100%"}
-                      onMouseEnter={() => displayMenuHandler(false)}
-                    >
+                    <Box display={"flex"} height={"100%"}>
                       <Badge
                         badgeContent={4}
                         overlap="circular"
@@ -223,14 +214,24 @@ function Navbar() {
                       </Badge>
                     </Box>
                     <Box
-                      onMouseEnter={() => displayMenuHandler(true)}
                       onClick={() => toggleDrawer("right", true)}
+                      sx={{
+                        height: "100%",
+                        display: "flex",
+                        cursor: "pointer",
+                        "&:hover .shop-cart": {
+                          display: matches ? "inline-block" : "none",
+                        },
+                        "&:hover .local-grocery-icon": { color: "#f03637" },
+                      }}
                     >
                       <Badge
                         badgeContent={4}
                         overlap="circular"
                         color="error"
-                        sx={{ margin: "auto" }}
+                        sx={{
+                          margin: "auto",
+                        }}
                       >
                         <LocalGroceryStoreOutlined
                           color="primary"
@@ -239,10 +240,11 @@ function Navbar() {
                             transition: "all 200ms",
                             cursor: "pointer",
                             fontSize: "28px",
-                            "&:hover": { color: "#f03637" },
                           }}
+                          className="local-grocery-icon"
                         />
                       </Badge>
+                      <ShopMenuCard />
                     </Box>
                     <ShopDrawer
                       displayDrawer={displayDrawer}
@@ -268,10 +270,6 @@ function Navbar() {
                 </Box>
               </Fade>
             </Toolbar>
-            <ShopMenuCard
-              displayMenu={displayMenu}
-              displayMenuHandler={displayMenuHandler}
-            />
           </Container>
           <Fade
             style={{ display: displayShopMenu ? "block" : "none" }}
