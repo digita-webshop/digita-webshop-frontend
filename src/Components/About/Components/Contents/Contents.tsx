@@ -1,26 +1,13 @@
 import { Box, Typography } from "@mui/material";
+import { titleStyle, subjectTitle } from "../../../../Styles/About";
 
-const titleStyle = {
-    padding: '1rem 0',
-    fontWeight: "600",
-    color: "#333",
-    fontSize: "30px",
-};
+
 
 const Contents = () => {
   return (
     <>
       <Box sx={{ textAlign: "center" }}>
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{
-            fontSize: "35px",
-            fontWeight: "700",
-            color: "#333",
-            margin: "3rem 0 2rem 0",
-          }}
-        >
+        <Typography variant="h2" component="h2" sx={subjectTitle}>
           Find Out More About Butterfly's Birth History And Historic Mission
         </Typography>
       </Box>

@@ -3,41 +3,18 @@ import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import PriceCheckIcon from "@mui/icons-material/PriceCheck";
+import {serviceStyle, serviceTitle, itemStyle} from "../../../../Styles/About"
 
-export const supportStyle = {
-  display: "flex",
-  alignItems: "center",
-  width: "100%",
-  borderRadius: 1,
-  bgcolor: "background.paper",
-  color: "text.secondary",
-  "& svg": {
-    my: 1.5,
-  },
-};
-const titleStyle = {
-  padding: "8rem 0 1rem 0",
-  color: "#333",
-  fontSize: "32px",
-  fontWeight: "600",
-};
-
-export const itemStyle = {
-  padding: "1rem",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-};
 
 const Services = () => {
   return (
     <>
       <Box sx={{ textAlign: "center" }}>
-        <Typography variant="h4" sx={titleStyle}>
+        <Typography variant="h4" sx={serviceTitle}>
           WHY CHOOSE US ?
         </Typography>
       </Box>
-      <Grid container sx={supportStyle}>
+      <Grid container sx={serviceStyle}>
         <Grid item xs={6} sm={6} md={3} lg={3}>
           {/* ======== ITEM ======= */}
           <Box sx={itemStyle}>
