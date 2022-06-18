@@ -1,8 +1,8 @@
 import Link from '@mui/material/Link';
 
 type props = {
-    title: string;
-  };
+  title: string;
+};
 
 const CardTitle = ({ title }: props) => {
   return (
@@ -19,4 +19,5 @@ const CardTitle = ({ title }: props) => {
     </Link>
   );
 };
+
 export default CardTitle;
