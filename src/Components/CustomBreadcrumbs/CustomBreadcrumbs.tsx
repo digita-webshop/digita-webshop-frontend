@@ -1,8 +1,12 @@
 import { NavigateNext } from "@mui/icons-material";
 import { Box, Breadcrumbs, Link, Typography } from "@mui/material";
+import { useLocation } from "react-router-dom";
 import breadcrumbBg from "../../Assets/Images/breadcrumb-bg.jpg";
 
-function BreadcrumbsCp({ title }: { title: string }) {
+function CustomBreadcrumbs({ title }: { title: string }) {
+  const { pathname } = useLocation();
+  const pathnames = pathname.split("/").filter((x) => x);
+
   return (
     <Box
       sx={{
@@ -40,22 +44,32 @@ function BreadcrumbsCp({ title }: { title: string }) {
             "&:hover": { color: "#f03637" },
           }}
         >
-          Home{" "}
+          Home
         </Link>
-        <Link
-          color="#fff"
-          href="/shop"
-          underline="none"
-          sx={{
-            transition: "all 150ms ease-in",
-            "&:hover": { color: "#f03637" },
-          }}
-        >
-          Products
-        </Link>
+        {pathnames.map((name, index) => {
+          const route = `/${pathnames.slice(0, index + 1).join("/")}`;
+          const isLast = index === pathnames.length - 1;
+
+          return isLast ? (
+            <Typography sx={{ color: "#fff" }}>{name}</Typography>
+          ) : (
+            <Link
+              color="#fff"
+              href={route}
+              underline="none"
+              textTransform={"capitalize"}
+              sx={{
+                transition: "all 150ms ease-in",
+                "&:hover": { color: "#f03637" },
+              }}
+            >
+              {name}
+            </Link>
+          );
+        })}
       </Breadcrumbs>
     </Box>
   );
 }
 
-export default BreadcrumbsCp;
+export default CustomBreadcrumbs;

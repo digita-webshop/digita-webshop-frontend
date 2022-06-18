@@ -7,7 +7,7 @@ import {
   ShopPriceFilter,
   ShopFiltersDrawer,
   ShopToolbar,
-  BreadcrumbsCp,
+  CustomBreadcrumbs,
   Pagination,
 } from "../../../Components";
 import ProductItem from "../../../Components/Products/Components/ProductItem/ProductItem";
@@ -40,7 +40,7 @@ function Shop() {
 
   return (
     <>
-      <BreadcrumbsCp title={"products"} />
+      <CustomBreadcrumbs title={"products"} />
       <Container sx={{ marginY: "50px" }}>
         <Grid container columnSpacing={4}>
           {matches && (
