@@ -46,12 +46,15 @@ function CustomBreadcrumbs({ title }: { title: string }) {
         >
           Home
         </Link>
-        {pathnames.map((name, index) => {
+        {pathnames.map((path, index) => {
           const route = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
+          const name = path.replace(/-/g, " ");
 
           return isLast ? (
-            <Typography sx={{ color: "#fff" }}>{name}</Typography>
+            <Typography sx={{ color: "#fff", textTransform: "capitalize" }}>
+              {name}
+            </Typography>
           ) : (
             <Link
               color="#fff"
