@@ -78,3 +78,31 @@ export const articlesBlogPage = [
     status: 'Newest Items',
   },
 ];
+
+export const RecentCommentsBlogPage = [
+  {
+    id: 1,
+    title: 'Samsung Galaxy V21',
+    author: 'Peter Giroud',
+  },
+  {
+    id: 2,
+    title: 'Beats by Dr. Dre Studio (Orange)',
+    author: 'Peter Giroud',
+  },
+  {
+    id: 3,
+    title: 'PC Gaming Mainboard B460',
+    author: 'Peter Giroud',
+  },
+  {
+    id: 4,
+    title: 'Sony SYS-XB10 Bluetooth Speaker',
+    author: 'Peter Giroud',
+  },
+  {
+    id: 5,
+    title: 'Microsoft Xbox One S Bl',
+    author: 'Peter Giroud',
+  },
+];
