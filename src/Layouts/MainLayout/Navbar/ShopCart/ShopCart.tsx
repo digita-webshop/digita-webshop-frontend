@@ -10,22 +10,22 @@ import {
   Typography,
 } from "@mui/material";
 
-type ShopCartProps = {
-  displayMenu: boolean;
-  displayMenuHandler: (display: boolean) => void;
-};
-function ShopCart({ displayMenu, displayMenuHandler }: ShopCartProps) {
+function ShopCart() {
   return (
     <Box
-      display={`${displayMenu ? "inline-block" : "none"}`}
       sx={{
         position: "absolute",
         right: "10px",
         top: "72px ",
         padding: "15px",
         backgroundColor: "white",
+        display: "none",
+        cursor: "auto",
+        "&:hover": {
+          display: "inline-block",
+        },
       }}
-      onMouseLeave={() => displayMenuHandler(false)}
+      className="shop-cart"
     >
       <List sx={{ maxHeight: "360px", overflow: "auto" }}>
         <ListItem disableGutters>
