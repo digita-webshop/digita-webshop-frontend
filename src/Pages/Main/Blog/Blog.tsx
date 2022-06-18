@@ -3,7 +3,6 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { Grid, Typography } from '@mui/material';
 import IMAGES from '../../../Assets/Images';
-import CustomSeparator from '../../../Components/CustomSeparator/CustomSeparator';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
@@ -13,24 +12,7 @@ import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import InputBase from '@mui/material/InputBase';
-
-const bgStyles = {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundImage: `url(${IMAGES.bgImage})`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  height: {
-    xs: 'auto',
-    sm: '200px',
-  },
-  padding: {
-    xs: 5,
-  },
-};
+import Header from '../../../Components/BlogPage/Components/Header/Header';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -45,17 +27,7 @@ function Blog() {
   return (
     <>
       {/* // * header */}
-      <Grid container sx={bgStyles}>
-        <Typography
-          align='center'
-          color='white'
-          sx={{ fontWeight: 600, fontSize: { xs: '1.2rem', sm: '2.2rem' } }}
-          p={1}
-        >
-          Blog
-        </Typography>
-        <CustomSeparator name='Blog'></CustomSeparator>
-      </Grid>
+      <Header></Header>
       {/* // TODO: Should be optimized and separated into separate components */}
       {/* // * General Container for articles and Search parts, etc */}
       <Grid
