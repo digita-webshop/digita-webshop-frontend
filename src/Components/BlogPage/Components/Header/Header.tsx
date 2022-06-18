@@ -1,6 +1,6 @@
 import IMAGES from '../../../../Assets/Images';
 import { Grid, Typography } from '@mui/material';
-import CustomSeparator from './CustomSeparator/CustomSeparator';
+import BreadCrumbs from './Breadcrumbs/Breadcrumbs';
 
 function Header() {
   const bgStyles = {
@@ -31,7 +31,7 @@ function Header() {
       >
         Blog
       </Typography>
-      <CustomSeparator name='Blog'></CustomSeparator>
+      <BreadCrumbs name='Blog'></BreadCrumbs>
     </Grid>
   );
 }

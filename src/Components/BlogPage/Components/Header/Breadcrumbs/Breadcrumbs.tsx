@@ -4,32 +4,26 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Link as RouterLink } from 'react-router-dom';
 
-// Type of props:
-interface pageName {
+type props = {
   name: string;
-}
+};
 
-function handleClick(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
-  event.preventDefault();
-  //   TODO: link to home page
-}
-
-function CustomSeparator(props: pageName) {
+const BreadCrumbs = ({ name }: props) => {
   const breadcrumbs = [
     <Link
+      component={RouterLink}
+      to='/'
       sx={{ '&:hover': { color: '#f03637', transition: 'all 500ms' } }}
       variant='body2'
       underline='none'
-      key='1'
       color='#fff'
-      href='/'
-      onClick={handleClick}
     >
       Home
     </Link>,
-    <Typography variant="subtitle2" key='2' color='#fff'>
-      {props.name}
+    <Typography variant='subtitle2' color='#fff'>
+      {name}
     </Typography>,
   ];
 
@@ -43,6 +37,6 @@ function CustomSeparator(props: pageName) {
       </Breadcrumbs>
     </Stack>
   );
-}
+};
 
-export default CustomSeparator;
+export default BreadCrumbs;
