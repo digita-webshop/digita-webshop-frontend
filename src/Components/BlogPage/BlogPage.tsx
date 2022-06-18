@@ -13,7 +13,9 @@ function BlogPage() {
         container
         sx={{ py: 6.25, px: '15px', maxWidth: '1200px', mx: 'auto', my: 0 }}
       >
-        <Articles></Articles>
+        <Grid item md={9}>
+          <Articles></Articles>
+        </Grid>
         <Grid item xs={12} md={3}>
           <SearchBar></SearchBar>
           <RecentPosts></RecentPosts>
