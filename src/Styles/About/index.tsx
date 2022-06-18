@@ -11,11 +11,16 @@ export const posterStyle = {
 
 /* ================ Contents ============== */
 export const subjectTitle = {
-  fontSize: {xs: "24px", sm: "24px", md: "35px"},
+  fontSize: {xs: "24px", sm: "28px", md: "35px"},
   textAlign: {xs: "left" ,sm: "left", md: "center"},
   fontWeight: "700",
   color: "#333",
   margin: "3rem 0 2rem 0",
+};
+
+export const contentStyle = {
+  textAlign: "left",
+  width: {sm: "100%",lg:"80%"},
 };
 
 export const titleStyle = {
@@ -59,3 +64,66 @@ export const itemStyle = {
 
 
 
+
+/* ================= TEAM ===================== */
+export const teamTitleStyle = {
+  padding: "8rem 0 1rem 0",
+  color: "#333",
+  fontSize: "32px",
+  fontWeight: "600",
+};
+
+export const teamsStyle = {
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+};
+
+/* ================= TEAM ===================== */
+
+
+
+
+/* ================ Team Member =============== */
+export const avatarWrapper = {
+  position: "relative",
+  "&:hover": {
+    "& .imgBox": {
+      opacity: "0.6",
+      zIndex: "-1",
+    },
+    "& .iconBox": {
+      display: "flex",
+    }
+  }
+}
+
+export const teamItemStyle = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: 1,
+};
+
+export const iconStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%,-50%)",
+  display: "none",
+  zIndex: "1",
+};
+
+export const iconCircle = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "32px",
+  height: "32px",
+  borderRadius: "50%",
+  backgroundColor: "#fff",
+  mr: 1,
+  cursor: "pointer",
+};
+/* ================ Team Member =============== */
