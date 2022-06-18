@@ -214,3 +214,29 @@ export const specialProducts = [
     {id: 8, name: 'SIRUM 360 Holder...', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-8-330x330.jpg',offPrice: 0, price: 12, starRate: 5},
     {id: 9, name: 'SmartPhone & Ipad', image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg',offPrice: 0, price: 75, starRate: 5},
 ]
+export const ContactUsData = [
+    {
+      id: 1,
+      title: "address",
+      subtitle1: "139 Brook Drive South Richmond",
+      subtitle2: "Hill, New York",
+    },
+    {
+      id: 2,
+      title: "email",
+      subtitle1: "digita@support.com",
+      subtitle2: "contact@example.com",
+    },
+    {
+      id: 3,
+      title: "phone",
+      subtitle1: "(+98) 933-085-7045",
+      subtitle2: "(+084) 859-481-3614",
+    },
+    {
+      id: 4,
+      title: "opening time",
+      subtitle1: "Monday – Saturday: 8am – 4pm",
+      subtitle2: "Sunday: 9am – 5pm",
+    },
+  ];
