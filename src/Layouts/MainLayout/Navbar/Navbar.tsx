@@ -101,9 +101,10 @@ function Navbar() {
         sx={{
           backgroundColor: "white",
           position: "fixed ",
+          boxShadow: "4px 2px 4px 1px rgb(0 0 0 / 12%)",
         }}
       >
-        <Collapse in={collapse}>
+        <Collapse in={collapse} timeout={600}>
           <Container
             maxWidth={"xl"}
             sx={{
