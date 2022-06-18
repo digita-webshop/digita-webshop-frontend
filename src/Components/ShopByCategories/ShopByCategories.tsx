@@ -1,43 +1,46 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import {Box, Typography} from "@mui/material";
+import bgCat from '../../Assets/Images/ShopByCat/bg-cats.jpg'
+import iconLoading from '../../Assets/Images/icon-loading.png'
+import {styled} from "@mui/material/styles";
 import Slider from "./Slider/Slider";
 
 function ShopByCategories() {
-  return (
-    <Box
-      sx={{
-        backgroundImage: `url(${require("../../Assets/Image/bg-shop-by-categories.jpg.jpg")})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
-      }}
-      height="100vh"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <Typography
-        variant="h4"
-        color="white"
-        fontWeight={700}
-        textTransform="uppercase"
-        mt={-2}
-        mb={2}
-      >
-        Shop By Categories
-      </Typography>
-      <img
-        src={require("../../Assets/Image/icon-title.png")}
-        alt="icon-shop-by-categories"
-      />
 
-      <Box width="90vw" height="50%" display="flex" alignItems="center">
-        <Slider />
-      </Box>
-    </Box>
-  );
+    const WrapperBox = styled(Box)(({theme}) => ({
+        width: '100%',
+        backgroundAttachment: 'fixed',
+        backgroundImage: `url(${bgCat})`,
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        padding: '175px 5px 205px',
+        display: "flex",
+        justifyContent: "center",
+        ".loading": {
+            alignSelf: "center",
+            marginBottom: '45px'
+        }
+    }))
+
+    const Title = styled(Typography)(({theme}) => ({
+        color: "#FFFFFF",
+        fontSize: '32px',
+        fontWeight: 600,
+        textAlign: 'center',
+        textTransform: 'uppercase',
+        marginBottom: '12px'
+    }));
+
+    return (
+        <WrapperBox>
+            <Box sx={{display: "flex", justifyContent: "center", flexDirection: 'column'}}>
+                <Title variant="h2">Shop By Categories</Title>
+                <img className='loading' src={iconLoading}/>
+                <Slider/>
+            </Box>
+        </WrapperBox>
+    );
 }
 
 export default ShopByCategories;
