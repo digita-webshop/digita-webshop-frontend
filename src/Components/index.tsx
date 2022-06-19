@@ -10,3 +10,4 @@ export { default as CustomBreadcrumbs } from "./CustomBreadcrumbs/CustomBreadcru
 export { default as Pagination } from "./Pagination/Pagination";
 export { default as ShopByCategories } from "./ShopByCategories/ShopByCategories";
 export { default as ContactUsAddress } from "./ContactUsAddress/ContactUsAddress";
+export { default as ContactUsForm } from "./ContactUsForm/ContactUsForm";
