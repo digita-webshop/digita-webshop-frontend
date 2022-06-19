@@ -1,9 +1,7 @@
+import BlogPage from '../../../Components/BlogPage/BlogPage';
+
 function Blog() {
-  return (
-    <>
-      <div>blog page</div>
-    </>
-  );
+  return <BlogPage></BlogPage>;
 }
 
 export default Blog;
