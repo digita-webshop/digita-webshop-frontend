@@ -1,17 +1,17 @@
-import { Grid } from '@mui/material';
-import Header from './Components/Header/Header';
-import Articles from './Components/Articles/Articles';
-import SearchBar from './Components/SideBar/SearchBar/SearchBar';
-import RecentPosts from './Components/SideBar/RecentPosts/RecentPosts';
-import RecentComments from './Components/SideBar/RecentComments/RecentComments';
+import { Grid } from "@mui/material";
+import Articles from "./Components/Articles/Articles";
+import SearchBar from "./Components/SideBar/SearchBar/SearchBar";
+import RecentPosts from "./Components/SideBar/RecentPosts/RecentPosts";
+import RecentComments from "./Components/SideBar/RecentComments/RecentComments";
+import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
 
 function BlogPage() {
   return (
     <>
-      <Header></Header>
+      <CustomBreadcrumbs title={"blog"} />
       <Grid
         container
-        sx={{ py: 6.25, px: '15px', maxWidth: '1200px', mx: 'auto', my: 0 }}
+        sx={{ py: 6.25, px: "15px", maxWidth: "1200px", mx: "auto", my: 0 }}
       >
         <Grid item md={9}>
           <Articles></Articles>
