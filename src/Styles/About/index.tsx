@@ -12,22 +12,22 @@ export const posterStyle = {
 /* ================ Contents ============== */
 export const subjectTitle = {
   fontSize: {xs: "24px", sm: "28px", md: "35px"},
-  textAlign: {xs: "left" ,sm: "left", md: "center"},
+  textAlign: "left",
   fontWeight: "700",
   color: "#333",
-  margin: "3rem 0 2rem 0",
+  margin: "3rem 0 0rem 0",
 };
 
 export const contentStyle = {
   textAlign: "left",
-  width: {sm: "100%",lg:"80%"},
+  width: {sm: "100%",md: "100%",lg:"90%"},
 };
 
 export const titleStyle = {
   padding: "1rem 0",
   fontWeight: "600",
   color: "#333",
-  fontSize: "23px",
+  fontSize: {sm: "19px", md: "23px"},
 };
 /* ================ Contents ============== */
 
@@ -86,6 +86,9 @@ export const teamsStyle = {
 
 /* ================ Team Member =============== */
 export const avatarWrapper = {
+  "& .imgBox": {
+    objectFit: "cover",
+  },
   position: "relative",
   "&:hover": {
     "& .imgBox": {

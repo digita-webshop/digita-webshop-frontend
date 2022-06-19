@@ -1,19 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import {
-  titleStyle,
-  subjectTitle,
-  contentStyle,
-} from "../../../../Styles/About";
+import { titleStyle, contentStyle } from "../../../../Styles/About";
 
 const Contents = () => {
   return (
     <>
-      <Box sx={{ textAlign: "center" }}>
-        <Typography variant="h2" component="h2" sx={subjectTitle}>
-          Find Out More About Butterfly's Birth History And Historic Mission
-        </Typography>
-      </Box>
-      <Box sx={{ display: "flex", justifyContent: {md: "flex-start", lg: "center"}}}>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box sx={contentStyle}>
           <Typography variant="body1" component="p" sx={titleStyle}>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
