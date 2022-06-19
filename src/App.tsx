@@ -8,15 +8,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <MainLayout>
-          <Routes>
+        <Routes>
+          <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/about-us" element={<ContactUs />} />
-            <Route path="/contact-us" element={<AboutUs />} />
-          </Routes>
-        </MainLayout>
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+          </Route>
+        </Routes>
       </Router>
     </ThemeProvider>
   );
