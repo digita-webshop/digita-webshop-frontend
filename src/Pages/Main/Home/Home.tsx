@@ -15,8 +15,7 @@ function Home() {
             <Container maxWidth={"xl"}>
                 <Special/>
             </Container>
-            <WhatClientSay />
-            <OurBlog />
+            <WhatClientSay/>
         </>
     );
 }
