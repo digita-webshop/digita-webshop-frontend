@@ -1,56 +1,51 @@
 import React from "react";
-
-// lib
-import { Box, Container } from "@mui/material";
-
-// components
-import { ReusableTypography } from "../../Styles/WhatClientSay";
+import {Box, Container} from "@mui/material";
+import {Title} from "../../Styles/ShopByCategories";
+import iconLoading from "../../Assets/Images/icon-loading.png";
+import {Navigation, Pagination} from "swiper";
+import {ourBlogData} from "./data";
+import {Swiper, SwiperSlide} from "swiper/react";
 import BlogCard from "./BlogCard/BlogCard";
-// import Slider from "../WhatClientSay/Slider/Slider";
-
-// assets
-// import iconTitle from "../../Assets/Images/WhatClientSayAssets/icon-title.png";
+import {ContainerWrapper, WrapperBox} from "../../Styles/OurBlog";
 
 function OurBlog() {
-  return (
-    <Container
-      maxWidth={false}
-      component="section"
-      sx={{
-        height: "700px",
-        backgroundPosition: "center",
-        display: "grid",
-        placeItems: "center",
-        // marginTop: "-100px",
-        marginBottom: "-100px",
-        position: "relative",
-      }}
-    >
-      <Box maxWidth="xl" sx={{ backgroundColor: "gray" }}>
-        <ReusableTypography
-          fontWeight="600"
-          smallSizeFontSize="20px"
-          mediumSizeFontSize="32px"
-          component="h2"
-          sx={{
-            fontSize: 32,
-            textTransform: "uppercase",
-            textAlign: "center",
-          }}
-        >
-          Our blog
-        </ReusableTypography>
 
-        <Box sx={{ textAlign: "center", mt: 1, mb: 3 }}>
-          {/*<img src={iconTitle} alt="icon" />*/}
-        </Box>
-
-        <Box>
-          <BlogCard />
-        </Box>
-      </Box>
-    </Container>
-  );
+    return (
+        <ContainerWrapper maxWidth={"lg"}>
+            <Title variant="h2" sx={{color: '#333'}}>WHAT Client SAY</Title>
+            <img className='loading' src={iconLoading}/>
+            <Container>
+                <WrapperBox>
+                    <div className="swiper-button-prev"/>
+                    <div className="swiper-button-next"/>
+                    <Swiper
+                        spaceBetween={15}
+                        slidesPerView={1}
+                        slidesPerGroup={1}
+                        loop={true}
+                        navigation={{
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        }}
+                        modules={[Pagination, Navigation]}
+                        breakpoints={{
+                            // when window width is >= 768px
+                            768: {
+                                slidesPerView: 2,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                            },
+                        }}
+                    >
+                        {ourBlogData.map((item) => {
+                            return <SwiperSlide><BlogCard item={item}/></SwiperSlide>
+                        })}
+                    </Swiper>
+                </WrapperBox>
+            </Container>
+        </ContainerWrapper>
+    );
 }
 
 export default OurBlog;
