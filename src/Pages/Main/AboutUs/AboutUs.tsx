@@ -1,10 +1,10 @@
-import { Box } from '@mui/material';
+import { Box } from "@mui/material";
 import About from "../../../Components/About/About";
 
 function AboutUs() {
   return (
     <>
-      <Box sx={{ padding: "1rem" }}>
+      <Box>
         <About />
       </Box>
     </>

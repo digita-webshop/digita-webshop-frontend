@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Container } from "@mui/material";
 import Contents from "./Components/Contents/Contents";
 import Poster from "./Components/Poster/Poster";
 import Services from "./Components/Services/Services";
@@ -7,14 +7,16 @@ import Team from "./Components/Team/Team";
 const About = () => {
   return (
     <>
-      <Poster />
-      <Box maxWidth={"lg"} mx={"auto"}>
+      <Container maxWidth={"xl"}>
+        <Poster />
+      </Container>
+      <Container maxWidth={"lg"}>
         <Contents />
-      </Box>
-      <Box maxWidth={"lg"} mx={"auto"}>
-        <Services />
+      </Container>
+      <Services />
+      <Container maxWidth={"lg"}>
         <Team />
-      </Box>
+      </Container>
     </>
   );
 };
