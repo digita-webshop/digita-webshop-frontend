@@ -8,12 +8,21 @@ export const posterStyle = {
 };
 
 /* ================ Contents ============== */
+export const subjectWrapper = {
+  display: "flex",
+  justifyContent: { sx: "center", lg: "left" },
+  position: "relative",
+  zIndex: "100",
+  marginTop: { lg: "-150px" },
+  marginLeft: { lg: "-2px" },
+};
 export const subjectTitle = {
   fontSize: { xs: "24px", sm: "28px", md: "35px" },
   textAlign: "left",
-  fontWeight: "700",
+  fontWeight: "600",
   color: "#333",
-  margin: "3rem 0 0rem 0",
+  marginTop: "1rem ",
+  marginLeft: { lg: "150px", xl: "19%" },
 };
 
 export const contentStyle = {
