@@ -6,10 +6,10 @@ import { Box, Container } from "@mui/material";
 // components
 import { ReusableTypography } from "../../Styles/WhatClientSay";
 import BlogCard from "./BlogCard/BlogCard";
-import Slider from "../WhatClientSay/Slider/Slider";
+// import Slider from "../WhatClientSay/Slider/Slider";
 
 // assets
-import iconTitle from "../../Assets/Images/WhatClientSayAssets/icon-title.png";
+// import iconTitle from "../../Assets/Images/WhatClientSayAssets/icon-title.png";
 
 function OurBlog() {
   return (
@@ -42,7 +42,7 @@ function OurBlog() {
         </ReusableTypography>
 
         <Box sx={{ textAlign: "center", mt: 1, mb: 3 }}>
-          <img src={iconTitle} alt="icon" />
+          {/*<img src={iconTitle} alt="icon" />*/}
         </Box>
 
         <Box>
