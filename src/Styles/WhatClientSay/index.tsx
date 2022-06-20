@@ -89,7 +89,12 @@ export const Container = styled(Box)(({theme}) => ({
             borderBottom: '2px solid white',
         }
     },
-    ".swiper-button-next,.swiper-button-prev": {
+    ".swiper-button-next-client,.swiper-button-prev-client": {
+        zIndex:'1',
+        position:'absolute',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
         [theme.breakpoints.down("lg")]: {
             display: 'none'
         },
@@ -111,11 +116,11 @@ export const Container = styled(Box)(({theme}) => ({
             }
         }
     },
-    '.swiper-button-next': {
+    '.swiper-button-next-client': {
         right: '-140px',
         top: '40%',
     },
-    ".swiper-button-prev": {
+    ".swiper-button-prev-client": {
         left: '-140px',
         top: '40%',
         transform: ' scale(-1, 1)'
