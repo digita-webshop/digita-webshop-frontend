@@ -1,60 +1,48 @@
 import React from "react";
-
-// lib
-import { Box, Container, Typography } from "@mui/material";
-
-// components
-import { ReusableTypography } from "../../Styles/WhatClientSay";
+import {Box} from "@mui/material";
+import SwiperCore, {Autoplay, Navigation, Pagination} from "swiper";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Title} from "../../Styles/ShopByCategories";
+import iconLoading from "../../Assets/Images/icon-loading.png";
 import ClientCard from "./ClientCard/ClientCard";
-import Slider from "./Slider/Slider";
-
-// assets
-import bgImage from "../../Assets/Images/WhatClientSayAssets/bg-testimonials.jpg";
-import iconTitle from "../../Assets/Images/WhatClientSayAssets/icon-title.png";
-import profileImg from "../../Assets/Images/WhatClientSayAssets/testimonial-2.png";
+import {boxStyles, Container, WrapperBox} from "../../Styles/WhatClientSay";
+import {data} from "./data";
+import {ItemType} from "./ClientCard/Types/Item";
 
 function WhatClientSay() {
-  return (
-    <Container
-      component="section"
-      maxWidth="xl"
-      sx={{
-        height: "700px",
-        backgroundImage: `url(${bgImage})`,
-        backgroundPosition: "center",
-        display: "grid",
-        placeItems: "center",
-        marginTop: "-100px",
-        marginBottom: "-100px",
-        position: "relative",
-      }}
-    >
-      <Box sx={{ textDecoration: "none" }}>
-        <ReusableTypography
-          fontWeight="600"
-          smallSizeFontSize="20px"
-          mediumSizeFontSize="32px"
-          component="h2"
-          sx={{
-            fontSize: 32,
-            textTransform: "uppercase",
-            textAlign: "center",
-            color: "white",
-          }}
-        >
-          what client say
-        </ReusableTypography>
-
-        <Box sx={{ textAlign: "center", mt: 1, mb: 3 }}>
-          <img src={iconTitle} alt="icon" />
-        </Box>
-
-        <Box>
-          <Slider />
-        </Box>
-      </Box>
-    </Container>
-  );
+    SwiperCore.use([Autoplay]);
+    return (
+        <WrapperBox>
+            <Box sx={boxStyles}>
+                <Title variant="h2">WHAT Client SAY</Title>
+                <img className='loading' src={iconLoading}/>
+                <Container>
+                    <div className="swiper-button-prev"/>
+                    <div className="swiper-button-next"/>
+                    <Swiper
+                        autoplay={{delay: 5000, disableOnInteraction: false}}
+                        navigation={{
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        }}
+                        loop={true}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        modules={[Navigation, Pagination]}
+                    >
+                        {data.map((item: ItemType) => {
+                            return (
+                                <SwiperSlide>
+                                    <ClientCard item={item}/>
+                                </SwiperSlide>
+                            );
+                        })}
+                    </Swiper>
+                </Container>
+            </Box>
+        </WrapperBox>
+    );
 }
 
 export default WhatClientSay;
