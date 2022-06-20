@@ -76,6 +76,7 @@ export const teamsStyle = {
 export const avatarWrapper = {
   "& .imgBox": {
     objectFit: "cover",
+    width: "100%",
   },
   position: "relative",
   "&:hover": {
