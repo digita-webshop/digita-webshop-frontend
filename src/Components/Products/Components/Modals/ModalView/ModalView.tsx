@@ -39,12 +39,13 @@ const customBtn = {
   alignItems: "center",
   justifyContent: "center",
   color: "#555",
-  width: "40px",
+  width: "30px",
   cursor: "pointer",
-  height: "80%",
-  background: "#d9d9d9",
+  height: "100%",
   fontSize: "20px",
   userSelect: "none",
+  border: "1px solid #e4e4e4",
+  fontWeight: "700",
 };
 
 const ModalView = ({
@@ -72,8 +73,8 @@ const ModalView = ({
     setColor(e.target.value);
   };
   const handleSizeChange = (e: any) => {
-    setSize(e.target.value)
-  }
+    setSize(e.target.value);
+  };
 
   return (
     <Box sx={modalStyle}>
@@ -95,7 +96,7 @@ const ModalView = ({
         </Box>
         <Box sx={modalRight} className="rightBox">
           <Box sx={closeStyle} onClick={handleClose}>
-            <CloseRoundedIcon fontSize="medium" />
+            <CloseRoundedIcon sx={{ fontSize: "30px" }} />
           </Box>
           <Typography
             variant="h5"
@@ -167,7 +168,7 @@ const ModalView = ({
           <Box
             sx={{ borderBottom: "1px solid #d2d2d2", paddingBottom: "0.5rem" }}
           >
-            <FormControl sx={{mt:1, minWidth: "100%" }} size="small">
+            <FormControl sx={{ mt: 1, minWidth: "100%" }} size="small">
               <InputLabel id="demo-simple-select-helper-label">Size</InputLabel>
               <Select
                 labelId="demo-simple-select-helper-label"
@@ -203,7 +204,20 @@ const ModalView = ({
                 id="outlined-number"
                 type="number"
                 value={value}
-                sx={{ width: "60px" }}
+                sx={{
+                  width: "40px",
+                  height: "100%",
+                  "& .MuiInputBase-root": {
+                    height: "100%",
+                    borderRadius: "0",
+                  },
+                  "& .MuiInputBase-input": {
+                    textAlign: "center",
+                  },
+                  input: {
+                    "&::-webkit-inner-spin-button": { appearance: "none" },
+                  },
+                }}
                 size="small"
               />
               <Box sx={customBtn} onClick={handleIncValue}>
