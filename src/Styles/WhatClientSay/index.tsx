@@ -112,11 +112,11 @@ export const Container = styled(Box)(({theme}) => ({
         }
     },
     '.swiper-button-next': {
-        right: '-75px',
+        right: '-140px',
         top: '40%',
     },
     ".swiper-button-prev": {
-        left: '-75px',
+        left: '-140px',
         top: '40%',
         transform: ' scale(-1, 1)'
     },
