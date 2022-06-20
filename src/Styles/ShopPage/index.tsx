@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  ButtonBase,
-  Link,
-  ListItemText,
-  Slider,
-  Typography,
-} from "@mui/material";
+import { Box, Link, ListItemText, Slider } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const FilterTitleWrapper = styled(Box)(({ theme }) => ({
