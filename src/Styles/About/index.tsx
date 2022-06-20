@@ -1,17 +1,15 @@
 export const posterStyle = {
   height: 500,
   width: "100%",
-  maxHeight: { xs: 200,sm: 300, md: 400, lg: 600},
+  maxHeight: { xs: 200, sm: 300, md: 400, lg: 600 },
   maxWidth: { xs: "100%", md: "100%" },
-  backgroundSize: 'cover',
-  objectFit: 'cover',
+  backgroundSize: "cover",
+  objectFit: "cover",
 };
-
-
 
 /* ================ Contents ============== */
 export const subjectTitle = {
-  fontSize: {xs: "24px", sm: "28px", md: "35px"},
+  fontSize: { xs: "24px", sm: "28px", md: "35px" },
   textAlign: "left",
   fontWeight: "700",
   color: "#333",
@@ -20,19 +18,16 @@ export const subjectTitle = {
 
 export const contentStyle = {
   textAlign: "left",
-  width: {sm: "100%",md: "100%",lg:"90%"},
+  width: { sm: "100%", md: "100%", lg: "90%" },
 };
 
 export const titleStyle = {
   padding: "1rem 0",
   fontWeight: "600",
   color: "#333",
-  fontSize: {sm: "19px", md: "23px"},
+  fontSize: { sm: "19px", md: "23px" },
 };
 /* ================ Contents ============== */
-
-
-
 
 /* ================ Services ================= */
 
@@ -41,17 +36,16 @@ export const serviceStyle = {
   alignItems: "center",
   width: "100%",
   borderRadius: 1,
-  bgcolor: "background.paper",
   color: "text.secondary",
   "& svg": {
     my: 1.5,
   },
 };
 export const serviceTitle = {
-  padding: "8rem 0 1rem 0",
   color: "#333",
-  fontSize: "32px",
+  fontSize: { xs: "26px", sm: "32px" },
   fontWeight: "600",
+  marginBottom: "20px",
 };
 
 export const itemStyle = {
@@ -61,9 +55,6 @@ export const itemStyle = {
   alignItems: "center",
 };
 /* ================ Services ================= */
-
-
-
 
 /* ================= TEAM ===================== */
 export const teamTitleStyle = {
@@ -81,9 +72,6 @@ export const teamsStyle = {
 
 /* ================= TEAM ===================== */
 
-
-
-
 /* ================ Team Member =============== */
 export const avatarWrapper = {
   "& .imgBox": {
@@ -97,9 +85,9 @@ export const avatarWrapper = {
     },
     "& .iconBox": {
       display: "flex",
-    }
-  }
-}
+    },
+  },
+};
 
 export const teamItemStyle = {
   display: "flex",
