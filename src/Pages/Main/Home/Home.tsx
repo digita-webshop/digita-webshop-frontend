@@ -7,13 +7,13 @@ function Home() {
     return (
         <>
             <Header/>
-            {/*<Container maxWidth={"xl"}>*/}
-            {/*    <Products/>*/}
-            {/*</Container>*/}
+            <Container maxWidth={"xl"}>
+                <Products/>
+            </Container>
             <ShopByCategories/>
-            {/*<Container maxWidth={"xl"}>*/}
-            {/*    <Special/>*/}
-            {/*</Container>*/}
+            <Container maxWidth={"xl"}>
+                <Special/>
+            </Container>
             <WhatClientSay/>
             <Container maxWidth={"xl"}>
                 <OurBlog/>
