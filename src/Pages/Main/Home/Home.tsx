@@ -1,6 +1,5 @@
 import {Container} from "@mui/material";
 import {Products, Special, Header, ShopByCategories} from "../../../Components";
-
 import OurBlog from "../../../Components/OurBlog/OurBlog";
 import WhatClientSay from "../../../Components/WhatClientSay/WhatClientSay";
 
@@ -16,6 +15,9 @@ function Home() {
                 <Special/>
             </Container>
             <WhatClientSay/>
+            <Container maxWidth={"xl"}>
+                <OurBlog/>
+            </Container>
         </>
     );
 }
