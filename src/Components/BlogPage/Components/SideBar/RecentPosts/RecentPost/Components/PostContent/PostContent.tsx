@@ -26,9 +26,25 @@ const PostContent = ({ title, date }: props) => {
             },
           }}
         >
-          <Typography variant='subtitle2'>{title}</Typography>
+          <Typography
+            variant='subtitle2'
+            sx={{
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              display: '-webkit-box',
+              WebkitLineClamp: '2',
+              WebkitBoxOrient: 'vertical',
+            }}
+          >
+            {title}
+          </Typography>
         </Link>
-        <Typography variant='body2' color='text.secondary' mt={'6px'}>
+        <Typography
+          variant='body2'
+          color='text.secondary'
+          mt={'6px'}
+          fontSize='10px'
+        >
           {date}
         </Typography>
       </CardContent>
