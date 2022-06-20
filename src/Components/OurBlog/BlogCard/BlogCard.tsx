@@ -1,48 +1,42 @@
-//lib
-import { Box, Typography } from "@mui/material";
+import {Box, Typography} from "@mui/material";
+import {styled} from "@mui/material/styles";
+import Grid from '@mui/material/Grid';
+import PermIdentityIcon from '@mui/icons-material/PermIdentity';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import {Card, iconStyle, textStyle} from "./Styles";
 
-// components
-import { ReusableTypography } from "../../../Styles/WhatClientSay";
+function BlogCard({item}: any) {
 
-//assets
-import BlogImg from "../../../Assets/Images/OurBlog/blog-1.jpg";
-function BlogCard(props: any) {
-  return (
-    <Box
-      sx={{
-        padding: "0 15px",
-        "& a": { textDecoration: "none", color: "black" },
-      }}
-    >
-      <a href="/">
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-          }}
-        >
-          <Box>
-            <img width="370px" src={BlogImg} alt="blog" />
-          </Box>
-          <Box>
+    return (
+        <Card>
             <Box>
-              <Box>
-                <Typography> Peter Giroud</Typography>
-                <Typography></Typography>
-              </Box>
-            </Box>
+                <img src={item.image} alt='profile-image'/>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Box sx={{display: 'flex'}}>
+                            <Box sx={{display: 'flex', alignItems: 'center', marginRight: '12px'}}>
+                                <PermIdentityIcon sx={iconStyle}/>
+                                <Typography sx={textStyle}>{item.username}</Typography>
+                            </Box>
+                            <Box sx={{display: 'flex', alignItems: 'center'}}>
+                                <AccessTimeIcon sx={iconStyle}/>
+                                <Typography sx={textStyle}>{item.time}</Typography>
+                            </Box>
+                        </Box>
 
-            <Box>
-              <Typography component="span" sx={{ fontSize: 20 }}>
-                sample post with format image
-              </Typography>
+                    </Grid>
+                    <Grid item xs={12} sx={{paddingTop: '0!important'}}>
+                        <Typography variant="h2" sx={{
+                            lineHeight: '1.3',
+                            fontSize: '20px',
+                            fontWeight: 500,
+                            color: '#333333'
+                        }}>{item.title}</Typography>
+                    </Grid>
+                </Grid>
             </Box>
-          </Box>
-        </Box>
-      </a>
-    </Box>
-  );
+        </Card>
+    );
 }
 
 export default BlogCard;
