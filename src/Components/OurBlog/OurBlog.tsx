@@ -16,16 +16,14 @@ function OurBlog() {
             <img className='loading' src={iconLoading}/>
             <Container>
                 <WrapperBox>
-                    <div className="swiper-button-prev"/>
-                    <div className="swiper-button-next"/>
                     <Swiper
                         spaceBetween={15}
                         slidesPerView={1}
                         slidesPerGroup={1}
                         loop={true}
                         navigation={{
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
+                            nextEl: '.swiper-button-next-blog',
+                            prevEl: '.swiper-button-prev-blog',
                         }}
                         modules={[Pagination, Navigation]}
                         breakpoints={{
@@ -42,6 +40,8 @@ function OurBlog() {
                             return <SwiperSlide><BlogCard item={item}/></SwiperSlide>
                         })}
                     </Swiper>
+                    <div className="swiper-button-prev-blog"/>
+                    <div className="swiper-button-next-blog"/>
                 </WrapperBox>
             </Container>
         </ContainerWrapper>

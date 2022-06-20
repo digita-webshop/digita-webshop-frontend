@@ -14,22 +14,25 @@ export const WrapperBox = styled(Box)(({theme}) => ({
     ".swiper": {
         width: '100%',
     },
-    ".swiper-button-next,.swiper-button-prev": {
+    ".swiper-button-next-blog,.swiper-button-prev-blog": {
+        cursor:'pointer',
+        zIndex: '1',
+        position: 'absolute',
         border: '1px solid #777777CC',
         width: '43px',
         height: '43px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         '&::after': {
             backgroundImage: `url(${navigationIcon})`,
             backgroundSize: "contain",
             width: '24px',
             height: '24px',
             content: '""',
-            svg: {
-                fill: 'red',
-            }
         },
     },
-    '.swiper-button-next': {
+    '.swiper-button-next-blog': {
         right: '-75px',
         top: '40%',
         [theme.breakpoints.down("lg")]: {
@@ -37,7 +40,8 @@ export const WrapperBox = styled(Box)(({theme}) => ({
             transform: 'translateX(50%)'
         },
     },
-    ".swiper-button-prev": {
+    ".swiper-button-prev-blog": {
+
         left: '-75px',
         top: '40%',
         [theme.breakpoints.down("lg")]: {
