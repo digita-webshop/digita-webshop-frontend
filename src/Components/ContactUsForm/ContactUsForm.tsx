@@ -10,6 +10,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import React, { FormEvent, useState } from "react";
 
 const inputStyles = {
   "& .MuiOutlinedInput-root": {
@@ -18,6 +19,22 @@ const inputStyles = {
   },
 };
 function ContactUsForm() {
+  const [enteredName, setEnteredName] = useState("");
+  const [nameTouched, setNameTouched] = useState(false);
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [emailTouched, setEmailTouched] = useState(false);
+
+  const nameIsValid = enteredName.trim() !== "";
+
+  const emailRegex = /^\S+@\S+\.\S+$/;
+  const emailIsValid = emailRegex.test(enteredEmail);
+
+  const submitHandler = (event: FormEvent) => {
+    event.preventDefault();
+    if (!emailIsValid && !nameIsValid) {
+      return;
+    }
+  };
   return (
     <Box
       sx={{ backgroundColor: "#F5F5F5", padding: "30px", borderRadius: "3px" }}
@@ -30,28 +47,62 @@ function ContactUsForm() {
       >
         SEND US A MESSAGE
       </Typography>
-      <form>
+      <form onSubmit={submitHandler}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <FormLabel
                 color="primary"
-                sx={{ fontSize: "15px", color: "#333333" }}
+                sx={{ fontSize: "15px", color: "#333333", display: "flex" }}
               >
                 Your Name
+                <Typography
+                  component={"span"}
+                  sx={{ color: "#f03637", marginLeft: "2px" }}
+                >
+                  *
+                </Typography>
               </FormLabel>
-              <TextField placeholder="Your Name" sx={inputStyles} />
+              <TextField
+                placeholder="Your Name"
+                sx={inputStyles}
+                value={enteredName}
+                onChange={(e) => setEnteredName(e.target.value)}
+                onBlur={() => setNameTouched(true)}
+              />
+              {!nameIsValid && nameTouched && (
+                <Typography sx={{ color: "#f03637", marginTop: "2px" }}>
+                  name is required
+                </Typography>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <FormLabel
                 color="primary"
-                sx={{ fontSize: "15px", color: "#333333" }}
+                sx={{ fontSize: "15px", color: "#333333", display: "flex" }}
               >
                 Your Email
+                <Typography
+                  component={"span"}
+                  sx={{ color: "#f03637", marginLeft: "2px" }}
+                >
+                  *
+                </Typography>
               </FormLabel>
-              <TextField placeholder="Your Email" sx={inputStyles} />
+              <TextField
+                placeholder="Your Email"
+                sx={inputStyles}
+                value={enteredEmail}
+                onChange={(e) => setEnteredEmail(e.target.value)}
+                onBlur={() => setEmailTouched(true)}
+              />
+              {!emailIsValid && emailTouched && (
+                <Typography sx={{ color: "#f03637", marginTop: "2px" }}>
+                  please enter a valid email address
+                </Typography>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12}>
