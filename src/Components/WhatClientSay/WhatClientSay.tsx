@@ -17,13 +17,13 @@ function WhatClientSay() {
                 <Title variant="h2">WHAT Client SAY</Title>
                 <img className='loading' src={iconLoading}/>
                 <Container>
-                    <div className="swiper-button-prev"/>
-                    <div className="swiper-button-next"/>
+                    <div className="swiper-button-prev-client"/>
+                    <div className="swiper-button-next-client"/>
                     <Swiper
                         autoplay={{delay: 5000, disableOnInteraction: false}}
                         navigation={{
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
+                            nextEl: '.swiper-button-next-client',
+                            prevEl: '.swiper-button-prev-client',
                         }}
                         loop={true}
                         pagination={{
