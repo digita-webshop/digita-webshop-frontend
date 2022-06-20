@@ -26,8 +26,8 @@ export const Container = styled(Box)(({theme}) => ({
         position: 'relative',
         '&::before': {
             animation: 'spin-dot 2s linear infinite',
-            top: '-103%',
-            left: '-103%',
+            top: '-110%',
+            left: '-110%',
             borderRadius: '50%',
             position: 'absolute',
             content: '""',
