@@ -113,8 +113,8 @@ export const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  height: "80%",
-  width: "70%",
+  height: "85%",
+  width: "85%",
   display: "flex",
   bgcolor: "background.paper",
   boxShadow: 24,
@@ -132,7 +132,7 @@ export const modalLeft = {
   overflowY: "scroll",
   "& .img-box": {
     width: "100%",
-    height: "65%",
+    height: { xs: "100%", md: "65%" },
     objectFit: "cover",
   },
   "&::-webkit-scrollbar": {
@@ -185,7 +185,7 @@ export const closeStyle = {
   position: "absolute",
   top: "10px",
   right: "10px",
-  padding: "3px 7px",
+  display: "flex",
   cursor: "pointer",
   backgroundColor: "#f03637",
   transition: "all 0.2s",
