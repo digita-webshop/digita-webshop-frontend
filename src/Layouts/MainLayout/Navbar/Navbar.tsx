@@ -30,7 +30,7 @@ import ShopMenuCard from "./ShopCart/ShopCart";
 import SearchBar from "./SearchBar/SearchBar";
 import { Link, useLocation } from "react-router-dom";
 import ShopMenu from "./ShopMenu/ShopMenu";
-import { Login } from "../../../Components";
+import { Login, Register } from "../../../Components";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -44,6 +44,7 @@ function Navbar() {
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [collapse, setCollapse] = useState(true);
+  const [modalType, setModalType] = useState("login");
 
   const [displayDrawer, setDisplayDrawer] = useState({
     left: false,
@@ -56,7 +57,6 @@ function Navbar() {
   const { pathname } = useLocation();
 
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
-    console.log(event.target.value);
     setSelectedCategory(event.target.value);
   };
 
@@ -81,6 +81,12 @@ function Navbar() {
   };
   const closeLoginModal = () => {
     setOpenLoginModal(false);
+  };
+
+  type Modal = "login" | "register" | "forget";
+
+  const modalTypeToggle = (type: Modal) => {
+    setModalType(type);
   };
 
   useEffect(() => {
@@ -305,7 +311,20 @@ function Navbar() {
       </AppBar>
       <Box sx={{ marginTop: { xs: "64px", md: "90px" } }}></Box>
       <Modal open={openLoginModal} onClose={() => setOpenLoginModal(false)}>
-        <Login closeLoginModal={closeLoginModal} />
+        <>
+          {modalType === "login" && (
+            <Login
+              closeLoginModal={closeLoginModal}
+              modalTypeToggle={modalTypeToggle}
+            />
+          )}
+          {modalType === "register" && (
+            <Register
+              closeLoginModal={closeLoginModal}
+              modalTypeToggle={modalTypeToggle}
+            />
+          )}
+        </>
       </Modal>
     </Fragment>
   );

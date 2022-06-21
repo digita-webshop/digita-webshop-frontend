@@ -14,3 +14,4 @@ export { default as ContactUsForm } from "./ContactUsForm/ContactUsForm";
 export { default as Map } from "./Map/Map";
 export { default as ScrollToTop } from "./ScrollToTop/ScrollToTop";
 export { default as Login } from "./Login/Login";
+export { default as Register } from "./Register/Register";
