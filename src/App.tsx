@@ -3,20 +3,23 @@ import { theme } from "./Theme/theme";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AboutUs, Blog, ContactUs, Home, Shop } from "./Pages/Main";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
+import { ScrollToTop } from "./Components";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-          </Route>
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/contact-us" element={<ContactUs />} />
+            </Route>
+          </Routes>
+        </ScrollToTop>
       </Router>
     </ThemeProvider>
   );
