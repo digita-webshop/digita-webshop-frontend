@@ -10,25 +10,24 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import {
-  errorStyles,
-  forgetPassStyles,
-  FormFooter,
-  FormWrapper,
-} from "../../Styles/Login";
-import Header from "./Header/Header";
+import { FormFooter, FormWrapper } from "../../Styles/Login";
+import Header from "../Login/Header/Header";
 
 type Modal = "login" | "register" | "forget";
+
 type Props = {
   closeLoginModal: () => void;
-  modalTypeToggle: (type: Modal) => void;
+  modalTypeToggle: (trpe: Modal) => void;
 };
-function Login({ closeLoginModal, modalTypeToggle }: Props) {
+
+function Register({ closeLoginModal, modalTypeToggle }: Props) {
   return (
     <FormWrapper>
       <Box sx={{ position: "relative" }}>
-        <Header title={"log in"} subtitle={"Become a part of our community!"} />
-
+        <Header
+          title={"create an account"}
+          subtitle={"Welcome! Register for an account"}
+        />
         {/* <Box sx={errorStyles}>
         <Typography component="span">
           ERROR: Username or password incorrect!
@@ -43,9 +42,23 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
             </Grid>
             <Grid item xs={12}>
               <FormControl fullWidth>
+                <TextField variant="standard" label="Your Password" />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+              <FormControl fullWidth>
                 <TextField
                   variant="standard"
                   label="Password"
+                  type={"password"}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <TextField
+                  variant="standard"
+                  label="Confirm Password"
                   type={"password"}
                 />
               </FormControl>
@@ -70,23 +83,19 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
             </Grid>
             <Grid item xs={12}>
               <Button variant="contained" fullWidth sx={{ height: "46px" }}>
-                LOGIN
+                REGISTER
               </Button>
             </Grid>
           </Grid>
         </form>
-        <Box sx={{ textAlign: "center" }}>
-          <Typography sx={forgetPassStyles}>
-            Forget your password? Get help
-          </Typography>
-        </Box>
+
         <FormFooter>
-          <Typography component="span">Not a Member ?</Typography>
+          <Typography component="span">Already a Member ?</Typography>
           <Button
             variant="contained"
-            onClick={modalTypeToggle.bind(null, "register")}
+            onClick={modalTypeToggle.bind(null, "login")}
           >
-            sign up
+            sign in
           </Button>
         </FormFooter>
         <Box className="close-button" onClick={closeLoginModal}>
@@ -97,4 +106,4 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
   );
 }
 
-export default Login;
+export default Register;
