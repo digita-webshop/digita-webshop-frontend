@@ -11,6 +11,8 @@ export const wishlistTitle = {
   mb: 8,
 };
 
+/* =================== Social =============== */
+
 export const socialBox = {
   margin: "2rem 0",
   display: "flex",
@@ -32,3 +34,5 @@ export const SocialFlex = styled("div")(({ theme }) => ({
     alignItems: "center",
   },
 }));
+
+/* =================== Social =============== */
