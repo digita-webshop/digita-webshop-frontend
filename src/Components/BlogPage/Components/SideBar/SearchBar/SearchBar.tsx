@@ -1,8 +1,7 @@
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 import InputBase from '@mui/material/InputBase';
 import { Typography } from '@mui/material';
-
+import { FilterTitleWrapper } from '../../../../../Styles/ShopPage';
 const SearchBar = () => {
   return (
     <Box
@@ -15,16 +14,16 @@ const SearchBar = () => {
         mr: '15px',
       }}
     >
-      <Typography
-        variant='subtitle2'
-        sx={{
-          pb: '20px',
-        }}
-      >
-        SEARCH
-      </Typography>
-      <Box sx={{ width: 40, borderBottom: '3px solid #f03637' }}></Box>
-      <Divider sx={{ mb: '14px' }} />
+      <FilterTitleWrapper className='underline'>
+        <Typography
+          component={'h4'}
+          variant='body1'
+          color='primary'
+          fontWeight={600}
+        >
+          SEARCH
+        </Typography>
+      </FilterTitleWrapper>
       <InputBase
         sx={{
           backgroundColor: '#e9e9e9',
@@ -33,6 +32,7 @@ const SearchBar = () => {
           px: '12px',
           fontSize: '14px',
           width: '100%',
+          mt: '14px',
         }}
         placeholder='Search'
         inputProps={{ 'aria-label': 'search' }}
