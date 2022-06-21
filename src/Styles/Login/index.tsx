@@ -21,6 +21,12 @@ export const FormWrapper = styled(Box)(({ theme }) => ({
     color: "#333333",
     fontSize: "14px",
   },
+  [theme.breakpoints.down("sm")]: {
+    width: "90%",
+    form: {
+      padding: "10px 30px ",
+    },
+  },
 }));
 export const FormFooter = styled(Box)(({ theme }) => ({
   display: "flex",
