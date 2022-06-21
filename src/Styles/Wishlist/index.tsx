@@ -36,3 +36,38 @@ export const SocialFlex = styled("div")(({ theme }) => ({
 }));
 
 /* =================== Social =============== */
+
+
+
+/* ================== Action Buttons =================== */
+export const ActionWrapper = styled("div")(({ theme }) => ({
+  display: "flex", 
+  justifyContent: "space-between",
+  alignItems: "center",
+  [theme.breakpoints.down("lg")]: {
+    flexDirection: "column",
+    alignItems: "left",
+    gap: 2,
+    "& .action": {
+      width: "100%"
+    }
+  },
+}));
+
+export const ActionLeftBtns = styled("div")(({ theme }) => ({
+  display: "flex", 
+  gap: 2,
+  mb: 1,
+  [theme.breakpoints.down("lg")]: {
+    width: "100%",
+    justifyContent: "flex-start",
+  },
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    Button: {
+      width: "100%",
+    }
+  }
+}));
+
+/* ================== Action Buttons =================== */
