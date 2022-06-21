@@ -27,6 +27,17 @@ export const FormWrapper = styled(Box)(({ theme }) => ({
       padding: "10px 30px ",
     },
   },
+  "& .close-button": {
+    position: "absolute",
+    top: "-15px",
+    right: "15px",
+    cursor: "pointer",
+    transition: "all 100ms ease-in",
+    opacity: ".5",
+    "&:hover": {
+      opacity: "1",
+    },
+  },
 }));
 export const FormFooter = styled(Box)(({ theme }) => ({
   display: "flex",

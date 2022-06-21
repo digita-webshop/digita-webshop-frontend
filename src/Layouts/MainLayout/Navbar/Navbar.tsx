@@ -79,6 +79,9 @@ function Navbar() {
       setDisplayShopMenu(false);
     }
   };
+  const closeLoginModal = () => {
+    setOpenLoginModal(false);
+  };
 
   useEffect(() => {
     let lastScroll = window.scrollY;
@@ -302,7 +305,7 @@ function Navbar() {
       </AppBar>
       <Box sx={{ marginTop: { xs: "64px", md: "90px" } }}></Box>
       <Modal open={openLoginModal} onClose={() => setOpenLoginModal(false)}>
-        <Login />
+        <Login closeLoginModal={closeLoginModal} />
       </Modal>
     </Fragment>
   );
