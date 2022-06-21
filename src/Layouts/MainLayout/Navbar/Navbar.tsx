@@ -30,7 +30,7 @@ import ShopMenuCard from "./ShopCart/ShopCart";
 import SearchBar from "./SearchBar/SearchBar";
 import { Link, useLocation } from "react-router-dom";
 import ShopMenu from "./ShopMenu/ShopMenu";
-import { Login, Register } from "../../../Components";
+import { Login, Register, ResetPassword } from "../../../Components";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -83,7 +83,7 @@ function Navbar() {
     setOpenLoginModal(false);
   };
 
-  type Modal = "login" | "register" | "forget";
+  type Modal = "login" | "register" | "reset";
 
   const modalTypeToggle = (type: Modal) => {
     setModalType(type);
@@ -320,6 +320,12 @@ function Navbar() {
           )}
           {modalType === "register" && (
             <Register
+              closeLoginModal={closeLoginModal}
+              modalTypeToggle={modalTypeToggle}
+            />
+          )}
+          {modalType === "reset" && (
+            <ResetPassword
               closeLoginModal={closeLoginModal}
               modalTypeToggle={modalTypeToggle}
             />

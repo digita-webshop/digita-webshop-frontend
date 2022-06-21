@@ -18,7 +18,7 @@ import {
 } from "../../Styles/Login";
 import Header from "./Header/Header";
 
-type Modal = "login" | "register" | "forget";
+type Modal = "login" | "register" | "reset";
 type Props = {
   closeLoginModal: () => void;
   modalTypeToggle: (type: Modal) => void;
@@ -75,8 +75,12 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
             </Grid>
           </Grid>
         </form>
-        <Box sx={{ textAlign: "center" }}>
-          <Typography sx={forgetPassStyles}>
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Typography
+            component={"div"}
+            sx={forgetPassStyles}
+            onClick={modalTypeToggle.bind(null, "reset")}
+          >
             Forget your password? Get help
           </Typography>
         </Box>
