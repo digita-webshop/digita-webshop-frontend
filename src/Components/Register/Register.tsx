@@ -13,7 +13,7 @@ import {
 import { FormFooter, FormWrapper } from "../../Styles/Login";
 import Header from "../Login/Header/Header";
 
-type Modal = "login" | "register" | "forget";
+type Modal = "login" | "register" | "reset";
 
 type Props = {
   closeLoginModal: () => void;
