@@ -10,11 +10,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { FormEvent, useState } from "react";
 import {
   errorStyles,
   forgetPassStyles,
   FormFooter,
   FormWrapper,
+  inputErrorStyles,
 } from "../../Styles/Login";
 import Header from "./Header/Header";
 
@@ -24,6 +26,37 @@ type Props = {
   modalTypeToggle: (type: Modal) => void;
 };
 function Login({ closeLoginModal, modalTypeToggle }: Props) {
+  const [enteredUsername, setEnteredUsername] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
+  const [validationError, setValidationError] = useState(false);
+
+  //* username validation
+  let usernameIsValid = true;
+  let usernameErrorMessage = "";
+
+  if (enteredUsername.trim() === "") {
+    usernameErrorMessage = "Username is required";
+    usernameIsValid = false;
+  }
+  const usernameError = !usernameIsValid && validationError;
+
+  //* password validation
+  let passwordIsValid = true;
+  let passwordErrorMessage = "";
+
+  if (enteredPassword.trim() === "") {
+    passwordErrorMessage = "Password is required";
+    passwordIsValid = false;
+  }
+  const passwordError = !passwordIsValid && validationError;
+
+  const submitHandler = (event: FormEvent) => {
+    event.preventDefault();
+    if (!usernameIsValid && !passwordIsValid) {
+      setValidationError(true);
+      return;
+    }
+  };
   return (
     <FormWrapper>
       <Box sx={{ position: "relative" }}>
@@ -34,11 +67,24 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
           ERROR: Username or password incorrect!
         </Typography>
       </Box> */}
-        <form>
+        <form onSubmit={submitHandler}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <FormControl fullWidth>
-                <TextField variant="standard" label="Username" />
+                <TextField
+                  variant="standard"
+                  label="Username"
+                  sx={usernameError ? inputErrorStyles : {}}
+                  value={enteredUsername}
+                  onChange={(e) => setEnteredUsername(e.target.value)}
+                />
+                {usernameError && (
+                  <Typography
+                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
+                  >
+                    {usernameErrorMessage}
+                  </Typography>
+                )}
               </FormControl>
             </Grid>
             <Grid item xs={12}>
@@ -47,7 +93,17 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
                   variant="standard"
                   label="Password"
                   type={"password"}
+                  sx={passwordError ? inputErrorStyles : {}}
+                  value={enteredPassword}
+                  onChange={(e) => setEnteredPassword(e.target.value)}
                 />
+                {passwordError && (
+                  <Typography
+                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
+                  >
+                    {passwordErrorMessage}
+                  </Typography>
+                )}
               </FormControl>
             </Grid>
             <Grid item xs={12}>
@@ -69,7 +125,12 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
               </FormGroup>
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" fullWidth sx={{ height: "46px" }}>
+              <Button
+                variant="contained"
+                fullWidth
+                sx={{ height: "46px" }}
+                type={"submit"}
+              >
                 LOGIN
               </Button>
             </Grid>
