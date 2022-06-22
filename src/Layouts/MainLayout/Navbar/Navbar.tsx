@@ -8,6 +8,7 @@ import {
   Fade,
   SelectChangeEvent,
   Collapse,
+  Modal,
 } from "@mui/material";
 import logoImg from "../../../Assets/Images/digita-logo.png";
 import { navbarItems } from "../../../Services/Utils/Data/data";
@@ -29,6 +30,7 @@ import ShopMenuCard from "./ShopCart/ShopCart";
 import SearchBar from "./SearchBar/SearchBar";
 import { Link, useLocation } from "react-router-dom";
 import ShopMenu from "./ShopMenu/ShopMenu";
+import { Login, Register, ResetPassword } from "../../../Components";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -40,7 +42,9 @@ const navbarIcons = {
 function Navbar() {
   const [displayShopMenu, setDisplayShopMenu] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
+  const [openLoginModal, setOpenLoginModal] = useState(false);
   const [collapse, setCollapse] = useState(true);
+  const [modalType, setModalType] = useState("login");
 
   const [displayDrawer, setDisplayDrawer] = useState({
     left: false,
@@ -53,7 +57,6 @@ function Navbar() {
   const { pathname } = useLocation();
 
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
-    console.log(event.target.value);
     setSelectedCategory(event.target.value);
   };
 
@@ -75,6 +78,15 @@ function Navbar() {
     } else {
       setDisplayShopMenu(false);
     }
+  };
+  const closeLoginModal = () => {
+    setOpenLoginModal(false);
+  };
+
+  type Modal = "login" | "register" | "reset";
+
+  const modalTypeToggle = (type: Modal) => {
+    setModalType(type);
   };
 
   useEffect(() => {
@@ -184,17 +196,19 @@ function Navbar() {
                         <SearchOutlined color="primary" sx={navbarIcons} />
                       </Badge>
                     </Box>
-                    <Badge
-                      showZero
-                      sx={{
-                        display: {
-                          xs: "none",
-                          md: "inline-flex",
-                        },
-                      }}
-                    >
-                      <LoginOutlined color="primary" sx={navbarIcons} />
-                    </Badge>
+                    <Box onClick={() => setOpenLoginModal(true)}>
+                      <Badge
+                        showZero
+                        sx={{
+                          display: {
+                            xs: "none",
+                            md: "inline-flex",
+                          },
+                        }}
+                      >
+                        <LoginOutlined color="primary" sx={navbarIcons} />
+                      </Badge>
+                    </Box>
                     <Box display={"flex"} height={"100%"}>
                       <Badge
                         badgeContent={4}
@@ -296,6 +310,35 @@ function Navbar() {
         </Collapse>
       </AppBar>
       <Box sx={{ marginTop: { xs: "64px", md: "90px" } }}></Box>
+      <Modal
+        open={openLoginModal}
+        onClose={() => setOpenLoginModal(false)}
+        closeAfterTransition
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <>
+          {modalType === "login" && (
+            <Login
+              closeLoginModal={closeLoginModal}
+              modalTypeToggle={modalTypeToggle}
+            />
+          )}
+          {modalType === "register" && (
+            <Register
+              closeLoginModal={closeLoginModal}
+              modalTypeToggle={modalTypeToggle}
+            />
+          )}
+          {modalType === "reset" && (
+            <ResetPassword
+              closeLoginModal={closeLoginModal}
+              modalTypeToggle={modalTypeToggle}
+            />
+          )}
+        </>
+      </Modal>
     </Fragment>
   );
 }
