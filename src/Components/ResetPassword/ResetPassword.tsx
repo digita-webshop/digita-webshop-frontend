@@ -7,7 +7,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { FormFooter, FormWrapper } from "../../Styles/Login";
+import { FormEvent, useState } from "react";
+import { FormFooter, FormWrapper, inputErrorStyles } from "../../Styles/Login";
 import Header from "../Login/Header/Header";
 
 type Modal = "login" | "register" | "reset";
@@ -16,6 +17,19 @@ type Props = {
   modalTypeToggle: (type: Modal) => void;
 };
 function ResetPassword({ closeLoginModal, modalTypeToggle }: Props) {
+  const [enteredUsername, setEnteredUsername] = useState("");
+  const [validationError, setValidationError] = useState(false);
+
+  let usernameIsValid = enteredUsername.trim() !== "";
+  const usernameError = !usernameIsValid && validationError;
+
+  const submitHandler = (event: FormEvent) => {
+    event.preventDefault();
+    if (!usernameIsValid) {
+      setValidationError(true);
+      return;
+    }
+  };
   return (
     <FormWrapper>
       <Box sx={{ position: "relative" }}>
@@ -26,16 +40,34 @@ function ResetPassword({ closeLoginModal, modalTypeToggle }: Props) {
             ERROR: Username or password incorrect!
           </Typography>
         </Box> */}
-        <form>
+        <form onSubmit={submitHandler}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <FormControl fullWidth>
-                <TextField variant="standard" label="Username or Email" />
+                <TextField
+                  variant="standard"
+                  label="Username or Email"
+                  sx={usernameError ? inputErrorStyles : {}}
+                  value={enteredUsername}
+                  onChange={(e) => setEnteredUsername(e.target.value)}
+                />
+                {usernameError && (
+                  <Typography
+                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
+                  >
+                    this field is required
+                  </Typography>
+                )}
               </FormControl>
             </Grid>
 
             <Grid item xs={12}>
-              <Button variant="contained" fullWidth sx={{ height: "46px" }}>
+              <Button
+                variant="contained"
+                fullWidth
+                sx={{ height: "46px" }}
+                type={"submit"}
+              >
                 SEND MY PASSWORD
               </Button>
             </Grid>
