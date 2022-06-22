@@ -10,7 +10,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import {
   errorStyles,
   FormFooter,
@@ -31,8 +31,12 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
   const [usernameTouched, setUsernameTouched] = useState(false);
   const [enteredEmail, setEnteredEmail] = useState("");
   const [emailTouched, setEmailTouched] = useState(false);
+  const [enteredPassword, setEnteredPassword] = useState("");
+  const [passwordTouched, setPasswordTouched] = useState(false);
+  const [enteredConfirmPassword, setEnteredConfirmPassword] = useState("");
+  const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
 
-  //? username validation
+  //* username validation
   let usernameIsValid = true;
   let usernameErrorMessage = "";
 
@@ -46,7 +50,7 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
   }
   const usernameError = !usernameIsValid && usernameTouched;
 
-  //? email validation
+  //* email validation
   let emailIsValid = true;
   let emailErrorMessage = "";
 
@@ -60,6 +64,42 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
   }
   const emailError = !emailIsValid && emailTouched;
 
+  //* password validation
+  let passwordErrorMessage = ["password should contain at least"];
+  let passwordIsValid = true;
+
+  if (!/[a-zA-Z0-9]{6,}/.test(enteredPassword)) {
+    passwordErrorMessage.push(" 6 characters");
+    passwordIsValid = false;
+  }
+  if (!/(?=.*[A-Z])/.test(enteredPassword)) {
+    passwordErrorMessage.push(" one uppercase");
+    passwordIsValid = false;
+  }
+  if (!/(?=.*\d)/.test(enteredPassword)) {
+    passwordErrorMessage.push(" one digit");
+    passwordIsValid = false;
+  }
+  const passwordError = !passwordIsValid && passwordTouched;
+
+  //* confirm password validation
+  let confirmPasswordErrorMessage = "";
+  let confirmPasswordIsValid = true;
+
+  if (enteredPassword !== enteredConfirmPassword) {
+    confirmPasswordErrorMessage = "passwords must match ";
+    confirmPasswordIsValid = false;
+  }
+  if (enteredConfirmPassword.trim() === "") {
+    confirmPasswordErrorMessage = "confirm password is required ";
+    confirmPasswordIsValid = false;
+  }
+  const confirmPasswordError =
+    !confirmPasswordIsValid && confirmPasswordTouched;
+
+  const submitHandler = (event: FormEvent) => {
+    event.preventDefault();
+  };
   return (
     <FormWrapper>
       <Box sx={{ position: "relative" }}>
@@ -72,7 +112,7 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
             ERROR: Username or password incorrect!
           </Typography>
         </Box> */}
-        <form>
+        <form onSubmit={submitHandler}>
           <Grid container spacing={1.5}>
             <Grid item xs={12}>
               <FormControl fullWidth>
@@ -118,7 +158,18 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
                   variant="standard"
                   label="Password"
                   type={"password"}
+                  sx={passwordError ? inputErrorStyles : {}}
+                  value={enteredPassword}
+                  onChange={(e) => setEnteredPassword(e.target.value)}
+                  onBlur={() => setPasswordTouched(true)}
                 />
+                {passwordError && (
+                  <Typography
+                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
+                  >
+                    {passwordErrorMessage.join(" ")}
+                  </Typography>
+                )}
               </FormControl>
             </Grid>
             <Grid item xs={12}>
@@ -127,7 +178,18 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
                   variant="standard"
                   label="Confirm Password"
                   type={"password"}
+                  sx={confirmPasswordError ? inputErrorStyles : {}}
+                  value={enteredConfirmPassword}
+                  onChange={(e) => setEnteredConfirmPassword(e.target.value)}
+                  onBlur={() => setConfirmPasswordTouched(true)}
                 />
+                {confirmPasswordError && (
+                  <Typography
+                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
+                  >
+                    {confirmPasswordErrorMessage}
+                  </Typography>
+                )}
               </FormControl>
             </Grid>
             <Grid item xs={12}>
@@ -149,7 +211,12 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
               </FormGroup>
             </Grid>
             <Grid item xs={12}>
-              <Button variant="contained" fullWidth sx={{ height: "46px" }}>
+              <Button
+                variant="contained"
+                fullWidth
+                sx={{ height: "46px" }}
+                type={"submit"}
+              >
                 REGISTER
               </Button>
             </Grid>
