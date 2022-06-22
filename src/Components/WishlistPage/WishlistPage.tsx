@@ -7,12 +7,10 @@ import {
   MenuItem,
   Paper,
   Table,
-  TableCell,
-  tableCellClasses,
   TableContainer,
   TableHead,
   TableRow,
-  styled,
+  Checkbox,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
@@ -24,28 +22,10 @@ import {
   wishlistTitle,
   ActionWrapper,
   ActionLeftBtns,
+  StyledTableCell,
+  StyledTableRow,
 } from "../../Styles/Wishlist";
 import SocialBox from "./Components/SocialBox/SocialBox";
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
 
 const WishlistPage = () => {
   const [action, setAction] = useState("Actions");
@@ -94,72 +74,78 @@ const WishlistPage = () => {
           Default Wishlist
         </Typography>
 
-        <div style={{ height: 300, width: "100%" }}>
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell></StyledTableCell>
-                  <StyledTableCell></StyledTableCell>
-                  <StyledTableCell>PRODUCT NAME</StyledTableCell>
-                  <StyledTableCell align="right">UNIT PRICE</StyledTableCell>
-                  <StyledTableCell align="right">DATE ADDED</StyledTableCell>
-                  <StyledTableCell></StyledTableCell>
-                  <StyledTableCell align="right">STOCK STATUS</StyledTableCell>
-                  <StyledTableCell></StyledTableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map(({ id, name, image, status, price, date }) => (
-                  <>
-                    <StyledTableRow key={id}>
-                      <StyledTableCell align="left">
-                        <CloseIcon />
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        <img
-                          src={image}
-                          alt="img"
-                          style={{
-                            width: "60px",
-                            height: "60px",
-                            objectFit: "cover",
-                          }}
-                        />
-                      </StyledTableCell>
-                      <StyledTableCell component="th" scope="row">
-                        {name}
-                      </StyledTableCell>
-                      <StyledTableCell align="right" sx={{ color: "#f03637" }}>
-                        ${price}.00
-                      </StyledTableCell>
-                      <StyledTableCell align="right">{date}</StyledTableCell>
-                      <StyledTableCell align="right">{status}</StyledTableCell>
-                      <StyledTableCell align="right">
-                        {status && (
-                          <Box sx={{ display: "flex", alignItems: "center"}}>
-                            <CheckIcon sx={{mr: 2, fontSize:"18px"}} />
-                            In stock
-                          </Box>
-                        )}
-                      </StyledTableCell>
-                      <StyledTableCell>
-                        <Button
-                          variant="contained"
-                          sx={{ width: "140px", height: "40px" }}
-                        >
-                          ADD TO CART
-                        </Button>
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  </>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </div>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>
+                  <Checkbox sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }} />
+                </StyledTableCell>
+                <StyledTableCell></StyledTableCell>
+                <StyledTableCell></StyledTableCell>
+                <StyledTableCell>PRODUCT NAME</StyledTableCell>
+                <StyledTableCell align="right">UNIT PRICE</StyledTableCell>
+                <StyledTableCell align="right">DATE ADDED</StyledTableCell>
+                <StyledTableCell></StyledTableCell>
+                <StyledTableCell align="right">STOCK STATUS</StyledTableCell>
+                <StyledTableCell></StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map(({ id, name, image, status, price, date }) => (
+                <>
+                  <StyledTableRow key={id}>
+                    <StyledTableCell align="left">
+                      <Checkbox
+                        sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
+                      />
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      <CloseIcon sx={{fontSize: "16px"}} />
+                    </StyledTableCell>
+                    <StyledTableCell align="left">
+                      <img
+                        src={image}
+                        alt="img"
+                        style={{
+                          width: "60px",
+                          height: "60px",
+                          objectFit: "cover",
+                        }}
+                      />
+                    </StyledTableCell>
+                    <StyledTableCell component="th" scope="row">
+                      {name}
+                    </StyledTableCell>
+                    <StyledTableCell align="right" sx={{ color: "#f03637" }}>
+                      ${price}.00
+                    </StyledTableCell>
+                    <StyledTableCell align="right">{date}</StyledTableCell>
+                    <StyledTableCell align="right">{status}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      {status && (
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                          <CheckIcon sx={{ mr: 2, fontSize: "18px" }} />
+                          In stock
+                        </Box>
+                      )}
+                    </StyledTableCell>
+                    <StyledTableCell>
+                      <Button
+                        variant="contained"
+                        sx={{ width: "140px", height: "40px" }}
+                      >
+                        ADD TO CART
+                      </Button>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                </>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
 
-        <hr />
+
         <ActionWrapper>
           <Box
             sx={{
@@ -167,7 +153,7 @@ const WishlistPage = () => {
               width: "100%",
               mb: 1,
               alignItems: "center",
-              gap: 2,
+              gap: 1,
             }}
           >
             <Select

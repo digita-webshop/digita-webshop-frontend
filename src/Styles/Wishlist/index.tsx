@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { styled, TableCell, tableCellClasses, TableRow } from "@mui/material";
 
 export const wrapperStyle = {
   margin: "3rem auto",
@@ -37,11 +37,10 @@ export const SocialFlex = styled("div")(({ theme }) => ({
 
 /* =================== Social =============== */
 
-
-
 /* ================== Action Buttons =================== */
 export const ActionWrapper = styled("div")(({ theme }) => ({
-  display: "flex", 
+  margin: "1rem 0",
+  display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
   [theme.breakpoints.down("lg")]: {
@@ -49,14 +48,14 @@ export const ActionWrapper = styled("div")(({ theme }) => ({
     alignItems: "left",
     gap: 2,
     "& .action": {
-      width: "100%"
-    }
+      width: "100%",
+    },
   },
 }));
 
 export const ActionLeftBtns = styled("div")(({ theme }) => ({
-  display: "flex", 
-  gap: 2,
+  display: "flex",
+  gap: 6,
   mb: 1,
   [theme.breakpoints.down("lg")]: {
     width: "100%",
@@ -66,8 +65,27 @@ export const ActionLeftBtns = styled("div")(({ theme }) => ({
     flexDirection: "column",
     Button: {
       width: "100%",
-    }
-  }
+    },
+  },
 }));
 
 /* ================== Action Buttons =================== */
+
+/* ================== Table =====================  */
+
+export const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: "transparent",
+    color: "#777",
+    fontSize: 17,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 16,
+  },
+}));
+
+export const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  
+}));
+
+/* ================== Table =====================  */
