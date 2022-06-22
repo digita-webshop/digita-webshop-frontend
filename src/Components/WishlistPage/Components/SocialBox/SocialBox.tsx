@@ -14,7 +14,7 @@ import {
 const SocialBox = () => {
   return (
     <>
-      <hr />
+      <hr style={{ border: "0.5pt solid #d5d5d5" }}/>
       <Box sx={socialBox}>
         <SocialFlex>
           <Typography sx={{ color: "#555" }}>Share on</Typography>
