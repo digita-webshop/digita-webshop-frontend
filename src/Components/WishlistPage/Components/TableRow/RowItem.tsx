@@ -14,9 +14,11 @@ interface T {
   price: number;
   date: string;
   status: boolean;
+  onRemove: Function;
 }
 
-const RowItem = ({ id, name, image, status, price, date }: T) => {
+const RowItem = ({ id, name, image, status, price, date, onRemove }: T) => {
+
   return (
     <>
       <StyledTableRow key={id}>
@@ -24,7 +26,7 @@ const RowItem = ({ id, name, image, status, price, date }: T) => {
           <Checkbox sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }} />
         </StyledTableCell>
         <StyledTableCell align="left">
-          <Box sx={closeStyle}>
+          <Box sx={closeStyle} onClick={() => onRemove(id)}>
             <CloseIcon sx={{ fontSize: "16px" }} />
           </Box>
         </StyledTableCell>
