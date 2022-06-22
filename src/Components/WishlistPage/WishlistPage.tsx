@@ -12,8 +12,7 @@ import {
   TableRow,
   Checkbox,
 } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import CheckIcon from "@mui/icons-material/Check";
+import { rows } from "../../Services/Utils/Data/data"
 import TableBody from "@mui/material/TableBody";
 import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
 
@@ -23,43 +22,17 @@ import {
   ActionWrapper,
   ActionLeftBtns,
   StyledTableCell,
-  StyledTableRow,
 } from "../../Styles/Wishlist";
 import SocialBox from "./Components/SocialBox/SocialBox";
+import RowItem from "./Components/TableRow/RowItem";
+
+
 
 const WishlistPage = () => {
   const [action, setAction] = useState("Actions");
   const [cartList, setCartList] = useState([1]);
 
-  function createData(
-    id: number,
-    name: string,
-    image: string,
-    price: number,
-    date: string,
-    status: boolean
-  ) {
-    return { id, name, image, price, date, status };
-  }
 
-  const rows = [
-    createData(
-      1,
-      "Sam Sung Galaxy Note 10 Lite",
-      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
-      52,
-      "June 20, 2022",
-      true
-    ),
-    createData(
-      2,
-      "SmartPhone & Ipad",
-      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg",
-      75,
-      "June 20, 2022",
-      true
-    ),
-  ];
 
   const handleActionChange = (e: any) => {
     setAction(e.target.value);
@@ -92,59 +65,12 @@ const WishlistPage = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(({ id, name, image, status, price, date }) => (
-                <>
-                  <StyledTableRow key={id}>
-                    <StyledTableCell align="left">
-                      <Checkbox
-                        sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
-                      />
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      <CloseIcon sx={{fontSize: "16px"}} />
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                      <img
-                        src={image}
-                        alt="img"
-                        style={{
-                          width: "60px",
-                          height: "60px",
-                          objectFit: "cover",
-                        }}
-                      />
-                    </StyledTableCell>
-                    <StyledTableCell component="th" scope="row">
-                      {name}
-                    </StyledTableCell>
-                    <StyledTableCell align="right" sx={{ color: "#f03637" }}>
-                      ${price}.00
-                    </StyledTableCell>
-                    <StyledTableCell align="right">{date}</StyledTableCell>
-                    <StyledTableCell align="right">{status}</StyledTableCell>
-                    <StyledTableCell align="right">
-                      {status && (
-                        <Box sx={{ display: "flex", alignItems: "center" }}>
-                          <CheckIcon sx={{ mr: 2, fontSize: "18px" }} />
-                          In stock
-                        </Box>
-                      )}
-                    </StyledTableCell>
-                    <StyledTableCell>
-                      <Button
-                        variant="contained"
-                        sx={{ width: "140px", height: "40px" }}
-                      >
-                        ADD TO CART
-                      </Button>
-                    </StyledTableCell>
-                  </StyledTableRow>
-                </>
+              {rows.map(({ id, name, image, price, date, status }) => (
+                <RowItem id={id} name={name} image={image} price={price} date={date} status={status}/>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
-
 
         <ActionWrapper>
           <Box
