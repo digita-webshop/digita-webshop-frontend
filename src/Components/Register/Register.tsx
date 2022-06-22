@@ -29,7 +29,10 @@ type Props = {
 function Register({ closeLoginModal, modalTypeToggle }: Props) {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [usernameTouched, setUsernameTouched] = useState(false);
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [emailTouched, setEmailTouched] = useState(false);
 
+  //? username validation
   let usernameIsValid = true;
   let usernameErrorMessage = "";
 
@@ -42,6 +45,20 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
     usernameIsValid = false;
   }
   const usernameError = !usernameIsValid && usernameTouched;
+
+  //? email validation
+  let emailIsValid = true;
+  let emailErrorMessage = "";
+
+  if (!/^\S+@\S+\.\S+$/.test(enteredEmail)) {
+    emailErrorMessage = "Enter a valid Email";
+    emailIsValid = false;
+  }
+  if (enteredEmail.trim() === "") {
+    emailErrorMessage = "Email is required";
+    emailIsValid = false;
+  }
+  const emailError = !emailIsValid && emailTouched;
 
   return (
     <FormWrapper>
@@ -78,7 +95,21 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
             </Grid>
             <Grid item xs={12}>
               <FormControl fullWidth>
-                <TextField variant="standard" label="Your Password" />
+                <TextField
+                  variant="standard"
+                  label="Your Password"
+                  sx={emailError ? inputErrorStyles : {}}
+                  value={enteredEmail}
+                  onChange={(e) => setEnteredEmail(e.target.value)}
+                  onBlur={() => setEmailTouched(true)}
+                />
+                {emailError && (
+                  <Typography
+                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
+                  >
+                    {emailErrorMessage}
+                  </Typography>
+                )}
               </FormControl>
             </Grid>
             <Grid item xs={12}>
