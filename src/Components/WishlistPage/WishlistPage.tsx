@@ -1,45 +1,85 @@
 import { useState } from "react";
-import { Box, Typography, Button, Select, MenuItem } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  Select,
+  MenuItem,
+  Paper,
+  Table,
+  TableCell,
+  tableCellClasses,
+  TableContainer,
+  TableHead,
+  TableRow,
+  styled,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import CheckIcon from "@mui/icons-material/Check";
+import TableBody from "@mui/material/TableBody";
 import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
+
 import {
   wrapperStyle,
   wishlistTitle,
   ActionWrapper,
-  ActionLeftBtns
+  ActionLeftBtns,
 } from "../../Styles/Wishlist";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import SocialBox from "./Components/SocialBox/SocialBox";
 
-const columns: GridColDef[] = [
-  { field: "productName", headerName: "PRODUCT NAME", width: 400 },
-  { field: "unitPrice", headerName: "UNIT PRICE", width: 200 },
-  {
-    field: "dateAdded",
-    headerName: "DATE ADDED",
-    width: 200,
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
   },
-  { field: "stockStatus", headerName: "STOCK STATUS", width: 350 },
-];
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
 
-const rows = [
-  {
-    id: 1,
-    productName: "Sam Sung Galaxy Note 10 Lite",
-    unitPrice: "$52.00",
-    dateAdded: "june 20,2020",
-    stockStatus: "In stock",
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    backgroundColor: theme.palette.action.hover,
   },
-  {
-    id: 2,
-    productName: "SmartPhone & Ipad",
-    unitPrice: "$72.00",
-    dateAdded: "june 20,2020",
-    stockStatus: "In stock",
+  // hide last border
+  "&:last-child td, &:last-child th": {
+    border: 0,
   },
-];
+}));
 
 const WishlistPage = () => {
   const [action, setAction] = useState("Actions");
+  const [cartList, setCartList] = useState([1]);
+
+  function createData(
+    id: number,
+    name: string,
+    image: string,
+    price: number,
+    date: string,
+    status: boolean
+  ) {
+    return { id, name, image, price, date, status };
+  }
+
+  const rows = [
+    createData(
+      1,
+      "Sam Sung Galaxy Note 10 Lite",
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      52,
+      "June 20, 2022",
+      true
+    ),
+    createData(
+      2,
+      "SmartPhone & Ipad",
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg",
+      75,
+      "June 20, 2022",
+      true
+    ),
+  ];
 
   const handleActionChange = (e: any) => {
     setAction(e.target.value);
@@ -55,38 +95,98 @@ const WishlistPage = () => {
         </Typography>
 
         <div style={{ height: 300, width: "100%" }}>
-          <DataGrid
-            sx={{ border: "none" }}
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            checkboxSelection
-          />
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell></StyledTableCell>
+                  <StyledTableCell></StyledTableCell>
+                  <StyledTableCell>PRODUCT NAME</StyledTableCell>
+                  <StyledTableCell align="right">UNIT PRICE</StyledTableCell>
+                  <StyledTableCell align="right">DATE ADDED</StyledTableCell>
+                  <StyledTableCell></StyledTableCell>
+                  <StyledTableCell align="right">STOCK STATUS</StyledTableCell>
+                  <StyledTableCell></StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map(({ id, name, image, status, price, date }) => (
+                  <>
+                    <StyledTableRow key={id}>
+                      <StyledTableCell align="left">
+                        <CloseIcon />
+                      </StyledTableCell>
+                      <StyledTableCell align="left">
+                        <img
+                          src={image}
+                          alt="img"
+                          style={{
+                            width: "60px",
+                            height: "60px",
+                            objectFit: "cover",
+                          }}
+                        />
+                      </StyledTableCell>
+                      <StyledTableCell component="th" scope="row">
+                        {name}
+                      </StyledTableCell>
+                      <StyledTableCell align="right" sx={{ color: "#f03637" }}>
+                        ${price}.00
+                      </StyledTableCell>
+                      <StyledTableCell align="right">{date}</StyledTableCell>
+                      <StyledTableCell align="right">{status}</StyledTableCell>
+                      <StyledTableCell align="right">
+                        {status && (
+                          <Box sx={{ display: "flex", alignItems: "center"}}>
+                            <CheckIcon sx={{mr: 2, fontSize:"18px"}} />
+                            In stock
+                          </Box>
+                        )}
+                      </StyledTableCell>
+                      <StyledTableCell>
+                        <Button
+                          variant="contained"
+                          sx={{ width: "140px", height: "40px" }}
+                        >
+                          ADD TO CART
+                        </Button>
+                      </StyledTableCell>
+                    </StyledTableRow>
+                  </>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </div>
-
-
-
 
         <hr />
         <ActionWrapper>
-          <Box sx={{ display: "flex",width: "100%", mb: 1, alignItems: "center", gap: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              mb: 1,
+              alignItems: "center",
+              gap: 2,
+            }}
+          >
             <Select
               className="action"
               value={action}
               onChange={handleActionChange}
               displayEmpty
               inputProps={{ "aria-label": "Without label" }}
-              sx={{width: "300px", height: "40px", backgroundColor: "#d2d2d2"}}
+              sx={{
+                width: "290px",
+                height: "40px",
+                backgroundColor: "#e3e3e3",
+              }}
             >
               <MenuItem value="Actions">Actions</MenuItem>
               <MenuItem value="ADD">Add to cart</MenuItem>
               <MenuItem value="REMOVE">Remove</MenuItem>
             </Select>
-            <Button
-              variant="contained"
-              sx={{ width: "160px", height: "40px" }}
-            >
+            <Button variant="contained" sx={{ width: "160px", height: "40px" }}>
               APPLY ACTION
             </Button>
           </Box>
@@ -105,5 +205,4 @@ const WishlistPage = () => {
     </>
   );
 };
-
 export default WishlistPage;
