@@ -10,6 +10,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 import {
   errorStyles,
   FormFooter,
@@ -26,7 +27,22 @@ type Props = {
 };
 
 function Register({ closeLoginModal, modalTypeToggle }: Props) {
-  const usernameIsValid = true;
+  const [enteredUsername, setEnteredUsername] = useState("");
+  const [usernameTouched, setUsernameTouched] = useState(false);
+
+  let usernameIsValid = true;
+  let usernameErrorMessage = "";
+
+  if (!/^[a-zA-Z0-9]+$/.test(enteredUsername)) {
+    usernameErrorMessage = "Enter a valid username";
+    usernameIsValid = false;
+  }
+  if (enteredUsername.trim() === "") {
+    usernameErrorMessage = "Username is required";
+    usernameIsValid = false;
+  }
+  const usernameError = !usernameIsValid && usernameTouched;
+
   return (
     <FormWrapper>
       <Box sx={{ position: "relative" }}>
@@ -46,13 +62,18 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
                 <TextField
                   variant="standard"
                   label="Username"
-                  sx={usernameIsValid ? {} : inputErrorStyles}
+                  sx={usernameError ? inputErrorStyles : {}}
+                  value={enteredUsername}
+                  onChange={(e) => setEnteredUsername(e.target.value)}
+                  onBlur={() => setUsernameTouched(true)}
                 />
-                <Typography
-                  sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
-                >
-                  name is required
-                </Typography>
+                {usernameError && (
+                  <Typography
+                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
+                  >
+                    {usernameErrorMessage}
+                  </Typography>
+                )}
               </FormControl>
             </Grid>
             <Grid item xs={12}>
