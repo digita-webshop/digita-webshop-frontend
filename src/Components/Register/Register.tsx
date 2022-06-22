@@ -2,10 +2,7 @@ import { CloseRounded } from "@mui/icons-material";
 import {
   Box,
   Button,
-  Checkbox,
   FormControl,
-  FormControlLabel,
-  FormGroup,
   Grid,
   TextField,
   Typography,
@@ -192,24 +189,7 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
                 )}
               </FormControl>
             </Grid>
-            <Grid item xs={12}>
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      size="small"
-                      sx={{
-                        "&.Mui-checked": {
-                          color: "#f03637",
-                        },
-                      }}
-                    />
-                  }
-                  sx={{ "& .MuiTypography-root": { fontSize: "14px" } }}
-                  label="Remember Me"
-                />
-              </FormGroup>
-            </Grid>
+
             <Grid item xs={12}>
               <Button
                 variant="contained"
