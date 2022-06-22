@@ -12,7 +12,7 @@ import {
   TableRow,
   Checkbox,
 } from "@mui/material";
-import { rows } from "../../Services/Utils/Data/data"
+import { rows } from "../../Services/Utils/Data/data";
 import TableBody from "@mui/material/TableBody";
 import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
 
@@ -26,13 +26,14 @@ import {
 import SocialBox from "./Components/SocialBox/SocialBox";
 import RowItem from "./Components/TableRow/RowItem";
 
-
-
 const WishlistPage = () => {
   const [action, setAction] = useState("Actions");
-  const [cartList, setCartList] = useState([1]);
+  const [list, setList] = useState(rows);
 
-
+  function handleRemove(id : number) {
+    const newList = list.filter((item) => item.id !== id);
+    setList(newList);
+  }
 
   const handleActionChange = (e: any) => {
     setAction(e.target.value);
@@ -65,8 +66,16 @@ const WishlistPage = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(({ id, name, image, price, date, status }) => (
-                <RowItem id={id} name={name} image={image} price={price} date={date} status={status}/>
+              {list.map(({ id, name, image, price, date, status }) => (
+                <RowItem
+                  id={id}
+                  name={name}
+                  image={image}
+                  price={price}
+                  date={date}
+                  status={status}
+                  onRemove={handleRemove}
+                />
               ))}
             </TableBody>
           </Table>
