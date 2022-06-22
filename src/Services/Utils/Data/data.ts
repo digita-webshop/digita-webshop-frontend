@@ -328,3 +328,8 @@ export const teamData = [
     {id: 4, name: "Darrel French", image: "https://demo-61.woovinapro.com/wp-content/uploads/2022/04/team05.png", job: "Manager"},
     {id: 5, name: "Gabriel Barker", image: "https://demo-61.woovinapro.com/wp-content/uploads/2022/04/team02.png", job: "Designer"},
 ]
+
+export const rows = [
+    { id: 1, name: "Sam Sung Galaxy Note 10 Lite", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", price: 52, date:"June 20, 2022", status: true},
+    { id: 1, name: "Sam Sung Galaxy Note 10 Lite", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", price: 52, date:"June 20, 2022", status: true},
+  ];

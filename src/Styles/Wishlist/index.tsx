@@ -88,4 +88,19 @@ export const StyledTableRow = styled(TableRow)(({ theme }) => ({
   
 }));
 
+export const closeStyle = {
+  width: "30px",
+  height: "30px",
+  display: "flex",
+  borderRadius: "50%",
+  cursor: "pointer",
+  justifyContent: "center",
+  alignItems: "center",
+  transition: "0.2s",
+  "&:hover": {
+    backgroundColor: "#f03637", 
+    color: "#fff",
+  }
+}
+
 /* ================== Table =====================  */
