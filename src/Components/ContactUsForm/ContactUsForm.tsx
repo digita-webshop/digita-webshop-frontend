@@ -43,7 +43,7 @@ function ContactUsForm() {
         variant="h4"
         fontWeight={600}
         marginBottom={4}
-        sx={{ fontSize: { xs: "28px", sm: "32px" } }}
+        sx={{ fontSize: { xs: "28px", sm: " 32px" } }}
       >
         SEND US A MESSAGE
       </Typography>
