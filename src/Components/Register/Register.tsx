@@ -10,7 +10,12 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { FormFooter, FormWrapper } from "../../Styles/Login";
+import {
+  errorStyles,
+  FormFooter,
+  FormWrapper,
+  inputErrorStyles,
+} from "../../Styles/Login";
 import Header from "../Login/Header/Header";
 
 type Modal = "login" | "register" | "reset";
@@ -21,6 +26,7 @@ type Props = {
 };
 
 function Register({ closeLoginModal, modalTypeToggle }: Props) {
+  const usernameIsValid = true;
   return (
     <FormWrapper>
       <Box sx={{ position: "relative" }}>
@@ -29,15 +35,24 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
           subtitle={"Welcome! Register for an account"}
         />
         {/* <Box sx={errorStyles}>
-        <Typography component="span">
-          ERROR: Username or password incorrect!
-        </Typography>
-      </Box> */}
+          <Typography component="span">
+            ERROR: Username or password incorrect!
+          </Typography>
+        </Box> */}
         <form>
-          <Grid container spacing={2}>
+          <Grid container spacing={1.5}>
             <Grid item xs={12}>
               <FormControl fullWidth>
-                <TextField variant="standard" label="Username" />
+                <TextField
+                  variant="standard"
+                  label="Username"
+                  sx={usernameIsValid ? {} : inputErrorStyles}
+                />
+                <Typography
+                  sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
+                >
+                  name is required
+                </Typography>
               </FormControl>
             </Grid>
             <Grid item xs={12}>
