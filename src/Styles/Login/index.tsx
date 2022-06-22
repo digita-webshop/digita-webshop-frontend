@@ -68,3 +68,14 @@ export const forgetPassStyles = {
   transition: "all 100ms ease-in",
   "&:hover": { color: "#f03637" },
 };
+export const inputErrorStyles = {
+  "& .MuiInput-root::before ": {
+    borderBottom: "1px solid #f03637",
+  },
+  "& .MuiInput-root:hover::before": {
+    borderBottom: "2px solid #f03637",
+  },
+  "& .MuiInput-root::after ": {
+    borderBottom: "2px solid #f03637",
+  },
+};
