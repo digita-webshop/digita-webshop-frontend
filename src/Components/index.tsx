@@ -12,3 +12,4 @@ export { default as ShopByCategories } from "./ShopByCategories/ShopByCategories
 export { default as ContactUsAddress } from "./ContactUsAddress/ContactUsAddress";
 export { default as ContactUsForm } from "./ContactUsForm/ContactUsForm";
 export { default as Map } from "./Map/Map";
+export { default as ScrollToTop } from "./ScrollToTop/ScrollToTop";

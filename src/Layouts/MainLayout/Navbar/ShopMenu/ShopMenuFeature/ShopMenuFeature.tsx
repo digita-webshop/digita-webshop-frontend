@@ -21,8 +21,8 @@ function ShopMenuFeature() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                img: { width: { md: "80px", lg: "100px" } },
-                cursor: "pointer",
+                img: { width: { md: "80px", lg: "100px" }, cursor: "pointer" },
+
                 marginBottom: "5px",
               }}
             >
@@ -35,6 +35,7 @@ function ShopMenuFeature() {
                 width: "70%",
                 margin: "auto",
                 lineHeight: "1.2",
+                cursor: "pointer",
               }}
             >
               {item.name}
