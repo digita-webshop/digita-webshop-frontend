@@ -34,6 +34,7 @@ const PostContent = ({ title, date }: props) => {
               display: '-webkit-box',
               WebkitLineClamp: '2',
               WebkitBoxOrient: 'vertical',
+              fontSize: '14px',
             }}
           >
             {title}
@@ -43,7 +44,7 @@ const PostContent = ({ title, date }: props) => {
           variant='body2'
           color='text.secondary'
           mt={'6px'}
-          fontSize='10px'
+          fontSize='11px'
         >
           {date}
         </Typography>
