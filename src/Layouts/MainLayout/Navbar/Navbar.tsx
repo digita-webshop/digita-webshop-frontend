@@ -310,7 +310,14 @@ function Navbar() {
         </Collapse>
       </AppBar>
       <Box sx={{ marginTop: { xs: "64px", md: "90px" } }}></Box>
-      <Modal open={openLoginModal} onClose={() => setOpenLoginModal(false)}>
+      <Modal
+        open={openLoginModal}
+        onClose={() => setOpenLoginModal(false)}
+        closeAfterTransition
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
         <>
           {modalType === "login" && (
             <Login

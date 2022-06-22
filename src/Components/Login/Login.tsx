@@ -31,23 +31,11 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
   const [validationError, setValidationError] = useState(false);
 
   //* username validation
-  let usernameIsValid = true;
-  let usernameErrorMessage = "";
-
-  if (enteredUsername.trim() === "") {
-    usernameErrorMessage = "Username is required";
-    usernameIsValid = false;
-  }
+  let usernameIsValid = enteredUsername.trim() !== "";
   const usernameError = !usernameIsValid && validationError;
 
   //* password validation
-  let passwordIsValid = true;
-  let passwordErrorMessage = "";
-
-  if (enteredPassword.trim() === "") {
-    passwordErrorMessage = "Password is required";
-    passwordIsValid = false;
-  }
+  let passwordIsValid = enteredPassword.trim() !== "";
   const passwordError = !passwordIsValid && validationError;
 
   const submitHandler = (event: FormEvent) => {
@@ -82,7 +70,7 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
                   <Typography
                     sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
                   >
-                    {usernameErrorMessage}
+                    Username is required
                   </Typography>
                 )}
               </FormControl>
@@ -101,7 +89,7 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
                   <Typography
                     sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
                   >
-                    {passwordErrorMessage}
+                    Password is required
                   </Typography>
                 )}
               </FormControl>
