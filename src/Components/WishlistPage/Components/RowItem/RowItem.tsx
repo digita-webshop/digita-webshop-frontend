@@ -18,7 +18,6 @@ interface T {
 }
 
 const RowItem = ({ id, name, image, status, price, date, onRemove }: T) => {
-
   return (
     <>
       <StyledTableRow key={id}>
@@ -48,7 +47,7 @@ const RowItem = ({ id, name, image, status, price, date, onRemove }: T) => {
           ${price}.00
         </StyledTableCell>
         <StyledTableCell align="right">{date}</StyledTableCell>
-        <StyledTableCell align="right">{status}</StyledTableCell>
+        <StyledTableCell>{status}</StyledTableCell>
         <StyledTableCell align="right">
           {status && (
             <Box sx={{ display: "flex", alignItems: "center" }}>

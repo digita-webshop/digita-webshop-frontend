@@ -46,7 +46,7 @@ export const ActionWrapper = styled("div")(({ theme }) => ({
   [theme.breakpoints.down("lg")]: {
     flexDirection: "column",
     alignItems: "left",
-    gap: 2,
+    gap: 12,
     "& .action": {
       width: "100%",
     },
@@ -77,7 +77,7 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "transparent",
     color: "#777",
-    fontSize: 17,
+    fontSize: 16,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 16,
