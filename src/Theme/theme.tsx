@@ -1,37 +1,32 @@
 import { createTheme } from "@mui/material/styles";
 import { Shadows } from "@mui/material/styles/shadows";
-declare module "@mui/material/styles" {
-  interface Theme {
-    status: {
-      danger: React.CSSProperties["color"];
-    };
-  }
+import "@mui/material/styles/createPalette";
 
-  interface Palette {
-    neutral: Palette["primary"];
-  }
-  interface PaletteOptions {
-    neutral: PaletteOptions["primary"];
-  }
-
-  interface PaletteColor {
-    darker?: string;
-  }
-  interface SimplePaletteColorOptions {
-    darker?: string;
-  }
-  interface ThemeOptions {
-    status: {
-      danger: React.CSSProperties["color"];
-    };
+declare module "@mui/material/styles/createPalette" {
+  interface CommonColors {
+    digitaBlack: string;
+    digitaRed: string;
+    digitaGrey: string;
+    digitaGrey1: string;
+    digitaGrey2: string;
+    digitaGrey3: string;
+    digitaGrey4: string;
+    digitaGrey5: string;
   }
 }
 
 export const theme = createTheme({
-  status: {
-    danger: "#e53e3e",
-  },
   palette: {
+    common: {
+      digitaBlack: "#333333",
+      digitaRed: "#f03637",
+      digitaGrey: "#777777",
+      digitaGrey1: "#808080",
+      digitaGrey2: "#C1C4C9CC",
+      digitaGrey3: "#666666",
+      digitaGrey4: "#5454540D",
+      digitaGrey5: "#F5F5F5",
+    },
     primary: {
       main: "#333333",
     },
@@ -40,10 +35,6 @@ export const theme = createTheme({
     },
     error: {
       main: "#f03637",
-    },
-    neutral: {
-      main: "#f03637",
-      contrastText: "#fff",
     },
   },
   typography: {
