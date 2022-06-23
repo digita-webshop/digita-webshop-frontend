@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTheme } from "@mui/material/styles";
 import {
   Box,
   Typography,
@@ -11,6 +12,7 @@ import {
   TableHead,
   TableRow,
   Checkbox,
+  useMediaQuery,
 } from "@mui/material";
 import { rows } from "../../Services/Utils/Data/data";
 import TableBody from "@mui/material/TableBody";
@@ -24,13 +26,16 @@ import {
   StyledTableCell,
 } from "../../Styles/Wishlist";
 import SocialBox from "./Components/SocialBox/SocialBox";
-import RowItem from "./Components/TableRow/RowItem";
+import RowItem from "./Components/RowItem/RowItem";
 
 const WishlistPage = () => {
   const [action, setAction] = useState("Actions");
   const [list, setList] = useState(rows);
 
-  function handleRemove(id : number) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+  function handleRemove(id: number) {
     const newList = list.filter((item) => item.id !== id);
     setList(newList);
   }
@@ -86,7 +91,6 @@ const WishlistPage = () => {
             sx={{
               display: "flex",
               width: "100%",
-              mb: 1,
               alignItems: "center",
               gap: 1,
             }}
@@ -107,8 +111,8 @@ const WishlistPage = () => {
               <MenuItem value="ADD">Add to cart</MenuItem>
               <MenuItem value="REMOVE">Remove</MenuItem>
             </Select>
-            <Button variant="contained" sx={{ width: "160px", height: "40px" }}>
-              APPLY ACTION
+            <Button variant="contained" sx={{ width: "150px", height: "40px" }}>
+              {matches ? "APPLY" : "APPLY ACTION"}
             </Button>
           </Box>
           <ActionLeftBtns>
