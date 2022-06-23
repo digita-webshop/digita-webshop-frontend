@@ -9,7 +9,7 @@ import { ContainerWrapper, WrapperBox } from "../../Styles/OurBlog";
 
 function OurBlog() {
   return (
-    <ContainerWrapper maxWidth={"lg"}>
+    <ContainerWrapper maxWidth={"xl"}>
       <Title variant="h2" sx={{ color: "#333" }}>
         OUR BLOG
       </Title>

@@ -7,7 +7,15 @@ import SpecialCards from "./Components/SpecialCards/SpecialCards";
 
 const Special = () => {
   return (
-    <Container maxWidth={"lg"}>
+
+    <Container maxWidth={"xl"} sx={{ 
+  position: "relative",
+  backgroundColor: "white",
+  marginY: "-120px",
+  width: "96%",
+  zIndex: "10",
+}}>
+    <Container maxWidth={"lg"} sx={{ paddingY: "20px" }}>
       <SpecialHeader />
 
       <Box>
@@ -26,6 +34,7 @@ const Special = () => {
       </Box>
       <SpecialCards />
       <SupportItems />
+    </Container>
     </Container>
   );
 };
