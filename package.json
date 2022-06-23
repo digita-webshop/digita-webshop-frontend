@@ -19,6 +19,7 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-google-maps": "^9.4.5",
+    "react-intersection-observer": "^9.3.4",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "swiper": "^8.2.3",
