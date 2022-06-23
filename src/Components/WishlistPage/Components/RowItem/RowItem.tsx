@@ -1,6 +1,9 @@
-import { Box, Button, Checkbox } from "@mui/material";
+import { Box, Button, Checkbox, useMediaQuery } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
+import { useTheme } from "@mui/material/styles";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 import {
   closeStyle,
   StyledTableCell,
@@ -11,13 +14,26 @@ interface T {
   id: number;
   name: string;
   image: string;
+  offPrice: number;
   price: number;
   date: string;
   status: boolean;
   onRemove: Function;
 }
 
-const RowItem = ({ id, name, image, status, price, date, onRemove }: T) => {
+const RowItem = ({
+  id,
+  name,
+  image,
+  status,
+  offPrice,
+  price,
+  date,
+  onRemove,
+}: T) => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.only("md"));
+
   return (
     <>
       <StyledTableRow key={id}>
@@ -43,12 +59,27 @@ const RowItem = ({ id, name, image, status, price, date, onRemove }: T) => {
         <StyledTableCell component="th" scope="row">
           {name}
         </StyledTableCell>
-        <StyledTableCell align="right" sx={{ color: "#f03637" }}>
-          ${price}.00
+        <StyledTableCell>
+          <Box sx={{display: "flex", alignItems: "center"}}>
+            {offPrice !== 0 && (
+              <Box
+                component="span"
+                sx={{
+                  fontSize: "15px",
+                  marginRight: "0.5rem",
+                  color: "#999",
+                  textDecoration: "line-through",
+                }}
+              >
+                {`$${offPrice}.00`}
+              </Box>
+            )}
+            <Box sx={{ color: "#f03637", fontSize: "15px" }}>${price}.00</Box>
+          </Box>
         </StyledTableCell>
-        <StyledTableCell align="right">{date}</StyledTableCell>
+        <StyledTableCell>{date}</StyledTableCell>
         <StyledTableCell>{status}</StyledTableCell>
-        <StyledTableCell align="right">
+        <StyledTableCell>
           {status && (
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <CheckIcon sx={{ mr: 2, fontSize: "18px" }} />
@@ -56,9 +87,16 @@ const RowItem = ({ id, name, image, status, price, date, onRemove }: T) => {
             </Box>
           )}
         </StyledTableCell>
-        <StyledTableCell>
-          <Button variant="contained" sx={{ width: "140px", height: "40px" }}>
-            ADD TO CART
+        <StyledTableCell align="right">
+          <Button
+            variant="contained"
+            sx={{ width: { md: "35px", lg: "140px" }, height: "35px" }}
+          >
+            {matches ? (
+              <ShoppingCartIcon sx={{ fontSize: "18px" }} />
+            ) : (
+              "ADD TO CART"
+            )}
           </Button>
         </StyledTableCell>
       </StyledTableRow>
