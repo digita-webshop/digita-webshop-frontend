@@ -63,19 +63,20 @@ const WishlistPage = () => {
                 <StyledTableCell></StyledTableCell>
                 <StyledTableCell></StyledTableCell>
                 <StyledTableCell>PRODUCT NAME</StyledTableCell>
-                <StyledTableCell align="right">UNIT PRICE</StyledTableCell>
-                <StyledTableCell align="right">DATE ADDED</StyledTableCell>
+                <StyledTableCell>UNIT PRICE</StyledTableCell>
+                <StyledTableCell>DATE ADDED</StyledTableCell>
                 <StyledTableCell></StyledTableCell>
-                <StyledTableCell align="right">STOCK STATUS</StyledTableCell>
+                <StyledTableCell>STOCK STATUS</StyledTableCell>
                 <StyledTableCell></StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {list.map(({ id, name, image, price, date, status }) => (
+              {list.map(({ id, name, image, offPrice, price, date, status }) => (
                 <RowItem
                   id={id}
                   name={name}
                   image={image}
+                  offPrice={offPrice}
                   price={price}
                   date={date}
                   status={status}

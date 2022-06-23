@@ -330,6 +330,6 @@ export const teamData = [
 ]
 
 export const rows = [
-    { id: 1, name: "Sam Sung Galaxy Note 10 Lite", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", price: 52, date:"June 20, 2022", status: true},
-    { id: 2, name: "SmartPhone & Ipad", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg", price: 75, date:"June 20, 2022", status: true},
+    { id: 1, name: "Sam Sung Galaxy Note 10 Lite", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", offPrice: 62,price: 52, date:"June 20, 2022", status: true},
+    { id: 2, name: "SmartPhone & Ipad", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg", offPrice: 0,price: 75, date:"June 20, 2022", status: true},
   ];
