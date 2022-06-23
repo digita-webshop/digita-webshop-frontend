@@ -4,8 +4,11 @@ import ProductItem from "./Components/ProductItem/ProductItem";
 import BasicBtn from "./Components/Button/BasicBtn";
 import { productData } from "../../Services/Utils/Data/data";
 import ProductCards from "./Components/ProductCards/ProductCards";
+import { useInView } from "react-intersection-observer";
 
 const Products = () => {
+  const { ref, inView } = useInView({ triggerOnce: true });
+
   return (
     <Container
       maxWidth={"xl"}
@@ -16,8 +19,29 @@ const Products = () => {
         width: "96%",
         zIndex: "10",
       }}
+      ref={ref}
     >
-      <Container maxWidth={"lg"} sx={{ paddingBottom: "30px " }}>
+      <Container
+        maxWidth={"lg"}
+        sx={{
+          paddingBottom: "30px ",
+          "&.animation": {
+            animation: (theme) =>
+              `productFadeIn 1000ms ${theme.transitions.easing.easeInOut}`,
+            "@keyframes productFadeIn": {
+              "0%": {
+                opacity: 0,
+                transform: "translateY(30%)",
+              },
+              "100%": {
+                opacity: 1,
+                transform: "translateY(0)",
+              },
+            },
+          },
+        }}
+        className={inView ? "animation" : ""}
+      >
         <ProductHeader />
         <Box>
           <Grid container spacing={{ xs: 2, md: 3 }}>
