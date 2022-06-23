@@ -54,35 +54,45 @@ const WishlistPage = () => {
         </Typography>
 
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <Table aria-label="customized table">
             <TableHead>
               <TableRow>
-                <StyledTableCell>
-                  <Checkbox sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }} />
-                </StyledTableCell>
-                <StyledTableCell></StyledTableCell>
-                <StyledTableCell></StyledTableCell>
-                <StyledTableCell>PRODUCT NAME</StyledTableCell>
-                <StyledTableCell>UNIT PRICE</StyledTableCell>
-                <StyledTableCell>DATE ADDED</StyledTableCell>
-                <StyledTableCell></StyledTableCell>
-                <StyledTableCell>STOCK STATUS</StyledTableCell>
-                <StyledTableCell></StyledTableCell>
+                {matches ? (
+                  <StyledTableCell>PRODUCT</StyledTableCell>
+                ) : (
+                  <>
+                    <StyledTableCell>
+                      <Checkbox
+                        sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
+                      />
+                    </StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
+                    <StyledTableCell>PRODUCT NAME</StyledTableCell>
+                    <StyledTableCell>UNIT PRICE</StyledTableCell>
+                    <StyledTableCell>DATE ADDED</StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
+                    <StyledTableCell>STOCK STATUS</StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
+                  </>
+                )}
               </TableRow>
             </TableHead>
             <TableBody>
-              {list.map(({ id, name, image, offPrice, price, date, status }) => (
-                <RowItem
-                  id={id}
-                  name={name}
-                  image={image}
-                  offPrice={offPrice}
-                  price={price}
-                  date={date}
-                  status={status}
-                  onRemove={handleRemove}
-                />
-              ))}
+              {list.map(
+                ({ id, name, image, offPrice, price, date, status }) => (
+                  <RowItem
+                    id={id}
+                    name={name}
+                    image={image}
+                    offPrice={offPrice}
+                    price={price}
+                    date={date}
+                    status={status}
+                    onRemove={handleRemove}
+                  />
+                )
+              )}
             </TableBody>
           </Table>
         </TableContainer>
