@@ -90,7 +90,7 @@ const RowItem = ({
         <StyledTableCell align="right">
           <Button
             variant="contained"
-            sx={{ width: { md: "35px", lg: "140px" }, height: "35px" }}
+            sx={{ width: { xs: "100%", sm: "100%", md: "35px", lg: "140px" }, height: {sm: "40px", md:"35px"} }}
           >
             {matches ? (
               <ShoppingCartIcon sx={{ fontSize: "18px" }} />

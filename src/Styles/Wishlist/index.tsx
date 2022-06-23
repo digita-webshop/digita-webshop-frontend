@@ -6,9 +6,9 @@ export const wrapperStyle = {
 };
 
 export const wishlistTitle = {
-  fontWeight: "bold",
-  color: "#222",
-  mb: 8,
+  fontWeight: 600,
+  color: "#333",
+  mb: 4,
 };
 
 /* =================== Social =============== */
@@ -79,16 +79,25 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: "#777",
     fontSize: 16,
     padding: "17px 0",
+    [theme.breakpoints.down("md")]: {
+      textAlign: "center",
+    },
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 16,
     padding: "17px 0",
+
+    [theme.breakpoints.down("md")]: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      border: "none",
+    },
   },
 }));
 
-export const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  
-}));
+export const StyledTableRow = styled(TableRow)(({ theme }) => ({}));
 
 export const closeStyle = {
   width: "30px",
@@ -100,9 +109,9 @@ export const closeStyle = {
   alignItems: "center",
   transition: "0.2s",
   "&:hover": {
-    backgroundColor: "#f03637", 
+    backgroundColor: "#f03637",
     color: "#fff",
-  }
-}
+  },
+};
 
 /* ================== Table =====================  */
