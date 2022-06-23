@@ -60,7 +60,7 @@ const RowItem = ({
           {name}
         </StyledTableCell>
         <StyledTableCell>
-          <Box sx={{display: "flex", alignItems: "center"}}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
             {offPrice !== 0 && (
               <Box
                 component="span"
@@ -80,17 +80,24 @@ const RowItem = ({
         <StyledTableCell>{date}</StyledTableCell>
         <StyledTableCell>{status}</StyledTableCell>
         <StyledTableCell>
-          {status && (
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <CheckIcon sx={{ mr: 2, fontSize: "18px" }} />
-              In stock
-            </Box>
-          )}
+          <Box sx={{ display: "flex", alignItems: "center"}}>
+            {matches ? (
+              <CheckIcon sx={{ mr: 1, fontSize: "18px" }} />
+            ) : (
+              <Box>
+                <CheckIcon sx={{ mr: 1, fontSize: "18px" }} />
+                In stock
+              </Box>
+            )}
+          </Box>
         </StyledTableCell>
         <StyledTableCell align="right">
           <Button
             variant="contained"
-            sx={{ width: { xs: "100%", sm: "100%", md: "35px", lg: "140px" }, height: {sm: "40px", md:"35px"} }}
+            sx={{
+              width: { xs: "100%", sm: "100%", md: "35px", lg: "140px" },
+              height: { sm: "40px", md: "35px" },
+            }}
           >
             {matches ? (
               <ShoppingCartIcon sx={{ fontSize: "18px" }} />
