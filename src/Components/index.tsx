@@ -16,3 +16,5 @@ export { default as ScrollToTop } from "./ScrollToTop/ScrollToTop";
 export { default as Login } from "./Login/Login";
 export { default as Register } from "./Register/Register";
 export { default as ResetPassword } from "./ResetPassword/ResetPassword";
+export { default as OurBlog } from "./OurBlog/OurBlog";
+export { default as WhatClientSay } from "./WhatClientSay/WhatClientSay";
