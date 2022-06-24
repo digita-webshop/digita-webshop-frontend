@@ -12,6 +12,7 @@ declare module "@mui/material/styles/createPalette" {
     digitaGrey3: string;
     digitaGrey4: string;
     digitaGrey5: string;
+    digitaGrey6: string;
   }
 }
 
@@ -26,6 +27,7 @@ export const theme = createTheme({
       digitaGrey3: "#666666",
       digitaGrey4: "#5454540D",
       digitaGrey5: "#F5F5F5",
+      digitaGrey6: "#eaeaea",
     },
     primary: {
       main: "#333333",
