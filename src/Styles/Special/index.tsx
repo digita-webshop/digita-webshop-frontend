@@ -63,16 +63,6 @@ export const supportStyle = {
   "&.slideInFromBottom": {
     animation: (theme: any) =>
       `slideInFromBottom 1000ms ${theme.transitions.easing.easeInOut}`,
-    "@keyframes slideInFromBottom": {
-      "0%": {
-        opacity: 0,
-        transform: "translateY(50%)",
-      },
-      "100%": {
-        opacity: 1,
-        transform: "translateY(0)",
-      },
-    },
   },
 };
 
