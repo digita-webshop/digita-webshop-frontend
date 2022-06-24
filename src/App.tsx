@@ -17,7 +17,7 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/contact-us" element={<ContactUs />} />
-                <Route path="/cart" element={<Cart />} />
+              <Route path="/cart" element={<Cart />} />
             </Route>
           </Routes>
         </ScrollToTop>
