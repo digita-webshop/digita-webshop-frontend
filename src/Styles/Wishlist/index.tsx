@@ -92,7 +92,9 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      border: "none",
+      "&:nth-child(-n+7)":{
+        border: "none",
+      }
     },
   },
 }));

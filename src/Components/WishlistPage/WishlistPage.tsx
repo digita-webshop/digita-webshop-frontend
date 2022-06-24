@@ -28,8 +28,11 @@ import {
 import SocialBox from "./Components/SocialBox/SocialBox";
 import RowItem from "./Components/RowItem/RowItem";
 
+/* const ADD = "ADD";
+const REMOVE = "REMOVE"; */
+
 const WishlistPage = () => {
-  const [action, setAction] = useState("Actions");
+  const [action, setAction] = useState("");
   const [list, setList] = useState(rows);
 
   const theme = useTheme();
@@ -42,6 +45,7 @@ const WishlistPage = () => {
 
   const handleActionChange = (e: any) => {
     setAction(e.target.value);
+    console.log(action)
   };
 
   return (
