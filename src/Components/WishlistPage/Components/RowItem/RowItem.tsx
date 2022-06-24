@@ -35,14 +35,21 @@ const RowItem = ({
   const matches = useMediaQuery(theme.breakpoints.only("md"));
 
   const addToCart = () => {
-    console.log("Item added to cart")
-  }
+    console.log("Item added to cart");
+  };
 
   return (
     <>
       <StyledTableRow key={id}>
         <StyledTableCell align="left">
-          <Checkbox sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }} />
+          <Checkbox
+            sx={{
+              color: "#f03637",
+              "&.Mui-checked": {
+                color: "#f03637",
+              },
+            }}
+          />
         </StyledTableCell>
         <StyledTableCell align="left">
           <Box sx={closeStyle} onClick={() => onRemove(id)}>
@@ -84,7 +91,7 @@ const RowItem = ({
         <StyledTableCell>{date}</StyledTableCell>
         <StyledTableCell>{status}</StyledTableCell>
         <StyledTableCell>
-          <Box sx={{ display: "flex", alignItems: "center"}}>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
             {matches ? (
               <CheckIcon sx={{ mr: 1, fontSize: "18px" }} />
             ) : (
