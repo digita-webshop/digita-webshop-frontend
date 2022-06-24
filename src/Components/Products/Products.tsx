@@ -5,6 +5,7 @@ import BasicBtn from "./Components/Button/BasicBtn";
 import { productData } from "../../Services/Utils/Data/data";
 import ProductCards from "./Components/ProductCards/ProductCards";
 import { useInView } from "react-intersection-observer";
+import { subMainContainer } from "../../Styles/Products";
 
 const Products = () => {
   const { ref, inView } = useInView({ triggerOnce: true });
@@ -23,23 +24,7 @@ const Products = () => {
     >
       <Container
         maxWidth={"lg"}
-        sx={{
-          paddingBottom: "30px ",
-          "&.slideInFromBottom": {
-            animation: (theme) =>
-              `slideInFromBottom 1000ms ${theme.transitions.easing.easeInOut}`,
-            "@keyframes slideInFromBottom": {
-              "0%": {
-                opacity: 0,
-                transform: "translateY(50%)",
-              },
-              "100%": {
-                opacity: 1,
-                transform: "translateY(0)",
-              },
-            },
-          },
-        }}
+        sx={subMainContainer}
         className={inView ? "slideInFromBottom" : ""}
       >
         <ProductHeader />
