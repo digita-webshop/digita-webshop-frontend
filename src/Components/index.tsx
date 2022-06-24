@@ -1,8 +1,3 @@
-export { default as ShopCategoriesFilter } from "./ShopCategoriesFilter/ShopCategoriesFilter";
-export { default as ShopColorFilter } from "./ShopColorFilter/ShopColorFilter";
-export { default as ShopPriceFilter } from "./ShopPriceFilter/ShopPriceFilter";
-export { default as ShopFiltersDrawer } from "./ShopFiltersDrawer/ShopFiltersDrawer";
-export { default as ShopToolbar } from "./ShopToolbar/ShopToolbar";
 export { default as Special } from "./Special/Special";
 export { default as Products } from "./Products/Products";
 export { default as Header } from "./Header/Header";
@@ -19,3 +14,4 @@ export { default as ResetPassword } from "./ResetPassword/ResetPassword";
 export { default as OurBlog } from "./OurBlog/OurBlog";
 export { default as WhatClientSay } from "./WhatClientSay/WhatClientSay";
 export { default as Blog } from "./Blog/Blog";
+export { default as Shop } from "./Shop/Shop";

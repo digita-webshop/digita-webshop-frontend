@@ -1,8 +1,8 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
-import { FilterTitleWrapper, PriceSlider } from "../../Styles/ShopPage";
+import { FilterTitleWrapper, PriceSlider } from "../../../Styles/ShopPage";
 
-function ShopPriceFilter({ drawer }: { drawer: boolean }) {
+function PriceFilter({ drawer }: { drawer: boolean }) {
   const [value, setValue] = useState<number[]>([10, 1000]);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
@@ -55,4 +55,4 @@ function ShopPriceFilter({ drawer }: { drawer: boolean }) {
   );
 }
 
-export default ShopPriceFilter;
+export default PriceFilter;
