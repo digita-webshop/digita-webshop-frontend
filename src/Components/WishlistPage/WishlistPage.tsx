@@ -35,7 +35,6 @@ const WishlistPage = () => {
   const [action, setAction] = useState("Actions");
   const [list, setList] = useState(rows);
 
-  
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -44,12 +43,12 @@ const WishlistPage = () => {
   };
 
   const addAllToCart = () => {
-    console.log("All items added to cart")
-  }
+    console.log("All items added to cart");
+  };
 
   const applyAction = () => {
     console.log("Action Applied");
-  }
+  };
 
   function handleRemove(id: number) {
     const newList = list.filter((item) => item.id !== id);
@@ -80,7 +79,12 @@ const WishlistPage = () => {
                   <>
                     <StyledTableCell>
                       <Checkbox
-                        sx={{ "& .MuiSvgIcon-root": { fontSize: 28 } }}
+                        sx={{
+                          color: "#f03637",
+                          "&.Mui-checked": {
+                            color: "#f03637",
+                          },
+                        }}
                       />
                     </StyledTableCell>
                     <StyledTableCell></StyledTableCell>
@@ -139,7 +143,11 @@ const WishlistPage = () => {
               <MenuItem value="ADD">Add to cart</MenuItem>
               <MenuItem value="REMOVE">Remove</MenuItem>
             </Select>
-            <Button variant="contained" sx={{ width: "150px", height: "40px" }} onClick={applyAction}>
+            <Button
+              variant="contained"
+              sx={{ width: "150px", height: "40px" }}
+              onClick={applyAction}
+            >
               {matches ? "APPLY" : "APPLY ACTION"}
             </Button>
           </Box>
@@ -151,7 +159,11 @@ const WishlistPage = () => {
             >
               ADD SELECTED TO CART
             </Button>
-            <Button variant="contained" sx={{ width: "180px", height: "40px" }} onClick={addAllToCart}>
+            <Button
+              variant="contained"
+              sx={{ width: "180px", height: "40px" }}
+              onClick={addAllToCart}
+            >
               ADD ALL TO CART
             </Button>
           </ActionLeftBtns>
