@@ -37,6 +37,9 @@ export const WrapperBox = styled(Box)(({ theme }) => ({
   height: "332px",
   display: "flex",
   justifyContent: "center",
+  "&.slideInFromBottom": {
+    animation: `slideInFromBottom 1000ms ${theme.transitions.easing.easeInOut}`,
+  },
   ".loading": {
     alignSelf: "center",
     marginBottom: "45px",
