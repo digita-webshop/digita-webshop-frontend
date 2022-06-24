@@ -25,13 +25,13 @@ const Products = () => {
         maxWidth={"lg"}
         sx={{
           paddingBottom: "30px ",
-          "&.animation": {
+          "&.slideInFromBottom": {
             animation: (theme) =>
-              `productFadeIn 1000ms ${theme.transitions.easing.easeInOut}`,
-            "@keyframes productFadeIn": {
+              `slideInFromBottom 1000ms ${theme.transitions.easing.easeInOut}`,
+            "@keyframes slideInFromBottom": {
               "0%": {
                 opacity: 0,
-                transform: "translateY(30%)",
+                transform: "translateY(50%)",
               },
               "100%": {
                 opacity: 1,
@@ -40,7 +40,7 @@ const Products = () => {
             },
           },
         }}
-        className={inView ? "animation" : ""}
+        className={inView ? "slideInFromBottom" : ""}
       >
         <ProductHeader />
         <Box>

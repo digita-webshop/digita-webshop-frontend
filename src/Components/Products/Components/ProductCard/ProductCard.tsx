@@ -18,7 +18,7 @@ type Props = {
 const ProductCard = ({ title, name, image, id }: Props) => {
   const { ref, inView } = useInView({ triggerOnce: true });
 
-  const classes = id === 1 ? "leftAnimation" : "rightAnimation";
+  const classes = id === 0 ? "slideInFromLeft" : "slideInFromRight";
   return (
     <AnimatedGrid
       item
