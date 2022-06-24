@@ -24,7 +24,7 @@ function Blog() {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    <Box sx={{ backgroundColor: "white", padding: 0, margin: 0 }}>
+    <Box bgcolor={"white"}>
       <CustomBreadcrumbs title={"blog"} />
       <Grid container sx={{ py: 6.25, maxWidth: "1200px", mx: "auto", my: 0 }}>
         <Grid item md={9}>
