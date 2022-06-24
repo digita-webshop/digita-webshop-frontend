@@ -6,10 +6,17 @@ import { ourBlogData } from "./data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import BlogCard from "./BlogCard/BlogCard";
 import { ContainerWrapper, WrapperBox } from "../../Styles/OurBlog";
+import { useInView } from "react-intersection-observer";
 
 function OurBlog() {
+  const { ref, inView } = useInView({ triggerOnce: true });
+
   return (
-    <ContainerWrapper maxWidth={"xl"}>
+    <ContainerWrapper
+      maxWidth={"xl"}
+      ref={ref}
+      className={inView ? "slideInFromBottom" : ""}
+    >
       <Title variant="h2" sx={{ color: "#333" }}>
         OUR BLOG
       </Title>
