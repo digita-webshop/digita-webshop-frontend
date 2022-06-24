@@ -12,9 +12,9 @@ const BasicBtn = () => {
         margin: "2rem 0",
         animation: (theme) =>
           inView
-            ? `productBtnFadeIn 1500ms ${theme.transitions.easing.easeInOut}`
+            ? `btnSlideInFromBottom 1500ms ${theme.transitions.easing.easeInOut}`
             : "",
-        "@keyframes productBtnFadeIn": {
+        "@keyframes btnSlideInFromBottom": {
           "0%": {
             opacity: 0,
             transform: "translateY(200%)",

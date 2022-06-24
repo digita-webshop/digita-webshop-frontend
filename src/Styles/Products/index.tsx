@@ -250,9 +250,9 @@ export const cardStyle = {
   },
 };
 export const AnimatedGrid = styled(Grid)(({ theme }) => ({
-  "&.leftAnimation": {
-    animation: `leftProductFadIn 1500ms ${theme.transitions.easing.easeInOut}`,
-    "@keyframes leftProductFadIn": {
+  "&.slideInFromLeft": {
+    animation: `slideInFromLeft 1500ms ${theme.transitions.easing.easeInOut}`,
+    "@keyframes slideInFromLeft": {
       "0%": {
         opacity: 0,
         transform: `translateX(-100% )`,
@@ -263,9 +263,9 @@ export const AnimatedGrid = styled(Grid)(({ theme }) => ({
       },
     },
   },
-  "&.rightAnimation": {
-    animation: `rightProductFadIn 1500ms ${theme.transitions.easing.easeInOut}`,
-    "@keyframes rightProductFadIn": {
+  "&.slideInFromRight": {
+    animation: `slideInFromRight 1500ms ${theme.transitions.easing.easeInOut}`,
+    "@keyframes slideInFromRight": {
       "0%": {
         opacity: 0,
         transform: `translateX(100% )`,

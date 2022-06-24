@@ -13,10 +13,10 @@ const ProductCards = () => {
         overflow: "hidden",
       }}
     >
-      {productCardData.map((item) => (
+      {productCardData.map((item, index) => (
         <ProductCard
           key={item.id}
-          id={item.id}
+          id={index}
           title={item.title}
           name={item.name}
           image={item.image}
