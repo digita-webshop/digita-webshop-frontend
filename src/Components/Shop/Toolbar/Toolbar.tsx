@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { FilterList, GridView, TableRows } from "@mui/icons-material";
 import { useState } from "react";
-import { ToolbarButton } from "../../Styles/ShopPage";
+import { ToolbarButton } from "../../../Styles/ShopPage";
 
 type ShopToolbarProps = {
   matches: boolean;
@@ -18,7 +18,7 @@ type ShopToolbarProps = {
   selectedLayout: { grid: boolean; list: boolean };
 };
 
-function ShopToolbar({
+function Toolbar({
   matches,
   toggleDrawer,
   setSelectedLayout,
@@ -152,4 +152,4 @@ function ShopToolbar({
   );
 }
 
-export default ShopToolbar;
+export default Toolbar;

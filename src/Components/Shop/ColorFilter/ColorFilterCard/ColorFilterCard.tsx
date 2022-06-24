@@ -14,7 +14,7 @@ type ColorFilterProps = {
   labelId: string;
   handleToggle: (value: string) => any;
 };
-function ShopColorFilterCard({
+function ColorFilterCard({
   isChecked,
   color,
   labelId,
@@ -94,4 +94,4 @@ function ShopColorFilterCard({
   );
 }
 
-export default ShopColorFilterCard;
+export default ColorFilterCard;

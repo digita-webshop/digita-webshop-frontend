@@ -8,17 +8,17 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { categoriesList } from "../../Services/Utils/Data/data";
-import { FilterTitleWrapper } from "../../Styles/ShopPage";
-import ShopColorFilter from "../ShopColorFilter/ShopColorFilter";
-import ShopPriceFilter from "../ShopPriceFilter/ShopPriceFilter";
+import { categoriesList } from "../../../Services/Utils/Data/data";
+import { FilterTitleWrapper } from "../../../Styles/ShopPage";
+import ColorFilter from "../ColorFilter/ColorFilter";
+import PriceFilter from "../PriceFilter/PriceFilter";
 
 type ShopFiltersDrawerProps = {
   displayDrawer: boolean;
   toggleDrawer: (open: boolean) => void;
 };
 
-function ShopFiltersDrawer({
+function FiltersDrawer({
   displayDrawer,
   toggleDrawer,
 }: ShopFiltersDrawerProps) {
@@ -77,11 +77,11 @@ function ShopFiltersDrawer({
             </Select>
           </FormControl>
         </Box>
-        <ShopColorFilter drawer={false} />
-        <ShopPriceFilter drawer={false} />
+        <ColorFilter drawer={false} />
+        <PriceFilter drawer={false} />
       </Box>
     </Drawer>
   );
 }
 
-export default ShopFiltersDrawer;
+export default FiltersDrawer;

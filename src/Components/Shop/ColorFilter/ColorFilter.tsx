@@ -1,10 +1,10 @@
 import { Box, List, Typography } from "@mui/material";
 import { useState } from "react";
-import { colorFilterData } from "../../Services/Utils/Data/data";
-import { FilterTitleWrapper } from "../../Styles/ShopPage";
-import ShopColorFilterCard from "./ShopColorFilterCard/ShopColorFilterCard";
+import { colorFilterData } from "../../../Services/Utils/Data/data";
+import { FilterTitleWrapper } from "../../../Styles/ShopPage";
+import ColorFilterCard from "./ColorFilterCard/ColorFilterCard";
 
-function ShopColorFilter({ drawer }: { drawer: boolean }) {
+function ColorFilter({ drawer }: { drawer: boolean }) {
   const [checked, setChecked] = useState([""]);
 
   const handleToggle = (value: string) => () => {
@@ -51,7 +51,7 @@ function ShopColorFilter({ drawer }: { drawer: boolean }) {
           const isChecked = checked.indexOf(color) !== -1;
 
           return (
-            <ShopColorFilterCard
+            <ColorFilterCard
               isChecked={isChecked}
               labelId={labelId}
               color={color}
@@ -65,4 +65,4 @@ function ShopColorFilter({ drawer }: { drawer: boolean }) {
   );
 }
 
-export default ShopColorFilter;
+export default ColorFilter;
