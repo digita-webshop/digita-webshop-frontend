@@ -28,15 +28,28 @@ import {
 import SocialBox from "./Components/SocialBox/SocialBox";
 import RowItem from "./Components/RowItem/RowItem";
 
-/* const ADD = "ADD";
-const REMOVE = "REMOVE"; */
+const ADD = "ADD";
+const REMOVE = "REMOVE";
 
 const WishlistPage = () => {
-  const [action, setAction] = useState("");
+  const [action, setAction] = useState("Actions");
   const [list, setList] = useState(rows);
 
+  
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+  const addSelectedToCart = () => {
+    console.log("selected items added to cart");
+  };
+
+  const addAllToCart = () => {
+    console.log("All items added to cart")
+  }
+
+  const applyAction = () => {
+    console.log("Action Applied");
+  }
 
   function handleRemove(id: number) {
     const newList = list.filter((item) => item.id !== id);
@@ -45,8 +58,8 @@ const WishlistPage = () => {
 
   const handleActionChange = (e: any) => {
     setAction(e.target.value);
-    console.log(action)
   };
+  console.log(action);
 
   return (
     <>
@@ -126,15 +139,19 @@ const WishlistPage = () => {
               <MenuItem value="ADD">Add to cart</MenuItem>
               <MenuItem value="REMOVE">Remove</MenuItem>
             </Select>
-            <Button variant="contained" sx={{ width: "150px", height: "40px" }}>
+            <Button variant="contained" sx={{ width: "150px", height: "40px" }} onClick={applyAction}>
               {matches ? "APPLY" : "APPLY ACTION"}
             </Button>
           </Box>
           <ActionLeftBtns>
-            <Button variant="contained" sx={{ width: "220px", height: "40px" }}>
+            <Button
+              variant="contained"
+              sx={{ width: "220px", height: "40px" }}
+              onClick={addSelectedToCart}
+            >
               ADD SELECTED TO CART
             </Button>
-            <Button variant="contained" sx={{ width: "180px", height: "40px" }}>
+            <Button variant="contained" sx={{ width: "180px", height: "40px" }} onClick={addAllToCart}>
               ADD ALL TO CART
             </Button>
           </ActionLeftBtns>

@@ -34,6 +34,10 @@ const RowItem = ({
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.only("md"));
 
+  const addToCart = () => {
+    console.log("Item added to cart")
+  }
+
   return (
     <>
       <StyledTableRow key={id}>
@@ -50,8 +54,8 @@ const RowItem = ({
             src={image}
             alt="img"
             style={{
-              width: "60px",
-              height: "60px",
+              width: "80px",
+              height: "80px",
               objectFit: "cover",
             }}
           />
@@ -98,6 +102,7 @@ const RowItem = ({
               width: { xs: "100%", sm: "100%", md: "35px", lg: "140px" },
               height: { sm: "40px", md: "35px" },
             }}
+            onClick={addToCart}
           >
             {matches ? (
               <ShoppingCartIcon sx={{ fontSize: "18px" }} />
