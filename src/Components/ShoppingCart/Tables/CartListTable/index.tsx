@@ -1,12 +1,10 @@
-import {Box, Button, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import {ImageBox, StyledTableCell} from "../../../../Styles/Cart";
+import {Box, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField} from "@mui/material";
+import {StyledTableCell} from "../../../../Styles/Cart";
 import DynamicButton from "../../DynamicButton/DynamicButton";
 import React, {Dispatch, useEffect, useState} from "react";
-import QuantityInput from "../../QuantityInput";
 import CartItem from "../../Types/CartItemType";
 import {CartListTableInput, columnsData} from "./data";
-import CustomTableRow from "../CartListTableRow";
+import CartListTableRow from "../CartListTableRow";
 
 type Props = {
     cartList: CartItem[];
@@ -41,9 +39,9 @@ const CartListTable = ({cartList, setCartList}: Props) => {
             </TableHead>
             <TableBody>
                 {cartList.map((row, index) => (
-                    <CustomTableRow row={row} index={index} setCartList={setCartList} cartList={cartList}
-                                    setUpdateButtonDisabled={setUpdateButtonDisabled}
-                                    updateButtonDisabled={updateButtonDisabled}
+                    <CartListTableRow row={row} index={index} setCartList={setCartList} cartList={cartList}
+                                      setUpdateButtonDisabled={setUpdateButtonDisabled}
+                                      updateButtonDisabled={updateButtonDisabled}
                     />
                 ))}
                 <TableRow>
