@@ -18,3 +18,4 @@ export { default as Register } from "./Register/Register";
 export { default as ResetPassword } from "./ResetPassword/ResetPassword";
 export { default as OurBlog } from "./OurBlog/OurBlog";
 export { default as WhatClientSay } from "./WhatClientSay/WhatClientSay";
+export { default as Blog } from "./Blog/Blog";

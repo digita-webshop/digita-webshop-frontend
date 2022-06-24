@@ -1,7 +1,7 @@
-import BlogPage from '../../../Components/BlogPage/BlogPage';
+import { Blog as BlogPage } from "../../../Components";
 
 function Blog() {
-  return <BlogPage></BlogPage>;
+  return <BlogPage />;
 }
 
 export default Blog;
