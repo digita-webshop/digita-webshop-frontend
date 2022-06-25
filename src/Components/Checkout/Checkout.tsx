@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Container,
   FormControl,
   FormLabel,
@@ -8,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import OrderTable from "./OrderTable/OrderTable";
 
 const CheckoutInput = styled(TextField)(({ theme }) => ({
   "& .MuiOutlinedInput-root": {
@@ -30,12 +32,12 @@ function Checkout() {
     <Box bgcolor={"white"}>
       <Container maxWidth={"lg"} sx={{ py: "50px" }}>
         <form>
-          <Grid container spacing={2}>
+          <Grid container spacing={5}>
             <Grid item xs={12} md={6}>
               <Grid
                 container
-                spacing={2}
-                sx={{ padding: "30px", border: "2px solid #eaeaea" }}
+                rowSpacing={2}
+                sx={{ padding: "25px", border: "2px solid #eaeaea" }}
               >
                 <Grid item xs={12}>
                   <Box sx={{ borderBottom: "2px solid #eaeaea" }}>
@@ -52,7 +54,8 @@ function Checkout() {
                     </Typography>
                   </Box>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+
+                <Grid item xs={12}>
                   <FormControl fullWidth>
                     <FormLabel
                       color="primary"
@@ -62,18 +65,38 @@ function Checkout() {
                         display: "flex",
                       }}
                     >
-                      Street address
-                      <Typography
+                      Coupon Code
+                      {/* <Typography
                         component={"span"}
                         sx={{ color: "#f03637", marginLeft: "2px" }}
                       >
                         *
-                      </Typography>
+                      </Typography> */}
                     </FormLabel>
-                    <CheckoutInput placeholder="House number and street name" />
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        height: "40px",
+                      }}
+                    >
+                      <CheckoutInput placeholder="" sx={{ width: "65%" }} />
+                      <Button
+                        variant="contained"
+                        sx={{
+                          height: "100%",
+                          textTransform: "uppercase",
+                          width: "32%",
+                          borderRadius: "3px",
+                        }}
+                      >
+                        Apply Coupon
+                      </Button>
+                    </Box>
                   </FormControl>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12}>
                   <FormControl fullWidth>
                     <FormLabel
                       color="primary"
@@ -96,7 +119,32 @@ function Checkout() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={12} md={6}></Grid>
+            <Grid item xs={12} md={6}>
+              <Grid
+                container
+                rowSpacing={2}
+                sx={{ padding: "25px", border: "2px solid #eaeaea" }}
+              >
+                <Grid item xs={12}>
+                  <Box sx={{ borderBottom: "2px solid #eaeaea" }}>
+                    <Typography
+                      component={"h2"}
+                      sx={{
+                        color: "common.digitaBlack",
+                        fontWeight: 500,
+                        fontSize: "14px",
+                        mb: "10px",
+                      }}
+                    >
+                      YOUR ORDER
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <OrderTable />
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
         </form>
       </Container>
