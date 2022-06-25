@@ -4,6 +4,7 @@ import {ImageBox, StyledTableCell} from "../../../../Styles/Cart";
 import CloseIcon from "@mui/icons-material/Close";
 import QuantityInput from "../../QuantityInput";
 import CartItem from "../../Types/CartItemType";
+import {handleRowDelete} from "../../Services";
 
 type Props = {
     row: CartItem;
@@ -12,21 +13,17 @@ type Props = {
     setCartList: Dispatch<React.SetStateAction<CartItem[]>>;
     setUpdateButtonDisabled: Dispatch<React.SetStateAction<boolean>>;
     updateButtonDisabled: boolean
+    values: number[];
+    setValues: React.Dispatch<React.SetStateAction<number[]>>
 }
 
-const CartListTableRow = ({row, index, cartList, setCartList, setUpdateButtonDisabled, updateButtonDisabled}: Props) => {
-    const [quantity, setQuantity] = useState(cartList[index].quantity)
-
-    const handleRowDelete = (index: number) => {
-        setCartList(prevState => {
-            return prevState.filter((item: CartItem, i: number) => i !== index)
-        })
-    }
+const CartListTableRow = ({row, index, cartList, values, setValues, setCartList, setUpdateButtonDisabled, updateButtonDisabled}: Props) => {
+    console.log('CartListTableRow rendered')
 
     return <TableRow key={row.product}>
         <StyledTableCell align="left">
             <Button
-                onClick={() => handleRowDelete(index)}
+                onClick={() => handleRowDelete(index, setCartList)}
                 sx={{
                     border: '1px solid #333333',
                     display: 'flex',
@@ -45,8 +42,7 @@ const CartListTableRow = ({row, index, cartList, setCartList, setUpdateButtonDis
                     }
                 }}
             >
-                <CloseIcon sx={{fontSize: 'inherit', color: '#333333'}}
-                />
+                <CloseIcon sx={{fontSize: 'inherit', color: '#333333'}}/>
             </Button>
         </StyledTableCell>
         <StyledTableCell align="left">
@@ -56,19 +52,19 @@ const CartListTableRow = ({row, index, cartList, setCartList, setUpdateButtonDis
         <StyledTableCell align="left" component="th" scope="row">
             {row.product}
         </StyledTableCell>
-        <StyledTableCell sx={{color: '#f03637'}} align="center">${row.price}</StyledTableCell>
+        <StyledTableCell sx={{color: '#f03637'}} align="center">${row.price.toFixed(2)}</StyledTableCell>
         <StyledTableCell align="left">
             {row.total > 1 ?
                 <QuantityInput setUpdateButtonDisabled={setUpdateButtonDisabled}
                                updateButtonDisabled={updateButtonDisabled} id={index}
-                               quantity={quantity}
-                               setQuantity={setQuantity}
                                cartList={cartList}
+                               values={values}
+                               setValues={setValues}
                 />
                 : row.quantity}</StyledTableCell>
         <StyledTableCell
             align="right"
-            sx={{color: '#f03637'}}>${(quantity * +row.price).toFixed(2)}</StyledTableCell>
+            sx={{color: '#f03637'}}>${(row.quantity * +row.price).toFixed(2)}</StyledTableCell>
     </TableRow>
 }
 

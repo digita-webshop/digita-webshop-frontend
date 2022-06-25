@@ -1,30 +1,24 @@
 import {Button, Paper, Table, TableCell, TableContainer, Typography, TableHead, TableRow, Box} from "@mui/material";
-import React from "react";
-import {StyledTableCell} from "../../../../Styles/Cart";
+import React, {useState} from "react";
+import {CalculateShopping, StyledTableCell, TotalTextStyle} from "../../../../Styles/Cart";
 import DynamicButton from "../../DynamicButton/DynamicButton";
 import CartItem from "../../Types/CartItemType";
 
 type Props = {
-    cartList: CartItem[];
+    total: number
 }
 
-const CartTotalTable = ({cartList}: Props) => {
-    const CalculateShopping = {
-        padding: '0 0 3px 0',
-        borderBottom: '1px solid #333',
-        fontSize: '13px',
-        lineHeight: 1,
-        fontWeight: 'normal',
-        letterSpacing: '0.4px',
-        marginTop: '13px',
-        '&:hover': {
-            background: 'unset',
-            color: '#f03637',
-            borderColor: '#f03637',
-        }
-    }
+const CartTotalTable = ({total}: Props) => {
 
-    const calculateTotal = {}
+    console.log('zzzCartTotalTable rendered')
+
+
+    const TotalTextStyle = {
+        fontSize: '14px',
+        color: '#777',
+        lineHeight: '1.5em',
+        textTransform: 'capitalize'
+    }
 
     return <TableContainer
         sx={{
@@ -50,17 +44,12 @@ const CartTotalTable = ({cartList}: Props) => {
                         borderLeft: '1px solid #ebebeb',
                         borderColor: '#ebebeb',
                         color: '#f03637',
-                    }}>$226.00</TableCell>
+                    }}>${total.toFixed(2)}</TableCell>
                 </TableRow>
                 <TableRow>
                     <StyledTableCell variant="head">Shipping</StyledTableCell>
                     <TableCell sx={{borderLeft: '1px solid #ebebeb', borderColor: '#ebebeb'}}>
-                        <Typography sx={{
-                            fontSize: '14px',
-                            color: '#777',
-                            lineHeight: '1.5em',
-                            textTransform: 'capitalize'
-                        }}>Enter Your Address To View Shipping Options.</Typography>
+                        <Typography sx={TotalTextStyle}>Enter Your Address To View Shipping Options.</Typography>
                         <Button sx={CalculateShopping}>
                             CALCULATE SHIPPING
                         </Button>
@@ -69,14 +58,10 @@ const CartTotalTable = ({cartList}: Props) => {
                 <TableRow>
                     <StyledTableCell sx={{lineHeight: '1.5em'}} variant="head">Total</StyledTableCell>
                     <TableCell sx={{borderLeft: '1px solid #ebebeb', borderColor: '#ebebeb'}}>
-                        <Typography sx={{
-                            fontSize: '14px',
-                            color: '#f03637',
-                            fontWeight: 600,
-                            lineHeight: '1.5em',
-                            textTransform: 'capitalize'
-                        }}>
-                            $226.00
+                        <Typography sx={Object.assign({...TotalTextStyle}, {
+                            fontWeight: 600, color: '#f03637'
+                        })}>
+                            ${total.toFixed(2)}
                         </Typography>
                     </TableCell>
                 </TableRow>
