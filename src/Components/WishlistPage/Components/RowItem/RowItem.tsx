@@ -32,7 +32,7 @@ const RowItem = ({
   onRemove,
 }: T) => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.only("md"));
+  const matches = useMediaQuery(theme.breakpoints.between("sm","md"));
 
   const addToCart = () => {
     console.log("Item added to cart");
@@ -71,12 +71,11 @@ const RowItem = ({
           {name}
         </StyledTableCell>
         <StyledTableCell>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center", fontSize: {md: 12, sm: 12} }}>
             {offPrice !== 0 && (
               <Box
                 component="span"
                 sx={{
-                  fontSize: "15px",
                   marginRight: "0.5rem",
                   color: "#999",
                   textDecoration: "line-through",
@@ -85,7 +84,7 @@ const RowItem = ({
                 {`$${offPrice}.00`}
               </Box>
             )}
-            <Box sx={{ color: "#f03637", fontSize: "15px" }}>${price}.00</Box>
+            <Box sx={{ color: "#f03637" }}>${price}.00</Box>
           </Box>
         </StyledTableCell>
         <StyledTableCell>{date}</StyledTableCell>
@@ -106,7 +105,7 @@ const RowItem = ({
           <Button
             variant="contained"
             sx={{
-              width: { xs: "100%", sm: "100%", md: "35px", lg: "140px" },
+              width: { xs: "100%", sm: "100%", md: "100%", lg: "140px" },
               height: { sm: "40px", md: "35px" },
             }}
             onClick={addToCart}

@@ -36,7 +36,9 @@ const WishlistPage = () => {
   const [list, setList] = useState(rows);
 
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesAction = useMediaQuery(theme.breakpoints.down("md"));
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchesMd = useMediaQuery(theme.breakpoints.only("sm"));
 
   const addSelectedToCart = () => {
     console.log("selected items added to cart");
@@ -74,7 +76,7 @@ const WishlistPage = () => {
             <TableHead>
               <TableRow>
                 {matches ? (
-                  <StyledTableCell>PRODUCT</StyledTableCell>
+                  <StyledTableCell sx={{ fontSize: {xs: "18px !important"}}}>PRODUCT</StyledTableCell>
                 ) : (
                   <>
                     <StyledTableCell>
@@ -91,9 +93,17 @@ const WishlistPage = () => {
                     <StyledTableCell></StyledTableCell>
                     <StyledTableCell>PRODUCT NAME</StyledTableCell>
                     <StyledTableCell>UNIT PRICE</StyledTableCell>
-                    <StyledTableCell>DATE ADDED</StyledTableCell>
+                    {matchesMd ? (
+                      <StyledTableCell>DATE</StyledTableCell>
+                    ) : (
+                      <StyledTableCell>DATE ADDED</StyledTableCell>
+                    )}
                     <StyledTableCell></StyledTableCell>
-                    <StyledTableCell>STOCK STATUS</StyledTableCell>
+                    {matchesMd ? (
+                      <StyledTableCell>STATUS</StyledTableCell>
+                    ) : (
+                      <StyledTableCell>STOCK STATUS</StyledTableCell>
+                    )}
                     <StyledTableCell></StyledTableCell>
                   </>
                 )}
@@ -148,7 +158,7 @@ const WishlistPage = () => {
               sx={{ width: "150px", height: "40px" }}
               onClick={applyAction}
             >
-              {matches ? "APPLY" : "APPLY ACTION"}
+              {matchesAction ? "APPLY" : "APPLY ACTION"}
             </Button>
           </Box>
           <ActionLeftBtns>
