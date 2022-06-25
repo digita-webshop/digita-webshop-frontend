@@ -58,7 +58,7 @@ const DynamicButton = ({icon, title, href, disabled, action, classes}: Props) =>
             {href ? <LinkBtn href={href}>
                     {icon && <ArrowBackIosNewIcon sx={{fontSize: '0.5rem', marginRight: '8px'}}/>}
                     <Typography
-                        sx={Object.assign(styles, {letterSpacing: '0.1em'})}>{title}</Typography>
+                        sx={Object.assign({...styles}, {letterSpacing: '0.1em'})}>{title}</Typography>
                 </LinkBtn> :
                 <BoxBtn onClick={action} classes={{classes}}>
                     {icon && <ArrowBackIosNewIcon sx={{fontSize: '0.5rem', marginRight: '8px'}}/>}

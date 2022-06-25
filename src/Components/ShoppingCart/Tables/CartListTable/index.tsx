@@ -9,18 +9,41 @@ import CartListTableRow from "../CartListTableRow";
 type Props = {
     cartList: CartItem[];
     setCartList: Dispatch<React.SetStateAction<CartItem[]>>;
+    values: number[];
+    setValues: React.Dispatch<React.SetStateAction<number[]>>
+    setTotal: React.Dispatch<React.SetStateAction<number>>
+    total: number
 }
 
-const CartListTable = ({cartList, setCartList}: Props) => {
+const CartListTable = ({cartList, setCartList, values, setValues, setTotal, total}: Props) => {
     const [coupon, setCoupon] = useState('');
     const [updateButtonDisabled, setUpdateButtonDisabled] = useState(true);
+    const [list, setList] = useState<CartItem[]>([]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCoupon(e.target.value)
     };
 
+    console.log('CartListTable rendered')
+
+    useEffect(() => {
+        setList(cartList)
+    }, [cartList])
+
     const handleUpdateCart = () => {
-        console.log('Update cart', cartList)
+
+        const cartClone: CartItem[] = []
+        cartList.map((item, i) => {
+            cartClone.push({...cartList[i], quantity: values[i]})
+        })
+        setCartList(cartClone)
+
+        const total = cartList.reduce((acc,curr)=>{
+            acc += curr.quantity * curr.price;
+            return acc;
+        },0)
+
+        setTotal(total)
     }
 
     const handleApplyCoupon = () => {
@@ -42,6 +65,7 @@ const CartListTable = ({cartList, setCartList}: Props) => {
                     <CartListTableRow row={row} index={index} setCartList={setCartList} cartList={cartList}
                                       setUpdateButtonDisabled={setUpdateButtonDisabled}
                                       updateButtonDisabled={updateButtonDisabled}
+                                      values={values} setValues={setValues}
                     />
                 ))}
                 <TableRow>

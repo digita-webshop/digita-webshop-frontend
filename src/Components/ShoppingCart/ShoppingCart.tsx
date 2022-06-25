@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import DynamicButton from "./DynamicButton/DynamicButton";
 import {
     Box,
@@ -9,31 +9,44 @@ import CartTotalTable from "./Tables/CartTotalTable";
 import CartUpdated from "./CartUpdated";
 
 const ShoppingCart = () => {
-    const [cartUpdated, setCartUpdated] = useState(false);
 
+    console.log('ShoppingCart rendered')
+
+    const [cartUpdated, setCartUpdated] = useState(false);
+    const [values, setValues] = useState<number[]>([])
+    const [total, setTotal] = useState(0);
     const [cartList, setCartList] = useState([
         {
             image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-6.jpg',
             product: 'Microsoft Xbox One SP',
-            price: '82.00',
+            price: 5,
             quantity: 4,
             total: 3,
         },
         {
             image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-6.jpg',
             product: 'Microsoft Xbox One SP',
-            price: '82.00',
+            price: 4,
             quantity: 1,
             total: 3,
         },
         {
             image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7.jpg',
             product: 'Microsoft Xbox One S Blue Grey',
-            price: '82.00',
+            price: 1,
             quantity: 1,
             total: 1,
         }
     ])
+
+    useEffect(() => {
+        const temp: number[] = []
+        cartList.map((item) => {
+            temp.push(item.quantity)
+        })
+        setValues(temp)
+    }, [])
+
 
     return (
         <Container sx={{padding: '50px 15px'}}>
@@ -43,8 +56,9 @@ const ShoppingCart = () => {
                     <DynamicButton icon={true} title={'Return To Shop'} href={'/'}/>
                 </Box> :
                 <Box sx={{display: 'flex'}}>
-                    <CartListTable cartList={cartList} setCartList={setCartList}/>
-                    <CartTotalTable cartList={cartList}/>
+                    <CartListTable cartList={cartList} setTotal={setTotal} total={total} setCartList={setCartList}
+                                   values={values} setValues={setValues}/>
+                    <CartTotalTable total={total}/>
                 </Box>}
         </Container>
     );
