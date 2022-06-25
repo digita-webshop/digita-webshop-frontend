@@ -1,8 +1,28 @@
 import {Box, Typography} from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-import React from "react";
+import React, {Dispatch} from "react";
+import DynamicButton from "../DynamicButton/DynamicButton";
+import CartItem from "../Types/CartItemType";
 
-const CartUpdated = () => {
+export enum UpdateType {
+    Remove = 1,
+    Update,
+}
+
+type Props = {
+    item?: CartItem
+    type?: UpdateType;
+    setCartList: Dispatch<React.SetStateAction<CartItem[]>>;
+}
+
+const CartUpdated = ({item, type, setCartList}: Props) => {
+
+    const handleUndo = () => {
+        setCartList(prevState => {
+            return [...prevState, item as CartItem]
+        })
+    }
+
     return <Box sx={{
         display: 'flex',
         alignItems: 'center',
@@ -19,7 +39,19 @@ const CartUpdated = () => {
             fontSize: '14px',
             color: '#777'
 
-        }}>Cart updated.</Typography>
+        }}>
+            {type === UpdateType.Remove ? `${`“${item?.product}“ removed.`}` : 'Cart updated.'}
+        </Typography>
+        {type === UpdateType.Remove && <Box sx={{marginLeft: 'auto'}}>
+            <DynamicButton
+                action={handleUndo}
+                title={'Undo?'}
+                classes={{
+                    background: '#f03637',
+                    padding: '6px 18px'
+                }
+                }/>
+        </Box>}
     </Box>
 }
 
