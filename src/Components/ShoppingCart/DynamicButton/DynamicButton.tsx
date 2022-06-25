@@ -25,7 +25,10 @@ type Props = {
     href?: string;
     disabled?: boolean;
     action?: (() => void) | undefined;
-    classes?: { padding: string };
+    classes?: {
+        padding?: string,
+        background?: string
+    };
 }
 
 const styles = {
@@ -37,7 +40,7 @@ const styles = {
 const DynamicButton = ({icon, title, href, disabled, action, classes}: Props) => {
 
     const BoxBtn = styled(Box)(({theme}) => ({
-        background: '#333333',
+        background: `${classes ? classes.background : '#333333'}`,
         color: 'white',
         width: '100%',
         boxSizing: 'border-box',
