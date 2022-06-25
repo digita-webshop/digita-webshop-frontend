@@ -3,11 +3,10 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableFooter,
   TableHead,
-  TableRow,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { OrderRow } from "../../../Styles/Checkout";
+
 const cardList = [
   {
     id: 1,
@@ -22,30 +21,7 @@ const cardList = [
     price: 120.0,
   },
 ];
-const OrderRow = styled(TableRow)(({ theme }) => ({
-  td: {
-    "&:first-child": {
-      fontWeight: 600,
-      borderRight: "1px solid #ebebeb",
-    },
-    "&:last-child": {
-      textAlign: "right",
-    },
-  },
-  th: {
-    fontSize: "15px",
-    padding: "20px 16px",
-    fontWeight: 600,
-    color: theme.palette.common.digitaBlack,
 
-    "&:first-child": {
-      borderRight: "1px solid #ebebeb",
-    },
-    "&:last-child": {
-      textAlign: "right",
-    },
-  },
-}));
 function OrderTable() {
   return (
     <TableContainer sx={{ backgroundColor: "common.digitaGrey7" }}>
