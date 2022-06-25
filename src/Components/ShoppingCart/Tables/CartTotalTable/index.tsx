@@ -1,24 +1,13 @@
-import {Button, Paper, Table, TableCell, TableContainer, Typography, TableHead, TableRow, Box} from "@mui/material";
-import React, {useState} from "react";
-import {CalculateShopping, StyledTableCell, TotalTextStyle} from "../../../../Styles/Cart";
+import { Paper, Table, TableCell, TableContainer, Typography, TableRow, Box} from "@mui/material";
+import React from "react";
+import {StyledTableCell, TotalTextStyle} from "../../../../Styles/Cart";
 import DynamicButton from "../../DynamicButton/DynamicButton";
-import CartItem from "../../Types/CartItemType";
 
 type Props = {
     total: number
 }
 
 const CartTotalTable = ({total}: Props) => {
-
-    console.log('zzzCartTotalTable rendered')
-
-
-    const TotalTextStyle = {
-        fontSize: '14px',
-        color: '#777',
-        lineHeight: '1.5em',
-        textTransform: 'capitalize'
-    }
 
     return <TableContainer
         sx={{
@@ -45,15 +34,6 @@ const CartTotalTable = ({total}: Props) => {
                         borderColor: '#ebebeb',
                         color: '#f03637',
                     }}>${total.toFixed(2)}</TableCell>
-                </TableRow>
-                <TableRow>
-                    <StyledTableCell variant="head">Shipping</StyledTableCell>
-                    <TableCell sx={{borderLeft: '1px solid #ebebeb', borderColor: '#ebebeb'}}>
-                        <Typography sx={TotalTextStyle}>Enter Your Address To View Shipping Options.</Typography>
-                        <Button sx={CalculateShopping}>
-                            CALCULATE SHIPPING
-                        </Button>
-                    </TableCell>
                 </TableRow>
                 <TableRow>
                     <StyledTableCell sx={{lineHeight: '1.5em'}} variant="head">Total</StyledTableCell>
