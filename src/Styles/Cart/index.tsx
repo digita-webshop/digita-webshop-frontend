@@ -34,21 +34,6 @@ export const StyledTableCell = styled(TableCell)(({theme}) => ({
     },
 }));
 
-export const CalculateShopping = {
-    padding: '0 0 3px 0',
-    borderBottom: '1px solid #333',
-    fontSize: '13px',
-    lineHeight: 1,
-    fontWeight: 'normal',
-    letterSpacing: '0.4px',
-    marginTop: '13px',
-    '&:hover': {
-        background: 'unset',
-        color: '#f03637',
-        borderColor: '#f03637',
-    }
-}
-
 export const TotalTextStyle = {
     fontSize: '14px',
     color: '#777',
