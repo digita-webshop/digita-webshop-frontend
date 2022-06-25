@@ -79,8 +79,11 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: "#777",
     fontSize: 16,
     padding: "17px 0",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       textAlign: "center",
+    },
+    [theme.breakpoints.down("md")]: {
+      fontSize: 12,
     },
   },
   [`&.${tableCellClasses.body}`]: {
@@ -88,6 +91,9 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
     padding: "17px 0",
 
     [theme.breakpoints.down("md")]: {
+      fontSize: 12,
+    },
+    [theme.breakpoints.down("sm")]: {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
@@ -95,6 +101,9 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
       "&:nth-child(-n+7)":{
         border: "none",
       }
+    },
+    [theme.breakpoints.only("xs")]: {
+      fontSize: "18px !important",
     },
   },
 }));
