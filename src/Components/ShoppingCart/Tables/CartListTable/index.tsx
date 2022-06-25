@@ -1,28 +1,23 @@
-import {Box, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TextField} from "@mui/material";
+import {Box, Paper, Table, TableBody, TableContainer, TableHead, TableRow} from "@mui/material";
 import {StyledTableCell} from "../../../../Styles/Cart";
 import DynamicButton from "../../DynamicButton/DynamicButton";
-import React, {Dispatch, useEffect, useState} from "react";
+import React, {Dispatch, useState} from "react";
 import CartItem from "../../Types/CartItemType";
-import {CartListTableInput, columnsData} from "./data";
+import {columnsData} from "./data";
 import CartListTableRow from "../CartListTableRow";
+import {UpdateCart} from "../../ShoppingCart";
+import {UpdateType} from "../../CartUpdated";
 
 type Props = {
     cartList: CartItem[];
     setCartList: Dispatch<React.SetStateAction<CartItem[]>>;
     values: number[];
     setValues: React.Dispatch<React.SetStateAction<number[]>>
-    total: number
+    setCartUpdated: React.Dispatch<React.SetStateAction<UpdateCart | null>>
 }
 
-const CartListTable = ({cartList, setCartList, values, setValues, total}: Props) => {
-    const [coupon, setCoupon] = useState('');
+const CartListTable = ({cartList, setCartList, values, setValues, setCartUpdated}: Props) => {
     const [updateButtonDisabled, setUpdateButtonDisabled] = useState(true);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setCoupon(e.target.value)
-    };
-
-    console.log('CartListTable rendered')
 
     const handleUpdateCart = () => {
         const cartClone: CartItem[] = []
@@ -30,10 +25,10 @@ const CartListTable = ({cartList, setCartList, values, setValues, total}: Props)
             cartClone.push({...cartList[i], quantity: values[i]})
         })
         setCartList(cartClone)
-    }
-
-    const handleApplyCoupon = () => {
-        console.log('apply coupon')
+        setUpdateButtonDisabled(true)
+        setCartUpdated(prevState => {
+            return {...prevState, type: UpdateType.Update}
+        })
     }
 
     return <TableContainer component={Paper} sx={{height: '100%'}}>
@@ -47,36 +42,20 @@ const CartListTable = ({cartList, setCartList, values, setValues, total}: Props)
                 </TableRow>
             </TableHead>
             <TableBody>
-                {cartList.map((row, index) => (
-                    <CartListTableRow row={row} index={index} setCartList={setCartList} cartList={cartList}
+                {cartList.map((row,) => (
+                    <CartListTableRow key={row.id} row={row} setCartList={setCartList} cartList={cartList}
                                       setUpdateButtonDisabled={setUpdateButtonDisabled}
                                       updateButtonDisabled={updateButtonDisabled}
                                       values={values} setValues={setValues}
+                                      setCartUpdated={setCartUpdated}
                     />
                 ))}
                 <TableRow>
                     <StyledTableCell colSpan={6} align="left">
-                        <Box sx={{display: 'flex'}}>
-                            <Box
-                                sx={{display: 'flex', alignItems: 'center'}}>
-                                <TextField
-                                    onChange={handleChange}
-                                    id="outlined-number"
-                                    type="text"
-                                    placeholder="Coupon code"
-                                    value={coupon}
-                                    sx={CartListTableInput}
-                                    size="small"
-                                />
-                                <Box>
-                                    <DynamicButton title='Apply coupon' action={handleApplyCoupon}/>
-                                </Box>
-                            </Box>
-                            <Box sx={{marginLeft: 'auto'}}>
-                                <DynamicButton title='Update cart'
-                                               disabled={updateButtonDisabled}
-                                               action={updateButtonDisabled ? undefined : handleUpdateCart}/>
-                            </Box>
+                        <Box sx={{maxWidth: '360px', margin: '0 auto'}}>
+                            <DynamicButton title='Update cart'
+                                           disabled={updateButtonDisabled}
+                                           action={updateButtonDisabled ? undefined : handleUpdateCart}/>
                         </Box>
                     </StyledTableCell>
                 </TableRow>
