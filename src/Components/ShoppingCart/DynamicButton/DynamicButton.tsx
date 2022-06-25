@@ -40,12 +40,12 @@ const styles = {
 const DynamicButton = ({icon, title, href, disabled, action, classes}: Props) => {
 
     const BoxBtn = styled(Box)(({theme}) => ({
-        background: `${classes ? classes.background : '#333333'}`,
+        background: `${classes && classes.background ? classes.background : '#333333'}`,
         color: 'white',
         width: '100%',
         boxSizing: 'border-box',
         textTransform: 'uppercase',
-        padding: `${classes ? classes.padding : '12px 20px'}`,
+        padding: `${classes && classes.padding ? classes.padding : '12px 20px'}`,
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
