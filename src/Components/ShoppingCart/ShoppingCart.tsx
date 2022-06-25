@@ -14,7 +14,6 @@ const ShoppingCart = () => {
 
     const [cartUpdated, setCartUpdated] = useState(false);
     const [values, setValues] = useState<number[]>([])
-    const [total, setTotal] = useState(0);
     const [cartList, setCartList] = useState([
         {
             image: 'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-6.jpg',
@@ -48,6 +47,11 @@ const ShoppingCart = () => {
     }, [])
 
 
+    const total = cartList.reduce((acc,curr)=>{
+        acc += curr.quantity * curr.price;
+        return acc;
+    },0);
+
     return (
         <Container sx={{padding: '50px 15px'}}>
             {cartUpdated && <CartUpdated/>}
@@ -56,7 +60,7 @@ const ShoppingCart = () => {
                     <DynamicButton icon={true} title={'Return To Shop'} href={'/'}/>
                 </Box> :
                 <Box sx={{display: 'flex'}}>
-                    <CartListTable cartList={cartList} setTotal={setTotal} total={total} setCartList={setCartList}
+                    <CartListTable cartList={cartList} total={total} setCartList={setCartList}
                                    values={values} setValues={setValues}/>
                     <CartTotalTable total={total}/>
                 </Box>}
