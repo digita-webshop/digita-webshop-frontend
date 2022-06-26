@@ -161,6 +161,20 @@ function Checkout() {
                     other purposes described in our privacy policy.{" "}
                   </Typography>
                 </Grid>
+                <Grid item xs={12}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      textTransform: "uppercase",
+                      width: "100%",
+                      height: "55px",
+                      fontSize: "15px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    proceed to paypal
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
