@@ -147,6 +147,20 @@ function Checkout() {
                 <Grid item xs={12}>
                   <PaymentMethod />
                 </Grid>
+                <Grid item xs={12}>
+                  <Typography
+                    component={"p"}
+                    sx={{
+                      color: "common.digitaGrey3",
+                      fontSize: "14px",
+                      textAlign: "justify",
+                    }}
+                  >
+                    Your personal data will be used to process your order,
+                    support your experience throughout this website, and for
+                    other purposes described in our privacy policy.{" "}
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>

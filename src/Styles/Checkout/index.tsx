@@ -34,7 +34,6 @@ export const CustomRadio = styled(Radio)(({ theme }) => ({
 }));
 
 export const paymentTitleStyles = {
-  width: "33%",
   flexShrink: 0,
   color: "common.digitaGrey",
   fontSize: "16px",
