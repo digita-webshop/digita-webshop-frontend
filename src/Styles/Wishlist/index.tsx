@@ -1,8 +1,8 @@
 import { styled, TableCell, tableCellClasses, TableRow } from "@mui/material";
 
 export const wrapperStyle = {
-  margin: "3rem auto",
-  padding: "0 1rem",
+  margin: "0 auto",
+  padding: "3rem 1rem",
 };
 
 export const wishlistTitle = {
@@ -62,10 +62,12 @@ export const ActionLeftBtns = styled("div")(({ theme }) => ({
     justifyContent: "flex-start",
   },
   [theme.breakpoints.down("md")]: {
-    flexDirection: "column",
     Button: {
       width: "100%",
     },
+  },
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
   },
 }));
 
@@ -74,6 +76,18 @@ export const ActionLeftBtns = styled("div")(({ theme }) => ({
 /* ================== Table =====================  */
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  h6: {
+    fontSize: "14px",
+    color: theme.palette.common.digitaBlack,
+    wordBreak: "break-word",
+    [theme.breakpoints.between("sm", "md")]: {
+      width: "80%",
+      marginLeft: "10px",
+    },
+    [theme.breakpoints.up("md")]: {
+      fontSize: "15px",
+    },
+  },
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "transparent",
     color: "#777",
@@ -98,9 +112,9 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      "&:nth-child(-n+7)":{
+      "&:nth-child(-n+7)": {
         border: "none",
-      }
+      },
     },
     [theme.breakpoints.only("xs")]: {
       fontSize: "18px !important",

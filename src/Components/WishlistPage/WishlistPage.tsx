@@ -67,7 +67,7 @@ const WishlistPage = () => {
     <>
       <CustomBreadcrumbs title={"Wishlist"} />
 
-      <Box maxWidth="1270px" sx={wrapperStyle}>
+      <Box maxWidth="lg" sx={wrapperStyle}>
         <Typography variant="h3" sx={wishlistTitle}>
           Default Wishlist
         </Typography>
