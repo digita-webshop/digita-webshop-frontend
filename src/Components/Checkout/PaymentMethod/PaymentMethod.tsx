@@ -4,7 +4,12 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import { Box, Radio, RadioGroup } from "@mui/material";
-import { CustomRadio, paymentTitleStyles } from "../../../Styles/Checkout";
+import {
+  accordionDetailStyles,
+  CustomRadio,
+  paymentTitleStyles,
+} from "../../../Styles/Checkout";
+import IMAGES from "../../../Assets/Images";
 
 function PaymentMethod() {
   const [expanded, setExpanded] = useState("cash");
@@ -14,7 +19,7 @@ function PaymentMethod() {
   };
 
   return (
-    <Box sx={{ backgroundColor: "common.digitaGrey7" }}>
+    <Box sx={{ backgroundColor: "common.digitaGrey7", paddingY: "20px" }}>
       <Accordion
         sx={{ backgroundColor: "common.digitaGrey7" }}
         expanded={expanded === "cash"}
@@ -30,12 +35,19 @@ function PaymentMethod() {
         >
           <Typography sx={paymentTitleStyles}>Cash on delivery</Typography>
         </AccordionSummary>
-        <AccordionDetails>
-          <Typography>Pay with cash upon delivery.</Typography>
+        <AccordionDetails sx={accordionDetailStyles}>
+          <Typography component={"span"}>
+            Pay with cash upon delivery.
+          </Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
-        sx={{ backgroundColor: "common.digitaGrey7" }}
+        sx={{
+          backgroundColor: "common.digitaGrey7",
+          "&.MuiAccordion-root:before": {
+            display: "none",
+          },
+        }}
         expanded={expanded === "paypal"}
         onChange={accordionHandler("paypal")}
       >
@@ -45,13 +57,26 @@ function PaymentMethod() {
               <CustomRadio value={"paypal"} />
             </RadioGroup>
           }
-          sx={{ flexDirection: "row-reverse" }}
+          sx={{
+            flexDirection: "row-reverse",
+            img: { width: "20%" },
+            alignItems: "center",
+            "& .MuiAccordionSummary-content": {
+              justifyContent: "space-between",
+              alignItems: "center",
+            },
+          }}
         >
-          <Typography sx={paymentTitleStyles}>PayPal</Typography>
-          <Typography>What is Paypal?</Typography>
+          <Box sx={{ display: "flex", width: "50%" }}>
+            <Typography sx={paymentTitleStyles}>PayPal</Typography>
+            <Typography sx={{ color: "common.digitaRed", fontWeight: 600 }}>
+              What is Paypal?
+            </Typography>
+          </Box>
+          <img src={`${IMAGES.paypal}`} alt="paypal" />
         </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
+        <AccordionDetails sx={accordionDetailStyles}>
+          <Typography component={"span"}>
             Pay via PayPal; you can pay with your credit card if you don’t have
             a PayPal account.
           </Typography>

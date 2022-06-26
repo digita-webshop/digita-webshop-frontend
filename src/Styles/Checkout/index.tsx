@@ -40,3 +40,12 @@ export const paymentTitleStyles = {
   fontSize: "16px",
   fontWeight: 600,
 };
+export const accordionDetailStyles = {
+  backgroundColor: "white",
+  color: "common.digitaBlack",
+  width: "85%",
+  margin: "auto    ",
+  span: {
+    fontSize: "13px",
+  },
+};
