@@ -1,4 +1,4 @@
-import { TableRow } from "@mui/material";
+import { Radio, TableRow } from "@mui/material";
 import { styled } from "@mui/material/styles";
 export const OrderRow = styled(TableRow)(({ theme }) => ({
   td: {
@@ -24,3 +24,19 @@ export const OrderRow = styled(TableRow)(({ theme }) => ({
     },
   },
 }));
+
+export const CustomRadio = styled(Radio)(({ theme }) => ({
+  color: theme.palette.common.digitaBlack,
+  "&.Mui-checked": { color: theme.palette.common.digitaRed },
+  "& .MuiSvgIcon-root": {
+    fontSize: "20px",
+  },
+}));
+
+export const paymentTitleStyles = {
+  width: "33%",
+  flexShrink: 0,
+  color: "common.digitaGrey",
+  fontSize: "16px",
+  fontWeight: 600,
+};

@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import OrderTable from "./OrderTable/OrderTable";
+import PaymentMethod from "./PaymentMethod/PaymentMethod";
 
 const CheckoutInput = styled(TextField)(({ theme }) => ({
   "& .MuiOutlinedInput-root": {
@@ -142,6 +143,9 @@ function Checkout() {
                 </Grid>
                 <Grid item xs={12}>
                   <OrderTable />
+                </Grid>
+                <Grid item xs={12}>
+                  <PaymentMethod />
                 </Grid>
               </Grid>
             </Grid>
