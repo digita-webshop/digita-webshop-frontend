@@ -11,8 +11,8 @@ import {UpdateType} from "../../CartUpdated";
 type Props = {
     cartList: CartItem[];
     setCartList: Dispatch<React.SetStateAction<CartItem[]>>;
-    values: number[];
-    setValues: React.Dispatch<React.SetStateAction<number[]>>
+    values: CartItem[];
+    setValues: React.Dispatch<React.SetStateAction<CartItem[]>>
     setCartUpdated: React.Dispatch<React.SetStateAction<UpdateCart | null>>
 }
 
@@ -20,11 +20,7 @@ const CartListTable = ({cartList, setCartList, values, setValues, setCartUpdated
     const [updateButtonDisabled, setUpdateButtonDisabled] = useState(true);
 
     const handleUpdateCart = () => {
-        const cartClone: CartItem[] = []
-        cartList.map((item, i) => {
-            cartClone.push({...cartList[i], quantity: values[i]})
-        })
-        setCartList(cartClone)
+        //todo update cart with the new quantity values
         setUpdateButtonDisabled(true)
         setCartUpdated(prevState => {
             return {...prevState, type: UpdateType.Update}

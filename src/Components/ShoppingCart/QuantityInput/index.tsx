@@ -1,29 +1,30 @@
 import {Box, TextField} from "@mui/material";
 import {CustomBtn} from "../../../Styles/Cart";
 import React, {useEffect, useState} from "react";
+import CartItem from "../Types/CartItemType";
 
 type Props = {
     updateButtonDisabled: boolean;
     setUpdateButtonDisabled: React.Dispatch<React.SetStateAction<boolean>>;
-    id: number;
+    row: CartItem;
     cartList: any
-    values: number[];
-    setValues: React.Dispatch<React.SetStateAction<number[]>>
+    values: CartItem[];
+    setValues: React.Dispatch<React.SetStateAction<CartItem[]>>
 }
 
-const QuantityInput = ({setUpdateButtonDisabled, id, values, setValues, updateButtonDisabled}: Props) => {
+const QuantityInput = ({setUpdateButtonDisabled, row, values, setValues, updateButtonDisabled, cartList}: Props) => {
 
-    const [quantity, setQuantity] = useState(values[id])
+    const [quantity, setQuantity] = useState(0)
 
     useEffect(() => {
-        setQuantity(values[id])
-    }, [values])
+        setQuantity(cartList.filter((item:CartItem) => item.id === row.id)[0].quantity)
+    }, [])
 
     const handleDecValue = () => {
-        if (values[id] > 0) {
-            const a = [...values]
-            a[id] = a[id] - 1
-            setValues(a);
+        if (values[row.id].quantity > 0) {
+            // const a = [...values]
+            // a[row.id] = a[row.id] - 1
+            // setValues();
         }
         setQuantity(quantity - 1)
 
@@ -32,7 +33,7 @@ const QuantityInput = ({setUpdateButtonDisabled, id, values, setValues, updateBu
 
     const handleIncValue = () => {
         const a = [...values]
-        a[id] = a[id] + 1
+        a[row.id].quantity = a[row.id].quantity + 1
         setValues(a);
 
         setQuantity(quantity + 1)

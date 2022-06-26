@@ -1,7 +1,8 @@
-import { Paper, Table, TableCell, TableContainer, Typography, TableRow, Box} from "@mui/material";
+import {Paper, Table, TableCell, TableContainer, Typography, TableRow, Box} from "@mui/material";
 import React from "react";
 import {StyledTableCell, TotalTextStyle} from "../../../../Styles/Cart";
 import DynamicButton from "../../DynamicButton/DynamicButton";
+import {styled} from "@mui/material/styles";
 
 type Props = {
     total: number
@@ -9,13 +10,17 @@ type Props = {
 
 const CartTotalTable = ({total}: Props) => {
 
-    return <TableContainer
-        sx={{
-            maxWidth: 360,
-            marginLeft: '30px',
-            height: 'max-content',
-            border: '1px solid #ebebeb',
-        }} component={Paper}>
+    const CustomTableContainer = styled(Box)(({theme}) => ({
+        maxWidth: 360,
+        marginLeft: '30px',
+        height: 'max-content',
+        border: '1px solid #ebebeb',
+        [theme.breakpoints.down('lg')]: {
+            maxWidth: '100%',
+        },
+    }));
+
+    return <CustomTableContainer component={Paper}>
         <Typography sx={{
             padding: '0.7em 0',
             fontSize: '1.077em',
@@ -48,7 +53,7 @@ const CartTotalTable = ({total}: Props) => {
             </Table>
             <DynamicButton classes={{padding: '14px 20px'}} title={'Proceed to checkout'}/>
         </Box>
-    </TableContainer>
+    </CustomTableContainer>
 }
 
 export default CartTotalTable;

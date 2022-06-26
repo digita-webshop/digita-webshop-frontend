@@ -14,8 +14,8 @@ type Props = {
     setCartList: Dispatch<React.SetStateAction<CartItem[]>>;
     setUpdateButtonDisabled: Dispatch<React.SetStateAction<boolean>>;
     updateButtonDisabled: boolean
-    values: number[];
-    setValues: React.Dispatch<React.SetStateAction<number[]>>
+    values: CartItem[];
+    setValues: React.Dispatch<React.SetStateAction<CartItem[]>>
     setCartUpdated: React.Dispatch<React.SetStateAction<UpdateCart | null>>
 }
 
@@ -62,7 +62,7 @@ const CartListTableRow = ({row, cartList, values, setValues, setCartList, setUpd
                     <StyledTableCell align="left">
                     {row.total > 1 ?
                     <QuantityInput setUpdateButtonDisabled={setUpdateButtonDisabled}
-                    updateButtonDisabled={updateButtonDisabled} id={row.id}
+                    updateButtonDisabled={updateButtonDisabled} row={row}
                     cartList={cartList}
                     values={values}
                     setValues={setValues}
