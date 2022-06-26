@@ -1,4 +1,10 @@
-import { Box, Button, Checkbox, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Checkbox,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
 import { useTheme } from "@mui/material/styles";
@@ -32,7 +38,7 @@ const RowItem = ({
   onRemove,
 }: T) => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.between("sm","md"));
+  const matches = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   const addToCart = () => {
     console.log("Item added to cart");
@@ -68,10 +74,16 @@ const RowItem = ({
           />
         </StyledTableCell>
         <StyledTableCell component="th" scope="row">
-          {name}
+          <Typography component={"h6"}>{name}</Typography>
         </StyledTableCell>
         <StyledTableCell>
-          <Box sx={{ display: "flex", alignItems: "center", fontSize: {md: 12, sm: 12} }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              fontSize: { md: 12, sm: 12 },
+            }}
+          >
             {offPrice !== 0 && (
               <Box
                 component="span"
