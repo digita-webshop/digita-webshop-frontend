@@ -28,7 +28,7 @@ import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
 import ShopMenuCard from "./ShopCart/ShopCart";
 import SearchBar from "./SearchBar/SearchBar";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ShopMenu from "./ShopMenu/ShopMenu";
 import { Login, Register, ResetPassword } from "../../../Components";
 
@@ -55,6 +55,7 @@ function Navbar() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     setSelectedCategory(event.target.value);
@@ -209,7 +210,11 @@ function Navbar() {
                         <LoginOutlined color="primary" sx={navbarIcons} />
                       </Badge>
                     </Box>
-                    <Box display={"flex"} height={"100%"}>
+                    <Box
+                      display={"flex"}
+                      height={"100%"}
+                      onClick={() => navigate("/wishlist")}
+                    >
                       <Badge
                         badgeContent={4}
                         overlap="circular"
