@@ -3,7 +3,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
-import { Box, Radio, RadioGroup } from "@mui/material";
+import { Box, RadioGroup } from "@mui/material";
 import {
   accordionDetailStyles,
   CustomRadio,
@@ -67,9 +67,15 @@ function PaymentMethod() {
             },
           }}
         >
-          <Box sx={{ display: "flex", width: "50%" }}>
+          <Box sx={{ display: "flex" }}>
             <Typography sx={paymentTitleStyles}>PayPal</Typography>
-            <Typography sx={{ color: "common.digitaRed", fontWeight: 600 }}>
+            <Typography
+              sx={{
+                color: "common.digitaRed",
+                fontWeight: 600,
+                marginLeft: "10px",
+              }}
+            >
               What is Paypal?
             </Typography>
           </Box>
