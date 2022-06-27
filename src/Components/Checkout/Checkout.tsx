@@ -9,6 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { FormEvent } from "react";
+import ShippingDatePicker from "./ShippingDatePicker/ShippingDatePicker";
+import DatePicker from "./ShippingDatePicker/ShippingDatePicker";
 import OrderTable from "./OrderTable/OrderTable";
 import PaymentMethod from "./PaymentMethod/PaymentMethod";
 
@@ -28,11 +31,15 @@ const CheckoutInput = styled(TextField)(({ theme }) => ({
     },
   },
 }));
+
 function Checkout() {
+  const submitHandler = (event: FormEvent) => {
+    event.preventDefault();
+  };
   return (
     <Box bgcolor={"white"}>
       <Container maxWidth={"lg"} sx={{ py: "50px" }}>
-        <form>
+        <form onSubmit={submitHandler}>
           <Grid container spacing={5}>
             <Grid item xs={12} md={6}>
               <Grid
@@ -97,7 +104,11 @@ function Checkout() {
                     </Box>
                   </FormControl>
                 </Grid>
+
                 <Grid item xs={12}>
+                  <ShippingDatePicker />
+                </Grid>
+                {/* <Grid item xs={12}>
                   <FormControl fullWidth>
                     <FormLabel
                       color="primary"
@@ -117,7 +128,7 @@ function Checkout() {
                     </FormLabel>
                     <CheckoutInput placeholder="" />
                   </FormControl>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
             <Grid item xs={12} md={6}>
