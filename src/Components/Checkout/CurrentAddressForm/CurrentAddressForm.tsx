@@ -1,4 +1,10 @@
-import { FormControl, FormLabel, Grid, Typography } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  Grid,
+  Typography,
+} from "@mui/material";
 import { CheckoutInput } from "../../../Styles/Checkout";
 
 function CurrentAddressForm() {
@@ -87,6 +93,9 @@ function CurrentAddressForm() {
           </FormLabel>
           <CheckoutInput placeholder="" />
         </FormControl>
+      </Grid>
+      <Grid item xs={12} sx={{ textAlign: "right" }}>
+        <Button variant="contained">UPDATE ADDRESS</Button>
       </Grid>
     </Grid>
   );
