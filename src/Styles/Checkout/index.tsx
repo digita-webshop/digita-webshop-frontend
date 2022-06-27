@@ -1,4 +1,4 @@
-import { Radio, TableRow } from "@mui/material";
+import { Radio, TableRow, TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 export const OrderRow = styled(TableRow)(({ theme }) => ({
   td: {
@@ -48,3 +48,20 @@ export const accordionDetailStyles = {
     fontSize: "13px",
   },
 };
+
+export const CheckoutInput = styled(TextField)(({ theme }) => ({
+  "& .MuiOutlinedInput-root": {
+    backgroundColor: theme.palette.common.digitaGrey5,
+    height: "40px",
+    "& fieldset": {
+      borderColor: "#bbb",
+    },
+    "&:hover fieldset": {
+      borderColor: "#bbb",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#bbb",
+      borderWidth: "2px",
+    },
+  },
+}));
