@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Collapse,
   Container,
   FormControl,
   FormLabel,
@@ -14,23 +15,9 @@ import ShippingDatePicker from "./ShippingDatePicker/ShippingDatePicker";
 import DatePicker from "./ShippingDatePicker/ShippingDatePicker";
 import OrderTable from "./OrderTable/OrderTable";
 import PaymentMethod from "./PaymentMethod/PaymentMethod";
-
-const CheckoutInput = styled(TextField)(({ theme }) => ({
-  "& .MuiOutlinedInput-root": {
-    backgroundColor: theme.palette.common.digitaGrey5,
-    height: "40px",
-    "& fieldset": {
-      borderColor: "#bbb",
-    },
-    "&:hover fieldset": {
-      borderColor: "#bbb",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#bbb",
-      borderWidth: "2px",
-    },
-  },
-}));
+import CurrentAddress from "./CurrentAddress/CurrentAddress";
+import { CheckoutInput } from "../../Styles/Checkout";
+import CurrentAddressForm from "./CurrentAddressForm/CurrentAddressForm";
 
 function Checkout() {
   const submitHandler = (event: FormEvent) => {
@@ -63,6 +50,14 @@ function Checkout() {
                   </Box>
                 </Grid>
 
+                <Grid item xs={12}>
+                  <CurrentAddress />
+                </Grid>
+                <Collapse in={true}>
+                  <Grid item xs={12}>
+                    <CurrentAddressForm />
+                  </Grid>
+                </Collapse>
                 <Grid item xs={12}>
                   <FormControl fullWidth>
                     <FormLabel
@@ -108,27 +103,6 @@ function Checkout() {
                 <Grid item xs={12}>
                   <ShippingDatePicker />
                 </Grid>
-                {/* <Grid item xs={12}>
-                  <FormControl fullWidth>
-                    <FormLabel
-                      color="primary"
-                      sx={{
-                        fontSize: "14px",
-                        color: "common.digitaGrey",
-                        display: "flex",
-                      }}
-                    >
-                      Town / City
-                      <Typography
-                        component={"span"}
-                        sx={{ color: "#f03637", marginLeft: "2px" }}
-                      >
-                        *
-                      </Typography>
-                    </FormLabel>
-                    <CheckoutInput placeholder="" />
-                  </FormControl>
-                </Grid> */}
               </Grid>
             </Grid>
             <Grid item xs={12} md={6}>
