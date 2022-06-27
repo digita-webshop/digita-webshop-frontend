@@ -1,5 +1,6 @@
 import { Edit } from "@mui/icons-material";
 import { Box, Button, Grid, Typography } from "@mui/material";
+import { Dispatch, SetStateAction } from "react";
 
 const currentAddress = [
   {
@@ -28,7 +29,10 @@ const currentAddress = [
     desc: "90017",
   },
 ];
-function CurrentAddress() {
+type Props = {
+  setDisplayCurrentAddress: Dispatch<SetStateAction<boolean>>;
+};
+function CurrentAddress({ setDisplayCurrentAddress }: Props) {
   return (
     <Grid
       container
@@ -65,6 +69,7 @@ function CurrentAddress() {
           bottom: "7px",
           "&:hover": { backgroundColor: "unset" },
         }}
+        onClick={() => setDisplayCurrentAddress((prevState) => !prevState)}
       >
         Edit
         <Edit sx={{ fontSize: "15px", marginLeft: "4px  " }} />

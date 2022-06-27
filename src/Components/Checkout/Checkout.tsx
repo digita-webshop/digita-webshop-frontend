@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import ShippingDatePicker from "./ShippingDatePicker/ShippingDatePicker";
 import DatePicker from "./ShippingDatePicker/ShippingDatePicker";
 import OrderTable from "./OrderTable/OrderTable";
@@ -20,6 +20,8 @@ import { CheckoutInput } from "../../Styles/Checkout";
 import CurrentAddressForm from "./CurrentAddressForm/CurrentAddressForm";
 
 function Checkout() {
+  const [displayCurrentAddress, setDisplayCurrentAddress] = useState(false);
+
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
   };
@@ -51,13 +53,21 @@ function Checkout() {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <CurrentAddress />
+                  <CurrentAddress
+                    setDisplayCurrentAddress={setDisplayCurrentAddress}
+                  />
                 </Grid>
-                <Collapse in={true}>
-                  <Grid item xs={12}>
-                    <CurrentAddressForm />
-                  </Grid>
-                </Collapse>
+                <Grid item xs={12}>
+                  <Collapse in={displayCurrentAddress}>
+                    <>
+                      <CurrentAddressForm />
+                    </>
+                  </Collapse>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <ShippingDatePicker />
+                </Grid>
                 <Grid item xs={12}>
                   <FormControl fullWidth>
                     <FormLabel
@@ -98,10 +108,6 @@ function Checkout() {
                       </Button>
                     </Box>
                   </FormControl>
-                </Grid>
-
-                <Grid item xs={12}>
-                  <ShippingDatePicker />
                 </Grid>
               </Grid>
             </Grid>
