@@ -1,4 +1,10 @@
-import { Box, Radio, TableRow, TextField } from "@mui/material";
+import {
+  Box,
+  FormControlLabel,
+  Radio,
+  TableRow,
+  TextField,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 export const OrderRow = styled(TableRow)(({ theme }) => ({
   td: {
@@ -101,6 +107,23 @@ export const InputWrapper = styled(Box)(({ theme }) => ({
       "&:hover": {
         backgroundColor: "#e4e4e4",
       },
+    },
+  },
+}));
+
+export const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
+  flexDirection: "row-reverse",
+  justifyContent: "space-between",
+  margin: "0",
+  "& .MuiFormControlLabel-label": {
+    color: theme.palette.common.digitaGrey,
+    fontSize: "14px",
+    fontWeight: 500,
+  },
+  "& .MuiCheckbox-root": {
+    color: theme.palette.common.digitaRed,
+    "&.Mui-checked": {
+      color: theme.palette.common.digitaRed,
     },
   },
 }));

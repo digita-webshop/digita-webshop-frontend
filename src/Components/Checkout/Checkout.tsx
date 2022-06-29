@@ -1,22 +1,26 @@
 import {
   Box,
   Button,
+  Checkbox,
   Collapse,
   Container,
+  Divider,
   FormControl,
+  FormControlLabel,
+  FormGroup,
   FormLabel,
   Grid,
   TextField,
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import ShippingDatePicker from "./ShippingDatePicker/ShippingDatePicker";
 import DatePicker from "./ShippingDatePicker/ShippingDatePicker";
 import OrderTable from "./OrderTable/OrderTable";
 import PaymentMethod from "./PaymentMethod/PaymentMethod";
 import CurrentAddress from "./CurrentAddress/CurrentAddress";
-import { CheckoutInput } from "../../Styles/Checkout";
+import { CheckoutInput, StyledFormControlLabel } from "../../Styles/Checkout";
 import CurrentAddressForm from "./CurrentAddressForm/CurrentAddressForm";
 
 function Checkout() {
@@ -24,6 +28,9 @@ function Checkout() {
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
+  };
+  const newFormToggler = (event: ChangeEvent<HTMLInputElement>) => {
+    // setChecked([event.target.checked, event.target.checked]);
   };
   return (
     <Box bgcolor={"white"}>
@@ -63,6 +70,15 @@ function Checkout() {
                       <CurrentAddressForm />
                     </>
                   </Collapse>
+                </Grid>
+                <Grid item xs={12}>
+                  <FormGroup>
+                    <StyledFormControlLabel
+                      control={<Checkbox onChange={newFormToggler} />}
+                      label="SHIP TO A DIFFERENT ADDRESS"
+                    />
+                  </FormGroup>
+                  <Divider sx={{ width: "97%", mt: "4px" }} />
                 </Grid>
 
                 <Grid item xs={12}>

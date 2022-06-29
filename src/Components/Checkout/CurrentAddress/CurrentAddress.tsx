@@ -60,7 +60,6 @@ function CurrentAddress({ setDisplayCurrentAddress }: Props) {
               component={"h6"}
               sx={{
                 textTransform: "capitalize",
-                // textAlign: "center",
                 flexBasis: { xs: "50%", sm: "65%" },
               }}
             >
