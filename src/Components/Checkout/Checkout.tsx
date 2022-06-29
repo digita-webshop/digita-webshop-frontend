@@ -5,9 +5,7 @@ import {
   Collapse,
   Container,
   Divider,
-  FormControl,
   FormGroup,
-  FormLabel,
   Grid,
   Typography,
 } from "@mui/material";
@@ -16,10 +14,11 @@ import ShippingDatePicker from "./ShippingDatePicker/ShippingDatePicker";
 import OrderTable from "./OrderTable/OrderTable";
 import PaymentMethod from "./PaymentMethod/PaymentMethod";
 import CurrentAddress from "./CurrentAddress/CurrentAddress";
-import { CheckoutInput, StyledFormControlLabel } from "../../Styles/Checkout";
+import { StyledFormControlLabel } from "../../Styles/Checkout";
 import CurrentAddressForm from "./CurrentAddressForm/CurrentAddressForm";
 import NewAddressForm from "./NewAddressForm/NewAddressForm";
 import Coupon from "./Coupon/Coupon";
+import OrderNotes from "./OrderNotes/OrderNotes";
 
 function Checkout() {
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(false);
@@ -105,6 +104,9 @@ function Checkout() {
                       <Coupon />
                     </>
                   </Collapse>
+                </Grid>
+                <Grid item xs={12}>
+                  <OrderNotes />
                 </Grid>
               </Grid>
             </Grid>
