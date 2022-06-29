@@ -136,10 +136,11 @@ export const modalLeft = {
     objectFit: "cover",
   },
   "&::-webkit-scrollbar": {
-    width: "1px",
+    width: "5px",
   },
   "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "#b6b6b6",
+    backgroundColor: "#dedede",
+    borderRadius: "50px",
   },
 };
 export const modalRight = {
