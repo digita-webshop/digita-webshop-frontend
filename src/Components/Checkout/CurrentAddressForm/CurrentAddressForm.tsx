@@ -5,7 +5,6 @@ import {
   FormControl,
   FormLabel,
   Grid,
-  InputLabel,
   MenuItem,
   NativeSelect,
   Select,
@@ -17,7 +16,7 @@ import { Country, State, City } from "country-state-city";
 import { useEffect, useState } from "react";
 import { ICity, ICountry, IState } from "country-state-city/dist/lib/interface";
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
-
+import InputLabel from "./InputLabel/InputLabel";
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -108,22 +107,7 @@ function CurrentAddressForm() {
           size="small"
           variant="standard"
         >
-          <FormLabel
-            color="primary"
-            sx={{
-              fontSize: "14px",
-              color: "common.digitaGrey",
-              display: "flex",
-            }}
-          >
-            Country
-            <Typography
-              component={"span"}
-              sx={{ color: "#f03637", marginLeft: "2px" }}
-            >
-              *
-            </Typography>
-          </FormLabel>
+          <InputLabel name="Country" />
 
           <InputWrapper>
             <Box
@@ -160,6 +144,7 @@ function CurrentAddressForm() {
       </Grid>
       <Grid item xs={12} sm={6}>
         <FormControl sx={{ width: { xs: "100%", sm: "200px" } }} size="small">
+          <InputLabel name="State" />
           <InputWrapper>
             <Box
               className="input"
@@ -172,7 +157,8 @@ function CurrentAddressForm() {
                     : "common.digitaGrey3",
                 }}
               >
-                {state.name ? state.name : "select your country"}
+                {state.name && state.name}
+                {!state.name && country.name ? "select your state" : ""}
               </Box>
               <Box sx={{ display: "flex" }}>
                 {stateDropOpen ? <ArrowDropUp /> : <ArrowDropDown />}
@@ -205,6 +191,7 @@ function CurrentAddressForm() {
       </Grid>
       <Grid item xs={12} sm={6}>
         <FormControl sx={{ width: { xs: "100%", sm: "200px" } }} size="small">
+          <InputLabel name="City" />
           <InputWrapper>
             <Box
               className="input"
@@ -217,7 +204,8 @@ function CurrentAddressForm() {
                     : "common.digitaGrey3",
                 }}
               >
-                {city.name ? city.name : "select your country"}
+                {city.name && city.name}
+                {!city.name && state.name ? "select your city" : ""}
               </Box>
               <Box sx={{ display: "flex" }}>
                 {cityDropOpen ? <ArrowDropUp /> : <ArrowDropDown />}
