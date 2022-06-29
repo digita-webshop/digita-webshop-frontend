@@ -1,21 +1,34 @@
 import React from "react";
-import { Card, Typography, Grid, Box } from "@mui/material";
+import { Card, Typography, Box } from "@mui/material";
 import ButtonCard from "../../../Products/Components/ButtonCard/ButtonCard";
 import {
   styleContent,
   cardStyle,
   contentStyle,
 } from "../../../../Styles/Special";
+import { useInView } from "react-intersection-observer";
+import { AnimatedGrid } from "../../../../Styles/Products";
 
 type Props = {
   title: string;
   name: string;
   image: string;
+  id: number;
 };
 
-const SpecialCard = ({ title, name, image }: Props) => {
+const SpecialCard = ({ title, name, image, id }: Props) => {
+  const { ref, inView } = useInView({ triggerOnce: true });
+
+  const classes = id === 0 ? "slideInFromLeft" : "slideInFromRight";
   return (
-    <Grid item xs={12} sm={6} md={6}>
+    <AnimatedGrid
+      item
+      xs={12}
+      sm={6}
+      md={6}
+      className={inView ? classes : ""}
+      ref={ref}
+    >
       <Card sx={cardStyle}>
         <Box sx={contentStyle} className="box">
           <img src={image} alt="img" className="img-card" />
@@ -44,7 +57,7 @@ const SpecialCard = ({ title, name, image }: Props) => {
           <ButtonCard />
         </Box>
       </Card>
-    </Grid>
+    </AnimatedGrid>
   );
 };
 

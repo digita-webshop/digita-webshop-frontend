@@ -15,6 +15,9 @@ export const WrapperBox = styled(Box)(({ theme }) => ({
     alignSelf: "center",
     marginBottom: "45px",
   },
+  "&.slideInFromBottom": {
+    animation: `slideInFromBottom 1000ms ${theme.transitions.easing.easeInOut}`,
+  },
 }));
 
 export const Title = styled(Typography)(({ theme }) => ({

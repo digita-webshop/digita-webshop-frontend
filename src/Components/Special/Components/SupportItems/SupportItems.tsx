@@ -5,10 +5,18 @@ import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
 import { supportStyle, itemStyle } from "../../../../Styles/Special";
+import { useInView } from "react-intersection-observer";
 
 const SupportItems = () => {
+  const { ref, inView } = useInView({ triggerOnce: true });
+
   return (
-    <Grid container sx={supportStyle}>
+    <Grid
+      container
+      sx={supportStyle}
+      ref={ref}
+      className={inView ? "slideInFromBottom" : ""}
+    >
       <Grid item xs={12} sm={6} lg={3}>
         {/* ======== ITEM ======= */}
         <Box sx={itemStyle}>

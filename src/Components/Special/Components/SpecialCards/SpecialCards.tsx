@@ -7,8 +7,13 @@ const SpecialCards = () => {
   return (
     <>
       <Grid container spacing={3} sx={{ marginTop: "1rem" }}>
-        {specialCardData.map((item) => (
-          <SpecialCard title={item.title} name={item.name} image={item.image} />
+        {specialCardData.map((item, index) => (
+          <SpecialCard
+            id={index}
+            title={item.title}
+            name={item.name}
+            image={item.image}
+          />
         ))}
       </Grid>
     </>
