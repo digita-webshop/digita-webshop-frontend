@@ -25,6 +25,7 @@ const ShoppingCart = () => {
             price: 5,
             quantity: 4,
             total: 3,
+            alt: 'iphone-image'
         },
         {
             id: 2,
@@ -33,6 +34,7 @@ const ShoppingCart = () => {
             price: 4,
             quantity: 2,
             total: 3,
+            alt: 'xbox-image'
         },
         {
             id: 3,
@@ -41,6 +43,7 @@ const ShoppingCart = () => {
             price: 1,
             quantity: 3,
             total: 1,
+            alt: 'xbox-1-image'
         }
     ])
 
@@ -61,7 +64,7 @@ const ShoppingCart = () => {
 
     const TableContainer = styled(Box)(({theme}) => ({
         [theme.breakpoints.down('lg')]: {
-            flexDirection:'column'
+            flexDirection: 'column'
         },
     }));
 

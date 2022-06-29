@@ -27,10 +27,10 @@ const CartListTableRow = ({row, cartList, values, setValues, setCartList, setUpd
                 onClick={() => {
                     handleRowDelete(row.id, setCartList)
                     setCartUpdated(prevState => {
-                        return {...prevState, item: cartList[row.id],type:UpdateType.Remove}
+                        return {...prevState, item: cartList[row.id], type: UpdateType.Remove}
                     })
                 }}
-                    sx={{
+                sx={{
                     border: '1px solid #333333',
                     display: 'flex',
                     justifyContent: 'center',
@@ -40,38 +40,41 @@ const CartListTableRow = ({row, cartList, values, setValues, setCartList, setUpd
                     minWidth: 'unset',
                     height: '25px',
                     "&:hover": {
-                    backgroundColor: 'unset',
-                    borderColor: '#f03637',
-                    "svg": {
-                    color: '#f03637'
-                }
-                }
-                }}
-                    >
-                    <CloseIcon sx={{fontSize: 'inherit', color: '#333333'}}/>
-                    </Button>
-                    </StyledTableCell>
-                    <StyledTableCell align="left">
-                    <ImageBox><img
-                    src={row.image}/></ImageBox>
-                    </StyledTableCell>
-                    <StyledTableCell align="left" component="th" scope="row">
-                    {row.product}
-                    </StyledTableCell>
-                    <StyledTableCell sx={{color: '#f03637'}} align="center">${row.price.toFixed(2)}</StyledTableCell>
-                    <StyledTableCell align="left">
-                    {row.total > 1 ?
-                    <QuantityInput setUpdateButtonDisabled={setUpdateButtonDisabled}
-                    updateButtonDisabled={updateButtonDisabled} row={row}
-                    cartList={cartList}
-                    values={values}
-                    setValues={setValues}
-                    />
-                    : row.quantity}</StyledTableCell>
-                    <StyledTableCell
-                    align="right"
-                    sx={{color: '#f03637'}}>${(row.quantity * +row.price).toFixed(2)}</StyledTableCell>
-                    </TableRow>
+                        backgroundColor: 'unset',
+                        borderColor: '#f03637',
+                        "svg": {
+                            color: '#f03637'
+                        }
                     }
+                }}
+            >
+                <CloseIcon sx={{fontSize: 'inherit', color: '#333333'}}/>
+            </Button>
+        </StyledTableCell>
+        <StyledTableCell align="left">
+            <ImageBox>
+                <img
+                    alt={row.alt}
+                    src={row.image}/>
+            </ImageBox>
+        </StyledTableCell>
+        <StyledTableCell align="left" component="th" scope="row">
+            {row.product}
+        </StyledTableCell>
+        <StyledTableCell sx={{color: '#f03637'}} align="center">${row.price.toFixed(2)}</StyledTableCell>
+        <StyledTableCell align="left">
+            {row.total > 1 ?
+                <QuantityInput setUpdateButtonDisabled={setUpdateButtonDisabled}
+                               updateButtonDisabled={updateButtonDisabled} row={row}
+                               cartList={cartList}
+                               values={values}
+                               setValues={setValues}
+                />
+                : row.quantity}</StyledTableCell>
+        <StyledTableCell
+            align="right"
+            sx={{color: '#f03637'}}>${(row.quantity * +row.price).toFixed(2)}</StyledTableCell>
+    </TableRow>
+}
 
-                    export default CartListTableRow
+export default CartListTableRow
