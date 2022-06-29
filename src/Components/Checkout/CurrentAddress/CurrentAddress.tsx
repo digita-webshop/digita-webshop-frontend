@@ -6,7 +6,7 @@ const currentAddress = [
   {
     id: 1,
     field: "country",
-    desc: "usa",
+    desc: "USA",
   },
   {
     id: 2,
@@ -49,13 +49,21 @@ function CurrentAddress({ setDisplayCurrentAddress }: Props) {
             <Typography
               component={"h4"}
               sx={{
-                flexBasis: "35%",
+                textTransform: "capitalize",
+                flexBasis: { xs: "50%", sm: "35%" },
                 color: "common.digitaGrey",
               }}
             >
               {address.field}
             </Typography>
-            <Typography component={"h6"} sx={{ flexBasis: "65%" }}>
+            <Typography
+              component={"h6"}
+              sx={{
+                textTransform: "capitalize",
+                // textAlign: "center",
+                flexBasis: { xs: "50%", sm: "65%" },
+              }}
+            >
               {address.desc}
             </Typography>
           </Box>
