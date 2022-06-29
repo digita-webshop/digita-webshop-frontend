@@ -5,6 +5,7 @@ type CartItem = {
     price: number;
     quantity: number;
     total: number;
+    alt:string;
 }
 
 export default CartItem;
