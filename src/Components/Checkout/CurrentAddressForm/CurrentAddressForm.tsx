@@ -30,6 +30,7 @@ const MenuProps = {
 };
 function CurrentAddressForm() {
   const [countryDropOpen, setCountryDropOpen] = useState(false);
+  const [cityDropOpen, setCityDropOpen] = useState(false);
   const [country, setCountry] = useState<ICountry>({
     isoCode: "",
     name: "",
@@ -89,10 +90,9 @@ function CurrentAddressForm() {
     setState(selectedState);
     setCitiesList(selectedCityList);
   };
-  const citySelectHandler = (event: SelectChangeEvent) => {
+  const citySelectHandler = (cityName: string) => () => {
     const [selectedCity] = allCities.filter(
-      (item) =>
-        item.name === event.target.value && item.countryCode === country.isoCode
+      (item) => item.name === cityName && item.countryCode === country.isoCode
     );
     console.log(selectedCity);
     setCity(selectedCity);
@@ -126,7 +126,7 @@ function CurrentAddressForm() {
           <InputWrapper>
             <Box
               className="input"
-              onClick={() => setCountryDropOpen(!countryDropOpen)}
+              onClick={() => setCountryDropOpen((prevState) => !prevState)}
             >
               <Box
                 sx={{
@@ -158,7 +158,38 @@ function CurrentAddressForm() {
       </Grid>
       <Grid item xs={12} sm={6}>
         <FormControl sx={{ width: { xs: "100%", sm: "200px" } }} size="small">
-          <Select
+          <InputWrapper>
+            <Box
+              className="input"
+              onClick={() => setCityDropOpen((prevState) => !prevState)}
+            >
+              <Box
+                sx={{
+                  color: city.name
+                    ? "common.digitaBlack"
+                    : "common.digitaGrey3",
+                }}
+              >
+                {city.name ? country.name : "select your country"}
+              </Box>
+              <Box sx={{ display: "flex" }}>
+                {cityDropOpen ? <ArrowDropUp /> : <ArrowDropDown />}
+              </Box>
+            </Box>
+            <Fade in={cityDropOpen}>
+              <ul>
+                {citiesList.map((cityItem) => (
+                  <li
+                    value={cityItem.name}
+                    onClick={citySelectHandler(cityItem.name)}
+                  >
+                    {cityItem.name}
+                  </li>
+                ))}
+              </ul>
+            </Fade>
+          </InputWrapper>
+          {/* <Select
             variant="outlined"
             displayEmpty
             value={state.isoCode}
@@ -167,12 +198,43 @@ function CurrentAddressForm() {
             {statesList.map((stateItem: any) => (
               <MenuItem value={stateItem.isoCode}>{stateItem.name}</MenuItem>
             ))}
-          </Select>
+          </Select> */}
         </FormControl>
       </Grid>
       <Grid item xs={12} sm={6}>
         <FormControl sx={{ width: { xs: "100%", sm: "200px" } }} size="small">
-          <Select
+          <InputWrapper>
+            <Box
+              className="input"
+              onClick={() => setCityDropOpen((prevState) => !prevState)}
+            >
+              <Box
+                sx={{
+                  color: city.name
+                    ? "common.digitaBlack"
+                    : "common.digitaGrey3",
+                }}
+              >
+                {city.name ? country.name : "select your country"}
+              </Box>
+              <Box sx={{ display: "flex" }}>
+                {cityDropOpen ? <ArrowDropUp /> : <ArrowDropDown />}
+              </Box>
+            </Box>
+            <Fade in={cityDropOpen}>
+              <ul>
+                {citiesList.map((cityItem) => (
+                  <li
+                    value={cityItem.name}
+                    onClick={citySelectHandler(cityItem.name)}
+                  >
+                    {cityItem.name}
+                  </li>
+                ))}
+              </ul>
+            </Fade>
+          </InputWrapper>
+          {/* <Select
             variant="outlined"
             displayEmpty
             value={city.name}
@@ -181,7 +243,7 @@ function CurrentAddressForm() {
             {citiesList.map((cityItem: any) => (
               <MenuItem value={cityItem.name}>{cityItem.name}</MenuItem>
             ))}
-          </Select>
+          </Select> */}
         </FormControl>
       </Grid>
       <Grid item xs={12} sm={6}>
