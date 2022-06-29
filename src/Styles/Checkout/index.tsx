@@ -77,6 +77,7 @@ export const InputWrapper = styled(Box)(({ theme }) => ({
     borderRadius: "4px",
     fontFamily: "jost",
     boxSizing: "border-box",
+    backgroundColor: theme.palette.common.digitaGrey5,
     "&:hover": {
       borderColor: theme.palette.common.digitaGrey3,
     },

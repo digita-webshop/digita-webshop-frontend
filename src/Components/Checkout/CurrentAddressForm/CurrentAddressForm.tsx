@@ -5,56 +5,47 @@ import {
   FormControl,
   FormLabel,
   Grid,
-  MenuItem,
-  NativeSelect,
-  Select,
-  SelectChangeEvent,
   Typography,
 } from "@mui/material";
 import { CheckoutInput, InputWrapper } from "../../../Styles/Checkout";
 import { Country, State, City } from "country-state-city";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ICity, ICountry, IState } from "country-state-city/dist/lib/interface";
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import InputLabel from "./InputLabel/InputLabel";
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
+
+const initialCountryState = {
+  isoCode: "",
+  name: "",
+  currency: "",
+  flag: "",
+  latitude: "",
+  longitude: "",
+  phonecode: "",
+  timezones: [],
 };
+const initialStateState = {
+  isoCode: "",
+  name: "",
+  countryCode: "",
+  latitude: "",
+  longitude: "",
+};
+const initialCityState = {
+  countryCode: "",
+  name: "",
+  stateCode: "",
+  latitude: "",
+  longitude: "",
+};
+
 function CurrentAddressForm() {
   const [countryDropOpen, setCountryDropOpen] = useState(false);
   const [stateDropOpen, setStateDropOpen] = useState(false);
   const [cityDropOpen, setCityDropOpen] = useState(false);
-  const [country, setCountry] = useState<ICountry>({
-    isoCode: "",
-    name: "",
-    currency: "",
-    flag: "",
-    latitude: "",
-    longitude: "",
-    phonecode: "",
-    timezones: [],
-  });
-  const [state, setState] = useState<IState>({
-    isoCode: "",
-    name: "",
-    countryCode: "",
-    latitude: "",
-    longitude: "",
-  });
-  const [city, setCity] = useState<ICity>({
-    countryCode: "",
-    name: "",
-    stateCode: "",
-    latitude: "",
-    longitude: "",
-  });
+  const [country, setCountry] = useState<ICountry>(initialCountryState);
+  const [state, setState] = useState<IState>(initialStateState);
+  const [city, setCity] = useState<ICity>(initialCityState);
   const [statesList, setStatesList] = useState<IState[]>([]);
   const [citiesList, setCitiesList] = useState<ICity[]>([]);
 
@@ -70,11 +61,11 @@ function CurrentAddressForm() {
     const selectedStateList = allStates.filter(
       (item) => item.countryCode === isoCode
     );
-    console.log(selectedCountry);
     setCountryDropOpen(false);
     setStatesList(selectedStateList);
     setCountry(selectedCountry);
   };
+
   const stateSelectHandler = (isoCode: string) => () => {
     console.log(isoCode);
     const [selectedState] = allStates.filter(
@@ -85,22 +76,22 @@ function CurrentAddressForm() {
       (item) =>
         item.stateCode === isoCode && item.countryCode === country.isoCode
     );
-    console.log(selectedCityList);
     setStateDropOpen(false);
     setState(selectedState);
     setCitiesList(selectedCityList);
   };
+
   const citySelectHandler = (cityName: string) => () => {
     const [selectedCity] = allCities.filter(
       (item) => item.name === cityName && item.countryCode === country.isoCode
     );
-    console.log(selectedCity);
     setCityDropOpen(false);
     setCity(selectedCity);
   };
 
   return (
     <Grid container spacing={2}>
+      {/* COUNTRY INPUT  */}
       <Grid item xs={12} sm={6}>
         <FormControl
           sx={{ width: { xs: "100%", sm: "200px" } }}
@@ -142,6 +133,7 @@ function CurrentAddressForm() {
           </InputWrapper>
         </FormControl>
       </Grid>
+      {/* STATE INPUT */}
       <Grid item xs={12} sm={6}>
         <FormControl sx={{ width: { xs: "100%", sm: "200px" } }} size="small">
           <InputLabel name="State" />
@@ -177,18 +169,10 @@ function CurrentAddressForm() {
               </ul>
             </Fade>
           </InputWrapper>
-          {/* <Select
-            variant="outlined"
-            displayEmpty
-            value={state.isoCode}
-            onChange={stateSelectHandler}
-          >
-            {statesList.map((stateItem: any) => (
-              <MenuItem value={stateItem.isoCode}>{stateItem.name}</MenuItem>
-            ))}
-          </Select> */}
         </FormControl>
       </Grid>
+      {/* CITY INPUT  */}
+
       <Grid item xs={12} sm={6}>
         <FormControl sx={{ width: { xs: "100%", sm: "200px" } }} size="small">
           <InputLabel name="City" />
@@ -224,39 +208,9 @@ function CurrentAddressForm() {
               </ul>
             </Fade>
           </InputWrapper>
-          {/* <Select
-            variant="outlined"
-            displayEmpty
-            value={city.name}
-            onChange={citySelectHandler}
-          >
-            {citiesList.map((cityItem: any) => (
-              <MenuItem value={cityItem.name}>{cityItem.name}</MenuItem>
-            ))}
-          </Select> */}
         </FormControl>
       </Grid>
-      <Grid item xs={12} sm={6}>
-        <FormControl fullWidth>
-          <FormLabel
-            color="primary"
-            sx={{
-              fontSize: "14px",
-              color: "common.digitaGrey",
-              display: "flex",
-            }}
-          >
-            Town / City
-            <Typography
-              component={"span"}
-              sx={{ color: "#f03637", marginLeft: "2px" }}
-            >
-              *
-            </Typography>
-          </FormLabel>
-          <CheckoutInput placeholder="" />
-        </FormControl>
-      </Grid>
+
       <Grid item xs={12} sm={6}>
         <FormControl fullWidth>
           <FormLabel
