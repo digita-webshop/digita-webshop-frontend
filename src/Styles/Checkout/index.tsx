@@ -1,4 +1,4 @@
-import { Radio, TableRow, TextField } from "@mui/material";
+import { Box, Radio, TableRow, TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 export const OrderRow = styled(TableRow)(({ theme }) => ({
   td: {
@@ -62,6 +62,45 @@ export const CheckoutInput = styled(TextField)(({ theme }) => ({
     "&.Mui-focused fieldset": {
       borderColor: "#bbb",
       borderWidth: "2px",
+    },
+  },
+}));
+export const InputWrapper = styled(Box)(({ theme }) => ({
+  "& .input": {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "7px",
+    cursor: "pointer",
+    border: `1px solid ${theme.palette.common.digitaGrey2}`,
+    width: "100%",
+    borderRadius: "4px",
+    fontFamily: "jost",
+    boxSizing: "border-box",
+    "&:hover": {
+      borderColor: theme.palette.common.digitaGrey3,
+    },
+  },
+  ul: {
+    maxHeight: "300px",
+    overflow: "auto",
+    padding: "6px 0",
+    position: "absolute",
+    top: "45px",
+    zIndex: 100,
+    backgroundColor: theme.palette.common.digitaGrey7,
+    width: "100%",
+    listStyle: "none",
+    boxSizing: "border-box",
+    li: {
+      fontFamily: "jost",
+      paddingY: "4px",
+      cursor: "pointer",
+      paddingX: "10px",
+      transition: "all 100ms ease-in",
+      "&:hover": {
+        backgroundColor: "#e4e4e4",
+      },
     },
   },
 }));
