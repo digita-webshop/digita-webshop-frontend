@@ -6,31 +6,29 @@ import {
   Container,
   Divider,
   FormControl,
-  FormControlLabel,
   FormGroup,
   FormLabel,
   Grid,
-  TextField,
   Typography,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import { ChangeEvent, FormEvent, useState } from "react";
 import ShippingDatePicker from "./ShippingDatePicker/ShippingDatePicker";
-import DatePicker from "./ShippingDatePicker/ShippingDatePicker";
 import OrderTable from "./OrderTable/OrderTable";
 import PaymentMethod from "./PaymentMethod/PaymentMethod";
 import CurrentAddress from "./CurrentAddress/CurrentAddress";
 import { CheckoutInput, StyledFormControlLabel } from "../../Styles/Checkout";
 import CurrentAddressForm from "./CurrentAddressForm/CurrentAddressForm";
+import NewAddressForm from "./NewAddressForm/NewAddressForm";
 
 function Checkout() {
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(false);
+  const [displayNewAddressForm, setDisplayNewAddressForm] = useState(false);
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
   };
-  const newFormToggler = (event: ChangeEvent<HTMLInputElement>) => {
-    // setChecked([event.target.checked, event.target.checked]);
+  const newAddressFormToggler = (event: ChangeEvent<HTMLInputElement>) => {
+    setDisplayNewAddressForm(event.target.checked);
   };
   return (
     <Box bgcolor={"white"}>
@@ -74,11 +72,16 @@ function Checkout() {
                 <Grid item xs={12}>
                   <FormGroup>
                     <StyledFormControlLabel
-                      control={<Checkbox onChange={newFormToggler} />}
+                      control={<Checkbox onChange={newAddressFormToggler} />}
                       label="SHIP TO A DIFFERENT ADDRESS"
                     />
                   </FormGroup>
-                  <Divider sx={{ width: "97%", mt: "4px" }} />
+                  <Divider sx={{ width: "97%", mt: "4px", mb: "20px" }} />
+                  <Collapse in={displayNewAddressForm}>
+                    <>
+                      <NewAddressForm />
+                    </>
+                  </Collapse>
                 </Grid>
 
                 <Grid item xs={12}>
