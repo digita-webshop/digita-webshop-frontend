@@ -19,16 +19,21 @@ import CurrentAddress from "./CurrentAddress/CurrentAddress";
 import { CheckoutInput, StyledFormControlLabel } from "../../Styles/Checkout";
 import CurrentAddressForm from "./CurrentAddressForm/CurrentAddressForm";
 import NewAddressForm from "./NewAddressForm/NewAddressForm";
+import Coupon from "./Coupon/Coupon";
 
 function Checkout() {
   const [displayCurrentAddress, setDisplayCurrentAddress] = useState(false);
   const [displayNewAddressForm, setDisplayNewAddressForm] = useState(false);
+  const [displayCoupon, setDisplayCoupon] = useState(false);
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
   };
   const newAddressFormToggler = (event: ChangeEvent<HTMLInputElement>) => {
     setDisplayNewAddressForm(event.target.checked);
+  };
+  const couponToggler = (event: ChangeEvent<HTMLInputElement>) => {
+    setDisplayCoupon(event.target.checked);
   };
   return (
     <Box bgcolor={"white"}>
@@ -88,45 +93,18 @@ function Checkout() {
                   <ShippingDatePicker />
                 </Grid>
                 <Grid item xs={12}>
-                  <FormControl fullWidth>
-                    <FormLabel
-                      color="primary"
-                      sx={{
-                        fontSize: "14px",
-                        color: "common.digitaGrey",
-                        display: "flex",
-                      }}
-                    >
-                      Coupon Code
-                      {/* <Typography
-                        component={"span"}
-                        sx={{ color: "#f03637", marginLeft: "2px" }}
-                      >
-                        *
-                      </Typography> */}
-                    </FormLabel>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        height: "40px",
-                      }}
-                    >
-                      <CheckoutInput placeholder="" sx={{ width: "65%" }} />
-                      <Button
-                        variant="contained"
-                        sx={{
-                          height: "100%",
-                          textTransform: "uppercase",
-                          width: "32%",
-                          borderRadius: "3px",
-                        }}
-                      >
-                        Apply Coupon
-                      </Button>
-                    </Box>
-                  </FormControl>
+                  <FormGroup>
+                    <StyledFormControlLabel
+                      control={<Checkbox onChange={couponToggler} />}
+                      label="HAVE A COUPON?"
+                    />
+                  </FormGroup>
+                  <Divider sx={{ width: "97%", mt: "4px", mb: "20px" }} />
+                  <Collapse in={displayCoupon}>
+                    <>
+                      <Coupon />
+                    </>
+                  </Collapse>
                 </Grid>
               </Grid>
             </Grid>
