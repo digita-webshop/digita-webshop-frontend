@@ -141,28 +141,6 @@ function CurrentAddressForm() {
           />
         </FormControl>
       </Grid>
-
-      <Grid item xs={12} sm={6}>
-        <FormControl fullWidth>
-          <FormLabel
-            color="primary"
-            sx={{
-              fontSize: "14px",
-              color: "common.digitaGrey",
-              display: "flex",
-            }}
-          >
-            street
-            <Typography
-              component={"span"}
-              sx={{ color: "#f03637", marginLeft: "2px" }}
-            >
-              *
-            </Typography>
-          </FormLabel>
-          <CheckoutInput placeholder="" />
-        </FormControl>
-      </Grid>
       <Grid item xs={12} sm={6}>
         <FormControl fullWidth>
           <FormLabel
@@ -184,8 +162,36 @@ function CurrentAddressForm() {
           <CheckoutInput placeholder="" />
         </FormControl>
       </Grid>
-      <Grid item xs={12} sm={6} sx={{ textAlign: "right" }}>
-        <Button variant="contained">UPDATE ADDRESS</Button>
+
+      <Grid item xs={12}>
+        <FormControl fullWidth>
+          <FormLabel
+            color="primary"
+            sx={{
+              fontSize: "14px",
+              color: "common.digitaGrey",
+              display: "flex",
+            }}
+          >
+            street
+            <Typography
+              component={"span"}
+              sx={{ color: "#f03637", marginLeft: "2px" }}
+            >
+              *
+            </Typography>
+          </FormLabel>
+          <CheckoutInput placeholder="" />
+        </FormControl>
+      </Grid>
+
+      <Grid item xs={12} sx={{ textAlign: "right" }}>
+        <Button
+          variant="contained"
+          sx={{ height: "40px", width: { xs: "100%", sm: "150px" } }}
+        >
+          UPDATE ADDRESS
+        </Button>
       </Grid>
     </Grid>
   );

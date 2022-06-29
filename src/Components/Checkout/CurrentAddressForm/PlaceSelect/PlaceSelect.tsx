@@ -35,6 +35,10 @@ function PlaceSelect({
       <Box className="input" onClick={toggleHandler}>
         <Box
           sx={{
+            "-webkit-box-orient": "vertical",
+            overflow: "hidden",
+            display: "-webkit-box",
+            "-webkit-line-clamp": "1",
             textTransform: "capitalize",
             color: state.name ? "common.digitaBlack" : "common.digitaGrey3",
           }}
