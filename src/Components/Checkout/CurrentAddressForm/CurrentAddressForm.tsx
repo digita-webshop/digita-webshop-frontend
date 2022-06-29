@@ -30,6 +30,7 @@ const MenuProps = {
 };
 function CurrentAddressForm() {
   const [countryDropOpen, setCountryDropOpen] = useState(false);
+  const [stateDropOpen, setStateDropOpen] = useState(false);
   const [cityDropOpen, setCityDropOpen] = useState(false);
   const [country, setCountry] = useState<ICountry>({
     isoCode: "",
@@ -75,18 +76,18 @@ function CurrentAddressForm() {
     setStatesList(selectedStateList);
     setCountry(selectedCountry);
   };
-  const stateSelectHandler = (event: SelectChangeEvent) => {
-    console.log(event.target.value);
+  const stateSelectHandler = (isoCode: string) => () => {
+    console.log(isoCode);
     const [selectedState] = allStates.filter(
-      (item) => item.isoCode === event.target.value
+      (item) => item.isoCode === isoCode
     );
     console.log(selectedState);
     const selectedCityList = allCities.filter(
       (item) =>
-        item.stateCode === event.target.value &&
-        item.countryCode === country.isoCode
+        item.stateCode === isoCode && item.countryCode === country.isoCode
     );
     console.log(selectedCityList);
+    setStateDropOpen(false);
     setState(selectedState);
     setCitiesList(selectedCityList);
   };
@@ -95,6 +96,7 @@ function CurrentAddressForm() {
       (item) => item.name === cityName && item.countryCode === country.isoCode
     );
     console.log(selectedCity);
+    setCityDropOpen(false);
     setCity(selectedCity);
   };
 
@@ -161,29 +163,29 @@ function CurrentAddressForm() {
           <InputWrapper>
             <Box
               className="input"
-              onClick={() => setCityDropOpen((prevState) => !prevState)}
+              onClick={() => setStateDropOpen((prevState) => !prevState)}
             >
               <Box
                 sx={{
-                  color: city.name
+                  color: state.name
                     ? "common.digitaBlack"
                     : "common.digitaGrey3",
                 }}
               >
-                {city.name ? country.name : "select your country"}
+                {state.name ? state.name : "select your country"}
               </Box>
               <Box sx={{ display: "flex" }}>
-                {cityDropOpen ? <ArrowDropUp /> : <ArrowDropDown />}
+                {stateDropOpen ? <ArrowDropUp /> : <ArrowDropDown />}
               </Box>
             </Box>
-            <Fade in={cityDropOpen}>
+            <Fade in={stateDropOpen}>
               <ul>
-                {citiesList.map((cityItem) => (
+                {statesList.map((stateItem) => (
                   <li
-                    value={cityItem.name}
-                    onClick={citySelectHandler(cityItem.name)}
+                    value={stateItem.isoCode}
+                    onClick={stateSelectHandler(stateItem.isoCode)}
                   >
-                    {cityItem.name}
+                    {stateItem.name}
                   </li>
                 ))}
               </ul>
@@ -215,7 +217,7 @@ function CurrentAddressForm() {
                     : "common.digitaGrey3",
                 }}
               >
-                {city.name ? country.name : "select your country"}
+                {city.name ? city.name : "select your country"}
               </Box>
               <Box sx={{ display: "flex" }}>
                 {cityDropOpen ? <ArrowDropUp /> : <ArrowDropDown />}
