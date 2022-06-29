@@ -1,50 +1,33 @@
-import { Card, Box, Grid, Typography } from "@mui/material";
+import { Card, Box, Typography } from "@mui/material";
 import ButtonCard from "../ButtonCard/ButtonCard";
-
-const styleContent = {
-  padding: "2.2rem 2rem",
-  position: "absolute",
-  top: "0",
-  right: "0",
-  left: "0",
-  bottom: "0",
-  transition: "all 0.8s",
-};
-
-const cardStyle = {
-  position: "relative",
-  transition: "1s ease-in-out",
-  "&:hover": {
-    "& .img-card": {
-      filter: "brightness(70%)",
-      transform: "scale(1.17)",
-    },
-    "& .card-content": {
-      transform: "translateY(15px)",
-    },
-  },
-};
-
-const contentStyle = {
-  height: "340px",
-  img: {
-    width: "100%",
-    height: "340px",
-    transition: "all 800ms ease-in-out",
-    objectFit: "cover",
-  },
-  overflow: "hidden",
-};
+import { useInView } from "react-intersection-observer";
+import {
+  AnimatedGrid,
+  cardStyle,
+  contentStyle,
+  styleContent,
+} from "../../../../Styles/Products";
 
 type Props = {
   title: string;
   name: string;
   image: string;
+  id: number;
 };
 
-const ProductCard = ({ title, name, image }: Props) => {
+const ProductCard = ({ title, name, image, id }: Props) => {
+  const { ref, inView } = useInView({ triggerOnce: true });
+
+  const classes = id === 0 ? "slideInFromLeft" : "slideInFromRight";
   return (
-    <Grid item xs={12} sm={6} md={6}>
+    <AnimatedGrid
+      item
+      xs={12}
+      sm={6}
+      md={6}
+      ref={ref}
+      className={inView ? classes : ""}
+    >
       <Card sx={cardStyle}>
         <Box sx={contentStyle} className="box">
           <img src={image} alt="img" className="img-card" />
@@ -73,7 +56,7 @@ const ProductCard = ({ title, name, image }: Props) => {
           <ButtonCard />
         </Box>
       </Card>
-    </Grid>
+    </AnimatedGrid>
   );
 };
 

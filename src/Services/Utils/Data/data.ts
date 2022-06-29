@@ -265,6 +265,54 @@ export const articlesBlogPage = [
     releaseDate: 'February 8, 2018',
     status: 'Newest Items',
   },
+  {
+    id: 7,
+    title: 'Sample Post With Format Image',
+    image: `${IMAGES.blog1}`,
+    author: 'Peter Giroud',
+    releaseDate: 'February 8, 2018',
+    status: 'Newest Items',
+  },
+  {
+    id: 8,
+    title: 'Sample Post With Format Image',
+    image: `${IMAGES.blog1}`,
+    author: 'Peter Giroud',
+    releaseDate: 'February 8, 2018',
+    status: 'Newest Items',
+  },
+  {
+    id: 9,
+    title: 'Sample Post With Format Image',
+    image: `${IMAGES.blog1}`,
+    author: 'Peter Giroud',
+    releaseDate: 'February 8, 2018',
+    status: 'Newest Items',
+  },
+  {
+    id: 10,
+    title: 'Sample Post With Format Image',
+    image: `${IMAGES.blog1}`,
+    author: 'Peter Giroud',
+    releaseDate: 'February 8, 2018',
+    status: 'Newest Items',
+  },
+  {
+    id: 11,
+    title: 'Sample Post With Format Image',
+    image: `${IMAGES.blog1}`,
+    author: 'Peter Giroud',
+    releaseDate: 'February 8, 2018',
+    status: 'Newest Items',
+  },
+  {
+    id: 12,
+    title: 'Sample Post With Format Image',
+    image: `${IMAGES.blog1}`,
+    author: 'Peter Giroud',
+    releaseDate: 'February 8, 2018',
+    status: 'Newest Items',
+  },
 ];
 
 export const RecentCommentsBlogPage = [
@@ -328,3 +376,8 @@ export const teamData = [
     {id: 4, name: "Darrel French", image: "https://demo-61.woovinapro.com/wp-content/uploads/2022/04/team05.png", job: "Manager"},
     {id: 5, name: "Gabriel Barker", image: "https://demo-61.woovinapro.com/wp-content/uploads/2022/04/team02.png", job: "Designer"},
 ]
+
+export const rows = [
+    { id: 1, name: "Sam Sung Galaxy Note 10 Lite", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", offPrice: 62,price: 52, date:"June 20, 2022", status: true},
+    { id: 2, name: "SmartPhone & Ipad", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg", offPrice: 0,price: 75, date:"June 20, 2022", status: true},
+  ];

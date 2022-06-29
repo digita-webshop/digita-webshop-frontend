@@ -5,7 +5,7 @@ import { teamTitleStyle, teamsStyle } from "../../../../Styles/About";
 
 const Team = () => {
   return (
-    <Box sx={{ textAlign: "center", mb: 8 }}>
+    <Box sx={{ textAlign: "center", pb: 8 }}>
       <Typography variant="h4" sx={teamTitleStyle}>
         OUR TEAM
       </Typography>

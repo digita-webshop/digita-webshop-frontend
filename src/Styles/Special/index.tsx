@@ -60,6 +60,10 @@ export const supportStyle = {
   "& hr": {
     mx: 0.5,
   },
+  "&.slideInFromBottom": {
+    animation: (theme: any) =>
+      `slideInFromBottom 1000ms ${theme.transitions.easing.easeInOut}`,
+  },
 };
 
 export const itemStyle = {

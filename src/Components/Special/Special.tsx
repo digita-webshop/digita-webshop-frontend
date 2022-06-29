@@ -4,28 +4,53 @@ import SpecialItem from "./Components/SpecialItem/SpecialItem";
 import { specialProducts } from "../../Services/Utils/Data/data";
 import SupportItems from "./Components/SupportItems/SupportItems";
 import SpecialCards from "./Components/SpecialCards/SpecialCards";
+import { useInView } from "react-intersection-observer";
 
 const Special = () => {
-  return (
-    <Container maxWidth={"lg"}>
-      <SpecialHeader />
+  const { ref, inView } = useInView({ triggerOnce: true });
 
-      <Box>
-        <Grid container spacing={{ xs: 2, md: 3 }}>
-          {specialProducts.map((item) => (
-            <SpecialItem
-              id={item.id}
-              name={item.name}
-              image={item.image}
-              offPrice={item.offPrice}
-              price={item.price}
-              starRate={item.starRate}
-            />
-          ))}
-        </Grid>
-      </Box>
-      <SpecialCards />
-      <SupportItems />
+  return (
+    <Container
+      maxWidth={"xl"}
+      sx={{
+        position: "relative",
+        backgroundColor: "white",
+        marginY: "-120px",
+        width: "96%",
+        zIndex: "10",
+      }}
+      ref={ref}
+    >
+      <Container
+        maxWidth={"lg"}
+        sx={{
+          overflow: "hidden",
+          paddingY: "20px",
+          animation: (theme) =>
+            inView
+              ? `slideInFromBottom 1000ms ${theme.transitions.easing.easeInOut}`
+              : "",
+        }}
+      >
+        <SpecialHeader />
+
+        <Box>
+          <Grid container spacing={{ xs: 2, md: 3 }}>
+            {specialProducts.map((item) => (
+              <SpecialItem
+                id={item.id}
+                name={item.name}
+                image={item.image}
+                offPrice={item.offPrice}
+                price={item.price}
+                starRate={item.starRate}
+              />
+            ))}
+          </Grid>
+        </Box>
+        <SpecialCards />
+        <SupportItems />
+      </Container>
     </Container>
   );
 };

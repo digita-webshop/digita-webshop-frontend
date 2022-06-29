@@ -1,25 +1,23 @@
-import {Container} from "@mui/material";
-import {Products, Special, Header, ShopByCategories} from "../../../Components";
-import OurBlog from "../../../Components/OurBlog/OurBlog";
-import WhatClientSay from "../../../Components/WhatClientSay/WhatClientSay";
+import {
+  Products,
+  Special,
+  Header,
+  ShopByCategories,
+  WhatClientSay,
+  OurBlog,
+} from "../../../Components";
 
 function Home() {
-    return (
-        <>
-            <Header/>
-            <Container maxWidth={"xl"}>
-                <Products/>
-            </Container>
-            <ShopByCategories/>
-            <Container maxWidth={"xl"}>
-                <Special/>
-            </Container>
-            <WhatClientSay/>
-            <Container maxWidth={"xl"}>
-                <OurBlog/>
-            </Container>
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <Products />
+      <ShopByCategories />
+      <Special />
+      <WhatClientSay />
+      <OurBlog />
+    </>
+  );
 }
 
 export default Home;

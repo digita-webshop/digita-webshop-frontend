@@ -4,9 +4,23 @@ import { productCardData } from "../../../../Services/Utils/Data/data";
 
 const ProductCards = () => {
   return (
-    <Grid container spacing={3} marginTop="3rem" marginBottom="3rem">
-      {productCardData.map((item) => (
-        <ProductCard title={item.title} name={item.name} image={item.image} />
+    <Grid
+      container
+      spacing={3}
+      marginTop="3rem"
+      marginBottom="3rem"
+      sx={{
+        overflow: "hidden",
+      }}
+    >
+      {productCardData.map((item, index) => (
+        <ProductCard
+          key={item.id}
+          id={index}
+          title={item.title}
+          name={item.name}
+          image={item.image}
+        />
       ))}
     </Grid>
   );
