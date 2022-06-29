@@ -95,9 +95,8 @@ export const InputWrapper = styled(Box)(({ theme }) => ({
     boxSizing: "border-box",
     li: {
       fontFamily: "jost",
-      paddingY: "4px",
+      padding: "5px 10px",
       cursor: "pointer",
-      paddingX: "10px",
       transition: "all 100ms ease-in",
       "&:hover": {
         backgroundColor: "#e4e4e4",

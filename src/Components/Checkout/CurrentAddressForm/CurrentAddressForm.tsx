@@ -1,18 +1,16 @@
 import {
-  Box,
   Button,
-  Fade,
   FormControl,
   FormLabel,
   Grid,
   Typography,
 } from "@mui/material";
-import { CheckoutInput, InputWrapper } from "../../../Styles/Checkout";
+import { CheckoutInput } from "../../../Styles/Checkout";
 import { Country, State, City } from "country-state-city";
 import { useState } from "react";
 import { ICity, ICountry, IState } from "country-state-city/dist/lib/interface";
-import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import InputLabel from "./InputLabel/InputLabel";
+import PlaceSelect from "./PlaceSelect/PlaceSelect";
 
 const initialCountryState = {
   isoCode: "",
@@ -61,13 +59,14 @@ function CurrentAddressForm() {
     const selectedStateList = allStates.filter(
       (item) => item.countryCode === isoCode
     );
+    setState(initialStateState);
+    setCity(initialCityState);
     setCountryDropOpen(false);
     setStatesList(selectedStateList);
     setCountry(selectedCountry);
   };
 
   const stateSelectHandler = (isoCode: string) => () => {
-    console.log(isoCode);
     const [selectedState] = allStates.filter(
       (item) => item.isoCode === isoCode
     );
@@ -94,120 +93,52 @@ function CurrentAddressForm() {
       {/* COUNTRY INPUT  */}
       <Grid item xs={12} sm={6}>
         <FormControl
-          sx={{ width: { xs: "100%", sm: "200px" } }}
+          sx={{ width: { xs: "100%" } }}
           size="small"
           variant="standard"
         >
           <InputLabel name="Country" />
-
-          <InputWrapper>
-            <Box
-              className="input"
-              onClick={() => setCountryDropOpen((prevState) => !prevState)}
-            >
-              <Box
-                sx={{
-                  color: country.name
-                    ? "common.digitaBlack"
-                    : "common.digitaGrey3",
-                }}
-              >
-                {country.name ? country.name : "select your country"}
-              </Box>
-              <Box sx={{ display: "flex" }}>
-                {countryDropOpen ? <ArrowDropUp /> : <ArrowDropDown />}
-              </Box>
-            </Box>
-            <Fade in={countryDropOpen}>
-              <ul>
-                {allCountries.map((countryItem) => (
-                  <li
-                    value={countryItem.isoCode}
-                    onClick={countrySelectHandler(countryItem.isoCode)}
-                  >
-                    {countryItem.name}
-                  </li>
-                ))}
-              </ul>
-            </Fade>
-          </InputWrapper>
+          <PlaceSelect
+            state={country}
+            setDropdownOpen={setCountryDropOpen}
+            dropDownOpen={countryDropOpen}
+            places={allCountries}
+            selectHandler={countrySelectHandler}
+            showPlaceholder={true}
+            placeholder={"country"}
+          />
         </FormControl>
       </Grid>
       {/* STATE INPUT */}
+
       <Grid item xs={12} sm={6}>
-        <FormControl sx={{ width: { xs: "100%", sm: "200px" } }} size="small">
-          <InputLabel name="State" />
-          <InputWrapper>
-            <Box
-              className="input"
-              onClick={() => setStateDropOpen((prevState) => !prevState)}
-            >
-              <Box
-                sx={{
-                  color: state.name
-                    ? "common.digitaBlack"
-                    : "common.digitaGrey3",
-                }}
-              >
-                {state.name && state.name}
-                {!state.name && country.name ? "select your state" : ""}
-              </Box>
-              <Box sx={{ display: "flex" }}>
-                {stateDropOpen ? <ArrowDropUp /> : <ArrowDropDown />}
-              </Box>
-            </Box>
-            <Fade in={stateDropOpen}>
-              <ul>
-                {statesList.map((stateItem) => (
-                  <li
-                    value={stateItem.isoCode}
-                    onClick={stateSelectHandler(stateItem.isoCode)}
-                  >
-                    {stateItem.name}
-                  </li>
-                ))}
-              </ul>
-            </Fade>
-          </InputWrapper>
+        <FormControl sx={{ width: { xs: "100%" } }} size="small">
+          <InputLabel name="State/Province" />
+          <PlaceSelect
+            state={state}
+            setDropdownOpen={setStateDropOpen}
+            dropDownOpen={stateDropOpen}
+            places={statesList}
+            selectHandler={stateSelectHandler}
+            showPlaceholder={!!country.name}
+            placeholder={"state"}
+          />
         </FormControl>
       </Grid>
       {/* CITY INPUT  */}
 
       <Grid item xs={12} sm={6}>
-        <FormControl sx={{ width: { xs: "100%", sm: "200px" } }} size="small">
+        <FormControl sx={{ width: { xs: "100%" } }} size="small">
           <InputLabel name="City" />
-          <InputWrapper>
-            <Box
-              className="input"
-              onClick={() => setCityDropOpen((prevState) => !prevState)}
-            >
-              <Box
-                sx={{
-                  color: city.name
-                    ? "common.digitaBlack"
-                    : "common.digitaGrey3",
-                }}
-              >
-                {city.name && city.name}
-                {!city.name && state.name ? "select your city" : ""}
-              </Box>
-              <Box sx={{ display: "flex" }}>
-                {cityDropOpen ? <ArrowDropUp /> : <ArrowDropDown />}
-              </Box>
-            </Box>
-            <Fade in={cityDropOpen}>
-              <ul>
-                {citiesList.map((cityItem) => (
-                  <li
-                    value={cityItem.name}
-                    onClick={citySelectHandler(cityItem.name)}
-                  >
-                    {cityItem.name}
-                  </li>
-                ))}
-              </ul>
-            </Fade>
-          </InputWrapper>
+          <PlaceSelect
+            state={city}
+            setDropdownOpen={setCityDropOpen}
+            dropDownOpen={cityDropOpen}
+            places={citiesList}
+            selectHandler={citySelectHandler}
+            showPlaceholder={!!state.name}
+            placeholder={"city"}
+          />
         </FormControl>
       </Grid>
 
@@ -253,7 +184,7 @@ function CurrentAddressForm() {
           <CheckoutInput placeholder="" />
         </FormControl>
       </Grid>
-      <Grid item xs={12} sx={{ textAlign: "right" }}>
+      <Grid item xs={12} sm={6} sx={{ textAlign: "right" }}>
         <Button variant="contained">UPDATE ADDRESS</Button>
       </Grid>
     </Grid>
