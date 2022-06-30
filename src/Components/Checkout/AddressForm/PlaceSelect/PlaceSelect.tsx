@@ -26,9 +26,7 @@ function PlaceSelect({
   const property = placeholder === "city" ? "name" : "isoCode";
 
   const toggleHandler = () => {
-    setDropdownOpen((prevState: any) =>
-      !state.name && showPlaceholder ? !prevState : false
-    );
+    setDropdownOpen((prevState: any) => (showPlaceholder ? !prevState : false));
   };
   return (
     <InputWrapper>
