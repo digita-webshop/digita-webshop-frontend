@@ -3,12 +3,14 @@ import {
   Box,
   Button,
   Divider,
+  Link,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Typography,
 } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
 function ShopCart() {
   return (
@@ -92,19 +94,31 @@ function ShopCart() {
           gap: "10px",
         }}
       >
-        <Button
-          variant="contained"
-          fullWidth={true}
-          color="error"
-          sx={{
-            "&:hover": { backgroundColor: "#333333" },
-          }}
+        <Link
+          component={RouterLink}
+          to="/cart"
+          sx={{ textDecoration: "none", width: "50%" }}
         >
-          VIEW CARD
-        </Button>
-        <Button variant="contained" fullWidth={true}>
-          CHECKOUT
-        </Button>
+          <Button
+            variant="contained"
+            fullWidth={true}
+            color="error"
+            sx={{
+              "&:hover": { backgroundColor: "#333333" },
+            }}
+          >
+            VIEW CARD
+          </Button>
+        </Link>
+        <Link
+          component={RouterLink}
+          to="/checkout"
+          sx={{ textDecoration: "none", width: "50%" }}
+        >
+          <Button variant="contained" fullWidth={true}>
+            CHECKOUT
+          </Button>
+        </Link>
       </Box>
     </Box>
   );
