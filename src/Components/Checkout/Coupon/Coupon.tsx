@@ -30,6 +30,7 @@ function Coupon() {
             textTransform: "uppercase",
             width: "32%",
             borderRadius: "3px",
+            fontSize: { xs: "10px", lg: "14px" },
           }}
         >
           Apply Coupon

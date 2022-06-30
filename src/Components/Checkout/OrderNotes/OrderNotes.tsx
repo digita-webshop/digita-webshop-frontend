@@ -25,7 +25,7 @@ function OrderNotes() {
           padding: "5px",
           fontFamily: "jost",
         }}
-        minRows={10}
+        minRows={9}
         maxRows={12}
       />
     </Box>
