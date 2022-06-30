@@ -32,7 +32,7 @@ import RowItem from "./Components/RowItem/RowItem";
 const ADD = "ADD";
 const REMOVE = "REMOVE";
 
-const WishlistPage = () => {
+const Wishlist = () => {
   const [action, setAction] = useState("Actions");
   const [list, setList] = useState(rows);
 
@@ -187,4 +187,4 @@ const WishlistPage = () => {
     </>
   );
 };
-export default WishlistPage;
+export default Wishlist;

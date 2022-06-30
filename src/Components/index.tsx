@@ -16,3 +16,4 @@ export { default as WhatClientSay } from "./WhatClientSay/WhatClientSay";
 export { default as Blog } from "./Blog/Blog";
 export { default as Shop } from "./Shop/Shop";
 export { default as Checkout } from "./Checkout/Checkout";
+export { default as Wishlist } from "./Wishlist/Wishlist";
