@@ -114,7 +114,7 @@ export const modalStyle = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   height: "85%",
-  width: "85%",
+  width: { xs: "85%", sm: "450px", md: "75%", lg: "75%", xl: "1200px" },
   display: "flex",
   bgcolor: "background.paper",
   boxShadow: 24,
@@ -136,10 +136,11 @@ export const modalLeft = {
     objectFit: "cover",
   },
   "&::-webkit-scrollbar": {
-    width: "1px",
+    width: "5px",
   },
   "&::-webkit-scrollbar-thumb": {
-    backgroundColor: "#b6b6b6",
+    backgroundColor: "#dedede",
+    borderRadius: "50px",
   },
 };
 export const modalRight = {
