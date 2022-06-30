@@ -1,7 +1,15 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./Theme/theme";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AboutUs, Blog, ContactUs, Home, Shop, Wishlist } from "./Pages/Main";
+import {
+  AboutUs,
+  Blog,
+  ContactUs,
+  Home,
+  Shop,
+  Wishlist,
+  Checkout,
+} from "./Pages/Main";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import { ScrollToTop } from "./Components";
 
@@ -18,6 +26,7 @@ function App() {
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/checkout" element={<Checkout />} />
             </Route>
           </Routes>
         </ScrollToTop>
