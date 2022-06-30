@@ -12,6 +12,7 @@ import {
 } from "./Pages/Main";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import { ScrollToTop } from "./Components";
+import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/checkout" element={<Checkout />} />
+            </Route>
+            <Route path="/panel/*" element={<PanelLayout />}>
+              <Route path="dashboard" />
             </Route>
           </Routes>
         </ScrollToTop>
