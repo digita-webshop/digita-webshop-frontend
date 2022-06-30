@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import WishlistPage from "../../../Components/WishlistPage/WishlistPage";
+import { Wishlist as WishlistPage } from "../../../Components";
 
 const Wishlist = () => {
   return (
