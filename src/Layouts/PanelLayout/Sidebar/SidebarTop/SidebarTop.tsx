@@ -10,7 +10,7 @@ function SidebarTop() {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "20px",
+        padding: "20px 10px",
         img: { width: "120px", height: "32px" },
       }}
     >
