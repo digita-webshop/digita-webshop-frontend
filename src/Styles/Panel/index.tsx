@@ -3,7 +3,11 @@ import { styled } from "@mui/material/styles";
 
 export const Aside = styled(Box)(({ theme }) => ({
   position: "fixed",
-  width: "20%",
+  width: "240px",
+
+  [theme.breakpoints.up("md")]: {
+    width: "20%",
+  },
   [theme.breakpoints.up("xl")]: {
     width: "15%",
   },
