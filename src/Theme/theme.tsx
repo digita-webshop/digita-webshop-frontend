@@ -16,6 +16,7 @@ declare module "@mui/material/styles/createPalette" {
     digitaGrey7: string;
     panelGrey: string;
     panelHoverGrey: string;
+    panelHoverDarkGrey: string;
     PanelDarkRed: string;
     panelActiveRed: string;
   }
@@ -36,6 +37,7 @@ export const theme = createTheme({
       digitaGrey7: "#f7f7f7",
       panelGrey: "#adb5bd ",
       panelHoverGrey: "rgba(108, 117, 125, 0.15) ",
+      panelHoverDarkGrey: "rgba(108, 117, 125, 0.25) ",
       PanelDarkRed: "#5d2936 ",
       panelActiveRed: "#fdebeb ",
     },
