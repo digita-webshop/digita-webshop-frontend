@@ -16,8 +16,9 @@ function SidebarTop({ menuOpen, setMenuOpen }: Props) {
         justifyContent: "space-between",
         alignItems: "center",
         paddingY: "20px",
-        paddingX: menuOpen ? "10px" : "4px",
-        img: { width: "120px", height: "32px" },
+        paddingLeft: menuOpen ? "10px" : "4px",
+        paddingRight: menuOpen ? "0px" : "4px",
+        img: { width: "110px", height: "30px" },
       }}
     >
       {menuOpen && (
@@ -26,7 +27,9 @@ function SidebarTop({ menuOpen, setMenuOpen }: Props) {
         </Link>
       )}
       <IconButton
-        sx={{ "&:hover ": { background: "common.panelHoverGrey" } }}
+        sx={{
+          "&:hover ": { background: "common.panelHoverGrey" },
+        }}
         onClick={() => setMenuOpen((prevState) => !prevState)}
       >
         <MenuOpen sx={{ color: "common.panelGrey", fontSize: "22px" }} />
