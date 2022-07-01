@@ -15,7 +15,7 @@ export const Main = styled(Box)(({ theme }) => ({
 }));
 export const PanelItem = styled(ListItem)(({ theme }) => ({
   fontFamily: "jost",
-
+  padding: "3px 0",
   a: {
     padding: "8px 10px",
     borderRadius: "5px",
@@ -42,5 +42,6 @@ export const PanelItem = styled(ListItem)(({ theme }) => ({
     minWidth: "40px",
     display: "flex",
     alignItems: "center",
+    color: theme.palette.common.panelGrey,
   },
 }));

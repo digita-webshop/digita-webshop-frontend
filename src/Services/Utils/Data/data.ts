@@ -381,3 +381,55 @@ export const rows = [
     { id: 1, name: "Sam Sung Galaxy Note 10 Lite", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", offPrice: 62,price: 52, date:"June 20, 2022", status: true},
     { id: 2, name: "SmartPhone & Ipad", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg", offPrice: 0,price: 75, date:"June 20, 2022", status: true},
   ];
+
+
+  export const panelSidebarItems=[
+    {
+      id:1,
+      title:'dashboard',
+      route:'/panel/dashboard',
+      icon:'home'
+    },
+    {
+      id:2,
+      title:'products',
+      route:'/panel/products',
+      icon:'shopping_bag'
+    },
+    {
+      id:3,
+      title:'orders',
+      route:'/panel/orders',
+      icon:'local_grocery_store',
+    },
+    {
+      id:4,
+      title:'add product',
+      route:'/panel/add-product',
+      icon:'add_box'
+    },
+    {
+      id:5,
+      title:'add article',
+      route:'/panel/add-article',
+      icon:'add_card'
+    },
+    {
+      id:6,
+      title:'reviews',
+      route:'/panel/reviews',
+      icon:'comment'
+    },
+    {
+      id:7,
+      title:'brands',
+      route:'/panel/brands',
+      icon:'stars'
+    },
+    {
+      id:8,
+      title:'settings',
+      route:'/panel/settings',
+      icon:'settings'
+    }
+  ]
