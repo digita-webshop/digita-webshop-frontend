@@ -8,11 +8,16 @@ import SidebarTop from "./SidebarTop/SidebarTop";
 interface Props {
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
-function Sidebar({ menuOpen, setMenuOpen }: Props) {
+function Sidebar({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
   return (
     <>
-      <SidebarTop menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <SidebarTop
+        menuOpen={menuOpen}
+        setMenuOpen={setMenuOpen}
+        setDrawerOpen={setDrawerOpen}
+      />
       <List>
         {panelSidebarItems.map(({ id, title, route, icon }) => (
           <>

@@ -1,14 +1,24 @@
 import { MenuOpen } from "@mui/icons-material";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, useMediaQuery } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 import logoImg from "../../../../Assets/Images/digita-logo.png";
-
+import { useTheme } from "@mui/material/styles";
 interface Props {
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
-function SidebarTop({ menuOpen, setMenuOpen }: Props) {
+function SidebarTop({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
+  const theme = useTheme();
+  const mdMatches = useMediaQuery(theme.breakpoints.up("md"));
+  const clickHandler = () => {
+    if (mdMatches) {
+      setMenuOpen((prevState) => !prevState);
+    } else {
+      setDrawerOpen(false);
+    }
+  };
   return (
     <Box
       sx={{
@@ -30,7 +40,7 @@ function SidebarTop({ menuOpen, setMenuOpen }: Props) {
         sx={{
           "&:hover ": { background: "common.panelHoverGrey" },
         }}
-        onClick={() => setMenuOpen((prevState) => !prevState)}
+        onClick={clickHandler}
       >
         <MenuOpen sx={{ color: "common.panelGrey", fontSize: "22px" }} />
       </IconButton>
