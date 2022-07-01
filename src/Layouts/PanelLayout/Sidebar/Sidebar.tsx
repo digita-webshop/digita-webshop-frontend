@@ -19,7 +19,14 @@ function Sidebar() {
             <ListItemIcon>
               <Home />
             </ListItemIcon>
-            <ListItemText primary="dashboard" />
+            <ListItemText
+              primaryTypographyProps={{
+                fontSize: "16px",
+                fontWeight: 600,
+                textTransform: "capitalize",
+              }}
+              primary="dashboard"
+            />
           </NavLink>
         </PanelItem>
       </List>
