@@ -21,9 +21,8 @@ export const Aside = styled(Box)(({ theme }) => ({
 }));
 
 export const Main = styled(Box)(({ theme }) => ({
-  position: "absolute",
-  right: "0",
   width: "80%",
+  marginLeft: "auto",
   [theme.breakpoints.up("xl")]: {
     width: "85%",
   },
@@ -64,5 +63,42 @@ export const PanelItem = styled(ListItem)(({ theme }) => ({
     display: "flex",
     alignItems: "center",
     color: theme.palette.common.panelGrey,
+  },
+}));
+
+export const MainSearch = styled("input")(({ theme }) => ({
+  fontFamily: "jost",
+  width: "100%",
+  padding: "4px 12px",
+  height: "42px",
+  boxSizing: "border-box",
+  border: `1px solid ${theme.palette.common.panelBorderGrey}`,
+  borderTopLeftRadius: "4px",
+  borderBottomLeftRadius: "4px",
+  transition: "all 100ms ease-in",
+  "&:hover": {
+    borderColor: theme.palette.common.digitaRed,
+  },
+  "&:focus": {
+    boxShadow: `0 0 0 4px ${theme.palette.common.panelActiveRed}`,
+    outline: "none",
+    borderColor: theme.palette.common.digitaRed,
+  },
+  "&::placeholder": {
+    fontSize: "16px ",
+    color: theme.palette.common.panelGrey,
+  },
+}));
+export const MainSearchBtn = styled(Box)(({ theme }) => ({
+  width: "48px",
+  border: "1px solid",
+  borderColor: theme.palette.common.panelBorderGrey,
+  display: "flex",
+  borderTopRightRadius: "4px",
+  borderBottomRightRadius: "4px",
+  cursor: "pointer",
+  transition: "all 150ms ease-in",
+  "&:hover": {
+    borderColor: theme.palette.common.panelGrey,
   },
 }));
