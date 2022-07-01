@@ -1,10 +1,29 @@
-import { Box } from "@mui/material";
-import logoImg from "../../../Assets/Images/digita-logo.png";
+import { Home } from "@mui/icons-material";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { NavLink } from "react-router-dom";
+import { PanelItem } from "../../../Styles/Panel";
+import SidebarTop from "./SidebarTop/SidebarTop";
 function Sidebar() {
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-      <img src={logoImg} alt="digita-logo" />
-    </Box>
+    <>
+      <SidebarTop />
+      <List>
+        <PanelItem>
+          <NavLink to="/panel/dashboard">
+            <ListItemIcon>
+              <Home />
+            </ListItemIcon>
+            <ListItemText primary="dashboard" />
+          </NavLink>
+        </PanelItem>
+      </List>
+    </>
   );
 }
 

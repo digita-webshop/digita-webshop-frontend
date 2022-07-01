@@ -1,14 +1,20 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import { Aside, Main } from "../../Styles/Panel";
+import Sidebar from "./Sidebar/Sidebar";
 
 function PanelLayout() {
   return (
-    <Grid container>
-      <Grid item xs={3}></Grid>
-      <Grid item xs={9}>
+    <>
+      <Aside>
+        <Sidebar />
+      </Aside>
+      <Main>
+        ggggggggg
+        <div></div>
         <Outlet />
-      </Grid>
-    </Grid>
+      </Main>
+    </>
   );
 }
 
