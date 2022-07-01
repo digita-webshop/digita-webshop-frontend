@@ -4,12 +4,15 @@ import { styled } from "@mui/material/styles";
 export const Aside = styled(Box)(({ theme }) => ({
   position: "fixed",
   width: "20%",
+  [theme.breakpoints.up("xl")]: {
+    width: "15%",
+  },
   height: "100%",
   padding: "0 10px",
   boxSizing: "border-box",
   borderRight: `1px solid ${theme.palette.common.panelHoverDarkGrey}`,
   "&.menu": {
-    width: "6%",
+    width: "65px",
   },
 }));
 
@@ -17,6 +20,9 @@ export const Main = styled(Box)(({ theme }) => ({
   position: "absolute",
   right: "0",
   width: "80%",
+  [theme.breakpoints.up("xl")]: {
+    width: "85%",
+  },
 }));
 export const PanelItem = styled(ListItem)(({ theme }) => ({
   fontFamily: "jost",
@@ -31,6 +37,9 @@ export const PanelItem = styled(ListItem)(({ theme }) => ({
     width: "100%",
     "&.menu": {
       width: "50%",
+      "& .MuiListItemIcon-root": {
+        minWidth: "0",
+      },
     },
     cursor: "pointer",
     "&:hover": {
