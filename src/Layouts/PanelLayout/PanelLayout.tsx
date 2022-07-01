@@ -1,9 +1,10 @@
-import { AppBar, Drawer, useMediaQuery } from "@mui/material";
+import { Drawer, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Aside, Main } from "../../Styles/Panel";
 import Sidebar from "./Sidebar/Sidebar";
 import { useTheme } from "@mui/material/styles";
+import MainNavbar from "./MainNavbar/MainNavbar";
 
 function PanelLayout() {
   const [menuOpen, setMenuOpen] = useState(true);
@@ -39,9 +40,7 @@ function PanelLayout() {
         </Drawer>
       )}
       <Main>
-        <AppBar>
-          <Contai
-        </AppBar>
+        <MainNavbar />
         <Outlet />
       </Main>
     </>
