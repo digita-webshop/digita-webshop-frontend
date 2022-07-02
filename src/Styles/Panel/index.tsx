@@ -30,6 +30,9 @@ export const Main = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up("xl")]: {
     width: "85%",
   },
+  "&.menu": {
+    width: "calc(100% - 65px)",
+  },
 }));
 export const PanelItem = styled(ListItem)(({ theme }) => ({
   fontFamily: "jost",

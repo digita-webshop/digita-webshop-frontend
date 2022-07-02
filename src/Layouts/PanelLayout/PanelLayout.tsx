@@ -1,4 +1,4 @@
-import { Drawer, useMediaQuery } from "@mui/material";
+import { Box, Drawer, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Aside, Main } from "../../Styles/Panel";
@@ -38,9 +38,11 @@ function PanelLayout() {
           </Aside>
         </Drawer>
       )}
-      <Main>
+      <Main className={menuOpen ? "" : "menu"}>
         <MainNavbar setDrawerOpen={setDrawerOpen} mdMatches={mdMatches} />
-        <Outlet />
+        <Box sx={{ padding: "30px 3%" }}>
+          <Outlet />
+        </Box>
       </Main>
     </>
   );
