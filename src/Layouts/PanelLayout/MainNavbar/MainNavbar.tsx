@@ -12,15 +12,20 @@ import {
   MenuItem,
   Toolbar,
 } from "@mui/material";
-import { MouseEvent, useState } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Dispatch, MouseEvent, SetStateAction, useState } from "react";
 import {
   MainSearch,
   MainSearchBtn,
   navbarIconStyles,
   panelAvatarStyles,
+  panelToolbarStyles,
 } from "../../../Styles/Panel";
-
-function MainNavbar() {
+interface Props {
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  mdMatches: boolean;
+}
+function MainNavbar({ setDrawerOpen, mdMatches }: Props) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -36,31 +41,45 @@ function MainNavbar() {
       sx={{
         background: "white",
         position: "initial",
-        height: "74px",
+        height: mdMatches ? "74px" : "120px",
         borderBottom: "1px solid ",
         borderColor: "common.panelHoverDarkGrey",
       }}
     >
-      <Toolbar sx={{ height: "100%", justifyContent: "space-between" }}>
-        <Box sx={{ width: "50%", display: "flex" }}>
+      <Toolbar
+        sx={panelToolbarStyles}
+        className={mdMatches ? "" : "menu-drawer"}
+      >
+        <Box sx={{ width: mdMatches ? "50%" : "100%", display: "flex" }}>
           <MainSearch placeholder="Search term  " />
           <MainSearchBtn>
             <Search sx={{ color: "common.panelGrey", margin: "auto" }} />
           </MainSearchBtn>
         </Box>
-        <Box display={"flex"}>
-          <IconButton sx={navbarIconStyles}>
-            <NightsStay />
+        <Box display={"flex"} className={"menu-icons"}>
+          <IconButton
+            sx={{
+              color: "common.digitaBlack",
+              display: mdMatches ? "none" : "inline-flex",
+            }}
+            onClick={() => setDrawerOpen((prevState) => !prevState)}
+          >
+            <MenuIcon />
           </IconButton>
-          <IconButton sx={navbarIconStyles}>
-            <NotificationsActive />
-          </IconButton>
-          <Box sx={panelAvatarStyles} id="user-button" onClick={menuToggler}>
-            <img
-              src="https://www.ecommerce-admin.com/demo/images/people/avatar1.jpg"
-              alt="avatar"
-            />
-            <ArrowDropDown />
+          <Box display={"flex"}>
+            <IconButton sx={navbarIconStyles}>
+              <NightsStay />
+            </IconButton>
+            <IconButton sx={navbarIconStyles}>
+              <NotificationsActive />
+            </IconButton>
+            <Box sx={panelAvatarStyles} id="user-button" onClick={menuToggler}>
+              <img
+                src="https://www.ecommerce-admin.com/demo/images/people/avatar1.jpg"
+                alt="avatar"
+              />
+              <ArrowDropDown />
+            </Box>
           </Box>
           <Menu
             id="user-menu"

@@ -3,6 +3,7 @@ import { styled } from "@mui/material/styles";
 
 export const Aside = styled(Box)(({ theme }) => ({
   position: "fixed",
+  backgroundColor: "white",
   width: "240px",
 
   [theme.breakpoints.up("md")]: {
@@ -131,5 +132,18 @@ export const panelAvatarStyles = {
   },
   "& .MuiSvgIcon-root": {
     color: "common.panelGrey",
+  },
+};
+
+export const panelToolbarStyles = {
+  height: "100%",
+  justifyContent: "space-between",
+  "&.menu-drawer": {
+    flexDirection: "column-reverse",
+    justifyContent: "space-around",
+    "& .menu-icons": {
+      width: "100%",
+      justifyContent: "space-between",
+    },
   },
 };
