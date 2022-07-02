@@ -13,7 +13,6 @@ function PanelLayout() {
   const theme = useTheme();
   const mdMatches = useMediaQuery(theme.breakpoints.up("md"));
 
-  console.log(!mdMatches);
   const toggleDrawer = (open: boolean) => () => {
     setDrawerOpen(open);
   };
@@ -29,7 +28,7 @@ function PanelLayout() {
         </Aside>
       )}
       {!mdMatches && (
-        <Drawer open={drawerOpen} onClose={toggleDrawer(false)}>
+        <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
           <Aside>
             <Sidebar
               menuOpen={menuOpen}
@@ -40,7 +39,7 @@ function PanelLayout() {
         </Drawer>
       )}
       <Main>
-        <MainNavbar />
+        <MainNavbar setDrawerOpen={setDrawerOpen} mdMatches={mdMatches} />
         <Outlet />
       </Main>
     </>
