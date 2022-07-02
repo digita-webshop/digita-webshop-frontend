@@ -13,6 +13,16 @@ import {
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import { ScrollToTop } from "./Components";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
+import {
+  AddArticle,
+  AddProduct,
+  Brands,
+  Dashboard,
+  Orders,
+  Products,
+  Reviews,
+  Settings,
+} from "./Pages/Panel";
 
 function App() {
   return (
@@ -30,7 +40,14 @@ function App() {
               <Route path="/checkout" element={<Checkout />} />
             </Route>
             <Route path="/panel/*" element={<PanelLayout />}>
-              <Route path="dashboard" />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="products" element={<Products />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="add-product" element={<AddProduct />} />
+              <Route path="add-article" element={<AddArticle />} />
+              <Route path="reviews" element={<Reviews />} />
+              <Route path="brands" element={<Brands />} />
+              <Route path="settings" element={<Settings />} />
             </Route>
           </Routes>
         </ScrollToTop>
