@@ -21,8 +21,11 @@ export const Aside = styled(Box)(({ theme }) => ({
 }));
 
 export const Main = styled(Box)(({ theme }) => ({
-  width: "80%",
+  width: "100%",
   marginLeft: "auto",
+  [theme.breakpoints.up("md")]: {
+    width: "80%",
+  },
   [theme.breakpoints.up("xl")]: {
     width: "85%",
   },
@@ -102,3 +105,31 @@ export const MainSearchBtn = styled(Box)(({ theme }) => ({
     borderColor: theme.palette.common.panelGrey,
   },
 }));
+
+export const navbarIconStyles = {
+  "& .MuiSvgIcon-root": {
+    color: "common.panelGrey",
+    transition: "all 100ms ease-in",
+  },
+  "&:hover": {
+    "& .MuiSvgIcon-root": { color: "common.digitaRed" },
+  },
+};
+export const panelAvatarStyles = {
+  display: "flex",
+  alignItems: "center",
+  cursor: "pointer",
+  marginLeft: "5px",
+  img: {
+    width: "40px",
+    borderRadius: "50%",
+    border: "2px solid #eee",
+    transition: "all 100ms ease-in",
+    "&:hover ": {
+      borderColor: "common.digitaRed",
+    },
+  },
+  "& .MuiSvgIcon-root": {
+    color: "common.panelGrey",
+  },
+};
