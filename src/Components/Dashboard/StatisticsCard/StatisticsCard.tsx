@@ -1,6 +1,12 @@
 import { Box, Icon, Typography } from "@mui/material";
-
-function StatisticsCard() {
+interface Props {
+  title: string;
+  subtitle: string;
+  icon: string;
+  color: string;
+  bgColor: string;
+}
+function StatisticsCard({ title, subtitle, icon, color, bgColor }: Props) {
   return (
     <Box
       sx={{
@@ -19,10 +25,10 @@ function StatisticsCard() {
           height: "48px",
           display: "flex",
           borderRadius: "50%",
-          backgroundColor: "lightblue",
+          backgroundColor: bgColor,
         }}
       >
-        <Icon sx={{ color: "blue", margin: "auto" }}>monetization_on</Icon>
+        <Icon sx={{ color: color, margin: "auto" }}>{icon}</Icon>
       </Box>
       <Box>
         <Typography
@@ -32,9 +38,9 @@ function StatisticsCard() {
             fontWeight: 500,
           }}
         >
-          total sales
+          {title}
         </Typography>
-        <Typography>$19,544,25.11</Typography>
+        <Typography>{subtitle}</Typography>
       </Box>
     </Box>
   );
