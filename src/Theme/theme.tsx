@@ -6,6 +6,7 @@ declare module "@mui/material/styles/createPalette" {
   interface CommonColors {
     digitaBlack: string;
     digitaRed: string;
+    digitaDarkRed: string;
     digitaGrey: string;
     digitaGrey1: string;
     digitaGrey2: string;
@@ -28,6 +29,7 @@ export const theme = createTheme({
     common: {
       digitaBlack: "#333333",
       digitaRed: "#f03637",
+      digitaDarkRed: "#fc0b0d",
       digitaGrey: "#777777",
       digitaGrey1: "#808080",
       digitaGrey2: "#C1C4C9CC",
