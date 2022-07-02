@@ -1,5 +1,7 @@
+import { Dashboard as DashboardPage } from "../../../Components";
+
 function Dashboard() {
-  return <>dashboard</>;
+  return <DashboardPage />;
 }
 
 export default Dashboard;
