@@ -1,0 +1,59 @@
+import {
+  Box,
+  FormControl,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
+import { useState } from "react";
+import { MainSearch } from "../../../Styles/Panel";
+
+function TableHeader() {
+  const [selectedStatus, setSelectedStatus] = useState("status");
+  const [selectedAmount, setSelectedAmount] = useState("20");
+
+  const selectedStatusHandler = (event: SelectChangeEvent) => {
+    setSelectedStatus(event.target.value);
+  };
+  const selectedAmountHandler = (event: SelectChangeEvent) => {
+    setSelectedAmount(event.target.value);
+  };
+  return (
+    <Box
+      sx={{ display: "flex", justifyContent: "space-between", padding: "20px" }}
+    >
+      <Box sx={{ width: "30%" }}>
+        <MainSearch placeholder="Search... " sx={{ borderRadius: "4px" }} />
+      </Box>
+      <Box sx={{ width: "30%", display: "flex", gap: "10px" }}>
+        <FormControl sx={{ width: { xs: "100%" } }} size="small">
+          <Select
+            variant="outlined"
+            displayEmpty
+            value={selectedStatus}
+            onChange={selectedStatusHandler}
+          >
+            <MenuItem value="status">Status</MenuItem>
+            <MenuItem value={"active"}>Active</MenuItem>
+            <MenuItem value={"disable"}>Disable </MenuItem>
+            <MenuItem value={"show-all"}>Show All </MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl sx={{ width: { xs: "100%" } }} size="small">
+          <Select
+            variant="outlined"
+            displayEmpty
+            value={selectedAmount}
+            onChange={selectedAmountHandler}
+          >
+            <MenuItem value="20">Show 20</MenuItem>
+            <MenuItem value={"30"}>Show 30 </MenuItem>
+            <MenuItem value={"40"}>Show 40</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+    </Box>
+  );
+}
+
+export default TableHeader;
