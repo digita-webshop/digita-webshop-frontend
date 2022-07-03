@@ -2,13 +2,15 @@ import CardContent from '@mui/material/CardContent';
 import { Typography } from '@mui/material';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
+import { Link as RouterLink } from 'react-router-dom';
 
 type props = {
+  id: number;
   title: string;
   date: string;
 };
 
-const PostContent = ({ title, date }: props) => {
+const PostContent = ({ id, title, date }: props) => {
   return (
     <Box>
       <CardContent
@@ -17,8 +19,9 @@ const PostContent = ({ title, date }: props) => {
         }}
       >
         <Link
+          component={RouterLink}
+          to={`/blog/${id}`}
           underline='none'
-          href='#'
           sx={{
             '&:hover': {
               color: '#f03637',
