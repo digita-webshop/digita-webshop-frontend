@@ -31,6 +31,7 @@ function RecentPosts() {
         post.id < 5 ? (
           <>
             <RecentPost
+              id={post.id}
               title={post.title}
               image={post.image}
               date={post.releaseDate}

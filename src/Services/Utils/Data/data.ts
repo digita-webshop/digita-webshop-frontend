@@ -223,7 +223,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog6}`,
     author: 'Peter Giroud',
     releaseDate: 'July 9, 2019',
-    status: 'Browse Our Sales',
+    category: 'Browse Our Sales',
   },
   {
     id: 2,
@@ -231,7 +231,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog5}`,
     author: 'Peter Giroud',
     releaseDate: 'October 5, 2018',
-    status: 'Men',
+    category: 'Men',
   },
   {
     id: 3,
@@ -239,7 +239,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog4}`,
     author: 'Peter Giroud',
     releaseDate: 'June 10, 2018',
-    status: 'On Sale',
+    category: 'On Sale',
   },
   {
     id: 4,
@@ -247,7 +247,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog3}`,
     author: 'Peter Giroud',
     releaseDate: 'June 8, 2018',
-    status: 'Women',
+    category: 'Women',
   },
   {
     id: 5,
@@ -255,7 +255,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog2}`,
     author: 'Peter Giroud',
     releaseDate: 'April 5, 2018',
-    status: 'Browse Our Sales',
+    category: 'Browse Our Sales',
   },
   {
     id: 6,
@@ -263,7 +263,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog1}`,
     author: 'Peter Giroud',
     releaseDate: 'February 8, 2018',
-    status: 'Newest Items',
+    category: 'Newest Items',
   },
   {
     id: 7,
@@ -271,7 +271,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog1}`,
     author: 'Peter Giroud',
     releaseDate: 'February 8, 2018',
-    status: 'Newest Items',
+    category: 'Newest Items',
   },
   {
     id: 8,
@@ -279,7 +279,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog1}`,
     author: 'Peter Giroud',
     releaseDate: 'February 8, 2018',
-    status: 'Newest Items',
+    category: 'Newest Items',
   },
   {
     id: 9,
@@ -287,7 +287,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog1}`,
     author: 'Peter Giroud',
     releaseDate: 'February 8, 2018',
-    status: 'Newest Items',
+    category: 'Newest Items',
   },
   {
     id: 10,
@@ -295,7 +295,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog1}`,
     author: 'Peter Giroud',
     releaseDate: 'February 8, 2018',
-    status: 'Newest Items',
+    category: 'Newest Items',
   },
   {
     id: 11,
@@ -303,7 +303,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog1}`,
     author: 'Peter Giroud',
     releaseDate: 'February 8, 2018',
-    status: 'Newest Items',
+    category: 'Newest Items',
   },
   {
     id: 12,
@@ -311,7 +311,7 @@ export const articlesBlogPage = [
     image: `${IMAGES.blog1}`,
     author: 'Peter Giroud',
     releaseDate: 'February 8, 2018',
-    status: 'Newest Items',
+    category: 'Newest Items',
   },
 ];
 

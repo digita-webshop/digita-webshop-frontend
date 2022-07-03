@@ -34,11 +34,12 @@ function Blog() {
           <Grid container>
             {currentArticles.map((article) => (
               <ArticleCard
+                id={article.id}
                 title={article.title}
                 image={article.image}
                 author={article.author}
                 releaseDate={article.releaseDate}
-                status={article.status}
+                category={article.category}
               />
             ))}
           </Grid>

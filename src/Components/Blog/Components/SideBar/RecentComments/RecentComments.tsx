@@ -27,7 +27,11 @@ function RecentComments() {
         </Typography>
       </FilterTitleWrapper>
       {RecentCommentsBlogPage.map((comment) => (
-        <RecentComment title={comment.title} author={comment.author} />
+        <RecentComment
+          id={comment.id}
+          title={comment.title}
+          author={comment.author}
+        />
       ))}
     </Box>
   );

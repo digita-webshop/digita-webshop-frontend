@@ -1,14 +1,15 @@
 import CardMedia from '@mui/material/CardMedia';
 import Link from '@mui/material/Link';
-
+import { Link as RouterLink } from 'react-router-dom';
+// title.replace(/\s+/g, '-')
 type props = {
+  id: number;
   title: string;
   image: string;
 };
-
-const CardImage = ({ image, title }: props) => {
+const CardImage = ({ id, image, title }: props) => {
   return (
-    <Link href='#'>
+    <Link component={RouterLink} to={`/blog/${id}`}>
       <CardMedia component='img' image={`${image}`} alt={`${title}`} />
     </Link>
   );
