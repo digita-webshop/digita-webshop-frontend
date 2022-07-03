@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const DashWrapper = styled(Box)(({ theme }) => ({
@@ -6,4 +6,12 @@ export const DashWrapper = styled(Box)(({ theme }) => ({
   backgroundColor: "white",
   boxShadow: "0 0.1rem 0.25rem rgb(0 0 0 / 8%)",
   borderRadius: "4px",
+}));
+
+export const DashTitle = styled((props: any) => (
+  <Typography variant="h2" {...props} />
+))(({ theme }) => ({
+  fontSize: "20px ",
+  fontWeight: 500,
+  textTransform: "capitalize",
 }));

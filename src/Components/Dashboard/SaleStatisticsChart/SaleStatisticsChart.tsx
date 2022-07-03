@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { Box, Typography } from "@mui/material";
-import { DashWrapper } from "../../../Styles/Dashboard";
+import { DashTitle, DashWrapper } from "../../../Styles/Dashboard";
 
 ChartJS.register(
   CategoryScale,
@@ -70,9 +70,7 @@ export const data = {
 function SaleStatisticsChart() {
   return (
     <DashWrapper sx={{ backgroundColor: "white", padding: "20px" }}>
-      <Typography variant={"h5"} sx={{ fontSize: "20px ", fontWeight: 500 }}>
-        Sale statistics
-      </Typography>
+      <DashTitle>sale statistics</DashTitle>
       <Line options={options} data={data} />
     </DashWrapper>
   );
