@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import { dashboardStatisticCards } from "../../Services/Utils/Data/data";
 import ContentHeader from "./ContentHeader/ContentHeader";
+import SaleStatisticsChart from "./SaleStatisticsChart/SaleStatisticsChart";
 import StatisticsCard from "./StatisticsCard/StatisticsCard";
 
 function Dashboard() {
@@ -23,6 +24,9 @@ function Dashboard() {
             </Grid>
           )
         )}
+      </Grid>
+      <Grid item xs={12} lg={8}>
+        <SaleStatisticsChart />
       </Grid>
     </Grid>
   );
