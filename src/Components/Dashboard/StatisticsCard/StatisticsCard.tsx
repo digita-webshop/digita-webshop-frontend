@@ -1,4 +1,5 @@
 import { Box, Icon, Typography } from "@mui/material";
+import { DashWrapper } from "../../../Styles/Dashboard";
 interface Props {
   title: string;
   subtitle: string;
@@ -8,15 +9,11 @@ interface Props {
 }
 function StatisticsCard({ title, subtitle, icon, color, bgColor }: Props) {
   return (
-    <Box
+    <DashWrapper
       sx={{
         display: "flex",
         gap: "12px",
         alignItems: "center",
-        padding: "20px",
-        backgroundColor: "white",
-        boxShadow: "0 0.1rem 0.25rem rgb(0 0 0 / 8%)",
-        borderRadius: "5px",
       }}
     >
       <Box
@@ -42,7 +39,7 @@ function StatisticsCard({ title, subtitle, icon, color, bgColor }: Props) {
         </Typography>
         <Typography>{subtitle}</Typography>
       </Box>
-    </Box>
+    </DashWrapper>
   );
 }
 
