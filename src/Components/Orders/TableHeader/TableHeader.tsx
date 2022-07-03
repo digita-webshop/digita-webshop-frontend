@@ -20,7 +20,10 @@ function TableHeader() {
   };
   return (
     <Box
-      sx={{ display: "flex", justifyContent: "space-between", padding: "20px" }}
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+      }}
     >
       <Box sx={{ width: "30%" }}>
         <MainSearch placeholder="Search... " sx={{ borderRadius: "4px" }} />
