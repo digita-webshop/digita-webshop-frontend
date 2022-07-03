@@ -1,15 +1,18 @@
 import CardMedia from '@mui/material/CardMedia';
 import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 
 type props = {
+  id: number;
   title: string;
   image: string;
 };
 
-const PostImage = ({ image, title }: props) => {
+const PostImage = ({ id, image, title }: props) => {
   return (
     <Link
-      href='#'
+      component={RouterLink}
+      to={`/blog/${id}`}
       sx={{
         '&:hover': {
           filter: 'brightness(70%)',
