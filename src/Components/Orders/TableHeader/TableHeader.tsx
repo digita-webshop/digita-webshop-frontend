@@ -23,12 +23,20 @@ function TableHeader() {
       sx={{
         display: "flex",
         justifyContent: "space-between",
+        flexWrap: "wrap",
+        gap: "20px",
       }}
     >
-      <Box sx={{ width: "30%" }}>
+      <Box sx={{ width: { xs: "100%", sm: "40%", lg: "30%" } }}>
         <MainSearch placeholder="Search... " sx={{ borderRadius: "4px" }} />
       </Box>
-      <Box sx={{ width: "30%", display: "flex", gap: "10px" }}>
+      <Box
+        sx={{
+          width: { xs: "100%", sm: "45%", lg: "30%" },
+          display: "flex",
+          gap: "10px",
+        }}
+      >
         <FormControl sx={{ width: { xs: "100%" } }} size="small">
           <Select
             variant="outlined"
