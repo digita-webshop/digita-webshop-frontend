@@ -7,10 +7,11 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { orders } from "../../../Services/Utils/Data/data";
 import { tableBadgeStyles, TableButton, TCell } from "../../../Styles/Orders";
 
 const tableHead = ["#ID", "name", "email", "total", "status", "date", "action"];
-
+const statusName = ["canceled", "pending", "received"];
 function OrdersTable() {
   return (
     <Table>
@@ -34,35 +35,42 @@ function OrdersTable() {
         </TableRow>
       </TableHead>
       <TableBody>
-        <TableRow sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}>
-          <TCell>0654</TCell>
-          <TCell
-            sx={{
-              fontWeight: 500,
-            }}
+        {orders.map(({ id, name, email, status, date, total }) => (
+          <TableRow
+            key={id}
+            sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
           >
-            Esther Howard
-          </TCell>
-          <TCell>esther@example.com</TCell>
-          <TCell>$12.00</TCell>
-          <TCell>
-            <Box sx={tableBadgeStyles}>Canceled</Box>
-          </TCell>
-          <TCell>03.07.2022</TCell>
-          <TCell
-            sx={{
-              display: { xs: "none", sm: "flex" },
-              justifyContent: "center",
-              gap: "4px",
-              flexWrap: "wrap",
-            }}
-          >
-            <TableButton>Detail</TableButton>
-            <TableButton sx={{ display: "flex", paddingY: "0" }}>
-              <MoreHoriz sx={{ margin: "auto", color: "common.panelGrey" }} />
-            </TableButton>
-          </TCell>
-        </TableRow>
+            <TCell>{id}</TCell>
+            <TCell
+              sx={{
+                fontWeight: 500,
+              }}
+            >
+              {name}
+            </TCell>
+            <TCell>{email}</TCell>
+            <TCell>{`$${total.toFixed(2)}`}</TCell>
+            <TCell>
+              <Box sx={tableBadgeStyles} className={statusName[status]}>
+                {statusName[status]}
+              </Box>
+            </TCell>
+            <TCell>{date}</TCell>
+            <TCell
+              sx={{
+                display: { xs: "none", sm: "flex" },
+                justifyContent: "center",
+                gap: "4px",
+                flexWrap: "wrap",
+              }}
+            >
+              <TableButton>Detail</TableButton>
+              <TableButton sx={{ display: "flex", paddingY: "0" }}>
+                <MoreHoriz sx={{ margin: "auto", color: "common.panelGrey" }} />
+              </TableButton>
+            </TCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );
