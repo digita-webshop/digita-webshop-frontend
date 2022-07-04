@@ -1,10 +1,20 @@
-import { Box, Divider, Grid } from "@mui/material";
+import { Divider, Grid, SelectChangeEvent } from "@mui/material";
+import { useState } from "react";
 import { DashWrapper } from "../../Styles/Dashboard";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import OrdersTable from "./OrdersTable/OrdersTable";
 import TableHeader from "./TableHeader/TableHeader";
 
 function Orders() {
+  const [selectedStatus, setSelectedStatus] = useState("status");
+  const [selectedAmount, setSelectedAmount] = useState("20");
+
+  const selectedStatusHandler = (event: SelectChangeEvent) => {
+    setSelectedStatus(event.target.value);
+  };
+  const selectedAmountHandler = (event: SelectChangeEvent) => {
+    setSelectedAmount(event.target.value);
+  };
   return (
     <Grid container rowSpacing={4}>
       <Grid item xs={12}>
@@ -14,7 +24,12 @@ function Orders() {
         <DashWrapper
           sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}
         >
-          <TableHeader />
+          <TableHeader
+            selectedStatus={selectedStatus}
+            selectedAmount={selectedAmount}
+            selectedStatusHandler={selectedStatusHandler}
+            selectedAmountHandler={selectedAmountHandler}
+          />
         </DashWrapper>
         <Divider
           sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
@@ -26,7 +41,7 @@ function Orders() {
             overflow: "hidden",
           }}
         >
-          <OrdersTable />
+          <OrdersTable selectedAmount={selectedAmount} />
         </DashWrapper>
       </Grid>
     </Grid>
