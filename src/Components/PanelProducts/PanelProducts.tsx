@@ -2,10 +2,16 @@ import { useState } from "react";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import GridHeader from "./GridHeader/GridHeader";
 import { Grid, Box, SelectChangeEvent, Divider } from "@mui/material";
-import {DashWrapper} from "../../Styles/PanelProducts"
-
+import { DashWrapper } from "../../Styles/PanelProducts";
+import Product from "./Product/Product";
 
 const PanelProducts = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productPerPage] = useState(4);
+  const paginationNumbers = Math.ceil(FormData.length / productPerPage);
+  const indexOfLastContact = currentPage * productPerPage;
+  const indexOfFirstContact = indexOfLastContact - productPerPage;
+
   const [selectedStatus, setSelectedStatus] = useState("status");
   const [selectedAmount, setSelectedAmount] = useState("20");
 
@@ -43,7 +49,23 @@ const PanelProducts = () => {
             overflow: "hidden",
           }}
         >
-          {/* <OrdersTable selectedAmount={selectedAmount} /> */}
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+              <Product />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+              <Product />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+              <Product />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+              <Product />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+              <Product />
+            </Grid>
+          </Grid>
         </DashWrapper>
       </Grid>
     </Grid>
