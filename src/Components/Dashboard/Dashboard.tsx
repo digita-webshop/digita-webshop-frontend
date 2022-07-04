@@ -1,5 +1,7 @@
 import { Grid } from "@mui/material";
 import { dashboardStatisticCards } from "../../Services/Utils/Data/data";
+import { DashTitle, DashWrapper } from "../../Styles/Dashboard";
+import OrdersTable from "../Orders/OrdersTable/OrdersTable";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import MarketingProgress from "./MarketingProgress/MarketingProgress";
 import SaleStatisticsChart from "./SaleStatisticsChart/SaleStatisticsChart";
@@ -31,6 +33,18 @@ function Dashboard() {
       </Grid>
       <Grid item xs={12} lg={4}>
         <MarketingProgress />
+      </Grid>
+      <Grid item xs={12}>
+        <DashWrapper
+          sx={{
+            borderTopLeftRadius: "0",
+            borderTopRightRadius: "0",
+            overflow: "hidden",
+          }}
+        >
+          <DashTitle sx={{ marginBottom: "30px" }}>latest orders</DashTitle>
+          <OrdersTable selectedAmount={"8"} />
+        </DashWrapper>
       </Grid>
     </Grid>
   );

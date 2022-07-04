@@ -69,7 +69,7 @@ export const data = {
 
 function SaleStatisticsChart() {
   return (
-    <DashWrapper sx={{ backgroundColor: "white", padding: "20px" }}>
+    <DashWrapper>
       <DashTitle>sale statistics</DashTitle>
       <Line options={options} data={data} />
     </DashWrapper>
