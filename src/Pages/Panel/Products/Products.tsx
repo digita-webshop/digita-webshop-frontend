@@ -1,5 +1,7 @@
+import PanelProducts from "../../../Components/PanelProducts/PanelProducts";
+
 function Products() {
-  return <>products</>;
+  return <PanelProducts />;
 }
 
 export default Products;
