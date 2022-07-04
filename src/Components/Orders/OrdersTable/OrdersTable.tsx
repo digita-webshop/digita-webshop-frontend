@@ -1,6 +1,5 @@
 import { MoreHoriz } from "@mui/icons-material";
 import {
-  Box,
   Table,
   TableBody,
   TableCell,
@@ -8,10 +7,11 @@ import {
   TableRow,
 } from "@mui/material";
 import { orders } from "../../../Services/Utils/Data/data";
-import { tableBadgeStyles, TableButton, TCell } from "../../../Styles/Orders";
+import { TableButton, TBadge, TCell } from "../../../Styles/Orders";
 
 const tableHead = ["#ID", "name", "email", "total", "status", "date", "action"];
 const statusName = ["canceled", "pending", "received"];
+
 function OrdersTable() {
   return (
     <Table>
@@ -51,9 +51,9 @@ function OrdersTable() {
             <TCell>{email}</TCell>
             <TCell>{`$${total.toFixed(2)}`}</TCell>
             <TCell>
-              <Box sx={tableBadgeStyles} className={statusName[status]}>
+              <TBadge className={statusName[status]}>
                 {statusName[status]}
-              </Box>
+              </TBadge>
             </TCell>
             <TCell>{date}</TCell>
             <TCell

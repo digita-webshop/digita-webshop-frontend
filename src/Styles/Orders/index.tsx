@@ -4,6 +4,8 @@ import { styled } from "@mui/material/styles";
 export const TCell = styled(TableCell)(({ theme }) => ({
   fontSize: "15px",
   color: theme.palette.common.digitaBlack,
+  maxWidth: "180px",
+  wordBreak: "break-all",
   [theme.breakpoints.between("sm", "lg")]: {
     padding: "12px 4px",
   },
@@ -25,15 +27,30 @@ export const TableButton = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const tableBadgeStyles = {
+export const TBadge = styled(Box)(({ theme }) => ({
   textTransform: "capitalize",
   borderRadius: "15px",
-  fontSize: { xs: "12px", md: "14px" },
-  bgcolor: "common.panelActiveRed",
-  padding: { xs: "2px 4px", sm: "4px 8px" },
-  color: "common.digitaRed",
+  fontSize: "12px",
+  padding: "2px 4px",
+  backgroundColor: theme.palette.common.panelActiveRed,
+  color: theme.palette.common.digitaRed,
   fontWeight: 500,
-};
+  textAlign: "center",
+  [theme.breakpoints.up("sm")]: {
+    padding: "4px 8px",
+  },
+  [theme.breakpoints.up("md")]: {
+    fontSize: "14px",
+  },
+  "&.pending": {
+    color: "#98530c",
+    backgroundColor: "#ffe8d0",
+  },
+  "&.received": {
+    color: "#006d0e",
+    backgroundColor: "#ccf0d1",
+  },
+}));
 
 export const DashFormControl = styled(FormControl)(({ theme }) => ({
   width: "100%",
