@@ -1,18 +1,19 @@
 import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { useState } from "react";
 import { DashFormControl } from "../../../Styles/Orders";
 import { MainSearch } from "../../../Styles/Panel";
 
-function TableHeader() {
-  const [selectedStatus, setSelectedStatus] = useState("status");
-  const [selectedAmount, setSelectedAmount] = useState("20");
-
-  const selectedStatusHandler = (event: SelectChangeEvent) => {
-    setSelectedStatus(event.target.value);
-  };
-  const selectedAmountHandler = (event: SelectChangeEvent) => {
-    setSelectedAmount(event.target.value);
-  };
+interface Props {
+  selectedStatus: string;
+  selectedAmount: string;
+  selectedStatusHandler: (event: SelectChangeEvent) => void;
+  selectedAmountHandler: (event: SelectChangeEvent) => void;
+}
+function TableHeader({
+  selectedStatus,
+  selectedAmount,
+  selectedStatusHandler,
+  selectedAmountHandler,
+}: Props) {
   return (
     <Box
       sx={{
