@@ -10,13 +10,12 @@ import {UpdateType} from "../../CartUpdated";
 
 type Props = {
     cartList: CartItem[];
-    setCartList: Dispatch<React.SetStateAction<CartItem[]>>;
     values: CartItem[];
     setValues: React.Dispatch<React.SetStateAction<CartItem[]>>
     setCartUpdated: React.Dispatch<React.SetStateAction<UpdateCart | null>>
 }
 
-const CartListTable = ({cartList, setCartList, values, setValues, setCartUpdated}: Props) => {
+const CartListTable = ({cartList, values, setValues, setCartUpdated}: Props) => {
     const [updateButtonDisabled, setUpdateButtonDisabled] = useState(true);
 
     const handleUpdateCart = () => {
@@ -39,7 +38,7 @@ const CartListTable = ({cartList, setCartList, values, setValues, setCartUpdated
             </TableHead>
             <TableBody>
                 {cartList.map((row,) => (
-                    <CartListTableRow key={row.id} row={row} setCartList={setCartList} cartList={cartList}
+                    <CartListTableRow key={row.id} row={row} cartList={cartList}
                                       setUpdateButtonDisabled={setUpdateButtonDisabled}
                                       updateButtonDisabled={updateButtonDisabled}
                                       values={values} setValues={setValues}

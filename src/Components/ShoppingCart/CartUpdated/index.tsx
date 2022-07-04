@@ -12,15 +12,14 @@ export enum UpdateType {
 type Props = {
     item?: CartItem
     type?: UpdateType;
-    setCartList: Dispatch<React.SetStateAction<CartItem[]>>;
 }
 
-const CartUpdated = ({item, type, setCartList}: Props) => {
+const CartUpdated = ({item, type}: Props) => {
 
     const handleUndo = () => {
-        setCartList(prevState => {
-            return [...prevState, item as CartItem]
-        })
+        // setCartList(prevState => {
+        //     return [...prevState, item as CartItem]
+        // })
     }
 
     return <Box sx={{
