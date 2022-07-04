@@ -59,8 +59,6 @@ const ShoppingCart = () => {
         store.dispatch(actions.cart.setCart(dummyCartData));
     }, [])
 
-    console.log('cartList', cartList)
-
     const total = cartList.reduce((acc: number, curr: CartItem) => {
         acc += curr.quantity * curr.price;
         return acc;
@@ -84,7 +82,8 @@ const ShoppingCart = () => {
                                    values={values} setValues={setValues}
                                    setCartUpdated={setCartUpdated}/>
                     <CartTotalTable total={total}/>
-                </TableContainer>}
+                </TableContainer>
+            }
         </Container>
     );
 };
