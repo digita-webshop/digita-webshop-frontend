@@ -10,7 +10,6 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { Box, Typography } from "@mui/material";
 import { DashTitle, DashWrapper } from "../../../Styles/Dashboard";
 
 ChartJS.register(

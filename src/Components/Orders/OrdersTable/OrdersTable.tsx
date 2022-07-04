@@ -1,13 +1,7 @@
 import { MoreHoriz } from "@mui/icons-material";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import { Table, TableBody, TableHead, TableRow } from "@mui/material";
 import { orders } from "../../../Services/Utils/Data/data";
-import { TableButton, TBadge, TCell } from "../../../Styles/Orders";
+import { TableButton, TBadge, TCell, THCell } from "../../../Styles/Orders";
 
 const tableHead = ["#ID", "name", "email", "total", "status", "date", "action"];
 const statusName = ["canceled", "pending", "received"];
@@ -22,19 +16,13 @@ function OrdersTable({ selectedAmount }: Props) {
       <TableHead>
         <TableRow>
           {tableHead.map((item, index) => (
-            <TableCell
+            <THCell
               key={index}
               align="center"
-              sx={{
-                color: "common.panelGrey",
-                fontSize: "16px",
-                fontWeight: 400,
-                textTransform: "capitalize",
-                display: item === "action" ? { xs: "none", sm: "block" } : "",
-              }}
+              className={item === "action" ? "hidden" : ""}
             >
               {item}
-            </TableCell>
+            </THCell>
           ))}
         </TableRow>
       </TableHead>
@@ -50,11 +38,12 @@ function OrdersTable({ selectedAmount }: Props) {
               <TCell
                 sx={{
                   fontWeight: 500,
+                  wordBreak: "break-word",
                 }}
               >
                 {name}
               </TCell>
-              <TCell>{email}</TCell>
+              <TCell sx={{ wordBreak: "break-all" }}>{email}</TCell>
               <TCell>{`$${total.toFixed(2)}`}</TCell>
               <TCell>
                 <TBadge className={statusName[status]}>
