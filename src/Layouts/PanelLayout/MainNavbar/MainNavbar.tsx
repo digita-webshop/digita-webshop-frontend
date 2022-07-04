@@ -37,7 +37,8 @@ function MainNavbar({ setDrawerOpen, mdMatches }: Props) {
   };
 
   return (
-    <AppBar
+    <Box
+      component={"div"}
       sx={{
         background: "white",
         position: "initial",
@@ -45,6 +46,7 @@ function MainNavbar({ setDrawerOpen, mdMatches }: Props) {
         borderBottom: "1px solid ",
         borderColor: "common.panelHoverDarkGrey",
       }}
+      style={{ paddingRight: "0px !important" }}
     >
       <Toolbar
         sx={panelToolbarStyles}
@@ -98,7 +100,7 @@ function MainNavbar({ setDrawerOpen, mdMatches }: Props) {
           </Menu>
         </Box>
       </Toolbar>
-    </AppBar>
+    </Box>
   );
 }
 
