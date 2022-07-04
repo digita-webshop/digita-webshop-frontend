@@ -1,8 +1,8 @@
-import CartItem from "../Types/CartItemType";
-import React, {Dispatch} from "react";
+import React from "react";
+import store from "../../../redux/store";
+import actions from "../../../redux/actions";
 
 export const handleRowDelete = (index: number) => {
-    // setCartList(prevState => {
-    //     return prevState.filter((item: CartItem) => item.id !== index)
-    // })
+    // @ts-ignore todo fix me later
+    store.dispatch(actions.cart.removeFromCart(index));
 }
