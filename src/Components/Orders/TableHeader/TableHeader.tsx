@@ -6,6 +6,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { useState } from "react";
+import { DashFormControl } from "../../../Styles/Orders";
 import { MainSearch } from "../../../Styles/Panel";
 
 function TableHeader() {
@@ -37,7 +38,7 @@ function TableHeader() {
           gap: "10px",
         }}
       >
-        <FormControl sx={{ width: { xs: "100%" } }} size="small">
+        <DashFormControl size="small">
           <Select
             variant="outlined"
             displayEmpty
@@ -49,8 +50,8 @@ function TableHeader() {
             <MenuItem value={"disable"}>Disable </MenuItem>
             <MenuItem value={"show-all"}>Show All </MenuItem>
           </Select>
-        </FormControl>
-        <FormControl sx={{ width: { xs: "100%" } }} size="small">
+        </DashFormControl>
+        <DashFormControl size="small">
           <Select
             variant="outlined"
             displayEmpty
@@ -61,7 +62,7 @@ function TableHeader() {
             <MenuItem value={"30"}>Show 30 </MenuItem>
             <MenuItem value={"40"}>Show 40</MenuItem>
           </Select>
-        </FormControl>
+        </DashFormControl>
       </Box>
     </Box>
   );
