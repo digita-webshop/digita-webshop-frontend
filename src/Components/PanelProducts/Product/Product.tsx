@@ -16,25 +16,32 @@ import {
   editBtn,
 } from "../../../Styles/PanelProducts";
 
-const Product = () => {
+type T = {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+}
+
+const Product = ({ name, price, image}: T) => {
   return (
     <Card sx={cardWrapper}>
       <CardMedia
         component="img"
-        height="230"
-        image="https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg"
+        height="240"
+        image={image}
         alt="green iguana"
       />
-      <CardContent>
+      <CardContent sx={{ paddingBottom: "1rem !important"}}>
         <Typography component="p" sx={titleStyle}>
-          Product name
+          {name}
         </Typography>
         <Typography
           variant="h6"
           component="div"
           sx={{ pt: "2px", fontSize: "16px" }}
         >
-          $179.00
+          {`$${price}00`}
         </Typography>
         <Box sx={{ display: "flex", mt: 1, gap: 1 }}>
           <Button variant="contained" sx={editBtn}>
