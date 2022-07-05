@@ -3,7 +3,6 @@ import {
   Box,
   Container,
   Toolbar,
-  Badge,
   useMediaQuery,
   Fade,
   SelectChangeEvent,
@@ -14,31 +13,17 @@ import logoImg from "../../../Assets/Images/digita-logo.png";
 import { navbarItems } from "../../../Services/Utils/Data/data";
 import { useTheme } from "@mui/material/styles";
 
-import {
-  LocalGroceryStoreOutlined,
-  SearchOutlined,
-  LoginOutlined,
-  FavoriteBorderOutlined,
-  MenuRounded,
-  KeyboardArrowDown,
-} from "@mui/icons-material";
+import { MenuRounded, KeyboardArrowDown } from "@mui/icons-material";
 import { Fragment, useEffect, useState } from "react";
-import { AntTab, AntTabs } from "../../../Styles/Appbar";
+import { AntTab, AntTabs, menuIconStyles } from "../../../Styles/Appbar";
 import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
-import ShopMenuCard from "./ShopCart/ShopCart";
 import SearchBar from "./SearchBar/SearchBar";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import ShopMenu from "./ShopMenu/ShopMenu";
 import { Login, Register, ResetPassword } from "../../../Components";
+import Icons from "./Icons/Icons";
 
-const navbarIcons = {
-  marginLeft: "12px",
-  transition: "all 200ms",
-  cursor: "pointer",
-  fontSize: "28px",
-  "&:hover": { color: "#f03637" },
-};
 function Navbar() {
   const [displayShopMenu, setDisplayShopMenu] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
@@ -51,11 +36,9 @@ function Navbar() {
     right: false,
   });
   const [selectedCategory, setSelectedCategory] = useState("");
-
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const { pathname } = useLocation();
-  const navigate = useNavigate();
 
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     setSelectedCategory(event.target.value);
@@ -63,10 +46,13 @@ function Navbar() {
 
   type Anchor = "left" | "right";
 
-  const toggleDrawer = (anchor: Anchor, open: boolean) => {
+  const toggleDrawer = (anchor: Anchor, open: boolean) => () => {
     if (!matches) {
       setDisplayDrawer({ ...displayDrawer, [anchor]: open });
     }
+  };
+  const loginModalHandler = (open: boolean) => () => {
+    setOpenLoginModal(open);
   };
 
   const openSearchBarHandler = () => {
@@ -104,6 +90,7 @@ function Navbar() {
       window.removeEventListener("scroll", () => {});
     };
   }, []);
+
   return (
     <Fragment>
       <AppBar
@@ -114,37 +101,12 @@ function Navbar() {
         }}
       >
         <Collapse in={collapse} timeout={600}>
-          <Container
-            maxWidth={"xl"}
-            sx={{
-              position: "relative",
-            }}
-          >
-            <Toolbar
-              sx={{
-                justifyContent: "space-between",
-              }}
-              disableGutters
-            >
+          <Container maxWidth={"xl"} sx={{ position: "relative" }}>
+            <Toolbar sx={{ justifyContent: "space-between" }} disableGutters>
               <Box>
-                <Box onClick={() => toggleDrawer("left", true)}>
-                  <MenuRounded
-                    fontSize={"large"}
-                    color="primary"
-                    sx={{
-                      display: {
-                        sx: "block",
-                        md: "none",
-                        cursor: "pointer",
-                        "&:hover": { color: "#f03637" },
-                      },
-                    }}
-                  />
+                <Box onClick={toggleDrawer("left", true)}>
+                  <MenuRounded sx={menuIconStyles} />
                 </Box>
-                <TabDrawer
-                  displayDrawer={displayDrawer}
-                  toggleDrawer={toggleDrawer}
-                />
               </Box>
               <Box sx={{ marginRight: { sx: "0", md: "30px" } }}>
                 <img src={logoImg} alt="digita-logo" />
@@ -176,112 +138,19 @@ function Navbar() {
                       />
                     ))}
                   </AntTabs>
-                  <Box
-                    sx={{
-                      marginLeft: { sx: "0", md: "auto" },
-                      height: { md: "90px" },
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Box onClick={openSearchBarHandler}>
-                      <Badge
-                        showZero
-                        sx={{
-                          display: {
-                            xs: "none",
-                            md: "inline-flex",
-                          },
-                        }}
-                      >
-                        <SearchOutlined color="primary" sx={navbarIcons} />
-                      </Badge>
-                    </Box>
-                    <Box onClick={() => setOpenLoginModal(true)}>
-                      <Badge
-                        showZero
-                        sx={{
-                          display: {
-                            xs: "none",
-                            md: "inline-flex",
-                          },
-                        }}
-                      >
-                        <LoginOutlined color="primary" sx={navbarIcons} />
-                      </Badge>
-                    </Box>
-                    <Box
-                      display={"flex"}
-                      height={"100%"}
-                      onClick={() => navigate("/wishlist")}
-                    >
-                      <Badge
-                        badgeContent={4}
-                        overlap="circular"
-                        color="error"
-                        sx={{
-                          display: {
-                            xs: "none",
-                            md: "inline-flex",
-                          },
-                          margin: "auto",
-                        }}
-                      >
-                        <FavoriteBorderOutlined
-                          color="primary"
-                          sx={navbarIcons}
-                        />
-                      </Badge>
-                    </Box>
-                    <Box
-                      onClick={() => toggleDrawer("right", true)}
-                      sx={{
-                        height: "100%",
-                        display: "flex",
-                        cursor: "pointer",
-                        "&:hover .shop-cart": {
-                          display: matches ? "inline-block" : "none",
-                        },
-                        "&:hover .local-grocery-icon": { color: "#f03637" },
-                      }}
-                    >
-                      <Badge
-                        badgeContent={4}
-                        overlap="circular"
-                        color="error"
-                        sx={{
-                          margin: "auto",
-                        }}
-                      >
-                        <LocalGroceryStoreOutlined
-                          color="primary"
-                          sx={{
-                            marginLeft: "12px",
-                            transition: "all 200ms",
-                            cursor: "pointer",
-                            fontSize: "28px",
-                          }}
-                          className="local-grocery-icon"
-                        />
-                      </Badge>
-                      <ShopMenuCard />
-                    </Box>
-                    <ShopDrawer
-                      displayDrawer={displayDrawer}
-                      toggleDrawer={toggleDrawer}
-                    />
-                  </Box>
+                  <Icons
+                    openSearchBarHandler={openSearchBarHandler}
+                    loginModalHandler={loginModalHandler}
+                    matches={matches}
+                    toggleDrawer={toggleDrawer}
+                  />
                 </Fragment>
               )}
               <Fade
                 style={{ display: openSearchBar ? "block" : "none" }}
                 in={openSearchBar}
               >
-                <Box
-                  sx={{
-                    width: "100%",
-                  }}
-                >
+                <Box width={"100%"}>
                   <SearchBar
                     selectedCategory={selectedCategory}
                     selectedCategoryHandler={selectedCategoryHandler}
@@ -291,6 +160,16 @@ function Navbar() {
               </Fade>
             </Toolbar>
           </Container>
+          {/*--------------------- drawers ---------------- */}
+          <ShopDrawer
+            displayDrawer={displayDrawer}
+            toggleDrawer={toggleDrawer}
+          />
+          <TabDrawer
+            displayDrawer={displayDrawer}
+            toggleDrawer={toggleDrawer}
+          />
+
           <Fade
             style={{ display: displayShopMenu ? "block" : "none" }}
             in={displayShopMenu}

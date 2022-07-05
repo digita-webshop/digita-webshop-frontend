@@ -16,7 +16,7 @@ import { navbarItems } from "../../../../Services/Utils/Data/data";
 type Anchor = "left" | "right";
 type TabDrawerProps = {
   displayDrawer: { left: boolean; right: boolean };
-  toggleDrawer: (anchor: Anchor, open: boolean) => void;
+  toggleDrawer: (anchor: Anchor, open: boolean) => () => void;
 };
 
 function TabDrawer({ displayDrawer, toggleDrawer }: TabDrawerProps) {
@@ -30,7 +30,7 @@ function TabDrawer({ displayDrawer, toggleDrawer }: TabDrawerProps) {
     <Drawer
       anchor="left"
       open={displayDrawer["left"]}
-      onClose={() => toggleDrawer("left", false)}
+      onClose={toggleDrawer("left", false)}
     >
       <Box
         sx={{
@@ -50,7 +50,7 @@ function TabDrawer({ displayDrawer, toggleDrawer }: TabDrawerProps) {
             alignItems: "center",
             cursor: "pointer",
           }}
-          onClick={() => toggleDrawer("left", false)}
+          onClick={toggleDrawer("left", false)}
         >
           <CloseRounded sx={{ color: "white" }} />
           Quick Navigation

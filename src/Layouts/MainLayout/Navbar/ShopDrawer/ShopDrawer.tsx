@@ -14,14 +14,14 @@ import {
 type Anchor = "left" | "right";
 type ShopDrawerProps = {
   displayDrawer: { right: boolean; left: boolean };
-  toggleDrawer: (anchor: Anchor, open: boolean) => void;
+  toggleDrawer: (anchor: Anchor, open: boolean) => () => void;
 };
 function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
   return (
     <Drawer
       anchor="right"
       open={displayDrawer["right"]}
-      onClose={() => toggleDrawer("right", false)}
+      onClose={toggleDrawer("right", false)}
     >
       <Box padding={2} position={"relative"}>
         <Box
@@ -29,7 +29,7 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
           right={4}
           top={6}
           sx={{ cursor: "pointer" }}
-          onClick={() => toggleDrawer("right", false)}
+          onClick={toggleDrawer("right", false)}
         >
           <CloseRounded fontSize="large" color="secondary" />
         </Box>

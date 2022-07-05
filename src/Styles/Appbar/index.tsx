@@ -86,3 +86,21 @@ export const ShopMenuButton = styled(Button)(({ theme }) => ({
     width: "120px",
   },
 }));
+
+export const menuIconStyles = {
+  display: {
+    sx: "block",
+    md: "none",
+  },
+  fontSize: "35px",
+  color: "common.digitaBlack",
+  cursor: "pointer",
+  "&:hover": { color: "#f03637" },
+};
+
+export const IconWrapper = styled(Box)(({ theme }) => ({
+  height: "100%",
+  display: "flex",
+  cursor: "pointer",
+  "&:hover .MuiSvgIcon-root": { color: theme.palette.common.digitaRed },
+}));
