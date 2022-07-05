@@ -28,7 +28,7 @@ export const DashWrapper = styled("div")(({ theme }) => ({
 
 /* ==================== Product Item ================= */
 export const cardWrapper = {
-  maxWidth: 245,
+  width: "100%",
   border: "1px solid #d8d8d8",
   cursor: "pointer",
   "&:hover": { borderColor: "#999" },
@@ -37,7 +37,7 @@ export const cardWrapper = {
 export const titleStyle = {
   color: "gray",
   fontSize: "18px",
-  "&:hover": { color: "skyBlue" },
+  "&:hover": { color: "#f03637" },
 }
 
 export const deleteBtn = {
@@ -46,6 +46,7 @@ export const deleteBtn = {
   border: "1px solid #f03637",
   color: "#f03637",
   fontSize: "16px",
+  padding: "0.1rem 0.4rem 0.1rem 0 !important",
   "&:hover": { backgroundColor: "f03637", color: "#fff" },
 }
 
@@ -56,5 +57,6 @@ export const editBtn = {
   fontWeight: 400,
   border: "1px solid #d8d8d8",
   fontSize: "16px",
+  padding: "0.1rem 0.4rem 0.1rem 0 !important",
   "&:hover": { backgroundColor: "transparent", borderColor: "#999" },
 }

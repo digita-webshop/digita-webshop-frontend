@@ -1,9 +1,10 @@
 import { useState } from "react";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import GridHeader from "./GridHeader/GridHeader";
-import { Grid, Box, SelectChangeEvent, Divider } from "@mui/material";
+import { Grid, SelectChangeEvent, Divider } from "@mui/material";
 import { DashWrapper } from "../../Styles/PanelProducts";
 import Product from "./Product/Product";
+import { panelProducts } from "../../Services/Utils/Data/data";
 
 const PanelProducts = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,21 +51,11 @@ const PanelProducts = () => {
           }}
         >
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-              <Product />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-              <Product />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-              <Product />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-              <Product />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-              <Product />
-            </Grid>
+            {panelProducts.map(({id, name, price, image}) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={id}>
+                <Product id={id} name={name} price={price} image={image}/>
+              </Grid>
+            ))}
           </Grid>
         </DashWrapper>
       </Grid>
