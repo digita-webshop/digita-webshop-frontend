@@ -227,6 +227,22 @@ export const panelProducts = [
   {id: 6, name:"Samsung Galaxy M21", image:"https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg", price: 179},
   {id: 7, name:"Samsung Galaxy V21", image:"https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg", price: 179},
   {id: 8, name:"SmartPhone & Ipad", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg", price: 179},
+  {id: 9, name:"Beats By Dr. Dre studio...", image:"https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg", price: 179},
+  {id: 10, name:"Crosair HS35...", image:"https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg", price: 179},
+  {id: 11, name:"Microsoft Xbox One S Bl", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg", price: 179},
+  {id: 12, name:"Microsoft Xbox One S....", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg", price: 179},
+  {id: 13, name:"Samsung Galaxy Note...", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", price: 179},
+  {id: 14, name:"Samsung Galaxy M21", image:"https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg", price: 179},
+  {id: 15, name:"Samsung Galaxy V21", image:"https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg", price: 179},
+  {id: 16, name:"SmartPhone & Ipad", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg", price: 179},
+  {id: 17, name:"Beats By Dr. Dre studio...", image:"https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg", price: 179},
+  {id: 18, name:"Crosair HS35...", image:"https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg", price: 179},
+  {id: 19, name:"Microsoft Xbox One S Bl", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg", price: 179},
+  {id: 20, name:"Microsoft Xbox One S....", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg", price: 179},
+  {id: 21, name:"Samsung Galaxy Note...", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", price: 179},
+  {id: 22, name:"Samsung Galaxy M21", image:"https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg", price: 179},
+  {id: 23, name:"Samsung Galaxy V21", image:"https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg", price: 179},
+  {id: 24, name:"SmartPhone & Ipad", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg", price: 179},
 ]
 
 export const articlesBlogPage = [

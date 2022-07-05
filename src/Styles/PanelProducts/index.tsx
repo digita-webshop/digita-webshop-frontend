@@ -34,11 +34,21 @@ export const cardWrapper = {
   "&:hover": { borderColor: "#999" },
 };
 
+export const titleWrapper = {
+  paddingBottom: "1rem !important",
+
+  webkitBoxOrient: "vertical",
+  display: "webkitBox",
+  overflow: "hidden !important",
+  webkitLineClamp: 1,
+  whiteSpace: "nowrap",
+};
+
 export const titleStyle = {
   color: "gray",
   fontSize: "18px",
   "&:hover": { color: "#f03637" },
-}
+};
 
 export const deleteBtn = {
   borderRadius: "4px",
@@ -48,10 +58,10 @@ export const deleteBtn = {
   fontSize: "16px",
   padding: "0.1rem 0.4rem 0.1rem 0 !important",
   "&:hover": { backgroundColor: "f03637", color: "#fff" },
-}
+};
 
 export const editBtn = {
-  borderRadius: "4px", 
+  borderRadius: "4px",
   backgroundColor: "#fff",
   color: "#333",
   fontWeight: 400,
@@ -59,4 +69,12 @@ export const editBtn = {
   fontSize: "16px",
   padding: "0.1rem 0.4rem 0.1rem 0 !important",
   "&:hover": { backgroundColor: "transparent", borderColor: "#999" },
-}
+};
+
+/* ================== Pagination ================== */
+export const paginationStyle = {
+  paddingTop: "2rem",
+  paddingBottom: "1.5rem",
+  display: "flex",
+  justifyContent: "flex-end",
+};

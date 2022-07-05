@@ -11,6 +11,7 @@ import EditIcon from "@mui/icons-material/Edit";
 
 import {
   cardWrapper,
+  titleWrapper,
   titleStyle,
   deleteBtn,
   editBtn,
@@ -32,7 +33,7 @@ const Product = ({ name, price, image}: T) => {
         image={image}
         alt="green iguana"
       />
-      <CardContent sx={{ paddingBottom: "1rem !important"}}>
+      <CardContent sx={titleWrapper}>
         <Typography component="p" sx={titleStyle}>
           {name}
         </Typography>
@@ -41,7 +42,7 @@ const Product = ({ name, price, image}: T) => {
           component="div"
           sx={{ pt: "2px", fontSize: "16px" }}
         >
-          {`$${price}00`}
+          {"$"+price}
         </Typography>
         <Box sx={{ display: "flex", mt: 1, gap: 1 }}>
           <Button variant="contained" sx={editBtn}>
