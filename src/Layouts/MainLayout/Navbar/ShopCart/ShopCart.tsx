@@ -17,8 +17,8 @@ function ShopCart() {
     <Box
       sx={{
         position: "absolute",
-        right: "10px",
-        top: "72px ",
+        right: "0px",
+        top: "82px ",
         padding: "15px",
         backgroundColor: "white",
         display: "none",
@@ -59,9 +59,10 @@ function ShopCart() {
                   display: "flex",
                   justifyContent: "center",
                   padding: "3px",
+                  color: "#333333 !important",
                   "&:hover": {
-                    border: "1px solid red",
-                    color: "red",
+                    border: "1px solid #f03637",
+                    color: "#f03637 !important",
                   },
                   cursor: "pointer",
                 }}
