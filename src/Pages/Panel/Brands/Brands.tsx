@@ -1,5 +1,11 @@
+import PanelBrands from "../../../Components/Brands/PanelBrands";
+
 function Brands() {
-  return <>brands</>;
+  return (
+    <>
+      <PanelBrands />
+    </>
+  );
 }
 
 export default Brands;
