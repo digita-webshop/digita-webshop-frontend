@@ -5,7 +5,7 @@ import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Product from "./Product/Product";
 import { panelProducts } from "../../Services/Utils/Data/data";
-import Pagination from "../Pagination/Pagination";
+import Pagination from "./Pagination/Pagination";
 
 const PanelProducts = () => {
   const [products] = useState(panelProducts);

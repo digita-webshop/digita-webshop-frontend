@@ -78,3 +78,36 @@ export const paginationStyle = {
   display: "flex",
   justifyContent: "flex-end",
 };
+
+
+export const PaginationList = styled("ul")({
+  listStyle: "none",
+  padding: 0,
+  margin: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+});
+export const PaginationListItem = styled("li")({
+  listStyle: "none",
+  padding: 0,
+  margin: 0,
+  border: "1px solid #d8d8d8",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: "#F6F6F6",
+  width: "40px",
+  height: "40px",
+  cursor: "pointer",
+  fontFamily: "jost",
+  color: "#333333",
+  transition: "all 150ms ease-in",
+  "&:hover": {
+    backgroundColor: "#ffcaca",
+  },
+  "&.active": {
+    backgroundColor: "#f03637",
+    color: "white",
+  },
+});
