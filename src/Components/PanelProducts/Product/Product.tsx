@@ -22,9 +22,9 @@ type T = {
   name: string;
   price: number;
   image: string;
-}
+};
 
-const Product = ({ name, price, image}: T) => {
+const Product = ({ name, price, image }: T) => {
   return (
     <Card sx={cardWrapper}>
       <CardMedia
@@ -32,6 +32,7 @@ const Product = ({ name, price, image}: T) => {
         height="240"
         image={image}
         alt="green iguana"
+        sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
       />
       <CardContent sx={titleWrapper}>
         <Typography component="p" sx={titleStyle}>
@@ -42,15 +43,15 @@ const Product = ({ name, price, image}: T) => {
           component="div"
           sx={{ pt: "2px", fontSize: "16px" }}
         >
-          {"$"+price}
+          {"$" + price}
         </Typography>
         <Box sx={{ display: "flex", mt: 1, gap: 1 }}>
           <Button variant="contained" sx={editBtn}>
-            <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }}/>
+            <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
             Edit
           </Button>
           <Button variant="contained" sx={deleteBtn}>
-            <DeleteForeverIcon sx={{ margin: "0 0.2rem" }}/>
+            <DeleteForeverIcon sx={{ margin: "0 0.2rem" }} />
             Delete
           </Button>
         </Box>
