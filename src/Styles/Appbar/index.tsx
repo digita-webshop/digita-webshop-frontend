@@ -1,15 +1,11 @@
 import { styled } from "@mui/material/styles";
 import { Tab, Tabs, Box, Typography, Button } from "@mui/material";
-import { SyntheticEvent } from "react";
 
 interface StyledTabProps {
   label: string;
   component: any;
-  to: string;
   value: string;
-  icon: any;
-  iconPosition: any;
-  onMouseEnter: (event: SyntheticEvent) => void;
+  iconPosition?: any;
 }
 
 export const AntTab = styled((props: StyledTabProps) => (
@@ -37,6 +33,10 @@ export const AntTab = styled((props: StyledTabProps) => (
 }));
 
 export const AntTabs = styled(Tabs)(({ theme }) => ({
+  overflow: "visible !important",
+  "& .MuiTabs-scroller ": {
+    overflow: "visible !important",
+  },
   "& .MuiTabs-indicator": {
     backgroundColor: "#f03637",
   },
@@ -104,3 +104,27 @@ export const IconWrapper = styled(Box)(({ theme }) => ({
   cursor: "pointer",
   "&:hover .MuiSvgIcon-root": { color: theme.palette.common.digitaRed },
 }));
+export const ShopMenuWrapper = styled(Box)(({ theme }) => ({
+  border: "1px solid #dedede",
+  boxSizing: "border-box",
+  backgroundColor: "white",
+  position: "absolute",
+  left: "-269px",
+  right: 0,
+  top: 90,
+  padding: "24px 8px",
+  display: "none",
+  cursor: "initial",
+  [theme.breakpoints.up("md")]: {
+    width: "100vw",
+  },
+  [theme.breakpoints.up("xl")]: {
+    width: "1560px",
+  },
+}));
+
+export const appBarStyles = {
+  backgroundColor: "white",
+  position: "fixed ",
+  boxShadow: "4px 2px 4px 1px rgb(0 0 0 / 12%)",
+};

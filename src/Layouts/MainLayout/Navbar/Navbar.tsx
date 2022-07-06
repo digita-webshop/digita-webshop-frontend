@@ -15,7 +15,13 @@ import { useTheme } from "@mui/material/styles";
 
 import { MenuRounded, KeyboardArrowDown } from "@mui/icons-material";
 import { Fragment, useEffect, useState } from "react";
-import { AntTab, AntTabs, menuIconStyles } from "../../../Styles/Appbar";
+import {
+  AntTab,
+  AntTabs,
+  appBarStyles,
+  menuIconStyles,
+  ShopMenuWrapper,
+} from "../../../Styles/Appbar";
 import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
 import SearchBar from "./SearchBar/SearchBar";
@@ -25,7 +31,6 @@ import { Login, Register, ResetPassword } from "../../../Components";
 import Icons from "./Icons/Icons";
 
 function Navbar() {
-  const [displayShopMenu, setDisplayShopMenu] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [collapse, setCollapse] = useState(true);
@@ -59,13 +64,6 @@ function Navbar() {
     setOpenSearchBar((prevOpenSearchBar) => !prevOpenSearchBar);
   };
 
-  const showShopMenuHandler = (tabName: string) => {
-    if (tabName === "shop") {
-      setDisplayShopMenu(true);
-    } else {
-      setDisplayShopMenu(false);
-    }
-  };
   const closeLoginModal = () => {
     setOpenLoginModal(false);
   };
@@ -93,13 +91,7 @@ function Navbar() {
 
   return (
     <Fragment>
-      <AppBar
-        sx={{
-          backgroundColor: "white",
-          position: "fixed ",
-          boxShadow: "4px 2px 4px 1px rgb(0 0 0 / 12%)",
-        }}
-      >
+      <AppBar sx={appBarStyles}>
         <Collapse in={collapse} timeout={600}>
           <Container maxWidth={"xl"} sx={{ position: "relative" }}>
             <Toolbar sx={{ justifyContent: "space-between" }} disableGutters>
@@ -119,21 +111,37 @@ function Navbar() {
                       <AntTab
                         key={item.id}
                         label={item.name}
-                        component={Link}
-                        icon={item.name === "shop" && <KeyboardArrowDown />}
-                        iconPosition="right"
+                        component={() => (
+                          <Box
+                            component={Link}
+                            to={item.route}
+                            className="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-csphq2-MuiButtonBase-root-MuiTab-root"
+                            sx={{
+                              "&:hover .shop-menu": {
+                                display:
+                                  item.name === "shop" ? "block" : "none",
+                              },
+                              "&:hover": {
+                                zIndex: 99,
+                              },
+                              overflow: "visible !important",
+                            }}
+                          >
+                            <Box>{item.name}</Box>
+                            {item.name === "shop" && <KeyboardArrowDown />}
+
+                            {item.name === "shop" && (
+                              <ShopMenuWrapper className={"shop-menu"}>
+                                <ShopMenu />
+                              </ShopMenuWrapper>
+                            )}
+                          </Box>
+                        )}
                         value={`${item.route}`}
-                        to={`${item.route}`}
-                        onMouseEnter={() => showShopMenuHandler(item.name)}
+                        iconPosition="right"
                         sx={{
-                          color:
-                            displayShopMenu && item.name === "shop"
-                              ? "#f03637"
-                              : "",
-                          borderBottom:
-                            displayShopMenu && item.name === "shop"
-                              ? "3px solid #f03637"
-                              : "",
+                          color: "",
+                          borderBottom: "",
                         }}
                       />
                     ))}
@@ -169,28 +177,6 @@ function Navbar() {
             displayDrawer={displayDrawer}
             toggleDrawer={toggleDrawer}
           />
-
-          <Fade
-            style={{ display: displayShopMenu ? "block" : "none" }}
-            in={displayShopMenu}
-          >
-            <Box
-              paddingY={3}
-              paddingX={1}
-              sx={{
-                border: "1px solid #dedede",
-                boxSizing: "border-box",
-                backgroundColor: "white",
-                position: "absolute",
-                left: 0,
-                right: 0,
-                top: 90,
-              }}
-              onMouseLeave={() => setDisplayShopMenu(false)}
-            >
-              <ShopMenu />
-            </Box>
-          </Fade>
         </Collapse>
       </AppBar>
       <Box sx={{ marginTop: { xs: "64px", md: "90px" } }}></Box>
