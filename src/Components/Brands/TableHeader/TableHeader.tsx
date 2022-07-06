@@ -40,10 +40,10 @@ const TableHeader = ({
             value={selectedStatus}
             onChange={selectedStatusHandler}
           >
-            <MenuItem value="status">Status</MenuItem>
-            <MenuItem value={"active"}>Active</MenuItem>
-            <MenuItem value={"disable"}>Disable </MenuItem>
-            <MenuItem value={"show-all"}>Show All </MenuItem>
+            <MenuItem value="status20">Status 20</MenuItem>
+            <MenuItem value={"status30"}>Status 30</MenuItem>
+            <MenuItem value={"status40"}>Status 40</MenuItem>
+            <MenuItem value={"statusall"}>Status all</MenuItem>
           </Select>
         </DashFormControl>
         <DashFormControl size="small">
