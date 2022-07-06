@@ -406,6 +406,24 @@ export const teamData = [
     {id: 5, name: "Gabriel Barker", image: "https://demo-61.woovinapro.com/wp-content/uploads/2022/04/team02.png", job: "Designer"},
 ]
 
+export const brands = [
+  {id: 1, name: "Apple", image: "https://www.ecommerce-admin.com/demo/images/brands/1.png", count: 398},
+  {id: 2, name: "Motorola", image: "https://www.ecommerce-admin.com/demo/images/brands/2.png", count: 87},
+  {id: 3, name: "Tencent", image: "https://www.ecommerce-admin.com/demo/images/brands/4.png", count: 17},
+  {id: 4, name: "Acer", image: "https://www.ecommerce-admin.com/demo/images/brands/5.png", count: 81},
+  {id: 5, name: "Shivaki", image: "https://www.ecommerce-admin.com/demo/images/brands/6.png", count: 37},
+  {id: 6, name: "LG", image: "https://www.ecommerce-admin.com/demo/images/brands/7.png", count: 123},
+  {id: 7, name: "Samsung", image: "https://www.ecommerce-admin.com/demo/images/brands/8.png", count: 123},
+  {id: 8, name: "Xiaomi", image: "https://www.ecommerce-admin.com/demo/images/brands/9.png", count: 123},
+  {id: 9, name: "Nokia", image: "https://www.ecommerce-admin.com/demo/images/brands/10.png", count: 456},
+  {id: 10, name: "Company", image: "https://www.ecommerce-admin.com/demo/images/brands/11.png", count: 83},
+  {id: 11, name: "Company", image: "https://www.ecommerce-admin.com/demo/images/brands/12.png", count: 15},
+  {id: 12, name: "Company", image: "https://www.ecommerce-admin.com/demo/images/brands/13.png", count: 54},
+  {id: 13, name: "Company", image: "https://www.ecommerce-admin.com/demo/images/brands/14.png", count: 68},
+  {id: 14, name: "Company", image: "https://www.ecommerce-admin.com/demo/images/brands/15.png", count: 79},
+  {id: 15, name: "Company", image: "https://www.ecommerce-admin.com/demo/images/brands/16.png", count: 69},
+]
+
 export const rows = [
     { id: 1, name: "Sam Sung Galaxy Note 10 Lite", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", offPrice: 62,price: 52, date:"June 20, 2022", status: true},
     { id: 2, name: "SmartPhone & Ipad", image:"https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg", offPrice: 0,price: 75, date:"June 20, 2022", status: true},

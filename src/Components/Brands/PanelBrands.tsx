@@ -4,6 +4,7 @@ import { DashWrapper } from "../../Styles/Dashboard";
 import Brand from "./Brand/Brand";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import TableHeader from "./TableHeader/TableHeader";
+import { brands } from "../../Services/Utils/Data/data";
 
 const PanelBrands = () => {
   const [selectedStatus, setSelectedStatus] = useState("status20");
@@ -43,9 +44,11 @@ const PanelBrands = () => {
           }}
         >
           <Grid container spacing={2}>
-            <Grid item xs={6} sm={4} md={3} lg={2} xl={2}>
-              <Brand />
-            </Grid>
+            {brands.map(({id, name, image, count}) => (
+              <Grid item xs={6} sm={4} md={3} lg={2} xl={2} key={id}>
+                <Brand id={id} name={name} image={image} count={count}/>
+              </Grid>
+            ))}
           </Grid>
         </DashWrapper>
       </Grid>
