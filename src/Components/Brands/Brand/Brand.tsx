@@ -8,14 +8,14 @@ import {
 } from "@mui/material";
 import { cardWrapper, titleWrapper, titleStyle } from "../../../Styles/Brands";
 
-interface T{
+interface T {
   id: number;
   name: string;
   image: string;
   count: number;
 }
 
-const Brand = ({name, image, count}: T) => {
+const Brand = ({ name, image, count }: T) => {
   return (
     <Card sx={cardWrapper}>
       <CardMedia
@@ -23,9 +23,9 @@ const Brand = ({name, image, count}: T) => {
         height="100"
         image={image}
         alt="brand-img"
-        sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
+        sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain",
+        borderBottom: "1px solid #d8d8d8", }}
       />
-      <Divider sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }} />
       <CardContent sx={titleWrapper}>
         <Typography component="p" sx={titleStyle}>
           {name}
@@ -33,7 +33,7 @@ const Brand = ({name, image, count}: T) => {
         <Typography
           variant="h6"
           component="div"
-          sx={{ pt: "2px", fontSize: "16px", color: "#f03637" }}
+          sx={{ pt: "2px", fontSize: "16px", color: "#f03637", cursor: "pointer",textDecoration: "underline" }}
         >
           {count} items
         </Typography>

@@ -33,9 +33,9 @@ const PanelBrands = () => {
             selectedAmountHandler={selectedAmountHandler}
           />
         </DashWrapper>
-        <Divider
+        {/* <Divider
           sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
-        />
+        /> */}
         <DashWrapper
           sx={{
             borderTopLeftRadius: "0",
