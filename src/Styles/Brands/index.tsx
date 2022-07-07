@@ -1,7 +1,6 @@
 export const cardWrapper = {
   width: "100%",
   border: "1px solid #d8d8d8",
-  cursor: "pointer",
 };
 
 export const titleWrapper = {
