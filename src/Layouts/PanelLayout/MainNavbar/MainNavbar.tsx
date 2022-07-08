@@ -15,12 +15,12 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import { Dispatch, MouseEvent, SetStateAction, useState } from "react";
 import {
-  MainSearch,
   MainSearchBtn,
   navbarIconStyles,
   panelAvatarStyles,
   panelToolbarStyles,
 } from "../../../Styles/Panel";
+import { PTextField } from "../../../Styles/panelCommon";
 interface Props {
   setDrawerOpen: Dispatch<SetStateAction<boolean>>;
   mdMatches: boolean;
@@ -53,7 +53,10 @@ function MainNavbar({ setDrawerOpen, mdMatches }: Props) {
         className={mdMatches ? "" : "menu-drawer"}
       >
         <Box sx={{ width: mdMatches ? "50%" : "100%", display: "flex" }}>
-          <MainSearch placeholder="Search term  " />
+          <PTextField
+            placeholder="Search term  "
+            sx={{ borderTopRightRadius: "0", borderBottomRightRadius: "0" }}
+          />
           <MainSearchBtn>
             <Search sx={{ color: "common.panelGrey", margin: "auto" }} />
           </MainSearchBtn>
