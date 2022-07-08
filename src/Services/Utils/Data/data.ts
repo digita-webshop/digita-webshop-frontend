@@ -458,7 +458,7 @@ export const rows = [
     {
       id:8,
       title:'settings',
-      route:'/panel/settings',
+      route:'/panel/settings/general',
       icon:'settings'
     }
   ]
@@ -711,3 +711,21 @@ export const rows = [
     },
   ]
 
+  export const panelSettingItems=[
+    {
+      id:1,
+      title:'general',
+      route:'/panel/settings/general',
+    },
+    {
+      id:2,
+      title:'password',
+      route:'/panel/settings/password',
+    },
+    {
+      id:3,
+      title:'admin account',
+      route:'/panel/settings/admin-account',
+    },
+   
+  ]
