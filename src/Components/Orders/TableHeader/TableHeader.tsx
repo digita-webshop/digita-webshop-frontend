@@ -1,6 +1,6 @@
 import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { DashFormControl } from "../../../Styles/Orders";
-import { MainSearch } from "../../../Styles/Panel";
+import { PTextField } from "../../../Styles/panelCommon";
 
 interface Props {
   selectedStatus: string;
@@ -24,7 +24,7 @@ function TableHeader({
       }}
     >
       <Box sx={{ width: { xs: "100%", sm: "40%", lg: "30%" } }}>
-        <MainSearch placeholder="Search... " sx={{ borderRadius: "4px" }} />
+        <PTextField placeholder="Search... " />
       </Box>
       <Box
         sx={{

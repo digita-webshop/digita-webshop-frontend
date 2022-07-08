@@ -73,29 +73,6 @@ export const PanelItem = styled(ListItem)(({ theme }) => ({
   },
 }));
 
-export const MainSearch = styled("input")(({ theme }) => ({
-  fontFamily: "jost",
-  width: "100%",
-  padding: "4px 12px",
-  height: "42px",
-  boxSizing: "border-box",
-  border: `1px solid ${theme.palette.common.panelBorderGrey}`,
-  borderTopLeftRadius: "4px",
-  borderBottomLeftRadius: "4px",
-  transition: "all 100ms ease-in",
-  "&:hover": {
-    borderColor: theme.palette.common.digitaRed,
-  },
-  "&:focus": {
-    boxShadow: `0 0 0 4px ${theme.palette.common.panelActiveRed}`,
-    outline: "none",
-    borderColor: theme.palette.common.digitaRed,
-  },
-  "&::placeholder": {
-    fontSize: "16px ",
-    color: theme.palette.common.panelGrey,
-  },
-}));
 export const MainSearchBtn = styled(Box)(({ theme }) => ({
   width: "48px",
   border: "1px solid",
