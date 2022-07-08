@@ -1,19 +1,38 @@
-import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { useState } from "react";
+import {
+  Box,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  TextField,
+} from "@mui/material";
 import { DashFormControl } from "../../../Styles/Orders";
 import { MainSearch } from "../../../Styles/Panel";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 interface Props {
-    selectedStatus: string;
-    selectedAmount: string;
-    selectedStatusHandler: (event: SelectChangeEvent) => void;
-    selectedAmountHandler: (event: SelectChangeEvent) => void;
-  }
+  selectedStatus: string;
+  selectedAmount: string;
+  selectedStatusHandler: (event: SelectChangeEvent) => void;
+  selectedAmountHandler: (event: SelectChangeEvent) => void;
+}
 
 const TableHeader = ({
-    selectedStatus,
-    selectedAmount,
-    selectedStatusHandler,
-    selectedAmountHandler,}: Props) => {
+  selectedStatus,
+  selectedAmount,
+  selectedStatusHandler,
+  selectedAmountHandler,
+}: Props) => {
+  const [value, setValue] = useState<Date | null>(
+    new Date("2014-08-18T21:11:54")
+  );
+
+  const handleChange = (newValue: Date | null) => {
+    setValue(newValue);
+  };
+
   return (
     <Box
       sx={{
@@ -21,6 +40,7 @@ const TableHeader = ({
         justifyContent: "space-between",
         flexWrap: "wrap",
         gap: "20px",
+        borderBottom: "1px solid #d8d8d8",
       }}
     >
       <Box sx={{ width: { xs: "100%", sm: "40%", lg: "30%" } }}>
@@ -47,20 +67,18 @@ const TableHeader = ({
           </Select>
         </DashFormControl>
         <DashFormControl size="small">
-          <Select
-            variant="outlined"
-            displayEmpty
-            value={selectedAmount}
-            onChange={selectedAmountHandler}
-          >
-            <MenuItem value="20">Show 20</MenuItem>
-            <MenuItem value={"30"}>Show 30 </MenuItem>
-            <MenuItem value={"40"}>Show 40</MenuItem>
-          </Select>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <DesktopDatePicker
+              inputFormat="MM/dd/yyyy"
+              value={value}
+              onChange={handleChange}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
         </DashFormControl>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default TableHeader
+export default TableHeader;
