@@ -8,20 +8,20 @@ import Sidebar from "./Sidebar/Sidebar";
 
 function Settings() {
   return (
-    <Grid container>
-      <Grid item xs={12} lg={3}>
-        <Sidebar />
-      </Grid>
-      <Grid item xs={12} lg={9}>
-        <DashWrapper>
+    <DashWrapper>
+      <Grid container spacing={4}>
+        <Grid item xs={12} lg={3}>
+          <Sidebar />
+        </Grid>
+        <Grid item xs={12} lg={9}>
           <Routes>
-            <Route path="/" element={<General />} />
+            <Route path="general" element={<General />} />
             <Route path="password" element={<Password />} />
             <Route path="admin-account" element={<AdminAccount />} />
           </Routes>
-        </DashWrapper>
+        </Grid>
       </Grid>
-    </Grid>
+    </DashWrapper>
   );
 }
 
