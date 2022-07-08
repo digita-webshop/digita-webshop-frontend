@@ -11,7 +11,7 @@ import { MainSearch } from "../../../Styles/Panel";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-
+import { tableStyle } from "../../../Styles/Brands"
 interface Props {
   selectedStatus: string;
   selectedAmount: string;
@@ -34,21 +34,13 @@ const TableHeader = ({
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        flexWrap: "wrap",
-        gap: "20px",
-        borderBottom: "1px solid #d8d8d8",
-      }}
-    >
+    <Box sx={tableStyle}>
       <Box sx={{ width: { xs: "100%", sm: "40%", lg: "30%" } }}>
         <MainSearch placeholder="Search... " sx={{ borderRadius: "4px" }} />
       </Box>
       <Box
         sx={{
-          width: { xs: "100%", sm: "45%", lg: "30%" },
+          width: { xs: "100%", sm: "45%", lg: "32%" },
           display: "flex",
           gap: "10px",
         }}

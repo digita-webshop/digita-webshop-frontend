@@ -18,3 +18,16 @@ export const titleStyle = {
   color: "#333",
   fontSize: "19px",
 };
+
+export const tableStyle = {
+  paddingBottom: "1rem",
+  display: "flex",
+  justifyContent: "space-between",
+  flexWrap: "wrap",
+  gap: "20px",
+  borderBottom: "1px solid #d8d8d8",
+  "& .MuiOutlinedInput-root": {
+    height: "42px",
+    cursor: "default",
+  }
+};
