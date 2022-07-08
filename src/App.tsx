@@ -10,9 +10,6 @@ import {
   Wishlist,
   Checkout,
 } from "./Pages/Main";
-import MainLayout from "./Layouts/MainLayout/MainLayout";
-import { ScrollToTop } from "./Components";
-import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
 import {
   AddArticle,
   AddProduct,
@@ -23,6 +20,9 @@ import {
   Reviews,
   Settings,
 } from "./Pages/Panel";
+import MainLayout from "./Layouts/MainLayout/MainLayout";
+import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
+import { ScrollToTop } from "./Components";
 
 function App() {
   return (
@@ -47,7 +47,7 @@ function App() {
               <Route path="add-article" element={<AddArticle />} />
               <Route path="reviews" element={<Reviews />} />
               <Route path="brands" element={<Brands />} />
-              <Route path="settings" element={<Settings />} />
+              <Route path="settings/*" element={<Settings />} />
             </Route>
           </Routes>
         </ScrollToTop>
