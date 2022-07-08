@@ -33,9 +33,9 @@ const PanelBrands = () => {
             selectedAmountHandler={selectedAmountHandler}
           />
         </DashWrapper>
-        {/* <Divider
+        <Divider
           sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
-        /> */}
+        />
         <DashWrapper
           sx={{
             borderTopLeftRadius: "0",
@@ -44,9 +44,9 @@ const PanelBrands = () => {
           }}
         >
           <Grid container spacing={2}>
-            {brands.map(({id, name, image, count}) => (
+            {brands.map(({ id, name, image, count }) => (
               <Grid item xs={6} sm={4} md={3} lg={2} xl={2} key={id}>
-                <Brand id={id} name={name} image={image} count={count}/>
+                <Brand id={id} name={name} image={image} count={count} />
               </Grid>
             ))}
           </Grid>
