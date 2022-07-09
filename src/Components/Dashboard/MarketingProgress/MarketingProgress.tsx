@@ -4,13 +4,14 @@ import { marketingProgress } from "../../../Services/Utils/Data/data";
 import {
   analyticsBtnStyles,
   DashTitle,
-  DashWrapper,
+  
 } from "../../../Styles/Dashboard";
+import { CardWrapper } from "../../../Styles/panelCommon";
 import ProgressCard from "./ProgressCard/ProgressCard";
 
 function MarketingProgress() {
   return (
-    <DashWrapper>
+    <CardWrapper>
       <DashTitle>marketing</DashTitle>
       <Box my={5}>
         {marketingProgress.map(({ id, title, percent, color }) => (
@@ -23,7 +24,7 @@ function MarketingProgress() {
         <Typography>Open analytics</Typography>
         <Launch sx={{ color: "common.panelGrey" }} />
       </Box>
-    </DashWrapper>
+    </CardWrapper>
   );
 }
 

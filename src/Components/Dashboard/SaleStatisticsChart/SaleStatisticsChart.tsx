@@ -10,7 +10,8 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { DashTitle, DashWrapper } from "../../../Styles/Dashboard";
+import { DashTitle } from "../../../Styles/Dashboard";
+import { CardWrapper } from "../../../Styles/panelCommon";
 
 ChartJS.register(
   CategoryScale,
@@ -68,10 +69,10 @@ export const data = {
 
 function SaleStatisticsChart() {
   return (
-    <DashWrapper>
+    <CardWrapper>
       <DashTitle>sale statistics</DashTitle>
       <Line options={options} data={data} />
-    </DashWrapper>
+    </CardWrapper>
   );
 }
 

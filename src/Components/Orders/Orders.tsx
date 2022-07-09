@@ -1,6 +1,6 @@
 import { Divider, Grid, SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
-import { DashWrapper } from "../../Styles/Dashboard";
+import { CardWrapper } from "../../Styles/panelCommon";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import OrdersTable from "./OrdersTable/OrdersTable";
 import TableHeader from "./TableHeader/TableHeader";
@@ -21,7 +21,7 @@ function Orders() {
         <ContentHeader />
       </Grid>
       <Grid item xs={12}>
-        <DashWrapper
+        <CardWrapper
           sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}
         >
           <TableHeader
@@ -30,11 +30,11 @@ function Orders() {
             selectedStatusHandler={selectedStatusHandler}
             selectedAmountHandler={selectedAmountHandler}
           />
-        </DashWrapper>
+        </CardWrapper>
         <Divider
           sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
         />
-        <DashWrapper
+        <CardWrapper
           sx={{
             borderTopLeftRadius: "0",
             borderTopRightRadius: "0",
@@ -42,7 +42,7 @@ function Orders() {
           }}
         >
           <OrdersTable selectedAmount={selectedAmount} />
-        </DashWrapper>
+        </CardWrapper>
       </Grid>
     </Grid>
   );
