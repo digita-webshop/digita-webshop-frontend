@@ -1,9 +1,9 @@
-import PanelBrands from "../../../Components/Brands/PanelBrands";
+import { Brands as BrandsPage } from "../../../Components/";
 
 function Brands() {
   return (
     <>
-      <PanelBrands />
+      <BrandsPage />
     </>
   );
 }

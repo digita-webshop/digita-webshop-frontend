@@ -875,95 +875,67 @@ export const brands = [
     id: 1,
     name: "Apple",
     image:
-      "https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/og__544tqbfss1ua_image.png",
+      "https://www.ecommerce-admin.com/demo/images/brands/1.png",
     count: 398,
   },
   {
     id: 2,
     name: "Motorola",
     image:
-      "https://logo-all.ru/uploads/posts/2016-04/0_motorola_logo.jpg",
+      "https://www.ecommerce-admin.com/demo/images/brands/2.png",
     count: 87,
   },
   {
     id: 3,
     name: "Tencent",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnrXA1yjfgVAXEye1Zev2Si6QQc1kWhtklJS81n58mcai_SZAiRyXlJ7JIgt7agxQqrpw&usqp=CAU",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/4.png",
     count: 17,
   },
   {
     id: 4,
     name: "Acer",
-    image: "https://www.marketing91.com/wp-content/uploads/2017/10/Marketing-Strategy-of-Acer-2.jpg",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/5.png",
     count: 81,
   },
   {
     id: 5,
-    name: "Spacex",
-    image: "https://spacenews.com/wp-content/uploads/2014/11/SpaceXLogo_SpaceX4X3.jpg",
+    name: "Shivaki",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/6.png",
     count: 37,
   },
   {
     id: 6,
     name: "LG",
     image:
-      "https://www.lg.com/lg5-common-gp/images/common/share/share-default.jpg",
+      "https://www.ecommerce-admin.com/demo/images/brands/7.png",
     count: 123,
   },
   {
     id: 7,
     name: "Samsung",
-    image: "https://img.global.news.samsung.com/global/wp-content/uploads/2020/10/Samsung-Interbrand-2020-Press-Release_thumb728.jpg",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/8.png",
     count: 123,
   },
   {
     id: 8,
     name: "Xiaomi",
-    image: "https://fdn.gsmarena.com/imgroot/news/21/03/xiaomi-new-logo/-1200/gsmarena_004.jpg",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/9.png",
     count: 123,
   },
   {
     id: 9,
     name: "Nokia",
-    image: "https://www.nokia.com/sites/default/files/2021-08/NOKIA_LOGO_RGB_HR.jpg",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/10.png",
     count: 456,
   },
+  
   {
     id: 10,
-    name: "SONY",
-    image: "https://www.sony.co.jp/SonyInfo/CorporateInfo/img/sony-og.jpg",
-    count: 83,
-  },
-  {
-    id: 11,
-    name: "Tesla",
-    image: "https://digistatement.com/wp-content/uploads/2019/11/mr-nitin-gadkari-tesla-model-3_52196.jpg",
-    count: 15,
-  },
-  {
-    id: 12,
-    name: "Nasa",
-    image: "https://ca-times.brightspotcdn.com/dims4/default/b4c061e/2147483647/strip/true/crop/3000x2870+0+0/resize/840x804!/quality/90/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F41%2Fee%2F2da2b0ea47ce85694067e074f815%2Ffi-nasa-insignia.jpg",
-    count: 54,
-  },
-  {
-    id: 13,
-    name: "BMW",
-    image: "https://cdn11.bigcommerce.com/s-edxnhn8pwu/images/stencil/1280x1280/products/3047/2125/529962893__40681.1554233338.jpg?c=2",
-    count: 68,
-  },
-  {
-    id: 14,
-    name: "Dell",
-    image: "https://www.laptopmaptop.com/Content/Uploadfiles/brand/LG_fc31c63d-ed00-4c8d-b760-a01728a6f943.png",
+    name: "microsoft",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/3.png",
     count: 79,
   },
-  {
-    id: 15,
-    name: "Asus",
-    image: "https://dlcdnimgs.asus.com/websites/global/Sno/79183.jpg",
-    count: 69,
-  },
+
 ];
 
 export const rows = [

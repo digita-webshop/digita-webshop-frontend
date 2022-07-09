@@ -6,7 +6,7 @@ import ContentHeader from "./ContentHeader/ContentHeader";
 import TableHeader from "./TableHeader/TableHeader";
 import { brands } from "../../Services/Utils/Data/data";
 
-const PanelBrands = () => {
+const Brands = () => {
   const [selectedStatus, setSelectedStatus] = useState("status20");
   const [selectedAmount, setSelectedAmount] = useState("20");
 
@@ -56,4 +56,4 @@ const PanelBrands = () => {
   );
 };
 
-export default PanelBrands;
+export default Brands;
