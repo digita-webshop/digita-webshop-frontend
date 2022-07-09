@@ -1,5 +1,5 @@
 import { Box, Icon, Typography } from "@mui/material";
-import { DashWrapper } from "../../../Styles/Dashboard";
+import { CardWrapper } from "../../../Styles/panelCommon";
 interface Props {
   title: string;
   subtitle: string;
@@ -9,7 +9,7 @@ interface Props {
 }
 function StatisticsCard({ title, subtitle, icon, color, bgColor }: Props) {
   return (
-    <DashWrapper
+    <CardWrapper
       sx={{
         display: "flex",
         gap: "12px",
@@ -39,7 +39,7 @@ function StatisticsCard({ title, subtitle, icon, color, bgColor }: Props) {
         </Typography>
         <Typography>{subtitle}</Typography>
       </Box>
-    </DashWrapper>
+    </CardWrapper>
   );
 }
 

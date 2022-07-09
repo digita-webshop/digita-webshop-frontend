@@ -7,6 +7,10 @@ function AddProduct() {
       <Grid item xs={12}>
         <ContentHeader />
       </Grid>
+      <Grid container item xs={12}>
+        <Grid item xs={12} md={8}></Grid>
+        <Grid item xs={12} md={4}></Grid>
+      </Grid>
     </Grid>
   );
 }

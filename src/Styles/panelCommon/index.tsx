@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const PButton = styled(Button)(({ theme }) => ({
@@ -36,4 +36,10 @@ export const PTextField = styled("input")(({ theme }) => ({
     fontSize: "16px ",
     color: theme.palette.common.panelGrey,
   },
+}));
+export const CardWrapper = styled(Box)(({ theme }) => ({
+  padding: "20px",
+  backgroundColor: "white",
+  boxShadow: "0 0.1rem 0.25rem rgb(0 0 0 / 8%)",
+  borderRadius: "4px",
 }));

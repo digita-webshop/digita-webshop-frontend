@@ -4,14 +4,7 @@ import {
   NotificationsActive,
   Search,
 } from "@mui/icons-material";
-import {
-  AppBar,
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  Toolbar,
-} from "@mui/material";
+import { Box, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Dispatch, MouseEvent, SetStateAction, useState } from "react";
 import {

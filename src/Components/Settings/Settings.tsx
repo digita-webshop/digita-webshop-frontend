@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import { useState } from "react";
-import { DashWrapper } from "../../Styles/Dashboard";
+import { CardWrapper } from "../../Styles/panelCommon";
 import AdminAccount from "./AdminAccount/AdminAccount";
 import General from "./General/General";
 import Password from "./Password/Password";
@@ -13,7 +13,7 @@ function Settings() {
     setActivePage(page);
   };
   return (
-    <DashWrapper>
+    <CardWrapper>
       <Grid container spacing={4}>
         <Grid item xs={12} lg={3}>
           <Sidebar
@@ -27,7 +27,7 @@ function Settings() {
           {activePage === "admin account" && <AdminAccount />}
         </Grid>
       </Grid>
-    </DashWrapper>
+    </CardWrapper>
   );
 }
 
