@@ -1,5 +1,10 @@
+import { AddProduct as AddProductPage } from "../../../Components";
 function AddProduct() {
-  return <>add product</>;
+  return (
+    <>
+      <AddProductPage />
+    </>
+  );
 }
 
 export default AddProduct;
