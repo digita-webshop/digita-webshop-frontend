@@ -1,11 +1,4 @@
-import {
-  Box,
-  Divider,
-  CardContent,
-  Card,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { CardContent, Card, CardMedia, Typography } from "@mui/material";
 import { cardWrapper, titleWrapper, titleStyle } from "../../../Styles/Brands";
 
 interface T {
@@ -23,8 +16,11 @@ const Brand = ({ name, image, count }: T) => {
         height="100"
         image={image}
         alt="brand-img"
-        sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain",
-        borderBottom: "1px solid #d8d8d8", }}
+        sx={{
+          width: "80%",
+          margin: { xs: "auto", lg: "15px auto " },
+          objectFit: "contain",
+        }}
       />
       <CardContent sx={titleWrapper}>
         <Typography component="p" sx={titleStyle}>
@@ -33,7 +29,13 @@ const Brand = ({ name, image, count }: T) => {
         <Typography
           variant="h6"
           component="div"
-          sx={{ pt: "2px", fontSize: "16px", color: "#f03637", cursor: "pointer",textDecoration: "underline" }}
+          sx={{
+            pt: "2px",
+            fontSize: "16px",
+            color: "#f03637",
+            cursor: "pointer",
+            textDecoration: "underline",
+          }}
         >
           {count} items
         </Typography>

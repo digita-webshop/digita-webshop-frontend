@@ -12,6 +12,7 @@ export const titleWrapper = {
   overflow: "hidden !important",
   webkitLineClamp: 1,
   whiteSpace: "nowrap",
+  borderTop: "1px solid #d8d8d8",
 };
 
 export const titleStyle = {
@@ -27,5 +28,5 @@ export const tableStyle = {
   "& .MuiOutlinedInput-root": {
     height: "42px",
     cursor: "default",
-  }
+  },
 };

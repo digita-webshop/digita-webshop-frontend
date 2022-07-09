@@ -19,3 +19,4 @@ export { default as Checkout } from "./Checkout/Checkout";
 export { default as Wishlist } from "./Wishlist/Wishlist";
 export { default as Dashboard } from "./Dashboard/Dashboard";
 export { default as Orders } from "./Orders/Orders";
+export { default as Brands } from "./Brands/Brands";
