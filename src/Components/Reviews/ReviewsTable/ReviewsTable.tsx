@@ -1,5 +1,5 @@
 import { MoreHoriz } from "@mui/icons-material";
-import { Table, TableBody, TableHead, TableRow } from "@mui/material";
+import { Checkbox, Table, TableBody, TableHead, TableRow } from "@mui/material";
 import { orders } from "../../../Services/Utils/Data/data";
 import { TableButton, TBadge, TCell, THCell } from "../../../Styles/Orders";
 
@@ -34,6 +34,16 @@ function ReviewsTable({ selectedAmount }: Props) {
               key={id}
               sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
             >
+              <TCell>
+                <Checkbox
+                  sx={{
+                    color: "#f03637",
+                    "&.Mui-checked": {
+                      color: "common.digitaRed",
+                    },
+                  }}
+                />
+              </TCell>
               <TCell>{id}</TCell>
               <TCell
                 sx={{
