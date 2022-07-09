@@ -1,5 +1,11 @@
+import { Brands as BrandsPage } from "../../../Components/";
+
 function Brands() {
-  return <>brands</>;
+  return (
+    <>
+      <BrandsPage />
+    </>
+  );
 }
 
 export default Brands;
