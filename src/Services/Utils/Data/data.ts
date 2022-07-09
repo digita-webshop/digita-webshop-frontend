@@ -938,6 +938,15 @@ export const brands = [
 
 ];
 
+export const reviews = [
+  {id: 1, pId: 23, product: "A-Line Mini Dress in Blue", name: "A-Line Mini Dress in Blue", rating: 3, date: "10.03.2019"},
+  {id: 1, pId: 23, product: "A-Line Mini Dress in Blue", name: "A-Line Mini Dress in Blue", rating: 3, date: "10.03.2019"},
+  {id: 1, pId: 23, product: "A-Line Mini Dress in Blue", name: "A-Line Mini Dress in Blue", rating: 3, date: "10.03.2019"},
+  {id: 1, pId: 23, product: "A-Line Mini Dress in Blue", name: "A-Line Mini Dress in Blue", rating: 3, date: "10.03.2019"},
+  {id: 1, pId: 23, product: "A-Line Mini Dress in Blue", name: "A-Line Mini Dress in Blue", rating: 3, date: "10.03.2019"},
+  {id: 1, pId: 23, product: "A-Line Mini Dress in Blue", name: "A-Line Mini Dress in Blue", rating: 3, date: "10.03.2019"},
+]
+
 export const rows = [
   {
     id: 1,

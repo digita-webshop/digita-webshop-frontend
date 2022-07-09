@@ -3,7 +3,7 @@ import { Checkbox, Table, TableBody, TableHead, TableRow } from "@mui/material";
 import { orders } from "../../../Services/Utils/Data/data";
 import { TableButton, TBadge, TCell, THCell } from "../../../Styles/Orders";
 
-const tableHead = ["#ID", "Product", "", "Name", "Rating", "date", "action"];
+const tableHead = ["","#ID", "Product", "", "Name", "Rating", "date", "action"];
 const statusName = ["canceled", "pending", "received"];
 
 interface Props {
