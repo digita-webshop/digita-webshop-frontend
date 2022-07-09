@@ -8,7 +8,6 @@ const tableHead = [
   "",
   "#ID",
   "Product",
-  "",
   "Name",
   "Rating",
   "date",
@@ -63,7 +62,7 @@ function ReviewsTable({ selectedAmount }: Props) {
                 {product}
               </TCell>
               <TCell sx={{ wordBreak: "break-all" }}>{name}</TCell>
-              <TCell></TCell>
+              
               <TCell>
                 <Rating
                   name="text-feedback"
