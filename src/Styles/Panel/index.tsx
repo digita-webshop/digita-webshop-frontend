@@ -37,7 +37,7 @@ export const Main = styled(Box)(({ theme }) => ({
 export const PanelItem = styled(ListItem)(({ theme }) => ({
   fontFamily: "jost",
   padding: "3px 0",
-  a: {
+  ".link": {
     padding: "8px 10px",
     borderRadius: "5px",
     transition: "background 150ms ease-in",
