@@ -32,7 +32,7 @@ function Sidebar({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
               <PanelItem>
                 <NavLink
                   to={route}
-                  className={`${settingsActive} ${!menuOpen && "menu"}`}
+                  className={`${settingsActive} ${!menuOpen && "menu"} link`}
                 >
                   <ListItemIcon>
                     <Icon>{icon}</Icon>

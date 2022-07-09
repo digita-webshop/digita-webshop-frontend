@@ -47,7 +47,7 @@ function App() {
               <Route path="add-article" element={<AddArticle />} />
               <Route path="reviews" element={<Reviews />} />
               <Route path="brands" element={<Brands />} />
-              <Route path="settings/*" element={<Settings />} />
+              <Route path="settings" element={<Settings />} />
             </Route>
           </Routes>
         </ScrollToTop>

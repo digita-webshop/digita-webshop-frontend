@@ -1,15 +1,22 @@
 import { Box, List, ListItemText } from "@mui/material";
-import { NavLink } from "react-router-dom";
 import { panelSettingItems } from "../../../Services/Utils/Data/data";
 import { PanelItem } from "../../../Styles/Panel";
 
-function Sidebar() {
+interface Props {
+  activePageHandler: (page: string) => () => void;
+  activePage: string;
+}
+function Sidebar({ activePageHandler, activePage }: Props) {
   return (
     <Box
       sx={{
         paddingX: { lg: "15px" },
         borderRight: { lg: "1px solid " },
-        borderRightColor: { lg: "common.panelHoverDarkGrey" },
+        borderBottom: { xs: "1px solid ", lg: "none" },
+        borderColor: {
+          xs: "common.panelHoverDarkGrey",
+          lg: "common.panelHoverDarkGrey",
+        },
         height: "100%",
       }}
     >
@@ -20,9 +27,12 @@ function Sidebar() {
           gap: { xs: "10px", lg: "0" },
         }}
       >
-        {panelSettingItems.map(({ id, title, route }) => (
+        {panelSettingItems.map(({ id, title }) => (
           <PanelItem key={id}>
-            <NavLink to={route}>
+            <Box
+              className={`${title === activePage && "active"} link`}
+              onClick={activePageHandler(title)}
+            >
               <ListItemText
                 primaryTypographyProps={{
                   fontSize: "16px",
@@ -31,7 +41,7 @@ function Sidebar() {
                 }}
                 primary={title}
               />
-            </NavLink>
+            </Box>
           </PanelItem>
         ))}
       </List>
