@@ -1,10 +1,19 @@
 import { MoreHoriz } from "@mui/icons-material";
-import { Checkbox, Table, TableBody, TableHead, TableRow } from "@mui/material";
-import { orders } from "../../../Services/Utils/Data/data";
-import { TableButton, TBadge, TCell, THCell } from "../../../Styles/Orders";
+import { Checkbox, Table, TableBody, TableHead, TableRow, Rating } from "@mui/material";
+import { reviews } from "../../../Services/Utils/Data/data";
+import { TableButton, TCell, THCell } from "../../../Styles/Orders";
+import StarIcon from "@mui/icons-material/Star";
 
-const tableHead = ["","#ID", "Product", "", "Name", "Rating", "date", "action"];
-const statusName = ["canceled", "pending", "received"];
+const tableHead = [
+  "",
+  "#ID",
+  "Product",
+  "",
+  "Name",
+  "Rating",
+  "date",
+  "action",
+];
 
 interface Props {
   selectedAmount: string;
@@ -27,9 +36,9 @@ function ReviewsTable({ selectedAmount }: Props) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {orders
+        {reviews
           .slice(0, +selectedAmount)
-          .map(({ id, name, email, status, date, total }) => (
+          .map(({ id, pId, product, name, rating, date }) => (
             <TableRow
               key={id}
               sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
@@ -44,21 +53,28 @@ function ReviewsTable({ selectedAmount }: Props) {
                   }}
                 />
               </TCell>
-              <TCell>{id}</TCell>
+              <TCell>{pId}</TCell>
               <TCell
                 sx={{
                   fontWeight: 500,
                   wordBreak: "break-word",
                 }}
               >
-                {name}
+                {product}
               </TCell>
-              <TCell sx={{ wordBreak: "break-all" }}>{email}</TCell>
-              <TCell>{`$${total.toFixed(2)}`}</TCell>
+              <TCell sx={{ wordBreak: "break-all" }}>{name}</TCell>
+              <TCell></TCell>
               <TCell>
-                <TBadge className={statusName[status]}>
-                  {statusName[status]}
-                </TBadge>
+                <Rating
+                  name="text-feedback"
+                  size="small"
+                  value={rating}
+                  readOnly
+                  precision={0.5}
+                  emptyIcon={
+                    <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                  }
+                />
               </TCell>
               <TCell>{date}</TCell>
               <TCell
