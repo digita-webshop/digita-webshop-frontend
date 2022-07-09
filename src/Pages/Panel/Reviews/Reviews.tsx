@@ -1,5 +1,7 @@
+import PanelReviews from "../../../Components/Reviews/PanelReviews";
+
 function Reviews() {
-  return <>reviews</>;
+  return <PanelReviews />;
 }
 
 export default Reviews;
