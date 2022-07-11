@@ -5,6 +5,7 @@ import {
   MenuItem,
   Select,
   SelectChangeEvent,
+  TextField,
 } from "@mui/material";
 import { useRef, useState } from "react";
 import { brands } from "../../../Services/Utils/Data/data";
@@ -91,6 +92,17 @@ function Details() {
             secondColor={secondColor}
             thirdColor={thirdColor}
           />
+        </Grid>
+        <Grid item xs={12}>
+          <PFormControl>
+            <FormLabel sx={formLabelStyles}>short description</FormLabel>
+            <TextField
+              placeholder="Type Here"
+              multiline
+              rows={4}
+              sx={{ width: "100%" }}
+            />
+          </PFormControl>
         </Grid>
       </Grid>
     </CardWrapper>
