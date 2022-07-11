@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, FormControl } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const PButton = styled(Button)(({ theme }) => ({
@@ -42,4 +42,14 @@ export const CardWrapper = styled(Box)(({ theme }) => ({
   backgroundColor: "white",
   boxShadow: "0 0.1rem 0.25rem rgb(0 0 0 / 8%)",
   borderRadius: "4px",
+}));
+
+export const PFormControl = styled(FormControl)(({ theme }) => ({
+  width: "100%",
+  "&:hover .MuiOutlinedInput-notchedOutline": {
+    borderColor: `${theme.palette.common.digitaRed} !important`,
+  },
+  "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+    borderColor: `${theme.palette.common.digitaRed} !important`,
+  },
 }));
