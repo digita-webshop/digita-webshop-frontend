@@ -1,7 +1,7 @@
 import { CloudUpload } from "@mui/icons-material";
 import { Box, FormControl, FormLabel, Grid } from "@mui/material";
-import { PButton, PTextField } from "../../../Styles/panelCommon";
-import { formLabelStyles, POutlinedButton } from "../../../Styles/Settings";
+import { PButton, PFormLabel, PTextField } from "../../../Styles/panelCommon";
+import { POutlinedButton } from "../../../Styles/Settings";
 
 function General() {
   return (
@@ -9,25 +9,25 @@ function General() {
       <Grid container item xs={12} md={8} spacing={3}>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
-            <FormLabel sx={formLabelStyles}>first name</FormLabel>
+            <PFormLabel>first name</PFormLabel>
             <PTextField placeholder="Type Here" />
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
-            <FormLabel sx={formLabelStyles}>last name</FormLabel>
+            <PFormLabel>last name</PFormLabel>
             <PTextField placeholder="Type Here" />
           </FormControl>
         </Grid>
         <Grid item xs={12}>
           <FormControl fullWidth>
-            <FormLabel sx={formLabelStyles}>email</FormLabel>
+            <PFormLabel>email</PFormLabel>
             <PTextField placeholder="example@email.com" />
           </FormControl>
         </Grid>
         <Grid item xs={12}>
           <FormControl fullWidth>
-            <FormLabel sx={formLabelStyles}>phone</FormLabel>
+            <PFormLabel>phone</PFormLabel>
             <PTextField placeholder="+1234567890" />
           </FormControl>
         </Grid>

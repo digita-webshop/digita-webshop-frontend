@@ -1,10 +1,6 @@
 import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
-export const formLabelStyles = {
-  fontSize: "15px",
-  color: "common.digitaBlack",
-  textTransform: "capitalize",
-};
+
 export const POutlinedButton = styled(Button)(({ theme }) => ({
   backgroundColor: "transparent",
   borderRadius: "5px",

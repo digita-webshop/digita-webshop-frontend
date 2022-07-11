@@ -1,25 +1,24 @@
-import { FormControl, FormLabel, Grid } from "@mui/material";
-import { PButton, PTextField } from "../../../Styles/panelCommon";
-import { formLabelStyles } from "../../../Styles/Settings";
+import { FormControl, Grid } from "@mui/material";
+import { PButton, PFormLabel, PTextField } from "../../../Styles/panelCommon";
 
 function Password() {
   return (
     <Grid container spacing={4}>
       <Grid item xs={12}>
         <FormControl fullWidth>
-          <FormLabel sx={formLabelStyles}>current password</FormLabel>
+          <PFormLabel>current password</PFormLabel>
           <PTextField placeholder="Type Here" />
         </FormControl>
       </Grid>
       <Grid item xs={12}>
         <FormControl fullWidth>
-          <FormLabel sx={formLabelStyles}>new password</FormLabel>
+          <PFormLabel>new password</PFormLabel>
           <PTextField placeholder="Type Here" />
         </FormControl>
       </Grid>
       <Grid item xs={12}>
         <FormControl fullWidth>
-          <FormLabel sx={formLabelStyles}>confirm password</FormLabel>
+          <PFormLabel>confirm password</PFormLabel>
           <PTextField placeholder="Type Here" />
         </FormControl>
       </Grid>

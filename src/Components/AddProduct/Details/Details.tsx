@@ -1,6 +1,5 @@
 import {
   FormControl,
-  FormLabel,
   Grid,
   MenuItem,
   Select,
@@ -12,9 +11,9 @@ import { brands } from "../../../Services/Utils/Data/data";
 import {
   CardWrapper,
   PFormControl,
+  PFormLabel,
   PTextField,
 } from "../../../Styles/panelCommon";
-import { formLabelStyles } from "../../../Styles/Settings";
 import ColorPickers from "./ColorPickers/ColorPickers";
 
 function Details() {
@@ -55,19 +54,19 @@ function Details() {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <FormControl fullWidth>
-            <FormLabel sx={formLabelStyles}>product title</FormLabel>
+            <PFormLabel>product title</PFormLabel>
             <PTextField placeholder="Type Here" />
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={4}>
           <FormControl fullWidth>
-            <FormLabel sx={formLabelStyles}>SKU</FormLabel>
+            <PFormLabel>SKU</PFormLabel>
             <PTextField placeholder="Type Here" />
           </FormControl>
         </Grid>
         <Grid item xs={6} sm={4}>
           <PFormControl size="small">
-            <FormLabel sx={formLabelStyles}>brands</FormLabel>
+            <PFormLabel>brands</PFormLabel>
             <Select
               variant="outlined"
               displayEmpty
@@ -83,7 +82,7 @@ function Details() {
           </PFormControl>
         </Grid>
         <Grid item xs={6} sm={4}>
-          <FormLabel sx={formLabelStyles}>colors</FormLabel>
+          <PFormLabel>colors</PFormLabel>
           <ColorPickers
             color={color}
             colorChangeHandler={colorChangeHandler}
@@ -95,7 +94,7 @@ function Details() {
         </Grid>
         <Grid item xs={12}>
           <PFormControl>
-            <FormLabel sx={formLabelStyles}>short description</FormLabel>
+            <PFormLabel>short description</PFormLabel>
             <TextField
               placeholder="Type Here"
               multiline
