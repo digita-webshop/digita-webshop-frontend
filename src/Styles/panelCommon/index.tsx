@@ -1,4 +1,4 @@
-import { Box, Button, FormControl } from "@mui/material";
+import { Box, Button, FormControl, FormLabel } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const PButton = styled(Button)(({ theme }) => ({
@@ -52,4 +52,11 @@ export const PFormControl = styled(FormControl)(({ theme }) => ({
   "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
     borderColor: `${theme.palette.common.digitaRed} !important`,
   },
+}));
+
+export const PFormLabel = styled(FormLabel)(({ theme }) => ({
+  fontSize: "15px",
+  color: theme.palette.common.digitaBlack,
+  textTransform: "capitalize",
+  marginBottom: "2px",
 }));
