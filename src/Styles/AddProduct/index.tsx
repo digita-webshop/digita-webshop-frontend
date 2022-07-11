@@ -42,3 +42,12 @@ export const tagIconStyles = {
   fontSize: "18px",
   marginLeft: "4px",
 };
+export const categoryCheckboxStyles = {
+  padding: "0 6px 0 0 ",
+  "&.Mui-checked": {
+    color: "common.digitaRed",
+  },
+  "& .MuiSvgIcon-root": {
+    fontSize: "20px",
+  },
+};
