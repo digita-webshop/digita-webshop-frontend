@@ -1,5 +1,5 @@
 import { Close } from "@mui/icons-material";
-import { Box, FormControl, Grid, Typography } from "@mui/material";
+import { Box, Divider, FormControl, Grid, Typography } from "@mui/material";
 import { ChangeEvent, KeyboardEvent, useState } from "react";
 import {
   CardWrapper,
@@ -12,6 +12,7 @@ import {
   tagIconStyles,
   tagStyles,
 } from "../../../Styles/AddProduct";
+import Categories from "./Categories/Categories";
 interface ITag {
   id: string;
   name: string;
@@ -72,6 +73,10 @@ function Sidebar() {
                 </Box>
               ))}
           </Box>
+          <Divider sx={{ marginTop: "20px" }} />
+        </Grid>
+        <Grid item xs={12}>
+          <Categories />
         </Grid>
       </Grid>
     </CardWrapper>
