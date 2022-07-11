@@ -1,4 +1,4 @@
-import { Box, FormControl, TableCell } from "@mui/material";
+import { Box, TableCell } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const TCell = styled(TableCell)(({ theme }) => ({
@@ -67,15 +67,5 @@ export const TBadge = styled(Box)(({ theme }) => ({
   "&.received": {
     color: "#006d0e",
     backgroundColor: "#ccf0d1",
-  },
-}));
-
-export const DashFormControl = styled(FormControl)(({ theme }) => ({
-  width: "100%",
-  "&:hover .MuiOutlinedInput-notchedOutline": {
-    borderColor: `${theme.palette.common.digitaRed} !important`,
-  },
-  "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
-    borderColor: `${theme.palette.common.digitaRed} !important`,
   },
 }));

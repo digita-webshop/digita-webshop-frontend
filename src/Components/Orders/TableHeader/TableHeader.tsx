@@ -1,6 +1,5 @@
 import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { DashFormControl } from "../../../Styles/Orders";
-import { PTextField } from "../../../Styles/panelCommon";
+import { PFormControl, PTextField } from "../../../Styles/panelCommon";
 
 interface Props {
   selectedStatus: string;
@@ -33,7 +32,7 @@ function TableHeader({
           gap: "10px",
         }}
       >
-        <DashFormControl size="small">
+        <PFormControl size="small">
           <Select
             variant="outlined"
             displayEmpty
@@ -45,8 +44,8 @@ function TableHeader({
             <MenuItem value={"disable"}>Disable </MenuItem>
             <MenuItem value={"show-all"}>Show All </MenuItem>
           </Select>
-        </DashFormControl>
-        <DashFormControl size="small">
+        </PFormControl>
+        <PFormControl size="small">
           <Select
             variant="outlined"
             displayEmpty
@@ -57,7 +56,7 @@ function TableHeader({
             <MenuItem value={"30"}>Show 30 </MenuItem>
             <MenuItem value={"40"}>Show 40</MenuItem>
           </Select>
-        </DashFormControl>
+        </PFormControl>
       </Box>
     </Box>
   );

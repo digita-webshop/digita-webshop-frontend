@@ -873,33 +873,33 @@ export const teamData = [
 export const brands = [
   {
     id: 1,
-    name: "Apple",
+    name: "apple",
     image:
       "https://www.ecommerce-admin.com/demo/images/brands/1.png",
     count: 398,
   },
   {
     id: 2,
-    name: "Motorola",
+    name: "motorola",
     image:
       "https://www.ecommerce-admin.com/demo/images/brands/2.png",
     count: 87,
   },
   {
     id: 3,
-    name: "Tencent",
+    name: "tencent",
     image: "https://www.ecommerce-admin.com/demo/images/brands/4.png",
     count: 17,
   },
   {
     id: 4,
-    name: "Acer",
+    name: "acer",
     image: "https://www.ecommerce-admin.com/demo/images/brands/5.png",
     count: 81,
   },
   {
     id: 5,
-    name: "Shivaki",
+    name: "shivaki",
     image: "https://www.ecommerce-admin.com/demo/images/brands/6.png",
     count: 37,
   },
@@ -912,19 +912,19 @@ export const brands = [
   },
   {
     id: 7,
-    name: "Samsung",
+    name: "samsung",
     image: "https://www.ecommerce-admin.com/demo/images/brands/8.png",
     count: 123,
   },
   {
     id: 8,
-    name: "Xiaomi",
+    name: "xiaomi",
     image: "https://www.ecommerce-admin.com/demo/images/brands/9.png",
     count: 123,
   },
   {
     id: 9,
-    name: "Nokia",
+    name: "nokia",
     image: "https://www.ecommerce-admin.com/demo/images/brands/10.png",
     count: 456,
   },

@@ -6,12 +6,11 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { DashFormControl } from "../../../Styles/Orders";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { tableStyle } from "../../../Styles/Brands";
-import { PTextField } from "../../../Styles/panelCommon";
+import { PTextField, PFormControl } from "../../../Styles/panelCommon";
 interface Props {
   selectedStatus: string;
   selectedAmount: string;
@@ -45,7 +44,7 @@ const TableHeader = ({
           gap: "10px",
         }}
       >
-        <DashFormControl size="small">
+        <PFormControl size="small">
           <Select
             variant="outlined"
             displayEmpty
@@ -57,8 +56,8 @@ const TableHeader = ({
             <MenuItem value={"status40"}>Status 40</MenuItem>
             <MenuItem value={"statusall"}>Status all</MenuItem>
           </Select>
-        </DashFormControl>
-        <DashFormControl size="small">
+        </PFormControl>
+        <PFormControl size="small">
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DesktopDatePicker
               inputFormat="MM/dd/yyyy"
@@ -67,7 +66,7 @@ const TableHeader = ({
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
-        </DashFormControl>
+        </PFormControl>
       </Box>
     </Box>
   );

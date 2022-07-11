@@ -1,6 +1,5 @@
 import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { DashFormControl } from "../../../Styles/Orders";
-import { PTextField } from "../../../Styles/panelCommon";
+import { PTextField, PFormControl } from "../../../Styles/panelCommon";
 
 interface Props {
   selectedStatus: string;
@@ -33,7 +32,7 @@ function GridHeader({
           gap: "10px",
         }}
       >
-        <DashFormControl size="small">
+        <PFormControl size="small">
           <Select
             variant="outlined"
             displayEmpty
@@ -45,8 +44,8 @@ function GridHeader({
             <MenuItem value={"disable"}>Clothings</MenuItem>
             <MenuItem value={"show-all"}>Something else</MenuItem>
           </Select>
-        </DashFormControl>
-        <DashFormControl size="small">
+        </PFormControl>
+        <PFormControl size="small">
           <Select
             variant="outlined"
             displayEmpty
@@ -57,7 +56,7 @@ function GridHeader({
             <MenuItem value={"30"}>Cheap First</MenuItem>
             <MenuItem value={"40"}>Most Viewed</MenuItem>
           </Select>
-        </DashFormControl>
+        </PFormControl>
       </Box>
     </Box>
   );
