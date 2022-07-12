@@ -88,4 +88,23 @@
     lineHeight:"3rem"
 
   }
+   export const tabsStyle={
+  display: "block",
+  position: "relative",
+  width: "100%",
+  // borderTop: "1px solid",
+  // borderBottom: "1px solid",
+  border:"none",
+  marginBottom: "0",
+  textAlign: "center",
+  padding: "0px 20px",
+  marginTop: "0px",
+  background: "#f5f5f5",
+  color:"#f8f8f8",
+  fontSize: "16px",
+  fontWeight: "400",
+  fontFamily: "inherit",
+  // overflowX: "hidden",
+
+ }
 
