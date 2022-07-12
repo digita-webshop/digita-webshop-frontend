@@ -11,13 +11,9 @@ function AddProduct() {
         <ContentHeader />
       </Grid>
       <Grid container item xs={12} spacing={3}>
-        <Grid container item xs={12} md={8}>
-          <Grid item xs={12}>
-            <Details />
-          </Grid>
-          <Grid item xs={12}>
-            <Gallery />
-          </Grid>
+        <Grid item xs={12} md={8}>
+          <Details />
+          <Gallery />
         </Grid>
         <Grid item xs={12} md={4}>
           <Sidebar />
