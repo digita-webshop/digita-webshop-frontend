@@ -67,3 +67,25 @@
 
 // /* ================ End BoughtToGether ============== */
 
+// /* ================ Tabs ============== */
+
+  export const ProductTextStyle={
+    color:"#777",
+    fontSize:{ sm: "16px", md: "16px" },
+    margin:"2rem 0",
+    lineHeight:"1.75rem"
+  }
+
+  export const ProductContentStyle = {
+  textAlign: "left",
+  width: { sm: "100%", md: "100%", lg: "90%" },
+};
+
+  export const TabsTitrStyle={
+    color:"#777777",
+    fontWeight: "700",
+    margin:"2rem 0",
+    lineHeight:"3rem"
+
+  }
+
