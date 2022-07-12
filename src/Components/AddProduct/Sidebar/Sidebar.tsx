@@ -56,6 +56,12 @@ function Sidebar() {
         </Grid>
         <Grid item xs={12}>
           <FormControl fullWidth>
+            <PFormLabel>quantity</PFormLabel>
+            <PTextField placeholder="Type Here" />
+          </FormControl>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl fullWidth>
             <PFormLabel>tags</PFormLabel>
             <PTextField
               placeholder="Type Here"
