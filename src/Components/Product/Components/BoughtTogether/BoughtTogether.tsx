@@ -7,6 +7,15 @@
   Grid,
    Divider
   } from "@mui/material";
+
+import {
+
+    boughtPriceStyle,
+ 
+    BoughtTextStyle,
+   
+  } from "../../../../Styles/Product";
+
 const BoughtTogether = () => {
   return( 
 
