@@ -61,7 +61,7 @@ export const ImageWrapper = styled(Box)(({ theme }) => ({
   height: "100%",
   [theme.breakpoints.up("sm")]: {
     width: "100%",
-    height: "60%",
+    height: "87%",
   },
   img: {
     width: "100%",

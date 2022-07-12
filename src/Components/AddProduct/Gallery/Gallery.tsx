@@ -11,6 +11,8 @@ function Gallery() {
   const secondImgRef = useRef<HTMLInputElement>(null);
   const thirdImgRef = useRef<HTMLInputElement>(null);
   const fourthImgRef = useRef<HTMLInputElement>(null);
+  const fifthImgRef = useRef<HTMLInputElement>(null);
+  const sixthImgRef = useRef<HTMLInputElement>(null);
 
   const imageClickHandler = (name: string) => () => {
     switch (name) {
@@ -28,6 +30,12 @@ function Gallery() {
         break;
       case "fourth":
         thirdImgRef.current!.click();
+        break;
+      case "fifth":
+        fifthImgRef.current!.click();
+        break;
+      case "sixth":
+        sixthImgRef.current!.click();
         break;
     }
   };
@@ -74,6 +82,24 @@ function Gallery() {
           <Grid item xs={6} sm={6} display={"flex"}>
             <ImageWrapper>
               <input type={"file"} ref={fourthImgRef} />
+              <img src={previewImg} alt="product-img" />
+              <Box onClick={imageClickHandler("fourth")}>
+                <Edit />
+              </Box>
+            </ImageWrapper>
+          </Grid>
+          <Grid item xs={6} sm={6} display={"flex"}>
+            <ImageWrapper>
+              <input type={"file"} ref={fifthImgRef} />
+              <img src={previewImg} alt="product-img" />
+              <Box onClick={imageClickHandler("third")}>
+                <Edit />
+              </Box>
+            </ImageWrapper>
+          </Grid>
+          <Grid item xs={6} sm={6} display={"flex"}>
+            <ImageWrapper>
+              <input type={"file"} ref={sixthImgRef} />
               <img src={previewImg} alt="product-img" />
               <Box onClick={imageClickHandler("fourth")}>
                 <Edit />
