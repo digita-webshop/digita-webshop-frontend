@@ -11,7 +11,39 @@
 
     
 //  /* ================  BoughtToGether ============== */
+ export const allBought={
+  paddingBottom:"1rem",
+ }
+ export const boughtTogether={
+   margin:"-0.6rem",
+  display: "flex",
+  flexDirection:"row",
+  justifyContent: "flex-start",
+  alignItems: "center",
+ }
+ export const BoughtTextStyle={
+  color:"#777",
+  fontSize:{ sm: "14px", md: "14px" },
+  margin:"2rem 0",
+  lineHeight:"1.75rem"
+ }
+ export const BoughtButton ={
+   flex: 1,
+   padding:"8px 20px", 
+   "&:hover": { backgroundColor: "#333" } ,
+   fontWeight: "500",
+   fontSize:"12px",
+   marginTop:"-0.3rem",
+ }
+ export const imageBought={
+  height:"4rem",
+  padding: "1rem",
+  display: "flex",
+  flexDirection:"row",
+  justifyContent: "center",
+  alignItems: "center",
 
+ }
  export const boughtPriceStyle={
   "& .boughtList":{
     listStyleType:"circle",
@@ -24,10 +56,14 @@
     
   }
  }
+ export const boughttitleStyle={
+  color:"#333333",
+  fontWeight: "400",
+  margin:"0.5rem 0",
+  
  
- export const BoughtTextStyle={
-  color:"#777",
-  fontSize:{ sm: "14px", md: "14px" },
-  margin:"2rem 0",
-  lineHeight:"1.75rem"
+
  }
+
+// /* ================ End BoughtToGether ============== */
+
