@@ -8,8 +8,12 @@ export const TCell = styled(TableCell)(({ theme }) => ({
   [theme.breakpoints.between("sm", "xl")]: {
     padding: "12px 1px",
   },
+  [theme.breakpoints.down("md")]: {
+    fontSize: "14px",
+    padding: "10px 1px",
+  },
   [theme.breakpoints.down("sm")]: {
-    fontSize: "10px",
+    fontSize: "11px",
     padding: "8px 4px",
   },
 }));
@@ -22,12 +26,16 @@ export const THCell = styled(TableCell)(({ theme }) => ({
     [theme.breakpoints.between("sm", "xl")]: {
       padding: "12px 1px",
     },
+    [theme.breakpoints.down("md")]: {
+      fontSize: "14px",
+      padding: "10px 1px",
+    },
     [theme.breakpoints.down("sm")]: {
       fontSize: "12px",
       padding: "8px 4px",
     },
     "&.hidden": {
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down("md")]: {
         display: "none",
       },
     },
