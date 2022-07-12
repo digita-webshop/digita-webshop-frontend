@@ -192,7 +192,107 @@
    
 
   }
+
+    export const chanceMail={
+   
+    borderStyle:"none none none solid",
+    borderColor: (theme: any) => ` ${theme.palette.divider}`,
+    borderWidth:"0.5px",
+    '&:hover': {
+     
+      "& .mailtext":{
+        color: '#61CE70',
+      }, 
+      "& .mailback":{
+        backgroundColor: '#61CE70',
+      },
+     
+    },
+    
+  }
+  export const chanceTwitter={
+   
+    
+    borderStyle:"none none none solid",
+    borderColor: (theme: any) => ` ${theme.palette.divider}`,
+    borderWidth:"0.5px",
+    '&:hover': {
+     
+      "& .Twittertext":{
+        color:  '#0693e3',
+      }, 
+      "& .Twitterback":{
+        backgroundColor: '#0693e3',
+      },
+     
+    },
+    
+  }
+  export const chanceFacebook={
+ 
+    '&:hover': {
+     
+      "& .Facebooktext":{
+        color: '#4267b2',
+      }, 
+      "& .Facebookback":{
+        color: '#4267b2',
+      },
+     
+    },
+    
+  }
+ 
+  export const chancePinteres={
+    height:"100%",
+    
+    borderStyle:"none none none solid",
+    borderColor: (theme: any) => ` ${theme.palette.divider}`,
+    borderWidth:"0.5px",
+    '&:hover': {
+     
+      "& .Pinterestext":{
+        color: '#E60023',
+      }, 
+      "& .Pinteresback":{
+        color: '#E60023',
+      },
+     
+    },
+    
+  }
 //   /* ==============  End SharProduct  =============== */
+
+
+/* ============ ShareStyleItems Item ============== */
+export const ShareStyle = {
+  margin: "4rem 0",
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+  border: (theme: any) => `1px solid ${theme.palette.divider}`,
+  borderRadius: 1,
+  bgcolor: "background.paper",
+  color: "text.secondary",
+  "& svg": {
+    m: 1.5,
+  },
+  "& hr": {
+    mx: 0.5,
+  },
+};
+
+export const itemStyle = {
+  height:"4rem",
+  padding: "1rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
+// /* ============ ShareStyleItems Item ============== */
+
+
+ 
 
 
 
