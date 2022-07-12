@@ -4,29 +4,29 @@ import MailIcon from '@mui/icons-material/Mail';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import { Grid, Box, Typography } from "@mui/material";
-
 import {
 
 shareProductText,
 MailIconLayout,
 TwitterIconLayout,
-
+chanceTwitter,
 ShareStyle, 
 itemStyle,
-
+chanceMail,
+chanceFacebook,
+chancePinteres,
 
 } from "../../../../Styles/Product/index";
 
-const ShareProduct = () => {
-  
-     
+  const ShareProduct = () => {
+ 
     
       return (
         <Grid container sx={ShareStyle}>
            {/* ======== FacebookOutlinedIcon============================ ======= */}
         <Grid item xs={6} sm={6} md={3} lg={3}>
            
-          
+            <Box sx={chanceFacebook}>
             <Box sx={itemStyle}>
          
              
@@ -43,12 +43,12 @@ const ShareProduct = () => {
     </Typography>
               </Box>
               </Box>
-       
+            </Box>
           </Grid>
     
           {/* ======== TwitterIcon===================== ======= */}
         <Grid item xs={6} sm={6} md={3} lg={3}>
- 
+        <Box sx={chanceTwitter}>
             <Box sx={itemStyle}>
             
               <Box sx={TwitterIconLayout} className="Twitterback">
@@ -66,11 +66,11 @@ const ShareProduct = () => {
     </Typography>
               </Box>
               </Box>
-       
+            </Box>
           </Grid>
       {/* ======== PinterestIcon============================ ======= */}
         <Grid item xs={6} sm={6} md={3} lg={3}>
-     
+        <Box sx={chancePinteres}>
             <Box sx={itemStyle}>
               
                <PinterestIcon fontSize="large" className="Pinteresback" sx={{
@@ -84,11 +84,11 @@ const ShareProduct = () => {
     </Typography>
               </Box>
               </Box>
-       
+            </Box>
           </Grid>
     {/* ==========================MailIcon================================ */}
         <Grid item xs={6} sm={6} md={3} lg={3}>
-     
+        <Box sx={chanceMail}>
             <Box sx={itemStyle} >
            
            
@@ -107,12 +107,10 @@ const ShareProduct = () => {
     </Typography>
               </Box>
               </Box>
-       
+            </Box>
           </Grid>
         </Grid>
-    
     )
-   };
-   
-   export default ShareProduct;
-   
+};
+
+export default ShareProduct;
