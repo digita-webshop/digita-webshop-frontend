@@ -5,38 +5,112 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import { Grid, Box, Typography } from "@mui/material";
 
+import {
+
+shareProductText,
+MailIconLayout,
+TwitterIconLayout,
+
+ShareStyle, 
+itemStyle,
+
+
+} from "../../../../Styles/Product/index";
+
 const ShareProduct = () => {
-   
-    return(
-        <Box >
-             
-<FacebookOutlinedIcon fontSize="large" className="Facebookback" sx={{
-                  color:"#000000",
-       fontSize:"45px" ,
-       float:"left",
+  
      
-                   }} />
-
-<TwitterIcon fontSize="large"    sx={{
-        fontSize:"25px" ,
-        
-        color: '#ffffff',
-      
-                  
-                   }}/>
-  <PinterestIcon fontSize="large" className="Pinteresback" sx={{
-                       color:"#000000",
-           fontSize:"45px" ,
-           float:"left",
-                      }} />
-    <MailIcon fontSize="large"  sx={{
-             fontSize:"25px" ,
+    
+      return (
+        <Grid container sx={ShareStyle}>
+           {/* ======== FacebookOutlinedIcon============================ ======= */}
+        <Grid item xs={6} sm={6} md={3} lg={3}>
+           
+          
+            <Box sx={itemStyle}>
+         
+             
+               <FacebookOutlinedIcon fontSize="large" className="Facebookback" sx={{
+                 color:"#000000",
+      fontSize:"45px" ,
+      float:"left",
+     
+                  }} />
+              <Box sx={{ marginLeft: "0" }}>
+              
+              <Typography variant="body2" className="Facebooktext" component="p" sx={shareProductText}>
+             Share on Facebook
+    </Typography>
+              </Box>
+              </Box>
+       
+          </Grid>
+    
+          {/* ======== TwitterIcon===================== ======= */}
+        <Grid item xs={6} sm={6} md={3} lg={3}>
+ 
+            <Box sx={itemStyle}>
             
-             color: '#ffffff',
-           }}/>
-
-
-      </Box>
+              <Box sx={TwitterIconLayout} className="Twitterback">
+    <TwitterIcon fontSize="large"    sx={{
+     fontSize:"25px" ,
+      
+     color: '#ffffff',
+    
+                
+                }}/></Box>
+              <Box sx={{ marginLeft: "0.6rem" }}>
+               
+              <Typography variant="body2" component="p" sx={shareProductText} className="Twittertext">
+    Tweet This Product
+    </Typography>
+              </Box>
+              </Box>
+       
+          </Grid>
+      {/* ======== PinterestIcon============================ ======= */}
+        <Grid item xs={6} sm={6} md={3} lg={3}>
+     
+            <Box sx={itemStyle}>
+              
+               <PinterestIcon fontSize="large" className="Pinteresback" sx={{
+                  color:"#000000",
+      fontSize:"45px" ,
+      float:"left",
+                 }} />
+              <Box sx={{ marginLeft: "0" }}>
+              <Typography variant="body2" component="p" className="Pinterestext" sx={shareProductText}> 
+    Pin This Product
+    </Typography>
+              </Box>
+              </Box>
+       
+          </Grid>
+    {/* ==========================MailIcon================================ */}
+        <Grid item xs={6} sm={6} md={3} lg={3}>
+     
+            <Box sx={itemStyle} >
+           
+           
+                   
+                   <Box sx={MailIconLayout} className="mailback">
+            <MailIcon fontSize="large"  sx={{
+      fontSize:"25px" ,
+      
+      color: '#ffffff',
+    }}/>
+            </Box>
+              <Box sx={{ marginLeft: "0.6rem" }}>
+               
+              <Typography variant="body2" component="p" sx={shareProductText} className="mailtext">
+    Mail This Product
+    </Typography>
+              </Box>
+              </Box>
+       
+          </Grid>
+        </Grid>
+    
     )
    };
    
