@@ -1,7 +1,8 @@
 import { MoreHoriz } from "@mui/icons-material";
 import { Checkbox, Table, TableBody, TableHead, TableRow, Rating } from "@mui/material";
 import { reviews } from "../../../Services/Utils/Data/data";
-import { TableButton, TCell, THCell } from "../../../Styles/Orders";
+import { TableButton } from "../../../Styles/Orders";
+import {TCell, THCell} from "../../../Styles/Reviews";
 import StarIcon from "@mui/icons-material/Star";
 
 const tableHead = [
@@ -26,7 +27,7 @@ function ReviewsTable({ selectedAmount }: Props) {
           {tableHead.map((item, index) => (
             <THCell
               key={index}
-              align="center"
+              align="left"
               className={item === "action" ? "hidden" : ""}
             >
               {item}
