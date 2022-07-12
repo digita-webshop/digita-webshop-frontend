@@ -1,25 +1,29 @@
 import { MoreHoriz } from "@mui/icons-material";
-import { Checkbox, Table, TableBody, TableHead, TableRow, Rating } from "@mui/material";
+import {
+  Checkbox,
+  Table,
+  TableBody,
+  TableHead,
+  TableRow,
+  Rating,
+  useMediaQuery,
+} from "@mui/material";
 import { reviews } from "../../../Services/Utils/Data/data";
 import { TableButton } from "../../../Styles/Orders";
-import {TCell, THCell} from "../../../Styles/Reviews";
+import { TCell, THCell } from "../../../Styles/Reviews";
 import StarIcon from "@mui/icons-material/Star";
+import { useTheme } from "@mui/material/styles";
 
-const tableHead = [
-  "",
-  "#ID",
-  "Product",
-  "Name",
-  "Rating",
-  "date",
-  "action",
-];
+const tableHead = ["", "#ID", "Product", "Name", "Rating", "date", "action"];
 
 interface Props {
   selectedAmount: string;
 }
 
 function ReviewsTable({ selectedAmount }: Props) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Table>
       <TableHead>
@@ -63,7 +67,7 @@ function ReviewsTable({ selectedAmount }: Props) {
                 {product}
               </TCell>
               <TCell sx={{ wordBreak: "break-all" }}>{name}</TCell>
-              
+
               <TCell>
                 <Rating
                   name="text-feedback"
@@ -77,21 +81,23 @@ function ReviewsTable({ selectedAmount }: Props) {
                 />
               </TCell>
               <TCell>{date}</TCell>
-              <TCell
-                sx={{
-                  display: { xs: "none", sm: "flex" },
-                  justifyContent: "center",
-                  gap: "4px",
-                  flexWrap: "wrap",
-                }}
-              >
-                <TableButton>Detail</TableButton>
-                <TableButton sx={{ display: "flex", paddingY: "0" }}>
-                  <MoreHoriz
-                    sx={{ margin: "auto", color: "common.panelGrey" }}
-                  />
-                </TableButton>
-              </TCell>
+              {!matches && (
+                <TCell
+                  sx={{
+                    display: { xs: "none", sm: "flex" },
+                    justifyContent: "center",
+                    gap: "4px",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <TableButton>Detail</TableButton>
+                  <TableButton sx={{ display: "flex", paddingY: "0" }}>
+                    <MoreHoriz
+                      sx={{ margin: "auto", color: "common.panelGrey" }}
+                    />
+                  </TableButton>
+                </TCell>
+              )}
             </TableRow>
           ))}
       </TableBody>

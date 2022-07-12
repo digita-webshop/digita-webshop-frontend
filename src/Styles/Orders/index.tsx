@@ -26,7 +26,7 @@ export const THCell = styled(TableCell)(({ theme }) => ({
     padding: "8px 4px",
   },
   "&.hidden": {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       display: "none",
     },
   },
