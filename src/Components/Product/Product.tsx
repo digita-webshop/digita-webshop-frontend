@@ -9,7 +9,7 @@ import { productData } from "../../Services/Utils/Data/data";
 import ProductDetails from "./Components/ProductDetails/ProductDetails"
 import BoughtTogether from "./Components/BoughtTogether/BoughtTogether"
 import Tabs from "./Components/Tabs/Tabs"
-
+import ShareProduct from "./Components/ShareProduct/ShareProduct"
 import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
 import ProductItem from "./../Products/Components/ProductItem/ProductItem";
 
@@ -30,6 +30,9 @@ const Product = () => {
        </Container>
        <Container maxWidth={"lg"}>
        <Tabs />
+       </Container>
+       <Container maxWidth={"lg"}>
+       <ShareProduct />
        </Container>
        <Container maxWidth={"lg"}>
        <Box sx={{ textAlign: "center", pb: 8 }}>
