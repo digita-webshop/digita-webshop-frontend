@@ -108,3 +108,91 @@
 
  }
 
+
+ 
+
+//   /* ============== ShareProduct  =============== */
+
+
+  // export const shareProductParent={
+  //   display: "flex",
+  //   flexDirection: { sm: "column", md: "column" ,lg:"row" },
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  //   paddingTop: "50px",
+  //   paddingBottom: "20px",
+  //   border:"solid 1px #777777",
+ 
+
+  // }
+
+  // export const shareProductChaild={
+  //   width:{ sm: "50%", md: "25%" ,lg:"25%" },
+  //   padding: "1rem  3rem ",
+  //   textAlign:"center",
+
+  //   // border:"solid 1px #777777",
+  //   margin:"auto 0",
+
+    
+  // }
+  export const shareProductText={
+    color:"#777777",
+    fontSize:"13px" ,
+    margin:"0",
+    lineHeight:"0",
+    float:"left", 
+    paddingTop: "1.5rem ", 
+    paddingBottom: "1.5rem ",
+    marginLeft:"0.5rem" 
+
+  }
+  export const contentStyle = {
+    textAlign: "left",
+    width: { sm: "100%", md: "100%", lg: "90%" },
+    "& .descriptionList":{
+      listStyleType:"none",
+    },
+    
+  };
+  export const MailIconLayout={
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius:"50%",
+    backgroundColor: "#000000",
+    width:"43px",
+    height:"43px",
+     float:"left",
+    
+
+  }
+  // export const MailIconText={
+  //   color:"#777777",
+  //   fontSize:"13px" ,
+  //   margin:"0",
+  //   lineHeight:"0",
+  //   float:"left", 
+  //   paddingTop: "1.5rem ", 
+  //   marginLeft:"1rem" ,
+
+
+  // }
+  export const TwitterIconLayout={
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius:"50%",
+    backgroundColor: "#000000",
+    width:"43px",
+    height:"43px",
+     float:"left",
+   
+
+  }
+//   /* ==============  End SharProduct  =============== */
+
+
+
