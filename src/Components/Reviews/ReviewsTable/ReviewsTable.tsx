@@ -14,7 +14,22 @@ import { TCell, THCell } from "../../../Styles/Reviews";
 import StarIcon from "@mui/icons-material/Star";
 import { useTheme } from "@mui/material/styles";
 
-const tableHead = ["", "#ID", "Product", "Name", "Rating", "date", "action"];
+const tableHead = [
+  <Checkbox
+    sx={{
+      color: "#f03637",
+      "&.Mui-checked": {
+        color: "common.digitaRed",
+      },
+    }}
+  />,
+  "#ID",
+  "Product",
+  "Name",
+  "Rating",
+  "date",
+  "action",
+];
 
 interface Props {
   selectedAmount: string;
