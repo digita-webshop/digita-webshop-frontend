@@ -7,6 +7,7 @@ import {
 
 import { productData } from "../../Services/Utils/Data/data";
 import ProductDetails from "./Components/ProductDetails/ProductDetails"
+import BoughtTogether from "./Components/BoughtTogether/BoughtTogether"
 
 
 import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
@@ -23,6 +24,9 @@ const Product = () => {
        <CustomBreadcrumbs title={"product"} />
        <Container maxWidth={"lg"}>
        <ProductDetails />
+       </Container>
+       <Container maxWidth={"lg"}>
+       <BoughtTogether />
        </Container>
        <Container maxWidth={"lg"}>
        <Box sx={{ textAlign: "center", pb: 8 }}>
