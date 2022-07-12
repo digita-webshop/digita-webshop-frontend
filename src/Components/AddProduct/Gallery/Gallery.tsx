@@ -32,9 +32,9 @@ function Gallery() {
     }
   };
   return (
-    <CardWrapper>
+    <CardWrapper mt={4}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={7}>
+        <Grid item xs={12} sm={7} display={"flex"}>
           <ImageWrapper className="main">
             <input type={"file"} ref={mainImgRef} />
             <img src={previewImg} alt="product-img" />
@@ -62,7 +62,7 @@ function Gallery() {
               </Box>
             </ImageWrapper>
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={6} sm={6} display={"flex"}>
             <ImageWrapper>
               <input type={"file"} ref={thirdImgRef} />
               <img src={previewImg} alt="product-img" />
@@ -71,7 +71,7 @@ function Gallery() {
               </Box>
             </ImageWrapper>
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={6} sm={6} display={"flex"}>
             <ImageWrapper>
               <input type={"file"} ref={fourthImgRef} />
               <img src={previewImg} alt="product-img" />
