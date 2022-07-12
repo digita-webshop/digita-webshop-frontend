@@ -1,5 +1,6 @@
 
 import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
+import ProductDetails from "./Components/ProductDetails/ProductDetails"
 
 import { Box, Container, Grid,Typography } from "@mui/material";
 
@@ -10,6 +11,9 @@ const Product = () => {
 
     <Box bgcolor={"white"}>
        <CustomBreadcrumbs title={"product"} />
+       <Container maxWidth={"lg"}>
+       <ProductDetails />
+       </Container>
 
 
     
