@@ -17,7 +17,10 @@ import {
   productTitle,
   contentWrap,
   addToCartButton,
-  starRating
+  starRating,
+  linkStyle,
+  productMetaStyle
+
   
   
   } from "../../../../Styles/Product/index";
@@ -56,11 +59,14 @@ const ProductDetails = () => {
           }}
           variant="filled"
         />
-      <Typography variant="body2" sx={ProductDetailsStyle} component="div">
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
-Consetetur sadipscing elitr, sed diam nonumy eirmod
-Suspendisse ultrices mauris diam
+      
+      <Typography variant="body2" sx={ProductDetailsStyle} component="p">
+     <p className="paragraph">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
+     <p className="paragraph">Consetetur sadipscing elitr, sed diam nonumy eirmod</p> 
+<p className="paragraph">Suspendisse ultrices mauris diam</p>
+
       </Typography>
+      
       <Typography variant="body2" sx={ProductDetailsStyle} component="p" >
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat
@@ -80,19 +86,48 @@ Wishlist
     </Stack>
 
     </Box>
-    <Divider />
+    <Divider sx={{padding:"20px",width:"100%",}} />
     <Box sx={{ width: '100%', maxWidth: 500 }}>
     <Typography variant="body2" component="p" sx={{color: "#333", fontWeight: "600"}}>
     SKU: WVN-13
       </Typography>
-      <Typography variant="body2" component="p" sx={ProductDetailsStyle}>
-      Categories: Audio &amp; Video Game, Headphone, Phone Accessories, Smart TV, Technologies, Virtual Reality Glasses, Xbox(Console)
-Tags: Tag-02, Tag-08
-      </Typography>
+      <Typography variant="body2" component="p" sx={productMetaStyle}>
+      Categories: 
+
+      <Link href="#" underline="none" color="inherit" variant="body2" sx={linkStyle}>
+  {' Audio &amp; Video Game'}
+</Link>,
+<Link href="#" underline="none" sx={linkStyle}>
+  {'  Headphone'}
+</Link>,
+<Link href="#" underline="none"sx={linkStyle}>
+  {'Phone Accessories'}
+</Link>,
+<Link href="#" underline="none" sx={linkStyle}>
+  {' Smart TV'}
+</Link> ,
+<Link href="#" underline="none" sx={linkStyle}>
+  {'Technologies'}
+</Link>,<Link href="#" underline="none" sx={linkStyle}>
+  {'Virtual Reality Glasses'}
+</Link><Link href="#" underline="none"sx={linkStyle}>
+  {'Xbox(Console)'}
+</Link>
     
+
+      </Typography>
+      <Typography variant="body2" component="p" sx={productMetaStyle}>
+      Tags:
+      <Link href="#" underline="none">
+  {' Tag-02'}
+</Link>,
+<Link href="#" underline="none">
+  {'  Tag-08'}
+</Link>
+      </Typography>
     </Box>
 
-  <div>Product Details</div>
+  
   </Grid>
   
 </Grid>
