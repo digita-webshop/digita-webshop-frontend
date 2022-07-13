@@ -19,7 +19,11 @@ import {
   addToCartButton,
   starRating,
   PostStyle,
-  productMetaStyle
+  productMetaStyle,
+  WishlistButton,
+  CompareButton,
+  linkStyle,
+  filledPrice,
 
   
   
@@ -47,12 +51,12 @@ const ProductDetails = () => {
       <Button variant="outlined"><ArrowBackIosIcon/></Button>
       <Button variant="outlined"><ArrowForwardIosIcon/></Button>
       <Rating name="size-small" defaultValue={5} size="small" sx={starRating}/>
-      <Link href="#" underline="none"     className="linkStyle">
+      <Link href="#" underline="none"   className="customerReview"   sx={linkStyle}>
       (1 customer review)
 </Link>
 <TextField
           id="filled-read-only-input"
-          label="Read Only"
+          sx={filledPrice}
           defaultValue="$52.00"
           InputProps={{
             readOnly: true,
@@ -74,54 +78,58 @@ const ProductDetails = () => {
       <Button variant="contained" sx={addToCartButton}>Add To Cart</Button>
       {/* <Button variant="contained">View Cart</Button> */}
 
-      <Stack direction="row" spacing={2}>
-      <Button variant="outlined" startIcon={<FavoriteBorderIcon/>}>
+      <Box>
+      <Button variant="outlined" startIcon={<FavoriteBorderIcon/>} sx={WishlistButton}>
     
-Wishlist
+    Wishlist
 
       </Button>
-      <Button variant="contained" endIcon={<ShuffleIcon />}>
+      <Button variant="contained" startIcon={<ShuffleIcon />} sx={CompareButton}>
       Compare
       </Button>
-    </Stack>
+ </Box>
 
     </Box>
     <Divider sx={{padding:"20px",width:"100%",}} />
     <Box sx={productMetaStyle}>
-    <Typography variant="body2" component="p" >
+    <Typography variant="body2" component="p" sx={{lineHeight: "1.2",}}>
     SKU: WVN-13
+
+    <Link href="#" underline="none" color="inherit" variant="body2"    sx={linkStyle}>
+  {'  WVN-13'}
+</Link>
       </Typography>
       <Typography variant="body2" component="p" >
       Categories: 
 
-      <Link href="#" underline="none" color="inherit" variant="body2"   className="linkStyle">
+      <Link href="#" underline="none" color="inherit" variant="body2"    sx={linkStyle}>
   {' Audio &amp; Video Game'}
 </Link>,
-<Link href="#" underline="none"   className="linkStyle">
+<Link href="#" underline="none"    sx={linkStyle}>
   {'  Headphone'}
 </Link>,
-<Link href="#" underline="none"  className="linkStyle">
+<Link href="#" underline="none"   sx={linkStyle}>
   {'Phone Accessories'}
 </Link>,
-<Link href="#" underline="none"   className="linkStyle">
+<Link href="#" underline="none"    sx={linkStyle}>
   {' Smart TV'}
 </Link> ,
-<Link href="#" underline="none"   className="linkStyle">
+<Link href="#" underline="none"    sx={linkStyle}>
   {'Technologies'}
-</Link>,<Link href="#" underline="none"   className="linkStyle">
+</Link>,<Link href="#" underline="none"    sx={linkStyle}>
   {'Virtual Reality Glasses'}
-</Link><Link href="#" underline="none"  className="linkStyle">
+</Link><Link href="#" underline="none"   sx={linkStyle}>
   {'Xbox(Console)'}
 </Link>
     
 
       </Typography>
-      <Typography variant="body2" component="p" >
+      <Typography variant="body2" component="p"  sx={{lineHeight: "1.2",}}>
       Tags:
-      <Link href="#" underline="none">
+      <Link href="#" underline="none" sx={linkStyle}>
   {' Tag-02'}
 </Link>,
-<Link href="#" underline="none">
+<Link href="#" underline="none" sx={linkStyle}>
   {'  Tag-08'}
 </Link>
       </Typography>
