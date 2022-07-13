@@ -1,5 +1,5 @@
 
-
+import { styled} from "@mui/material";
     /* ================   RELATED PRODUCTS ============== */
     export const teamTitleStyle = {
       padding: "8rem 0 1rem 0",
@@ -13,7 +13,12 @@ export const ProductDetailsStyle={
   lineHeight: "1.8",
   color: "#929292",
   marginTop: "20px",
+  "& .paragraph":{
+    lineHeight: "0.8",
+  }
+ 
 }
+
 export const productTitle ={
   fontWeight: "500",
   fontSize: "25px",
@@ -58,6 +63,24 @@ export const starRating={
 
 
 }
+export const linkStyle={
+  color: "#333333",
+  '&:hover': {
+   
+      color: '#F03637',
+    }, 
+
+}
+export const productMetaStyle={
+  fontSize:"15px",
+  color: "#333333",
+  marginTop: "20px!important",
+  borderBottom: 0,
+ 
+  paddingBottom: "10px",
+}
+
+
     
 //  /* ================  BoughtToGether ============== */
  export const allBought={
@@ -118,6 +141,15 @@ export const starRating={
 
 // /* ================ Tabs ============== */
 
+export const ShowStyle =styled("div")(({ theme }) => ({
+  "& .TabsShow":{
+    listStyleType:"none",
+  },
+  "& .CascadinShow":{
+    listStyleType:"none",
+  },
+}));
+
   export const ProductTextStyle={
     color:"#777",
     fontSize:{ sm: "16px", md: "16px" },
@@ -128,6 +160,9 @@ export const starRating={
   export const ProductContentStyle = {
   textAlign: "left",
   width: { sm: "100%", md: "100%", lg: "90%" },
+  "& .descriptionList":{
+    listStyleType:"none",
+  },
 };
 
   export const TabsTitrStyle={
@@ -196,14 +231,7 @@ export const starRating={
     marginLeft:"0.5rem" 
 
   }
-  export const contentStyle = {
-    textAlign: "left",
-    width: { sm: "100%", md: "100%", lg: "90%" },
-    "& .descriptionList":{
-      listStyleType:"none",
-    },
-    
-  };
+
   export const MailIconLayout={
     display: "flex",
     flexDirection: "row",
