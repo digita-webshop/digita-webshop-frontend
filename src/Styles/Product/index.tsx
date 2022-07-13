@@ -18,6 +18,30 @@ export const ProductDetailsStyle={
   }
  
 }
+export const nextButton={
+  borderWidth: "0.5px",
+  lineHeight: "28px",
+  minWidth: "30px",
+  borderColor: "#d1d1d1",
+  color: "#d1d1d1",
+  backgroundColor: "#ffffff",
+  border: "2px solid #e9e9e9",
+  textAlign: "center",
+  // display: "inline-block",
+  margin: "0",
+  padding: "10px",
+  cursor: "pointer",
+  fontSize:"5px",
+      display: "flex",
+     flexDirection: "row" ,
+     alignItems: "center",
+     justifyContent: "center",
+     '&:hover': {
+     color:"ffffff",
+    
+      backgroundcolor: '#F03637',
+    }, 
+}
 export const filledPrice ={
   width: '100%',
    maxWidth: "500",
@@ -25,7 +49,7 @@ export const filledPrice ={
    color: "#333",
    fontWeight: "500",
    fontSize: "25px",
-   backgroundColor:"#f6f6f6",
+   backgroundColor:'#f5f5f5',
    margin: "50px 0",
 }
 
@@ -104,21 +128,32 @@ export const linkStyle={
 }
 
   export const WishlistButton={
-backgroundColor:'#f5f5f5',
+
 color:"#F03637",
 padding:"10px 20px",
-marginTop:"20px",
+marginTop:"50px",
 fontSize:"16px",
 border:"none",
+
+'&:hover': {
+     
+    
+  color: '#F03637',
+}, 
   }
 
   export const CompareButton ={
-    backgroundColor:'#f5f5f5',
+   
     color:"#333333",
     padding:"10px 20px",
-    marginTop:"20px",
+    marginTop:"50px",
     fontSize:"16px",
-    border:"none"
+    border:"none",
+    '&:hover': {
+     
+    
+      color: '#F03637',
+    }, 
   }
 
     
@@ -172,6 +207,7 @@ border:"none",
   color:"#333333",
   fontWeight: "400",
   margin:"0.5rem 0",
+  fontSize:"30px"
   
  
 
@@ -210,15 +246,16 @@ export const CascadinTabs={
  
     borderWeight:"10px",
     width:"100%",
-    borderStyle:"solid none none solid",
+    borderStyle:"solid none none none",
     borderColor: (theme: any) => ` ${theme.palette.divider}`,
   }
 
   export const TabsTitrStyle={
     color:"#777777",
-    fontWeight: "700",
+    fontWeight: {xs:"500",sm:"500",md:"700",lg:"700"},
     margin:"2rem 0",
-    lineHeight:"3rem"
+    lineHeight:"3rem",
+    // fontSize:{xs:"20px",sm:"20px",md:"30px",lg:"30px"}
 
   }
    export const tabsStyle={
@@ -411,6 +448,7 @@ export const ShareStyle = {
 export const itemStyle = {
   height:"4rem",
   padding: "1rem",
+  flexDirection: {xs:"column",sm:"column",md:"row",lg:"row",},
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
