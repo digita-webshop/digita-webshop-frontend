@@ -18,6 +18,16 @@ export const ProductDetailsStyle={
   }
  
 }
+export const filledPrice ={
+  width: '100%',
+   maxWidth: "500",
+   border:"none",
+   color: "#333",
+   fontWeight: "500",
+   fontSize: "25px",
+   backgroundColor:"#f6f6f6",
+   margin: "50px 0",
+}
 
 export const productTitle ={
   fontWeight: "500",
@@ -61,20 +71,14 @@ export const starRating={
   fontFamily: "star",
   float: "left",
   marginRight: "10px",
-  marginTop: "3px",
+  marginTop: "20px",
 
 
 }
 export const PostStyle={
    width: '100%', maxWidth: "500", 
   color: "#333333",
-  '&:hover': {
-     
-    "& .linkStyle":{
-      color: '#F03637',
-    }, 
-    
-  }
+ 
 
 }
 export const productMetaStyle={
@@ -82,10 +86,40 @@ export const productMetaStyle={
   color: "#333333",
   marginTop: "30px!important",
   borderBottom: 0,
-  lineHeight:"1rem",
+  lineHeight:"2rem",
   paddingBottom: "10px",
+
+}
+export const linkStyle={
+  '&:hover': {
+     
+    
+      color: '#F03637',
+    }, 
+    "& .customerReview":{
+      marginTop: "20px",
+    },
+    
+ 
 }
 
+  export const WishlistButton={
+backgroundColor:'#f5f5f5',
+color:"#F03637",
+padding:"10px 20px",
+marginTop:"20px",
+fontSize:"16px",
+border:"none",
+  }
+
+  export const CompareButton ={
+    backgroundColor:'#f5f5f5',
+    color:"#333333",
+    padding:"10px 20px",
+    marginTop:"20px",
+    fontSize:"16px",
+    border:"none"
+  }
 
     
 //  /* ================  BoughtToGether ============== */
@@ -143,16 +177,16 @@ export const productMetaStyle={
 
  }
 
-// /* ================ End BoughtToGether ============== */
+// /* ================ End BoughtTogether ============== */
 
 // /* ================ Tabs ============== */
 // styled("div")(({ theme }) => (
 export const ShowStyle ={
   "& .TabsShow":{
-    listStyleType:"none",
+    display: {xs:"none", sm: "none", md: "block", lg: "block" },
   },
   "& .CascadinShow":{
-    listStyleType:"none",
+    display: {xs:"block", sm: "block", md: "none", lg: "none" },
   },
 }
 
@@ -170,6 +204,15 @@ export const ShowStyle ={
     listStyleType:"none",
   },
 };
+ 
+export const CascadinTabs={
+   
+ 
+    borderWeight:"10px",
+    width:"100%",
+    borderStyle:"solid none none solid",
+    borderColor: (theme: any) => ` ${theme.palette.divider}`,
+  }
 
   export const TabsTitrStyle={
     color:"#777777",
@@ -278,7 +321,7 @@ export const ShowStyle ={
 
     export const chanceMail={
    
-    borderStyle:"none none none solid",
+    borderStyle:{xs:"solid none none none", sm:"solid none none none", md:"none none none solid", lg:"none none none solid", },
     borderColor: (theme: any) => ` ${theme.palette.divider}`,
     borderWidth:"0.5px",
     '&:hover': {
@@ -329,7 +372,7 @@ export const ShowStyle ={
   export const chancePinteres={
     height:"100%",
     
-    borderStyle:"none none none solid",
+    borderStyle:{xs:"solid solid none none",sm:"solid solid none none",md:"none none none solid",lg:"none none none solid",},
     borderColor: (theme: any) => ` ${theme.palette.divider}`,
     borderWidth:"0.5px",
     '&:hover': {
