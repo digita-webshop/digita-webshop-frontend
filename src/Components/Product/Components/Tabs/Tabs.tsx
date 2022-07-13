@@ -1,6 +1,7 @@
 
 import {
   tabsStyle,
+  ShowStyle,
 
 } from "../../../../Styles/Product";
 import Description from "./Description/Description";
@@ -10,8 +11,8 @@ import Reviews from "./Reviews/Reviews";
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+
+import{ Box,Container,Typography} from '@mui/material';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -55,7 +56,8 @@ export default function CenteredTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={ShowStyle}>
+    <Box className="TabsShow" sx={{width:"100%"}}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
       <Tabs value={value} onChange={handleChange}
        centered
@@ -81,6 +83,26 @@ export default function CenteredTabs() {
       <TabPanel value={value} index={3}>
       <Delivery />
       </TabPanel>
+    </Box>
+
+
+    {/* ////// */}
+<Box className="CascadinShow">
+<Container maxWidth={"lg"}>
+       <Description />
+       </Container>
+       <Container maxWidth={"lg"}>
+       <Reviews />
+       </Container>
+       <Container maxWidth={"lg"}>
+       <AboutBranad />
+       
+       </Container>
+       <Container maxWidth={"lg"}>
+       <Delivery />
+       </Container>
+</Box>
+
     </Box>
   );
 }
