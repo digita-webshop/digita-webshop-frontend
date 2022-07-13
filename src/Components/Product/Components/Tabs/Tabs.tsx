@@ -2,6 +2,9 @@
 import {
   tabsStyle,
   ShowStyle,
+  productTitle,
+  CascadinTabs,
+
 
 } from "../../../../Styles/Product";
 import Description from "./Description/Description";
@@ -89,20 +92,45 @@ export default function CenteredTabs() {
     {/* ////// */}
 <Box className="CascadinShow">
 <Container maxWidth={"lg"}>
-       <Description />
-       </Container>
-       <Container maxWidth={"lg"}>
-       <Reviews />
-       </Container>
-       <Container maxWidth={"lg"}>
-       <AboutBranad />
+<Box  sx={CascadinTabs}>
        
+<Typography variant="h4" sx={productTitle} component="div">
+Description
+      </Typography>
+       <Description />
+</Box>
        </Container>
        <Container maxWidth={"lg"}>
-       <Delivery />
+       <Box  sx={CascadinTabs}>
+              
+<Typography variant="h4" sx={productTitle} component="div">
+Reviews
+      </Typography>
+       <Reviews />
+       </Box>
        </Container>
-</Box>
+      
+       <Container maxWidth={"lg"}>
+       <Box  sx={CascadinTabs}>
+              
+<Typography variant="h4" sx={productTitle} component="div">
+AboutBranad
+      </Typography>
+       <AboutBranad />
+       </Box>
+       </Container>
+      
+       <Container maxWidth={"lg"}>
+       <Box  sx={CascadinTabs}>
+              
+<Typography variant="h4" sx={productTitle} component="div">
+Delivery
+      </Typography>
+       <Delivery />
+       </Box>
+       </Container>
 
+</Box>
     </Box>
   );
 }
