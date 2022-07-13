@@ -7,8 +7,57 @@
       fontSize: "32px",
       fontWeight: "600",
     };
+//  /* ================  Product Details ============== */
+export const ProductDetailsStyle={
+  fontSize: "14px",
+  lineHeight: "1.8",
+  color: "#929292",
+  marginTop: "20px",
+}
+export const productTitle ={
+  fontWeight: "500",
+  fontSize: "25px",
+  lineHeight: "1.2",
+  textTransform: "none",
+  padding:" 0 80px 0 0px",
+  color: "#333",
+}
+export const contentWrap={
+  padding: "50px 15px",
+  width: "auto !important",
+
+}
+export const addToCartButton ={
+  float: "left",
+  height: "50px",
+  padding: "0 46px",
+  fontSize: "15px",
+  fontWeight: "600",
+  marginBottom: "15px",
+  textTransform: "capitalize",
+  webkitBorderRadius: "0px",
+  mozborderRadius: "0px",
+  msBorderRadius: "0px",
+  borderRadius: "0px",
+  letterSpacing: "normal",
+  marginRight: "15px",
+  // backgroundColor: "#333333",
+}
+
+export const starRating={
+  overflow: "hidden",
+  position: "relative",
+  height: "1em",
+  lineHeight: "1em",
+  fontSize: "14px",
+  width: "5.4em",
+  fontFamily: "star",
+  float: "left",
+  marginRight: "10px",
+  marginTop: "3px",
 
 
+}
     
 //  /* ================  BoughtToGether ============== */
  export const allBought={
