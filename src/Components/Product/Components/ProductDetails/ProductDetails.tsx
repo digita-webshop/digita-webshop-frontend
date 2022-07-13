@@ -24,6 +24,7 @@ import {
   CompareButton,
   linkStyle,
   filledPrice,
+  nextButton,
 
   
   
@@ -48,8 +49,8 @@ const ProductDetails = () => {
       <Typography variant="h4" sx={productTitle} component="div">
       Microsoft Xbox One S Blue Grey
       </Typography>
-      <Button variant="outlined"><ArrowBackIosIcon/></Button>
-      <Button variant="outlined"><ArrowForwardIosIcon/></Button>
+      <Button variant="outlined" sx={nextButton}><ArrowBackIosIcon/></Button>
+      <Button variant="outlined" sx={nextButton}><ArrowForwardIosIcon/></Button>
       <Rating name="size-small" defaultValue={5} size="small" sx={starRating}/>
       <Link href="#" underline="none"   className="customerReview"   sx={linkStyle}>
       (1 customer review)
@@ -78,15 +79,33 @@ const ProductDetails = () => {
       <Button variant="contained" sx={addToCartButton}>Add To Cart</Button>
       {/* <Button variant="contained">View Cart</Button> */}
 
-      <Box>
-      <Button variant="outlined" startIcon={<FavoriteBorderIcon/>} sx={WishlistButton}>
+      <Box sx={PostStyle}>
     
-    Wishlist
-
-      </Button>
-      <Button variant="contained" startIcon={<ShuffleIcon />} sx={CompareButton}>
+      <Link
+      sx={WishlistButton}
+  component="button"
+  variant="body2"
+  underline="none"
+  onClick={() => {
+    console.info("I'm a button.");
+  }}
+>
+<FavoriteBorderIcon/>   Wishlist
+</Link>
+      {/* <Button variant="contained" startIcon={<ShuffleIcon />} sx={CompareButton}>
       Compare
-      </Button>
+      </Button> */}
+      <Link
+      sx={CompareButton}
+  component="button"
+  variant="body2"
+  underline="none"
+  onClick={() => {
+    console.info("I'm a button.");
+  }}
+>
+<ShuffleIcon />  Compare
+</Link>
  </Box>
 
     </Box>
