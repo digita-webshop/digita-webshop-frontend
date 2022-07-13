@@ -1,7 +1,7 @@
 import { Edit } from "@mui/icons-material";
 import { Box, Grid } from "@mui/material";
 import { ImageWrapper } from "../../../Styles/AddProduct";
-import { CardWrapper } from "../../../Styles/panelCommon";
+import { CardWrapper, PFormLabel } from "../../../Styles/panelCommon";
 import previewImg from "../../../Assets/Images/upload-preview.jpg";
 import { useRef } from "react";
 
@@ -41,6 +41,9 @@ function Gallery() {
   };
   return (
     <CardWrapper mt={4}>
+      <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
+        images
+      </PFormLabel>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={7} display={"flex"}>
           <ImageWrapper className="main">

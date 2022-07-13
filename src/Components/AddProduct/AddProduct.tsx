@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import ContentHeader from "./ContentHeader/ContentHeader";
+import Description from "./Description/Description";
 import Details from "./Details/Details";
 import Gallery from "./Gallery/Gallery";
 import Sidebar from "./Sidebar/Sidebar";
@@ -14,6 +15,7 @@ function AddProduct() {
         <Grid item xs={12} md={8}>
           <Details />
           <Gallery />
+          <Description />
         </Grid>
         <Grid item xs={12} md={4}>
           <Sidebar />
