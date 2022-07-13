@@ -18,7 +18,7 @@ import {
   contentWrap,
   addToCartButton,
   starRating,
-  linkStyle,
+  PostStyle,
   productMetaStyle
 
   
@@ -39,7 +39,7 @@ const ProductDetails = () => {
           
   </Grid>
   <Grid item xs={12} md={6}>
-  <Box sx={{ width: '100%', maxWidth: 500 }}>
+  <Box sx={PostStyle}>
       
       <Typography variant="h4" sx={productTitle} component="div">
       Microsoft Xbox One S Blue Grey
@@ -47,7 +47,7 @@ const ProductDetails = () => {
       <Button variant="outlined"><ArrowBackIosIcon/></Button>
       <Button variant="outlined"><ArrowForwardIosIcon/></Button>
       <Rating name="size-small" defaultValue={5} size="small" sx={starRating}/>
-      <Link href="#" underline="hover">
+      <Link href="#" underline="none"     className="linkStyle">
       (1 customer review)
 </Link>
 <TextField
@@ -87,36 +87,36 @@ Wishlist
 
     </Box>
     <Divider sx={{padding:"20px",width:"100%",}} />
-    <Box sx={{ width: '100%', maxWidth: 500 }}>
-    <Typography variant="body2" component="p" sx={{color: "#333", fontWeight: "600"}}>
+    <Box sx={productMetaStyle}>
+    <Typography variant="body2" component="p" >
     SKU: WVN-13
       </Typography>
-      <Typography variant="body2" component="p" sx={productMetaStyle}>
+      <Typography variant="body2" component="p" >
       Categories: 
 
-      <Link href="#" underline="none" color="inherit" variant="body2" sx={linkStyle}>
+      <Link href="#" underline="none" color="inherit" variant="body2"   className="linkStyle">
   {' Audio &amp; Video Game'}
 </Link>,
-<Link href="#" underline="none" sx={linkStyle}>
+<Link href="#" underline="none"   className="linkStyle">
   {'  Headphone'}
 </Link>,
-<Link href="#" underline="none"sx={linkStyle}>
+<Link href="#" underline="none"  className="linkStyle">
   {'Phone Accessories'}
 </Link>,
-<Link href="#" underline="none" sx={linkStyle}>
+<Link href="#" underline="none"   className="linkStyle">
   {' Smart TV'}
 </Link> ,
-<Link href="#" underline="none" sx={linkStyle}>
+<Link href="#" underline="none"   className="linkStyle">
   {'Technologies'}
-</Link>,<Link href="#" underline="none" sx={linkStyle}>
+</Link>,<Link href="#" underline="none"   className="linkStyle">
   {'Virtual Reality Glasses'}
-</Link><Link href="#" underline="none"sx={linkStyle}>
+</Link><Link href="#" underline="none"  className="linkStyle">
   {'Xbox(Console)'}
 </Link>
     
 
       </Typography>
-      <Typography variant="body2" component="p" sx={productMetaStyle}>
+      <Typography variant="body2" component="p" >
       Tags:
       <Link href="#" underline="none">
   {' Tag-02'}

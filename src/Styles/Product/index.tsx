@@ -11,7 +11,7 @@ import { styled} from "@mui/material";
 export const ProductDetailsStyle={
   fontSize: "14px",
   lineHeight: "1.8",
-  color: "#929292",
+  color: "#333333",
   marginTop: "20px",
   "& .paragraph":{
     lineHeight: "0.8",
@@ -46,6 +46,8 @@ export const addToCartButton ={
   borderRadius: "0px",
   letterSpacing: "normal",
   marginRight: "15px",
+  marginTop:"50px",
+  display:"block",
   // backgroundColor: "#333333",
 }
 
@@ -63,20 +65,24 @@ export const starRating={
 
 
 }
-export const linkStyle={
+export const PostStyle={
+   width: '100%', maxWidth: "500", 
   color: "#333333",
   '&:hover': {
-   
+     
+    "& .linkStyle":{
       color: '#F03637',
     }, 
+    
+  }
 
 }
 export const productMetaStyle={
   fontSize:"15px",
   color: "#333333",
-  marginTop: "20px!important",
+  marginTop: "30px!important",
   borderBottom: 0,
- 
+  lineHeight:"1rem",
   paddingBottom: "10px",
 }
 
@@ -140,15 +146,15 @@ export const productMetaStyle={
 // /* ================ End BoughtToGether ============== */
 
 // /* ================ Tabs ============== */
-
-export const ShowStyle =styled("div")(({ theme }) => ({
+// styled("div")(({ theme }) => (
+export const ShowStyle ={
   "& .TabsShow":{
     listStyleType:"none",
   },
   "& .CascadinShow":{
     listStyleType:"none",
   },
-}));
+}
 
   export const ProductTextStyle={
     color:"#777",
