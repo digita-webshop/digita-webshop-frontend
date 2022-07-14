@@ -18,7 +18,7 @@ export const ProductDetailsStyle={
   }
  
 }
-export const nextButton={
+export const nextButtonStyle={
   borderWidth: "0.5px",
   lineHeight: "28px",
   minWidth: "30px",
@@ -41,6 +41,29 @@ export const nextButton={
     
       backgroundcolor: '#F03637',
     }, 
+    float:"right",
+
+}
+export const Modalstyle = {
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+}
+export const nextButton={
+  // position:"absolute",
+  // right:"25",
+  // top:"0",
+  float:"right",
+
+}
+export const TitleSectionStyle={
+  // position:"relative",
 }
 export const filledPrice ={
   width: '100%',
@@ -207,7 +230,7 @@ border:"none",
   color:"#333333",
   fontWeight: "400",
   margin:"0.5rem 0",
-  fontSize:"30px"
+  fontSize:"25px"
   
  
 
@@ -279,7 +302,24 @@ export const CascadinTabs={
  }
 
 
- 
+ export const SubmitButton ={
+  float: "left",
+  height: "50px",
+  padding: "0 36px",
+  fontSize: "15px",
+  fontWeight: "600",
+  marginBottom: "15px",
+  textTransform: "capitalize",
+  webkitBorderRadius: "0px",
+  mozborderRadius: "0px",
+  msBorderRadius: "0px",
+  borderRadius: "0px",
+  letterSpacing: "normal",
+  marginRight: "15px",
+  marginTop:"50px",
+  display:"block",
+  // backgroundColor: "#333333",
+}
 
 //   /* ============== ShareProduct  =============== */
 
@@ -455,8 +495,28 @@ export const itemStyle = {
 };
 // /* ============ ShareStyleItems Item ============== */
 
+// /* ============ AddToCartModal ============== */
 
- 
+export const wooPopupInner={
+  padding: "50px 25px 15px 25px",
+  bordeRadius: "0",
+  overFlow: "auto",
+  width: "auto",
+  height: "auto",
+  maxWidth: "90%",
+  maxHeight: "90%",
+  display: "block",
+  backgroundColor: "#fff",
+  minWidth: "300px",
+  margin: "0.5rem auto",
+  textAlign: "center",
+  zIndex: "1000",
 
+}
+export const wooPopupContent={
+  position: "relative",
+  transform: "none",
+  top: "auto",
+}
 
 
