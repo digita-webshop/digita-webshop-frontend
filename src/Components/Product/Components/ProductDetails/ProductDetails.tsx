@@ -4,8 +4,9 @@
 
 
 import{Grid ,TextField,Button ,Divider, Box ,Link ,Rating ,Typography,Container, CardActionArea, CardActions}  from '@mui/material';
-import ProductSlider from "./ProductSlider/ProductSlider";
-
+import ProductSlider from "../ProductSlider/ProductSlider";
+import AddToCartModal from "../Modals/AddToCartModal/AddToCartModal";
+import NextProductModal from "../Modals/NextProductModal/NextProductModal";
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -27,6 +28,8 @@ import {
   linkStyle,
   filledPrice,
   nextButton,
+  nextButtonStyle,
+  TitleSectionStyle
 
   
   
@@ -34,6 +37,8 @@ import {
 
 
 const ProductDetails = () => {
+ 
+  
  return(
   <>
   <Container maxWidth="lg"  sx={contentWrap}>
@@ -49,16 +54,20 @@ const ProductDetails = () => {
   </Grid>
   <Grid item xs={12} md={6}>
   <Box sx={PostStyle}>
-      
+      <Box sx={TitleSectionStyle}>
       <Typography variant="h4" sx={productTitle} component="div">
       Microsoft Xbox One S Blue Grey
       </Typography>
-      <Button variant="outlined" sx={nextButton}><ArrowBackIosIcon/></Button>
-      <Button variant="outlined" sx={nextButton}><ArrowForwardIosIcon/></Button>
+      <Box sx={nextButton}>
+      <Button variant="outlined" sx={nextButtonStyle}><ArrowBackIosIcon/></Button>
+      
+      <Button variant="outlined" sx={nextButtonStyle}><ArrowForwardIosIcon/></Button>
+        </Box>
       <Rating name="size-small" defaultValue={5} size="small" sx={starRating}/>
       <Link href="#" underline="none"   className="customerReview"   sx={linkStyle}>
       (1 customer review)
 </Link>
+</Box>
 <TextField
           id="filled-read-only-input"
           sx={filledPrice}
