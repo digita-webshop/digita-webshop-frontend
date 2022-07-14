@@ -1,6 +1,5 @@
 import { MoreHoriz } from "@mui/icons-material";
 import {
-  Checkbox,
   Table,
   TableBody,
   TableHead,
@@ -10,23 +9,16 @@ import {
 } from "@mui/material";
 import { reviews } from "../../../Services/Utils/Data/data";
 import { TableButton } from "../../../Styles/Orders";
-import { TCell, THCell } from "../../../Styles/Reviews";
+import { TCell, TCheckBox, THCell } from "../../../Styles/Reviews";
 import StarIcon from "@mui/icons-material/Star";
 import { useTheme } from "@mui/material/styles";
 
 const tableHead = [
-  <Checkbox
-    sx={{
-      color: "#f03637",
-      "&.Mui-checked": {
-        color: "common.digitaRed",
-      },
-    }}
-  />,
+  <TCheckBox />,
   "#ID",
-  "Product",
-  "Name",
-  "Rating",
+  "product",
+  "name",
+  "rating",
   "date",
   "action",
 ];
@@ -38,6 +30,7 @@ interface Props {
 function ReviewsTable({ selectedAmount }: Props) {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesSm = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Table>
@@ -47,7 +40,9 @@ function ReviewsTable({ selectedAmount }: Props) {
             <THCell
               key={index}
               align="left"
-              className={item === "action" ? "hidden" : ""}
+              className={`${item === "action" && "hidden"} ${
+                item === "rating" && "hiddenSm"
+              }`}
             >
               {item}
             </THCell>
@@ -63,14 +58,7 @@ function ReviewsTable({ selectedAmount }: Props) {
               sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
             >
               <TCell>
-                <Checkbox
-                  sx={{
-                    color: "#f03637",
-                    "&.Mui-checked": {
-                      color: "common.digitaRed",
-                    },
-                  }}
-                />
+                <TCheckBox />
               </TCell>
               <TCell>{pId}</TCell>
               <TCell
@@ -83,18 +71,20 @@ function ReviewsTable({ selectedAmount }: Props) {
               </TCell>
               <TCell sx={{ wordBreak: "break-all" }}>{name}</TCell>
 
-              <TCell>
-                <Rating
-                  name="text-feedback"
-                  size="small"
-                  value={rating}
-                  readOnly
-                  precision={0.5}
-                  emptyIcon={
-                    <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-                  }
-                />
-              </TCell>
+              {!matchesSm && (
+                <TCell>
+                  <Rating
+                    name="text-feedback"
+                    size="small"
+                    value={rating}
+                    readOnly
+                    precision={0.5}
+                    emptyIcon={
+                      <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+                    }
+                  />
+                </TCell>
+              )}
               <TCell>{date}</TCell>
               {!matches && (
                 <TCell
