@@ -4,6 +4,7 @@ import {
   ShowStyle,
   productTitle,
   CascadinTabs,
+  TabLabel,
 
 
 } from "../../../../Styles/Product";
@@ -68,10 +69,10 @@ export default function CenteredTabs() {
         sx={tabsStyle}
         
         >
-          <Tab label="DESCRIPTION" {...a11yProps(0)} />
-          <Tab label="REVIEWS (1)" {...a11yProps(1)} />
-          <Tab label="ABOUT BRANDS" {...a11yProps(2)} />
-          <Tab label="SHIPPING 	&#38; DELIVERY" {...a11yProps(3)} />
+          <Tab label="DESCRIPTION" {...a11yProps(0)} sx={TabLabel} />
+          <Tab label="REVIEWS (1)" {...a11yProps(1)} sx={TabLabel}/>
+          <Tab label="ABOUT BRANDS" {...a11yProps(2)}sx={TabLabel} />
+          <Tab label="SHIPPING 	&#38; DELIVERY" {...a11yProps(3)}sx={TabLabel} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -91,7 +92,7 @@ export default function CenteredTabs() {
 
     {/* ////// */}
 <Box className="CascadinShow">
-<Container maxWidth={"lg"}>
+{/* <Container maxWidth={"lg"}> */}
 <Box  sx={CascadinTabs}>
        
 <Typography variant="h4" sx={productTitle} component="div">
@@ -99,8 +100,8 @@ Description
       </Typography>
        <Description />
 </Box>
-       </Container>
-       <Container maxWidth={"lg"}>
+       {/* </Container> */}
+       {/* <Container maxWidth={"lg"}> */}
        <Box  sx={CascadinTabs}>
               
 <Typography variant="h4" sx={productTitle} component="div">
@@ -108,9 +109,9 @@ Reviews
       </Typography>
        <Reviews />
        </Box>
-       </Container>
+       {/* </Container> */}
       
-       <Container maxWidth={"lg"}>
+       {/* <Container maxWidth={"lg"}> */}
        <Box  sx={CascadinTabs}>
               
 <Typography variant="h4" sx={productTitle} component="div">
@@ -118,9 +119,8 @@ AboutBranad
       </Typography>
        <AboutBranad />
        </Box>
-       </Container>
+       {/* </Container> */}
       
-       <Container maxWidth={"lg"}>
        <Box  sx={CascadinTabs}>
               
 <Typography variant="h4" sx={productTitle} component="div">
@@ -128,7 +128,7 @@ Delivery
       </Typography>
        <Delivery />
        </Box>
-       </Container>
+     
 
 </Box>
     </Box>
