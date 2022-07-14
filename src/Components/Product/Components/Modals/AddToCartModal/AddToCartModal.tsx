@@ -6,7 +6,14 @@ import Modal from '@mui/material/Modal';
 
 import {
     wooPopupInner,
-    wooPopupContent
+    wooPopupContent,
+    popupTitle,
+    popupContent,
+    popupText,
+    buttonsWrap,
+    continueBtn,
+    cartBtn
+
     
     
     } from "../../../../../Styles/Product/index";
@@ -40,7 +47,25 @@ export default function BasicModal() {
         <Box >
        <Box sx={wooPopupInner}>
        <Box sx={wooPopupContent}>
-
+       <Typography variant="h3" component="h3" sx={popupTitle}>
+       Item added to your cart
+          </Typography>
+          <Typography variant="body2" component="p" sx={popupContent}>
+          1 ITEMS IN THE CART ($52.00)
+          </Typography>
+          <Box sx={buttonsWrap}>
+          <Button
+            sx={continueBtn}
+            variant="contained"
+            color="error"
+          >
+          Continue Shopping
+          </Button>
+          <Button variant="contained" sx={cartBtn}>Go To The Cart</Button>
+          </Box>
+          <Typography variant="body2" component="p" sx={popupText}>
+          Buy for $448.00 more and get free shipping
+          </Typography>
 </Box>
        </Box>
         </Box>
