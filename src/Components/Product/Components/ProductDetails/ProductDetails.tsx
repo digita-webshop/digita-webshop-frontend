@@ -1,8 +1,10 @@
 
 
 
-import{Grid ,TextField,Button ,Divider, Box ,Link ,Rating ,Typography,Container, CardActionArea, CardActions}  from '@mui/material';
 
+
+import{Grid ,TextField,Button ,Divider, Box ,Link ,Rating ,Typography,Container, CardActionArea, CardActions}  from '@mui/material';
+import ProductSlider from "./ProductSlider/ProductSlider";
 
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -38,8 +40,10 @@ const ProductDetails = () => {
         
   <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
-  
-
+  <Box>
+  <ProductSlider/>
+  </Box>
+        
       
           
   </Grid>
@@ -164,3 +168,4 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
+
