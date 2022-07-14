@@ -27,7 +27,9 @@ export const nextButtonStyle={
   backgroundColor: "#ffffff",
   border: "2px solid #e9e9e9",
   textAlign: "center",
+  marginRight:"10px",
   // display: "inline-block",
+  
   margin: "0",
   padding: "10px",
   cursor: "pointer",
@@ -36,6 +38,7 @@ export const nextButtonStyle={
      flexDirection: "row" ,
      alignItems: "center",
      justifyContent: "center",
+
      '&:hover': {
      color:"ffffff",
     
@@ -60,6 +63,7 @@ export const nextButton={
   // right:"25",
   // top:"0",
   float:"right",
+  marginTop:"-1.5rem",
 
 }
 export const TitleSectionStyle={
@@ -239,11 +243,12 @@ export const slickArrow={
   paddingBottom:"1rem",
  }
  export const boughtTogether={
+   
    margin:"-0.6rem",
   display: "flex",
   flexDirection:"row",
   justifyContent: "flex-start",
-  alignItems: "center",
+  alignItems: "center",marginLeft:"-1rem",
  }
  export const BoughtTextStyle={
   color:"#777",
@@ -329,10 +334,27 @@ export const CascadinTabs={
     borderStyle:"solid none none none",
     borderColor: (theme: any) => ` ${theme.palette.divider}`,
   }
+  export const TabLabel={
+    color: "#ababab",
+    margin:"1rem",
+    textTransform: "uppercase",
+    display: "inline-block",
+    fontSize: "16px!important",
+    padding: "0!important",
+    lineHeight: "26px",
+    border: "none!important",
+    fontWeight: "500!important",
+    fontFamily: "Jost, Sans-serif",
+    cursor: "pointer",
+    whiteSpace: "nowrap",
+    textAlign: "-webkit-match-parent",
+
+  }
 
   export const TabsTitrStyle={
+    fontSize:"36px",
     color:"#777777",
-    fontWeight: {xs:"500",sm:"500",md:"700",lg:"700"},
+    fontWeight: "600",
     margin:"2rem 0",
     lineHeight:"3rem",
     // fontSize:{xs:"20px",sm:"20px",md:"30px",lg:"30px"}
@@ -347,13 +369,14 @@ export const CascadinTabs={
   border:"none",
   marginBottom: "0",
   textAlign: "center",
-  padding: "0px 20px",
+  // padding: "0px 20px",
   marginTop: "0px",
   background: "#f5f5f5",
   color:"#f8f8f8",
   fontSize: "16px",
   fontWeight: "400",
   fontFamily: "inherit",
+  padding:"0",
   // overflowX: "hidden",
 
  }
