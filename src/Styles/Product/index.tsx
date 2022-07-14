@@ -107,7 +107,22 @@ export const addToCartButton ={
   display:"block",
   // backgroundColor: "#333333",
 }
+export const ViewCartButton={
+  float: "left",
+    backgroundColor: "#333333",
+    border: "0",
+    marginLeft: "0px",
+    marginRight: "15px",
+    lineHeight: "50px",
+    padding: "0 46px",
+    color: "#ffffff",
+    fontSize: "15px",
+    fontWeight: "600",
+    marginBottom: "15px",
+    textTransform: "capitalize",
+    letterSpacing: "normal",
 
+}
 export const starRating={
   overflow: "hidden",
   position: "relative",
@@ -129,6 +144,7 @@ export const PostStyle={
 
 }
 export const productMetaStyle={
+  fontWeight: "400",
   fontSize:"15px",
   color: "#333333",
   marginTop: "30px!important",
@@ -166,7 +182,13 @@ border:"none",
   }
 
   export const CompareButton ={
-   
+    transition: "all 0.4s ease",
+    background: "transparent",
+    lineHeight: "unset",
+    
+    textTransform: "capitalize",
+    fontWeight: "500",
+  
     color:"#333333",
     padding:"10px 20px",
     marginTop:"50px",
@@ -178,6 +200,38 @@ border:"none",
       color: '#F03637',
     }, 
   }
+//  /* ================  ProductSlider ============== */
+export const zoomImg ={
+  position: "absolute",
+  top: "-238.398px",
+  left: "-170.479px",
+  opacity: "0",
+  width: "670px",
+  height: "670px",
+  border: "none",
+  maxWidth: "none",
+  maxHeight: "none",
+  backgroundColor: "#fff",
+  verticalAlign: "middle"
+}
+export const slideImg={
+  border: "1px solid #ebebeb",
+  margin: "auto",
+  opacity: "1",
+  transition: "all 0.2s ease",
+}
+export const slickArrow={
+  width: "30px !important",
+  height: "30px",
+  border: "1px solid #ebebeb",
+  transform: "translateY(-50%)",
+  backgroundColor: "#ffffff",
+  transition: "all 0.3s",
+  top: "50%",
+  opacity: "0",
+  right: "30px",
+  cursor: "pointer",
+}
 
     
 //  /* ================  BoughtToGether ============== */
@@ -228,9 +282,12 @@ border:"none",
  }
  export const boughttitleStyle={
   color:"#333333",
-  fontWeight: "400",
-  margin:"0.5rem 0",
-  fontSize:"25px"
+  fontSize: "28px",
+    fontWeight: "400",
+    textTransform: "uppercase",
+    lineHeight: "1em",
+    marginBottom: "0px",
+    paddingBottom: "10px",
   
  
 
