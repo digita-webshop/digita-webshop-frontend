@@ -20,13 +20,13 @@ type Props = {
 
 const CartListTableRow = ({row, cartList, values, setValues, setUpdateButtonDisabled, setCartUpdated, updateButtonDisabled}: Props) => {
 
-    return <TableRow key={row.product}>
+    return <TableRow key={row.id}>
         <StyledTableCell align="left">
             <Button
                 onClick={() => {
                     handleRowDelete(row.id)
                     setCartUpdated(prevState => {
-                        return {...prevState, item: cartList[row.id], type: UpdateType.Remove}
+                        return {...prevState, item: cartList.filter((item=>item.id==row.id))[0], type: UpdateType.Remove}
                     })
                 }}
                 sx={{
@@ -53,26 +53,26 @@ const CartListTableRow = ({row, cartList, values, setValues, setUpdateButtonDisa
         <StyledTableCell align="left">
             <ImageBox>
                 <img
-                    alt={row.alt}
-                    src={row.image}/>
+                    alt={row?.alt}
+                    src={row?.image}/>
             </ImageBox>
         </StyledTableCell>
         <StyledTableCell align="left" component="th" scope="row">
-            {row.product}
+            {row?.product}
         </StyledTableCell>
-        <StyledTableCell sx={{color: '#f03637'}} align="center">${row.price.toFixed(2)}</StyledTableCell>
+        <StyledTableCell sx={{color: '#f03637'}} align="center">${row?.price.toFixed(2)}</StyledTableCell>
         <StyledTableCell align="left">
-            {row.total > 1 ?
+            {row?.total > 1 ?
                 <QuantityInput setUpdateButtonDisabled={setUpdateButtonDisabled}
                                updateButtonDisabled={updateButtonDisabled} row={row}
                                cartList={cartList}
                                values={values}
                                setValues={setValues}
                 />
-                : row.quantity}</StyledTableCell>
+                : row?.quantity}</StyledTableCell>
         <StyledTableCell
             align="right"
-            sx={{color: '#f03637'}}>${(row.quantity * +row.price).toFixed(2)}</StyledTableCell>
+            sx={{color: '#f03637'}}>${(row?.quantity * +row.price).toFixed(2)}</StyledTableCell>
     </TableRow>
 }
 

@@ -3,6 +3,10 @@ import CheckIcon from "@mui/icons-material/Check";
 import React, {Dispatch} from "react";
 import DynamicButton from "../DynamicButton/DynamicButton";
 import CartItem from "../Types/CartItemType";
+import store from "../../../redux/store";
+import {useSelector} from "react-redux";
+import actions from "../../../redux/actions";
+import {UpdateCart} from "../ShoppingCart";
 
 export enum UpdateType {
     Remove = 1,
@@ -12,14 +16,20 @@ export enum UpdateType {
 type Props = {
     item?: CartItem
     type?: UpdateType;
+    setCartUpdated: React.Dispatch<React.SetStateAction<UpdateCart | null>>;
 }
 
-const CartUpdated = ({item, type}: Props) => {
+const CartUpdated = ({item, type, setCartUpdated}: Props) => {
+
+    // @ts-ignore todo fix this later
+    const cartList = useSelector(state => state.cartReducer.cartList);
 
     const handleUndo = () => {
-        // setCartList(prevState => {
-        //     return [...prevState, item as CartItem]
-        // })
+        setCartUpdated(null)
+        // @ts-ignore todo fix this later
+        store.dispatch(actions.cart.setCart([...cartList, item as CartItem]));
+        // @ts-ignore todo fix this later
+        store.dispatch(actions.cart.setQuantity([...cartList, item as CartItem]));
     }
 
     return <Box sx={{
