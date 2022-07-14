@@ -66,14 +66,14 @@ export const TitleSectionStyle={
   // position:"relative",
 }
 export const filledPrice ={
-  width: '100%',
-   maxWidth: "500",
-   border:"none",
-   color: "#333",
-   fontWeight: "500",
-   fontSize: "25px",
-   backgroundColor:'#f5f5f5',
-   margin: "50px 0",
+  fontWeight: "500",
+  fontSize: "26px",
+  color: "#333333",
+  margin: "20px 0 0",
+  marginTop: "25px!important",
+  backgroundColor: "#f5f5f5",
+  padding: "20px",
+  lineHeight: "1",
 }
 
 export const productTitle ={
@@ -598,4 +598,21 @@ export const popupText={
   marginTop: "20px",
   display: "block",
       color: "#666",
+}
+
+// ===========================NextProductModal==================
+export const NextProductModalCart={
+  height: "auto",
+  maxWidth: "100%",
+  verticalAlign: "middle",
+}
+export const NextProductModalText={
+  lineHeight: "1.5em",
+  marginTop: "10px",
+  fontWeight: "500",
+  display:"-webkit-box",
+  overflow: "hidden",
+  // webkitLineClamp: "2",
+  // -webkit-box-orient: "vertical",
+  color: "#333",
 }
