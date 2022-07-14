@@ -938,6 +938,22 @@ export const brands = [
 
 ];
 
+export const reviews = [
+  {id: 1, pId: 23, product: "A-Line Mini Dress in Blue", name: "Devon Lane", rating: 3, date: "10.03.2019"},
+  {id: 2, pId: 24, product: "Fashion Woman Bag", name: "Guy Hawkins", rating: 5, date: "10.03.2019"},
+  {id: 3, pId: 25, product: "Air Jordan 1 Top 3 Sneaker (DS)", name: "Savannah Nguyen", rating: 4.5, date: "10.03.2019"},
+  {id: 4, pId: 26, product: "Samsung Galaxy S20 (SM-G980F/DS) Dual SIM", name: "Kristin Watson", rating: 4.5, date: "10.03.2019"},
+  {id: 5, pId: 27, product: "Macbook Pro 16 inch (2020 ) For Sale", name: "Jane Cooper", rating: 5, date: "10.03.2019"},
+  {id: 6, pId: 28, product: "Gaming Chair, local pickup only", name: "Courtney Henry", rating: 5, date: "10.03.2019"},
+  {id: 7, pId: 29, product: "Coach Tabby 26 for sale", name: "Ralph Edwards", rating: 3, date: "10.03.2019"},
+  {id: 8, pId: 30, product: "Oneplus 7 Pro GM1910 256GB", name: "Courtney Henry", rating: 5, date: "10.03.2019"},
+  {id: 9, pId: 31, product: "DJI Mavic Pro 2", name: "Theresa Webb", rating: 1, date: "10.03.2019"},
+  {id: 10, pId: 32, product: "Heimer Miller Sofa (Mint Condition)", name: "Darrell Steward", rating: 4, date: "10.03.2019"},
+  {id: 11, pId: 33, product: "Dell XPS 13 9380, 13.3 4K UHD 3840X2160", name: "Leslie Alexander", rating: 2.5, date: "10.03.2019"},
+  {id: 12, pId: 34, product: "Fashion Woman Bag", name: "Esther Howard", rating: 5, date: "10.03.2019"},
+  {id: 13, pId: 35, product: "iPad Pro 2017 Model", name: "Savannah Nguyen", rating: 5, date: "10.03.2019"},
+]
+
 export const rows = [
   {
     id: 1,
