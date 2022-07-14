@@ -2,6 +2,9 @@ import {Box, TextField} from "@mui/material";
 import {CustomBtn} from "../../../Styles/Cart";
 import React, {useEffect, useState} from "react";
 import CartItem from "../Types/CartItemType";
+import store from "../../../redux/store";
+import actions from "../../../redux/actions";
+import {useSelector} from "react-redux";
 
 type Props = {
     updateButtonDisabled: boolean;
@@ -14,29 +17,36 @@ type Props = {
 
 const QuantityInput = ({setUpdateButtonDisabled, row, values, setValues, updateButtonDisabled, cartList}: Props) => {
 
-    const [quantity, setQuantity] = useState(0)
-
-    useEffect(() => {
-        setQuantity(cartList.filter((item:CartItem) => item.id === row.id)[0].quantity)
-    }, [])
-
+    // @ts-ignore todo fix later
+    const quantities = useSelector(state => state.cartReducer.quantities);
+    const quantity = quantities.filter((item: CartItem) => item.id === row.id)[0].quantity
     const handleDecValue = () => {
-        if (values[row.id].quantity > 0) {
-            // const a = [...values]
-            // a[row.id] = a[row.id] - 1
-            // setValues();
+        if (quantity === 0) {
+            return
         }
-        setQuantity(quantity - 1)
 
+        const clone = [...quantities]
+        clone.forEach((element: CartItem, index: number) => {
+            if (element.id === row.id) {
+                clone[index] = {...element, quantity: quantity - 1};
+            }
+        });
+
+        // @ts-ignore todo fix me later
+        store.dispatch(actions.cart.setQuantity(clone));
         updateButtonDisabled && setUpdateButtonDisabled(false)
     };
 
     const handleIncValue = () => {
-        const a = [...values]
-        a[row.id].quantity = a[row.id].quantity + 1
-        setValues(a);
+        const clone = [...quantities]
+        clone.forEach((element: CartItem, index: number) => {
+            if (element.id === row.id) {
+                clone[index] = {...element, quantity: quantity + 1};
+            }
+        });
 
-        setQuantity(quantity + 1)
+        // @ts-ignore todo fix me later
+        store.dispatch(actions.cart.setQuantity(clone));
         updateButtonDisabled && setUpdateButtonDisabled(false)
     };
 

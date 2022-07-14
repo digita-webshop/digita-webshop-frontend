@@ -57,6 +57,8 @@ const ShoppingCart = () => {
             }]
         // @ts-ignore todo fix this later
         store.dispatch(actions.cart.setCart(dummyCartData));
+        // @ts-ignore todo fix this later
+        store.dispatch(actions.cart.setQuantity(dummyCartData));
     }, [])
 
     const total = cartList.reduce((acc: number, curr: CartItem) => {
