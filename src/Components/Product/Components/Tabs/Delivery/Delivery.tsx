@@ -28,7 +28,7 @@ const Delivery = () => {
                 in condimentum dui mollis pretium. 
               Suspendisse semper turpis nec tempus gravida. Aenean a erat orci. Aliquam semper diam nec maximus cursus.
              </Typography>
-             <Typography variant="h3" component="h2" sx={TabsTitrStyle}>
+             <Typography variant="h2" component="h2" sx={TabsTitrStyle}>
              General Shipping Policies
           </Typography>
 

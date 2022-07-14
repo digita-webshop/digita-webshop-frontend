@@ -59,9 +59,10 @@ const ProductDetails = () => {
       Microsoft Xbox One S Blue Grey
       </Typography>
       <Box sx={nextButton}>
+        <Button variant="outlined" sx={nextButtonStyle}><ArrowForwardIosIcon/></Button>
       <Button variant="outlined" sx={nextButtonStyle}><ArrowBackIosIcon/></Button>
       
-      <Button variant="outlined" sx={nextButtonStyle}><ArrowForwardIosIcon/></Button>
+      
         </Box>
       <Rating name="size-small" defaultValue={5} size="small" sx={starRating}/>
       <Link href="#" underline="none"   className="customerReview"   sx={linkStyle}>

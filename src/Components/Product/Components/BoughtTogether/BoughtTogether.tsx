@@ -30,7 +30,7 @@ import {
   const BoughtTogether = () => {
     return( 
     <Box sx={boughtPriceStyle}>
-    <Typography variant="h4" component="h3" sx={boughttitleStyle}>
+    <Typography variant="h3" component="h3" sx={boughttitleStyle}>
     FREQUENTLY BOUGHT TOGETHER
           </Typography>
     <Divider sx={{ fontSize:"100px", fontWeight:"900"}}/>
