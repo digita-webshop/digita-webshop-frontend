@@ -518,5 +518,84 @@ export const wooPopupContent={
   transform: "none",
   top: "auto",
 }
+export const checkmark={
+  boxShadow: "inset 0 0 0 #f03637",
+  width: "60px",
+  height: "60px",
+  marginBottom: "20px",
+  display: "block",
+  borderRadius: "50%",
+  strokeWidth: "2",
+  stroke: "#fff",
+  strokeMiterlimit: "10",
+  margin: "0 auto 30px auto",
+  animation: "fill .4s ease-in-out .4s forwards,scale .3s ease-in-out .9s both",
+}
 
+export const checkmarkCircle={
+  stroke: "#f03637",
+  strokeDasharray: "166",
+  strokeDashoffset: "166",
+  strokeWidth: "2",
+  strokeMiterlimit: "10",
+  fill: "none",
+    animation: "stroke .6s cubic-bezier(.65,0,.45,1) forwards",
+}
 
+export const checkmarkCheck={
+  transformOrigin: "50% 50%",
+  strokeDasharray: "48",
+  strokeDashoffset: "48",
+  animation: "stroke .3s cubic-bezier(.65,0,.45,1) .8s forwards",
+}
+export const popupTitle={
+  fontSize: "20px",
+  margin: "0 0 10px",
+  letterSpacing: "0.6px",
+  fontWeight: "500",
+  color: "#333",
+  lineHeight: "2",
+}
+export const popupContent={
+  fontSize: "13px",
+  marginBottom: "20px",
+  color: "#777",
+  textTransform: "uppercase",
+}
+export const buttonsWrap={
+  display: "block",
+    margin: "20px 0 0",
+}
+export const continueBtn={
+  borderRadius: "0px",
+  textTransform: "capitalize",
+  fontSize: "14px",
+  fontWeight: "400",
+  letterSpacing: "normal",
+  marginBottom: "10px",
+  borderColor: "#f03637",
+  color: "#ffffff",
+  backgroundColor: "#f03637",
+  borderWidth: "3px",
+}
+export const cartBtn ={
+  borderRadius: "0px",
+    textTransform: "capitalize",
+    fontSize: "14px",
+    fontWeight: "400",
+    letterSpacing: "normal",
+    marginBottom: "10px",
+    borderColor: "#333333",
+    color: "#ffffff",
+    backgroundColor: "#333333",
+    borderWidth: "3px",
+    marginTop: "10px",
+    display: "inlineblock",
+    minWidth: "200px",
+}
+export const popupText={
+  fontSize: "13px",
+  marginTop: "20px",
+  display: "block",
+      color: "#666",
+}
