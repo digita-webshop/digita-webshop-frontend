@@ -1,9 +1,9 @@
 import { Grid, SelectChangeEvent, Divider } from "@mui/material";
 import { useState } from "react";
-import { DashWrapper } from "../../Styles/Dashboard";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import TableHeader from "../Orders/TableHeader/TableHeader";
 import ReviewsTable from "./ReviewsTable/ReviewsTable";
+import { CardWrapper } from "../../Styles/panelCommon";
 
 const PanelReviews = () => {
   const [selectedStatus, setSelectedStatus] = useState("status");
@@ -22,7 +22,7 @@ const PanelReviews = () => {
         <ContentHeader />
       </Grid>
       <Grid item xs={12}>
-        <DashWrapper
+        <CardWrapper
           sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}
         >
           <TableHeader
@@ -34,10 +34,10 @@ const PanelReviews = () => {
           <Divider
             sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
           />
-        </DashWrapper>
-        <DashWrapper>
+        </CardWrapper>
+        <CardWrapper>
           <ReviewsTable selectedAmount={selectedAmount} />
-        </DashWrapper>
+        </CardWrapper>
       </Grid>
     </Grid>
   );
