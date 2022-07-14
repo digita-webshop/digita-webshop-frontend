@@ -29,7 +29,8 @@ import {
   filledPrice,
   nextButton,
   nextButtonStyle,
-  TitleSectionStyle
+  TitleSectionStyle,
+  ViewCartButton
 
   
   
@@ -91,6 +92,7 @@ const ProductDetails = () => {
        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat
       </Typography>
       <Button variant="contained" sx={addToCartButton}>Add To Cart</Button>
+      <Button variant="contained" sx={ViewCartButton}>View Cart</Button>
       {/* <Button variant="contained">View Cart</Button> */}
 
       <Box sx={PostStyle}>
