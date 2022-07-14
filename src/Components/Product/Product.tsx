@@ -35,7 +35,7 @@ const Product = () => {
        <ShareProduct />
        </Container>
        <Container maxWidth={"lg"}>
-       <Box sx={{ textAlign: "center", pb: 8 }}>
+       <Box sx={{ textAlign: "left", pb: 8 }}>
        <Typography variant="h4" sx={teamTitleStyle}>
        RELATED PRODUCTS
      </Typography>
