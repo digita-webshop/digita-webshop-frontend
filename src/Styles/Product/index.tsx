@@ -108,7 +108,7 @@ export const addToCartButton ={
   letterSpacing: "normal",
   marginRight: "15px",
   marginTop:"50px",
-  display:"block",
+  // display:"block",
   // backgroundColor: "#333333",
 }
 export const ViewCartButton={
@@ -404,28 +404,6 @@ export const CascadinTabs={
 //   /* ============== ShareProduct  =============== */
 
 
-  // export const shareProductParent={
-  //   display: "flex",
-  //   flexDirection: { sm: "column", md: "column" ,lg:"row" },
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  //   paddingTop: "50px",
-  //   paddingBottom: "20px",
-  //   border:"solid 1px #777777",
- 
-
-  // }
-
-  // export const shareProductChaild={
-  //   width:{ sm: "50%", md: "25%" ,lg:"25%" },
-  //   padding: "1rem  3rem ",
-  //   textAlign:"center",
-
-  //   // border:"solid 1px #777777",
-  //   margin:"auto 0",
-
-    
-  // }
   export const shareProductText={
     color:"#777777",
     fontSize:"13px" ,
@@ -451,17 +429,7 @@ export const CascadinTabs={
     
 
   }
-  // export const MailIconText={
-  //   color:"#777777",
-  //   fontSize:"13px" ,
-  //   margin:"0",
-  //   lineHeight:"0",
-  //   float:"left", 
-  //   paddingTop: "1.5rem ", 
-  //   marginLeft:"1rem" ,
-
-
-  // }
+ 
   export const TwitterIconLayout={
     display: "flex",
     flexDirection: "row",
