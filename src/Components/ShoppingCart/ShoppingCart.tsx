@@ -74,7 +74,7 @@ const ShoppingCart = () => {
 
     return (
         <Container sx={{padding: '50px 15px'}}>
-            {cartUpdated && <CartUpdated item={cartUpdated.item} type={cartUpdated.type}/>}
+            {cartUpdated && <CartUpdated item={cartUpdated.item} type={cartUpdated.type} setCartUpdated={setCartUpdated}/>}
             {cartList.length === 0 ?
                 <Box sx={{padding: '35px 0 50px'}}>
                     <DynamicButton icon={true} title={'Return To Shop'} href={'/'}/>
