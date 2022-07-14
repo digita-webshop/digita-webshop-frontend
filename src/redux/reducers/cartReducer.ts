@@ -18,7 +18,8 @@ const userReducer = createReducer(initState, (builder) => {
     builder.addCase(actions.cart.removeFromCart as any, (state, action) => {
         return {
             ...state,
-            cartList: state.cartList.filter((item: CartItem) => item.id !== action.payload)
+            cartList: state.cartList.filter((item: CartItem) => item.id !== action.payload),
+            quantities: state.quantities.filter((item: CartItem) => item.id !== action.payload),
         }
     });
     builder.addCase(actions.cart.setQuantity as any, (state, action) => {
