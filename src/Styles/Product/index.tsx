@@ -242,7 +242,7 @@ export const ShowStyle ={
 };
  
 export const CascadinTabs={
-   
+   paddingTop:"1rem",
  
     borderWeight:"10px",
     width:"100%",
@@ -447,7 +447,7 @@ export const ShareStyle = {
 
 export const itemStyle = {
   height:"4rem",
-  padding: "1rem",
+  padding: {xs:"2rem",sm:"2rem",md:"1rem",lg:"1rem"},
   flexDirection: {xs:"column",sm:"column",md:"row",lg:"row",},
   display: "flex",
   justifyContent: "center",
