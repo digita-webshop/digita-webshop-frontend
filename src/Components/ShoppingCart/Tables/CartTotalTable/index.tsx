@@ -11,12 +11,13 @@ type Props = {
 const CartTotalTable = ({total}: Props) => {
 
     const CustomTableContainer = styled(Box)(({theme}) => ({
-        maxWidth: 360,
+        width:'56%',
         marginLeft: '30px',
         height: 'max-content',
         border: '1px solid #ebebeb',
         [theme.breakpoints.down('lg')]: {
-            maxWidth: '100%',
+            width:'100%',
+            margin: '0 0 44px ',
         },
     }));
 
@@ -31,7 +32,7 @@ const CartTotalTable = ({total}: Props) => {
             width: '100%'
         }}>Cart totals</Typography>
         <Box sx={{width: '100%', padding: '0 20px 20px', boxSizing: ' border-box'}}>
-            <Table sx={{border: '0', margin: '0 0 20px'}}>
+            <Table sx={{border: '0', margin: '20px 0 20px'}}>
                 <TableRow>
                     <StyledTableCell variant="head">Subtotal</StyledTableCell>
                     <TableCell sx={{
