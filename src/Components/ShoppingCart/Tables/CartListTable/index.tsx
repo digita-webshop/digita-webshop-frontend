@@ -34,7 +34,7 @@ const CartListTable = ({cartList, values, setValues, setCartUpdated}: Props) => 
         })
     }
 
-    return <TableContainer component={Paper} sx={{height: '100%'}}>
+    return <TableContainer component={Paper} sx={{height: '100%',marginBottom:'20px'}}>
         <Table
             sx={{minWidth: 700, border: '1px solid #ebebeb'}} aria-label="customized table">
             <TableHead>

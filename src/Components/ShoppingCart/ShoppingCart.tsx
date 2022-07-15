@@ -72,8 +72,15 @@ const ShoppingCart = () => {
         },
     }));
 
+    const CustomContainer = styled(Container)(({theme}) => ({
+        background:'white',
+        [theme.breakpoints.up('lg')]: {
+            padding: '50px 16px',
+        },
+    }));
+
     return (
-        <Container sx={{padding: '50px 15px'}}>
+        <CustomContainer >
             {cartUpdated && <CartUpdated item={cartUpdated.item} type={cartUpdated.type} setCartUpdated={setCartUpdated}/>}
             {cartList.length === 0 ?
                 <Box sx={{padding: '35px 0 50px'}}>
@@ -86,7 +93,7 @@ const ShoppingCart = () => {
                     <CartTotalTable total={total}/>
                 </TableContainer>
             }
-        </Container>
+        </CustomContainer>
     );
 };
 
