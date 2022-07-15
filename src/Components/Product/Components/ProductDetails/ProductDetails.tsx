@@ -4,7 +4,7 @@
 
 
 import{Grid ,TextField,Button ,Divider, Box ,Link ,Rating ,Typography,Container, CardActionArea, CardActions}  from '@mui/material';
-import ProductSlider from "../ProductSlider/ProductSlider";
+// import ProductSlider from "../ProductSlider/ProductSlider";
 import AddToCartModal from "../Modals/AddToCartModal/AddToCartModal";
 import NextProductModal from "../Modals/NextProductModal/NextProductModal";
 
@@ -16,6 +16,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 
 import {
+  CartButtonsStyle,
   ProductDetailsStyle,
   productTitle,
   contentWrap,
@@ -30,7 +31,8 @@ import {
   nextButton,
   nextButtonStyle,
   TitleSectionStyle,
-  ViewCartButton
+  ViewCartButton,
+  starLink,
 
   
   
@@ -47,7 +49,7 @@ const ProductDetails = () => {
   <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
   <Box>
-  <ProductSlider/>
+  {/* <ProductSlider/> */}
   </Box>
         
       
@@ -60,25 +62,20 @@ const ProductDetails = () => {
       Microsoft Xbox One S Blue Grey
       </Typography>
       <Box sx={nextButton}>
-        <Button variant="outlined" sx={nextButtonStyle}><ArrowForwardIosIcon/></Button>
-      <Button variant="outlined" sx={nextButtonStyle}><ArrowBackIosIcon/></Button>
+        <Button variant="outlined" sx={nextButtonStyle}>		&lt;</Button>
+      <Button variant="outlined" sx={nextButtonStyle}>	&gt; </Button>
       
       
         </Box>
-      <Rating name="size-small" defaultValue={5} size="small" sx={starRating}/>
+  
+</Box>
+<Box sx={starLink}>
+   <Rating name="size-small" defaultValue={5} size="small" sx={starRating}/>
       <Link href="#" underline="none"   className="customerReview"   sx={linkStyle}>
       (1 customer review)
 </Link>
-</Box>
-<TextField
-          id="filled-read-only-input"
-          sx={filledPrice}
-          defaultValue="$52.00"
-          InputProps={{
-            readOnly: true,
-          }}
-          variant="filled"
-        />
+   </Box>
+<Box sx={ filledPrice}><bdi>$52.00</bdi></Box>
       
       <Typography variant="body2" sx={ProductDetailsStyle} component="p">
      <p className="paragraph">Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
@@ -91,67 +88,67 @@ const ProductDetails = () => {
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat
       </Typography>
+      <Box sx={CartButtonsStyle}>
       <Button variant="contained" sx={addToCartButton}>Add To Cart</Button>
       <Button variant="contained" sx={ViewCartButton}>View Cart</Button>
+      </Box>
       {/* <Button variant="contained">View Cart</Button> */}
-
-      <Box sx={PostStyle}>
+  
+    <Box sx={CartButtonsStyle}>
     
-      <Link
-      sx={WishlistButton}
-  component="button"
-  variant="body2"
-  underline="none"
-  onClick={() => {
-    console.info("I'm a button.");
-  }}
+    
+    <Link
+    sx={WishlistButton}
+component="button"
+variant="body2"
+underline="none"
+onClick={() => {
+  console.info("I'm a button.");
+}}
 >
 <FavoriteBorderIcon/>   Wishlist
 </Link>
-      {/* <Button variant="contained" startIcon={<ShuffleIcon />} sx={CompareButton}>
-      Compare
-      </Button> */}
-      <Link
-      sx={CompareButton}
-  component="button"
-  variant="body2"
-  underline="none"
-  onClick={() => {
-    console.info("I'm a button.");
-  }}
+ 
+    <Link
+    sx={CompareButton}
+component="button"
+variant="body2"
+underline="none"
+onClick={() => {
+  console.info("I'm a button.");
+}}
 >
 <ShuffleIcon />  Compare
 </Link>
- </Box>
+</Box>
+    
 
     </Box>
     <Divider sx={{padding:"20px",width:"100%",}} />
     <Box sx={productMetaStyle}>
     <Typography variant="body2" component="p" sx={{lineHeight: "1.2",}}>
-    SKU: WVN-13
+    SKU : WVN-13
 
-    <Link href="#" underline="none" color="inherit" variant="body2"    sx={linkStyle}>
-  {'  WVN-13'}
-</Link>
+   
       </Typography>
       <Typography variant="body2" component="p" >
-      Categories: 
+      Categories :  
 
       <Link href="#" underline="none" color="inherit" variant="body2"    sx={linkStyle}>
   {' Audio &amp; Video Game'}
-</Link>,
+</Link> ,
 <Link href="#" underline="none"    sx={linkStyle}>
   {'  Headphone'}
-</Link>,
+</Link> ,
 <Link href="#" underline="none"   sx={linkStyle}>
   {'Phone Accessories'}
-</Link>,
+</Link> ,
 <Link href="#" underline="none"    sx={linkStyle}>
   {' Smart TV'}
 </Link> ,
 <Link href="#" underline="none"    sx={linkStyle}>
   {'Technologies'}
-</Link>,<Link href="#" underline="none"    sx={linkStyle}>
+</Link> ,<Link href="#" underline="none"    sx={linkStyle}>
   {'Virtual Reality Glasses'}
 </Link><Link href="#" underline="none"   sx={linkStyle}>
   {'Xbox(Console)'}
@@ -160,10 +157,10 @@ const ProductDetails = () => {
 
       </Typography>
       <Typography variant="body2" component="p"  sx={{lineHeight: "1.2",}}>
-      Tags:
+      Tags :
       <Link href="#" underline="none" sx={linkStyle}>
   {' Tag-02'}
-</Link>,
+</Link> , 
 <Link href="#" underline="none" sx={linkStyle}>
   {'  Tag-08'}
 </Link>
