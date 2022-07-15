@@ -22,3 +22,4 @@ export { default as Orders } from "./Orders/Orders";
 export { default as Settings } from "./Settings/Settings";
 export { default as Brands } from "./Brands/Brands";
 export { default as AddProduct } from "./AddProduct/AddProduct";
+export { default as AddArticle } from "./AddArticle/AddArticle";
