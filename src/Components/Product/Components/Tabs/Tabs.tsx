@@ -2,8 +2,8 @@
 import {
   tabsStyle,
   ShowStyle,
-  productTitle,
-  CascadinTabs,
+  CascadingTabsTitle,
+  CascadingTabs,
   TabLabel,
 
 
@@ -93,41 +93,50 @@ export default function CenteredTabs() {
     {/* ////// */}
 <Box className="CascadinShow">
 {/* <Container maxWidth={"lg"}> */}
-<Box  sx={CascadinTabs}>
+<Box>
+<Box  sx={CascadingTabs}>
        
-<Typography variant="h4" sx={productTitle} component="div">
-Description
-      </Typography>
-       <Description />
+       <Typography variant="h4" sx={CascadingTabsTitle} component="div">
+       DESCRIPTION
+             </Typography>
+             </Box>
+              <Description />
+       
 </Box>
        {/* </Container> */}
        {/* <Container maxWidth={"lg"}> */}
-       <Box  sx={CascadinTabs}>
+  <Box>     <Box  sx={CascadingTabs}>
               
-<Typography variant="h4" sx={productTitle} component="div">
-Reviews
-      </Typography>
-       <Reviews />
-       </Box>
+              <Typography variant="h4" sx={CascadingTabsTitle} component="div">
+              REVIEWS (1)
+                    </Typography>
+                    </Box>
+                     <Reviews />
+                     </Box>
+       
        {/* </Container> */}
       
        {/* <Container maxWidth={"lg"}> */}
-       <Box  sx={CascadinTabs}>
+   <Box>
+   <Box  sx={CascadingTabs}>
               
-<Typography variant="h4" sx={productTitle} component="div">
-AboutBranad
-      </Typography>
-       <AboutBranad />
-       </Box>
+              <Typography variant="h4" sx={CascadingTabsTitle} component="div">
+              ABOUT BRANDS
+                    </Typography></Box>
+                     <AboutBranad />
+   </Box>
+       
        {/* </Container> */}
       
-       <Box  sx={CascadinTabs}>
+   <Box>
+   <Box  sx={CascadingTabs}>
               
-<Typography variant="h4" sx={productTitle} component="div">
-Delivery
-      </Typography>
-       <Delivery />
-       </Box>
+              <Typography variant="h4" sx={CascadingTabsTitle} component="div">
+              SHIPPING 	&#38; DELIVERY
+                    </Typography></Box>
+                     <Delivery />
+   </Box>
+       
      
 
 </Box>
