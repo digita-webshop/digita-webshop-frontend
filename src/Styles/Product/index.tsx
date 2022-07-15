@@ -6,6 +6,7 @@ import { styled} from "@mui/material";
       color: "#333",
       fontSize: "32px",
       fontWeight: "600",
+      textAlign:"center",
     };
 //  /* ================  Product Details ============== */
 export const ProductDetailsStyle={
@@ -64,20 +65,26 @@ export const nextButton={
   // top:"0",
   float:"right",
   marginTop:"-1.5rem",
+  display:{xs:"none",sm:"none",md:"inline-block",lg:"inline-block",}
 
 }
 export const TitleSectionStyle={
   // position:"relative",
 }
 export const filledPrice ={
-  fontWeight: "500",
+  width: '100%',
+  boxSizing:"border-box",
+
+   maxWidth: "500", 
+  fontWeight: "600",
   fontSize: "26px",
   color: "#333333",
   margin: "20px 0 0",
-  marginTop: "25px!important",
+  marginTop: "40px",
   backgroundColor: "#f5f5f5",
   padding: "20px",
   lineHeight: "1",
+  display:"static",
 }
 
 export const productTitle ={
@@ -99,7 +106,7 @@ export const addToCartButton ={
   padding: "0 46px",
   fontSize: "15px",
   fontWeight: "600",
-  marginBottom: "15px",
+ 
   textTransform: "capitalize",
   webkitBorderRadius: "0px",
   mozborderRadius: "0px",
@@ -107,12 +114,12 @@ export const addToCartButton ={
   borderRadius: "0px",
   letterSpacing: "normal",
   marginRight: "15px",
-  marginTop:"50px",
+ 
   // display:"block",
   // backgroundColor: "#333333",
 }
 export const ViewCartButton={
-  float: "left",
+  // float: "left",
     backgroundColor: "#333333",
     border: "0",
     marginLeft: "0px",
@@ -122,24 +129,46 @@ export const ViewCartButton={
     color: "#ffffff",
     fontSize: "15px",
     fontWeight: "600",
-    marginBottom: "15px",
+   
     textTransform: "capitalize",
     letterSpacing: "normal",
+   
+
+}
+export const CartButtonsStyle={
+  width:"100%",
+  marginTop:"30px",
+  marginBottom: "15px",
+  flexDirection:"row",
+  display: "flex",
+  justifyContent: "start",
+  alignItems: "center",
+  float:"left",
 
 }
 export const starRating={
   overflow: "hidden",
   position: "relative",
   height: "1em",
-  lineHeight: "1em",
+  
   fontSize: "14px",
   width: "5.4em",
   fontFamily: "star",
   float: "left",
+
+
+}
+export const starLink={
+  width:"100%",
+  float: "left",
   marginRight: "10px",
   marginTop: "20px",
-
-
+  marginBottom: "20px",
+  flexDirection:"row",
+  display: "flex",
+  justifyContent: "start",
+  alignItems: "center",
+  position:"static",
 }
 export const PostStyle={
    width: '100%', maxWidth: "500", 
@@ -149,7 +178,7 @@ export const PostStyle={
 }
 export const productMetaStyle={
   fontWeight: "400",
-  fontSize:"15px",
+  fontSize:"20px",
   color: "#333333",
   marginTop: "30px!important",
   borderBottom: 0,
@@ -164,20 +193,25 @@ export const linkStyle={
       color: '#F03637',
     }, 
     "& .customerReview":{
-      marginTop: "20px",
+      // marginTop: "50px",
     },
     
  
 }
 
   export const WishlistButton={
+    
+  flexDirection: "row",
+  display: "flex",
+  justifyContent: "start",
+  alignItems: "center",
 
 color:"#F03637",
 padding:"10px 20px",
 marginTop:"50px",
 fontSize:"16px",
 border:"none",
-
+float:"left",
 '&:hover': {
      
     
@@ -186,16 +220,19 @@ border:"none",
   }
 
   export const CompareButton ={
+    float:"left",
+  flexDirection: "row",
+  display: "flex",
+  justifyContent: "start",
+  alignItems: "center",
     transition: "all 0.4s ease",
     background: "transparent",
     lineHeight: "unset",
     
     textTransform: "capitalize",
     fontWeight: "500",
-  
     color:"#333333",
     padding:"10px 20px",
-    marginTop:"50px",
     fontSize:"16px",
     border:"none",
     '&:hover': {
@@ -323,18 +360,31 @@ export const ShowStyle ={
   width: { sm: "100%", md: "100%", lg: "90%" },
   "& .descriptionList":{
     listStyleType:"none",
+    
+    marginLeft:"-1rem",
   },
 };
  
-export const CascadinTabs={
-   paddingTop:"1rem",
- 
-    borderWeight:"10px",
+export const CascadingTabs={
+  background: "#f5f5f5",
+   padding:"1rem ",
+    
     width:"100%",
-    borderStyle:"solid none none none",
-    borderColor: (theme: any) => ` ${theme.palette.divider}`,
+    display: "block",
+    overflowX: "auto",
+   
+  
+    margin: "20px -20px",
+    textAlign: "left",
+  }
+  export const CascadingTabsTitle={
+    color: "#ababab",
+    fontWeight: "500!important",
+    fontSize: "20px",
+    textIndet:"20px",
   }
   export const TabLabel={
+    textIndet:"1rem",
     color: "#ababab",
     margin:"1rem",
     textTransform: "uppercase",
@@ -343,11 +393,23 @@ export const CascadinTabs={
     padding: "0!important",
     lineHeight: "26px",
     border: "none!important",
-    fontWeight: "500!important",
+    fontWeight: "500",
     fontFamily: "Jost, Sans-serif",
     cursor: "pointer",
     whiteSpace: "nowrap",
     textAlign: "-webkit-match-parent",
+    height:"100%",
+   
+      "&:hover": {
+        
+        color: "#000000",
+      },
+      "&:focus": {
+        borderBottomStyle:"solid",
+        bordeColor:'#F03637',
+      },
+    
+  
 
   }
 
@@ -364,29 +426,26 @@ export const CascadinTabs={
   display: "block",
   position: "relative",
   width: "100%",
-  // borderTop: "1px solid",
-  // borderBottom: "1px solid",
   border:"none",
   marginBottom: "0",
   textAlign: "center",
-  // padding: "0px 20px",
   marginTop: "0px",
   background: "#f5f5f5",
-  color:"#f8f8f8",
+  color: "#ababab",
   fontSize: "16px",
-  fontWeight: "400",
+  fontWeight: "500",
   fontFamily: "inherit",
   padding:"0",
   // overflowX: "hidden",
-
+ 
  }
 
 
  export const SubmitButton ={
-  float: "left",
-  height: "50px",
-  padding: "0 36px",
-  fontSize: "15px",
+  float: "right",
+  height: "36px",
+  padding: "0 23px",
+  fontSize: "13px",
   fontWeight: "600",
   marginBottom: "15px",
   textTransform: "capitalize",
