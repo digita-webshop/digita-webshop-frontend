@@ -60,3 +60,16 @@ export const PFormLabel = styled(FormLabel)(({ theme }) => ({
   textTransform: "capitalize",
   marginBottom: "2px",
 }));
+export const POutlinedButton = styled(Button)(({ theme }) => ({
+  backgroundColor: "transparent",
+  borderRadius: "5px",
+  fontSize: "16px",
+  height: "42px",
+  textTransform: "capitalize",
+  color: theme.palette.common.digitaDarkRed,
+  border: `1px solid ${theme.palette.common.digitaDarkRed}`,
+  "&:hover": {
+    backgroundColor: theme.palette.common.digitaDarkRed,
+    color: theme.palette.common.white,
+  },
+}));

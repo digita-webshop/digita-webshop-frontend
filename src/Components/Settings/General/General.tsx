@@ -1,7 +1,11 @@
 import { CloudUpload } from "@mui/icons-material";
-import { Box, FormControl, FormLabel, Grid } from "@mui/material";
-import { PButton, PFormLabel, PTextField } from "../../../Styles/panelCommon";
-import { POutlinedButton } from "../../../Styles/Settings";
+import { Box, FormControl, Grid } from "@mui/material";
+import {
+  PButton,
+  PFormLabel,
+  POutlinedButton,
+  PTextField,
+} from "../../../Styles/panelCommon";
 
 function General() {
   return (

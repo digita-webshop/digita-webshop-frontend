@@ -1,5 +1,6 @@
+import { AddArticle as AddArticlePage } from "../../../Components";
 function AddArticle() {
-  return <>add article</>;
+  return <AddArticlePage />;
 }
 
 export default AddArticle;
