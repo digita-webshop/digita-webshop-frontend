@@ -3,7 +3,7 @@
 
 
 
-import{Grid ,TextField,Button ,Divider, Box ,Link ,Rating ,Typography,Container, CardActionArea, CardActions}  from '@mui/material';
+import{Grid ,Button ,Divider, Box ,Link ,Rating ,Typography,Container, CardActionArea, CardActions}  from '@mui/material';
 // import ProductSlider from "../ProductSlider/ProductSlider";
 import AddToCartModal from "../Modals/AddToCartModal/AddToCartModal";
 import NextProductModal from "../Modals/NextProductModal/NextProductModal";
@@ -33,6 +33,7 @@ import {
   TitleSectionStyle,
   ViewCartButton,
   starLink,
+  ComperWishStyle
 
   
   
@@ -62,19 +63,44 @@ const ProductDetails = () => {
       Microsoft Xbox One S Blue Grey
       </Typography>
       <Box sx={nextButton}>
-        <Button variant="outlined" sx={nextButtonStyle}>		&lt;</Button>
-      <Button variant="outlined" sx={nextButtonStyle}>	&gt; </Button>
+        {/* <Button variant="outlined" className="left"sx={nextButtonStyle}>		&lt;</Button> */}
+           
+    <Link
+   className="left"sx={nextButtonStyle}
+component="button"
+variant="body2"
+underline="none"
+onClick={() => {
+  console.info("I'm a button.");
+}}
+>
+&lt;
+</Link>
+      {/* <Button variant="outlined" className="right" sx={nextButtonStyle}>	&gt; </Button> */}
+         
+    <Link
+   className="right" sx={nextButtonStyle}
+component="button"
+variant="body2"
+underline="none"
+onClick={() => {
+  console.info("I'm a button.");
+}}
+>
+&gt;
+</Link>
       
       
         </Box>
-  
-</Box>
-<Box sx={starLink}>
+        <Box sx={starLink}>
    <Rating name="size-small" defaultValue={5} size="small" sx={starRating}/>
-      <Link href="#" underline="none"   className="customerReview"   sx={linkStyle}>
+      <Link href="#" underline="none"   className="customerReview"   sx={{marginBottom:"20px",marginTop:"-5px",}}>
       (1 customer review)
 </Link>
    </Box>
+  
+</Box>
+
 <Box sx={ filledPrice}><bdi>$52.00</bdi></Box>
       
       <Typography variant="body2" sx={ProductDetailsStyle} component="p">
@@ -90,11 +116,11 @@ const ProductDetails = () => {
       </Typography>
       <Box sx={CartButtonsStyle}>
       <Button variant="contained" sx={addToCartButton}>Add To Cart</Button>
-      <Button variant="contained" sx={ViewCartButton}>View Cart</Button>
+      <Button variant="contained" className="ShowViewCart" sx={ViewCartButton}>View Cart</Button>
       </Box>
       {/* <Button variant="contained">View Cart</Button> */}
   
-    <Box sx={CartButtonsStyle}>
+    <Box sx={ComperWishStyle}>
     
     
     <Link
@@ -106,7 +132,7 @@ onClick={() => {
   console.info("I'm a button.");
 }}
 >
-<FavoriteBorderIcon/>   Wishlist
+<FavoriteBorderIcon/>&nbsp;   Wishlist
 </Link>
  
     <Link
@@ -118,7 +144,7 @@ onClick={() => {
   console.info("I'm a button.");
 }}
 >
-<ShuffleIcon />  Compare
+<ShuffleIcon />&nbsp;   Compare
 </Link>
 </Box>
     
