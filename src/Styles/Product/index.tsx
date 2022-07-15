@@ -20,21 +20,24 @@ export const ProductDetailsStyle={
  
 }
 export const nextButtonStyle={
-  borderWidth: "0.5px",
-  lineHeight: "28px",
+  boxSizing:"border-box",
+  borderWidth: "0.4px",
+  lineHeight: "10px",
   minWidth: "30px",
-  borderColor: "#d1d1d1",
+ 
   color: "#d1d1d1",
   backgroundColor: "#ffffff",
-  border: "2px solid #e9e9e9",
+  border: "1px solid #d1d1d1",
   textAlign: "center",
   marginRight:"10px",
+  width:"30px",
+  height:"30px",
   // display: "inline-block",
   
-  margin: "0",
+  
   padding: "10px",
   cursor: "pointer",
-  fontSize:"5px",
+  fontSize:"13px",
       display: "flex",
      flexDirection: "row" ,
      alignItems: "center",
@@ -42,10 +45,16 @@ export const nextButtonStyle={
 
      '&:hover': {
      color:"ffffff",
-    
-      backgroundcolor: '#F03637',
+    borderStyle:"none",
+      backgroundColor:'#F03637',
     }, 
-    float:"right",
+    "& .left":{
+marginRight:"3.5px",
+    },
+    "& .right" :{
+marginLeft:"3.5px"
+    }
+   
 
 }
 export const Modalstyle = {
@@ -65,11 +74,16 @@ export const nextButton={
   // top:"0",
   float:"right",
   marginTop:"-1.5rem",
-  display:{xs:"none",sm:"none",md:"inline-block",lg:"inline-block",}
+  display:{xs:"none",sm:"none",md:"flex",lg:"flex",},
+  
+  flexDirection: "row" ,
+  alignItems: "center",
+  justifyContent: "center",
 
 }
 export const TitleSectionStyle={
   // position:"relative",
+  marginBottom:"10px",
 }
 export const filledPrice ={
   width: '100%',
@@ -132,13 +146,27 @@ export const ViewCartButton={
    
     textTransform: "capitalize",
     letterSpacing: "normal",
+    "& .ShowViewCart":{
+      display:"none",
+    }
    
 
 }
 export const CartButtonsStyle={
   width:"100%",
   marginTop:"30px",
-  marginBottom: "15px",
+  marginBottom: "5px",
+  flexDirection:"row",
+  display: "flex",
+  justifyContent: "start",
+  alignItems: "center",
+  float:"left",
+
+}
+export const ComperWishStyle={
+  width:"100%",
+  marginTop:"10px",
+  marginBottom: "25px",
   flexDirection:"row",
   display: "flex",
   justifyContent: "start",
@@ -150,11 +178,12 @@ export const starRating={
   overflow: "hidden",
   position: "relative",
   height: "1em",
-  
+  marginBottom:"20px",
   fontSize: "14px",
   width: "5.4em",
   fontFamily: "star",
   float: "left",
+  marginTop:"-5px",
 
 
 }
@@ -162,13 +191,20 @@ export const starLink={
   width:"100%",
   float: "left",
   marginRight: "10px",
-  marginTop: "20px",
-  marginBottom: "20px",
+ padding:"30px 0" ,
   flexDirection:"row",
   display: "flex",
   justifyContent: "start",
   alignItems: "center",
   position:"static",
+  
+  "& .customerReview":{
+    '&:hover': {
+     
+    
+      color: '#F03637',
+    }, 
+  },
 }
 export const PostStyle={
    width: '100%', maxWidth: "500", 
@@ -208,7 +244,7 @@ export const linkStyle={
 
 color:"#F03637",
 padding:"10px 20px",
-marginTop:"50px",
+
 fontSize:"16px",
 border:"none",
 float:"left",
