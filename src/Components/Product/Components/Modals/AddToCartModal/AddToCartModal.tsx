@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
 import {
     wooPopupInner,
@@ -37,13 +38,8 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+    
+   
         <Box >
        <Box sx={wooPopupInner}>
        <Box sx={wooPopupContent}>
@@ -69,7 +65,7 @@ export default function BasicModal() {
 </Box>
        </Box>
         </Box>
-      </Modal>
+
     </div>
   );
 }

@@ -1,7 +1,7 @@
 
 
-
-
+import Modal from "@mui/material/Modal";
+import { useState } from "react";
 
 import{Grid ,Button ,Divider, Box ,Link ,Rating ,Typography,Container, CardActionArea, CardActions}  from '@mui/material';
 // import ProductSlider from "../ProductSlider/ProductSlider";
@@ -41,7 +41,9 @@ import {
 
 
 const ProductDetails = () => {
- 
+  const [openAddToCart, setOpenAddToCart] = useState(false);
+  const [opennext, setOpennext] = useState(false);
+  const handleCloseAddToCart = () => setOpenAddToCart(false);
   
  return(
   <>
@@ -92,12 +94,17 @@ onClick={() => {
       
       
         </Box>
-        <Box sx={starLink}>
-   <Rating name="size-small" defaultValue={5} size="small" sx={starRating}/>
+     
+   <Typography variant="body2"  component="p">
+   <Box sx={starLink}>
+   <Rating name="read-only" defaultValue={5} size="small" readOnly sx={starRating}/>
       <Link href="#" underline="none"   className="customerReview"   sx={{marginBottom:"20px",marginTop:"-5px",}}>
       (1 customer review)
 </Link>
    </Box>
+
+      </Typography>
+      
   
 </Box>
 
@@ -115,7 +122,16 @@ onClick={() => {
        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat
       </Typography>
       <Box sx={CartButtonsStyle}>
-      <Button variant="contained" sx={addToCartButton}>Add To Cart</Button>
+
+      <Button variant="contained"    onClick={() => setOpenAddToCart(true)}sx={addToCartButton}>Add To Cart</Button>
+      <Modal
+        open={openAddToCart}
+        onClose={handleCloseAddToCart}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+          <AddToCartModal  />
+      </Modal>
       <Button variant="contained" className="ShowViewCart" sx={ViewCartButton}>View Cart</Button>
       </Box>
       {/* <Button variant="contained">View Cart</Button> */}
@@ -198,6 +214,9 @@ onClick={() => {
   
 </Grid>
       </Container>
+    
+  
+    
       </>
  )
 };
