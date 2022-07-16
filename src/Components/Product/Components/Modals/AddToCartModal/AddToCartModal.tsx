@@ -6,15 +6,16 @@ import Modal from '@mui/material/Modal';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
 import {
-    wooPopupInner,
-    wooPopupContent,
+     PopupInner,
+     PopupContent,
     popupTitle,
     popupContent,
     popupText,
     buttonsWrap,
     continueBtn,
     cartBtn,
-    popupWrap
+    popupWrap,
+    space,
 
     
     
@@ -29,9 +30,9 @@ export default function BasicModal() {
     <Box sx={popupWrap}>
     
    
-        <Box sx={{width:"40%",height:"400px"}}>
-       <Box sx={wooPopupInner}>
-       <Box sx={wooPopupContent}>
+      
+       <Box sx={ PopupInner}>
+       <Box sx={ PopupContent}>
        <Typography variant="h3" component="h3" sx={popupTitle}>
        Item added to your cart
           </Typography>
@@ -46,7 +47,7 @@ export default function BasicModal() {
           >
           Continue Shopping
           </Button>
-          <Box sx={{width:"10px", height: "50px",display:{xs:"none",sm:"inline-bloak",lg:"inline-block"}}}></Box>
+          <Box sx={space}>space</Box>
           <Button variant="contained" sx={cartBtn}>Go To The Cart</Button>
           </Box>
           <Typography variant="body2" component="p" sx={popupText}>
@@ -56,6 +57,6 @@ export default function BasicModal() {
        </Box>
         </Box>
 
-    </Box>
+   
   );
 }

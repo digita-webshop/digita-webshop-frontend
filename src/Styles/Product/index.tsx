@@ -612,7 +612,9 @@ export const itemStyle = {
 
 // /* ============ AddToCartModal ============== */
 
-export const wooPopupInner={
+export const  PopupInner={
+  
+ 
   padding: "50px 25px 15px 25px",
   bordeRadius: "0",
   overFlow: "auto",
@@ -620,7 +622,7 @@ export const wooPopupInner={
   height: "auto",
   maxWidth: "90%",
   maxHeight: "90%",
-  display: "block",
+  // display: "block",
   backgroundColor: "#fff",
   minWidth: "300px",
   margin: "0.5rem auto",
@@ -637,20 +639,23 @@ export const wooPopupInner={
 
 }
 export const popupWrap={
+  // flexDirection: "row",
+
   position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 550,
+ 
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
-  padding:"10px 0",
+ 
 }
-export const wooPopupContent={
+export const  PopupContent={
   position: "relative",
   transform: "none",
   top: "auto",
+ 
 }
 
 // export const checkmark={
@@ -685,30 +690,35 @@ export const wooPopupContent={
 // }
 export const popupTitle={
   fontSize: "20px",
-  margin: "0 0 10px",
+  // margin: " 10%",
+  textAlign:"center",
   letterSpacing: "0.6px",
   fontWeight: "500",
   color: (theme:any)=>theme.palette.common.digitaBlack1,
   lineHeight: "2",
+ 
 }
 export const popupContent={
   fontSize: "13px",
   marginBottom: "20px",
   color: "#777",
   textTransform: "uppercase",
+  
+
 }
 export const buttonsWrap={
   
     margin: "20px 0 0",
     flexDirection: {xs:"column",sm:"column",md:"row",lg:"row",},
     display: "flex",
-    justifyContent: "center",
+    justifyContent:  {xs:"center",sm:"center",md:"space-between",lg:"space-between",},
+    
     alignItems: "center",
 }
 
 export const continueBtn={
   height: "50px",
-  Width: "200px",
+  Width: "190px",
   borderRadius: "0px",
   textTransform: "capitalize",
   fontSize: "14px",
@@ -720,13 +730,17 @@ export const continueBtn={
   backgroundColor: (theme:any)=>theme.palette.common.digitaRed,
   borderWidth: "3px",
   marginTop: {xs:"0",sm:"0",md:"10px",lg:"10px"},
-  marginLeft: "5px",
-  minWidth: "200px",
+  
+  minWidth: "190px",
 
 }
-
+export const space={
+   height:{xs:"0",sm:"0",md:"50px",lg:"50px"},
+   width:{xs:"0",sm:"0",md:"20px",lg:"20px"},
+   color: (theme:any)=>theme.palette.common.digitaWhite,
+}
 export const cartBtn ={
-  Width: "200px",
+  Width: "190px",
   height: "50px",
   marginnRight: {xs:"0",sm:"0",md:"5px",lg:"5px"},
   borderRadius: "0px",
@@ -741,13 +755,14 @@ export const cartBtn ={
     borderWidth: "3px",
     marginTop: "10px",
     display: "inlineblock",
-    minWidth: "200px",
+    minWidth: "190px",
 }
 export const popupText={
   fontSize: "13px",
   marginTop: "20px",
   display: "block",
       color: "#666",
+      marginLeft:"20px",
 }
 
 // ===========================NextProductModal==================
