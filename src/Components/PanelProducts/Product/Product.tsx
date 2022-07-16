@@ -25,9 +25,10 @@ type T = {
   name: string;
   price: number;
   image: string;
+  onRemove: Function;
 };
 
-const Product = ({ name, price, image }: T) => {
+const Product = ({ id ,name, price, image, onRemove }: T) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -96,6 +97,7 @@ const Product = ({ name, price, image }: T) => {
                 Cancel
               </Button>
               <Button
+                onClick={() => onRemove(id)}
                 variant="contained"
                 sx={{
                   p: "0.8rem 2.2rem",
