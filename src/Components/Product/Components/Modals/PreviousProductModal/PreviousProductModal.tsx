@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 
 import Typography from '@mui/material/Typography';
-import productOne from '../../../../../Assets/Images/Product/product-7.jpg';
+import productImage from '../../../../../Assets/Images/Product/product-6.jpg';
 import {
   Card ,
 
@@ -12,6 +12,12 @@ CardActionArea,
 
 
 
+import {
+  NextProductModalText
+
+  
+  
+  } from "../../../../../Styles/Product/index";
 export default function BasicModal() {
 
 
@@ -26,13 +32,13 @@ export default function BasicModal() {
           height="96"
           width="96"
           
-          image={productOne}
+          image={productImage}
            alt="green iguana"
         />
       </CardActionArea>
     </Card>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          <Typography id="modal-modal-description" sx={NextProductModalText}>
+          Microsoft Xbox One SP
           </Typography>
         </Box>
      

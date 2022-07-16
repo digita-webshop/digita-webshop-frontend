@@ -7,11 +7,12 @@ import{Grid ,Button ,Divider, Box ,Link ,Rating ,Typography,Container, CardActio
 // import ProductSlider from "../ProductSlider/ProductSlider";
 import AddToCartModal from "../Modals/AddToCartModal/AddToCartModal";
 import NextProductModal from "../Modals/NextProductModal/NextProductModal";
+import PreviousProductModal from "../Modals/PreviousProductModal/PreviousProductModal";
 
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-import Stack from '@mui/material/Stack';
+
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 
