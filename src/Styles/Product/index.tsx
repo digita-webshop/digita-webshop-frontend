@@ -146,9 +146,7 @@ export const ViewCartButton={
    
     textTransform: "capitalize",
     letterSpacing: "normal",
-    "& .ShowViewCart":{
-      display:"none",
-    }
+   
    
 
 }
@@ -161,6 +159,9 @@ export const CartButtonsStyle={
   justifyContent: "start",
   alignItems: "center",
   float:"left",
+  "& .ShowViewCart":{
+    display:"none",
+  },
 
 }
 export const ComperWishStyle={
@@ -396,7 +397,7 @@ export const ShowStyle ={
   width: { sm: "100%", md: "100%", lg: "90%" },
   "& .descriptionList":{
     listStyleType:"none",
-    
+    textIndet:"0",
     marginLeft:"-1rem",
   },
 };
@@ -656,6 +657,24 @@ export const wooPopupInner={
   zIndex: "1000",
 
 }
+export const popupWrap={
+  // width:"100%",
+  // textAlign:"center",
+  // position: "fixed",
+ 
+  // zIndex: "9999",
+  // opacity: "1",
+  // display: "block",
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+}
 export const wooPopupContent={
   position: "relative",
   transform: "none",
@@ -706,10 +725,15 @@ export const popupContent={
   textTransform: "uppercase",
 }
 export const buttonsWrap={
-  display: "block",
+  
     margin: "20px 0 0",
+    flexDirection: {xs:"column",sm:"column",md:"row",lg:"row",},
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
 }
 export const continueBtn={
+  Width: "200px",
   borderRadius: "0px",
   textTransform: "capitalize",
   fontSize: "14px",
@@ -720,8 +744,12 @@ export const continueBtn={
   color: "#ffffff",
   backgroundColor: "#f03637",
   borderWidth: "3px",
+  marginTop: {xs:"0",sm:"0",md:"10px",lg:"10px"},
+  marginLeft: {xs:"0",sm:"0",md:"5px",lg:"5px"},
+
 }
 export const cartBtn ={
+  marginnRight: {xs:"0",sm:"0",md:"5px",lg:"5px"},
   borderRadius: "0px",
     textTransform: "capitalize",
     fontSize: "14px",
