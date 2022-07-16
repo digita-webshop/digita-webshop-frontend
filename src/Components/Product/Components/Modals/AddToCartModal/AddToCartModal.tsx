@@ -36,7 +36,7 @@ export default function BasicModal() {
        Item added to your cart
           </Typography>
           <Typography variant="body2" component="p" sx={popupContent}>
-          1 ITEMS IN THE CART ($52.00)
+          1 ITEMS IN THE CART <span className="price">($52.00)</span>
           </Typography>
           <Box sx={buttonsWrap}>
           <Button
@@ -46,10 +46,11 @@ export default function BasicModal() {
           >
           Continue Shopping
           </Button>
+          <Box sx={{width:"10px", height: "50px",display:{xs:"none",sm:"inline-bloak",lg:"inline-block"}}}></Box>
           <Button variant="contained" sx={cartBtn}>Go To The Cart</Button>
           </Box>
           <Typography variant="body2" component="p" sx={popupText}>
-          Buy for $448.00 more and get free shipping
+          Buy for <span className="price">$448.00</span>  more and get free shipping
           </Typography>
 </Box>
        </Box>
