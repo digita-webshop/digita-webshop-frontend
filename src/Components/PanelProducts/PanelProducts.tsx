@@ -8,12 +8,12 @@ import { panelProducts } from "../../Services/Utils/Data/data";
 import Pagination from "./Pagination/Pagination";
 
 const PanelProducts = () => {
-  const [products] = useState(panelProducts);
+  const [list, setList] = useState(panelProducts);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(
+  const currentProducts = list.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -28,6 +28,11 @@ const PanelProducts = () => {
   const selectedAmountHandler = (event: SelectChangeEvent) => {
     setSelectedAmount(event.target.value);
   };
+
+  function handleRemove(id: number) {
+    const newList = list.filter((item) => item.id !== id);
+    setList(newList);
+  }
 
   return (
     <Grid container rowSpacing={4}>
@@ -59,14 +64,14 @@ const PanelProducts = () => {
           <Grid container spacing={2}>
             {currentProducts.map(({ id, name, price, image }) => (
               <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={id}>
-                <Product id={id} name={name} price={price} image={image} />
+                <Product id={id} name={name} price={price} image={image} onRemove={handleRemove}/>
               </Grid>
             ))}
           </Grid>
           <Box sx={paginationStyle}>
             <Pagination
               productsPerPage={productsPerPage}
-              totalProducts={products.length}
+              totalProducts={list.length}
               paginate={paginate}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
