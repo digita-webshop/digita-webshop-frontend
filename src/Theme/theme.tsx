@@ -5,6 +5,7 @@ import "@mui/material/styles/createPalette";
 declare module "@mui/material/styles/createPalette" {
   interface CommonColors {
     digitaBlack: string;
+    digitaBlack1: string;
     digitaRed: string;
     digitaDarkRed: string;
     digitaGrey: string;
@@ -15,12 +16,14 @@ declare module "@mui/material/styles/createPalette" {
     digitaGrey5: string;
     digitaGrey6: string;
     digitaGrey7: string;
+    digitaGrey8: string;
     panelGrey: string;
     panelBorderGrey: string;
     panelHoverGrey: string;
     panelHoverDarkGrey: string;
     PanelDarkRed: string;
     panelActiveRed: string;
+    digitaWhite: string;
   }
 }
 
@@ -28,6 +31,7 @@ export const theme = createTheme({
   palette: {
     common: {
       digitaBlack: "#333333",
+      digitaBlack1: "#333",
       digitaRed: "#f03637",
       digitaDarkRed: "#fc0b0d",
       digitaGrey: "#777777",
@@ -38,12 +42,14 @@ export const theme = createTheme({
       digitaGrey5: "#F5F5F5",
       digitaGrey6: "#eaeaea",
       digitaGrey7: "#f7f7f7",
+      digitaGrey8: "#d1d1d1",
       panelGrey: "#adb5bd ",
       panelBorderGrey: "#cfdbe6 ",
       panelHoverGrey: "rgba(108, 117, 125, 0.15) ",
       panelHoverDarkGrey: "rgba(108, 117, 125, 0.25) ",
       PanelDarkRed: "#5d2936 ",
       panelActiveRed: "#fdebeb ",
+      digitaWhite:"#ffffff",
     },
     primary: {
       main: "#333333",
