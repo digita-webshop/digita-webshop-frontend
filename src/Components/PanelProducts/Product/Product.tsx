@@ -19,7 +19,6 @@ import {
   deleteBtn,
   editBtn,
 } from "../../../Styles/PanelProducts";
-import DeleteModal from "../DeleteModal/DeleteModal";
 
 type T = {
   id: number;
@@ -89,18 +88,24 @@ const Product = ({ name, price, image }: T) => {
                 variant="contained"
                 sx={{
                   p: "0.8rem 2.2rem",
+                  borderRadius: "4px",
+                  fontSize: "15px",
+                }}
+                onClick={() => setOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="contained"
+                sx={{
+                  p: "0.8rem 2.2rem",
                   background: "#f03637",
+                  borderRadius: "4px",
+                  fontSize: "15px",
                   "&:hover": { background: "#333" },
                 }}
               >
                 Delete
-              </Button>
-              <Button
-                variant="contained"
-                sx={{ p: "0.8rem 2.2rem" }}
-                onClick={() => setOpen(false)}
-              >
-                Cancel
               </Button>
             </Box>
           </Box>
