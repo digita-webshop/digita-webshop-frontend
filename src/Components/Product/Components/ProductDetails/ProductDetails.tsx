@@ -6,11 +6,11 @@ import { useState } from "react";
 import{Grid ,Button ,Divider, Box ,Link ,Rating ,Typography,Container, CardActionArea, CardActions}  from '@mui/material';
 // import ProductSlider from "../ProductSlider/ProductSlider";
 import AddToCartModal from "../Modals/AddToCartModal/AddToCartModal";
-import NextProductModal from "../Modals/NextProductModal/NextProductModal";
-import PreviousProductModal from "../Modals/PreviousProductModal/PreviousProductModal";
+// import NextProductModal from "../Modals/NextProductModal/NextProductModal";
+// import PreviousProductModal from "../Modals/PreviousProductModal/PreviousProductModal";
 
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+// import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+// import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -34,7 +34,8 @@ import {
   TopSectionStyle,
   ViewCartButton,
   starLink,
-  ComperWishStyle
+  ComperWishStyle,
+  ShowViewCart
 
   
   
@@ -122,19 +123,21 @@ onClick={() => {
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
        sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat
       </Typography>
-      <Box sx={CartButtonsStyle}>
+     <Box sx={ShowViewCart}>
+     <Box sx={CartButtonsStyle}>
 
-      <Button variant="contained"    onClick={() => setOpenAddToCart(true)}sx={addToCartButton}>Add To Cart</Button>
-      <Modal
-        open={openAddToCart}
-        onClose={handleCloseAddToCart}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-          <AddToCartModal  />
-      </Modal>
-      <Button variant="contained" className="ShowViewCart" sx={ViewCartButton}>View Cart</Button>
-      </Box>
+<Button variant="contained"    className="addCart" onClick={() => setOpenAddToCart(true)}sx={addToCartButton}>Add To Cart</Button>
+<Modal
+  open={openAddToCart}
+  onClose={handleCloseAddToCart}
+  aria-labelledby="modal-modal-title"
+  aria-describedby="modal-modal-description"
+>
+    <AddToCartModal  />
+</Modal>
+<Button variant="contained" className="ShowViewCart" sx={ViewCartButton}>View Cart</Button>
+</Box>
+     </Box>
       {/* <Button variant="contained">View Cart</Button> */}
   
     <Box sx={ComperWishStyle}>

@@ -103,9 +103,29 @@ export const addToCartButton ={
   textTransform: "capitalize",
   letterSpacing: "normal",
   marginRight: "15px",
+ 
+    "&:active": {
+      "& .ShowViewCart":{
+        display:"flex",
+    
+    },},
+    "&:focus": {
+      "& .ShowViewCart":{
+        display:"inline-block",
+    
+    },}
+
+
+
+}
+export const ShowViewCart={
+  // "& .ShowViewCart":{
+  //   display:"none",
+  // },
+"& .addCart":{
   "&:active": {
     "& .ShowViewCart":{
-      display:"inline-block",
+      display:"flex",
   
   },},
   "&:focus": {
@@ -113,7 +133,7 @@ export const addToCartButton ={
       display:"inline-block",
   
   },}
-
+}
 }
 export const ViewCartButton={
     backgroundColor: (theme:any)=>theme.palette.common.digitaBlack,
@@ -127,6 +147,7 @@ export const ViewCartButton={
     fontWeight: "600",
     textTransform: "capitalize",
     letterSpacing: "normal",
+    display:"none",
 }
 export const CartButtonsStyle={
   width:"100%",
@@ -137,9 +158,7 @@ export const CartButtonsStyle={
   justifyContent: "start",
   alignItems: "center",
   float:"left",
-  "& .ShowViewCart":{
-    display:"none",
-  },
+ 
  
    
     
