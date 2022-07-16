@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 
 import {  ProductContentStyle ,
   ProductTextStyle,
-  SubmitButton
+  SubmitButton,reviewsRating
 } from "../../../../../Styles/Product";
 
 import {Typography ,Box,Checkbox ,Rating,Avatar,Divider,Button} from '@mui/material';
@@ -25,8 +25,14 @@ const Reviews = () => {
       <Box sx={ProductContentStyle}>
   
            <Box >
-           <Avatar alt="avatar" src={avatar} sx={{float:"left",}} />
-           <Rating name="size-small" defaultValue={5} size="small" sx={{float:"Right"}}/>
+        
+        <Box>
+        <Typography variant="body2" component="p" sx={{float:"left"}}>
+     <span className="userName">Peter Giroud </span>    <span> – September 17, 2019</span>
+        </Typography>
+           <Avatar alt="avatar" src={avatar} sx={{float:"left", width:"100px" ,height:"100px"}} />
+        </Box>
+           <Rating name="read-only" defaultValue={5} size="small" readOnly sx={{float:"Right"}}/>
       <Typography variant="body2" component="p" sx={ProductTextStyle}>
       Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est
         </Typography>
@@ -43,8 +49,14 @@ const Reviews = () => {
                  <Typography variant="body2" component="p" sx={ProductTextStyle}>
                  Your rating 
               </Typography>
-               <Rating name="no-value" value={null} />
-          <Rating name="customized-10" defaultValue={2} max={10} />
+             
+              <Typography variant="body2" component="p" sx={ProductTextStyle}>
+              <Rating name="size-medium" defaultValue={1}  sx={reviewsRating}/> |
+              <Rating name="size-medium" defaultValue={2}  sx={reviewsRating}/> |
+              <Rating name="size-medium" defaultValue={3}  sx={reviewsRating}/> |
+              <Rating name="size-medium" defaultValue={4} sx={reviewsRating}/> |
+              <Rating name="size-medium" defaultValue={5}  sx={reviewsRating}/> 
+              </Typography>
                 </Box>
 
 
