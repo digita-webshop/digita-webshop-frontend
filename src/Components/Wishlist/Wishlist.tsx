@@ -29,9 +29,6 @@ import {
 import SocialBox from "./Components/SocialBox/SocialBox";
 import RowItem from "./Components/RowItem/RowItem";
 
-const ADD = "ADD";
-const REMOVE = "REMOVE";
-
 const Wishlist = () => {
   const [action, setAction] = useState("Actions");
   const [list, setList] = useState(rows);
@@ -167,7 +164,11 @@ const Wishlist = () => {
           <ActionLeftBtns>
             <Button
               variant="contained"
-              sx={{ width: "220px", height: "40px" }}
+              sx={{
+                display: { xs: "none", sm: "block" },
+                width: "220px",
+                height: "40px",
+              }}
               onClick={addSelectedToCart}
             >
               ADD SELECTED TO CART

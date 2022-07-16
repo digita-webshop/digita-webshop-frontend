@@ -115,6 +115,9 @@ export const StyledTableCell = styled(TableCell)(({ theme }) => ({
       "&:nth-child(-n+7)": {
         border: "none",
       },
+      "&.hidden": {
+        display: "none",
+      },
     },
     [theme.breakpoints.only("xs")]: {
       fontSize: "18px !important",
@@ -136,6 +139,12 @@ export const closeStyle = {
   "&:hover": {
     backgroundColor: "#f03637",
     color: "#fff",
+  },
+  "&.img": {
+    position: "absolute",
+    top: "10px",
+    right: "4px",
+    display: { xs: "block", sm: "none" },
   },
 };
 
