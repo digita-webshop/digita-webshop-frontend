@@ -7,9 +7,10 @@ import {
   Typography,
   Modal,
 } from "@mui/material";
-import {useState} from "react";
+import { useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
+import { cartModal } from "../../../Styles/PanelProducts";
 
 import {
   cardWrapper,
@@ -55,7 +56,11 @@ const Product = ({ name, price, image }: T) => {
             <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
             Edit
           </Button>
-          <Button variant="contained" sx={deleteBtn}>
+          <Button
+            variant="contained"
+            sx={deleteBtn}
+            onClick={() => setOpen(true)}
+          >
             <DeleteForeverIcon sx={{ margin: "0 0.2rem" }} />
             Delete
           </Button>
@@ -67,7 +72,38 @@ const Product = ({ name, price, image }: T) => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <DeleteModal />
+          <Box sx={cartModal}>
+            <DeleteForeverIcon
+              sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }}
+            />
+            <Typography
+              id="modal-modal-title"
+              variant="h5"
+              component="h2"
+              sx={{ textAlign: "center" }}
+            >
+              Delete this item?
+            </Typography>
+            <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>
+              <Button
+                variant="contained"
+                sx={{
+                  p: "0.8rem 2.2rem",
+                  background: "#f03637",
+                  "&:hover": { background: "#333" },
+                }}
+              >
+                Delete
+              </Button>
+              <Button
+                variant="contained"
+                sx={{ p: "0.8rem 2.2rem" }}
+                onClick={() => setOpen(false)}
+              >
+                Cancel
+              </Button>
+            </Box>
+          </Box>
         </Modal>
       </CardContent>
     </Card>
