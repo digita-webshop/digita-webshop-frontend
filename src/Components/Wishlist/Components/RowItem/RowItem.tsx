@@ -47,7 +47,7 @@ const RowItem = ({
   return (
     <>
       <StyledTableRow key={id}>
-        <StyledTableCell align="left">
+        <StyledTableCell align="left" className="hidden">
           <Checkbox
             sx={{
               color: "#f03637",
@@ -57,21 +57,27 @@ const RowItem = ({
             }}
           />
         </StyledTableCell>
-        <StyledTableCell align="left">
+        <StyledTableCell align="left" className="hidden">
           <Box sx={closeStyle} onClick={() => onRemove(id)}>
             <CloseIcon sx={{ fontSize: "16px" }} />
           </Box>
         </StyledTableCell>
         <StyledTableCell align="left">
-          <img
-            src={image}
-            alt="img"
-            style={{
-              width: "80px",
-              height: "80px",
-              objectFit: "cover",
+          <Box
+            sx={{
+              position: "relative",
+              img: {
+                width: { xs: "100%", sm: "80px" },
+                height: { sm: "80px" },
+                objectFit: "cover",
+              },
             }}
-          />
+          >
+            <img src={image} alt="img" />
+            <Box sx={closeStyle} className="img" onClick={() => onRemove(id)}>
+              <CloseIcon sx={{ fontSize: "26px" }} />
+            </Box>
+          </Box>
         </StyledTableCell>
         <StyledTableCell component="th" scope="row">
           <Typography component={"h6"}>{name}</Typography>
