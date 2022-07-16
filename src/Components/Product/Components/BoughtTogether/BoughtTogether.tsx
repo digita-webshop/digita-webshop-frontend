@@ -21,10 +21,11 @@ import {
 
 
 
-  import {Card ,
- CardContent ,
+  import {
+    Card ,
+
  CardMedia ,
- CardActionArea, CardActions,
+ CardActionArea, 
  }from '@mui/material';
 
   const BoughtTogether = () => {
