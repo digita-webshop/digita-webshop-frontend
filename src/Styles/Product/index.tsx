@@ -3,7 +3,7 @@ import { styled} from "@mui/material";
     /* ================   RELATED PRODUCTS ============== */
     export const teamTitleStyle = {
       padding: "8rem 0 1rem 0",
-      color: "#333",
+      color: (theme:any)=>theme.palette.common.digitaBlack1,
       fontSize: "32px",
       fontWeight: "600",
       textAlign:"center",
@@ -12,7 +12,7 @@ import { styled} from "@mui/material";
 export const ProductDetailsStyle={
   fontSize: "14px",
   lineHeight: "1.8",
-  color: "#333333",
+  color: (theme:any)=>theme.palette.common.digitaBlack,
   marginTop: "20px",
   "& .paragraph":{
     lineHeight: "0.8",
@@ -24,9 +24,10 @@ export const nextButtonStyle={
   borderWidth: "0.4px",
   lineHeight: "10px",
   minWidth: "30px",
-  color: "#d1d1d1",
-  backgroundColor: "#ffffff",
-  border: "1px solid #d1d1d1",
+  color: "(theme:any)=>theme.palette.common.digitaGrey8",
+  backgroundColor: (theme:any)=>theme.palette.common.digitaWhite,
+  border: "1px solid #d1d1d1" ,
+  // border: `1px solid ${theme.palette.common.digitaGrey8}`,
   textAlign: "center",
   marginRight:"10px",
   width:"30px",
@@ -39,7 +40,7 @@ export const nextButtonStyle={
      alignItems: "center",
      justifyContent: "center",
      '&:hover': {
-     color:"ffffff",
+     color:(theme:any)=>theme.palette.common.digitaWhite,
     borderStyle:"none",
       backgroundColor:'#F03637',
     }, 
@@ -71,7 +72,7 @@ export const filledPrice ={
    maxWidth: "500", 
   fontWeight: "600",
   fontSize: "26px",
-  color: "#333333",
+  color: (theme:any)=>theme.palette.common.digitaBlack,
   margin: "20px 0 0",
   marginTop: "40px",
   backgroundColor: "#f5f5f5",
@@ -86,7 +87,7 @@ export const productTitle ={
   lineHeight: "1.2",
   textTransform: "none",
   padding:" 0 80px 0 0px",
-  color: "#333",
+  color: (theme:any)=>theme.palette.common.digitaBlack1,
 }
 export const contentWrap={
   padding: "50px 15px",
@@ -115,13 +116,13 @@ export const addToCartButton ={
 
 }
 export const ViewCartButton={
-    backgroundColor: "#333333",
+    backgroundColor: (theme:any)=>theme.palette.common.digitaBlack,
     border: "0",
     marginLeft: "0px",
     marginRight: "15px",
     lineHeight: "50px",
     padding: "0 46px",
-    color: "#ffffff",
+    color: (theme:any)=>theme.palette.common.digitaWhite,
     fontSize: "15px",
     fontWeight: "600",
     textTransform: "capitalize",
@@ -191,14 +192,14 @@ export const starLink={
 }
 export const PostStyle={
    width: '100%', maxWidth: "500", 
-  color: "#333333",
+  color: (theme:any)=>theme.palette.common.digitaBlack,
  
 
 }
 export const productMetaStyle={
   fontWeight: "400",
   fontSize:"20px",
-  color: "#333333",
+  color: (theme:any)=>theme.palette.common.digitaBlack,
   marginTop: "30px!important",
   borderBottom: 0,
   lineHeight:"2rem",
@@ -216,7 +217,7 @@ export const linkStyle={
   display: "flex",
   justifyContent: "start",
   alignItems: "center",
-color:"#F03637",
+color:(theme:any)=>theme.palette.common.digitaRed,
 padding:"10px 20px",
 fontSize:"16px",
 border:"none",
@@ -237,7 +238,7 @@ float:"left",
     lineHeight: "unset",
     textTransform: "capitalize",
     fontWeight: "500",
-    color:"#333333",
+    color:(theme:any)=>theme.palette.common.digitaBlack,
     padding:"10px 20px",
     fontSize:"16px",
     border:"none",
@@ -270,7 +271,7 @@ float:"left",
 //   height: "30px",
 //   border: "1px solid #ebebeb",
 //   transform: "translateY(-50%)",
-//   backgroundColor: "#ffffff",
+//   backgroundColor: (theme:any)=>theme.palette.common.digitaWhite,
 //   transition: "all 0.3s",
 //   top: "50%",
 //   opacity: "0",
@@ -301,7 +302,7 @@ float:"left",
  export const BoughtButton ={
    flex: 1,
    padding:"8px 20px", 
-   "&:hover": { backgroundColor: "#333" } ,
+   "&:hover": { backgroundColor: (theme:any)=>theme.palette.common.digitaBlack1 } ,
    fontWeight: "500",
    fontSize:"12px",
    marginTop:"-0.3rem",
@@ -320,15 +321,15 @@ float:"left",
     listStyleType:"circle",
   },
   "& .newPrice":{
-    color:"#F03637",
+    color:(theme:any)=>theme.palette.common.digitaRed,
   },
   "& .previousPrice":{
-    color:"#777777",
+    color:(theme:any)=>theme.palette.common.digitaGrey,
     
   }
  }
  export const boughttitleStyle={
-  color:"#333333",
+  color:(theme:any)=>theme.palette.common.digitaBlack,
   fontSize: "28px",
     fontWeight: "400",
     textTransform: "uppercase",
@@ -336,6 +337,7 @@ float:"left",
     marginBottom: "0px",
     paddingBottom: "10px",
  }
+
 
 // /* ================ End BoughtTogether ============== */
 
@@ -421,7 +423,7 @@ export const CascadingTabs={
 
   export const TabsTitrStyle={
     fontSize:"36px",
-    color:"#777777",
+    color:(theme:any)=>theme.palette.common.digitaGrey,
     fontWeight: "600",
     margin:"2rem 0",
     lineHeight:"3rem",
@@ -463,14 +465,14 @@ export const CascadingTabs={
   marginRight: "15px",
   marginTop:"50px",
   display:"block",
-  // backgroundColor: "#333333",
+  // backgroundColor: (theme:any)=>theme.palette.common.digitaBlack,
 }
 
 //   /* ============== ShareProduct  =============== */
 
 
   export const shareProductText={
-    color:"#777777",
+    color:(theme:any)=>theme.palette.common.digitaGrey,
     fontSize:"13px" ,
     margin:"0",
     lineHeight:"0",
@@ -666,7 +668,7 @@ export const wooPopupContent={
 // }
 
 // export const checkmarkCircle={
-//   stroke: "#f03637",
+//   stroke: (theme:any)=>theme.palette.common.digitaRed,
 //   strokeDasharray: "166",
 //   strokeDashoffset: "166",
 //   strokeWidth: "2",
@@ -686,7 +688,7 @@ export const popupTitle={
   margin: "0 0 10px",
   letterSpacing: "0.6px",
   fontWeight: "500",
-  color: "#333",
+  color: (theme:any)=>theme.palette.common.digitaBlack1,
   lineHeight: "2",
 }
 export const popupContent={
@@ -713,9 +715,9 @@ export const continueBtn={
   fontWeight: "400",
   letterSpacing: "normal",
   marginBottom: "10px",
-  borderColor: "#f03637",
-  color: "#ffffff",
-  backgroundColor: "#f03637",
+  borderColor: (theme:any)=>theme.palette.common.digitaRed,
+  color: (theme:any)=>theme.palette.common.digitaWhite,
+  backgroundColor: (theme:any)=>theme.palette.common.digitaRed,
   borderWidth: "3px",
   marginTop: {xs:"0",sm:"0",md:"10px",lg:"10px"},
   marginLeft: "5px",
@@ -733,9 +735,9 @@ export const cartBtn ={
     fontWeight: "400",
     letterSpacing: "normal",
     marginBottom: "10px",
-    borderColor: "#333333",
-    color: "#ffffff",
-    backgroundColor: "#333333",
+    borderColor: (theme:any)=>theme.palette.common.digitaBlack,
+    color: (theme:any)=>theme.palette.common.digitaWhite,
+    backgroundColor: (theme:any)=>theme.palette.common.digitaBlack,
     borderWidth: "3px",
     marginTop: "10px",
     display: "inlineblock",
@@ -760,5 +762,5 @@ export const NextProductModalText={
   fontWeight: "500",
   display:"-webkit-box",
   overflow: "hidden",
-  color: "#333",
+  color: (theme:any)=>theme.palette.common.digitaBlack1,
 }
