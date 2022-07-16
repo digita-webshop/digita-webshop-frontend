@@ -111,3 +111,21 @@ export const PaginationListItem = styled("li")({
     color: "white",
   },
 });
+
+/* ============== Delete modal =============== */
+
+export const cartModal = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "450px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 1,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 3,
+};

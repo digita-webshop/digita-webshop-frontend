@@ -5,7 +5,9 @@ import {
   Card,
   CardMedia,
   Typography,
+  Modal,
 } from "@mui/material";
+import {useState} from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 
@@ -16,6 +18,7 @@ import {
   deleteBtn,
   editBtn,
 } from "../../../Styles/PanelProducts";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 type T = {
   id: number;
@@ -25,6 +28,8 @@ type T = {
 };
 
 const Product = ({ name, price, image }: T) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <Card sx={cardWrapper}>
       <CardMedia
@@ -55,6 +60,15 @@ const Product = ({ name, price, image }: T) => {
             Delete
           </Button>
         </Box>
+
+        <Modal
+          open={open}
+          onClose={() => setOpen(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <DeleteModal />
+        </Modal>
       </CardContent>
     </Card>
   );
