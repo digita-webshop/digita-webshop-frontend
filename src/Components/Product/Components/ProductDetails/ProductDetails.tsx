@@ -108,7 +108,7 @@ onClick={() => {
       
   
 </Box>
-
+<Box sx={ { height:"50px",width:"100%"}}></Box>
 <Box sx={ filledPrice}><bdi>$52.00</bdi></Box>
       
       <Typography variant="body2" sx={ProductDetailsStyle} component="p">
