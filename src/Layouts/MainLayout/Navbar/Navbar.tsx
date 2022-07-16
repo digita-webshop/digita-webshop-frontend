@@ -52,6 +52,7 @@ function Navbar() {
   type Anchor = "left" | "right";
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => () => {
+    console.log(".....");
     if (!matches) {
       setDisplayDrawer({ ...displayDrawer, [anchor]: open });
     }

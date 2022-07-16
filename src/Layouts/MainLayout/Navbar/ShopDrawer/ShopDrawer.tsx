@@ -10,6 +10,7 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import { Navigate, useNavigate } from "react-router-dom";
 
 type Anchor = "left" | "right";
 type ShopDrawerProps = {
@@ -17,6 +18,8 @@ type ShopDrawerProps = {
   toggleDrawer: (anchor: Anchor, open: boolean) => () => void;
 };
 function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
+  const navigate = useNavigate();
+
   return (
     <Drawer
       anchor="right"
@@ -124,6 +127,10 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
             color="error"
             sx={{
               "&:hover": { backgroundColor: "#333333" },
+            }}
+            onClick={() => {
+              toggleDrawer("right", false)();
+              navigate("/cart");
             }}
           >
             VIEW CARD
