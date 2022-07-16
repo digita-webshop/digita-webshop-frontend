@@ -1,79 +1,96 @@
-import React, {Dispatch} from "react";
-import {Button, TableRow} from "@mui/material";
-import {ImageBox, StyledTableCell} from "../../../../Styles/Cart";
+import React, { Dispatch } from "react";
+import { Box, Button, TableRow, useMediaQuery, useTheme } from "@mui/material";
+import {
+  closeButtonStyles,
+  ImageBox,
+  StyledTableCell,
+} from "../../../../Styles/Cart";
 import CloseIcon from "@mui/icons-material/Close";
 import QuantityInput from "../../QuantityInput";
 import CartItem from "../../Types/CartItemType";
-import {handleRowDelete} from "../../Services";
-import {UpdateCart} from "../../ShoppingCart";
-import {UpdateType} from "../../CartUpdated";
+import { handleRowDelete } from "../../Services";
+import { UpdateCart } from "../../ShoppingCart";
+import { UpdateType } from "../../CartUpdated";
 
 type Props = {
-    row: CartItem;
-    cartList: CartItem[]
-    setUpdateButtonDisabled: Dispatch<React.SetStateAction<boolean>>;
-    updateButtonDisabled: boolean
-    values: CartItem[];
-    setValues: React.Dispatch<React.SetStateAction<CartItem[]>>
-    setCartUpdated: React.Dispatch<React.SetStateAction<UpdateCart | null>>
-}
+  row: CartItem;
+  cartList: CartItem[];
+  setUpdateButtonDisabled: Dispatch<React.SetStateAction<boolean>>;
+  updateButtonDisabled: boolean;
+  values: CartItem[];
+  setValues: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  setCartUpdated: React.Dispatch<React.SetStateAction<UpdateCart | null>>;
+};
 
-const CartListTableRow = ({row, cartList, values, setValues, setUpdateButtonDisabled, setCartUpdated, updateButtonDisabled}: Props) => {
+const CartListTableRow = ({
+  row,
+  cartList,
+  values,
+  setValues,
+  setUpdateButtonDisabled,
+  setCartUpdated,
+  updateButtonDisabled,
+}: Props) => {
+  const theme = useTheme();
+  const matchesSm = useMediaQuery(theme.breakpoints.down("sm"));
 
-    return <TableRow key={row.id}>
+  const deleteCartHandler = () => {
+    handleRowDelete(row.id);
+    setCartUpdated((prevState) => {
+      return {
+        ...prevState,
+        item: cartList.filter((item) => item.id === row.id)[0],
+        type: UpdateType.Remove,
+      };
+    });
+  };
+  return (
+    <TableRow key={row.id}>
+      {!matchesSm && (
         <StyledTableCell align="left">
-            <Button
-                onClick={() => {
-                    handleRowDelete(row.id)
-                    setCartUpdated(prevState => {
-                        return {...prevState, item: cartList.filter((item=>item.id==row.id))[0], type: UpdateType.Remove}
-                    })
-                }}
-                sx={{
-                    border: '1px solid #333333',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    fontSize: '1.1rem',
-                    width: '25px',
-                    minWidth: 'unset',
-                    height: '25px',
-                    "&:hover": {
-                        backgroundColor: 'unset',
-                        borderColor: '#f03637',
-                        "svg": {
-                            color: '#f03637'
-                        }
-                    }
-                }}
-            >
-                <CloseIcon sx={{fontSize: 'inherit', color: '#333333'}}/>
-            </Button>
+          <Button onClick={deleteCartHandler} sx={closeButtonStyles}>
+            <CloseIcon sx={{ fontSize: "inherit", color: "#333333" }} />
+          </Button>
         </StyledTableCell>
-        <StyledTableCell align="left">
-            <ImageBox>
-                <img
-                    alt={row?.alt}
-                    src={row?.image}/>
-            </ImageBox>
-        </StyledTableCell>
-        <StyledTableCell align="left" component="th" scope="row">
-            {row?.product}
-        </StyledTableCell>
-        <StyledTableCell sx={{color: '#f03637'}} align="center">${row?.price.toFixed(2)}</StyledTableCell>
-        <StyledTableCell align="left">
-            {row?.total > 1 ?
-                <QuantityInput setUpdateButtonDisabled={setUpdateButtonDisabled}
-                               updateButtonDisabled={updateButtonDisabled} row={row}
-                               cartList={cartList}
-                               values={values}
-                               setValues={setValues}
-                />
-                : row?.quantity}</StyledTableCell>
-        <StyledTableCell
-            align="right"
-            sx={{color: '#f03637'}}>${(row?.quantity * +row.price).toFixed(2)}</StyledTableCell>
+      )}
+      <StyledTableCell align="left">
+        <ImageBox>
+          <img alt={row?.alt} src={row?.image} />
+          {matchesSm && (
+            <Box onClick={deleteCartHandler}>
+              <CloseIcon sx={{ fontSize: "28px", color: "#333333" }} />
+            </Box>
+          )}
+        </ImageBox>
+      </StyledTableCell>
+      <StyledTableCell align="left" scope="row">
+        <span>product:</span>
+        {row?.product}
+      </StyledTableCell>
+      <StyledTableCell sx={{ color: "#f03637" }} align="left">
+        <span>price:</span>${row?.price.toFixed(2)}
+      </StyledTableCell>
+      <StyledTableCell align="left">
+        <span>quantity:</span>
+        {row?.total > 1 ? (
+          <QuantityInput
+            setUpdateButtonDisabled={setUpdateButtonDisabled}
+            updateButtonDisabled={updateButtonDisabled}
+            row={row}
+            cartList={cartList}
+            values={values}
+            setValues={setValues}
+          />
+        ) : (
+          row?.quantity
+        )}
+      </StyledTableCell>
+      <StyledTableCell align="right" sx={{ color: "#f03637" }}>
+        ${(row?.quantity * +row.price).toFixed(2)}
+        <span>quantity:</span>
+      </StyledTableCell>
     </TableRow>
-}
+  );
+};
 
-export default CartListTableRow
+export default CartListTableRow;
