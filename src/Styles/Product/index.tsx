@@ -120,7 +120,7 @@ export const addToCartButton ={
   padding: "0 46px",
   fontSize: "15px",
   fontWeight: "600",
- 
+
   textTransform: "capitalize",
   webkitBorderRadius: "0px",
   mozborderRadius: "0px",
@@ -128,6 +128,16 @@ export const addToCartButton ={
   borderRadius: "0px",
   letterSpacing: "normal",
   marginRight: "15px",
+  "&:active": {
+    "& .ShowViewCart":{
+      display:"inline-block",
+  
+  },},
+  "&:focus": {
+    "& .ShowViewCart":{
+      display:"inline-block",
+  
+  },}
  
   // display:"block",
   // backgroundColor: "#333333",
@@ -162,8 +172,13 @@ export const CartButtonsStyle={
   "& .ShowViewCart":{
     display:"none",
   },
-
+ 
+   
+    
+ 
 }
+
+
 export const ComperWishStyle={
   width:"100%",
   marginTop:"10px",
@@ -384,7 +399,15 @@ export const ShowStyle ={
     display: {xs:"block", sm: "block", md: "none", lg: "none" },
   },
 }
+export const reviewsRating={
+  color:"77777",
+  "&:hover": {
+        
+    color: "#000000",
+  },
+  margin:"5px"
 
+}
   export const ProductTextStyle={
     color:"#777",
     fontSize:{ sm: "16px", md: "16px" },
@@ -400,6 +423,10 @@ export const ShowStyle ={
     textIndet:"0",
     marginLeft:"-1rem",
   },
+  "& .userName":{
+      fontWeight: "600",
+       color: "#222",
+  }
 };
  
 export const CascadingTabs={
@@ -656,6 +683,14 @@ export const wooPopupInner={
   textAlign: "center",
   zIndex: "1000",
 
+  "& .price":{
+    
+     
+    
+      color: '#F03637',
+   
+  }
+
 }
 export const popupWrap={
   // width:"100%",
@@ -669,11 +704,12 @@ export const popupWrap={
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 550,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  // border: '2px solid #000',
   boxShadow: 24,
   p: 4,
+  padding:"10px 0",
 }
 export const wooPopupContent={
   position: "relative",
@@ -733,6 +769,7 @@ export const buttonsWrap={
     alignItems: "center",
 }
 export const continueBtn={
+  height: "50px",
   Width: "200px",
   borderRadius: "0px",
   textTransform: "capitalize",
@@ -745,10 +782,13 @@ export const continueBtn={
   backgroundColor: "#f03637",
   borderWidth: "3px",
   marginTop: {xs:"0",sm:"0",md:"10px",lg:"10px"},
-  marginLeft: {xs:"0",sm:"0",md:"5px",lg:"5px"},
+  marginLeft: "5px",
+  minWidth: "200px",
 
 }
 export const cartBtn ={
+  Width: "200px",
+  height: "50px",
   marginnRight: {xs:"0",sm:"0",md:"5px",lg:"5px"},
   borderRadius: "0px",
     textTransform: "capitalize",
