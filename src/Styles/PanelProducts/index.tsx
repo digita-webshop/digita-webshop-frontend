@@ -119,7 +119,7 @@ export const cartModal = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "450px",
+  width: "300px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
