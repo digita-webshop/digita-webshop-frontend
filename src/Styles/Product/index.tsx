@@ -24,7 +24,6 @@ export const nextButtonStyle={
   borderWidth: "0.4px",
   lineHeight: "10px",
   minWidth: "30px",
- 
   color: "#d1d1d1",
   backgroundColor: "#ffffff",
   border: "1px solid #d1d1d1",
@@ -32,9 +31,6 @@ export const nextButtonStyle={
   marginRight:"10px",
   width:"30px",
   height:"30px",
-  // display: "inline-block",
-  
-  
   padding: "10px",
   cursor: "pointer",
   fontSize:"13px",
@@ -42,7 +38,6 @@ export const nextButtonStyle={
      flexDirection: "row" ,
      alignItems: "center",
      justifyContent: "center",
-
      '&:hover': {
      color:"ffffff",
     borderStyle:"none",
@@ -57,38 +52,22 @@ marginLeft:"3.5px"
    
 
 }
-export const Modalstyle = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-}
+
 export const nextButton={
-  // position:"absolute",
-  // right:"25",
-  // top:"0",
   float:"right",
   marginTop:"-1.5rem",
   display:{xs:"none",sm:"none",md:"flex",lg:"flex",},
-  
   flexDirection: "row" ,
   alignItems: "center",
   justifyContent: "center",
 
 }
-export const TitleSectionStyle={
-  // position:"relative",
+export const TopSectionStyle={
   marginBottom:"10px",
 }
 export const filledPrice ={
   width: '100%',
   boxSizing:"border-box",
-
    maxWidth: "500", 
   fontWeight: "600",
   fontSize: "26px",
@@ -120,12 +99,7 @@ export const addToCartButton ={
   padding: "0 46px",
   fontSize: "15px",
   fontWeight: "600",
-
   textTransform: "capitalize",
-  webkitBorderRadius: "0px",
-  mozborderRadius: "0px",
-  msBorderRadius: "0px",
-  borderRadius: "0px",
   letterSpacing: "normal",
   marginRight: "15px",
   "&:active": {
@@ -138,12 +112,9 @@ export const addToCartButton ={
       display:"inline-block",
   
   },}
- 
-  // display:"block",
-  // backgroundColor: "#333333",
+
 }
 export const ViewCartButton={
-  // float: "left",
     backgroundColor: "#333333",
     border: "0",
     marginLeft: "0px",
@@ -153,12 +124,8 @@ export const ViewCartButton={
     color: "#ffffff",
     fontSize: "15px",
     fontWeight: "600",
-   
     textTransform: "capitalize",
     letterSpacing: "normal",
-   
-   
-
 }
 export const CartButtonsStyle={
   width:"100%",
@@ -240,33 +207,21 @@ export const productMetaStyle={
 }
 export const linkStyle={
   '&:hover': {
-     
-    
       color: '#F03637',
     }, 
-    "& .customerReview":{
-      // marginTop: "50px",
-    },
-    
- 
 }
 
   export const WishlistButton={
-    
   flexDirection: "row",
   display: "flex",
   justifyContent: "start",
   alignItems: "center",
-
 color:"#F03637",
 padding:"10px 20px",
-
 fontSize:"16px",
 border:"none",
 float:"left",
 '&:hover': {
-     
-    
   color: '#F03637',
 }, 
   }
@@ -280,7 +235,6 @@ float:"left",
     transition: "all 0.4s ease",
     background: "transparent",
     lineHeight: "unset",
-    
     textTransform: "capitalize",
     fontWeight: "500",
     color:"#333333",
@@ -288,43 +242,41 @@ float:"left",
     fontSize:"16px",
     border:"none",
     '&:hover': {
-     
-    
       color: '#F03637',
     }, 
   }
 //  /* ================  ProductSlider ============== */
-export const zoomImg ={
-  position: "absolute",
-  top: "-238.398px",
-  left: "-170.479px",
-  opacity: "0",
-  width: "670px",
-  height: "670px",
-  border: "none",
-  maxWidth: "none",
-  maxHeight: "none",
-  backgroundColor: "#fff",
-  verticalAlign: "middle"
-}
-export const slideImg={
-  border: "1px solid #ebebeb",
-  margin: "auto",
-  opacity: "1",
-  transition: "all 0.2s ease",
-}
-export const slickArrow={
-  width: "30px !important",
-  height: "30px",
-  border: "1px solid #ebebeb",
-  transform: "translateY(-50%)",
-  backgroundColor: "#ffffff",
-  transition: "all 0.3s",
-  top: "50%",
-  opacity: "0",
-  right: "30px",
-  cursor: "pointer",
-}
+// export const zoomImg ={
+//   position: "absolute",
+//   top: "-238.398px",
+//   left: "-170.479px",
+//   opacity: "0",
+//   width: "670px",
+//   height: "670px",
+//   border: "none",
+//   maxWidth: "none",
+//   maxHeight: "none",
+//   backgroundColor: "#fff",
+//   verticalAlign: "middle"
+// }
+// export const slideImg={
+//   border: "1px solid #ebebeb",
+//   margin: "auto",
+//   opacity: "1",
+//   transition: "all 0.2s ease",
+// }
+// export const slickArrow={
+//   width: "30px !important",
+//   height: "30px",
+//   border: "1px solid #ebebeb",
+//   transform: "translateY(-50%)",
+//   backgroundColor: "#ffffff",
+//   transition: "all 0.3s",
+//   top: "50%",
+//   opacity: "0",
+//   right: "30px",
+//   cursor: "pointer",
+// }
 
     
 //  /* ================  BoughtToGether ============== */
@@ -337,7 +289,8 @@ export const slickArrow={
   display: "flex",
   flexDirection:"row",
   justifyContent: "flex-start",
-  alignItems: "center",marginLeft:"-1rem",
+  alignItems: "center",
+  marginLeft:"-1rem",
  }
  export const BoughtTextStyle={
   color:"#777",
@@ -382,15 +335,11 @@ export const slickArrow={
     lineHeight: "1em",
     marginBottom: "0px",
     paddingBottom: "10px",
-  
- 
-
  }
 
 // /* ================ End BoughtTogether ============== */
 
 // /* ================ Tabs ============== */
-// styled("div")(({ theme }) => (
 export const ShowStyle ={
   "& .TabsShow":{
     display: {xs:"none", sm: "none", md: "block", lg: "block" },
@@ -432,15 +381,13 @@ export const reviewsRating={
 export const CascadingTabs={
   background: "#f5f5f5",
    padding:"1rem ",
-    
     width:"100%",
     display: "block",
     overflowX: "auto",
-   
-  
     margin: "20px -20px",
     textAlign: "left",
   }
+  
   export const CascadingTabsTitle={
     color: "#ababab",
     fontWeight: "500!important",
@@ -463,18 +410,13 @@ export const CascadingTabs={
     whiteSpace: "nowrap",
     textAlign: "-webkit-match-parent",
     height:"100%",
-   
-      "&:hover": {
-        
+      "&:hover": {     
         color: "#000000",
       },
       "&:focus": {
         borderBottomStyle:"solid",
         bordeColor:'#F03637',
       },
-    
-  
-
   }
 
   export const TabsTitrStyle={
@@ -693,20 +635,12 @@ export const wooPopupInner={
 
 }
 export const popupWrap={
-  // width:"100%",
-  // textAlign:"center",
-  // position: "fixed",
- 
-  // zIndex: "9999",
-  // opacity: "1",
-  // display: "block",
   position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 550,
   bgcolor: 'background.paper',
-  // border: '2px solid #000',
   boxShadow: 24,
   p: 4,
   padding:"10px 0",
@@ -716,36 +650,37 @@ export const wooPopupContent={
   transform: "none",
   top: "auto",
 }
-export const checkmark={
-  boxShadow: "inset 0 0 0 #f03637",
-  width: "60px",
-  height: "60px",
-  marginBottom: "20px",
-  display: "block",
-  borderRadius: "50%",
-  strokeWidth: "2",
-  stroke: "#fff",
-  strokeMiterlimit: "10",
-  margin: "0 auto 30px auto",
-  animation: "fill .4s ease-in-out .4s forwards,scale .3s ease-in-out .9s both",
-}
 
-export const checkmarkCircle={
-  stroke: "#f03637",
-  strokeDasharray: "166",
-  strokeDashoffset: "166",
-  strokeWidth: "2",
-  strokeMiterlimit: "10",
-  fill: "none",
-    animation: "stroke .6s cubic-bezier(.65,0,.45,1) forwards",
-}
+// export const checkmark={
+//   boxShadow: "inset 0 0 0 #f03637",
+//   width: "60px",
+//   height: "60px",
+//   marginBottom: "20px",
+//   display: "block",
+//   borderRadius: "50%",
+//   strokeWidth: "2",
+//   stroke: "#fff",
+//   strokeMiterlimit: "10",
+//   margin: "0 auto 30px auto",
+//   animation: "fill .4s ease-in-out .4s forwards,scale .3s ease-in-out .9s both",
+// }
 
-export const checkmarkCheck={
-  transformOrigin: "50% 50%",
-  strokeDasharray: "48",
-  strokeDashoffset: "48",
-  animation: "stroke .3s cubic-bezier(.65,0,.45,1) .8s forwards",
-}
+// export const checkmarkCircle={
+//   stroke: "#f03637",
+//   strokeDasharray: "166",
+//   strokeDashoffset: "166",
+//   strokeWidth: "2",
+//   strokeMiterlimit: "10",
+//   fill: "none",
+//     animation: "stroke .6s cubic-bezier(.65,0,.45,1) forwards",
+// }
+
+// export const checkmarkCheck={
+//   transformOrigin: "50% 50%",
+//   strokeDasharray: "48",
+//   strokeDashoffset: "48",
+//   animation: "stroke .3s cubic-bezier(.65,0,.45,1) .8s forwards",
+// }
 export const popupTitle={
   fontSize: "20px",
   margin: "0 0 10px",
@@ -768,6 +703,7 @@ export const buttonsWrap={
     justifyContent: "center",
     alignItems: "center",
 }
+
 export const continueBtn={
   height: "50px",
   Width: "200px",
@@ -786,6 +722,7 @@ export const continueBtn={
   minWidth: "200px",
 
 }
+
 export const cartBtn ={
   Width: "200px",
   height: "50px",
@@ -823,7 +760,5 @@ export const NextProductModalText={
   fontWeight: "500",
   display:"-webkit-box",
   overflow: "hidden",
-  // webkitLineClamp: "2",
-  // -webkit-box-orient: "vertical",
   color: "#333",
 }

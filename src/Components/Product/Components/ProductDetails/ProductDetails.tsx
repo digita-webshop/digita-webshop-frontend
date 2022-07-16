@@ -31,7 +31,7 @@ import {
   filledPrice,
   nextButton,
   nextButtonStyle,
-  TitleSectionStyle,
+  TopSectionStyle,
   ViewCartButton,
   starLink,
   ComperWishStyle
@@ -61,7 +61,7 @@ const ProductDetails = () => {
   </Grid>
   <Grid item xs={12} md={6}>
   <Box sx={PostStyle}>
-      <Box sx={TitleSectionStyle}>
+      <Box sx={TopSectionStyle}>
       <Typography variant="h4" sx={productTitle} component="div">
       Microsoft Xbox One S Blue Grey
       </Typography>
