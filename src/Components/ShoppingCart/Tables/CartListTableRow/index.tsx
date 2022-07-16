@@ -70,7 +70,7 @@ const CartListTableRow = ({
       <StyledTableCell sx={{ color: "#f03637" }} align="left">
         <span>price:</span>${row?.price.toFixed(2)}
       </StyledTableCell>
-      <StyledTableCell align="left">
+      <StyledTableCell align="center">
         <span>quantity:</span>
         {row?.total > 1 ? (
           <QuantityInput

@@ -31,6 +31,13 @@ function Icons({
   matches,
 }: Props) {
   const navigate = useNavigate();
+  const shopClickHandler = () => {
+    if (!matches) {
+      toggleDrawer("right", true)();
+    } else {
+      navigate("/cart");
+    }
+  };
   return (
     <>
       <Box
@@ -91,7 +98,7 @@ function Icons({
           </Badge>
         </IconWrapper>
         <IconWrapper
-          onClick={toggleDrawer("right", true)}
+          onClick={shopClickHandler}
           sx={{
             "&:hover .shop-cart": {
               display: matches ? "inline-block" : "none",
