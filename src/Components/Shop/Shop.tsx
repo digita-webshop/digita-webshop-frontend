@@ -66,7 +66,7 @@ function Shop() {
                 <Fragment>
                   {selectedLayout.grid && (
                     <Fade in={selectedLayout.grid}>
-                      <Grid item xs={6} sm={4} md={4} key={item.id}>
+                      <Grid item xs={12} sm={4} md={4} key={item.id}>
                         <ProductItem
                           id={item.id}
                           name={item.name}

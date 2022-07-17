@@ -31,7 +31,7 @@ const Products = () => {
         <Box>
           <Grid container spacing={{ xs: 2, md: 3 }}>
             {productData.slice(0, 8).map((item) => (
-              <Grid item xs={6} sm={4} md={3} key={item.id}>
+              <Grid item xs={12} sm={4} md={3} key={item.id}>
                 <ProductItem
                   id={item.id}
                   name={item.name}
