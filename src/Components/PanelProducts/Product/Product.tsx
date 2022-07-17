@@ -28,7 +28,7 @@ type T = {
   onRemove: Function;
 };
 
-const Product = ({ id ,name, price, image, onRemove }: T) => {
+const Product = ({ id, name, price, image, onRemove }: T) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -91,6 +91,7 @@ const Product = ({ id ,name, price, image, onRemove }: T) => {
                   p: "0.8rem 2.2rem",
                   borderRadius: "4px",
                   fontSize: "15px",
+                  height: "46px",
                 }}
                 onClick={() => setOpen(false)}
               >
@@ -104,6 +105,7 @@ const Product = ({ id ,name, price, image, onRemove }: T) => {
                   background: "#f03637",
                   borderRadius: "4px",
                   fontSize: "15px",
+                  height: "46px",
                   "&:hover": { background: "#333" },
                 }}
               >
