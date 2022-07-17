@@ -1,7 +1,7 @@
 import CardMedia from '@mui/material/CardMedia';
 import Link from '@mui/material/Link';
 import { Link as RouterLink } from 'react-router-dom';
-// title.replace(/\s+/g, '-')
+
 type props = {
   id: number;
   title: string;
