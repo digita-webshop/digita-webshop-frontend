@@ -5,9 +5,12 @@ import {
   Card,
   CardMedia,
   Typography,
+  Modal,
 } from "@mui/material";
+import { useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
+import { cartModal } from "../../../Styles/PanelProducts";
 
 import {
   cardWrapper,
@@ -22,9 +25,12 @@ type T = {
   name: string;
   price: number;
   image: string;
+  onRemove: Function;
 };
 
-const Product = ({ name, price, image }: T) => {
+const Product = ({ id, name, price, image, onRemove }: T) => {
+  const [open, setOpen] = useState(false);
+
   return (
     <Card sx={cardWrapper}>
       <CardMedia
@@ -50,11 +56,64 @@ const Product = ({ name, price, image }: T) => {
             <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
             Edit
           </Button>
-          <Button variant="contained" sx={deleteBtn}>
+          <Button
+            variant="contained"
+            sx={deleteBtn}
+            onClick={() => setOpen(true)}
+          >
             <DeleteForeverIcon sx={{ margin: "0 0.2rem" }} />
             Delete
           </Button>
         </Box>
+
+        <Modal
+          open={open}
+          onClose={() => setOpen(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={cartModal}>
+            <DeleteForeverIcon
+              sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }}
+            />
+            <Typography
+              id="modal-modal-title"
+              variant="h5"
+              component="h2"
+              sx={{ textAlign: "center" }}
+            >
+              Delete this item?
+            </Typography>
+            <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>
+              <Button
+                variant="contained"
+                sx={{
+                  p: "0.8rem 2.2rem",
+                  borderRadius: "4px",
+                  fontSize: "15px",
+                  height: "46px",
+                }}
+                onClick={() => setOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={() => onRemove(id)}
+                variant="contained"
+                sx={{
+                  p: "0.8rem 2.2rem",
+                  background: "#f03637",
+                  borderRadius: "4px",
+                  fontSize: "15px",
+                  height: "46px",
+                  "&:hover": { background: "#333" },
+                }}
+              >
+                Delete
+              </Button>
+            </Box>
+          </Box>
+        </Modal>
       </CardContent>
     </Card>
   );
