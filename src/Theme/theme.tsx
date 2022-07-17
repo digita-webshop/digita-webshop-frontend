@@ -24,6 +24,7 @@ declare module "@mui/material/styles/createPalette" {
     PanelDarkRed: string;
     panelActiveRed: string;
     digitaWhite: string;
+    digitaYellow:string;
   }
 }
 
@@ -50,6 +51,7 @@ export const theme = createTheme({
       PanelDarkRed: "#5d2936 ",
       panelActiveRed: "#fdebeb ",
       digitaWhite:"#ffffff",
+      digitaYellow:"rgb(254,248,76)",
     },
     primary: {
       main: "#333333",

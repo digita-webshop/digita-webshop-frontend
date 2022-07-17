@@ -361,6 +361,15 @@ float:"left",
 // /* ================ End BoughtTogether ============== */
 
 // /* ================ Tabs ============== */
+export const TabsTitrStyle={
+  fontSize:"36px",
+  color:(theme:any)=>theme.palette.common.digitaGrey,
+  fontWeight: "600",
+  margin:"2rem 0",
+  lineHeight:"3rem",
+  // fontSize:{xs:"20px",sm:"20px",md:"30px",lg:"30px"}
+
+}
 export const ShowStyle ={
   "& .TabsShow":{
     display: {xs:"none", sm: "none", md: "block", lg: "block" },
@@ -390,7 +399,7 @@ color:"#ddd",
     margin:"2rem 0",
     lineHeight:"1.75rem",
     "& .answer":{
-      width: "auto",
+      width: "60px",
       display:"inline-block",
       margin:"0 20px",
     },
@@ -411,7 +420,13 @@ color:"#ddd",
   "& .userName":{
       fontWeight: "600",
        color: "#222",
+  },
+  "& .input":{
+    "&:focus": {
+      borderColor:"#F03637"
+    }
   }
+
 };
  
 export const CascadingTabs={
@@ -438,7 +453,7 @@ export const CascadingTabs={
   padding: "0 23px",
   fontSize: "13px",
   fontWeight: "600",
-  marginBottom: "15px",
+  marginBottom: "50px",
   textTransform: "capitalize",
   webkitBorderRadius: "0px",
   mozborderRadius: "0px",
@@ -446,7 +461,7 @@ export const CascadingTabs={
   borderRadius: "0px",
   letterSpacing: "normal",
   marginRight: "15px",
-  marginTop:"50px",
+  marginTop:"15px",
   display:"block",
   // backgroundColor: (theme:any)=>theme.palette.common.digitaBlack,
 }

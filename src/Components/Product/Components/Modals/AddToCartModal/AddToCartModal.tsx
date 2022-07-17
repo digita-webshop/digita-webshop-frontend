@@ -29,10 +29,15 @@ export default function BasicModal() {
   return (
     <Box sx={popupWrap}>
     
-   
+  
       
        <Box sx={ PopupInner}>
        <Box sx={ PopupContent}>
+     
+ <Typography variant="h3" component="h3" sx={popupTitle}>
+ <CheckCircleRoundedIcon  sx={{color:"#f03637",    fontSize: "120px",
+    fontWeight: "600",}}/>
+          </Typography>
        <Typography variant="h3" component="h3" sx={popupTitle}>
        Item added to your cart
           </Typography>
