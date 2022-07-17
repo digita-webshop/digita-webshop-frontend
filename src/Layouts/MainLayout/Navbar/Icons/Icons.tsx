@@ -98,32 +98,33 @@ function Icons({
           </Badge>
         </IconWrapper>
         <IconWrapper
-          onClick={shopClickHandler}
           sx={{
             "&:hover .shop-cart": {
               display: matches ? "inline-block" : "none",
             },
           }}
         >
-          <Badge
-            badgeContent={4}
-            overlap="circular"
-            color="error"
-            sx={{
-              margin: "auto",
-            }}
-          >
-            <LocalGroceryStoreOutlined
-              color="primary"
+          <Box onClick={shopClickHandler} sx={{ display: "flex" }}>
+            <Badge
+              badgeContent={4}
+              overlap="circular"
+              color="error"
               sx={{
-                marginLeft: "12px",
-                transition: "all 200ms",
-                cursor: "pointer",
-                fontSize: "28px",
+                margin: "auto",
               }}
-              className="local-grocery-icon"
-            />
-          </Badge>
+            >
+              <LocalGroceryStoreOutlined
+                color="primary"
+                sx={{
+                  marginLeft: "12px",
+                  transition: "all 200ms",
+                  cursor: "pointer",
+                  fontSize: "28px",
+                }}
+                className="local-grocery-icon"
+              />
+            </Badge>
+          </Box>
           <ShopCart />
         </IconWrapper>
       </Box>

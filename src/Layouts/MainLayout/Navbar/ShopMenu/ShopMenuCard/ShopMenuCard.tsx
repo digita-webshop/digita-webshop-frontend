@@ -60,7 +60,7 @@ function ShopMenuCard() {
             fontWeight={500}
             color={"white"}
             textTransform={"capitalize"}
-            sx={{ fontSize: { md: "32px", lg: "46px" } }}
+            sx={{ fontSize: { md: "25px", lg: "35px" } }}
           >
             best gaming pc 2022
           </Typography>

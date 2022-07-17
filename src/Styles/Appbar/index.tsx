@@ -102,14 +102,16 @@ export const IconWrapper = styled(Box)(({ theme }) => ({
   height: "100%",
   display: "flex",
   cursor: "pointer",
-  "&:hover .MuiSvgIcon-root": { color: theme.palette.common.digitaRed },
+  div: {
+    "&:hover .MuiSvgIcon-root": { color: theme.palette.common.digitaRed },
+  },
 }));
 export const ShopMenuWrapper = styled(Box)(({ theme }) => ({
   border: "1px solid #dedede",
   boxSizing: "border-box",
   backgroundColor: "white",
   position: "absolute",
-  left: "-269px",
+  left: "-191px",
   right: 0,
   top: 90,
   padding: "24px 8px",
@@ -120,6 +122,7 @@ export const ShopMenuWrapper = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.up("xl")]: {
     width: "1560px",
+    left: "-203px",
   },
 }));
 
