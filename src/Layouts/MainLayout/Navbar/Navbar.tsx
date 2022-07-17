@@ -52,7 +52,6 @@ function Navbar() {
   type Anchor = "left" | "right";
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => () => {
-    console.log(".....");
     if (!matches) {
       setDisplayDrawer({ ...displayDrawer, [anchor]: open });
     }
@@ -114,23 +113,27 @@ function Navbar() {
                         label={item.name}
                         component={() => (
                           <Box
-                            component={Link}
-                            to={item.route}
-                            className="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-csphq2-MuiButtonBase-root-MuiTab-root"
                             sx={{
                               "&:hover .shop-menu": {
                                 display:
                                   item.name === "shop" ? "block" : "none",
                               },
-                              "&:hover": {
-                                zIndex: 99,
-                              },
-                              overflow: "visible !important",
                             }}
                           >
-                            <Box>{item.name}</Box>
-                            {item.name === "shop" && <KeyboardArrowDown />}
-
+                            <Box
+                              component={Link}
+                              to={item.route}
+                              className="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-csphq2-MuiButtonBase-root-MuiTab-root"
+                              sx={{
+                                "&:hover": {
+                                  zIndex: 99,
+                                },
+                                overflow: "visible !important",
+                              }}
+                            >
+                              <Box>{item.name}</Box>
+                              {item.name === "shop" && <KeyboardArrowDown />}
+                            </Box>
                             {item.name === "shop" && (
                               <ShopMenuWrapper className={"shop-menu"}>
                                 <ShopMenu />
