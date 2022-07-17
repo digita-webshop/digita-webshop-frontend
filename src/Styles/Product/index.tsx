@@ -370,19 +370,34 @@ export const ShowStyle ={
   },
 }
 export const reviewsRating={
-  color:"77777",
+
+color:"#ddd",
   "&:hover": {
         
-    color: "#000000",
+    color:(theme:any)=>theme.palette.common.digitaYellow,
   },
-  margin:"5px"
+  margin:"5px",
+  height: "1em",
+    lineHeight: "1em",
+    fontSize: "20px",
+    width: "5.4em",
+    fontFamily: "star",
 
 }
   export const ProductTextStyle={
     color:"#777",
     fontSize:{ sm: "16px", md: "16px" },
     margin:"2rem 0",
-    lineHeight:"1.75rem"
+    lineHeight:"1.75rem",
+    "& .answer":{
+      width: "auto",
+      display:"inline-block",
+      margin:"0 20px",
+    },
+    "& .Checkbox":{
+     marginBottom:"0",
+     marginTop:"15px",
+    },
   }
 
   export const ProductContentStyle = {
@@ -415,57 +430,6 @@ export const CascadingTabs={
     fontSize: "20px",
     textIndet:"20px",
   }
-  export const TabLabel={
-    textIndet:"1rem",
-    color: "#ababab",
-    margin:"1rem",
-    textTransform: "uppercase",
-    display: "inline-block",
-    fontSize: "16px!important",
-    padding: "0!important",
-    lineHeight: "26px",
-    border: "none!important",
-    fontWeight: "500",
-    fontFamily: "Jost, Sans-serif",
-    cursor: "pointer",
-    whiteSpace: "nowrap",
-    textAlign: "-webkit-match-parent",
-    height:"100%",
-      "&:hover": {     
-        color: "#000000",
-      },
-      "&:focus": {
-        borderBottomStyle:"solid",
-        bordeColor:'#F03637',
-      },
-  }
-
-  export const TabsTitrStyle={
-    fontSize:"36px",
-    color:(theme:any)=>theme.palette.common.digitaGrey,
-    fontWeight: "600",
-    margin:"2rem 0",
-    lineHeight:"3rem",
-    // fontSize:{xs:"20px",sm:"20px",md:"30px",lg:"30px"}
-
-  }
-   export const tabsStyle={
-  display: "block",
-  position: "relative",
-  width: "100%",
-  border:"none",
-  marginBottom: "0",
-  textAlign: "center",
-  marginTop: "0px",
-  background: "#f5f5f5",
-  color: "#ababab",
-  fontSize: "16px",
-  fontWeight: "500",
-  fontFamily: "inherit",
-  padding:"0",
-  // overflowX: "hidden",
- 
- }
 
 
  export const SubmitButton ={
@@ -677,36 +641,7 @@ export const  PopupContent={
  
 }
 
-// export const checkmark={
-//   boxShadow: "inset 0 0 0 #f03637",
-//   width: "60px",
-//   height: "60px",
-//   marginBottom: "20px",
-//   display: "block",
-//   borderRadius: "50%",
-//   strokeWidth: "2",
-//   stroke: "#fff",
-//   strokeMiterlimit: "10",
-//   margin: "0 auto 30px auto",
-//   animation: "fill .4s ease-in-out .4s forwards,scale .3s ease-in-out .9s both",
-// }
 
-// export const checkmarkCircle={
-//   stroke: (theme:any)=>theme.palette.common.digitaRed,
-//   strokeDasharray: "166",
-//   strokeDashoffset: "166",
-//   strokeWidth: "2",
-//   strokeMiterlimit: "10",
-//   fill: "none",
-//     animation: "stroke .6s cubic-bezier(.65,0,.45,1) forwards",
-// }
-
-// export const checkmarkCheck={
-//   transformOrigin: "50% 50%",
-//   strokeDasharray: "48",
-//   strokeDashoffset: "48",
-//   animation: "stroke .3s cubic-bezier(.65,0,.45,1) .8s forwards",
-// }
 export const popupTitle={
   fontSize: "20px",
   // margin: " 10%",

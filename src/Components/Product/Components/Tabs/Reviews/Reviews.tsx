@@ -24,30 +24,54 @@ const Reviews = () => {
       <Box sx={{ display: "flex", justifyContent: "center" }}>
       <Box sx={ProductContentStyle}>
   
-           <Box >
-        
-        <Box>
-        <Typography variant="body2" component="p" sx={{float:"left"}}>
-     <span className="userName">Peter Giroud </span>    <span> – September 17, 2019</span>
+           
+ <Box>
+         
+ <Box> 
+         <Avatar alt="avatar" src={avatar} sx={{ float:"left",width:"80px" ,height:"80px",marginRight:"10px "}} />
+         </Box>
+
+
+
+      <Box sx={{marginRight:"10px"}}> 
+         <Typography variant="body2" component="p" >
+     <span className="userName">Peter Giroud </span>    <time> – September 17, 2019</time>
         </Typography>
-           <Avatar alt="avatar" src={avatar} sx={{float:"left", width:"100px" ,height:"100px"}} />
-        </Box>
            <Rating name="read-only" defaultValue={5} size="small" readOnly sx={{float:"Right"}}/>
-      <Typography variant="body2" component="p" sx={ProductTextStyle}>
+           </Box>
+
+
+          <Box sx={{width:"95%",marginRight:"10px",marginTop:"-20px"}}>
+          <Typography variant="body2" component="p" sx={ProductTextStyle}>
       Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est
         </Typography>
-           </Box>
-           <Divider sx={{padding:"30px",width:"100%",}} />
+          </Box>
+ </Box>
+           
+           <Divider sx={{padding:"3px",width:"100%",}} />
+
            <Typography variant="body2" component="p" sx={ProductTextStyle}>
            Add a review   </Typography>
+           
            <Typography variant="body2" component="p" sx={ProductTextStyle}>
-           Your email address will not be published. Required fields are marked *
+           Your email address will not be published. Required fields are marked      <Typography
+                  component={"span"}
+                  sx={{ color: "#f03637", marginLeft: "2px" }}
+                >
+                  *
+                </Typography>
               </Typography>
 
               <Box>
        
                  <Typography variant="body2" component="p" sx={ProductTextStyle}>
                  Your rating 
+                 <Typography
+                  component={"span"}
+                  sx={{ color: "#f03637", marginLeft: "2px" }}
+                >
+                  *
+                </Typography>
               </Typography>
              
               <Typography variant="body2" component="p" sx={ProductTextStyle}>
@@ -60,7 +84,19 @@ const Reviews = () => {
                 </Box>
 
 
-
+                <Box>
+                <Typography variant="body2" component="p" sx={ProductTextStyle}>
+                 Your review 
+                 <Typography
+                  component={"span"}
+                  sx={{ color: "#f03637", marginLeft: "2px" }}
+                >
+                  *
+                </Typography>
+              </Typography>
+             
+                </Box>
+                
 
 
                 <Checkbox {...label} />
