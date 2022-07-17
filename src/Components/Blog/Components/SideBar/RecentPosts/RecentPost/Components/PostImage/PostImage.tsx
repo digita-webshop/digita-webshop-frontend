@@ -8,7 +8,7 @@ type props = {
   image: string;
 };
 
-const PostImage = ({ id, image, title }: props) => {
+const PostImage = ({ id, title, image }: props) => {
   return (
     <Link
       component={RouterLink}
