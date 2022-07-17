@@ -15,10 +15,10 @@ export const Div = styled("div")(({ theme }) => ({
 
 export const StyledIcons = styled("div")(({ theme }) => ({
   position: "absolute",
-  top: "80%",
+  top: "84%",
   left: "50%",
-  [theme.breakpoints.down("md")]: {
-    top: "75%",
+  [theme.breakpoints.up("sm")]: {
+    top: "78%",
   },
   transform: "translate(-50%,-50%)",
   transition: "all 0.3s",

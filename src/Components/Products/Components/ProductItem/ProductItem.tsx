@@ -65,7 +65,7 @@ const ProductItem = ({
   return (
     <Card
       sx={{
-        maxWidth: listView ? "none" : 270,
+        maxWidth: listView ? "none" : { xs: "unset", sm: "270px" },
         boxShadow: "5px 4px 10px 1px rgba(0,0,0,0.12)",
         cursor: "pointer",
         "&:hover .icon-card": {
@@ -75,7 +75,7 @@ const ProductItem = ({
         flexDirection: { xs: "column", sm: "row" },
       }}
     >
-      <Box sx={{ position: "relative" }}>
+      <Box sx={{ position: "relative", backgroundColor: "#f2f2f3cc" }}>
         <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div>
         <CardMedia
           component="img"
@@ -83,11 +83,12 @@ const ProductItem = ({
           alt="green iguana"
           sx={{
             height: {
-              xs: listView ? "none" : "200px",
+              xs: "320px",
               sm: "220px",
               md: "260px",
             },
             width: listView ? { xs: "100%", sm: "220px", md: "260px" } : "none",
+            objectFit: "contain",
           }}
         />
 
@@ -267,7 +268,15 @@ const ProductItem = ({
           <Typography
             component={"p"}
             variant="body2"
-            sx={{ color: "#666666", marginTop: "25px", textAlign: "justify" }}
+            sx={{
+              color: "#666666",
+              marginTop: { xs: "15px", sm: "25px" },
+              textAlign: "justify",
+              " -webkit-line-clamp": { xs: 2, sm: "unset" },
+              display: "-webkit-box",
+              overflow: "hidden",
+              "-webkit-box-orient": "vertical",
+            }}
           >
             {description}
           </Typography>
