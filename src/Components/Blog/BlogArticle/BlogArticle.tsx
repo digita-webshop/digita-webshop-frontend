@@ -19,6 +19,7 @@ import {
   TextField,
 } from "@mui/material";
 import React, { FormEvent, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const inputStyles = {
   "& .MuiOutlinedInput-root": {
@@ -44,11 +45,15 @@ function BlogArticle() {
     }
   };
   // const { id } = useParams<{ id: string }>();
-  const pathArray = window.location.pathname.split("/");
-  const id = pathArray[pathArray.length - 1];
+  // const pathArray = window.location.pathname.split("/");
+  // const id = pathArray[pathArray.length - 1];
+  const { id }: any = useParams();
+  console.log(id);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const article = articlesBlogPage.find((article) => article.id === +id);
+
+  console.log(article);
   return (
     <Box bgcolor={"white"}>
       <Breadcrumbs title={"blog"} lastPath={article?.title} />
