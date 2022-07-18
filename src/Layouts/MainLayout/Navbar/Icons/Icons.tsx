@@ -5,6 +5,7 @@ import {
   SearchOutlined,
 } from "@mui/icons-material";
 import { Badge, Box } from "@mui/material";
+import { Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   iconsBadgeStyles,
@@ -27,12 +28,14 @@ interface Props {
   loginModalHandler: (open: boolean) => () => void;
   toggleDrawer: (anchor: Anchor, open: boolean) => () => void;
   matches: boolean;
+  setOpenCompareModal: Dispatch<SetStateAction<boolean>>;
 }
 function Icons({
   openSearchBarHandler,
   loginModalHandler,
   toggleDrawer,
   matches,
+  setOpenCompareModal,
 }: Props) {
   const navigate = useNavigate();
 
@@ -56,7 +59,11 @@ function Icons({
             <LoginOutlined color="primary" sx={navbarIcons} />
           </Badge>
         </IconWrapper>
-        <IconWrapper display={"flex"} height={"100%"}>
+        <IconWrapper
+          display={"flex"}
+          height={"100%"}
+          onClick={() => setOpenCompareModal(true)}
+        >
           <Badge showZero sx={iconsBadgeStyles}>
             <CompareArrows color="primary" sx={navbarIcons} />
           </Badge>
