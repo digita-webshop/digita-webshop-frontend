@@ -1,4 +1,4 @@
-import { Dashboard as DashboardPage } from "../../../Components";
+import { Dashboard as DashboardPage } from "../../../../Components";
 
 function Dashboard() {
   return <DashboardPage />;

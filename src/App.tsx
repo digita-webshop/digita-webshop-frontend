@@ -21,10 +21,17 @@ import {
   Products,
   Reviews,
   Settings,
-} from "./Pages/Panel";
+} from "./Pages/Panel/Admin";
+import {
+  Orders as UserOrders,
+  Addresses,
+  Wishlist as UserWishlist,
+  Profile,
+} from "./Pages/Panel/User";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
 import { ScrollToTop } from "./Components";
+import UserLayout from "./Layouts/UserLayout/UserLayout";
 
 function App() {
   return (
@@ -42,6 +49,12 @@ function App() {
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/user/*" element={<UserLayout />}>
+                <Route path="profile" element={<Profile />} />
+                <Route path="addresses" element={<Addresses />} />
+                <Route path="orders" element={<UserOrders />} />
+                <Route path="wishlist" element={<UserWishlist />} />
+              </Route>
             </Route>
             <Route path="/panel/*" element={<PanelLayout />}>
               <Route path="dashboard" element={<Dashboard />} />
