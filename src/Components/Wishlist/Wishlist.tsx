@@ -17,7 +17,7 @@ import {
 
 import { rows } from "../../Services/Utils/Data/data";
 import TableBody from "@mui/material/TableBody";
-import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 import {
   wrapperStyle,
@@ -65,7 +65,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <CustomBreadcrumbs title={"Wishlist"} />
+      <Breadcrumbs title={"Wishlist"} />
 
       <Box maxWidth="lg" sx={wrapperStyle}>
         <Typography variant="h3" sx={wishlistTitle}>

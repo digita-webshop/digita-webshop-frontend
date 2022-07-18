@@ -6,7 +6,7 @@ import ArticleCard from "./Components/Articles/Article/ArticleCard";
 import SearchBar from "./Components/SideBar/SearchBar/SearchBar";
 import RecentPosts from "./Components/SideBar/RecentPosts/RecentPosts";
 import RecentComments from "./Components/SideBar/RecentComments/RecentComments";
-import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
+import CustomBreadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import { articlesBlogPage } from "../../Services/Utils/Data/data";
 
 function Blog() {
