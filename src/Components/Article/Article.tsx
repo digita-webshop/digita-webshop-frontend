@@ -1,5 +1,4 @@
-import { useTheme } from "@mui/material/styles";
-import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import SearchBar from "../Blog/Components/SideBar/SearchBar/SearchBar";
 import RecentPosts from "../Blog/Components/SideBar/RecentPosts/RecentPosts";
 import RecentComments from "../Blog/Components/SideBar/RecentComments/RecentComments";
@@ -33,8 +32,6 @@ function Article() {
   };
 
   const { id }: any = useParams();
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("md"));
   const article = articlesBlogPage.find((article) => article.id === +id);
 
   return (

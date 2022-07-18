@@ -1,4 +1,4 @@
-import { AddProduct as AddProductPage } from "../../../Components";
+import { AddProduct as AddProductPage } from "../../../../Components";
 function AddProduct() {
   return (
     <>

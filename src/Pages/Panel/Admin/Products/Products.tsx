@@ -1,4 +1,4 @@
-import PanelProducts from "../../../Components/PanelProducts/PanelProducts";
+import { PanelProducts } from "../../../../Components";
 
 function Products() {
   return <PanelProducts />;

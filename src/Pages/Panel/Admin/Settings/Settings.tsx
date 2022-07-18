@@ -1,4 +1,4 @@
-import { Settings as SettingsPage } from "../../../Components";
+import { Settings as SettingsPage } from "../../../../Components";
 function Settings() {
   return (
     <>

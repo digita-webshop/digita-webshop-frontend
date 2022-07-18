@@ -24,3 +24,5 @@ export { default as Brands } from "./Brands/Brands";
 export { default as AddProduct } from "./AddProduct/AddProduct";
 export { default as AddArticle } from "./AddArticle/AddArticle";
 export { default as Article } from "./Article/Article";
+export { default as Reviews } from "./Reviews/Reviews";
+export { default as PanelProducts } from "./PanelProducts/PanelProducts";

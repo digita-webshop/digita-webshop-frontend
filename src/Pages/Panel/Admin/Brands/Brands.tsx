@@ -1,4 +1,4 @@
-import { Brands as BrandsPage } from "../../../Components/";
+import { Brands as BrandsPage } from "../../../../Components";
 
 function Brands() {
   return (

@@ -5,7 +5,7 @@ import TableHeader from "../Orders/TableHeader/TableHeader";
 import ReviewsTable from "./ReviewsTable/ReviewsTable";
 import { CardWrapper } from "../../Styles/panelCommon";
 
-const PanelReviews = () => {
+const Reviews = () => {
   const [selectedStatus, setSelectedStatus] = useState("status");
   const [selectedAmount, setSelectedAmount] = useState("20");
 
@@ -43,4 +43,4 @@ const PanelReviews = () => {
   );
 };
 
-export default PanelReviews;
+export default Reviews;
