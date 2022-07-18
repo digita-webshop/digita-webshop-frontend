@@ -1,7 +1,7 @@
 export { default as Special } from "./Special/Special";
 export { default as Products } from "./Products/Products";
 export { default as Header } from "./Header/Header";
-export { default as CustomBreadcrumbs } from "./CustomBreadcrumbs/CustomBreadcrumbs";
+export { default as Breadcrumbs } from "./Breadcrumbs/Breadcrumbs";
 export { default as Pagination } from "./Pagination/Pagination";
 export { default as ShopByCategories } from "./ShopByCategories/ShopByCategories";
 export { default as ContactUsAddress } from "./ContactUsAddress/ContactUsAddress";
@@ -23,3 +23,4 @@ export { default as Settings } from "./Settings/Settings";
 export { default as Brands } from "./Brands/Brands";
 export { default as AddProduct } from "./AddProduct/AddProduct";
 export { default as AddArticle } from "./AddArticle/AddArticle";
+export { default as Article } from "./Article/Article";

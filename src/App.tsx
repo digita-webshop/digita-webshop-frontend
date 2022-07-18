@@ -10,6 +10,7 @@ import {
   Wishlist,
   Checkout,
   Cart,
+  Article,
 } from "./Pages/Main";
 import {
   AddArticle,
@@ -35,6 +36,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/article/:id" element={<Article />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/wishlist" element={<Wishlist />} />

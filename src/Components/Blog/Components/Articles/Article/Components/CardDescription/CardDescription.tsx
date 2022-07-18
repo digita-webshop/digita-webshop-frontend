@@ -5,6 +5,7 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -16,12 +17,13 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 type props = {
+  id: number;
   author: string;
   date: string;
-  status: string;
+  category: string;
 };
 
-const CardDescription = ({ author, date, status }: props) => {
+const CardDescription = ({ id, author, date, category }: props) => {
   return (
     <Box
       display='flex'
@@ -37,8 +39,9 @@ const CardDescription = ({ author, date, status }: props) => {
             color='secondary'
           />
           <Link
+            component={RouterLink}
+            to={`/blog/${id}/author/${author.replace(/\s+/g, '-')}`}
             underline='none'
-            href='#'
             color='secondary'
             sx={{
               '&:hover': {
@@ -62,14 +65,15 @@ const CardDescription = ({ author, date, status }: props) => {
           &nbsp;{date} -
         </Box>
       </Item>
-      {/* Status article */}
+      {/* category article */}
       <Item>
         <Box display='flex'>
           &nbsp;
           <FolderOutlinedIcon style={{ fontSize: '13px' }} color='secondary' />
           <Link
+            component={RouterLink}
+            to={`/blog/${id}/category/${category.replace(/\s+/g, '-')}`}
             underline='none'
-            href='#'
             color='secondary'
             sx={{
               '&:hover': {
@@ -78,7 +82,7 @@ const CardDescription = ({ author, date, status }: props) => {
               },
             }}
           >
-            &nbsp;{status}
+            &nbsp;{category}
           </Link>
         </Box>
       </Item>
