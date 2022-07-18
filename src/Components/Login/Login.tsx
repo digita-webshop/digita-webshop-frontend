@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import { FormEvent, useState } from "react";
 import {
-  errorStyles,
   forgetPassStyles,
   FormFooter,
   FormWrapper,

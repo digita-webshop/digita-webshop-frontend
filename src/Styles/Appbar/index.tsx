@@ -102,9 +102,7 @@ export const IconWrapper = styled(Box)(({ theme }) => ({
   height: "100%",
   display: "flex",
   cursor: "pointer",
-  div: {
-    "&:hover .MuiSvgIcon-root": { color: theme.palette.common.digitaRed },
-  },
+  "&:hover .MuiSvgIcon-root": { color: theme.palette.common.digitaRed },
 }));
 export const ShopMenuWrapper = styled(Box)(({ theme }) => ({
   border: "1px solid #dedede",

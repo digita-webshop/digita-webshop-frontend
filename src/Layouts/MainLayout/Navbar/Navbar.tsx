@@ -27,12 +27,18 @@ import ShopDrawer from "./ShopDrawer/ShopDrawer";
 import SearchBar from "./SearchBar/SearchBar";
 import { Link, useLocation } from "react-router-dom";
 import ShopMenu from "./ShopMenu/ShopMenu";
-import { Login, Register, ResetPassword } from "../../../Components";
+import {
+  CompareModal,
+  Login,
+  Register,
+  ResetPassword,
+} from "../../../Components";
 import Icons from "./Icons/Icons";
 
 function Navbar() {
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
+  const [openCompareModal, setOpenCompareModal] = useState(false);
   const [collapse, setCollapse] = useState(true);
   const [modalType, setModalType] = useState("login");
 
@@ -155,6 +161,7 @@ function Navbar() {
                     loginModalHandler={loginModalHandler}
                     matches={matches}
                     toggleDrawer={toggleDrawer}
+                    setOpenCompareModal={setOpenCompareModal}
                   />
                 </Fragment>
               )}
@@ -212,6 +219,16 @@ function Navbar() {
             />
           )}
         </>
+      </Modal>
+      <Modal
+        open={openCompareModal}
+        onClose={() => setOpenCompareModal(false)}
+        closeAfterTransition
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <CompareModal setOpenCompareModal={setOpenCompareModal} />
       </Modal>
     </Fragment>
   );
