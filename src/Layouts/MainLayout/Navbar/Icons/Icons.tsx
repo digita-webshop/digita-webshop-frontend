@@ -1,12 +1,16 @@
 import {
-  FavoriteBorderOutlined,
+  CompareArrows,
   LocalGroceryStoreOutlined,
   LoginOutlined,
   SearchOutlined,
 } from "@mui/icons-material";
 import { Badge, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { IconWrapper } from "../../../../Styles/Appbar";
+import {
+  iconsBadgeStyles,
+  iconsWrapperStyles,
+  IconWrapper,
+} from "../../../../Styles/Appbar";
 import ShopCart from "../ShopCart/ShopCart";
 
 const navbarIcons = {
@@ -31,6 +35,7 @@ function Icons({
   matches,
 }: Props) {
   const navigate = useNavigate();
+
   const shopClickHandler = () => {
     if (!matches) {
       toggleDrawer("right", true)();
@@ -40,61 +45,20 @@ function Icons({
   };
   return (
     <>
-      <Box
-        sx={{
-          marginLeft: { sx: "0", md: "auto" },
-          height: { md: "90px" },
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
+      <Box sx={iconsWrapperStyles}>
         <IconWrapper onClick={openSearchBarHandler}>
-          <Badge
-            showZero
-            sx={{
-              margin: "auto",
-              display: {
-                xs: "none",
-                md: "inline-flex",
-              },
-            }}
-          >
+          <Badge showZero sx={iconsBadgeStyles}>
             <SearchOutlined color="primary" sx={navbarIcons} />
           </Badge>
         </IconWrapper>
         <IconWrapper onClick={loginModalHandler(true)}>
-          <Badge
-            showZero
-            sx={{
-              margin: "auto",
-
-              display: {
-                xs: "none",
-                md: "inline-flex",
-              },
-            }}
-          >
+          <Badge showZero sx={iconsBadgeStyles}>
             <LoginOutlined color="primary" sx={navbarIcons} />
           </Badge>
         </IconWrapper>
-        <IconWrapper
-          display={"flex"}
-          height={"100%"}
-          onClick={() => navigate("/wishlist")}
-        >
-          <Badge
-            badgeContent={4}
-            overlap="circular"
-            color="error"
-            sx={{
-              display: {
-                xs: "none",
-                md: "inline-flex",
-              },
-              margin: "auto",
-            }}
-          >
-            <FavoriteBorderOutlined color="primary" sx={navbarIcons} />
+        <IconWrapper display={"flex"} height={"100%"}>
+          <Badge showZero sx={iconsBadgeStyles}>
+            <CompareArrows color="primary" sx={navbarIcons} />
           </Badge>
         </IconWrapper>
         <IconWrapper
