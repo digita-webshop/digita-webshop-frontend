@@ -24,7 +24,7 @@ const StyledInputElement = styled('input')(
     display: block;
   
 }
-width :300px;
+width :90%;
   margin-top:0;
   font-size: 14px;
   font-family: IBM Plex Sans, sans-serif;
@@ -103,14 +103,15 @@ const Reviews = () => {
   
    
     return(
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ display: "flex", justifyContent: "center" }} id="review">
       <Box sx={ProductContentStyle}>
   
            
  <Box>
          
  <Box> 
-         <Avatar alt="avatar" src={avatar} sx={{ float:"left",width:"80px" ,height:"80px",marginRight:"10px" ,}} />
+         <Avatar alt="avatar" src={avatar} sx={{ float:"left",width:"80px" ,height:"80px",marginRight:"10px" ,
+         diplay:{xs:"none",sm:"inline-block",md:"inline-block",lg:"inline-block",}}} />
          </Box>
 
 
@@ -119,9 +120,9 @@ const Reviews = () => {
          <Typography variant="body2" component="p" >
      <span className="userName">Peter Giroud </span>    <time> – September 17, 2019</time>
         </Typography>
-           <Rating name="read-only" defaultValue={5} size="small" readOnly sx={{float:"Right",marginTop:"-10px"}}/>
+      
            </Box>
-
+           <Rating name="read-only" defaultValue={5} size="small" readOnly sx={{float:"Right",marginTop:"-10px"}}/>
 
           <Box sx={{width:"95%",marginRight:"10px",marginTop:"-20px"}}>
           <Typography variant="body2" component="p" sx={ProductTextStyle}>

@@ -31,18 +31,20 @@ import{ Box,Container,Typography} from '@mui/material';
 const Tab = styled(TabUnstyled)`
 white-space: nowrap;
 height:100%;
-font-size:20px;
-font-weight: 500;
+font-size:18px;
+font-weight: 450;
 text-transform: uppercase;
-padding: 19px 20px;
+padding: 19px 18px;
 line-height: 1;
 display: inline-block !important;
 background-color: #f5f5f5;
 border: none;
 color: #ababab;
-margin: 0 1rem;
+margin: 0 0.75rem;
  
-
+&:hover {
+  color: #333333;
+}
   &.${tabUnstyledClasses.selected} {
    border-bottom-style:solid;
    border-bottom-color:#F03637;
@@ -56,7 +58,8 @@ margin: 0 1rem;
 
 const TabPanel = styled(TabPanelUnstyled)`
 margin-top:30px;
-  width: 100%;
+  width: 90%;
+  text-align: center;
 
 `;
 
@@ -71,7 +74,7 @@ padding: 0px 20px;
 margin-top: 0px;
 background-color: #f5f5f5;
 border: none;
-overflow-x: auto;
+
     z-index: 1;
 box-sizing: border-box;
 
@@ -117,7 +120,7 @@ export default function UnstyledTabsCustomized() {
   <Box>    
      <Box  sx={CascadingTabs}>
               
-              <Typography variant="h4" sx={CascadingTabsTitle} component="div">
+              <Typography variant="h4" sx={CascadingTabsTitle} component="div"  id="review">
               REVIEWS (1)
                     </Typography>
                     </Box>

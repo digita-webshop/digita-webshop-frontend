@@ -79,6 +79,7 @@ export const filledPrice ={
   padding: "20px",
   lineHeight: "1",
   display:"static",
+  fontFamily:"Jost",
 }
 
 export const productTitle ={
@@ -92,14 +93,15 @@ export const productTitle ={
 export const contentWrap={
   padding: "50px 15px",
   width: "auto !important",
+  overflowX:"hidden",
 
 }
 export const addToCartButton ={
   float: "left",
   height: "50px",
-  padding: "0 46px",
-  fontSize: "15px",
-  fontWeight: "600",
+  padding: {xs:"0 36px",sm:"0 36px",md:"0 46px",lg:"0 46px",},
+  fontSize: {xs:"13px",sm:"13px",md:"15px",lg:"15px",},
+  fontWeight: {xs:"300",sm:"300",md:"600",lg:"600",},
   textTransform: "capitalize",
   letterSpacing: "normal",
   marginRight: "15px",
@@ -170,11 +172,16 @@ export const ComperWishStyle={
   width:"100%",
   marginTop:"10px",
   marginBottom: "25px",
-  flexDirection:"row",
+  
   display: "flex",
-  justifyContent: "start",
-  alignItems: "center",
+
+
   float:"left",
+  marginLeft:"-10px",
+  flexDirection: {xs:"column",sm:"row",md:"row",lg:"row",},
+  justifyContent: {xs:"center",sm:"flex-start",md: "flex-start",lg: "flex-start",},
+ 
+  alignItems: {xs:"flex-start",sm:"center",md:"center" ,lg: "center",},
 
 }
 export const starRating={
@@ -188,6 +195,9 @@ export const starRating={
   float: "left",
   marginTop:"-5px",
 
+
+}
+export const show={
 
 }
 export const starLink={
@@ -244,6 +254,7 @@ float:"left",
 '&:hover': {
   color: '#F03637',
 }, 
+marginLeft:"-5px"
   }
 
   export const CompareButton ={
@@ -302,14 +313,16 @@ float:"left",
 //  /* ================  BoughtToGether ============== */
  export const allBought={
   paddingBottom:"1rem",
+  marginLeft:{xs:"30px",sm:"10px",md:"5px",lg:"5px",},
  }
  export const boughtTogether={
    
    margin:"-0.6rem",
   display: "flex",
-  flexDirection:"row",
-  justifyContent: "flex-start",
-  alignItems: "center",
+  flexDirection: {xs:"column",sm:"row",md:"row",lg:"row",},
+  justifyContent: {xs:"center",sm:"flex-start",md: "flex-start",lg: "flex-start",},
+ 
+  alignItems: {xs:"flex-start",sm:"center",md:"center" ,lg: "center",},
   marginLeft:"-1rem",
  }
  export const BoughtTextStyle={
@@ -330,9 +343,14 @@ float:"left",
   height:"4rem",
   padding: "1rem",
   display: "flex",
-  flexDirection:"row",
-  justifyContent: "center",
-  alignItems: "center",
+  
+
+
+  marginTop:{xs:"30px",sm:"0",md:"0",lg:"0",},
+  flexDirection: {xs:"column",sm:"row",md:"row",lg:"row",},
+  justifyContent: {xs:"center",sm:"flex-start",md: "flex-start",lg: "flex-start",},
+ 
+  alignItems: {xs:"flex-start",sm:"center",md:"center" ,lg: "center",},
 
  }
  export const boughtPriceStyle={
@@ -434,7 +452,7 @@ export const CascadingTabs={
    padding:"1rem ",
     width:"100%",
     display: "block",
-    overflowX: "auto",
+    overflowX: "hidden",
     margin: "20px -20px",
     textAlign: "left",
   }
@@ -471,7 +489,7 @@ export const CascadingTabs={
 
   export const shareProductText={
     color:(theme:any)=>theme.palette.common.digitaGrey,
-    fontSize:"13px" ,
+    fontSize:{xs:"14px",sm:"13px",md:"13px",lg:"13px"},
     margin:"0",
     lineHeight:"0",
     float:"left", 
@@ -529,7 +547,7 @@ export const CascadingTabs={
   export const chanceTwitter={
    
     
-    borderStyle:"none none none solid",
+    borderStyle:{xs:"none none none none",sm:"none none none solid",md:"none none none solid",lg:"none none none solid"},
     borderColor: (theme: any) => ` ${theme.palette.divider}`,
     borderWidth:"0.5px",
     '&:hover': {
@@ -562,7 +580,7 @@ export const CascadingTabs={
   export const chancePinteres={
     height:"100%",
     
-    borderStyle:{xs:"solid solid none none",sm:"solid solid none none",md:"none none none solid",lg:"none none none solid",},
+    borderStyle:{xs:"solid none none none",sm:"solid solid none none",md:"none none none solid",lg:"none none none solid",},
     borderColor: (theme: any) => ` ${theme.palette.divider}`,
     borderWidth:"0.5px",
     '&:hover': {
@@ -615,7 +633,7 @@ export const  PopupInner={
  
   padding: "50px 25px 15px 25px",
   bordeRadius: "0",
-  overFlow: "auto",
+  overFlow: "hidden",
   width: "auto",
   height: "auto",
   maxWidth: "90%",
@@ -701,6 +719,11 @@ export const continueBtn={
   marginTop: {xs:"0",sm:"0",md:"10px",lg:"10px"},
   
   minWidth: "190px",
+  '&:hover': {
+     
+    
+    backgroundColor:  (theme:any)=>theme.palette.common.digitaBlack,
+    }, 
 
 }
 export const space={

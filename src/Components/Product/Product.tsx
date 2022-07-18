@@ -20,7 +20,7 @@ const Product = () => {
   return( 
 
 
-    <Box bgcolor={"white"}>
+    <Box bgcolor={"white"} sx={{overflowX:"hidden"}}>
        <CustomBreadcrumbs title={"product"} />
        <Container maxWidth={"lg"}>
        <ProductDetails />
@@ -39,7 +39,7 @@ const Product = () => {
        <Typography variant="h4" sx={teamTitleStyle}>
        RELATED PRODUCTS
      </Typography>
-       <Grid container spacing={{ xs: 2, md: 2 }}>
+       <Grid container spacing={{ xs: 1, md: 2 }}>
              {productData.slice(0, 4).map((item) => (
               <Grid item xs={6} sm={4} md={3} key={item.id}>
                 <ProductItem

@@ -4,13 +4,13 @@ import Modal from "@mui/material/Modal";
 import { useState } from "react";
 
 import{Grid ,Button ,Divider, Box ,Link ,Rating ,Typography,Container, CardActionArea, CardActions}  from '@mui/material';
-// import ProductSlider from "../ProductSlider/ProductSlider";
+import ProductSlider from "../ProductSlider/ProductSlider";
 import AddToCartModal from "../Modals/AddToCartModal/AddToCartModal";
 // import NextProductModal from "../Modals/NextProductModal/NextProductModal";
 // import PreviousProductModal from "../Modals/PreviousProductModal/PreviousProductModal";
 
-// import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-// import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -49,12 +49,12 @@ const ProductDetails = () => {
   
  return(
   <>
-  <Container maxWidth="lg"  sx={contentWrap}>
+  <Container maxWidth="lg"  sx={contentWrap} >
         
   <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
   <Box>
-  {/* <ProductSlider/> */}
+  <ProductSlider/>
   </Box>
         
       
@@ -67,7 +67,7 @@ const ProductDetails = () => {
       Microsoft Xbox One S Blue Grey
       </Typography>
       <Box sx={nextButton}>
-        {/* <Button variant="outlined" className="left"sx={nextButtonStyle}>		&lt;</Button> */}
+        
            
     <Link
    className="left"sx={nextButtonStyle}
@@ -78,9 +78,10 @@ onClick={() => {
   console.info("I'm a button.");
 }}
 >
-&lt;
+<ArrowBackIosIcon sx={{ fontSize:"13px",
+  color: "(theme:any)=>theme.palette.common.digitaGrey8",}}/>
 </Link>
-      {/* <Button variant="outlined" className="right" sx={nextButtonStyle}>	&gt; </Button> */}
+      
          
     <Link
    className="right" sx={nextButtonStyle}
@@ -91,7 +92,8 @@ onClick={() => {
   console.info("I'm a button.");
 }}
 >
-&gt;
+<ArrowForwardIosIcon sx={{ fontSize:"13px",
+  color: "(theme:any)=>theme.palette.common.digitaGrey8",}}/>
 </Link>
       
       
@@ -100,7 +102,7 @@ onClick={() => {
    <Typography variant="body2"  component="p">
    <Box sx={starLink}>
    <Rating name="read-only" defaultValue={5} size="small" readOnly sx={starRating}/>
-      <Link href="#" underline="none"   className="customerReview"   sx={{marginBottom:"20px",marginTop:"-5px",}}>
+      <Link href="#review" underline="none"   className="customerReview"   sx={{marginBottom:"20px",marginTop:"-5px",}}>
       (1 customer review)
 </Link>
    </Box>
@@ -186,12 +188,10 @@ onClick={() => {
 <Link href="#" underline="none"    sx={linkStyle}>
   {'  Headphone'}
 </Link> ,
-<Link href="#" underline="none"   sx={linkStyle}>
+<wbr><Link href="#" underline="none"   sx={linkStyle}>
   {'Phone Accessories'}
-</Link> ,
-<Link href="#" underline="none"    sx={linkStyle}>
-  {' Smart TV'}
-</Link> ,
+</Link> &nbsp;,
+</wbr>
 <Link href="#" underline="none"    sx={linkStyle}>
   {'Technologies'}
 </Link> ,<Link href="#" underline="none"    sx={linkStyle}>
