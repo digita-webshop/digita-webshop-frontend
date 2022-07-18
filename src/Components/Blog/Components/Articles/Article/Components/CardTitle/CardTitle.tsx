@@ -1,5 +1,5 @@
-import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
+import Link from "@mui/material/Link";
+import { Link as RouterLink } from "react-router-dom";
 
 type props = {
   id: number;
@@ -10,13 +10,13 @@ const CardTitle = ({ id, title }: props) => {
   return (
     <Link
       component={RouterLink}
-      to={`/blog/${id}`}
+      to={`/article/${id}`}
       sx={{
-        '&:hover': { color: '#f03637', transition: 'all 500ms' },
+        "&:hover": { color: "#f03637", transition: "all 500ms" },
       }}
-      variant='body1'
+      variant="body1"
       fontWeight={500}
-      underline='none'
+      underline="none"
     >
       {title}
     </Link>

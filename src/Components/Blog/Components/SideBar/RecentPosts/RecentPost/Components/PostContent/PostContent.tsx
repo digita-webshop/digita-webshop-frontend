@@ -20,8 +20,8 @@ const PostContent = ({ id, title, date }: props) => {
       >
         <Link
           component={RouterLink}
-          to={`/blog/${id}`}
-          underline='none'
+          to={`/article/${id}`}
+          underline="none"
           sx={{
             "&:hover": {
               color: "#f03637",
@@ -30,7 +30,7 @@ const PostContent = ({ id, title, date }: props) => {
           }}
         >
           <Typography
-            variant='subtitle2'
+            variant="subtitle2"
             sx={{
               overflow: "hidden",
               textOverflow: "ellipsis",
@@ -44,10 +44,10 @@ const PostContent = ({ id, title, date }: props) => {
           </Typography>
         </Link>
         <Typography
-          variant='body2'
-          color='text.secondary'
+          variant="body2"
+          color="text.secondary"
           mt={"6px"}
-          fontSize='11px'
+          fontSize="11px"
         >
           {date}
         </Typography>
