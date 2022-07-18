@@ -131,3 +131,16 @@ export const appBarStyles = {
   position: "fixed ",
   boxShadow: "4px 2px 4px 1px rgb(0 0 0 / 12%)",
 };
+export const iconsBadgeStyles = {
+  display: {
+    xs: "none",
+    md: "inline-flex",
+  },
+  margin: "auto",
+};
+export const iconsWrapperStyles = {
+  marginLeft: { sx: "0", md: "auto" },
+  height: { md: "90px" },
+  display: "flex",
+  alignItems: "center",
+};
