@@ -1,11 +1,15 @@
 import { Box, Typography } from "@mui/material";
-import { contentStyle } from "../../../../Styles/About";
+import { contentStyle } from "../../../Styles/About";
+
 const Contents = () => {
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Box sx={contentStyle}>
-          <Typography variant='body2' sx={{ color: "#777", fontSize: "16px", mb: '20px'}}>
+          <Typography
+            variant="body2"
+            sx={{ color: "#777", fontSize: "16px", mb: "20px" }}
+          >
             Sed mollis, libero ut lacinia ultrices, ex urna sodales tortor, sed
             pulvinar ex eros vel orci. Sed tempor placerat tristique. Ut
             tristique leo sit amet nisi blandit rutrum. Nunc hendrerit a diam
@@ -17,7 +21,10 @@ const Contents = () => {
             ante, iaculis at consequat id, euismod a sem. Fusce et sapien
             cursus, placerat dui non, rhoncus diam. Praesent ac consectetur dui.
           </Typography>
-          <Typography variant='body2' sx={{ color: "#777", fontSize: "16px", mb: '20px' }}>
+          <Typography
+            variant="body2"
+            sx={{ color: "#777", fontSize: "16px", mb: "20px" }}
+          >
             Phasellus ac sem eu mauris sodales tristique sed non ligula. Aenean
             in mauris ac libero condimentum vulputate quis ut sapien. Phasellus
             euismod mi eget interdum pellentesque. Maecenas molestie vitae risus
