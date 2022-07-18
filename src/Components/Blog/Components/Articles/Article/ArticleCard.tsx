@@ -4,24 +4,30 @@ import CardDescription from './Components/CardDescription/CardDescription';
 import Card from '@mui/material/Card';
 import { Grid } from '@mui/material';
 interface info {
+  id: number;
   title: string;
   image: string;
   author: string;
   releaseDate: string;
-  status: string;
+  category: string;
 }
 
 function ArticleCard(props: info) {
   return (
     <Grid item xs={12} sm={6} px={'15px'} mb={'35px'}>
       <Card>
-        <CardImage title={props.title} image={props.image}></CardImage>
+        <CardImage
+          id={props.id}
+          title={props.title}
+          image={props.image}
+        ></CardImage>
         <CardDescription
+          id={props.id}
           author={props.author}
           date={props.releaseDate}
-          status={props.status}
+          category={props.category}
         ></CardDescription>
-        <CardTitle title={props.title}></CardTitle>
+        <CardTitle id={props.id} title={props.title}></CardTitle>
       </Card>
     </Grid>
   );

@@ -1,11 +1,8 @@
-import {
-  Checkout as CheckoutPage,
-  CustomBreadcrumbs,
-} from "../../../Components";
+import { Checkout as CheckoutPage, Breadcrumbs } from "../../../Components";
 function Checkout() {
   return (
     <>
-      <CustomBreadcrumbs title="Checkout" />
+      <Breadcrumbs title="Checkout" />
       <CheckoutPage />
     </>
   );

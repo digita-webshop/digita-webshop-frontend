@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { Container, useMediaQuery, Grid, Fade, Box } from "@mui/material";
-import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import CategoriesFilter from "./CategoriesFilter/CategoriesFilter";
 import ColorFilter from "./ColorFilter/ColorFilter";
 import PriceFilter from "./PriceFilter/PriceFilter";
@@ -38,7 +38,7 @@ function Shop() {
 
   return (
     <Box bgcolor={"white"}>
-      <CustomBreadcrumbs title={"products"} />
+      <Breadcrumbs title={"products"} />
       <Container sx={{ paddingY: "50px" }}>
         <Grid container columnSpacing={4}>
           {matches && (

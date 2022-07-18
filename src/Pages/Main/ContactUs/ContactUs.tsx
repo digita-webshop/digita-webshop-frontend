@@ -3,14 +3,14 @@ import { Container } from "@mui/system";
 import {
   ContactUsAddress,
   ContactUsForm,
-  CustomBreadcrumbs,
+  Breadcrumbs,
   Map,
 } from "../../../Components";
 
 function ContactUs() {
   return (
     <Box bgcolor={"white"}>
-      <CustomBreadcrumbs title={"contact us "} />
+      <Breadcrumbs title={"contact us "} />
       <Container maxWidth={"lg"}>
         <ContactUsAddress />
         <Grid container spacing={3} paddingY={6}>

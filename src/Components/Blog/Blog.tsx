@@ -6,7 +6,7 @@ import ArticleCard from "./Components/Articles/Article/ArticleCard";
 import SearchBar from "./Components/SideBar/SearchBar/SearchBar";
 import RecentPosts from "./Components/SideBar/RecentPosts/RecentPosts";
 import RecentComments from "./Components/SideBar/RecentComments/RecentComments";
-import CustomBreadcrumbs from "../CustomBreadcrumbs/CustomBreadcrumbs";
+import CustomBreadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import { articlesBlogPage } from "../../Services/Utils/Data/data";
 
 function Blog() {
@@ -28,17 +28,20 @@ function Blog() {
       <CustomBreadcrumbs title={"blog"} />
       <Grid container sx={{ py: 6.25, maxWidth: "1200px", mx: "auto", my: 0 }}>
         <Grid item md={9}>
-          <Grid sx={{ ml: "15px" }}>
-            {!matches ? <SearchBar></SearchBar> : null}
+          <Grid
+            sx={{ ml: "15px", "& .search-bar": { padding: 0, border: "none" } }}
+          >
+            {!matches ? <SearchBar /> : null}
           </Grid>
           <Grid container>
             {currentArticles.map((article) => (
               <ArticleCard
+                id={article.id}
                 title={article.title}
                 image={article.image}
                 author={article.author}
                 releaseDate={article.releaseDate}
-                status={article.status}
+                category={article.category}
               />
             ))}
           </Grid>
