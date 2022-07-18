@@ -3,7 +3,7 @@ import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
 import SearchBar from "../Components/SideBar/SearchBar/SearchBar";
 import RecentPosts from "../Components/SideBar/RecentPosts/RecentPosts";
 import RecentComments from "../Components/SideBar/RecentComments/RecentComments";
-import CustomBreadcrumbs from "../../CustomBreadcrumbs/CustomBreadcrumbs";
+import Breadcrumbs from "../../Breadcrumbs/Breadcrumbs";
 import { articlesBlogPage } from "../../../Services/Utils/Data/data";
 import { posterStyle } from "../../../Styles/About";
 import ArticleDescription from "./articleDescription/ArticleDescription";
@@ -51,7 +51,7 @@ function BlogArticle() {
   const article = articlesBlogPage.find((article) => article.id === +id);
   return (
     <Box bgcolor={"white"}>
-      <CustomBreadcrumbs title={"blog"} />
+      <Breadcrumbs title={"blog"} lastPath={article?.title} />
       <Grid container sx={{ py: 6.25, maxWidth: "1200px", mx: "auto", my: 0 }}>
         <Grid item md={9}>
           <Grid sx={{ ml: "15px" }}>
@@ -59,8 +59,8 @@ function BlogArticle() {
           </Grid>
           <Grid container px={"15px"} mb={"35px"}>
             <Typography
-              variant='h2'
-              component='h2'
+              variant="h2"
+              component="h2"
               sx={{
                 fontSize: { xs: "24px", sm: "28px", md: "35px" },
                 fontWeight: "400",
@@ -79,10 +79,10 @@ function BlogArticle() {
               ></ArticleDescription>
             </Grid>
             <Box
-              component='img'
+              component="img"
               sx={posterStyle}
               src={article?.image}
-              height='600px'
+              height="600px"
               maxWidth={"820px"}
               maxHeight={"600px"}
               marginBottom={"20px"}
@@ -104,7 +104,7 @@ function BlogArticle() {
             <Divider />
             {/* comments */}
             <Box>
-              <Typography fontWeight={500} marginBottom={4} variant='h6'>
+              <Typography fontWeight={500} marginBottom={4} variant="h6">
                 LEAVE A REPLY
               </Typography>
               <form onSubmit={submitHandler}>
@@ -112,7 +112,7 @@ function BlogArticle() {
                   <Grid item xs={12}>
                     <FormControl fullWidth>
                       <TextField
-                        placeholder='Your Comment Here...'
+                        placeholder="Your Comment Here..."
                         multiline
                         rows={6}
                         sx={{
@@ -125,7 +125,7 @@ function BlogArticle() {
                   <Grid item xs={4}>
                     <FormControl fullWidth>
                       <TextField
-                        placeholder='Name (required)'
+                        placeholder="Name (required)"
                         sx={inputStyles}
                         value={enteredName}
                         onChange={(e) => setEnteredName(e.target.value)}
@@ -141,7 +141,7 @@ function BlogArticle() {
                   <Grid item xs={4}>
                     <FormControl fullWidth>
                       <TextField
-                        placeholder='Email (required)'
+                        placeholder="Email (required)"
                         sx={inputStyles}
                         value={enteredEmail}
                         onChange={(e) => setEnteredEmail(e.target.value)}
@@ -156,7 +156,7 @@ function BlogArticle() {
                   </Grid>
                   <Grid item xs={4}>
                     <FormControl fullWidth>
-                      <TextField placeholder='Website' sx={inputStyles} />
+                      <TextField placeholder="Website" sx={inputStyles} />
                     </FormControl>
                   </Grid>
                   <Grid item xs={12}>
@@ -172,13 +172,13 @@ function BlogArticle() {
                             }}
                           />
                         }
-                        label='Save my name, email, and website in this browser for the next time I comment.'
+                        label="Save my name, email, and website in this browser for the next time I comment."
                       />
                     </FormGroup>
                   </Grid>
                   <Grid item xs={4}>
                     <Button
-                      variant='contained'
+                      variant="contained"
                       sx={{
                         width: { xs: "60%" },
                         height: "40px",
