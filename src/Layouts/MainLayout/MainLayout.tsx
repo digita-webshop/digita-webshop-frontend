@@ -5,11 +5,12 @@ import Navbar from "./Navbar/Navbar";
 
 function MainLayout() {
   const location = useLocation();
+  const userLocation = location.pathname.split('/');
   return (
     <>
       <Navbar />
       <Outlet />
-      {location.pathname !== "/user" && <Footer />}
+      {userLocation[1] !== "user" && <Footer />}
     </>
   );
 }

@@ -15,10 +15,9 @@ import SidebarTop from "./SidebarTop/SidebarTop";
 interface T {
   menuOpen: boolean;
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
-  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const Sidebar = ({ menuOpen, setMenuOpen, setDrawerOpen }: T) => {
+const Sidebar = ({ menuOpen, setMenuOpen }: T) => {
   const { pathname } = useLocation();
   const settingsPath = pathname.split("/")[2];
   return (
