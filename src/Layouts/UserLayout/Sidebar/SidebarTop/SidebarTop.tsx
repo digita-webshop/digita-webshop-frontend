@@ -1,9 +1,3 @@
-import * as React from "react";
-import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineDot from "@mui/lab/TimelineDot";
 import { Box, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -41,7 +35,7 @@ const SidebarTop = () => {
               </Box>
             </Typography>
           </Box>
-          <Typography>13$</Typography>
+          <Typography sx={{fontWeight: "bold"}}>13$</Typography>
         </UserNavItem>
 
         <UserNavItem>
@@ -59,24 +53,10 @@ const SidebarTop = () => {
               </Box>
             </Typography>
           </Box>
-          <Typography>80</Typography>
+          <Typography sx={{fontWeight: "bold"}}>180</Typography>
         </UserNavItem>
 
-        <Box sx={{ position: "absolute" }}>
-          <Timeline>
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot />
-                <TimelineConnector />
-              </TimelineSeparator>
-            </TimelineItem>
-            <TimelineItem>
-              <TimelineSeparator>
-                <TimelineDot />
-              </TimelineSeparator>
-            </TimelineItem>
-          </Timeline>
-        </Box>
+        
       </Box>
     </>
   );

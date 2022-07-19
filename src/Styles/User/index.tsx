@@ -79,7 +79,6 @@ export const userAvatarStyle = {
   display: "flex",
   alignItems: "center",
   cursor: "pointer",
-  marginLeft: "5px",
   img: {
     width: "40px",
     borderRadius: "50%",
@@ -98,6 +97,6 @@ export const UserNavItem = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  marginBottom: "0.5rem",
-  padding: ".8rem .3rem 0 .3rem",
+  margin: "0.8rem 0",
+  padding: ".8rem .5rem 0 .55555555555555555rem",
 }));
