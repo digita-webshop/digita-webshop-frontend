@@ -3,6 +3,7 @@ import { Dispatch, Fragment, SetStateAction } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { UserItem } from "../../../Styles/User";
 import { userSidebarItems } from "../../../Services/Utils/Data/data";
+import SidebarTop from "./SidebarTop/SidebarTop";
 
 interface T {
   menuOpen: boolean;
@@ -15,6 +16,7 @@ const Sidebar = ({ menuOpen, setMenuOpen, setDrawerOpen }: T) => {
   const settingsPath = pathname.split("/")[2];
   return (
     <>
+      <SidebarTop />
       <List>
         {userSidebarItems.map(({ id, title, route, icon }) => {
           const settingsActive =
