@@ -93,7 +93,7 @@ export const productTitle ={
 export const contentWrap={
   padding: "50px 15px",
   width: "auto !important",
-  overflowX:"hidden",
+ 
 
 }
 export const addToCartButton ={

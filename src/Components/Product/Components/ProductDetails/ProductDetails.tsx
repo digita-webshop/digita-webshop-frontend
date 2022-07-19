@@ -53,9 +53,7 @@ const ProductDetails = () => {
         
   <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
-  <Box>
-  <ProductSlider/>
-  </Box>
+ 
         
       
           
