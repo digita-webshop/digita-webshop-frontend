@@ -1,4 +1,11 @@
-import { Divider, Icon, List, ListItemIcon, ListItemText } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Icon,
+  List,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import { Dispatch, Fragment, SetStateAction } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { UserItem } from "../../../Styles/User";
@@ -17,6 +24,7 @@ const Sidebar = ({ menuOpen, setMenuOpen, setDrawerOpen }: T) => {
   return (
     <>
       <SidebarTop />
+      <Divider sx={{ borderColor: "common.panelBorderGrey" }} />
       <List>
         {userSidebarItems.map(({ id, title, route, icon }) => {
           const settingsActive =

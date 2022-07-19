@@ -93,3 +93,11 @@ export const userAvatarStyle = {
     color: "common.panelGrey",
   },
 };
+
+export const UserNavItem = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "0.5rem",
+  padding: ".8rem .3rem 0 .3rem",
+}));
