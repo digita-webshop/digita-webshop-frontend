@@ -58,6 +58,7 @@ export const UserItem = styled(ListItem)(({ theme }) => ({
     },
     "&.active": {
       backgroundColor: theme.palette.common.panelActiveRed,
+      borderLeft: "7px solid red",
       "&:hover": {
         backgroundColor: theme.palette.common.panelActiveRed,
       },
@@ -73,3 +74,22 @@ export const UserItem = styled(ListItem)(({ theme }) => ({
     color: theme.palette.common.panelGrey,
   },
 }));
+
+export const userAvatarStyle = {
+  display: "flex",
+  alignItems: "center",
+  cursor: "pointer",
+  marginLeft: "5px",
+  img: {
+    width: "40px",
+    borderRadius: "50%",
+    border: "2px solid #eee",
+    transition: "all 100ms ease-in",
+    "&:hover ": {
+      borderColor: "common.digitaRed",
+    },
+  },
+  "& .MuiSvgIcon-root": {
+    color: "common.panelGrey",
+  },
+};
