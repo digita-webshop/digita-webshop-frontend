@@ -2,6 +2,7 @@ import { Box, ListItem } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const Aside = styled(Box)(({ theme }) => ({
+  borderRadious: "15px",
   position: "fixed",
   backgroundColor: "white",
   width: "240px",
@@ -79,6 +80,7 @@ export const userAvatarStyle = {
   display: "flex",
   alignItems: "center",
   cursor: "pointer",
+  marginLeft: "5px",
   img: {
     width: "40px",
     borderRadius: "50%",
@@ -98,5 +100,5 @@ export const UserNavItem = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   alignItems: "center",
   margin: "0.8rem 0",
-  padding: ".8rem .5rem 0 .55555555555555555rem",
+  padding: ".8rem .5rem 0 .4rem",
 }));
