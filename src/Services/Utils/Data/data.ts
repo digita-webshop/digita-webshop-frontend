@@ -978,6 +978,13 @@ export const rows = [
   },
 ];
 
+export const userSidebarItems = [
+  {id: 1, title: "Profile", route: "/panel/user/profile", icon: "profile"},
+  {id: 2, title: "Orders", route: "/panel/user/orders", icon: "orders"},
+  {id: 3, title: "Wishlist", route: "/panel/user/wishlist", icon: "wishlist"},
+  {id: 4, title: "Address", route: "/panel/user/address", icon: "address"},
+]
+
 export const panelSidebarItems = [
   {
     id: 1,
