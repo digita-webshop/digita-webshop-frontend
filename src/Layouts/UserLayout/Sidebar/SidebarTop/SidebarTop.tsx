@@ -30,7 +30,7 @@ const SidebarTop = () => {
             <Typography sx={topMenuItem}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 Charge Wallet
-                <KeyboardArrowRightIcon />
+                <KeyboardArrowRightIcon className="navIcon"/>
               </Box>
             </Typography>
           </Box>
@@ -43,7 +43,7 @@ const SidebarTop = () => {
             <Typography sx={topMenuItem}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 Your Trophies
-                <KeyboardArrowRightIcon />
+                <KeyboardArrowRightIcon className="navIcon"/>
               </Box>
             </Typography>
           </Box>

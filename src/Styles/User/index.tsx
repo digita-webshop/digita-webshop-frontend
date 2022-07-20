@@ -104,4 +104,10 @@ export const UserNavItem = styled(Box)(({ theme }) => ({
 export const topMenuItem = {
   color: "common.digitaRed",
   cursor: "pointer",
+  "&:hover": {
+    "& .navIcon":{
+      transition: "0.2s", 
+      marginLeft: "0.4rem",
+    }
+  }
 };
