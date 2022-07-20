@@ -111,3 +111,20 @@ export const topMenuItem = {
     }
   }
 };
+
+
+/* =================== Profile ===================== */
+
+export const profileWrapper = {
+  padding: "30px",
+  width: "200px",
+  borderRadius: "12px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 3,
+  "& .imgItem": {
+    width: "100px",
+    height: "100px",
+  }
+}
