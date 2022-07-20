@@ -5,7 +5,13 @@ import { topMenuItem, profileWrapper } from "../../../Styles/User";
 const Profile = () => {
   return (
     <>
-      <Box sx={{border: "1px solid #d8d8d8", borderRadius: "12px", padding: "30px"}}>
+      <Box
+        sx={{
+          border: "1px solid #d8d8d8",
+          borderRadius: "12px",
+          padding: "30px",
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -18,7 +24,7 @@ const Profile = () => {
           </Typography>
           <Box sx={topMenuItem}>
             <Box sx={{ display: "flex", gap: 1 }}>
-              <Typography sx={{fontSize: "18px"}}>See All</Typography>
+              <Typography sx={{ fontSize: "18px" }}>See All</Typography>
               <KeyboardArrowRightIcon className="navIcon" />
             </Box>
           </Box>
@@ -59,7 +65,7 @@ const Profile = () => {
                 className="itemImg"
               />
               <Box>
-                <Typography sx={{ fontSize: "20px" }}>0 Order</Typography>
+                <Typography sx={{ fontSize: "20px" }}>4 Order</Typography>
                 <Box
                   sx={{
                     padding: "4px 10px",
@@ -100,6 +106,19 @@ const Profile = () => {
             </Box>
           </Grid>
         </Grid>
+      </Box>
+
+      <Box
+        sx={{
+          marginTop: "15px",
+          border: "1px solid #d8d8d8",
+          borderRadius: "12px",
+          padding: "30px",
+        }}
+      >
+        <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
+          Latest Shops
+        </Typography>
       </Box>
     </>
   );
