@@ -1,5 +1,7 @@
+import {Wishlist as WishlistPage} from "../../../../Components/User"
+
 function Wishlist() {
-  return <>wishlist</>;
+  return <WishlistPage />;
 }
 
 export default Wishlist;
