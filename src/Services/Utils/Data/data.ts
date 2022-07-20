@@ -980,9 +980,9 @@ export const rows = [
 
 export const userSidebarItems = [
   {id: 1, title: "Profile", route: "/user/profile", icon: "person"},
-  {id: 2, title: "Orders", route: "/user/orders", icon: "local_grocery_store"},
+  {id: 2, title: "My Orders", route: "/user/orders", icon: "local_grocery_store"},
   {id: 3, title: "Wishlist", route: "/user/wishlist", icon: "favorite"},
-  {id: 4, title: "Address", route: "/user/address", icon: "address"},
+  {id: 4, title: "Address", route: "/user/address", icon: "info"},
 ]
 
 export const panelSidebarItems = [
