@@ -181,6 +181,8 @@ export const productData = [
     price: 69.0,
     sold: true,
     starRate: 5,
+    sku:'',
+    color:'',
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -1291,3 +1293,46 @@ export const orders = [
     date: "14.12.2022",
   },
 ];
+
+// const productModel=[{
+//   id: 1,
+//   title: "Beats by Dr. Dre Studio (Orange)",
+//   image:
+//     "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+//   gallery:[{
+//       id:1,
+//       image:'example.png'
+//     },
+//     {
+//       id:2,
+//       image:'example.png'
+//     },
+//     {
+//       id:3,
+//       image:'example.png'
+//     },
+//     {
+//       id:4,
+//       image:'example.png'
+//     },
+//     {
+//       id:5,
+//       image:'example.png'
+//     },
+//     {
+//       id:6,
+//       image:'example.png'
+//     }],
+//   offPrice: 79.0,
+//   price: 69.0,
+//   sold: true,
+//   starRate: 5,
+//   sku:'WVN-14',
+//   colors:['#f03637','#example','#example'],
+//   category:'Audio & Video Game',
+//   tags:['tag1','tag2','tag3'],
+//   short_description:
+//     "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
+//     full_description:'',
+//     reviews:[]
+// }]
