@@ -24,9 +24,9 @@ export const Aside = styled(Box)(({ theme }) => ({
 
 export const Main = styled(Box)(({ theme }) => ({
   marginTop: "40px",
-  padding: "30px",
+  /* padding: "30px", */
   width: "100%",
-  border: `1px solid ${theme.palette.common.panelHoverDarkGrey}`,
+  /* border: `1px solid ${theme.palette.common.panelHoverDarkGrey}`, */
   borderRadius: "12px",
   [theme.breakpoints.down("lg")]: {
     width: "95%",
