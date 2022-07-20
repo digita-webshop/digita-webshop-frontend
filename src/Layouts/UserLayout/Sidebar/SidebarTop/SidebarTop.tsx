@@ -1,7 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { userAvatarStyle, UserNavItem } from "../../../../Styles/User";
+import {
+  userAvatarStyle,
+  UserNavItem,
+  topMenuItem,
+} from "../../../../Styles/User";
 
 const SidebarTop = () => {
   return (
@@ -23,40 +27,28 @@ const SidebarTop = () => {
         <UserNavItem>
           <Box sx={{ paddingLeft: ".3rem" }}>
             <Typography>Wallet</Typography>
-            <Typography
-              sx={{
-                color: "common.digitaRed",
-                cursor: "pointer",
-              }}
-            >
+            <Typography sx={topMenuItem}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 Charge Wallet
                 <KeyboardArrowRightIcon />
               </Box>
             </Typography>
           </Box>
-          <Typography sx={{fontWeight: "bold"}}>13$</Typography>
+          <Typography sx={{ fontWeight: "bold" }}>13$</Typography>
         </UserNavItem>
 
         <UserNavItem>
           <Box sx={{ paddingLeft: ".3rem" }}>
             <Typography>Points</Typography>
-            <Typography
-              sx={{
-                color: "common.digitaRed",
-                cursor: "pointer",
-              }}
-            >
+            <Typography sx={topMenuItem}>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 Your Trophies
                 <KeyboardArrowRightIcon />
               </Box>
             </Typography>
           </Box>
-          <Typography sx={{fontWeight: "bold"}}>180</Typography>
+          <Typography sx={{ fontWeight: "bold" }}>180</Typography>
         </UserNavItem>
-
-        
       </Box>
     </>
   );
