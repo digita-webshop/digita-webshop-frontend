@@ -959,8 +959,8 @@ export const recentShopItems = [
   {id: 1, image: "https://dkstatics-public.digikala.com/digikala-products/174590d431e79eba2df1d9792f4ae8a1bacda4db_1639393931.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Asus Laptop R4FA650-EB028", price: 1152},
   {id: 2, image: "https://dkstatics-public.digikala.com/digikala-products/119607459.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "A Data External Hard", price: 352},
   {id: 3, image: "https://dkstatics-public.digikala.com/digikala-products/aa71b72711dc3ba9939525abe3e8905be1ebb6cc_1645858425.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Asus Laptop Rog Strix G513", price: 1452},
-  /* {id: 4, image: "https://dkstatics-public.digikala.com/digikala-products/cf7840133c7b2d42979c3129a96008e5b166ac0d_1630351304.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Idea pad Gi31432", price: 852},
-  {id: 5, image: "https://dkstatics-public.digikala.com/digikala-products/120756220.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Sandisk USB Drive", price: 82},
+  {id: 4, image: "https://dkstatics-public.digikala.com/digikala-products/cf7840133c7b2d42979c3129a96008e5b166ac0d_1630351304.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Idea pad Gi31432", price: 852},
+  /*{id: 5, image: "https://dkstatics-public.digikala.com/digikala-products/120756220.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Sandisk USB Drive", price: 82},
   {id: 6, image: "https://dkstatics-public.digikala.com/digikala-products/744896f967cc8505a9c424c0b00692d72932b53b_1656422331.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Samsung A13 sm", price: 720},
   {id: 7, image: "https://dkstatics-public.digikala.com/digikala-products/871b53a2236bf90e7e37337b1089c39f5c5175ff_1656422780.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Galaxy A55 4G", price: 1045},
   {id: 8, image: "https://dkstatics-public.digikala.com/digikala-products/8f435cb234a56316906e4384c485db63e58d798e_1598372344.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Headphone P47edr", price: 552}, */
@@ -990,7 +990,7 @@ export const rows = [
 ];
 
 export const userSidebarItems = [
-  {id: 1, title: "Profile", route: "/user/profile", icon: "person"},
+  {id: 1, title: "Status", route: "/user/profile", icon: "dashboard"},
   {id: 2, title: "My Orders", route: "/user/orders", icon: "local_grocery_store"},
   {id: 3, title: "Wishlist", route: "/user/wishlist", icon: "favorite"},
   {id: 4, title: "Address", route: "/user/address", icon: "info"},
