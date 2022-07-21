@@ -26,6 +26,7 @@ import {
 } from "../../../../Styles/Products/index";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { closeStyle } from "../../../../Styles/Products";
+import CompareModal from "../../../CompareModal/CompareModal";
 
 type Props = {
   name: string;
@@ -54,6 +55,7 @@ const ProductItem = ({
   const [openWish, setOpenWish] = useState(false);
   const [addWish, setAddWish] = useState(false);
   const [openCart, setOpenCart] = useState(false);
+  const [openCompareModal, setOpenCompareModal] = useState(false);
 
   const handleWishList = () => {
     setOpenWish(false);
@@ -134,6 +136,7 @@ const ProductItem = ({
                   display: "flex",
                   marginLeft: "10px",
                 }}
+                onClick={() => setOpenCompareModal(true)}
                 aria-label="add an alarm"
               >
                 <CompareArrowsIcon fontSize="small" sx={{ margin: "auto" }} />
@@ -220,6 +223,17 @@ const ProductItem = ({
         />
       </Modal>
       {/* ============ MODAL VIEW ============*/}
+      {/* ============ COMPARE MODAL ============*/}
+      <Modal
+        open={openCompareModal}
+        onClose={() => setOpenCompareModal(false)}
+        closeAfterTransition
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <CompareModal setOpenCompareModal={setOpenCompareModal} />
+      </Modal>
       <CardContent>
         <Rating
           name="text-feedback"
