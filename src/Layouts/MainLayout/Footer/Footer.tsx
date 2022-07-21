@@ -1,6 +1,7 @@
 import FooterList from "./FooterList/FooterList";
 import Subscription from "./Subscription/Subscription";
 import { Grid, Typography, Link, Box } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
 const companyInfo = [
   "about us",
@@ -31,10 +32,12 @@ const userFullLinks = [
   "new collection",
 ];
 function Footer() {
+  const { pathname } = useLocation();
+
   return (
     <Box
       sx={{
-        minHeight: "560px",
+        paddingTop: pathname.length === 1 ? "160px" : "20px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
