@@ -27,3 +27,4 @@ export { default as Article } from "./Article/Article";
 export { default as Reviews } from "./Reviews/Reviews";
 export { default as PanelProducts } from "./PanelProducts/PanelProducts";
 export { default as CompareModal } from "./CompareModal/CompareModal";
+export { default as Product } from "./Product/Product";
