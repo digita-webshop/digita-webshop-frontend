@@ -1,6 +1,19 @@
 import { Box, Grid, Typography } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import { topMenuItem, profileWrapper } from "../../../Styles/User";
+import {
+  topMenuItem,
+  profileWrapper,
+  productImg,
+  shopWrapper,
+} from "../../../Styles/User";
+import { recentShopItems } from "../../../Services/Utils/Data/data";
+
+interface T {
+  id: number;
+  image: string;
+  name: string;
+  price: number;
+}
 
 const Profile = () => {
   return (
@@ -119,6 +132,31 @@ const Profile = () => {
         <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
           Latest Shops
         </Typography>
+
+        <Box sx={{ display: "flex", gap: 1, overflowX: "scroll" }}>
+          {recentShopItems.map((item: T) => (
+            <Box sx={shopWrapper} key={item.id}>
+              <Box sx={productImg}>
+                <Box
+                  component="img"
+                  src={item.image}
+                  alt="order"
+                  className="shopImg"
+                />
+              </Box>
+              <Box sx={{ width: "195px" }}>
+                <Typography sx={{ fontWeight: 600, fontSize: "16px" }}>
+                  {item.name}
+                </Typography>
+              </Box>
+              <Typography
+                sx={{ fontWeight: "bold", fontSize: "18px", color: "#333" }}
+              >
+                {`${item.price} $`}
+              </Typography>
+            </Box>
+          ))}
+        </Box>
       </Box>
     </>
   );
