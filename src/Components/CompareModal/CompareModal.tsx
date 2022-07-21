@@ -12,7 +12,7 @@ interface Props {
 function CompareModal({ setOpenCompareModal }: Props) {
   return (
     <CompareWrapper>
-      <Box position={"relative"}>
+      <Box sx={{ height: "90%", overflow: "auto" }}>
         <Box
           className="close-button"
           onClick={() => setOpenCompareModal(false)}

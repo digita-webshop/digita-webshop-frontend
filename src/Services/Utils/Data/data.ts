@@ -1325,14 +1325,58 @@ export const orders = [
 //     }],
 //   offPrice: 79.0,
 //   price: 69.0,
-//   sold: true,
-//   starRate: 5,
+//   rating: 5,
+//   quantity:4,
 //   sku:'WVN-14',
 //   colors:['#f03637','#example','#example'],
 //   category:'Audio & Video Game',
 //   tags:['tag1','tag2','tag3'],
-//   short_description:
+//   shortDescription:
 //     "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
-//     full_description:'',
-//     reviews:[]
+//     fullDescription:'<h2>title</h2> ',
+//     reviews:[
+//       {
+//         userId:'1',
+//         createdAt:'',
+//         rating:5,
+//         description:'',
+//       }
+//     ]
 // }]
+// const articleModel=[
+//   {
+//     id:'1',
+//     title:'On Salvatore Ferragamo’s New Chapter',
+//     image:'',
+//     description:'',
+//     writer:'peter giroud',
+//     createdAt:'',
+//     reviews:[
+//       {
+//         userId:'1',
+//         createdAt:'',
+//         description:'',
+//       }
+//     ]
+//   }
+// ]
+
+// const userModel= {
+//     id:'1',
+//     name:'john',
+//     lastName:'doe',
+//     email:'example@email.com',
+//     password:'12345',
+//     phone:'+0123456789',
+//     image:'',
+//     adresses:[
+//       {
+//         id:'1',
+//         country:'usa',
+//         state:'new york',
+//         city:'adams',
+//         postCode:'0123456789',
+//         street:''
+//       }
+//     ]
+//   }

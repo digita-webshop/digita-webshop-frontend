@@ -1,6 +1,7 @@
 import { Close } from "@mui/icons-material";
 import { Box, Table, TableBody, TableRow } from "@mui/material";
 import {
+  compareTableStyles,
   CTButton,
   CTCell,
   CTHCell,
@@ -20,12 +21,13 @@ interface Props {
   productData: any[];
 }
 function ItemsTable({ productData }: Props) {
-  console.log(productData);
+  let widthClass = `w-${productData.length + 1}`;
+
   return (
     <Table>
-      <TableBody>
+      <TableBody sx={compareTableStyles} className={widthClass}>
         <TableRow>
-          <CTHCell></CTHCell>
+          <CTHCell className="td"></CTHCell>
           {productData.map((product) => (
             <CTCell>
               <Box sx={tableRemoveBtnStyles}>
@@ -42,7 +44,6 @@ function ItemsTable({ productData }: Props) {
               <Box sx={tableImageStyles}>
                 <img src={product.image} alt={product.color} />
               </Box>
-              color
             </CTCell>
           ))}
         </TableRow>
