@@ -8,16 +8,20 @@ import Tabs from "./Components/Tabs/Tabs";
 import ShareProduct from "./Components/ShareProduct/ShareProduct";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import ProductItem from "./../Products/Components/ProductItem/ProductItem";
+import { useParams } from "react-router-dom";
 
 const Product = () => {
+  const { id }: any = useParams();
+  const product = productData.find((product) => product.id === +id);
   return (
     <Box bgcolor={"white"}>
-      <Breadcrumbs title={"product"} />
+      <Breadcrumbs title={"product"} lastPath={product?.name} />
       <Container maxWidth={"lg"}>
-        <ProductDetails />
+        <ProductDetails product={product} />
         <BoughtTogether />
         <Tabs />
         <ShareProduct />
+
         <Box sx={{ textAlign: "left", pb: 8 }}>
           <Typography variant="h4" sx={teamTitleStyle}>
             RELATED PRODUCTS

@@ -43,10 +43,15 @@ import {
   ShowViewCart,
 } from "../../../../Styles/Product/index";
 
-const ProductDetails = () => {
+interface Props {
+  product: any;
+}
+const ProductDetails = ({ product }: Props) => {
   const [openAddToCart, setOpenAddToCart] = useState(false);
-  const [opennext, setOpennext] = useState(false);
+  // const [opennext, setOpennext] = useState(false);
   const handleCloseAddToCart = () => setOpenAddToCart(false);
+
+  const { name, price, imagee, starRate, sku, color, description } = product;
 
   return (
     <>
@@ -57,7 +62,7 @@ const ProductDetails = () => {
             <Box sx={PostStyle}>
               <Box sx={TopSectionStyle}>
                 <Typography variant="h4" sx={productTitle} component="div">
-                  Microsoft Xbox One S Blue Grey
+                  {name}
                 </Typography>
                 <Box sx={nextButton}>
                   <Link
@@ -101,7 +106,7 @@ const ProductDetails = () => {
                   <Box sx={starLink}>
                     <Rating
                       name="read-only"
-                      defaultValue={5}
+                      defaultValue={starRate}
                       size="small"
                       readOnly
                       sx={starRating}
@@ -119,7 +124,7 @@ const ProductDetails = () => {
               </Box>
               <Box sx={{ height: "50px", width: "100%" }}></Box>
               <Box sx={filledPrice}>
-                <bdi>$52.00</bdi>
+                <bdi>{`$${price}`}</bdi>
               </Box>
 
               <Typography
@@ -127,24 +132,9 @@ const ProductDetails = () => {
                 sx={ProductDetailsStyle}
                 component="p"
               >
-                <p className="paragraph">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
-                </p>
-                <p className="paragraph">
-                  Consetetur sadipscing elitr, sed diam nonumy eirmod
-                </p>
-                <p className="paragraph">Suspendisse ultrices mauris diam</p>
+                {description}
               </Typography>
 
-              <Typography
-                variant="body2"
-                sx={ProductDetailsStyle}
-                component="p"
-              >
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat
-              </Typography>
               <Box sx={ShowViewCart}>
                 <Box sx={CartButtonsStyle}>
                   <Button
@@ -209,7 +199,7 @@ const ProductDetails = () => {
                 component="p"
                 sx={{ lineHeight: "1.2" }}
               >
-                SKU : WVN-13
+                SKU : {sku}
               </Typography>
               <Typography variant="body2" component="p">
                 Categories :
