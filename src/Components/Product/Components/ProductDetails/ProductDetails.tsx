@@ -10,11 +10,7 @@ import {
   Typography,
   Container,
 } from "@mui/material";
-import ProductSlider from "../ProductSlider/ProductSlider";
 import AddToCartModal from "../Modals/AddToCartModal/AddToCartModal";
-// import NextProductModal from "../Modals/NextProductModal/NextProductModal";
-// import PreviousProductModal from "../Modals/PreviousProductModal/PreviousProductModal";
-
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
@@ -48,10 +44,9 @@ interface Props {
 }
 const ProductDetails = ({ product }: Props) => {
   const [openAddToCart, setOpenAddToCart] = useState(false);
-  // const [opennext, setOpennext] = useState(false);
   const handleCloseAddToCart = () => setOpenAddToCart(false);
 
-  const { name, price, imagee, starRate, sku, color, description } = product;
+  const { name, price, image, starRate, sku, color, description } = product;
 
   return (
     <>
@@ -59,70 +54,35 @@ const ProductDetails = ({ product }: Props) => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}></Grid>
           <Grid item xs={12} md={6}>
-            <Box sx={PostStyle}>
-              <Box sx={TopSectionStyle}>
-                <Typography variant="h4" sx={productTitle} component="div">
+            <Box>
+              <Box>
+                <Typography variant="h4" sx={productTitle}>
                   {name}
                 </Typography>
                 <Box sx={nextButton}>
-                  <Link
-                    className="left"
-                    sx={nextButtonStyle}
-                    component="button"
-                    variant="body2"
-                    underline="none"
-                    onClick={() => {
-                      console.info("I'm a button.");
-                    }}
-                  >
-                    <ArrowBackIosIcon
-                      sx={{
-                        fontSize: "13px",
-                        color: "(theme:any)=>theme.palette.common.digitaGrey8",
-                      }}
-                    />
-                  </Link>
-
-                  <Link
+                  <Box className="left" sx={nextButtonStyle} component="button">
+                    <ArrowBackIosIcon />
+                  </Box>
+                  <Box
                     className="right"
                     sx={nextButtonStyle}
                     component="button"
-                    variant="body2"
-                    underline="none"
-                    onClick={() => {
-                      console.info("I'm a button.");
-                    }}
                   >
-                    <ArrowForwardIosIcon
-                      sx={{
-                        fontSize: "13px",
-                        color: "(theme:any)=>theme.palette.common.digitaGrey8",
-                      }}
-                    />
-                  </Link>
+                    <ArrowForwardIosIcon />
+                  </Box>
                 </Box>
 
-                <Typography variant="body2" component="p">
-                  <Box sx={starLink}>
-                    <Rating
-                      name="read-only"
-                      defaultValue={starRate}
-                      size="small"
-                      readOnly
-                      sx={starRating}
-                    />
-                    <Link
-                      href="#review"
-                      underline="none"
-                      className="customerReview"
-                      sx={{ marginBottom: "20px", marginTop: "-5px" }}
-                    >
-                      (1 customer review)
-                    </Link>
-                  </Box>
-                </Typography>
+                <Box sx={starLink}>
+                  <Rating
+                    name="read-only"
+                    defaultValue={starRate}
+                    size="small"
+                    readOnly
+                    sx={starRating}
+                  />
+                  <Link className="customerReview">(1 customer review)</Link>
+                </Box>
               </Box>
-              <Box sx={{ height: "50px", width: "100%" }}></Box>
               <Box sx={filledPrice}>
                 <bdi>{`$${price}`}</bdi>
               </Box>
@@ -192,17 +152,11 @@ const ProductDetails = ({ product }: Props) => {
                 </Link>
               </Box>
             </Box>
-            <Divider sx={{ padding: "20px", width: "100%" }} />
+            <Divider sx={{ width: "100%" }} />
             <Box sx={productMetaStyle}>
-              <Typography
-                variant="body2"
-                component="p"
-                sx={{ lineHeight: "1.2" }}
-              >
-                SKU : {sku}
-              </Typography>
+              <Typography component="p">SKU : {sku}</Typography>
               <Typography variant="body2" component="p">
-                Categories :
+                Category :
                 <Link
                   href="#"
                   underline="none"
@@ -211,25 +165,6 @@ const ProductDetails = ({ product }: Props) => {
                   sx={linkStyle}
                 >
                   {" Audio &amp; Video Game"}
-                </Link>{" "}
-                ,
-                <Link href="#" underline="none" sx={linkStyle}>
-                  {"  Headphone"}
-                </Link>{" "}
-                ,
-                <Link href="#" underline="none" sx={linkStyle}>
-                  {"Phone Accessories"}
-                </Link>{" "}
-                &nbsp;,
-                <Link href="#" underline="none" sx={linkStyle}>
-                  {"Technologies"}
-                </Link>{" "}
-                ,
-                <Link href="#" underline="none" sx={linkStyle}>
-                  {"Virtual Reality Glasses"}
-                </Link>
-                <Link href="#" underline="none" sx={linkStyle}>
-                  {"Xbox(Console)"}
                 </Link>
               </Typography>
               <Typography
