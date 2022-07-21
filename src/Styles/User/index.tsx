@@ -128,3 +128,19 @@ export const profileWrapper = {
     height: "100px",
   }
 }
+
+
+/* ============================== Latest shops =========================== */
+export const productImg = {
+  "& .shopImg": {
+    width: "200px",
+    height: "200px",
+  }
+}
+
+export const shopWrapper = {
+  display: "flex",
+  flexDirection: "column",
+  gap: 1,
+  margin: "2rem 0",
+}
