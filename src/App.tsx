@@ -11,6 +11,7 @@ import {
   Checkout,
   Cart,
   Article,
+  Product,
 } from "./Pages/Main";
 
 import {
@@ -44,6 +45,7 @@ function App() {
             <Route element={<MainLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
+              <Route path="/product/:id" element={<Product />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/article/:id" element={<Article />} />
               <Route path="/about-us" element={<AboutUs />} />
