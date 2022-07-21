@@ -29,13 +29,7 @@ export const Main = styled(Box)(({ theme }) => ({
   /* border: `1px solid ${theme.palette.common.panelHoverDarkGrey}`, */
   borderRadius: "12px",
   [theme.breakpoints.down("lg")]: {
-    width: "95%",
-  },
-  [theme.breakpoints.down("md")]: {
-    width: "94%",
-  },
-  [theme.breakpoints.down("sm")]: {
-    width: "92%",
+    width: "100%",
   },
 }));
 
@@ -141,6 +135,7 @@ export const productImg = {
 export const shopWrapper = {
   display: "flex",
   flexDirection: "column",
+  justifyContent: "space-between",
   gap: 1,
   margin: "2rem 0",
 }
