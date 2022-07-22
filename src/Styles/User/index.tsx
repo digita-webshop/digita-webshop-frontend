@@ -99,15 +99,19 @@ export const topMenuItem = {
   color: "common.digitaRed",
   cursor: "pointer",
   "&:hover": {
-    "& .navIcon":{
-      transition: "0.2s", 
+    "& .navIcon": {
+      transition: "0.2s",
       marginLeft: "0.4rem",
-    }
-  }
+    },
+  },
 };
 
-
 /* =================== Profile ===================== */
+export const wrapper = {
+  border: "1px solid #d8d8d8",
+  borderRadius: "12px",
+  padding: "30px",
+};
 
 export const profileWrapper = {
   padding: "30px",
@@ -120,17 +124,16 @@ export const profileWrapper = {
   "& .imgItem": {
     width: "100px",
     height: "100px",
-  }
-}
-
+  },
+};
 
 /* ============================== Latest shops =========================== */
 export const productImg = {
   "& .shopImg": {
     width: "200px",
     height: "200px",
-  }
-}
+  },
+};
 
 export const shopWrapper = {
   display: "flex",
@@ -139,4 +142,14 @@ export const shopWrapper = {
   justifyContent: "space-between",
   gap: 1,
   margin: "2rem 0",
-}
+};
+
+/* ============= Wishlist ============ */
+
+export const EmptyWishlistWrapper = styled(Box)(({ theme }) => ({
+  height: "60vh",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+}));
