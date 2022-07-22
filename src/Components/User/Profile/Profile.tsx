@@ -136,7 +136,7 @@ const Profile = () => {
           Latest Shops
         </Typography>
 
-        <Box sx={{ display: "flex", gap: 2, overflowX: "auto" }}>
+        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", overflowX: "hidden" }}>
           {recentShopItems.map((item: T) => (
             <Box sx={shopWrapper} key={item.id}>
               <Box sx={productImg}>

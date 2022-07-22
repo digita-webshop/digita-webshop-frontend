@@ -134,6 +134,7 @@ export const productImg = {
 
 export const shopWrapper = {
   display: "flex",
+  flexBasis: "100px",
   flexDirection: "column",
   justifyContent: "space-between",
   gap: 1,
