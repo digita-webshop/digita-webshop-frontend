@@ -20,12 +20,10 @@ export const ProductDetailsStyle = {
 export const nextButtonStyle = {
   boxSizing: "border-box",
   borderWidth: "0.4px",
-  lineHeight: "10px",
   minWidth: "30px",
   color: "(theme:any)=>theme.palette.common.digitaGrey8",
   backgroundColor: (theme: any) => theme.palette.common.digitaWhite,
   border: "1px solid #d1d1d1",
-  // border: `1px solid ${theme.palette.common.digitaGrey8}`,
   textAlign: "center",
   marginRight: "10px",
   width: "30px",
@@ -34,37 +32,29 @@ export const nextButtonStyle = {
   cursor: "pointer",
   fontSize: "13px",
   display: "flex",
-  flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
+  gap: "8px",
   "&:hover": {
-    color: (theme: any) => theme.palette.common.digitaWhite,
     borderStyle: "none",
     backgroundColor: "#F03637",
+    "& .MuiSvgIcon-root": {
+      color: "white",
+    },
   },
-  "& .left": {
-    marginRight: "3.5px",
-  },
-  "& .right": {
-    marginLeft: "3.5px",
-  },
+
   "& .MuiSvgIcon-root": {
     fontSize: "13px",
-    color: "common.digitBlack",
+    color: "#d1d1d1",
   },
 };
 
 export const nextButton = {
-  float: "right",
-  marginTop: "-1.5rem",
-  display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
-  flexDirection: "row",
+  display: { xs: "none", md: "flex" },
   alignItems: "center",
   justifyContent: "center",
 };
-export const TopSectionStyle = {
-  marginBottom: "10px",
-};
+
 export const filledPrice = {
   width: "100%",
   boxSizing: "border-box",
@@ -82,218 +72,99 @@ export const filledPrice = {
 export const productTitle = {
   fontWeight: "500",
   fontSize: "25px",
-  lineHeight: "1.2",
-  textTransform: "none",
-  padding: " 0 80px 0 0px",
+  textTransform: "capitalize",
   color: (theme: any) => theme.palette.common.digitaBlack1,
 };
-export const contentWrap = {
-  padding: "50px 15px",
-  width: "auto !important",
-};
-export const addToCartButton = {
-  float: "left",
-  height: "50px",
-  padding: { xs: "0 36px", sm: "0 36px", md: "0 46px", lg: "0 46px" },
-  fontSize: { xs: "13px", sm: "13px", md: "15px", lg: "15px" },
-  fontWeight: { xs: "300", sm: "300", md: "600", lg: "600" },
-  textTransform: "capitalize",
-  letterSpacing: "normal",
-  marginRight: "15px",
 
-  "&:active": {
-    "& .ShowViewCart": {
-      display: "flex",
-    },
-  },
-  "&:focus": {
-    "& .ShowViewCart": {
-      display: "inline-block",
-    },
-  },
-};
-export const ShowViewCart = {
-  // "& .ShowViewCart":{
-  //   display:"none",
-  // },
-  "& .addCart": {
-    "&:active": {
-      "& .ShowViewCart": {
-        display: "flex",
-      },
-    },
-    "&:focus": {
-      "& .ShowViewCart": {
-        display: "inline-block",
-      },
-    },
-  },
-};
-export const ViewCartButton = {
-  backgroundColor: (theme: any) => theme.palette.common.digitaBlack,
-  border: "0",
-  marginLeft: "0px",
-  marginRight: "15px",
-  lineHeight: "50px",
-  padding: "0 46px",
-  color: (theme: any) => theme.palette.common.digitaWhite,
-  fontSize: "15px",
-  fontWeight: "600",
-  textTransform: "capitalize",
-  letterSpacing: "normal",
-  display: "none",
-};
 export const CartButtonsStyle = {
   width: "100%",
   marginTop: "30px",
   marginBottom: "5px",
-  flexDirection: "row",
   display: "flex",
-  justifyContent: "start",
   alignItems: "center",
-  float: "left",
+  height: "50px",
+  gap: "10px",
+  button: {
+    height: "100%",
+    padding: { xs: "0", sm: "0 40px" },
+    fontSize: "16px",
+    width: { xs: "50%", sm: "auto" },
+  },
 };
 
-export const ComperWishStyle = {
+export const productButtonStyles = {
   width: "100%",
   marginTop: "10px",
   marginBottom: "25px",
-
   display: "flex",
-
-  float: "left",
-  marginLeft: "-10px",
-  flexDirection: { xs: "column", sm: "row", md: "row", lg: "row" },
+  flexDirection: { xs: "column", sm: "row" },
   justifyContent: {
     xs: "center",
     sm: "flex-start",
-    md: "flex-start",
-    lg: "flex-start",
   },
-
-  alignItems: { xs: "flex-start", sm: "center", md: "center", lg: "center" },
-};
-export const starRating = {
-  overflow: "hidden",
-  position: "relative",
-  height: "1em",
-  marginBottom: "20px",
-  fontSize: "14px",
-  width: "5.4em",
-  fontFamily: "star",
-  float: "left",
-  marginTop: "-5px",
-};
-export const show = {};
-export const starLink = {
-  width: "100%",
-  marginRight: "10px",
-  padding: "15px 0",
-  flexDirection: "row",
-  display: "flex",
-  justifyContent: "start",
-  alignItems: "center",
-  position: "static",
-
-  "& .customerReview": {
-    marginBottom: "20px",
-    marginTop: "-5px",
+  alignItems: { xs: "flex-start", sm: "center" },
+  gap: "20px",
+  button: {
     textDecoration: "none",
+    display: "flex",
+    alignItems: "center",
+    transition: "all 0.4s ease",
+    textTransform: "capitalize",
+    fontWeight: "500",
+    gap: "4px",
+    color: (theme: any) => theme.palette.common.digitaBlack,
+    padding: "10px 0px",
+    fontSize: "16px",
     "&:hover": {
       color: "#F03637",
     },
   },
 };
-export const PostStyle = {
-  width: "100%",
-  maxWidth: "500",
-  color: (theme: any) => theme.palette.common.digitaBlack,
+export const starRating = {
+  position: "relative",
+  height: "1em",
+  fontSize: "14px",
+  width: "5.4em",
+  fontFamily: "star",
 };
+export const starLink = {
+  width: "100%",
+  marginRight: "10px",
+  padding: "15px 0",
+  display: "flex",
+  alignItems: "center",
+  "& .customerReview": {
+    fontFamily: "jost",
+    cursor: "pointer",
+    textDecoration: "none",
+    fontSize: "13px",
+    "&:hover": {
+      color: "#F03637",
+    },
+  },
+};
+
 export const productMetaStyle = {
-  fontWeight: "400",
   color: (theme: any) => theme.palette.common.digitaBlack,
-  marginTop: "30px!important",
-  borderBottom: 0,
-  lineHeight: "2rem",
+  marginTop: "15px!important",
   paddingBottom: "10px",
-  p: {
-    fontSize: "20px",
+  "& .span": {
+    fontSize: "16px",
     marginBottom: "4px",
+    display: "inline",
+  },
+  span: {
+    fontSize: "20px",
   },
 };
 export const linkStyle = {
+  textDecoration: "none",
+  fontFamily: "jost",
+  cursor: "pointer",
   "&:hover": {
     color: "#F03637",
   },
 };
-
-export const WishlistButton = {
-  flexDirection: "row",
-  display: "flex",
-  justifyContent: "start",
-  alignItems: "center",
-  color: (theme: any) => theme.palette.common.digitaRed,
-  padding: "10px 20px",
-  fontSize: "16px",
-  border: "none",
-  float: "left",
-  "&:hover": {
-    color: "#F03637",
-  },
-  marginLeft: "-5px",
-};
-
-export const CompareButton = {
-  float: "left",
-  flexDirection: "row",
-  display: "flex",
-  justifyContent: "start",
-  alignItems: "center",
-  transition: "all 0.4s ease",
-  background: "transparent",
-  lineHeight: "unset",
-  textTransform: "capitalize",
-  fontWeight: "500",
-  color: (theme: any) => theme.palette.common.digitaBlack,
-  padding: "10px 20px",
-  fontSize: "16px",
-  border: "none",
-  "&:hover": {
-    color: "#F03637",
-  },
-};
-//  /* ================  ProductSlider ============== */
-// export const zoomImg ={
-//   position: "absolute",
-//   top: "-238.398px",
-//   left: "-170.479px",
-//   opacity: "0",
-//   width: "670px",
-//   height: "670px",
-//   border: "none",
-//   maxWidth: "none",
-//   maxHeight: "none",
-//   backgroundColor: "#fff",
-//   verticalAlign: "middle"
-// }
-// export const slideImg={
-//   border: "1px solid #ebebeb",
-//   margin: "auto",
-//   opacity: "1",
-//   transition: "all 0.2s ease",
-// }
-// export const slickArrow={
-//   width: "30px !important",
-//   height: "30px",
-//   border: "1px solid #ebebeb",
-//   transform: "translateY(-50%)",
-//   backgroundColor: (theme:any)=>theme.palette.common.digitaWhite,
-//   transition: "all 0.3s",
-//   top: "50%",
-//   opacity: "0",
-//   right: "30px",
-//   cursor: "pointer",
-// }
 
 //  /* ================  BoughtToGether ============== */
 export const allBought = {
