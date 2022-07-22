@@ -114,6 +114,7 @@ export const wrapper = {
 };
 
 export const profileWrapper = {
+  cursor: "pointer",
   padding: "30px",
   width: "200px",
   borderRadius: "12px",
