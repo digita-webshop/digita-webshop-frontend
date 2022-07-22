@@ -11,7 +11,7 @@ const Wishlist = () => {
   const wish = 0;
   const [list, setList] = useState(userWishlistProducts);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(8);
+  const [productsPerPage] = useState(6);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -39,9 +39,9 @@ const Wishlist = () => {
           />
         )}
 
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{mt:2}}>
           {currentProducts.map(({ id, name, price, image }) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={id}>
+            <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key={id}>
               <Product
                 id={id}
                 name={name}

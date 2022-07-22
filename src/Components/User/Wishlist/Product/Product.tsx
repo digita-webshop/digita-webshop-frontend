@@ -9,16 +9,11 @@ import {
 } from "@mui/material";
 
 import { useState } from "react";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import EditIcon from "@mui/icons-material/Edit";
 import { cartModal } from "../../../../Styles/PanelProducts";
-import {
-  cardWrapper,
-  titleWrapper,
-  titleStyle,
-  deleteBtn,
-  editBtn,
-} from "../../../../Styles/PanelProducts";
+import { titleWrapper, titleStyle } from "../../../../Styles/PanelProducts";
+import { cardWrapper, deleteBtn, addBtn } from "../../../../Styles/User";
 
 type T = {
   id: number;
@@ -51,10 +46,7 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
           {"$" + price}
         </Typography>
         <Box sx={{ display: "flex", mt: 1, gap: 1 }}>
-          <Button variant="contained" sx={editBtn}>
-            <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
-            Edit
-          </Button>
+          
           <Button
             variant="contained"
             sx={deleteBtn}
@@ -62,6 +54,10 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
           >
             <DeleteForeverIcon sx={{ margin: "0 0.2rem" }} />
             Delete
+          </Button>
+          <Button variant="contained" sx={addBtn}>
+            <ShoppingCartIcon className="addIcon" sx={{ margin: "0 0.2rem", color: "common.digitaRed" }} />
+            Add To Cart
           </Button>
         </Box>
 
