@@ -145,3 +145,36 @@ export const shopWrapper = {
 };
 
 /* ============= Wishlist ============ */
+export const cardWrapper = {
+  width: "100%",
+  cursor: "pointer",
+};
+
+export const deleteBtn = {
+  borderRadius: "4px",
+  backgroundColor: "#fff",
+  border: "1px solid #d8d8d8",
+  color: "#555",
+  fontSize: "16px",
+  padding: "0.1rem 0.4rem 0.1rem 0 !important",
+  "&:hover": { backgroundColor: "#999", color: "#fff" },
+};
+
+export const addBtn = {
+  borderRadius: "4px",
+  backgroundColor: "#fff",
+  color: "common.digitaRed",
+  fontWeight: 400,
+  border: "1px solid #f03637",
+  fontSize: "16px",
+  padding: "0.1rem 0.4rem 0.1rem 0 !important",
+  "&:hover": {
+    backgroundColor: "#f03637",
+    color: "#fff",
+    borderColor: "common.digitaRed",
+    "& .addIcon":{
+      transition: "0.15s",
+      color: "#fff",
+    }
+  },
+};
