@@ -966,6 +966,86 @@ export const recentShopItems = [
   {id: 8, image: "https://dkstatics-public.digikala.com/digikala-products/8f435cb234a56316906e4384c485db63e58d798e_1598372344.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Headphone P47edr", price: 552}, */
 ]
 
+export const userWishlistProducts = [
+  {
+    id: 1,
+    name: "Beats By Dr. Dre studio...",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 2,
+    name: "Crosair HS35...",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 3,
+    name: "Microsoft Xbox One S Bl",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 4,
+    name: "Microsoft Xbox One S....",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 5,
+    name: "Samsung Galaxy Note...",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 6,
+    name: "Samsung Galaxy M21",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 7,
+    name: "Samsung Galaxy V21",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 8,
+    name: "SmartPhone & Ipad",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 9,
+    name: "Beats By Dr. Dre studio...",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 10,
+    name: "Crosair HS35...",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 11,
+    name: "Microsoft Xbox One S Bl",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+    price: 179,
+  },
+]
+
 export const rows = [
   {
     id: 1,
