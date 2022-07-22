@@ -1,6 +1,7 @@
 import { Box, Grid, Typography } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {
+  wrapper,
   topMenuItem,
   profileWrapper,
   productImg,
@@ -18,13 +19,7 @@ interface T {
 const Profile = () => {
   return (
     <>
-      <Box
-        sx={{
-          border: "1px solid #d8d8d8",
-          borderRadius: "12px",
-          padding: "30px",
-        }}
-      >
+      <Box sx={wrapper}>
         <Box
           sx={{
             display: "flex",
@@ -36,7 +31,7 @@ const Profile = () => {
             Orders Status
           </Typography>
           <Box sx={topMenuItem}>
-            <Box sx={{ display: "flex", gap: 1}}>
+            <Box sx={{ display: "flex", gap: 1 }}>
               <Typography sx={{ fontSize: "18px" }}>See All</Typography>
               <KeyboardArrowRightIcon className="navIcon" />
             </Box>
@@ -121,7 +116,6 @@ const Profile = () => {
         </Grid>
       </Box>
 
-
       {/* ============== Recent Shops ============= */}
 
       <Box
@@ -136,7 +130,14 @@ const Profile = () => {
           Latest Shops
         </Typography>
 
-        <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap", overflowX: "hidden" }}>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 2,
+            flexWrap: "wrap",
+            overflowX: "hidden",
+          }}
+        >
           {recentShopItems.map((item: T) => (
             <Box sx={shopWrapper} key={item.id}>
               <Box sx={productImg}>
