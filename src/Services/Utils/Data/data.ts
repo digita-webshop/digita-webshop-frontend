@@ -177,7 +177,32 @@ export const productData = [
     name: "Beats by Dr. Dre Studio (Orange)",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
     offPrice: 79.0,
+    
     price: 69.0,
     sold: true,
     starRate: 5,

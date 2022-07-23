@@ -29,6 +29,7 @@ import {
   FavoriteBorder,
   Shuffle,
 } from "@mui/icons-material";
+import Gallery from "./Gallery/Gallery";
 
 interface Props {
   product: any;
@@ -37,12 +38,15 @@ const ProductDetails = ({ product }: Props) => {
   const [openAddToCart, setOpenAddToCart] = useState(false);
   const handleCloseAddToCart = () => setOpenAddToCart(false);
 
-  const { name, price, image, starRate, sku, color, description } = product;
+  const { name, price, image, starRate, sku, color, description, gallery } =
+    product;
 
   return (
-    <Box mt={5}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}></Grid>
+    <Box my={5}>
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={6}>
+          <Gallery gallery={gallery} />
+        </Grid>
         <Grid item xs={12} md={6}>
           <Box>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
