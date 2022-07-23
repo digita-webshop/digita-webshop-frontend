@@ -1,4 +1,4 @@
-import { styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 /* ================   RELATED PRODUCTS ============== */
 export const teamTitleStyle = {
   padding: "8rem 0 1rem 0",
@@ -606,4 +606,72 @@ export const NextProductModalText = {
   display: "-webkit-box",
   overflow: "hidden",
   color: (theme: any) => theme.palette.common.digitaBlack1,
+};
+
+export const GallerySwiperWrapper = styled(Box)(({ theme }) => ({
+  position: "relative",
+  marginTop: "20px",
+  transition: "all 150ms",
+  "&:hover .gallery-swiper-button-prev": {
+    opacity: "1",
+    zIndex: "1111",
+  },
+  "&:hover .gallery-swiper-button-next": {
+    opacity: "1",
+    zIndex: "1111",
+  },
+  "& .gallery-swiper-button-prev, .gallery-swiper-button-next": {
+    border: "1px solid #ebebeb",
+    width: "30px",
+    height: "30px",
+    backgroundColor: "white",
+    position: "absolute",
+    transition: "all 150ms ",
+    cursor: "pointer",
+    display: "flex",
+    top: "32%",
+    opacity: "0",
+    "&:hover": {
+      backgroundColor: theme.palette.common.digitaRed,
+      borderColor: theme.palette.common.digitaRed,
+      "& .MuiSvgIcon-root": {
+        color: "white",
+      },
+    },
+    "& .MuiSvgIcon-root": {
+      transition: "all 150ms ",
+      margin: "auto",
+    },
+  },
+  "& .gallery-swiper-button-prev": {
+    left: "4px",
+  },
+  "& .gallery-swiper-button-next": {
+    right: "4px",
+  },
+  "& .slider-img": {
+    width: "100%",
+    cursor: "pointer",
+    border: `1px solid white`,
+    transition: "all 150ms",
+    "&:hover": {
+      border: `1px solid ${theme.palette.common.digitaRed}`,
+    },
+  },
+  "& .selected-slide": {
+    border: `1px solid ${theme.palette.common.digitaRed}`,
+  },
+}));
+
+export const swiperImageWrapper = {
+  textAlign: "center",
+  backgroundColor: { xs: "#f2f2f3cc", md: "unset" },
+  img: {
+    border: {
+      xs: "1px solid #e9e9e9",
+      sm: "none",
+      md: "1px solid #e9e9e9",
+    },
+    width: { xs: "100%", sm: "70%", md: "100%" },
+  },
 };
