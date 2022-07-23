@@ -1,13 +1,15 @@
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import { Box } from "@mui/material";
+import { Box, Modal } from "@mui/material";
 import {
   GallerySwiperWrapper,
+  magnifyButtonStyles,
   swiperImageWrapper,
 } from "../../../../../Styles/Product";
-import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-interface IGallery {
+import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
+import GalleryModal from "./GalleryModal/GalleryModal";
+export interface IGallery {
   id: number;
   image: string;
 }
@@ -16,6 +18,7 @@ interface Props {
 }
 export default function Gallery({ gallery }: Props) {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
   const mainSwiperRef = useRef(null) as any;
 
   const sliderClickHandler = (index: number) => () => {
@@ -24,7 +27,10 @@ export default function Gallery({ gallery }: Props) {
   };
   return (
     <>
-      <Box>
+      <Box sx={{ position: "relative" }}>
+        <Box sx={magnifyButtonStyles} onClick={() => setOpenModal(true)}>
+          <Search />
+        </Box>
         <Swiper
           initialSlide={slideIndex}
           allowTouchMove={false}
@@ -41,6 +47,17 @@ export default function Gallery({ gallery }: Props) {
           ))}
         </Swiper>
       </Box>
+      <Modal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        sx={{ "& .MuiBackdrop-root": { backgroundColor: "rgba(0,0,0,0.85)" } }}
+      >
+        <GalleryModal
+          gallery={gallery}
+          setOpenModal={setOpenModal}
+          slideIndex={slideIndex}
+        />
+      </Modal>
       <GallerySwiperWrapper>
         <div className="gallery-swiper-button-prev">
           <ChevronLeft />

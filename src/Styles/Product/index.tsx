@@ -675,3 +675,74 @@ export const swiperImageWrapper = {
     width: { xs: "100%", sm: "70%", md: "100%" },
   },
 };
+
+export const magnifyButtonStyles = {
+  position: "absolute",
+  top: "6px",
+  right: "6px",
+  zIndex: "111",
+  cursor: "pointer",
+  backgroundColor: "#eee",
+  padding: "6px",
+  display: "flex",
+  border: "1px solid #e9e9e9",
+  "& .MuiSvgIcon-root": {
+    margin: "auto",
+  },
+};
+
+export const modalSwiperStyles = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%,-50%)",
+  zIndex: "1111",
+  width: "60vw",
+  img: {
+    width: "100%",
+    height: "100%",
+  },
+  "& .swiper-pagination": {
+    position: "absolute",
+    color: "red",
+  },
+};
+export const galleryModalButtonStyles = {
+  float: "right",
+  zIndex: "1111",
+  cursor: "pointer",
+  margin: "20px 20px 0 0",
+  "& .MuiSvgIcon-root": {
+    transition: "all 150ms",
+    color: "#fff",
+    fontSize: "32px",
+    opacity: 0.75,
+    "&:hover": {
+      opacity: 1,
+    },
+  },
+};
+
+export const GalleryModalWrapper = styled(Box)(({ theme }) => ({
+  "& .modal-gallery-swiper-button-prev,.modal-gallery-swiper-button-next": {
+    position: "absolute",
+    cursor: "pointer",
+    top: "45%",
+    display: "flex",
+    "& .MuiSvgIcon-root": {
+      transition: "all 150ms",
+      color: "#fff",
+      fontSize: "32px",
+      opacity: 0.75,
+      "&:hover": {
+        opacity: 1,
+      },
+    },
+  },
+  "& .modal-gallery-swiper-button-prev": {
+    left: "8px",
+  },
+  "& .modal-gallery-swiper-button-next": {
+    right: "8px",
+  },
+}));
