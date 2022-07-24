@@ -30,6 +30,7 @@
     "react-google-maps": "^9.4.5",
     "react-horizontal-datepicker": "^0.1.10",
     "react-horizontal-strip-datepicker": "^3.0.2",
+    "react-image-magnify": "^2.7.4",
     "react-intersection-observer": "^9.3.4",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
