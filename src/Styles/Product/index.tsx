@@ -721,6 +721,14 @@ export const galleryModalButtonStyles = {
       opacity: 1,
     },
   },
+  "&.swiper-pagination": {
+    color: "white",
+    marginLeft: "10px",
+    cursor: "default",
+    span: {
+      margin: "0 5px",
+    },
+  },
 };
 
 export const GalleryModalWrapper = styled(Box)(({ theme }) => ({
