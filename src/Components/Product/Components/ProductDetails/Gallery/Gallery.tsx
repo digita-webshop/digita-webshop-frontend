@@ -9,6 +9,7 @@ import {
 } from "../../../../../Styles/Product";
 import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
 import GalleryModal from "./GalleryModal/GalleryModal";
+import ReactImageMagnify from "react-image-magnify";
 export interface IGallery {
   id: number;
   image: string;
@@ -41,12 +42,32 @@ export default function Gallery({ gallery }: Props) {
           {gallery.map(({ id, image }) => (
             <SwiperSlide key={id}>
               <Box sx={swiperImageWrapper}>
-                <img src={image} alt="slider-img" />
+                <ReactImageMagnify
+                  {...{
+                    smallImage: {
+                      alt: "product slider image",
+                      isFluidWidth: true,
+                      src: image,
+                      srcSet: image,
+                      sizes:
+                        "(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
+                    },
+                    largeImage: {
+                      src: image,
+                      width: 700,
+                      height: 750,
+                    },
+                    enlargedImagePosition: "over",
+                    hoverDelayInMs: 0,
+                    hoverOffDelayInMs: 0,
+                  }}
+                />
               </Box>
             </SwiperSlide>
           ))}
         </Swiper>
       </Box>
+
       <Modal
         open={openModal}
         onClose={() => setOpenModal(false)}
