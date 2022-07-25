@@ -1,10 +1,11 @@
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper";
 import { Box, Modal, useMediaQuery, useTheme } from "@mui/material";
 import {
   GallerySwiperWrapper,
   magnifyButtonStyles,
+  mainSwiperWrapper,
   swiperImageWrapper,
 } from "../../../../../Styles/Product";
 import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
@@ -31,16 +32,24 @@ export default function Gallery({ gallery }: Props) {
   };
   return (
     <>
-      <Box sx={{ position: "relative" }}>
-        <Box sx={magnifyButtonStyles} onClick={() => setOpenModal(true)}>
+      <Box sx={mainSwiperWrapper}>
+        <Box
+          sx={magnifyButtonStyles}
+          className={matchesMd ? "" : "hidden"}
+          onClick={() => setOpenModal(true)}
+        >
           <Search />
         </Box>
         <Swiper
           initialSlide={slideIndex}
-          allowTouchMove={false}
+          allowTouchMove={!matchesMd}
           onInit={(core: any) => {
             mainSwiperRef.current = core.el;
           }}
+          pagination={{
+            dynamicBullets: matchesMd ? false : true,
+          }}
+          modules={matchesMd ? [] : [Pagination]}
         >
           {gallery.map(({ id, image }) => (
             <SwiperSlide key={id}>
@@ -86,7 +95,7 @@ export default function Gallery({ gallery }: Props) {
           slideIndex={slideIndex}
         />
       </Modal>
-      <GallerySwiperWrapper>
+      <GallerySwiperWrapper className={matchesMd ? "" : "hidden"}>
         <div className="gallery-swiper-button-prev">
           <ChevronLeft />
         </div>
