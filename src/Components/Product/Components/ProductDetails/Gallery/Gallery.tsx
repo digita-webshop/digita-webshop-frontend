@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import { Box, Modal } from "@mui/material";
+import { Box, Modal, useMediaQuery, useTheme } from "@mui/material";
 import {
   GallerySwiperWrapper,
   magnifyButtonStyles,
@@ -21,6 +21,9 @@ export default function Gallery({ gallery }: Props) {
   const [slideIndex, setSlideIndex] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const mainSwiperRef = useRef(null) as any;
+
+  const theme = useTheme();
+  const matchesMd = useMediaQuery(theme.breakpoints.up("md"));
 
   const sliderClickHandler = (index: number) => () => {
     mainSwiperRef.current.swiper.slideTo(index);
@@ -42,26 +45,30 @@ export default function Gallery({ gallery }: Props) {
           {gallery.map(({ id, image }) => (
             <SwiperSlide key={id}>
               <Box sx={swiperImageWrapper}>
-                <ReactImageMagnify
-                  {...{
-                    smallImage: {
-                      alt: "product slider image",
-                      isFluidWidth: true,
-                      src: image,
-                      srcSet: image,
-                      sizes:
-                        "(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
-                    },
-                    largeImage: {
-                      src: image,
-                      width: 700,
-                      height: 750,
-                    },
-                    enlargedImagePosition: "over",
-                    hoverDelayInMs: 0,
-                    hoverOffDelayInMs: 0,
-                  }}
-                />
+                {matchesMd ? (
+                  <ReactImageMagnify
+                    {...{
+                      smallImage: {
+                        alt: "product slider image",
+                        isFluidWidth: true,
+                        src: image,
+                        srcSet: image,
+                        sizes:
+                          "(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
+                      },
+                      largeImage: {
+                        src: image,
+                        width: 700,
+                        height: 750,
+                      },
+                      hoverDelayInMs: 0,
+                      hoverOffDelayInMs: 0,
+                      enlargedImagePortalId: "myPortal",
+                    }}
+                  />
+                ) : (
+                  <img src={image} alt="slider-img" />
+                )}
               </Box>
             </SwiperSlide>
           ))}
