@@ -48,7 +48,10 @@ const ProductDetails = ({ product }: Props) => {
           <Gallery gallery={gallery} />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Box>
+          <Box sx={{ display: "relative", overflow: "hidden" }}>
+            <Box sx={{ position: "absolute", zIndex: "11111" }}>
+              <div id="myPortal" />
+            </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography variant="h4" sx={productTitle}>
                 {name}
