@@ -661,6 +661,9 @@ export const GallerySwiperWrapper = styled(Box)(({ theme }) => ({
   "& .selected-slide": {
     border: `1px solid ${theme.palette.common.digitaRed}`,
   },
+  "&.hidden": {
+    display: "none",
+  },
 }));
 
 export const swiperImageWrapper = {
@@ -688,6 +691,9 @@ export const magnifyButtonStyles = {
   border: "1px solid #e9e9e9",
   "& .MuiSvgIcon-root": {
     margin: "auto",
+  },
+  "&.hidden": {
+    display: "none",
   },
 };
 
@@ -754,3 +760,10 @@ export const GalleryModalWrapper = styled(Box)(({ theme }) => ({
     right: "8px",
   },
 }));
+
+export const mainSwiperWrapper = {
+  position: "relative",
+  "& .swiper-pagination-bullet-active-main": {
+    backgroundColor: "#f03637 !important",
+  },
+};
