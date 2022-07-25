@@ -703,7 +703,7 @@ export const modalSwiperStyles = {
   left: "50%",
   transform: "translate(-50%,-50%)",
   zIndex: "1111",
-  width: "60vw",
+  width: { md: "60vw", xl: "600px" },
   img: {
     width: "100%",
     height: "100%",

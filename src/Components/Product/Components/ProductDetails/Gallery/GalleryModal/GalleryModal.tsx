@@ -9,6 +9,7 @@ import {
   modalSwiperStyles,
 } from "../../../../../../Styles/Product";
 import { IGallery } from "../Gallery";
+import ReactImageMagnify from "react-image-magnify";
 
 interface Props {
   gallery: IGallery[];
@@ -57,7 +58,26 @@ function GalleryModal({ gallery, setOpenModal, slideIndex }: Props) {
         >
           {gallery.map(({ id, image }) => (
             <SwiperSlide key={id}>
-              <img src={image} alt="slider-img" />
+              <ReactImageMagnify
+                {...{
+                  smallImage: {
+                    alt: "product slider image",
+                    isFluidWidth: true,
+                    src: image,
+                    srcSet: image,
+                    sizes:
+                      "(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
+                  },
+                  largeImage: {
+                    src: image,
+                    width: 850,
+                    height: 900,
+                  },
+                  enlargedImagePosition: "over",
+                  hoverDelayInMs: 0,
+                  hoverOffDelayInMs: 0,
+                }}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
