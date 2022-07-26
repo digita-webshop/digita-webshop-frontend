@@ -173,23 +173,10 @@ export const linkStyle = {
 };
 
 //  /* ================  BoughtToGether ============== */
-export const allBought = {
-  paddingBottom: "1rem",
-  marginLeft: { xs: "30px", sm: "10px", md: "5px", lg: "5px" },
-};
-export const boughtTogether = {
-  margin: "-0.6rem",
-  display: "flex",
-  flexDirection: { xs: "column", sm: "row", md: "row", lg: "row" },
-  justifyContent: {
-    xs: "center",
-    sm: "flex-start",
-    md: "flex-start",
-    lg: "flex-start",
-  },
 
-  alignItems: { xs: "flex-start", sm: "center", md: "center", lg: "center" },
-  marginLeft: "-1rem",
+export const boughtTogether = {
+  display: "flex",
+  marginTop: "20px",
 };
 export const BoughtTextStyle = {
   color: "#777",
@@ -205,24 +192,9 @@ export const BoughtButton = {
   },
   fontWeight: "500",
   fontSize: "12px",
-  marginTop: "-0.3rem",
+  marginTop: "10px",
 };
-export const imageBought = {
-  height: "4rem",
-  padding: "1rem",
-  display: "flex",
 
-  marginTop: { xs: "30px", sm: "0", md: "0", lg: "0" },
-  flexDirection: { xs: "column", sm: "row", md: "row", lg: "row" },
-  justifyContent: {
-    xs: "center",
-    sm: "flex-start",
-    md: "flex-start",
-    lg: "flex-start",
-  },
-
-  alignItems: { xs: "flex-start", sm: "center", md: "center", lg: "center" },
-};
 export const boughtPriceStyle = {
   "& .boughtList": {
     listStyleType: "circle",
