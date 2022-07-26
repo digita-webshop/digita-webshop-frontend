@@ -1,9 +1,14 @@
-import React from 'react'
+import { Box, Typography } from "@mui/material";
+import { wrapper } from "../../../Styles/User";
 
 const Orders = () => {
   return (
-    <div>Orders</div>
-  )
-}
+    <Box sx={wrapper}>
+      <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
+        My Orders
+      </Typography>
+    </Box>
+  );
+};
 
-export default Orders
+export default Orders;
