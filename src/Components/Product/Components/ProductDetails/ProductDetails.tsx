@@ -30,6 +30,7 @@ import {
   Shuffle,
 } from "@mui/icons-material";
 import Gallery from "./Gallery/Gallery";
+import ColorPicker from "./ColorPicker/ColorPicker";
 
 interface Props {
   product: any;
@@ -38,7 +39,7 @@ const ProductDetails = ({ product }: Props) => {
   const [openAddToCart, setOpenAddToCart] = useState(false);
   const handleCloseAddToCart = () => setOpenAddToCart(false);
 
-  const { name, price, image, starRate, sku, color, description, gallery } =
+  const { name, price, image, starRate, sku, colors, description, gallery } =
     product;
 
   return (
@@ -83,6 +84,7 @@ const ProductDetails = ({ product }: Props) => {
               {description}
             </Typography>
 
+            <ColorPicker colors={colors} />
             <Box>
               <Box sx={CartButtonsStyle}>
                 <Button

@@ -207,7 +207,7 @@ export const productData = [
     sold: true,
     starRate: 5,
     sku:'',
-    color:'',
+    colors:['#f03637','#72bcfb','#7dfb72'],
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },

@@ -1,4 +1,10 @@
-import { Box, styled } from "@mui/material";
+import {
+  Box,
+  styled,
+  Tooltip,
+  tooltipClasses,
+  TooltipProps,
+} from "@mui/material";
 /* ================   RELATED PRODUCTS ============== */
 export const teamTitleStyle = {
   padding: "8rem 0 1rem 0",
@@ -766,4 +772,43 @@ export const mainSwiperWrapper = {
   "& .swiper-pagination-bullet-active-main": {
     backgroundColor: "#f03637 !important",
   },
+};
+export const GreyTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} arrow classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.palette.common.digitaGrey,
+    color: "white",
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+  },
+  [`& .${tooltipClasses.arrow}`]: {
+    color: theme.palette.common.digitaGrey,
+  },
+}));
+
+export const ProductColor = styled(Box)(({ theme }) => ({
+  width: "25px",
+  height: "25px",
+
+  borderRadius: "50%",
+  cursor: "pointer",
+  display: "flex",
+  marginLeft: "10px",
+  transition: "all 150px",
+  boxShadow: "0 0 8px 2px rgb(0 0 0 / 20%)",
+  "&.selected": {
+    transform: "scale(1.2)",
+  },
+}));
+
+export const colorBoxStyles = {
+  backgroundColor: "#fafafa",
+  padding: "5px",
+  border: "1px solid #ddd",
+  display: "flex",
+  alignItems: "center",
+  gap: "4px",
+  color: "common.digitaGrey3",
+  width: { sm: "20%" },
 };
