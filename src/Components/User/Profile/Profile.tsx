@@ -135,7 +135,7 @@ const Profile = () => {
             display: "flex",
             gap: 2,
             flexWrap: "wrap",
-            overflowX: "hidden",
+            overflowX: "scroll",
           }}
         >
           {recentShopItems.map((item: T) => (

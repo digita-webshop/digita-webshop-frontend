@@ -111,6 +111,7 @@ export const wrapper = {
   border: "1px solid #d8d8d8",
   borderRadius: "12px",
   padding: "30px",
+  overflow: "auto",
 };
 
 export const profileWrapper = {
@@ -173,9 +174,34 @@ export const addBtn = {
     backgroundColor: "#f03637",
     color: "#fff",
     borderColor: "common.digitaRed",
-    "& .addIcon":{
+    "& .addIcon": {
       transition: "0.15s",
       color: "#fff",
-    }
+    },
   },
+};
+
+export const addressBtn = {
+  borderRadius: "4px",
+  backgroundColor: "#fff",
+  color: "common.digitaRed",
+  fontWeight: 400,
+  border: "1px solid #f03637",
+  fontSize: "16px",
+  padding: "0.5rem",
+  "&:hover": {
+    backgroundColor: "#f03637",
+    color: "#fff",
+    borderColor: "common.digitaRed",
+    "& .addIcon": {
+      transition: "0.15s",
+      color: "#fff",
+    },
+  },
+};
+
+export const between = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
 };
