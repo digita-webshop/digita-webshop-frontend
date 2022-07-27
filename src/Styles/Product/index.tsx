@@ -5,6 +5,10 @@ import {
   tooltipClasses,
   TooltipProps,
 } from "@mui/material";
+import TabsListUnstyled from "@mui/base/TabsListUnstyled";
+import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
+import { buttonUnstyledClasses } from "@mui/base/ButtonUnstyled";
+import TabUnstyled, { tabUnstyledClasses } from "@mui/base/TabUnstyled";
 /* ================   RELATED PRODUCTS ============== */
 export const teamTitleStyle = {
   padding: "8rem 0 1rem 0",
@@ -234,18 +238,6 @@ export const ShowStyle = {
   "& .CascadinShow": {
     display: { xs: "block", sm: "block", md: "none", lg: "none" },
   },
-};
-export const reviewsRating = {
-  color: "#ddd",
-  "&:hover": {
-    color: (theme: any) => theme.palette.common.digitaYellow,
-  },
-  margin: "5px",
-  height: "1em",
-  lineHeight: "1em",
-  fontSize: "20px",
-  width: "5.4em",
-  fontFamily: "star",
 };
 export const ProductTextStyle = {
   color: "#777",
@@ -784,3 +776,58 @@ export const colorBoxStyles = {
   color: "common.digitaGrey3",
   width: { sm: "20%" },
 };
+
+//------------------------tabs--------------------
+
+export const Tab = styled(TabUnstyled)`
+  white-space: nowrap;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 19px 18px;
+  line-height: 1;
+  display: inline-block !important;
+  background-color: #f5f5f5;
+  border: none;
+  color: #ababab;
+  margin: 0 0.75rem;
+  transition: all 150ms;
+  cursor: pointer;
+
+  &:hover {
+    color: #333333;
+  }
+  &.${tabUnstyledClasses.selected} {
+    border-bottom-style: solid;
+    border-bottom-color: #f03637;
+    color: #333333;
+  }
+
+  &.${buttonUnstyledClasses.disabled} {
+  }
+`;
+
+export const TabPanel = styled(TabPanelUnstyled)`
+  margin: 30px auto 0;
+  width: 90%;
+  text-align: center;
+`;
+
+export const TabsList = styled(TabsListUnstyled)`
+  display: block;
+
+  width: 100%;
+
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 0px 20px;
+  margin-top: 0px;
+  background-color: #f5f5f5;
+  border: none;
+
+  z-index: 1;
+  box-sizing: border-box;
+
+  border-color: #eaeaea;
+`;
