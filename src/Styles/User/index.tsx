@@ -112,6 +112,9 @@ export const wrapper = {
   borderRadius: "12px",
   padding: "30px",
   overflow: "auto",
+  "& .orderImg": {
+    width: "80px",
+  }
 };
 
 export const profileWrapper = {
