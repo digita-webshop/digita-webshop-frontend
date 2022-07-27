@@ -278,10 +278,10 @@ export const CascadingTabs = {
   background: "#f5f5f5",
   padding: "1rem ",
   width: "100%",
-  display: "block",
+  display: "flex",
+  justifyContent: "space-between",
   overflowX: "hidden",
-  margin: "20px -20px",
-  textAlign: "left",
+  margin: "0px -20px 20px",
 };
 
 export const CascadingTabsTitle = {
@@ -831,3 +831,10 @@ export const TabsList = styled(TabsListUnstyled)`
 
   border-color: #eaeaea;
 `;
+
+export const moreStyles = {
+  display: "flex",
+  color: "common.digitaGrey",
+  fontWeight: 500,
+  textTransform: "capitalize",
+};

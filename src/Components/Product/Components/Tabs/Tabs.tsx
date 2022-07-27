@@ -6,15 +6,22 @@ import {
   TabsList,
   Tab,
   TabPanel,
+  moreStyles,
 } from "../../../../Styles/Product";
 import Description from "./Description/Description";
 import Delivery from "./Delivery/Delivery";
-import AboutBranad from "./AboutBranad/AboutBranad";
+import AboutBrand from "./AboutBrand/AboutBrand";
 import Reviews from "./Reviews/Reviews";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Collapse, Typography } from "@mui/material";
+import { useState } from "react";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 
 function Tabs() {
+  const [openDescription, setOpenDescription] = useState(true);
+  const [openReviews, setOpenReviews] = useState(false);
+  const [openAbout, setOpenAbout] = useState(false);
+  const [openShipping, setOpenShipping] = useState(false);
   return (
     <Box sx={ShowStyle}>
       <Box className="TabsShow" sx={{ width: "100%" }}>
@@ -32,7 +39,7 @@ function Tabs() {
             <Reviews />
           </TabPanel>
           <TabPanel value={2}>
-            <AboutBranad />
+            <AboutBrand />
           </TabPanel>
           <TabPanel value={3}>
             <Delivery />
@@ -42,16 +49,27 @@ function Tabs() {
 
       <Box className="CascadinShow">
         <Box>
-          <Box sx={CascadingTabs}>
+          <Box
+            sx={CascadingTabs}
+            onClick={() => setOpenDescription((prev) => !prev)}
+          >
             <Typography variant="h4" sx={CascadingTabsTitle} component="div">
               DESCRIPTION
             </Typography>
+            <Typography sx={moreStyles}>
+              {openDescription ? <ExpandLess /> : <ExpandMore />}
+            </Typography>
           </Box>
-          <Description />
+          <Collapse in={openDescription}>
+            <Description />
+          </Collapse>
         </Box>
 
         <Box>
-          <Box sx={CascadingTabs}>
+          <Box
+            sx={CascadingTabs}
+            onClick={() => setOpenReviews((prev) => !prev)}
+          >
             <Typography
               variant="h4"
               sx={CascadingTabsTitle}
@@ -60,26 +78,44 @@ function Tabs() {
             >
               REVIEWS (1)
             </Typography>
+            <Typography sx={moreStyles}>
+              {openReviews ? <ExpandLess /> : <ExpandMore />}
+            </Typography>
           </Box>
-          <Reviews />
+          <Collapse in={openReviews}>
+            <Reviews />
+          </Collapse>
         </Box>
 
         <Box>
-          <Box sx={CascadingTabs}>
+          <Box sx={CascadingTabs} onClick={() => setOpenAbout((prev) => !prev)}>
             <Typography variant="h4" sx={CascadingTabsTitle} component="div">
               ABOUT BRANDS
             </Typography>
+            <Typography sx={moreStyles}>
+              {openAbout ? <ExpandLess /> : <ExpandMore />}
+            </Typography>
           </Box>
-          <AboutBranad />
+          <Collapse in={openAbout}>
+            <AboutBrand />
+          </Collapse>
         </Box>
 
         <Box>
-          <Box sx={CascadingTabs}>
+          <Box
+            sx={CascadingTabs}
+            onClick={() => setOpenShipping((prev) => !prev)}
+          >
             <Typography variant="h4" sx={CascadingTabsTitle} component="div">
               SHIPPING &#38; DELIVERY
             </Typography>
+            <Typography sx={moreStyles}>
+              {openShipping ? <ExpandLess /> : <ExpandMore />}
+            </Typography>
           </Box>
-          <Delivery />
+          <Collapse in={openShipping}>
+            <Delivery />
+          </Collapse>
         </Box>
       </Box>
     </Box>
