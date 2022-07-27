@@ -6,4 +6,7 @@ export const EmptyWishlistWrapper = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+  "& .itemImg": {
+    width: "100px",
+  },
 }));
