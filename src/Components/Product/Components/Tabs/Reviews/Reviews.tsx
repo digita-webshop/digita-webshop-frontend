@@ -1,6 +1,5 @@
 import {
   ProductContentStyle,
-  ProductTextStyle,
   SubmitButton,
 } from "../../../../../Styles/Product";
 import { PFormControl } from "../../../../../Styles/panelCommon";
@@ -9,14 +8,13 @@ import {
   Typography,
   Box,
   Rating,
-  Avatar,
   Divider,
   Button,
   FormLabel,
   TextField,
 } from "@mui/material";
-import avatar from "../../../../../Assets/Images/Product/avatar.png";
 import { useState } from "react";
+import ReviewsList from "./ReviewsList/ReviewsList";
 
 const Reviews = () => {
   const [rating, setRating] = useState(1);
@@ -24,47 +22,7 @@ const Reviews = () => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }} id="review">
       <Box sx={ProductContentStyle}>
-        <Box>
-          <Box>
-            <Avatar
-              alt="avatar"
-              src={avatar}
-              sx={{
-                float: "left",
-                width: "80px",
-                height: "80px",
-                marginRight: "10px",
-                diplay: {
-                  xs: "none",
-                  sm: "inline-block",
-                },
-              }}
-            />
-          </Box>
-
-          <Box sx={{ marginRight: "10px" }}>
-            <Typography variant="body2" component="p">
-              <span className="userName">Peter Giroud </span>{" "}
-              <time> – September 17, 2019</time>
-            </Typography>
-          </Box>
-          <Rating
-            name="read-only"
-            defaultValue={5}
-            size="small"
-            readOnly
-            sx={{ float: "Right", marginTop: "-10px" }}
-          />
-
-          <Box sx={{ width: "95%", marginRight: "10px", marginTop: "-20px" }}>
-            <Typography variant="body2" component="p" sx={ProductTextStyle}>
-              Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam,
-              purus eget sagittis vulputate, sapien libero hendrerit est
-            </Typography>
-          </Box>
-        </Box>
-
-        <Divider sx={{ padding: "3px", width: "100%" }} />
+        <ReviewsList />
 
         <Typography
           component="p"
