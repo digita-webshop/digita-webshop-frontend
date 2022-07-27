@@ -201,13 +201,12 @@ export const productData = [
               id:6,
               image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
             }],
-    offPrice: 79.0,
-    
+    colors:['#f03637','#72bcfb','#7dfb72'],
+    offPrice: 79.0, 
     price: 69.0,
     sold: true,
     starRate: 5,
     sku:'',
-    colors:['#f03637','#72bcfb','#7dfb72'],
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -216,7 +215,31 @@ export const productData = [
     name: "Corsair HS35 Headphones(Red)",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 70.0,
     sold: false,
     starRate: 5,
@@ -228,7 +251,31 @@ export const productData = [
     name: "Microsoft Xbox One S Blue Grey",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 52.0,
     sold: false,
     starRate: 5,
@@ -240,7 +287,31 @@ export const productData = [
     name: "Sam Sung Galaxy Note 10 Lite",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
-    offPrice: 79.0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 79.0,
     price: 52.0,
     sold: true,
     starRate: 5,
@@ -252,7 +323,31 @@ export const productData = [
     name: "Samsung Galaxy M21",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
-    offPrice: 79.0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 79.0,
     price: 55.0,
     sold: true,
     starRate: 0,
@@ -264,7 +359,31 @@ export const productData = [
     name: "Samsung Galaxy V21",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -276,7 +395,31 @@ export const productData = [
     name: "SIRUM 360 Mobile Holder Trip",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-8-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-8-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 12.0,
     sold: false,
     starRate: 5,
@@ -288,7 +431,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -300,7 +467,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -312,7 +503,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -324,7 +539,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -336,7 +575,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -348,7 +611,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -360,7 +647,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -372,7 +683,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -384,7 +719,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -396,7 +755,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,
@@ -408,7 +791,31 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-    offPrice: 0,
+     gallery:[{
+              id:1,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
+            },
+            {
+              id:2,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
+            },
+            {
+              id:3,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
+            },
+            {
+              id:4,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
+            },
+            {
+              id:5,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
+            },
+            {
+              id:6,
+              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
+            }],
+    colors:['#f03637','#72bcfb','#7dfb72'],offPrice: 0,
     price: 75.0,
     sold: false,
     starRate: 5,

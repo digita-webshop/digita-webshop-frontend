@@ -27,6 +27,7 @@ import {
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { closeStyle } from "../../../../Styles/Products";
 import CompareModal from "../../../CompareModal/CompareModal";
+import { Link } from "react-router-dom";
 
 type Props = {
   name: string;
@@ -69,7 +70,7 @@ const ProductItem = ({
       sx={{
         maxWidth: listView ? "none" : { xs: "unset", sm: "270px" },
         boxShadow: "5px 4px 10px 1px rgba(0,0,0,0.12)",
-        cursor: "pointer",
+
         "&:hover .icon-card": {
           transform: "translateX(-50%) scaleY(1)",
         },
@@ -79,20 +80,25 @@ const ProductItem = ({
     >
       <Box sx={{ position: "relative", backgroundColor: "#f2f2f3cc" }}>
         <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div>
-        <CardMedia
-          component="img"
-          image={image}
-          alt="green iguana"
-          sx={{
-            height: {
-              xs: "320px",
-              sm: "220px",
-              md: "260px",
-            },
-            width: listView ? { xs: "100%", sm: "220px", md: "260px" } : "none",
-            objectFit: "contain",
-          }}
-        />
+        <Link to={`/product/${id}`}>
+          <CardMedia
+            component="img"
+            image={image}
+            alt="green iguana"
+            sx={{
+              cursor: "pointer",
+              height: {
+                xs: "320px",
+                sm: "220px",
+                md: "260px",
+              },
+              width: listView
+                ? { xs: "100%", sm: "220px", md: "260px" }
+                : "none",
+              objectFit: "contain",
+            }}
+          />
+        </Link>
 
         {/* ========= Product Item Icons ==========*/}
         <StyledIcons
@@ -243,23 +249,28 @@ const ProductItem = ({
           precision={0.5}
           emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
         />
-        <Box>
-          <Typography
-            gutterBottom
-            variant="body2"
-            component="div"
-            sx={{
-              margin: "0.2rem",
-              transition: "all 150ms ease-in",
-              "&:hover": { color: "#f03637" },
-              whiteSpace: "nowrap",
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-            }}
-            fontWeight={500}
-          >
-            {name}
-          </Typography>
+        <Box
+          sx={{ a: { textDecoration: "none", color: "common.digitaBlack" } }}
+        >
+          <Link to={`/product/${id}`}>
+            <Typography
+              gutterBottom
+              variant="body2"
+              component="div"
+              sx={{
+                margin: "0.2rem",
+                transition: "all 150ms ease-in",
+                cursor: "pointer",
+                "&:hover": { color: "#f03637" },
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+              fontWeight={500}
+            >
+              {name}
+            </Typography>
+          </Link>
         </Box>
         <Typography
           variant="body2"
