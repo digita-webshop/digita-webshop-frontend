@@ -69,8 +69,8 @@ function FiltersDrawer({
             >
               <MenuItem value="">Select a category</MenuItem>
 
-              {categoriesList.map(({ name }) => (
-                <MenuItem value={`${name.replace(/\s/g, "-")}`}>
+              {categoriesList.map(({ name }, index) => (
+                <MenuItem key={index} value={`${name.replace(/\s/g, "-")}`}>
                   {name}
                 </MenuItem>
               ))}

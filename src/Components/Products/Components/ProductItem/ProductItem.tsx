@@ -306,7 +306,7 @@ const ProductItem = ({
               " -webkit-line-clamp": { xs: 2, sm: "unset" },
               display: "-webkit-box",
               overflow: "hidden",
-              "-webkit-box-orient": "vertical",
+              WebkitBoxOrient: "vertical",
             }}
           >
             {description}

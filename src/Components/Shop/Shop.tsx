@@ -63,7 +63,7 @@ function Shop() {
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
               {currentProducts.map((item) => (
-                <Fragment>
+                <Fragment key={item.id}>
                   {selectedLayout.grid && (
                     <Fade in={selectedLayout.grid}>
                       <Grid item xs={12} sm={4} md={4} key={item.id}>

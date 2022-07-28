@@ -52,6 +52,7 @@ function ColorFilter({ drawer }: { drawer: boolean }) {
 
           return (
             <ColorFilterCard
+              key={id}
               isChecked={isChecked}
               labelId={labelId}
               color={color}
