@@ -120,31 +120,24 @@ function Navbar() {
                           label={item.name}
                           component={forwardRef((props, ref) => (
                             <Box
+                              component={Link}
+                              to={item.route}
+                              className="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-csphq2-MuiButtonBase-root-MuiTab-root"
                               sx={{
-                                overflow: "visible !important",
-                                "&:hover .shop-menu": {
-                                  display:
-                                    item.name === "shop" ? "block" : "none",
+                                "&:hover ": {
+                                  zIndex: 99,
+                                  "& .shop-menu": {
+                                    display:
+                                      item.name === "shop" ? "block" : "none",
+                                  },
                                 },
+                                overflow: "visible !important",
                               }}
                               {...props}
                               ref={ref}
                             >
-                              <Box
-                                component={Link}
-                                to={item.route}
-                                className="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-csphq2-MuiButtonBase-root-MuiTab-root"
-                                sx={{
-                                  borderBottom: "none !important",
-                                  "&:hover": {
-                                    zIndex: 99,
-                                  },
-                                  overflow: "visible !important",
-                                }}
-                              >
-                                <Box>{item.name}</Box>
-                                {item.name === "shop" && <KeyboardArrowDown />}
-                              </Box>
+                              <Box>{item.name}</Box>
+                              {item.name === "shop" && <KeyboardArrowDown />}
                               {item.name === "shop" && (
                                 <ShopMenuWrapper className={"shop-menu"}>
                                   <ShopMenu />
@@ -154,10 +147,6 @@ function Navbar() {
                           ))}
                           value={item.route}
                           iconPosition="end"
-                          sx={{
-                            color: "",
-                            borderBottom: "",
-                          }}
                         />
                       ))}
                     </AntTabs>

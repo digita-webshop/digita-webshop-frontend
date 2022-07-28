@@ -107,7 +107,7 @@ export const ShopMenuWrapper = styled(Box)(({ theme }) => ({
   boxSizing: "border-box",
   backgroundColor: "white",
   position: "absolute",
-  left: "-311px",
+  left: "-271px",
   right: 0,
   top: 90,
   padding: "24px 8px",
@@ -118,7 +118,7 @@ export const ShopMenuWrapper = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.up("xl")]: {
     width: "1560px",
-    left: "-322px",
+    left: "-283px",
   },
 }));
 
