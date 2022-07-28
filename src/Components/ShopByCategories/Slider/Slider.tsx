@@ -35,7 +35,7 @@ const Slider = () => {
                 }}
             >
                 {shopByCat.map((item) => {
-                    return <SwiperSlide><SliderCard key={item.id} item={item}/></SwiperSlide>
+                    return <SwiperSlide key={item.id}><SliderCard key={item.id} item={item}/></SwiperSlide>
                 })}
             </Swiper>
         </Container>

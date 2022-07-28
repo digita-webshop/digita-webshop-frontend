@@ -173,7 +173,9 @@ const ProductItem = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <CartModal price={price} />
+        <div>
+          <CartModal price={price} />
+        </div>
       </Modal>
       {/* ============= CART Modal ============ */}
 
@@ -218,15 +220,17 @@ const ProductItem = ({
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <ModalView
-          name={name}
-          image={image}
-          starRate={starRate}
-          price={price}
-          offPrice={offPrice}
-          sold={sold}
-          handleClose={() => setOpenView(false)}
-        />
+        <div>
+          <ModalView
+            name={name}
+            image={image}
+            starRate={starRate}
+            price={price}
+            offPrice={offPrice}
+            sold={sold}
+            handleClose={() => setOpenView(false)}
+          />
+        </div>
       </Modal>
       {/* ============ MODAL VIEW ============*/}
       {/* ============ COMPARE MODAL ============*/}
@@ -238,7 +242,9 @@ const ProductItem = ({
           timeout: 500,
         }}
       >
-        <CompareModal setOpenCompareModal={setOpenCompareModal} />
+        <div>
+          <CompareModal setOpenCompareModal={setOpenCompareModal} />
+        </div>
       </Modal>
       <CardContent>
         <Rating

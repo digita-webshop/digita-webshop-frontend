@@ -14,7 +14,7 @@ import { navbarItems } from "../../../Services/Utils/Data/data";
 import { useTheme } from "@mui/material/styles";
 
 import { MenuRounded, KeyboardArrowDown } from "@mui/icons-material";
-import { Fragment, useEffect, useState } from "react";
+import { forwardRef, Fragment, useEffect, useState } from "react";
 import {
   AntTab,
   AntTabs,
@@ -117,7 +117,7 @@ function Navbar() {
                       <AntTab
                         key={item.id}
                         label={item.name}
-                        component={() => (
+                        component={forwardRef((props, ref) => (
                           <Box
                             sx={{
                               "&:hover .shop-menu": {
@@ -125,6 +125,8 @@ function Navbar() {
                                   item.name === "shop" ? "block" : "none",
                               },
                             }}
+                            {...props}
+                            ref={ref}
                           >
                             <Box
                               component={Link}
@@ -146,9 +148,9 @@ function Navbar() {
                               </ShopMenuWrapper>
                             )}
                           </Box>
-                        )}
-                        value={`${item.route}`}
-                        iconPosition="right"
+                        ))}
+                        value={item.route}
+                        iconPosition="end"
                         sx={{
                           color: "",
                           borderBottom: "",
@@ -199,7 +201,7 @@ function Navbar() {
           timeout: 500,
         }}
       >
-        <>
+        <div>
           {modalType === "login" && (
             <Login
               closeLoginModal={closeLoginModal}
@@ -218,7 +220,7 @@ function Navbar() {
               modalTypeToggle={modalTypeToggle}
             />
           )}
-        </>
+        </div>
       </Modal>
       <Modal
         open={openCompareModal}
@@ -228,7 +230,9 @@ function Navbar() {
           timeout: 500,
         }}
       >
-        <CompareModal setOpenCompareModal={setOpenCompareModal} />
+        <div>
+          <CompareModal setOpenCompareModal={setOpenCompareModal} />
+        </div>
       </Modal>
     </Fragment>
   );

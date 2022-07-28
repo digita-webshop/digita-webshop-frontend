@@ -5,7 +5,7 @@ import { ShopSubTitle } from "../../../../../Styles/Appbar";
 function ShopMenuCategories() {
   return (
     <Grid container>
-      <Grid xs={6} paddingLeft={1}>
+      <Grid item xs={6} paddingLeft={1}>
         <Typography
           textTransform={"uppercase"}
           color="primary"
@@ -15,11 +15,12 @@ function ShopMenuCategories() {
         </Typography>
         <Box marginTop={2}>
           {shopMenuItems.map((item) => (
-            <ShopSubTitle>{item.name}</ShopSubTitle>
+            <ShopSubTitle key={item.id}>{item.name}</ShopSubTitle>
           ))}
         </Box>
       </Grid>
       <Grid
+        item
         xs={6}
         sx={{
           display: "flex",
@@ -38,7 +39,7 @@ function ShopMenuCategories() {
           </Typography>
           <Box marginTop={2}>
             {shopMenuItems.slice(6, 9).map((item) => (
-              <ShopSubTitle>{item.name}</ShopSubTitle>
+              <ShopSubTitle key={item.id}>{item.name}</ShopSubTitle>
             ))}
           </Box>
         </Box>
@@ -52,7 +53,7 @@ function ShopMenuCategories() {
           </Typography>
           <Box marginTop={2}>
             {shopMenuItems.slice(6, 9).map((item) => (
-              <ShopSubTitle>{item.name}</ShopSubTitle>
+              <ShopSubTitle key={item.id}>{item.name}</ShopSubTitle>
             ))}
           </Box>
         </Box>
