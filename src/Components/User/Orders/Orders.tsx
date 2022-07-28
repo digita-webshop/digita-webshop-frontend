@@ -4,9 +4,7 @@ import { between, wrapper } from "../../../Styles/User";
 import Search from "@mui/icons-material/Search";
 import { TabPanel, a11yProps } from "./TabPanel/TabPanel";
 import EmptyOrder from "./EmptyOrder/EmptyOrder";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
+import OrderItem from "./OrderItem/OrderItem";
 
 const Orders = () => {
   const [value, setValue] = useState(0);
@@ -43,56 +41,19 @@ const Orders = () => {
         </Box>
         <TabPanel value={value} index={0}>
           {pending === 0 && <EmptyOrder />}
+          <OrderItem />
         </TabPanel>
         <TabPanel value={value} index={1}>
           {delivered === 0 && <EmptyOrder />}
-          <Box sx={wrapper}>
-            <Box sx={between}>
-              <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
-                <CheckCircleIcon sx={{ color: "#0F0" }} />
-                <Typography>Delivered</Typography>
-              </Box>
-              <ArrowForwardIosIcon />
-            </Box>
-            <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-              <Typography sx={{ color: "gray" }}>21 June 2022</Typography>
-              <Box sx={{ display: "flex", gap: 1 }}>
-                <Typography sx={{ color: "gray" }}>Code</Typography>
-                <Typography>135465468</Typography>
-              </Box>
-              <Box sx={{ display: "flex", gap: 1 }}>
-                <Typography sx={{ color: "gray" }}>Price</Typography>
-                <Typography>600 $</Typography>
-              </Box>
-            </Box>
-            <Box sx={{ mt: 2 }}>
-              <Box
-                component="img"
-                src="https://dkstatics-public.digikala.com/digikala-products/119607459.jpg?x-oss-process=image/resize,m_lfit,h_350,w_350/quality,q_60"
-                alt="empty"
-                className="orderImg"
-              />
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                mt: 2,
-                color: "common.digitaRed",
-                cursor: "pointer",
-              }}
-            >
-              <Typography>See Details</Typography>
-              <ReceiptLongIcon sx={{ ml: 2 }} />
-            </Box>
-          </Box>
+          <OrderItem />
         </TabPanel>
         <TabPanel value={value} index={2}>
           {referred === 0 && <EmptyOrder />}
+          <OrderItem />
         </TabPanel>
         <TabPanel value={value} index={3}>
           {canceled === 0 && <EmptyOrder />}
+          <OrderItem />
         </TabPanel>
       </Box>
     </Box>
