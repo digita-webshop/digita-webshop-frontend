@@ -50,6 +50,8 @@ function Navbar() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const { pathname } = useLocation();
+  const tabRoutes = ["/", "/shop", "/blog", "/contact-us", "/about-us"];
+  let tabValue = tabRoutes.find((v) => v === pathname);
 
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     setSelectedCategory(event.target.value);
@@ -113,7 +115,7 @@ function Navbar() {
               {!openSearchBar && (
                 <Fragment>
                   {matches && (
-                    <AntTabs value={pathname}>
+                    <AntTabs value={tabValue ? tabValue : false}>
                       {navbarItems.map((item) => (
                         <AntTab
                           key={item.id}
