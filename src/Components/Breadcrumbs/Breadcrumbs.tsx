@@ -63,11 +63,15 @@ function Breadcrumbs({ title, lastPath }: Props) {
           const name = path.replace(/-/g, " ");
 
           return isLast ? (
-            <Typography sx={{ color: "#fff", textTransform: "capitalize" }}>
+            <Typography
+              key={index}
+              sx={{ color: "#fff", textTransform: "capitalize" }}
+            >
               {`${lastPath ? lastPath : name}`}
             </Typography>
           ) : (
             <Link
+              key={index}
               component={RouterLink}
               to={route}
               color="#fff"
