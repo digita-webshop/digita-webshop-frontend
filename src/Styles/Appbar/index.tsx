@@ -16,6 +16,7 @@ export const AntTab = styled((props: StyledTabProps) => (
   [theme.breakpoints.up("sm")]: {
     minWidth: 0,
   },
+
   height: "90px",
   fontWeight: theme.typography.fontWeightMedium,
   fontSize: 15,
@@ -39,9 +40,6 @@ export const AntTabs = styled(Tabs)(({ theme }) => ({
   },
   "& .MuiTabs-indicator": {
     backgroundColor: "#f03637",
-  },
-  [theme.breakpoints.down("md")]: {
-    display: "none",
   },
 }));
 
@@ -109,7 +107,7 @@ export const ShopMenuWrapper = styled(Box)(({ theme }) => ({
   boxSizing: "border-box",
   backgroundColor: "white",
   position: "absolute",
-  left: "-191px",
+  left: "-311px",
   right: 0,
   top: 90,
   padding: "24px 8px",
@@ -120,7 +118,7 @@ export const ShopMenuWrapper = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.up("xl")]: {
     width: "1560px",
-    left: "-203px",
+    left: "-322px",
   },
 }));
 

@@ -112,52 +112,56 @@ function Navbar() {
 
               {!openSearchBar && (
                 <Fragment>
-                  <AntTabs value={pathname}>
-                    {navbarItems.map((item) => (
-                      <AntTab
-                        key={item.id}
-                        label={item.name}
-                        component={forwardRef((props, ref) => (
-                          <Box
-                            sx={{
-                              "&:hover .shop-menu": {
-                                display:
-                                  item.name === "shop" ? "block" : "none",
-                              },
-                            }}
-                            {...props}
-                            ref={ref}
-                          >
+                  {matches && (
+                    <AntTabs value={pathname}>
+                      {navbarItems.map((item) => (
+                        <AntTab
+                          key={item.id}
+                          label={item.name}
+                          component={forwardRef((props, ref) => (
                             <Box
-                              component={Link}
-                              to={item.route}
-                              className="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-csphq2-MuiButtonBase-root-MuiTab-root"
                               sx={{
-                                "&:hover": {
-                                  zIndex: 99,
-                                },
                                 overflow: "visible !important",
+                                "&:hover .shop-menu": {
+                                  display:
+                                    item.name === "shop" ? "block" : "none",
+                                },
                               }}
+                              {...props}
+                              ref={ref}
                             >
-                              <Box>{item.name}</Box>
-                              {item.name === "shop" && <KeyboardArrowDown />}
+                              <Box
+                                component={Link}
+                                to={item.route}
+                                className="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-csphq2-MuiButtonBase-root-MuiTab-root"
+                                sx={{
+                                  borderBottom: "none !important",
+                                  "&:hover": {
+                                    zIndex: 99,
+                                  },
+                                  overflow: "visible !important",
+                                }}
+                              >
+                                <Box>{item.name}</Box>
+                                {item.name === "shop" && <KeyboardArrowDown />}
+                              </Box>
+                              {item.name === "shop" && (
+                                <ShopMenuWrapper className={"shop-menu"}>
+                                  <ShopMenu />
+                                </ShopMenuWrapper>
+                              )}
                             </Box>
-                            {item.name === "shop" && (
-                              <ShopMenuWrapper className={"shop-menu"}>
-                                <ShopMenu />
-                              </ShopMenuWrapper>
-                            )}
-                          </Box>
-                        ))}
-                        value={item.route}
-                        iconPosition="end"
-                        sx={{
-                          color: "",
-                          borderBottom: "",
-                        }}
-                      />
-                    ))}
-                  </AntTabs>
+                          ))}
+                          value={item.route}
+                          iconPosition="end"
+                          sx={{
+                            color: "",
+                            borderBottom: "",
+                          }}
+                        />
+                      ))}
+                    </AntTabs>
+                  )}
                   <Icons
                     openSearchBarHandler={openSearchBarHandler}
                     loginModalHandler={loginModalHandler}
@@ -192,7 +196,7 @@ function Navbar() {
           />
         </Collapse>
       </AppBar>
-      <Box sx={{ marginTop: { xs: "64px", md: "90px" } }}></Box>
+      <Box sx={{ marginTop: { xs: "56px", sm: "64px", md: "90px" } }}></Box>
       <Modal
         open={openLoginModal}
         onClose={() => setOpenLoginModal(false)}
