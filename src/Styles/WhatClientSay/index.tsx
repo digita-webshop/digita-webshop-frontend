@@ -31,7 +31,7 @@ export const WrapperBox = styled(Box)(({ theme }) => ({
   backgroundSize: "cover",
   padding: "166px 0px 205px 0px",
   [theme.breakpoints.down("sm")]: {
-    padding: "100px 0px 100px 0px",
+    padding: "100px 0px 160px 0px",
   },
 
   height: "332px",

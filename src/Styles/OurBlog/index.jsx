@@ -61,14 +61,17 @@ export const ContainerWrapper = styled(Container)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   background: "white",
-  height: "700px",
   width: "96%",
   padding: "77px 100px 80px!important",
   [theme.breakpoints.down("lg")]: {
     padding: "77px 0 80px!important",
   },
-  marginTop: "-120px",
-  marginBottom: "-120px",
+  marginTop: "-45px",
+  marginBottom: "-45px",
+  [theme.breakpoints.up("sm")]: {
+    marginTop: "-120px",
+    marginBottom: "-120px",
+  },
   position: "relative",
   ".loading": {
     margin: "18px 0 42px",
