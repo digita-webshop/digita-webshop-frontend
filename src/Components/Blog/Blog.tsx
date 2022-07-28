@@ -36,6 +36,7 @@ function Blog() {
           <Grid container>
             {currentArticles.map((article) => (
               <ArticleCard
+                key={article.id}
                 id={article.id}
                 title={article.title}
                 image={article.image}

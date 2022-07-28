@@ -10,8 +10,13 @@ const Team = () => {
         OUR TEAM
       </Typography>
       <Grid container sx={teamsStyle} spacing={2}>
-        {teamData.map((team) => (
-          <TeamMember image={team.image} name={team.name} job={team.job} />
+        {teamData.map((team, index) => (
+          <TeamMember
+            key={index}
+            image={team.image}
+            name={team.name}
+            job={team.job}
+          />
         ))}
       </Grid>
     </Box>
