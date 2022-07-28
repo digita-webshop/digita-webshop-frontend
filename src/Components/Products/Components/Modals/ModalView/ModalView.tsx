@@ -58,8 +58,7 @@ const ModalView = ({
   handleClose,
 }: T) => {
   const [value, setValue] = useState(1);
-  const [size, setSize] = useState();
-  const [color, setColor] = useState();
+  const [color, setColor] = useState("");
 
   const handleDecValue = () => {
     if (value > 0) {
@@ -71,9 +70,6 @@ const ModalView = ({
   };
   const handleChange = (e: any) => {
     setColor(e.target.value);
-  };
-  const handleSizeChange = (e: any) => {
-    setSize(e.target.value);
   };
 
   return (
@@ -164,29 +160,6 @@ const ModalView = ({
             </Select>
             <FormHelperText></FormHelperText>
           </FormControl>
-
-          <Box
-            sx={{ borderBottom: "1px solid #d2d2d2", paddingBottom: "0.5rem" }}
-          >
-            <FormControl sx={{ mt: 1, minWidth: "100%" }} size="small">
-              <InputLabel id="demo-simple-select-helper-label">Size</InputLabel>
-              <Select
-                labelId="demo-simple-select-helper-label"
-                id="demo-simple-select-helper"
-                value={size}
-                label="Age"
-                onChange={handleSizeChange}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>L</MenuItem>
-                <MenuItem value={20}>M</MenuItem>
-                <MenuItem value={30}>S</MenuItem>
-              </Select>
-              <FormHelperText></FormHelperText>
-            </FormControl>
-          </Box>
 
           <Box
             sx={{

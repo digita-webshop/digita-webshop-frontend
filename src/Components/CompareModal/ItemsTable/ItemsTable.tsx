@@ -28,8 +28,8 @@ function ItemsTable({ productData }: Props) {
       <TableBody sx={compareTableStyles} className={widthClass}>
         <TableRow>
           <CTHCell className="td"></CTHCell>
-          {productData.map((product) => (
-            <CTCell>
+          {productData.map((product, index) => (
+            <CTCell key={index}>
               <Box sx={tableRemoveBtnStyles}>
                 Remove
                 <Close />
@@ -39,21 +39,21 @@ function ItemsTable({ productData }: Props) {
         </TableRow>
         <TableRow>
           <CTHCell></CTHCell>
-          {productData.map((product) => (
-            <CTCell>
+          {productData.map((product, index) => (
+            <CTCell key={index}>
               <Box sx={tableImageStyles}>
                 <img src={product.image} alt={product.color} />
               </Box>
             </CTCell>
           ))}
         </TableRow>
-        {compareIndexes.map(({ key, value }) => {
+        {compareIndexes.map(({ key, value }, index) => {
           return (
-            <TableRow>
+            <TableRow key={index}>
               <CTHCell>{key}</CTHCell>
 
-              {productData.map((product) => (
-                <CTCell className={value === "price" ? "bold" : ""}>
+              {productData.map((product, index) => (
+                <CTCell key={index} className={value === "price" ? "bold" : ""}>
                   {key === "add to cart" && (
                     <CTButton variant="contained">{value}</CTButton>
                   )}
