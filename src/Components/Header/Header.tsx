@@ -23,9 +23,9 @@ const Header = () => {
         }}
         modules={[EffectFade, Navigation, Pagination]}
       >
-        {headerData.map((item) => {
+        {headerData.map((item, index) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={index}>
               {({ isActive }) => (
                 <SlideItem>
                   <div className={item.bgClass} />

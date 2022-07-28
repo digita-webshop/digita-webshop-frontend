@@ -43,9 +43,9 @@ function OurBlog() {
               },
             }}
           >
-            {ourBlogData.map((item) => {
+            {ourBlogData.map((item, index) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                   <BlogCard item={item} />
                 </SwiperSlide>
               );

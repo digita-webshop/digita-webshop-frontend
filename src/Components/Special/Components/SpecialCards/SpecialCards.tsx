@@ -9,6 +9,7 @@ const SpecialCards = () => {
       <Grid container spacing={3} sx={{ marginTop: "1rem" }}>
         {specialCardData.map((item, index) => (
           <SpecialCard
+            key={index}
             id={index}
             title={item.title}
             name={item.name}

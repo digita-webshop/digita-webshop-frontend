@@ -16,7 +16,7 @@ function ShopMenuFeature() {
       </Typography>
       <Grid container>
         {shopMenuCategories.map((item) => (
-          <Grid xs={4} marginBottom={1}>
+          <Grid key={item.id} item xs={4} marginBottom={1}>
             <Box
               sx={{
                 display: "flex",

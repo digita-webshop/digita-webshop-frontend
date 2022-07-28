@@ -36,7 +36,7 @@ function WhatClientSay() {
           >
             {data.map((item: ItemType) => {
               return (
-                <SwiperSlide>
+                <SwiperSlide key={item.id}>
                   <ClientCard item={item} />
                 </SwiperSlide>
               );

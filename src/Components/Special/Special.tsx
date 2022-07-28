@@ -38,6 +38,7 @@ const Special = () => {
           <Grid container spacing={{ xs: 2, md: 3 }}>
             {specialProducts.map((item) => (
               <SpecialItem
+                key={item.id}
                 id={item.id}
                 name={item.name}
                 image={item.image}
