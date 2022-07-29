@@ -91,7 +91,7 @@ export const SlideItem = styled(Box)(({theme}) => ({
     color: '#ffffff',
     width: '100%',
     [theme.breakpoints.down('sm')]: {
-        height: '500px',
+        height: '530px',
     },
     [theme.breakpoints.up('sm')]: {
         height: '700px',
