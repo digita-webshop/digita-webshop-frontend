@@ -16,7 +16,7 @@ const Products = () => {
       sx={{
         position: "relative",
         backgroundColor: "white",
-        marginY: "-120px",
+        marginY: { xs: "-45px", sm: "-120px" },
         width: "96%",
         zIndex: "10",
       }}

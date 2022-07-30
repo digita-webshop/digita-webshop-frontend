@@ -8,7 +8,10 @@ export const WrapperBox = styled(Box)(({ theme }) => ({
   backgroundPosition: "center center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-  padding: "175px 0 205px",
+  padding: "175px 0 130px",
+  [theme.breakpoints.up("sm")]: {
+    padding: "175px 0 205px",
+  },
   display: "flex",
   justifyContent: "center",
   ".loading": {
