@@ -17,7 +17,8 @@ import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddLocation from "@mui/icons-material/AddLocation";
 import EmptyList from "../../EmptyList/EmptyList";
-import NewAddress from "./NewAddress/NewAddress";
+import NewAddressForm from "../../Checkout/NewAddressForm/NewAddressForm";
+import { cartModal } from "../../../Styles/Products";
 
 const options = ["Edit", "Delete"];
 
@@ -139,7 +140,9 @@ const Address = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <NewAddress />
+        <Box sx={cartModal}>
+          <NewAddressForm />
+        </Box>
       </Modal>
     </Box>
   );
