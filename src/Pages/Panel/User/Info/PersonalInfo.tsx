@@ -1,7 +1,7 @@
 import {PersonalInfo as PersonalInfoPage} from "../../../../Components/User"
 
-function Info() {
+function PersonalInfo() {
   return <PersonalInfoPage />;
 }
 
-export default Info;
+export default PersonalInfo;
