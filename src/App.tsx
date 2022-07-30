@@ -27,6 +27,7 @@ import {
   Addresses,
   Wishlist as UserWishlist,
   Profile,
+  PersonalInfo,
 } from "./Pages/Panel/User";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
@@ -50,6 +51,7 @@ function App() {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/user/*" element={<UserLayout />}>
+                <Route path="personal-info" element={<PersonalInfo />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="addresses" element={<Addresses />} />
                 <Route path="orders" element={<UserOrders />} />
