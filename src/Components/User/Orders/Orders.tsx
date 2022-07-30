@@ -41,7 +41,9 @@ const Orders = () => {
         </Box>
         <TabPanel value={value} index={0}>
           {pending === 0 && <EmptyOrder />}
-          <OrderItem />
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <OrderItem />
+          </Box>
         </TabPanel>
         <TabPanel value={value} index={1}>
           {delivered === 0 && <EmptyOrder />}
