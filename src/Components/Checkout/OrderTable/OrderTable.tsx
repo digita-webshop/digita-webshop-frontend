@@ -34,8 +34,8 @@ function OrderTable() {
         </TableHead>
 
         <TableBody>
-          {cardList.map((cart) => (
-            <OrderRow>
+          {cardList.map((cart, index) => (
+            <OrderRow key={index}>
               <TableCell
                 sx={{ color: "common.digitaGrey3" }}
                 style={{ fontWeight: 400 }}

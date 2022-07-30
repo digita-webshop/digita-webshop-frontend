@@ -6,6 +6,7 @@ import {
   Typography,
   TableRow,
   Box,
+  TableBody,
 } from "@mui/material";
 import React from "react";
 import { StyledTableCell, TotalTextStyle } from "../../../../Styles/Cart";
@@ -47,38 +48,40 @@ const CartTotalTable = ({ total }: Props) => {
         sx={{ width: "100%", padding: "0 20px 20px", boxSizing: " border-box" }}
       >
         <Table sx={{ border: "0", margin: "20px 0 20px" }}>
-          <TableRow>
-            <StyledTableCell variant="head">Subtotal</StyledTableCell>
-            <TableCell
-              sx={{
-                borderLeft: "1px solid #ebebeb",
-                borderColor: "#ebebeb",
-                color: "#f03637",
-              }}
-            >
-              ${total.toFixed(2)}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <StyledTableCell sx={{ lineHeight: "1.5em" }} variant="head">
-              Total
-            </StyledTableCell>
-            <TableCell
-              sx={{ borderLeft: "1px solid #ebebeb", borderColor: "#ebebeb" }}
-            >
-              <Typography
-                sx={Object.assign(
-                  { ...TotalTextStyle },
-                  {
-                    fontWeight: 600,
-                    color: "#f03637",
-                  }
-                )}
+          <TableBody>
+            <TableRow>
+              <StyledTableCell variant="head">Subtotal</StyledTableCell>
+              <TableCell
+                sx={{
+                  borderLeft: "1px solid #ebebeb",
+                  borderColor: "#ebebeb",
+                  color: "#f03637",
+                }}
               >
                 ${total.toFixed(2)}
-              </Typography>
-            </TableCell>
-          </TableRow>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <StyledTableCell sx={{ lineHeight: "1.5em" }} variant="head">
+                Total
+              </StyledTableCell>
+              <TableCell
+                sx={{ borderLeft: "1px solid #ebebeb", borderColor: "#ebebeb" }}
+              >
+                <Typography
+                  sx={Object.assign(
+                    { ...TotalTextStyle },
+                    {
+                      fontWeight: 600,
+                      color: "#f03637",
+                    }
+                  )}
+                >
+                  ${total.toFixed(2)}
+                </Typography>
+              </TableCell>
+            </TableRow>
+          </TableBody>
         </Table>
         <DynamicButton
           classes={{ padding: "14px 20px" }}

@@ -8,11 +8,11 @@ import {
 import { styled } from "@mui/material/styles";
 export const OrderRow = styled(TableRow)(({ theme }) => ({
   td: {
-    "&:first-child": {
+    "&:first-of-type": {
       fontWeight: 600,
       borderRight: "1px solid #ebebeb",
     },
-    "&:last-child": {
+    "&:last-of-type": {
       textAlign: "right",
     },
   },
@@ -22,10 +22,10 @@ export const OrderRow = styled(TableRow)(({ theme }) => ({
     fontWeight: 600,
     color: theme.palette.common.digitaBlack,
 
-    "&:first-child": {
+    "&:first-of-type": {
       borderRight: "1px solid #ebebeb",
     },
-    "&:last-child": {
+    "&:last-of-type": {
       textAlign: "right",
     },
   },

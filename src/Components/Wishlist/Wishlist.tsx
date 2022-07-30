@@ -113,6 +113,7 @@ const Wishlist = () => {
               {list.map(
                 ({ id, name, image, offPrice, price, date, status }) => (
                   <RowItem
+                    key={id}
                     id={id}
                     name={name}
                     image={image}

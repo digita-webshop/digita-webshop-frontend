@@ -50,8 +50,9 @@ function PlaceSelect({
       </Box>
       <Fade in={dropDownOpen}>
         <ul>
-          {places.map((countryItem: any) => (
+          {places.map((countryItem: any, index) => (
             <li
+              key={index}
               value={countryItem.isoCode}
               onClick={selectHandler(countryItem[property])}
             >
