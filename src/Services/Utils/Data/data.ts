@@ -1070,10 +1070,11 @@ export const rows = [
 ];
 
 export const userSidebarItems = [
-  {id: 1, title: "Status", route: "/user/profile", icon: "dashboard"},
-  {id: 2, title: "My Orders", route: "/user/orders", icon: "local_grocery_store"},
-  {id: 3, title: "Wishlist", route: "/user/wishlist", icon: "favorite"},
-  {id: 4, title: "Addresses", route: "/user/addresses", icon: "home"},
+  {id: 1, title: "Personal Info", route: "/user/personal-info", icon: "person"},
+  {id: 2, title: "Status", route: "/user/profile", icon: "dashboard"},
+  {id: 3, title: "My Orders", route: "/user/orders", icon: "local_grocery_store"},
+  {id: 4, title: "Wishlist", route: "/user/wishlist", icon: "favorite"},
+  {id: 5, title: "Addresses", route: "/user/addresses", icon: "home"},
 ]
 
 export const userOrderItem = [
