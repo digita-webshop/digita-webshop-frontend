@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
-import { TableCell, tableCellClasses, TableRow } from "@mui/material";
+import { Box, TableCell, tableCellClasses, TableRow } from "@mui/material";
 
-export const ImageBox = styled(TableRow)(({ theme }) => ({
+export const ImageBox = styled(Box)(({ theme }) => ({
   position: "relative",
 
   img: {

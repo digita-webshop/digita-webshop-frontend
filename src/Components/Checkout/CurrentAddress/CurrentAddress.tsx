@@ -44,7 +44,7 @@ function CurrentAddress({ setDisplayCurrentAddress }: Props) {
       spacing={1}
     >
       {currentAddress.map((address) => (
-        <Grid item xs={12}>
+        <Grid key={address.id} item xs={12}>
           <Box sx={{ display: "flex" }}>
             <Typography
               component={"h4"}

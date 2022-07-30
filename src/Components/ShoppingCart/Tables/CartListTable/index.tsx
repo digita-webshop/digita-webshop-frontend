@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { StyledTableCell } from "../../../../Styles/Cart";
 import DynamicButton from "../../DynamicButton/DynamicButton";
-import React, { Dispatch, useState } from "react";
+import React, { useState } from "react";
 import CartItem from "../../Types/CartItemType";
 import { columnsData } from "./data";
 import CartListTableRow from "../CartListTableRow";
