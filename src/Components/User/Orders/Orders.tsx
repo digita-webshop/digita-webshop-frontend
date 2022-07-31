@@ -5,6 +5,12 @@ import Search from "@mui/icons-material/Search";
 import { TabPanel, a11yProps } from "./TabPanel/TabPanel";
 import EmptyOrder from "./EmptyOrder/EmptyOrder";
 import OrderItem from "./OrderItem/OrderItem";
+import {
+  pendingItems,
+  deliveredItems,
+  referredItems,
+  canceledItems,
+} from "../../../Services/Utils/Data/data";
 
 const Orders = () => {
   const [value, setValue] = useState(0);
@@ -42,20 +48,56 @@ const Orders = () => {
         <TabPanel value={value} index={0}>
           {pending === 0 && <EmptyOrder />}
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            <OrderItem />
+          {pendingItems.map(({ id, date, image, price, code, status }) => (
+            <OrderItem
+              id={id}
+              date={date}
+              image={image}
+              price={price}
+              code={code}
+              status={status}
+            />
+          ))}
           </Box>
         </TabPanel>
         <TabPanel value={value} index={1}>
           {delivered === 0 && <EmptyOrder />}
-          <OrderItem />
+          {deliveredItems.map(({ id, date, image, price, code, status }) => (
+            <OrderItem
+              id={id}
+              date={date}
+              image={image}
+              price={price}
+              code={code}
+              status={status}
+            />
+          ))}
         </TabPanel>
         <TabPanel value={value} index={2}>
           {referred === 0 && <EmptyOrder />}
-          <OrderItem />
+          {referredItems.map(({ id, date, image, price, code, status }) => (
+            <OrderItem
+              id={id}
+              date={date}
+              image={image}
+              price={price}
+              code={code}
+              status={status}
+            />
+          ))}
         </TabPanel>
         <TabPanel value={value} index={3}>
           {canceled === 0 && <EmptyOrder />}
-          <OrderItem />
+          {canceledItems.map(({ id, date, image, price, code, status }) => (
+            <OrderItem
+              id={id}
+              date={date}
+              image={image}
+              price={price}
+              code={code}
+              status={status}
+            />
+          ))}
         </TabPanel>
       </Box>
     </Box>
