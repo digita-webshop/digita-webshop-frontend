@@ -1077,12 +1077,21 @@ export const userSidebarItems = [
   {id: 5, title: "Addresses", route: "/user/addresses", icon: "home"},
 ]
 
-export const userOrderItem = [
+export const pendingItems = [
   {id: 1, date: '21 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg", code: 44353254, price: 655, status: 'pending'},
   {id: 2, date: '8 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg", code: 54656221, price: 120, status: 'pending'},
-  {id: 3, date: '2 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", code: 12344234, price: 65, status: 'delivered'},
+]
+
+export const deliveredItems = [
+  {id: 1, date: '2 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", code: 12344234, price: 65, status: 'delivered'},
+]
+
+export const referredItems = [
+  {id: 1, date: '16 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg", code: 33554367, price: 587, status: 'referred'},
+]
+
+export const canceledItems = [
   {id: 4, date: '9 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg", code: 56754844, price: 405, status: 'canceled'},
-  {id: 5, date: '16 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg", code: 33554367, price: 587, status: 'referred'},
 ]
 
 export const panelSidebarItems = [
