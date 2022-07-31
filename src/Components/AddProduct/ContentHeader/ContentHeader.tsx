@@ -11,7 +11,9 @@ function ContentHeader() {
       }}
     >
       <PTitle>add product</PTitle>
-      <PButton variant="contained">publish</PButton>
+      <PButton variant="contained" type="submit">
+        publish
+      </PButton>
     </Box>
   );
 }

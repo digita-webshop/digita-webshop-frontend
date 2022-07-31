@@ -6,7 +6,7 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { useRef, useState } from "react";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { brands } from "../../../Services/Utils/Data/data";
 import {
   CardWrapper,
@@ -15,15 +15,35 @@ import {
   PTextField,
 } from "../../../Styles/panelCommon";
 import ColorPickers from "./ColorPickers/ColorPickers";
-
-function Details() {
-  const [selectedBrand, setSelectedBrand] = useState("apple");
-  const [color, setColor] = useState({
-    first: "#f03637",
-    second: "#18e37d",
-    third: "#4169e1",
-  });
-
+interface IColors {
+  first: string;
+  second: string;
+  third: string;
+}
+interface Props {
+  enteredTitle: string;
+  setEnteredTitle: Dispatch<SetStateAction<string>>;
+  enteredSku: string;
+  setEnteredSku: Dispatch<SetStateAction<string>>;
+  selectedBrand: string;
+  setSelectedBrand: Dispatch<SetStateAction<string>>;
+  selectedColors: IColors;
+  setSelectedColors: Dispatch<SetStateAction<IColors>>;
+  enteredShortDesc: string;
+  setEnteredShortDesc: Dispatch<SetStateAction<string>>;
+}
+function Details({
+  enteredTitle,
+  setEnteredTitle,
+  enteredSku,
+  setEnteredSku,
+  selectedBrand,
+  setSelectedBrand,
+  selectedColors,
+  setSelectedColors,
+  enteredShortDesc,
+  setEnteredShortDesc,
+}: Props) {
   const firstColor = useRef<HTMLInputElement>(null);
   const secondColor = useRef<HTMLInputElement>(null);
   const thirdColor = useRef<HTMLInputElement>(null);
@@ -33,7 +53,7 @@ function Details() {
   };
 
   const colorChangeHandler = (selectedColor: string, colorName: string) => {
-    setColor((prevState) => ({
+    setSelectedColors((prevState) => ({
       ...prevState,
       [colorName]: selectedColor,
     }));
@@ -55,13 +75,21 @@ function Details() {
         <Grid item xs={12}>
           <FormControl fullWidth>
             <PFormLabel>product title</PFormLabel>
-            <PTextField placeholder="Type Here" />
+            <PTextField
+              placeholder="Type Here"
+              value={enteredTitle}
+              onChange={(e) => setEnteredTitle(e.target.value)}
+            />
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={4}>
           <FormControl fullWidth>
             <PFormLabel>SKU</PFormLabel>
-            <PTextField placeholder="Type Here" />
+            <PTextField
+              placeholder="Type Here"
+              value={enteredSku}
+              onChange={(e) => setEnteredSku(e.target.value)}
+            />
           </FormControl>
         </Grid>
         <Grid item xs={6} sm={4}>
@@ -84,7 +112,7 @@ function Details() {
         <Grid item xs={6} sm={4}>
           <PFormLabel>colors</PFormLabel>
           <ColorPickers
-            color={color}
+            color={selectedColors}
             colorChangeHandler={colorChangeHandler}
             colorClickHandler={colorClickHandler}
             firstColor={firstColor}
@@ -100,6 +128,8 @@ function Details() {
               multiline
               rows={4}
               sx={{ width: "100%" }}
+              value={enteredShortDesc}
+              onChange={(e) => setEnteredShortDesc(e.target.value)}
             />
           </PFormControl>
         </Grid>
