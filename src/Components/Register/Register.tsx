@@ -134,7 +134,7 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
               <FormControl fullWidth>
                 <TextField
                   variant="standard"
-                  label="Your Password"
+                  label="Your Email"
                   sx={emailError ? inputErrorStyles : {}}
                   value={enteredEmail}
                   onChange={(e) => setEnteredEmail(e.target.value)}
