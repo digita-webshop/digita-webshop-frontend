@@ -6,6 +6,10 @@ import Details from "./Details/Details";
 import Gallery from "./Gallery/Gallery";
 import Sidebar from "./Sidebar/Sidebar";
 
+export interface ITag {
+  id: string;
+  name: string;
+}
 function AddProduct() {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredSku, setEnteredSku] = useState("");
@@ -17,9 +21,14 @@ function AddProduct() {
   });
   const [enteredShortDesc, setEnteredShortDesc] = useState("");
   const [addedImages, setAddedImages] = useState({});
+  const [enteredPrice, setEnteredPrice] = useState("");
+  const [enteredQuantity, setEnteredQuantity] = useState("");
+  const [tags, setTags] = useState<ITag[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
-    console.log(addedImages);
+    console.log(tags);
   };
   return (
     <form onSubmit={submitHandler}>
@@ -45,7 +54,16 @@ function AddProduct() {
             <Description />
           </Grid>
           <Grid item xs={12} md={4}>
-            <Sidebar />
+            <Sidebar
+              enteredPrice={enteredPrice}
+              setEnteredPrice={setEnteredPrice}
+              enteredQuantity={enteredQuantity}
+              setEnteredQuantity={setEnteredQuantity}
+              tags={tags}
+              setTags={setTags}
+              selectedCategories={selectedCategories}
+              setSelectedCategories={setSelectedCategories}
+            />
           </Grid>
         </Grid>
       </Grid>

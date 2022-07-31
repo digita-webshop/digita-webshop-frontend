@@ -1,6 +1,12 @@
 import { Close } from "@mui/icons-material";
 import { Box, Divider, FormControl, Grid, Typography } from "@mui/material";
-import { ChangeEvent, KeyboardEvent, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  KeyboardEvent,
+  SetStateAction,
+  useState,
+} from "react";
 import {
   CardWrapper,
   PFormLabel,
@@ -13,12 +19,28 @@ import {
   tagStyles,
 } from "../../../Styles/AddProduct";
 import Categories from "./Categories/Categories";
-interface ITag {
-  id: string;
-  name: string;
+import { ITag } from "../AddProduct";
+
+interface Props {
+  enteredPrice: string;
+  setEnteredPrice: Dispatch<SetStateAction<string>>;
+  enteredQuantity: string;
+  setEnteredQuantity: Dispatch<SetStateAction<string>>;
+  tags: ITag[];
+  setTags: Dispatch<SetStateAction<ITag[]>>;
+  selectedCategories:string[];
+              setSelectedCategories: Dispatch<SetStateAction<string[]>>;
 }
-function Sidebar() {
-  const [tags, setTags] = useState<ITag[]>([]);
+function Sidebar({
+  enteredPrice,
+  setEnteredPrice,
+  enteredQuantity,
+  setEnteredQuantity,
+  tags,
+  setTags,
+  selectedCategories,
+              setSelectedCategories,
+}: Props) {
   const [enteredTag, setEnteredTag] = useState("");
 
   const enteredTagHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -51,13 +73,22 @@ function Sidebar() {
         <Grid item xs={12}>
           <FormControl fullWidth>
             <PFormLabel>price</PFormLabel>
-            <PTextField placeholder="Type Here" />
+            <PTextField
+              placeholder="Type Here"
+              type={"number"}
+              value={enteredPrice}
+              onChange={(e) => setEnteredPrice(e.target.value)}
+            />
           </FormControl>
         </Grid>
         <Grid item xs={12}>
           <FormControl fullWidth>
             <PFormLabel>quantity</PFormLabel>
-            <PTextField placeholder="Type Here" />
+            <PTextField
+              placeholder="Type Here"
+              value={enteredQuantity}
+              onChange={(e) => setEnteredQuantity(e.target.value)}
+            />
           </FormControl>
         </Grid>
         <Grid item xs={12}>
@@ -82,7 +113,8 @@ function Sidebar() {
           <Divider sx={{ marginTop: "20px" }} />
         </Grid>
         <Grid item xs={12}>
-          <Categories />
+          <Categories selectedCategories={selectedCategories}
+              setSelectedCategories={setSelectedCategories} />
         </Grid>
       </Grid>
     </CardWrapper>
