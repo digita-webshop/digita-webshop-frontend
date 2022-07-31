@@ -204,3 +204,9 @@ export const between = {
   alignItems: "center",
   justifyContent: "space-between",
 };
+
+/* =================== Personal info ==================== */
+export const CardWrapper = styled(Box)(({ theme }) => ({
+  backgroundColor: "transparent",
+  borderRadius: "4px",
+}));

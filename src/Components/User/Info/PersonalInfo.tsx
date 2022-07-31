@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, Grid } from "@mui/material";
-import { CardWrapper } from "../../../Styles/panelCommon";
+import { CardWrapper } from "../../../Styles/User";
 import { wrapper } from "../../../Styles/User";
 import Sidebar from "./Sidebar/Sidebar";
 import Password from "./Password/Password";
@@ -26,7 +26,6 @@ const PersonalInfo = () => {
           <Grid item xs={12} lg={9}>
             {activePage === "general" && <General />}
             {activePage === "password" && <Password />}
-            {/* {activePage === "admin account" && <AdminAccount />} */}
           </Grid>
         </Grid>
       </CardWrapper>

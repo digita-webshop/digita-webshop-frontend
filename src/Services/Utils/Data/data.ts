@@ -1209,6 +1209,16 @@ export const marketingProgress = [
     },
    
   ]
+  export const userSettingItems=[
+    {
+      id:1,
+      title:'general',
+    },
+    {
+      id:2,
+      title:'password',
+    },
+  ]
 export const orders = [
   {
     id: 101,
