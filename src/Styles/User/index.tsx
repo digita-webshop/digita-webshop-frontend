@@ -153,6 +153,7 @@ export const shopWrapper = {
 export const cardWrapper = {
   width: "100%",
   cursor: "pointer",
+  boxShadow: "0px 0px 8px 1px rgba(0,0,0,0.10)",
 };
 
 export const deleteBtn = {
