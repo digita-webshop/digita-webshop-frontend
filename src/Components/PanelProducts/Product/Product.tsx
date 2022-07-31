@@ -19,6 +19,7 @@ import {
   deleteBtn,
   editBtn,
 } from "../../../Styles/PanelProducts";
+import EditProduct from "./EditProduct/EditProduct";
 
 type T = {
   id: number;
@@ -29,7 +30,8 @@ type T = {
 };
 
 const Product = ({ id, name, price, image, onRemove }: T) => {
-  const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
 
   return (
     <Card sx={cardWrapper}>
@@ -52,23 +54,29 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
           {"$" + price}
         </Typography>
         <Box sx={{ display: "flex", mt: 1, gap: 1 }}>
-          <Button variant="contained" sx={editBtn}>
+          <Button
+            variant="contained"
+            sx={editBtn}
+            onClick={() => setOpenEdit(true)}
+          >
             <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
             Edit
           </Button>
           <Button
             variant="contained"
             sx={deleteBtn}
-            onClick={() => setOpen(true)}
+            onClick={() => setOpenDelete(true)}
           >
             <DeleteForeverIcon sx={{ margin: "0 0.2rem" }} />
             Delete
           </Button>
         </Box>
-
+        <Modal open={openEdit} onClose={() => setOpenEdit(false)}>
+          <EditProduct setOpenEdit={setOpenEdit} id={id} />
+        </Modal>
         <Modal
-          open={open}
-          onClose={() => setOpen(false)}
+          open={openDelete}
+          onClose={() => setOpenDelete(false)}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
@@ -93,7 +101,7 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
                   fontSize: "15px",
                   height: "46px",
                 }}
-                onClick={() => setOpen(false)}
+                onClick={() => setOpenDelete(false)}
               >
                 Cancel
               </Button>

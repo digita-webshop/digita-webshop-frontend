@@ -22,15 +22,16 @@ import Categories from "./Categories/Categories";
 import { ITag } from "../AddProduct";
 
 interface Props {
-  enteredPrice: string;
-  setEnteredPrice: Dispatch<SetStateAction<string>>;
-  enteredQuantity: string;
-  setEnteredQuantity: Dispatch<SetStateAction<string>>;
+  enteredPrice: number;
+  setEnteredPrice: Dispatch<SetStateAction<number>>;
+  enteredQuantity: number;
+  setEnteredQuantity: Dispatch<SetStateAction<number>>;
   tags: ITag[];
   setTags: Dispatch<SetStateAction<ITag[]>>;
-  selectedCategories:string[];
-              setSelectedCategories: Dispatch<SetStateAction<string[]>>;
+  selectedCategories: string[];
+  setSelectedCategories: Dispatch<SetStateAction<string[]>>;
 }
+
 function Sidebar({
   enteredPrice,
   setEnteredPrice,
@@ -39,7 +40,7 @@ function Sidebar({
   tags,
   setTags,
   selectedCategories,
-              setSelectedCategories,
+  setSelectedCategories,
 }: Props) {
   const [enteredTag, setEnteredTag] = useState("");
 
@@ -75,9 +76,8 @@ function Sidebar({
             <PFormLabel>price</PFormLabel>
             <PTextField
               placeholder="Type Here"
-              type={"number"}
               value={enteredPrice}
-              onChange={(e) => setEnteredPrice(e.target.value)}
+              onChange={(e) => setEnteredPrice(+e.target.value)}
             />
           </FormControl>
         </Grid>
@@ -87,7 +87,7 @@ function Sidebar({
             <PTextField
               placeholder="Type Here"
               value={enteredQuantity}
-              onChange={(e) => setEnteredQuantity(e.target.value)}
+              onChange={(e) => setEnteredQuantity(+e.target.value)}
             />
           </FormControl>
         </Grid>
@@ -113,8 +113,10 @@ function Sidebar({
           <Divider sx={{ marginTop: "20px" }} />
         </Grid>
         <Grid item xs={12}>
-          <Categories selectedCategories={selectedCategories}
-              setSelectedCategories={setSelectedCategories} />
+          <Categories
+            selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
+          />
         </Grid>
       </Grid>
     </CardWrapper>

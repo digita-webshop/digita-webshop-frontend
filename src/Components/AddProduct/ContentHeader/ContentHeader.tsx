@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { PButton, PTitle } from "../../../Styles/panelCommon";
 
-function ContentHeader() {
+function ContentHeader({ title }: { title: string }) {
   return (
     <Box
       sx={{
@@ -10,7 +10,7 @@ function ContentHeader() {
         alignItems: "center",
       }}
     >
-      <PTitle>add product</PTitle>
+      <PTitle>{title}</PTitle>
       <PButton variant="contained" type="submit">
         publish
       </PButton>
