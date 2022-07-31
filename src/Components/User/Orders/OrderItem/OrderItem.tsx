@@ -26,28 +26,28 @@ const OrderItem = ({id, price, date, code, image, status}: T) => {
         <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
           {status === "pending" && (
             <>
-              <PendingIcon sx={{ color: "#00F" }} />
+              <PendingIcon sx={{ color: "#03a9f4" }} />
               <Typography>Pending</Typography>
             </>
           )}
 
           {status === "delivered" && (
             <>
-              <CheckCircleIcon sx={{ color: "#0F0" }} />
+              <CheckCircleIcon sx={{ color: "#00e676" }} />
               <Typography>Delivered</Typography>
             </>
           )}
 
           {status === "referred" && (
             <>
-              <AssignmentReturnIcon sx={{ color: "#0FF" }} />
+              <AssignmentReturnIcon sx={{ color: "#8d6e63" }} />
               <Typography>Referred</Typography>
             </>
           )}
 
           {status === "canceled" && (
             <>
-              <CancelIcon sx={{ color: "#F00" }} />
+              <CancelIcon sx={{ color: "#e53935" }} />
               <Typography>Canceled</Typography>
             </>
           )}

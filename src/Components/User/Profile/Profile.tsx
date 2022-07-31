@@ -8,6 +8,8 @@ import {
 } from "../../../Styles/User";
 import { recentShopItems } from "../../../Services/Utils/Data/data";
 import { titleStyle } from "../../../Styles/PanelProducts";
+import { useNavigate } from "react-router-dom";
+import { Fragment } from "react";
 
 interface T {
   id: number;
@@ -17,8 +19,10 @@ interface T {
 }
 
 const Profile = () => {
+  const navigate = useNavigate();
+
   return (
-    <>
+    <Fragment>
       <Box sx={wrapper}>
         <Box
           sx={{
@@ -40,7 +44,7 @@ const Profile = () => {
 
         <Grid container spacing={1}>
           <Grid item xs={12} sm={6} md={4} lg={4}>
-            <Box sx={profileWrapper}>
+            <Box sx={profileWrapper} onClick={() => navigate('/user/orders')}>
               <Box
                 component="img"
                 src="https://www.digikala.com/statics/img/svg/status-processing.svg"
@@ -65,7 +69,7 @@ const Profile = () => {
           </Grid>
 
           <Grid item xs={12} sm={6} md={4} lg={4}>
-            <Box sx={profileWrapper}>
+            <Box sx={profileWrapper} onClick={() => navigate('/user/orders')}>
               <Box
                 component="img"
                 src="https://www.digikala.com/statics/img/svg/status-delivered.svg"
@@ -90,7 +94,7 @@ const Profile = () => {
           </Grid>
 
           <Grid item xs={12} sm={6} md={4} lg={4}>
-            <Box sx={profileWrapper}>
+            <Box sx={profileWrapper} onClick={() => navigate('/user/orders')}>
               <Box
                 component="img"
                 src="https://www.digikala.com/statics/img/svg/status-returned.svg"
@@ -149,7 +153,7 @@ const Profile = () => {
                     alt="green iguana"
                     sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
                   />
-                  <Box sx={{m: "0 0.5rem"}}>
+                  <Box sx={{ m: "0 0.5rem" }}>
                     <Typography component="p" sx={titleStyle}>
                       {item.name}
                     </Typography>
@@ -167,7 +171,7 @@ const Profile = () => {
           </Grid>
         </Box>
       </Box>
-    </>
+    </Fragment>
   );
 };
 
