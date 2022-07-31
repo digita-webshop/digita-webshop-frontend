@@ -6,7 +6,7 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useRef } from "react";
 import { brands } from "../../../Services/Utils/Data/data";
 import {
   CardWrapper,
