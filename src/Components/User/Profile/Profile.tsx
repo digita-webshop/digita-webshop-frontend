@@ -1,13 +1,13 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import {
   wrapper,
   topMenuItem,
   profileWrapper,
-  productImg,
-  shopWrapper,
+  cardWrapper,
 } from "../../../Styles/User";
 import { recentShopItems } from "../../../Services/Utils/Data/data";
+import { titleStyle } from "../../../Styles/PanelProducts";
 
 interface T {
   id: number;
@@ -138,28 +138,33 @@ const Profile = () => {
             overflowX: "scroll",
           }}
         >
-          {recentShopItems.map((item: T) => (
-            <Box sx={shopWrapper} key={item.id}>
-              <Box sx={productImg}>
-                <Box
-                  component="img"
-                  src={item.image}
-                  alt="order"
-                  className="shopImg"
-                />
-              </Box>
-              <Box sx={{ width: "195px" }}>
-                <Typography sx={{ fontWeight: 600, fontSize: "16px" }}>
-                  {item.name}
-                </Typography>
-              </Box>
-              <Typography
-                sx={{ fontWeight: "bold", fontSize: "18px", color: "#333" }}
-              >
-                {`${item.price} $`}
-              </Typography>
-            </Box>
-          ))}
+          <Grid container spacing={2} sx={{ mt: 2 }}>
+            {recentShopItems.map((item: T) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={item.id}>
+                <Card sx={cardWrapper}>
+                  <CardMedia
+                    component="img"
+                    height="240"
+                    image={item.image}
+                    alt="green iguana"
+                    sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
+                  />
+                  <Box sx={{m: "0 0.5rem"}}>
+                    <Typography component="p" sx={titleStyle}>
+                      {item.name}
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      component="div"
+                      sx={{ pt: "2px", fontSize: "16px" }}
+                    >
+                      {"$" + item.price}
+                    </Typography>
+                  </Box>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Box>
       </Box>
     </>

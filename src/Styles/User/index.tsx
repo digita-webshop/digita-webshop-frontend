@@ -133,18 +133,13 @@ export const profileWrapper = {
 };
 
 /* ============================== Latest shops =========================== */
-export const productImg = {
-  "& .shopImg": {
-    width: "200px",
-    height: "200px",
-  },
-};
 
 export const shopWrapper = {
   display: "flex",
   flexBasis: "100px",
   flexDirection: "column",
   justifyContent: "space-between",
+  boxShadow: "0px 0px 8px 1px rgba(0,0,0,0.10)",
   gap: 1,
   margin: "2rem 0",
 };
