@@ -22,7 +22,11 @@ function ContentHeader() {
           <Close fontSize={"small"} />
           discard
         </POutlinedButton>
-        <PButton variant="contained" sx={{ width: "50%", marginLeft: "10px" }}>
+        <PButton
+          variant="contained"
+          sx={{ width: "50%", marginLeft: "10px" }}
+          type={"submit"}
+        >
           publish
         </PButton>
       </Box>
