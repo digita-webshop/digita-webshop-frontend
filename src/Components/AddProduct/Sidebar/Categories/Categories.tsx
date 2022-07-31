@@ -6,16 +6,17 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { categoriesList } from "../../../../Services/Utils/Data/data";
 import { categoryCheckboxStyles } from "../../../../Styles/AddProduct";
-
-function Categories() {
-  const [checked, setChecked] = useState([""]);
-
+interface Props {
+  selectedCategories: string[];
+  setSelectedCategories: Dispatch<SetStateAction<string[]>>;
+}
+function Categories({ selectedCategories, setSelectedCategories }: Props) {
   const handleToggle = (value: string) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+    const currentIndex = selectedCategories.indexOf(value);
+    const newChecked = [...selectedCategories];
 
     if (currentIndex === -1) {
       newChecked.push(value);
@@ -23,15 +24,16 @@ function Categories() {
       newChecked.splice(currentIndex, 1);
     }
 
-    setChecked(newChecked);
+    setSelectedCategories(newChecked);
   };
+
   return (
     <>
       <Typography variant={"h6"}>Categories</Typography>
       <List>
         {categoriesList.map(({ id, name }) => {
           const labelId = `checkbox-list-label-${id}`;
-          const isChecked = checked.indexOf(name) !== -1;
+          const isChecked = selectedCategories.indexOf(name) !== -1;
 
           return (
             <ListItem
