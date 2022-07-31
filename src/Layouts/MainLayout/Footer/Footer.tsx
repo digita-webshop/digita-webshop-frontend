@@ -51,19 +51,19 @@ function Footer() {
         justifyContent="space-around"
         alignItems="center"
       >
-        <Grid item xs={6} sm={4} md={2} lg={2}>
+        <Grid item xs={6} sm={4} md={2} alignSelf={"flex-start"}>
           <FooterList title={"company info"} links={companyInfo} />
         </Grid>
-        <Grid item xs={6} sm={4} md={2} lg={2}>
+        <Grid item xs={6} sm={4} md={2} alignSelf={"flex-start"}>
           <FooterList title={"let us help you"} links={letUsHelpYou} />
         </Grid>
-        <Grid item xs={6} sm={4} md={2} lg={2}>
+        <Grid item xs={6} sm={4} md={2} alignSelf={"flex-start"}>
           <FooterList title={"quick links"} links={quickLinks} />
         </Grid>
-        <Grid item xs={6} sm={4} md={2} lg={2}>
+        <Grid item xs={6} sm={4} md={2} alignSelf={"flex-start"}>
           <FooterList title={"userfull links"} links={userFullLinks} />
         </Grid>
-        <Grid item xs={12} sm={8} md={4} lg={4}>
+        <Grid item xs={12} sm={8} md={4} alignSelf={"flex-start"}>
           <Subscription />
         </Grid>
       </Grid>
