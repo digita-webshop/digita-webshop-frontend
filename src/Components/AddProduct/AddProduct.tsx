@@ -10,6 +10,7 @@ export interface ITag {
   id: string;
   name: string;
 }
+
 function AddProduct() {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredSku, setEnteredSku] = useState("");
@@ -21,8 +22,8 @@ function AddProduct() {
   });
   const [enteredShortDesc, setEnteredShortDesc] = useState("");
   const [addedImages, setAddedImages] = useState({});
-  const [enteredPrice, setEnteredPrice] = useState("");
-  const [enteredQuantity, setEnteredQuantity] = useState("");
+  const [enteredPrice, setEnteredPrice] = useState<number | string>("");
+  const [enteredQuantity, setEnteredQuantity] = useState<number | string>("");
   const [tags, setTags] = useState<ITag[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
@@ -30,11 +31,12 @@ function AddProduct() {
     event.preventDefault();
     console.log(tags);
   };
+
   return (
     <form onSubmit={submitHandler}>
       <Grid container spacing={4}>
         <Grid item xs={12}>
-          <ContentHeader />
+          <ContentHeader title={"add product"} />
         </Grid>
         <Grid container item xs={12} spacing={3}>
           <Grid item xs={12} md={8}>
