@@ -16,8 +16,10 @@ function AddProduct() {
     third: "#4169e1",
   });
   const [enteredShortDesc, setEnteredShortDesc] = useState("");
+  const [addedImages, setAddedImages] = useState({});
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
+    console.log(addedImages);
   };
   return (
     <form onSubmit={submitHandler}>
@@ -39,7 +41,7 @@ function AddProduct() {
               enteredShortDesc={enteredShortDesc}
               setEnteredShortDesc={setEnteredShortDesc}
             />
-            <Gallery />
+            <Gallery setAddedImages={setAddedImages} />
             <Description />
           </Grid>
           <Grid item xs={12} md={4}>
