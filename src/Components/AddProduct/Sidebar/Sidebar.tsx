@@ -28,8 +28,8 @@ interface Props {
   setEnteredQuantity: Dispatch<SetStateAction<number | string>>;
   tags: ITag[];
   setTags: Dispatch<SetStateAction<ITag[]>>;
-  selectedCategories: string[];
-  setSelectedCategories: Dispatch<SetStateAction<string[]>>;
+  selectedCategory: string;
+  setSelectedCategory: Dispatch<SetStateAction<string>>;
 }
 
 function Sidebar({
@@ -39,8 +39,8 @@ function Sidebar({
   setEnteredQuantity,
   tags,
   setTags,
-  selectedCategories,
-  setSelectedCategories,
+  selectedCategory,
+  setSelectedCategory,
 }: Props) {
   const [enteredTag, setEnteredTag] = useState("");
 
@@ -116,8 +116,8 @@ function Sidebar({
         </Grid>
         <Grid item xs={12}>
           <Categories
-            selectedCategories={selectedCategories}
-            setSelectedCategories={setSelectedCategories}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
           />
         </Grid>
       </Grid>

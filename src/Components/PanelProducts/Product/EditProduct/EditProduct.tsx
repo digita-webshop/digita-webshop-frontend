@@ -39,7 +39,7 @@ function EditProduct() {
     quantity
   );
   const [tags, setTags] = useState<ITag[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState(category);
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
@@ -76,8 +76,8 @@ function EditProduct() {
               setEnteredQuantity={setEnteredQuantity}
               tags={tags}
               setTags={setTags}
-              selectedCategories={selectedCategories}
-              setSelectedCategories={setSelectedCategories}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
             />
           </Grid>
         </Grid>

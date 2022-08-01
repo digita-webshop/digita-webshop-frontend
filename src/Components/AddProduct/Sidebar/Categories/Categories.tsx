@@ -10,42 +10,27 @@ import { Dispatch, SetStateAction } from "react";
 import { categoriesList } from "../../../../Services/Utils/Data/data";
 import { categoryCheckboxStyles } from "../../../../Styles/AddProduct";
 interface Props {
-  selectedCategories: string[];
-  setSelectedCategories: Dispatch<SetStateAction<string[]>>;
+  selectedCategory: string;
+  setSelectedCategory: Dispatch<SetStateAction<string>>;
 }
-function Categories({ selectedCategories, setSelectedCategories }: Props) {
-  const handleToggle = (value: string) => () => {
-    const currentIndex = selectedCategories.indexOf(value);
-    const newChecked = [...selectedCategories];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setSelectedCategories(newChecked);
-  };
-
+function Categories({ selectedCategory, setSelectedCategory }: Props) {
   return (
     <>
       <Typography variant={"h6"}>Categories</Typography>
       <List>
         {categoriesList.map(({ id, name }) => {
           const labelId = `checkbox-list-label-${id}`;
-          const isChecked = selectedCategories.indexOf(name) !== -1;
-
           return (
             <ListItem
               key={id}
               sx={{ padding: "2px 16px 2px 12px", cursor: "context-menu" }}
-              onClick={handleToggle(name)}
+              onClick={() => setSelectedCategory(name)}
             >
               <ListItemIcon sx={{ minWidth: 0 }}>
                 <Checkbox
                   sx={categoryCheckboxStyles}
                   edge="start"
-                  checked={isChecked}
+                  checked={name === selectedCategory}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ "aria-labelledby": labelId }}
