@@ -77,7 +77,7 @@ function Sidebar({
             <PTextField
               placeholder="Type Here"
               value={enteredPrice}
-              onChange={(e) => setEnteredPrice(e.target.value)}
+              onChange={(e) => setEnteredPrice(+e.target.value)}
             />
           </FormControl>
         </Grid>
@@ -87,7 +87,7 @@ function Sidebar({
             <PTextField
               placeholder="Type Here"
               value={enteredQuantity}
-              onChange={(e) => setEnteredQuantity(e.target.value)}
+              onChange={(e) => setEnteredQuantity(+e.target.value)}
             />
           </FormControl>
         </Grid>
