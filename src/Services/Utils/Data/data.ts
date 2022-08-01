@@ -1869,9 +1869,10 @@ export const productShareItems=[
 //   rating: 5,
 //   quantity:4,
 //   sku:'WVN-14',
-//   colors:['#f03637','#example','#example'],
+  // colors:['#f03637','red','#example'],
 //   category:'Audio & Video Game',
 //   tags:['tag1','tag2','tag3'],
+      
 //   shortDescription:
 //     "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
 //     fullDescription:'<h2>title</h2> ',
@@ -1902,22 +1903,30 @@ export const productShareItems=[
 //   }
 // ]
 
-// const userModel= {
-//     id:'1',
-//     name:'john',
-//     lastName:'doe',
-//     email:'example@email.com',
-//     password:'12345',
-//     phone:'+0123456789',
-//     image:'',
-//     adresses:[
-//       {
-//         id:'1',
-//         country:'usa',
-//         state:'new york',
-//         city:'adams',
-//         postCode:'0123456789',
-//         street:''
-//       }
-//     ]
-//   }
+const userModel= {
+    id:'1',
+    name:'john',
+    lastName:'doe',
+    email:'example@email.com',
+    password:'12345',
+    phone:'+0123456789',
+    image:'',
+    adresses:[
+      {
+        id:'1',
+        country:'usa',
+        state:'new york',
+        city:'adams',
+        postCode:'0123456789',
+        street:''
+      }
+    ],
+    orders:[
+{status:{
+  pending:false,
+  canceled:false,
+  recieved:false,
+},}
+    ],
+    role:'Admin/User/SuperAdmin',
+  }
