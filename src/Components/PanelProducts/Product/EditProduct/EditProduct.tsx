@@ -21,7 +21,7 @@ function EditProduct() {
     price,
     quantity,
     gallery,
-    tags: tagList,
+    tags: tagArr,
     category,
   } = product!;
   const [enteredTitle, setEnteredTitle] = useState(name);
@@ -38,7 +38,10 @@ function EditProduct() {
   const [enteredQuantity, setEnteredQuantity] = useState<number | string>(
     quantity
   );
-  const [tags, setTags] = useState<ITag[]>([]);
+  const tagsList = tagArr.map((tag, index) => {
+    return { id: `${index}`, name: tag };
+  });
+  const [tags, setTags] = useState<ITag[]>(tagsList);
   const [selectedCategory, setSelectedCategory] = useState(category);
 
   const submitHandler = (event: FormEvent) => {
