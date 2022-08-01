@@ -6,7 +6,7 @@ function AddArticle() {
   return (
     <Grid container maxWidth={"768px"} margin={"auto"} rowSpacing={3}>
       <Grid item xs={12}>
-        <ContentHeader />
+        <ContentHeader title={"add article"} route={"/panel/add-product"} />
       </Grid>
       <Grid item xs={12}>
         <ArticleForm />

@@ -20,6 +20,7 @@ import {
   editBtn,
 } from "../../../Styles/PanelProducts";
 import EditProduct from "./EditProduct/EditProduct";
+import { Link } from "react-router-dom";
 
 type T = {
   id: number;
@@ -57,7 +58,8 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
           <Button
             variant="contained"
             sx={editBtn}
-            onClick={() => setOpenEdit(true)}
+            component={Link}
+            to={`/panel/product/${id}`}
           >
             <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
             Edit
@@ -71,9 +73,7 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
             Delete
           </Button>
         </Box>
-        <Modal open={openEdit} onClose={() => setOpenEdit(false)}>
-          <EditProduct setOpenEdit={setOpenEdit} id={id} />
-        </Modal>
+
         <Modal
           open={openDelete}
           onClose={() => setOpenDelete(false)}

@@ -36,6 +36,8 @@ export const PTextField = styled("input")(({ theme }) => ({
     fontSize: "16px ",
     color: theme.palette.common.panelGrey,
   },
+
+  "&::-webkit-inner-spin-button": { appearance: "none" },
 }));
 export const CardWrapper = styled(Box)(({ theme }) => ({
   padding: "20px",

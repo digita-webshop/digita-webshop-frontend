@@ -75,9 +75,10 @@ function Sidebar({
           <FormControl fullWidth>
             <PFormLabel>price</PFormLabel>
             <PTextField
+              type={"number"}
               placeholder="Type Here"
               value={enteredPrice}
-              onChange={(e) => setEnteredPrice(+e.target.value)}
+              onChange={(e) => setEnteredPrice(e.target.value)}
             />
           </FormControl>
         </Grid>
@@ -85,9 +86,10 @@ function Sidebar({
           <FormControl fullWidth>
             <PFormLabel>quantity</PFormLabel>
             <PTextField
+              type={"number"}
               placeholder="Type Here"
               value={enteredQuantity}
-              onChange={(e) => setEnteredQuantity(+e.target.value)}
+              onChange={(e) => setEnteredQuantity(e.target.value)}
             />
           </FormControl>
         </Grid>
