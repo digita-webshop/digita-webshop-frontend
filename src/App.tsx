@@ -33,7 +33,7 @@ import {
 } from "./Pages/Panel/User";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
-import { ScrollToTop } from "./Components";
+import { ScrollToTop, EditProduct } from "./Components";
 import UserLayout from "./Layouts/UserLayout/UserLayout";
 
 function App() {
@@ -63,6 +63,7 @@ function App() {
             <Route path="/panel/*" element={<PanelLayout />}>
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="products" element={<Products />} />
+              <Route path="product/:id" element={<EditProduct />} />
               <Route path="orders" element={<Orders />} />
               <Route path="add-product" element={<AddProduct />} />
               <Route path="add-article" element={<AddArticle />} />
