@@ -19,7 +19,6 @@ import {
   deleteBtn,
   editBtn,
 } from "../../../Styles/PanelProducts";
-import EditProduct from "./EditProduct/EditProduct";
 import { Link } from "react-router-dom";
 
 type T = {
@@ -32,7 +31,6 @@ type T = {
 
 const Product = ({ id, name, price, image, onRemove }: T) => {
   const [openDelete, setOpenDelete] = useState(false);
-  const [openEdit, setOpenEdit] = useState(false);
 
   return (
     <Card sx={cardWrapper}>
