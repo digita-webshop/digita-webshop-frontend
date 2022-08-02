@@ -6,6 +6,8 @@ import Product from "./Product/Product";
 import { userWishlistProducts } from "../../../Services/Utils/Data/data";
 import Pagination from "../../Pagination/Pagination";
 import EmptyList from "../../EmptyList/EmptyList";
+import { Link } from "react-router-dom";
+import { ArrowBack } from "@mui/icons-material";
 
 const Wishlist = () => {
   const wish = 0;
@@ -25,9 +27,22 @@ const Wishlist = () => {
   return (
     <>
       <Box sx={wrapper}>
-        <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
-          Wishlist
-        </Typography>
+        <Box sx={{ display: "flex", gap: "10px" }}>
+          <Box
+            to="/user"
+            component={Link}
+            sx={{
+              display: { md: "none" },
+              textDecoration: "none",
+              color: "common.digitaBlack",
+            }}
+          >
+            <ArrowBack />
+          </Box>
+          <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
+            Wishlist
+          </Typography>
+        </Box>
 
         {/* =========== If wishlist is empty render this ==========  */}
         {wish > 0 && (
@@ -39,7 +54,7 @@ const Wishlist = () => {
           />
         )}
 
-        <Grid container spacing={2} sx={{mt:2}}>
+        <Grid container spacing={2} sx={{ mt: 2 }}>
           {currentProducts.map(({ id, name, price, image }) => (
             <Grid item xs={12} sm={6} md={4} lg={4} xl={4} key={id}>
               <Product

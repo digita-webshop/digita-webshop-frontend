@@ -19,6 +19,8 @@ import AddLocation from "@mui/icons-material/AddLocation";
 import EmptyList from "../../EmptyList/EmptyList";
 import NewAddressForm from "../../Checkout/NewAddressForm/NewAddressForm";
 import { cartModal } from "../../../Styles/Products";
+import { ArrowBack } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const options = ["Edit", "Delete"];
 
@@ -38,9 +40,22 @@ const Address = () => {
   return (
     <Box sx={wrapper}>
       <Box sx={between}>
-        <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
-          Addresses
-        </Typography>
+        <Box sx={{ display: "flex", gap: "10px" }}>
+          <Box
+            to="/user"
+            component={Link}
+            sx={{
+              display: { md: "none" },
+              textDecoration: "none",
+              color: "common.digitaBlack",
+            }}
+          >
+            <ArrowBack />
+          </Box>
+          <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
+            Addresses
+          </Typography>
+        </Box>
         <Box sx={topMenuItem} onClick={() => setNewAddress(true)}>
           <Button variant="contained" sx={addressBtn}>
             <AddLocation

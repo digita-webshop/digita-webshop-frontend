@@ -11,6 +11,8 @@ import {
   referredItems,
   canceledItems,
 } from "../../../Services/Utils/Data/data";
+import { Link } from "react-router-dom";
+import { ArrowBack } from "@mui/icons-material";
 
 const Orders = () => {
   const [value, setValue] = useState(0);
@@ -27,9 +29,22 @@ const Orders = () => {
   return (
     <Box sx={wrapper}>
       <Box sx={between}>
-        <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
-          Orders History
-        </Typography>
+        <Box sx={{ display: "flex", gap: "10px" }}>
+          <Box
+            to="/user"
+            component={Link}
+            sx={{
+              display: { md: "none" },
+              textDecoration: "none",
+              color: "common.digitaBlack",
+            }}
+          >
+            <ArrowBack />
+          </Box>
+          <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
+            Orders History
+          </Typography>
+        </Box>
         <Box>
           <Search />
         </Box>
@@ -48,16 +63,16 @@ const Orders = () => {
         <TabPanel value={value} index={0}>
           {pending === 0 && <EmptyOrder />}
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          {pendingItems.map(({ id, date, image, price, code, status }) => (
-            <OrderItem
-              id={id}
-              date={date}
-              image={image}
-              price={price}
-              code={code}
-              status={status}
-            />
-          ))}
+            {pendingItems.map(({ id, date, image, price, code, status }) => (
+              <OrderItem
+                id={id}
+                date={date}
+                image={image}
+                price={price}
+                code={code}
+                status={status}
+              />
+            ))}
           </Box>
         </TabPanel>
         <TabPanel value={value} index={1}>
