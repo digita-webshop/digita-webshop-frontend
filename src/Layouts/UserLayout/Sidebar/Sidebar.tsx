@@ -6,54 +6,45 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { Dispatch, Fragment, SetStateAction } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import { UserItem } from "../../../Styles/User";
 import { userSidebarItems } from "../../../Services/Utils/Data/data";
 import SidebarTop from "./SidebarTop/SidebarTop";
+import MyOrders from "../../../Components/User/Status/MyOrders/MyOrders";
 
-interface T {
-  menuOpen: boolean;
-  setMenuOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-const Sidebar = ({ menuOpen, setMenuOpen }: T) => {
-  const { pathname } = useLocation();
-  const settingsPath = pathname.split("/")[2];
+const Sidebar = () => {
   return (
     <>
       <SidebarTop />
       <Divider sx={{ borderColor: "common.panelBorderGrey" }} />
-      <List>
-        {userSidebarItems.map(({ id, title, route, icon }) => {
-          const settingsActive =
-            settingsPath === "settings" && title === "settings" && "active";
 
-          return (
-            <Fragment key={id}>
-              {title === "settings" && <Divider sx={{ marginY: "10px" }} />}
-              <UserItem>
-                <NavLink
-                  to={route}
-                  className={`${settingsActive} ${!menuOpen && "menu"} link`}
-                >
-                  <ListItemIcon>
-                    <Icon>{icon}</Icon>
-                  </ListItemIcon>
-                  <ListItemText
-                    sx={{ display: menuOpen ? "" : "none" }}
-                    primaryTypographyProps={{
-                      fontSize: "16px",
-                      fontWeight: 600,
-                      textTransform: "capitalize",
-                    }}
-                    primary={title}
-                  />
-                </NavLink>
-              </UserItem>
-            </Fragment>
-          );
-        })}
+      <MyOrders sidebar={true} />
+      <Divider
+        sx={{ borderColor: "common.panelBorderGrey", display: { md: "none" } }}
+      />
+      <List>
+        {userSidebarItems.map(({ id, title, route, icon }) => (
+          <Fragment key={id}>
+            {title === "settings" && <Divider sx={{ marginY: "10px" }} />}
+            <UserItem className={title === "Status" ? "hidden" : ""}>
+              <NavLink to={route} className={`link`}>
+                <ListItemIcon>
+                  <Icon>{icon}</Icon>
+                </ListItemIcon>
+                <ListItemText
+                  // sx={{ display: menuOpen ? "" : "none" }}
+                  primaryTypographyProps={{
+                    fontSize: "16px",
+                    fontWeight: 600,
+                    textTransform: "capitalize",
+                  }}
+                  primary={title}
+                />
+              </NavLink>
+            </UserItem>
+          </Fragment>
+        ))}
       </List>
     </>
   );

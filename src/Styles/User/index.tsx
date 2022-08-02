@@ -2,42 +2,41 @@ import { Box, ListItem } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const UserWrapper = styled(Box)(({ theme }) => ({
-  display: "flex",
-  gap: 12,
-  margin: "40px",
-  [theme.breakpoints.down("lg")]: {
-    flexDirection: "column",
+  padding: "40px",
+  [theme.breakpoints.down("md")]: {
+    padding: "0",
   },
+  margin: "auto",
 }));
 
 export const Aside = styled(Box)(({ theme }) => ({
-  position: "fixed",
-  marginTop: "40px",
   backgroundColor: "white",
-  width: "23%",
+  // width: "25%",
   borderRadius: "12px",
+  padding: "10px",
   border: `1px solid ${theme.palette.common.panelHoverDarkGrey}`,
-  padding: "0 10px",
   [theme.breakpoints.down("lg")]: {
-    width: "91%",
+    // width: "91%",
   },
-  [theme.breakpoints.down("md")]: {
-    width: "89%",
+  [theme.breakpoints.up("md")]: {
+    position: "fixed",
+    width: "24%",
+    padding: "0 10px",
+    maxWidth: "422px",
   },
   [theme.breakpoints.down("sm")]: {
-    width: "84%",
+    // width: "84%",
   },
 }));
 
 export const Main = styled(Box)(({ theme }) => ({
-  marginTop: "40px",
-  marginLeft: "28%",
   /* padding: "30px", */
-  width: "100%",
+  // width: "100%",
+  marginLeft: "auto",
   /* border: `1px solid ${theme.palette.common.panelHoverDarkGrey}`, */
   borderRadius: "12px",
-  [theme.breakpoints.down("lg")]: {
-    width: "100%",
+  [theme.breakpoints.up("md")]: {
+    width: "70%",
   },
 }));
 
@@ -73,6 +72,11 @@ export const UserItem = styled(ListItem)(({ theme }) => ({
     display: "flex",
     alignItems: "center",
     color: theme.palette.common.panelGrey,
+  },
+  "&.hidden": {
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
   },
 }));
 
@@ -122,7 +126,11 @@ export const wrapper = {
   overflow: "auto",
   "& .orderImg": {
     width: "80px",
-  }
+  },
+  "&.sidebar": {
+    border: "none",
+    display: { md: "none" },
+  },
 };
 
 export const profileWrapper = {
