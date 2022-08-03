@@ -135,16 +135,14 @@ export const wrapper = {
 
 export const profileWrapper = {
   cursor: "pointer",
-  padding: "30px",
-  width: "200px",
+  // padding: "30px",
   borderRadius: "12px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  gap: 3,
-  "& .imgItem": {
-    width: "100px",
-    height: "100px",
+  gap: { xs: "6px", sm: "16px" },
+  img: {
+    width: { xs: "40px", sm: "auto" },
   },
 };
 
