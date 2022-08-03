@@ -25,33 +25,39 @@ function MyOrders({ sidebar }: { sidebar: boolean }) {
         </Box>
       </Box>
 
-      <Grid container spacing={1}>
-        <Grid item xs={12} sm={6} md={4} lg={4}>
+      <Grid container columnSpacing={3}>
+        <Grid item xs={4} sm={4}>
           <Box sx={profileWrapper} onClick={() => navigate("/user/orders")}>
             <Box
               component="img"
               src="https://www.digikala.com/statics/img/svg/status-processing.svg"
               alt="order"
-              className="itemImg"
             />
             <Box>
-              <Typography sx={{ fontSize: "20px" }}>0 Order</Typography>
+              <Typography
+                component={"span"}
+                sx={{ fontSize: { xs: "13px", sm: "20px" } }}
+              >
+                0 Order
+              </Typography>
               <Box
                 sx={{
-                  padding: "4px 10px",
+                  padding: { xs: "3px 6px", sm: "4px 10px" },
                   borderRadius: "10px",
                   background: "#CFD1F6",
                   marginTop: "4px",
                   color: "blue",
                 }}
               >
-                <Typography sx={{ fontSize: "15px" }}>Pending</Typography>
+                <Typography sx={{ fontSize: { xs: "10px", sm: "15px" } }}>
+                  Pending
+                </Typography>
               </Box>
             </Box>
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={4} lg={4}>
+        <Grid item xs={4} sm={4}>
           <Box sx={profileWrapper} onClick={() => navigate("/user/orders")}>
             <Box
               component="img"
@@ -60,23 +66,30 @@ function MyOrders({ sidebar }: { sidebar: boolean }) {
               className="itemImg"
             />
             <Box>
-              <Typography sx={{ fontSize: "20px" }}>4 Order</Typography>
+              <Typography
+                component={"span"}
+                sx={{ fontSize: { xs: "13px", sm: "20px" } }}
+              >
+                4 Order
+              </Typography>
               <Box
                 sx={{
-                  padding: "4px 10px",
+                  padding: { xs: "3px 6px", sm: "4px 10px" },
                   borderRadius: "10px",
                   background: "#C4FCEF",
                   marginTop: "4px",
                   color: "green",
                 }}
               >
-                <Typography sx={{ fontSize: "15px" }}>Delivered</Typography>
+                <Typography sx={{ fontSize: { xs: "10px", sm: "15px" } }}>
+                  Delivered
+                </Typography>
               </Box>
             </Box>
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={4} lg={4}>
+        <Grid item xs={4} sm={4}>
           <Box sx={profileWrapper} onClick={() => navigate("/user/orders")}>
             <Box
               component="img"
@@ -85,17 +98,24 @@ function MyOrders({ sidebar }: { sidebar: boolean }) {
               className="itemImg"
             />
             <Box>
-              <Typography sx={{ fontSize: "20px" }}>0 Order</Typography>
+              <Typography
+                component={"span"}
+                sx={{ fontSize: { xs: "13px", sm: "20px" } }}
+              >
+                0 Order
+              </Typography>
               <Box
                 sx={{
-                  padding: "4px 10px",
+                  padding: { xs: "3px 6px", sm: "4px 10px" },
                   borderRadius: "10px",
                   background: "#F9F871",
                   marginTop: "4px",
                   color: "#A45C40",
                 }}
               >
-                <Typography sx={{ fontSize: "15px" }}>Referred</Typography>
+                <Typography sx={{ fontSize: { xs: "10px", sm: "15px" } }}>
+                  Referred
+                </Typography>
               </Box>
             </Box>
           </Box>
