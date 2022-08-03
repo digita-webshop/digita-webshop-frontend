@@ -44,6 +44,8 @@ function Navbar() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const { pathname } = useLocation();
+  const userPath = pathname.includes("user");
+  console.log(userPath);
 
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     setSelectedCategory(event.target.value);
@@ -77,7 +79,7 @@ function Navbar() {
   useEffect(() => {
     let lastScroll = window.scrollY;
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 180 && lastScroll < window.scrollY) {
+      if (window.scrollY > 180 && lastScroll < window.scrollY && matches) {
         setCollapse(false);
       } else {
         setCollapse(true);
@@ -92,7 +94,7 @@ function Navbar() {
   return (
     <Fragment>
       <AppBar sx={appBarStyles}>
-        <Collapse in={collapse} timeout={600}>
+        <Collapse in={userPath ? true : collapse} timeout={600}>
           <Container maxWidth={"xl"} sx={{ position: "relative" }}>
             <Toolbar sx={{ justifyContent: "space-between" }} disableGutters>
               <Box>
