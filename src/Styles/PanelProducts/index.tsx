@@ -46,7 +46,12 @@ export const titleWrapper = {
 
 export const titleStyle = {
   color: "gray",
-  fontSize: "18px",
+  padding: "6px 0 ",
+  fontSize: "15px",
+  " -webkit-line-clamp": 2,
+  display: "-webkit-box",
+  overflow: "hidden",
+  WebkitBoxOrient: "vertical",
   "&:hover": { color: "#f03637" },
 };
 
@@ -78,7 +83,6 @@ export const paginationStyle = {
   display: "flex",
   justifyContent: "flex-end",
 };
-
 
 export const PaginationList = styled("ul")({
   listStyle: "none",
