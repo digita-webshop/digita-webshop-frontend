@@ -1,4 +1,4 @@
-import { useState, useRef, EventHandler } from "react";
+import { useState } from "react";
 import { CloudUpload } from "@mui/icons-material";
 import { Box, FormControl, Grid } from "@mui/material";
 import {
@@ -12,7 +12,7 @@ const General = () => {
   const [name, setName] = useState("Siavash");
   const [lName, setLName] = useState("Khani");
   const [email, setEmail] = useState("siavash.khani200@gmail.com");
-  const [phone, setPhone] = useState("+989017079374")
+  const [phone, setPhone] = useState("+989017079374");
 
   const handleNameChange = (e: any) => {
     setName(e.target.value);
@@ -70,7 +70,7 @@ const General = () => {
           <Box
             sx={{
               textAlign: "center",
-              img: { height: "195px", borderRadius: "50%" },
+              img: { width: "100%", maxWidth: "180px", borderRadius: "50%" },
             }}
           >
             <img
