@@ -11,6 +11,7 @@ function Sidebar({ activePageHandler, activePage }: Props) {
     <Box
       sx={{
         paddingX: { lg: "15px" },
+        marginRight: { lg: "15px" },
         borderRight: { lg: "1px solid " },
         borderBottom: { xs: "1px solid ", lg: "none" },
         borderColor: {
