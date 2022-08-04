@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import { useState } from "react";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
@@ -17,9 +16,7 @@ interface T {
   status: string;
 }
 
-const OrderItem = ({id, price, date, code, image, status}: T) => {
-
-
+const OrderItem = ({ id, price, date, code, image, status }: T) => {
   return (
     <Box sx={wrapper} key={id}>
       <Box sx={between}>
@@ -54,24 +51,38 @@ const OrderItem = ({id, price, date, code, image, status}: T) => {
         </Box>
         <ArrowForwardIosIcon />
       </Box>
-      <Box sx={{ display: "flex", gap: 2, mt: 2 }}>
-        <Typography sx={{ color: "gray" }}>{date}</Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          gap: 2,
+          mt: 2,
+        }}
+      >
+        <Typography
+          sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}
+        >
+          {date}
+        </Typography>
         <Box sx={{ display: "flex", gap: 1 }}>
-          <Typography sx={{ color: "gray" }}>Code</Typography>
+          <Typography
+            sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}
+          >
+            Code
+          </Typography>
           <Typography>{code}</Typography>
         </Box>
         <Box sx={{ display: "flex", gap: 1 }}>
-          <Typography sx={{ color: "gray" }}>Price</Typography>
+          <Typography
+            sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}
+          >
+            Price
+          </Typography>
           <Typography>{`${price} $`}</Typography>
         </Box>
       </Box>
       <Box sx={{ mt: 2 }}>
-        <Box
-          component="img"
-          src={image}
-          alt="empty"
-          className="orderImg"
-        />
+        <Box component="img" src={image} alt="empty" className="orderImg" />
       </Box>
 
       <Box
