@@ -955,13 +955,6 @@ export const reviews = [
   {id: 13, pId: 35, product: "iPad Pro 2017 Model", name: "Savannah Nguyen", rating: 5, date: "10.03.2019"},
 ]
 
-export const recentShopItems = [
-  {id: 1, image: "https://dkstatics-public.digikala.com/digikala-products/174590d431e79eba2df1d9792f4ae8a1bacda4db_1639393931.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Asus Laptop", price: 1152},
-  {id: 2, image: "https://dkstatics-public.digikala.com/digikala-products/119607459.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "A Data External Hard", price: 352},
-  {id: 3, image: "https://dkstatics-public.digikala.com/digikala-products/aa71b72711dc3ba9939525abe3e8905be1ebb6cc_1645858425.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Asus Laptop Rog Strix", price: 1452},
-  {id: 4, image: "https://dkstatics-public.digikala.com/digikala-products/cf7840133c7b2d42979c3129a96008e5b166ac0d_1630351304.jpg?x-oss-process=image/resize,m_lfit,h_300,w_300/quality,q_80", name: "Idea pad Gi3143", price: 852},
-]
-
 export const userWishlistProducts = [
   {
     id: 1,

@@ -45,7 +45,6 @@ function Navbar() {
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const { pathname } = useLocation();
   const userPath = pathname.includes("user");
-  console.log(userPath);
 
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     setSelectedCategory(event.target.value);

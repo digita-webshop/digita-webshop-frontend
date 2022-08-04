@@ -1,6 +1,6 @@
 import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
 import { cardWrapper } from "../../../Styles/User";
-import { recentShopItems } from "../../../Services/Utils/Data/data";
+import { productData } from "../../../Services/Utils/Data/data";
 import { titleStyle } from "../../../Styles/PanelProducts";
 import { Fragment } from "react";
 import MyOrders from "./MyOrders/MyOrders";
@@ -36,16 +36,14 @@ const Status = () => {
             display: "flex",
             gap: 2,
             flexWrap: "wrap",
-            overflowX: "scroll",
           }}
         >
           <Grid container spacing={2} sx={{ mt: 2 }}>
-            {recentShopItems.map((item: T) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} xl={3} key={item.id}>
+            {productData.slice(0, 4).map((item: T) => (
+              <Grid item xs={6} sm={3} key={item.id}>
                 <Card sx={cardWrapper}>
                   <CardMedia
                     component="img"
-                    height="240"
                     image={item.image}
                     alt="green iguana"
                     sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
@@ -57,7 +55,7 @@ const Status = () => {
                     <Typography
                       variant="h6"
                       component="div"
-                      sx={{ pt: "2px", fontSize: "16px" }}
+                      sx={{ paddingY: "4px", fontSize: "15px" }}
                     >
                       {"$" + item.price}
                     </Typography>
