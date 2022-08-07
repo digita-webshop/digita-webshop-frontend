@@ -1,5 +1,7 @@
+import { Address as AddressPage} from "../../../../Components/User";
+
 function Addresses() {
-  return <>addresses</>;
+  return <AddressPage />;
 }
 
 export default Addresses;
