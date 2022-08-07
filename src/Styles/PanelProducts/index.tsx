@@ -48,6 +48,7 @@ export const titleStyle = {
   color: "gray",
   padding: "6px 0 ",
   fontSize: "15px",
+  height: "45px",
   " -webkit-line-clamp": 2,
   display: "-webkit-box",
   overflow: "hidden",

@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 import { useState } from "react";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { cartModal } from "../../../../Styles/PanelProducts";
 import { titleWrapper, titleStyle } from "../../../../Styles/PanelProducts";
@@ -29,7 +29,6 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
     <Card sx={cardWrapper}>
       <CardMedia
         component="img"
-        height="240"
         image={image}
         alt="green iguana"
         sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
@@ -46,7 +45,6 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
           {"$" + price}
         </Typography>
         <Box sx={{ display: "flex", mt: 1, gap: 1 }}>
-          
           <Button
             variant="contained"
             sx={deleteBtn}
@@ -56,7 +54,13 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
             Delete
           </Button>
           <Button variant="contained" sx={addBtn}>
-            <ShoppingCartIcon className="addIcon" sx={{ margin: "0 0.2rem", color: "common.digitaRed" }} />
+            <ShoppingCartIcon
+              className="addIcon"
+              sx={{
+                margin: "0 0.2rem",
+                color: "common.digitaRed",
+              }}
+            />
             Add To Cart
           </Button>
         </Box>
