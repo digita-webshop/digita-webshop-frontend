@@ -124,7 +124,7 @@ export const ShopMenuWrapper = styled(Box)(({ theme }) => ({
 
 export const appBarStyles = {
   backgroundColor: "white",
-  position: "fixed ",
+  position: { xs: "absolute", md: "fixed " },
   boxShadow: "4px 2px 4px 1px rgb(0 0 0 / 12%)",
 };
 export const iconsBadgeStyles = {

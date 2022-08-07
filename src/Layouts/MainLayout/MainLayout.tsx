@@ -1,13 +1,16 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./Footer/Footer";
 import Navbar from "./Navbar/Navbar";
 
+
 function MainLayout() {
+  const location = useLocation();
+  const userLocation = location.pathname.split('/');
   return (
     <>
       <Navbar />
       <Outlet />
-      <Footer />
+      {userLocation[1] !== "user" && <Footer />}
     </>
   );
 }

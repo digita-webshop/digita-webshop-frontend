@@ -1478,6 +1478,86 @@ export const reviews = [
   {id: 13, pId: 35, product: "iPad Pro 2017 Model", name: "Savannah Nguyen", rating: 5, date: "10.03.2019"},
 ]
 
+export const userWishlistProducts = [
+  {
+    id: 1,
+    name: "Beats By Dr. Dre studio...",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 2,
+    name: "Crosair HS35...",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 3,
+    name: "Microsoft Xbox One S Bl",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 4,
+    name: "Microsoft Xbox One S....",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 5,
+    name: "Samsung Galaxy Note...",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 6,
+    name: "Samsung Galaxy M21",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 7,
+    name: "Samsung Galaxy V21",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 8,
+    name: "SmartPhone & Ipad",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-3-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 9,
+    name: "Beats By Dr. Dre studio...",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 10,
+    name: "Crosair HS35...",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg",
+    price: 179,
+  },
+  {
+    id: 11,
+    name: "Microsoft Xbox One S Bl",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+    price: 179,
+  },
+]
+
 export const rows = [
   {
     id: 1,
@@ -1500,6 +1580,31 @@ export const rows = [
     status: true,
   },
 ];
+
+export const userSidebarItems = [
+  {id: 1, title: "Status", route: "/user/status", icon: "dashboard"},
+  {id: 2, title: "My Orders", route: "/user/orders", icon: "local_grocery_store"},
+  {id: 3, title: "Personal Info", route: "/user/personal-info", icon: "person"},
+  {id: 4, title: "Wishlist", route: "/user/wishlist", icon: "favorite"},
+  {id: 5, title: "Addresses", route: "/user/addresses", icon: "home"},
+]
+
+export const pendingItems = [
+  {id: 1, date: '21 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg", code: 44353254, price: 655, status: 'pending'},
+  {id: 2, date: '8 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg", code: 54656221, price: 120, status: 'pending'},
+]
+
+export const deliveredItems = [
+  {id: 1, date: '2 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", code: 12344234, price: 65, status: 'delivered'},
+]
+
+export const referredItems = [
+  {id: 1, date: '16 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg", code: 33554367, price: 587, status: 'referred'},
+]
+
+export const canceledItems = [
+  {id: 4, date: '9 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg", code: 56754844, price: 405, status: 'canceled'},
+]
 
 export const panelSidebarItems = [
   {
@@ -1619,6 +1724,16 @@ export const marketingProgress = [
       title:'admin account',
     },
    
+  ]
+  export const userSettingItems=[
+    {
+      id:1,
+      title:'general',
+    },
+    {
+      id:2,
+      title:'password',
+    },
   ]
 export const orders = [
   {
