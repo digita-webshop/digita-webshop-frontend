@@ -627,8 +627,18 @@ export const ProductColor = styled(Box)(({ theme }) => ({
   marginLeft: "10px",
   transition: "all 150px",
   boxShadow: "0 0 8px 2px rgb(0 0 0 / 20%)",
+  boxSizing: "border-box",
   "&.selected": {
     transform: "scale(1.2)",
+  },
+  "&.admin": {
+    boxShadow: "0 0 2px 1px rgb(0 0 0 / 20%)",
+    width: "30px",
+    height: "30px",
+    [theme.breakpoints.down("sm")]: {
+      width: "40px",
+      height: "40px",
+    },
   },
 }));
 

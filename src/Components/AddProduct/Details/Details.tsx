@@ -82,7 +82,7 @@ function Details({
             />
           </FormControl>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
             <PFormLabel>SKU</PFormLabel>
             <PTextField
@@ -92,7 +92,7 @@ function Details({
             />
           </FormControl>
         </Grid>
-        <Grid item xs={6} sm={4}>
+        <Grid item xs={12} sm={6}>
           <PFormControl size="small">
             <PFormLabel>brands</PFormLabel>
             <Select
@@ -109,7 +109,7 @@ function Details({
             </Select>
           </PFormControl>
         </Grid>
-        <Grid item xs={6} sm={4}>
+        <Grid item xs={12}>
           <PFormLabel>colors</PFormLabel>
           <ColorPickers
             color={selectedColors}
