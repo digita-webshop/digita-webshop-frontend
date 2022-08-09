@@ -1651,6 +1651,12 @@ export const panelSidebarItems = [
   },
   {
     id: 8,
+    title: "manage access",
+    route: "/panel/manage-access",
+    icon: "supervisor_account",
+  },
+  {
+    id: 9,
     title: "settings",
     route: "/panel/settings",
     icon: "settings",
@@ -1721,7 +1727,7 @@ export const marketingProgress = [
     },
     {
       id:3,
-      title:'admin account',
+      title:'manage access',
     },
    
   ]
