@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { Ref, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { GreyTooltip, ProductColor } from "../../../../Styles/Product";
 
 const dummyColors = [
@@ -15,33 +15,20 @@ const dummyColors = [
   { id: "10", name: "yellow", hex: "#FFFF00" },
 ];
 interface Props {
-  color: any;
-  colorChangeHandler: (event: string, colorName: string) => void;
-  colorClickHandler: (type: string) => () => void;
-  firstColor: Ref<HTMLInputElement>;
-  secondColor: Ref<HTMLInputElement>;
-  thirdColor: Ref<HTMLInputElement>;
+  selectedColors: string[];
+  setSelectedColors: Dispatch<SetStateAction<string[]>>;
 }
-function ColorPickers({
-  color,
-  colorChangeHandler,
-  colorClickHandler,
-  firstColor,
-  secondColor,
-  thirdColor,
-}: Props) {
-  const [selectedColor, setSelectedColor] = useState<string[]>([]);
-
+function ColorPickers({ selectedColors, setSelectedColors }: Props) {
   const selectColorHandler = (name: string) => () => {
-    const currentIndex = selectedColor.indexOf(name);
-    const colors = [...selectedColor];
+    const currentIndex = selectedColors.indexOf(name);
+    const colors = [...selectedColors];
 
     if (currentIndex === -1) {
       colors.push(name);
     } else {
       colors.splice(currentIndex, 1);
     }
-    setSelectedColor(colors);
+    setSelectedColors(colors);
   };
   return (
     <Box
@@ -58,7 +45,7 @@ function ColorPickers({
           <ProductColor
             sx={{ background: hex }}
             className={`${
-              selectedColor.indexOf(name) !== -1 ? "selected" : ""
+              selectedColors.indexOf(name) !== -1 ? "selected" : ""
             } admin`}
             onClick={selectColorHandler(name)}
           ></ProductColor>

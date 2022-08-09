@@ -23,15 +23,12 @@ function EditProduct() {
     gallery,
     tags: tagArr,
     category,
+    colors,
   } = product!;
   const [enteredTitle, setEnteredTitle] = useState(name);
   const [enteredSku, setEnteredSku] = useState(sku);
   const [selectedBrand, setSelectedBrand] = useState(brand);
-  const [selectedColors, setSelectedColors] = useState({
-    first: "#f03637",
-    second: "#18e37d",
-    third: "#4169e1",
-  });
+  const [selectedColors, setSelectedColors] = useState(colors);
   const [enteredShortDesc, setEnteredShortDesc] = useState(description);
   const [addedImages, setAddedImages] = useState({});
   const [enteredPrice, setEnteredPrice] = useState<number | string>(price);
@@ -46,7 +43,6 @@ function EditProduct() {
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
-    console.log(tags);
   };
   return (
     <form onSubmit={submitHandler}>

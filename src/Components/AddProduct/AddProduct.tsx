@@ -15,11 +15,7 @@ function AddProduct() {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredSku, setEnteredSku] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("apple");
-  const [selectedColors, setSelectedColors] = useState({
-    first: "#f03637",
-    second: "#18e37d",
-    third: "#4169e1",
-  });
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [enteredShortDesc, setEnteredShortDesc] = useState("");
   const [addedImages, setAddedImages] = useState({});
   const [enteredPrice, setEnteredPrice] = useState<number | string>("");

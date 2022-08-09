@@ -639,6 +639,9 @@ export const ProductColor = styled(Box)(({ theme }) => ({
       width: "40px",
       height: "40px",
     },
+    "&.selected": {
+      boxShadow: "0 0 8px 2px rgb(0 0 0 / 20%)",
+    },
   },
 }));
 
