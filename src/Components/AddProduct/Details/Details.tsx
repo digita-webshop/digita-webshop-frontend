@@ -6,7 +6,7 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { Dispatch, SetStateAction, useRef } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { brands } from "../../../Services/Utils/Data/data";
 import {
   CardWrapper,
@@ -15,11 +15,7 @@ import {
   PTextField,
 } from "../../../Styles/panelCommon";
 import ColorPickers from "./ColorPickers/ColorPickers";
-interface IColors {
-  first: string;
-  second: string;
-  third: string;
-}
+
 interface Props {
   enteredTitle: string;
   setEnteredTitle: Dispatch<SetStateAction<string>>;
@@ -27,8 +23,8 @@ interface Props {
   setEnteredSku: Dispatch<SetStateAction<string>>;
   selectedBrand: string;
   setSelectedBrand: Dispatch<SetStateAction<string>>;
-  selectedColors: IColors;
-  setSelectedColors: Dispatch<SetStateAction<IColors>>;
+  selectedColors: string[];
+  setSelectedColors: Dispatch<SetStateAction<string[]>>;
   enteredShortDesc: string;
   setEnteredShortDesc: Dispatch<SetStateAction<string>>;
 }
@@ -44,30 +40,8 @@ function Details({
   enteredShortDesc,
   setEnteredShortDesc,
 }: Props) {
-  const firstColor = useRef<HTMLInputElement>(null);
-  const secondColor = useRef<HTMLInputElement>(null);
-  const thirdColor = useRef<HTMLInputElement>(null);
-
   const selectedBrandHandler = (event: SelectChangeEvent) => {
     setSelectedBrand(event.target.value);
-  };
-
-  const colorChangeHandler = (selectedColor: string, colorName: string) => {
-    setSelectedColors((prevState) => ({
-      ...prevState,
-      [colorName]: selectedColor,
-    }));
-  };
-  const colorClickHandler = (type: string) => () => {
-    if (type === "first") {
-      firstColor.current?.click();
-    }
-    if (type === "second") {
-      secondColor.current?.click();
-    }
-    if (type === "third") {
-      thirdColor.current?.click();
-    }
   };
   return (
     <CardWrapper>
@@ -112,12 +86,8 @@ function Details({
         <Grid item xs={12}>
           <PFormLabel>colors</PFormLabel>
           <ColorPickers
-            color={selectedColors}
-            colorChangeHandler={colorChangeHandler}
-            colorClickHandler={colorClickHandler}
-            firstColor={firstColor}
-            secondColor={secondColor}
-            thirdColor={thirdColor}
+            selectedColors={selectedColors}
+            setSelectedColors={setSelectedColors}
           />
         </Grid>
         <Grid item xs={12}>
