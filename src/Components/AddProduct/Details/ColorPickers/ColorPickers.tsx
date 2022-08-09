@@ -1,7 +1,19 @@
 import { Box } from "@mui/material";
-import { Ref } from "react";
-import { ColorInput, ColorPickerWrapper } from "../../../../Styles/AddProduct";
+import { Ref, useState } from "react";
+import { GreyTooltip, ProductColor } from "../../../../Styles/Product";
 
+const dummyColors = [
+  { id: "1", name: "red", hex: "#f03637" },
+  { id: "2", name: "blue", hex: "#72bcfb" },
+  { id: "3", name: "green", hex: "#00FF00" },
+  { id: "4", name: "orange", hex: "#FFA500" },
+  { id: "5", name: "black", hex: "#000000" },
+  { id: "6", name: "purple", hex: "#A020F0" },
+  { id: "7", name: "white", hex: "#FFFFFF" },
+  { id: "8", name: "brown", hex: "#964B00" },
+  { id: "9", name: "grey", hex: "#808080" },
+  { id: "10", name: "yellow", hex: "#FFFF00" },
+];
 interface Props {
   color: any;
   colorChangeHandler: (event: string, colorName: string) => void;
@@ -18,51 +30,40 @@ function ColorPickers({
   secondColor,
   thirdColor,
 }: Props) {
+  const [selectedColor, setSelectedColor] = useState<string[]>([]);
+
+  const selectColorHandler = (name: string) => () => {
+    const currentIndex = selectedColor.indexOf(name);
+    const colors = [...selectedColor];
+
+    if (currentIndex === -1) {
+      colors.push(name);
+    } else {
+      colors.splice(currentIndex, 1);
+    }
+    setSelectedColor(colors);
+  };
   return (
     <Box
       sx={{
         display: "flex",
+        flexWrap: "wrap",
         gap: { xs: "5px", xl: "40px" },
-        justifyContent: { xs: "space-between", xl: "start" },
+        justifyContent: { xs: "space-between" },
         marginTop: "4px",
       }}
     >
-      <ColorPickerWrapper>
-        <input
-          type="color"
-          defaultValue={color.first}
-          onChange={(e) => colorChangeHandler(e.target.value, "first")}
-          ref={firstColor}
-        />
-        <ColorInput
-          sx={{ backgroundColor: color.first }}
-          onClick={colorClickHandler("first")}
-        />
-      </ColorPickerWrapper>
-      <ColorPickerWrapper>
-        <input
-          type="color"
-          defaultValue={color.second}
-          onChange={(e) => colorChangeHandler(e.target.value, "second")}
-          ref={secondColor}
-        />
-        <ColorInput
-          sx={{ backgroundColor: color.second }}
-          onClick={colorClickHandler("second")}
-        />
-      </ColorPickerWrapper>
-      <ColorPickerWrapper>
-        <input
-          type="color"
-          defaultValue={color.third}
-          onChange={(e) => colorChangeHandler(e.target.value, "third")}
-          ref={thirdColor}
-        />
-        <ColorInput
-          sx={{ backgroundColor: color.third }}
-          onClick={colorClickHandler("third")}
-        />
-      </ColorPickerWrapper>
+      {dummyColors.map(({ id, name, hex }) => (
+        <GreyTooltip key={id} title={name} placement="top">
+          <ProductColor
+            sx={{ background: hex }}
+            className={`${
+              selectedColor.indexOf(name) !== -1 ? "selected" : ""
+            } admin`}
+            onClick={selectColorHandler(name)}
+          ></ProductColor>
+        </GreyTooltip>
+      ))}
     </Box>
   );
 }
