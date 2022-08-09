@@ -1,6 +1,6 @@
 import { Add } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
-import { PButton, PTitle } from "../../Styles/panelCommon";
+import { CardWrapper, PButton, PTitle } from "../../Styles/panelCommon";
 import AdminTable from "./AdminTable/AdminTable";
 
 function ManageAccess() {
@@ -11,6 +11,7 @@ function ManageAccess() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          marginBottom: "30px",
         }}
       >
         <PTitle>manage access</PTitle>
@@ -19,7 +20,9 @@ function ManageAccess() {
           create admin
         </PButton>
       </Box>
-      <AdminTable />
+      <CardWrapper>
+        <AdminTable />
+      </CardWrapper>
     </Box>
   );
 }
