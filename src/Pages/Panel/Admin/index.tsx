@@ -6,3 +6,4 @@ export { default as Orders } from "./Orders/Orders";
 export { default as Reviews } from "./Reviews/Reviews";
 export { default as Brands } from "./Brands/Brands";
 export { default as Settings } from "./Settings/Settings";
+export { default as ManageAccess } from "./ManageAccess/ManageAccess";

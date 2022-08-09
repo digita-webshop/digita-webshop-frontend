@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { useState } from "react";
 import { CardWrapper } from "../../Styles/panelCommon";
-import AdminAccount from "./AdminAccount/AdminAccount";
+import Addresses from "./Addresses/Addresses";
 import General from "./General/General";
 import Password from "./Password/Password";
 import Sidebar from "./Sidebar/Sidebar";
@@ -24,7 +24,7 @@ function Settings() {
         <Grid item xs={12} lg={9}>
           {activePage === "general" && <General />}
           {activePage === "password" && <Password />}
-          {activePage === "admin account" && <AdminAccount />}
+          {activePage === "addresses" && <Addresses />}
         </Grid>
       </Grid>
     </CardWrapper>

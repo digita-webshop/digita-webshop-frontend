@@ -28,7 +28,9 @@ function Sidebar({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
 
           return (
             <Fragment key={id}>
-              {title === "settings" && <Divider sx={{ marginY: "10px" }} />}
+              {title === "manage access" && (
+                <Divider sx={{ marginY: "10px" }} />
+              )}
               <PanelItem>
                 <NavLink
                   to={route}
