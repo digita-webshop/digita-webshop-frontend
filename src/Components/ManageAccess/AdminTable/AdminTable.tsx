@@ -1,7 +1,8 @@
-import { Close } from "@mui/icons-material";
-import { Box, Divider, Typography } from "@mui/material";
+import { Close, DeleteForever } from "@mui/icons-material";
+import { Box, Button, Divider, Modal, Typography } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import { POutlinedButton, PTextField } from "../../../Styles/panelCommon";
+import { cartModal } from "../../../Styles/PanelProducts";
 import { TCheckBox } from "../../../Styles/Reviews";
 
 const dummyAdmins = [
@@ -28,7 +29,10 @@ const dummyAdmins = [
   },
 ];
 function AdminTable() {
+  const [admins, setAdmins] = useState(dummyAdmins);
   const [checked, setChecked] = useState<string[]>([]);
+  const [openRemove, setOpenRemove] = useState(false);
+  const [selectedAdmin, setSelectedAdmin] = useState("");
 
   const handleToggle = (value: string) => () => {
     const currentIndex = checked.indexOf(value);
@@ -49,6 +53,12 @@ function AdminTable() {
     } else {
       setChecked([]);
     }
+  };
+  const removeAdminHandler = () => {
+    const newAdmins = admins.filter((item) => item.id !== selectedAdmin);
+
+    setAdmins(newAdmins);
+    setOpenRemove(false);
   };
   return (
     <Box>
@@ -78,7 +88,7 @@ function AdminTable() {
       </Box>
       <Divider sx={{ marginY: "10px" }} />
       <Box>
-        {dummyAdmins.map(({ id, name, lastName, username, image }) => (
+        {admins.map(({ id, name, lastName, username, image }) => (
           <Box
             key={id}
             sx={{
@@ -124,6 +134,10 @@ function AdminTable() {
                   padding: { xs: "2px", sm: "0 6px" },
                   fontSize: { xs: "12px", sm: "14px" },
                 }}
+                onClick={() => {
+                  setSelectedAdmin(id);
+                  setOpenRemove(true);
+                }}
               >
                 <Close fontSize={"small"} />
                 remove
@@ -132,6 +146,54 @@ function AdminTable() {
           </Box>
         ))}
       </Box>
+      <Modal
+        open={openRemove}
+        onClose={() => setOpenRemove(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={cartModal}>
+          <DeleteForever
+            sx={{ fontSize: 70, fontWeight: 100, color: "#f03637", p: 2 }}
+          />
+          <Typography
+            id="modal-modal-title"
+            variant="h5"
+            component="h2"
+            sx={{ textAlign: "center" }}
+          >
+            Confirm You Want To Remove This Admin!
+          </Typography>
+          <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>
+            <Button
+              variant="contained"
+              sx={{
+                p: "0.8rem 2.2rem",
+                borderRadius: "4px",
+                fontSize: "15px",
+                height: "46px",
+              }}
+              onClick={() => setOpenRemove(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={removeAdminHandler}
+              variant="contained"
+              sx={{
+                p: "0.8rem 2.2rem",
+                background: "#f03637",
+                borderRadius: "4px",
+                fontSize: "15px",
+                height: "46px",
+                "&:hover": { background: "#333" },
+              }}
+            >
+              Remove
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
     </Box>
   );
 }
