@@ -1,5 +1,6 @@
 import { Close } from "@mui/icons-material";
 import { Box, Divider, Typography } from "@mui/material";
+import { ChangeEvent, useState } from "react";
 import { POutlinedButton, PTextField } from "../../../Styles/panelCommon";
 import { TCheckBox } from "../../../Styles/Reviews";
 
@@ -27,6 +28,28 @@ const dummyAdmins = [
   },
 ];
 function AdminTable() {
+  const [checked, setChecked] = useState<string[]>([]);
+
+  const handleToggle = (value: string) => () => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
+  };
+  const handleToggleAll = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      let allChecked = dummyAdmins.map((admin) => admin.id);
+      setChecked(allChecked);
+    } else {
+      setChecked([]);
+    }
+  };
   return (
     <Box>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
@@ -38,7 +61,7 @@ function AdminTable() {
             flexBasis: { xs: "100%", sm: "60%" },
           }}
         >
-          <TCheckBox />
+          <TCheckBox onChange={handleToggleAll} />
           <Typography sx={{ color: "#ADB5BD", textTransform: "capitalize" }}>
             select all
           </Typography>
@@ -65,7 +88,11 @@ function AdminTable() {
             }}
           >
             <Box display={"flex"}>
-              <TCheckBox sx={{ margin: "auto" }} />
+              <TCheckBox
+                sx={{ margin: "auto" }}
+                onChange={handleToggle(id)}
+                checked={checked.indexOf(id) !== -1}
+              />
             </Box>
             <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
               <Box
