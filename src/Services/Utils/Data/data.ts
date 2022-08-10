@@ -1651,12 +1651,24 @@ export const panelSidebarItems = [
   },
   {
     id: 8,
+    title: "my wishlist",
+    route: "/panel/wishlist",
+    icon: "favorite",
+  },
+  {
+    id: 9,
+    title: "my orders",
+    route: "/panel/my-orders",
+    icon: "local_grocery_store",
+  },
+  {
+    id: 10,
     title: "manage access",
     route: "/panel/manage-access",
     icon: "supervisor_account",
   },
   {
-    id: 9,
+    id: 11,
     title: "settings",
     route: "/panel/settings",
     icon: "settings",
@@ -1727,7 +1739,7 @@ export const marketingProgress = [
     },
     {
       id:3,
-      title:'manage access',
+      title:'addresses',
     },
    
   ]

@@ -20,6 +20,8 @@ import {
   Brands,
   Dashboard,
   ManageAccess,
+  PanelWishlist,
+  PanelOrders,
   Orders,
   Products,
   Reviews,
@@ -72,6 +74,8 @@ function App() {
               <Route path="add-article" element={<AddArticle />} />
               <Route path="reviews" element={<Reviews />} />
               <Route path="brands" element={<Brands />} />
+              <Route path="wishlist" element={<PanelWishlist />} />
+              <Route path="my-orders" element={<PanelOrders />} />
               <Route path="manage-access" element={<ManageAccess />} />
               <Route path="settings" element={<Settings />} />
             </Route>
