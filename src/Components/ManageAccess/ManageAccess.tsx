@@ -1,5 +1,5 @@
 import { Add } from "@mui/icons-material";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { CardWrapper, PButton, PTitle } from "../../Styles/panelCommon";
 import AdminTable from "./AdminTable/AdminTable";
 
@@ -14,8 +14,17 @@ function ManageAccess() {
           marginBottom: "30px",
         }}
       >
-        <PTitle>manage access</PTitle>
-        <PButton variant="contained" sx={{ gap: "4px", paddingX: "10px" }}>
+        <PTitle sx={{ fontSize: { xs: "22px", sm: "32px" } }}>
+          manage access
+        </PTitle>
+        <PButton
+          variant="contained"
+          sx={{
+            gap: "4px",
+            paddingX: "10px",
+            fontSize: { xs: "14px", sm: "16px" },
+          }}
+        >
           <Add />
           create admin
         </PButton>

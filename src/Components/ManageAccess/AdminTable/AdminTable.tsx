@@ -1,15 +1,7 @@
 import { Close } from "@mui/icons-material";
-import {
-  Box,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-  Typography,
-} from "@mui/material";
-import { THCell } from "../../../Styles/Orders";
+import { Box, Divider, Typography } from "@mui/material";
 import { POutlinedButton, PTextField } from "../../../Styles/panelCommon";
-import { TCell, TCheckBox } from "../../../Styles/Reviews";
+import { TCheckBox } from "../../../Styles/Reviews";
 
 const dummyAdmins = [
   {
@@ -36,58 +28,84 @@ const dummyAdmins = [
 ];
 function AdminTable() {
   return (
-    <Table>
-      <TableHead>
-        <TableRow>
-          <THCell colSpan={7}>
-            <TCheckBox sx={{ marginRight: "10px" }} />
+    <Box>
+      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: "14px",
+            flexBasis: { xs: "100%", sm: "60%" },
+          }}
+        >
+          <TCheckBox />
+          <Typography sx={{ color: "#ADB5BD", textTransform: "capitalize" }}>
             select all
-          </THCell>
-          <THCell colSpan={1} align={"right"}>
-            <Box sx={{ width: { xs: "100%", md: "80%" }, marginLeft: "auto" }}>
-              <PTextField placeholder="Search... " />
-            </Box>
-          </THCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            flexBasis: { xs: "100%", md: "40%" },
+            marginLeft: "auto",
+            display: { xs: "none", sm: "block" },
+          }}
+        >
+          <PTextField placeholder="Search... " />
+        </Box>
+      </Box>
+      <Divider sx={{ marginY: "10px" }} />
+      <Box>
         {dummyAdmins.map(({ id, name, lastName, username, image }) => (
-          <TableRow key={id}>
-            <TCell colSpan={7}>
-              <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
-                <TCheckBox />
-                <Box
-                  sx={{
-                    img: {
-                      width: "40px",
-                      borderRadius: "50%",
-                      border: "2px solid #eee",
-                    },
-                  }}
-                >
-                  <img src={image} alt="admin" />
-                </Box>
-                <Box>
-                  <Typography
-                    sx={{ fontWeight: 600 }}
-                  >{`${name} ${lastName}`}</Typography>
-                  <Typography sx={{ fontSize: "15px" }}>{username}</Typography>
-                </Box>
+          <Box
+            key={id}
+            sx={{
+              display: "flex",
+              padding: "10px 0",
+              borderBottom: "1px solid #cfdbe6",
+            }}
+          >
+            <Box display={"flex"}>
+              <TCheckBox sx={{ margin: "auto" }} />
+            </Box>
+            <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  img: {
+                    width: "40px",
+                    borderRadius: "50%",
+                    border: "2px solid #eee",
+                  },
+                }}
+              >
+                <img src={image} alt="admin" />
               </Box>
-            </TCell>
-            <TCell align="right">
+              <Box>
+                <Typography
+                  sx={{ fontWeight: 600, fontSize: { xs: "15px", sm: "16px" } }}
+                >{`${name} ${lastName}`}</Typography>
+                <Typography sx={{ fontSize: { xs: "14px", sm: "15px" } }}>
+                  {username}
+                </Typography>
+              </Box>
+            </Box>
+            <Box sx={{ marginLeft: "auto" }}>
               <POutlinedButton
                 variant="contained"
-                sx={{ width: "25%", padding: "0px", fontSize: "14px" }}
+                sx={{
+                  width: "unset",
+                  padding: { xs: "2px", sm: "0 6px" },
+                  fontSize: { xs: "12px", sm: "14px" },
+                }}
               >
                 <Close fontSize={"small"} />
                 remove
               </POutlinedButton>
-            </TCell>
-          </TableRow>
+            </Box>
+          </Box>
         ))}
-      </TableBody>
-    </Table>
+      </Box>
+    </Box>
   );
 }
 
