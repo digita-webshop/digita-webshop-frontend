@@ -26,9 +26,8 @@ const CartUpdated = ({item, type, setCartUpdated}: Props) => {
 
     const handleUndo = () => {
         setCartUpdated(null)
-        // @ts-ignore todo fix this later
+
         dispatch(setCart([...cartList, item as CartItem]));
-        // @ts-ignore todo fix this later
         dispatch(setQuantity([...cartList, item as CartItem]));
     }
 
