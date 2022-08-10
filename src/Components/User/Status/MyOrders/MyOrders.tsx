@@ -18,7 +18,7 @@ function MyOrders({ sidebar }: { sidebar: boolean }) {
           My Orders
         </Typography>
         <Box sx={topMenuItem}>
-          <Box sx={{ display: "flex", gap: 1 }}>
+          <Box sx={{ display: "flex", gap: 1 }} onClick={() => navigate("/user/orders")}>
             <Typography sx={{ fontSize: "18px" }}>See All</Typography>
             <KeyboardArrowRight className="navIcon" />
           </Box>
