@@ -6,9 +6,8 @@ import CartTotalTable from "./Tables/CartTotalTable";
 import CartUpdated, { UpdateType } from "./CartUpdated";
 import CartItem from "./Types/CartItemType";
 import { styled } from "@mui/material/styles";
-import actions from "../../redux/actions";
-import store from "../../redux/store";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setCart,setQuantity} from "../../features/cart/cartSlice";
 
 export type UpdateCart = {
   item?: CartItem;
@@ -20,7 +19,7 @@ const ShoppingCart = () => {
   const [values, setValues] = useState<CartItem[]>([]);
   // @ts-ignore todo fix later
   const cartList = useSelector((state) => state.cartReducer.cartList);
-
+  const dispatch = useDispatch()
   useEffect(() => {
     const temp: CartItem[] = [];
     cartList.map((item: CartItem) => {
@@ -60,9 +59,10 @@ const ShoppingCart = () => {
       },
     ];
     // @ts-ignore todo fix this later
-    store.dispatch(actions.cart.setCart(dummyCartData));
+    dispatch(setCart(dummyCartData));
+
     // @ts-ignore todo fix this later
-    store.dispatch(actions.cart.setQuantity(dummyCartData));
+    dispatch(setQuantity(dummyCartData));
   }, []);
 
   const total = cartList.reduce((acc: number, curr: CartItem) => {
