@@ -58,10 +58,7 @@ const ShoppingCart = () => {
         alt: "xbox-1-image",
       },
     ];
-    // @ts-ignore todo fix this later
     dispatch(setCart(dummyCartData));
-
-    // @ts-ignore todo fix this later
     dispatch(setQuantity(dummyCartData));
   }, []);
 
