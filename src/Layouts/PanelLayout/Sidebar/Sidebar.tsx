@@ -28,7 +28,7 @@ function Sidebar({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
 
           return (
             <Fragment key={id}>
-              {title === "manage access" && (
+              {title === "my wishlist" && (
                 <Divider sx={{ marginY: "10px" }} />
               )}
               <PanelItem>
