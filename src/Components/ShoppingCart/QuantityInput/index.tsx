@@ -2,9 +2,8 @@ import { Box, TextField } from "@mui/material";
 import { CustomBtn } from "../../../Styles/Cart";
 import React from "react";
 import CartItem from "../Types/CartItemType";
-import store from "../../../redux/store";
-import actions from "../../../redux/actions";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setQuantity} from "../../../features/cart/cartSlice"
 
 type Props = {
   updateButtonDisabled: boolean;
@@ -23,7 +22,8 @@ const QuantityInput = ({
   updateButtonDisabled,
   cartList,
 }: Props) => {
-  // @ts-ignore todo fix later
+    const dispatch = useDispatch()
+    // @ts-ignore todo fix later
   const quantities = useSelector((state) => state.cartReducer.quantities);
   const quantity = quantities.filter((item: CartItem) => item.id === row.id)[0]
     .quantity;
@@ -40,7 +40,7 @@ const QuantityInput = ({
     });
 
     // @ts-ignore todo fix me later
-    store.dispatch(actions.cart.setQuantity(clone));
+    dispatch(setQuantity(clone));
     updateButtonDisabled && setUpdateButtonDisabled(false);
   };
 
@@ -53,7 +53,7 @@ const QuantityInput = ({
     });
 
     // @ts-ignore todo fix me later
-    store.dispatch(actions.cart.setQuantity(clone));
+    dispatch(setQuantity(clone));
     updateButtonDisabled && setUpdateButtonDisabled(false);
   };
 
