@@ -1,12 +1,12 @@
 import {Box, Typography} from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-import React, {Dispatch} from "react";
+import React from "react";
 import DynamicButton from "../DynamicButton/DynamicButton";
 import CartItem from "../Types/CartItemType";
-import store from "../../../redux/store";
-import {useSelector} from "react-redux";
-import actions from "../../../redux/actions";
+import {useDispatch, useSelector} from "react-redux";
 import {UpdateCart} from "../ShoppingCart";
+import {setCart,setQuantity} from "../../../features/cart/cartSlice";
+import { RootState } from '../../../store';
 
 export enum UpdateType {
     Remove = 1,
@@ -20,16 +20,15 @@ type Props = {
 }
 
 const CartUpdated = ({item, type, setCartUpdated}: Props) => {
+    const dispatch = useDispatch()
 
-    // @ts-ignore todo fix this later
-    const cartList = useSelector(state => state.cartReducer.cartList);
+    const cartList = useSelector((state: RootState) => state.cartReducer.cartList);
 
     const handleUndo = () => {
         setCartUpdated(null)
-        // @ts-ignore todo fix this later
-        store.dispatch(actions.cart.setCart([...cartList, item as CartItem]));
-        // @ts-ignore todo fix this later
-        store.dispatch(actions.cart.setQuantity([...cartList, item as CartItem]));
+
+        dispatch(setCart([...cartList, item as CartItem]));
+        dispatch(setQuantity([...cartList, item as CartItem]));
     }
 
     return <Box sx={{

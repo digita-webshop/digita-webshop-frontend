@@ -1,8 +1,8 @@
 import React from "react";
-import store from "../../../redux/store";
-import actions from "../../../redux/actions";
+import store from "../../../store";
+import {removeFromCart} from "../../../features/cart/cartSlice";
 
 export const handleRowDelete = (index: number) => {
     // @ts-ignore todo fix me later
-    store.dispatch(actions.cart.removeFromCart(index));
+    store.dispatch(removeFromCart(index));
 }
