@@ -1727,7 +1727,7 @@ export const marketingProgress = [
     },
     {
       id:3,
-      title:'manage access',
+      title:'addresses',
     },
    
   ]
