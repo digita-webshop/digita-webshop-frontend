@@ -6,6 +6,7 @@ import CartItem from "../Types/CartItemType";
 import {useDispatch, useSelector} from "react-redux";
 import {UpdateCart} from "../ShoppingCart";
 import {setCart,setQuantity} from "../../../features/cart/cartSlice";
+import { RootState } from '../../../store';
 
 export enum UpdateType {
     Remove = 1,
@@ -21,8 +22,7 @@ type Props = {
 const CartUpdated = ({item, type, setCartUpdated}: Props) => {
     const dispatch = useDispatch()
 
-    // @ts-ignore todo fix this later
-    const cartList = useSelector(state => state.cartReducer.cartList);
+    const cartList = useSelector((state: RootState) => state.cartReducer.cartList);
 
     const handleUndo = () => {
         setCartUpdated(null)
