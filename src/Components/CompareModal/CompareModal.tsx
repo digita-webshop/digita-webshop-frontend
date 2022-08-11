@@ -16,7 +16,7 @@ function CompareModal({ setOpenCompareModal }: Props) {
   );
   return (
     <CompareWrapper>
-      <Box sx={{ height: "90%", overflow: "auto" }}>
+      <Box sx={{ height: "90%", overflow: "auto", backgroundColor: "white" }}>
         <Box
           className="close-button"
           onClick={() => setOpenCompareModal(false)}
@@ -26,7 +26,20 @@ function CompareModal({ setOpenCompareModal }: Props) {
         <Box className="title">
           <Typography component={"h2"}>Compare Products</Typography>
         </Box>
-        <ItemsTable productData={compareList} />
+        {compareList.length === 0 ? (
+          <Box>
+            <Typography
+              variant="h6"
+              textTransform={"capitalize"}
+              textAlign={"center"}
+              my={4}
+            >
+              no products added in compare table
+            </Typography>
+          </Box>
+        ) : (
+          <ItemsTable productData={compareList} />
+        )}
       </Box>
     </CompareWrapper>
   );
