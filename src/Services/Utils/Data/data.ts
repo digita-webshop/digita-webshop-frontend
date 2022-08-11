@@ -2036,30 +2036,38 @@ export const productShareItems=[
 //   }
 // ]
 
-const userModel= {
-    id:'1',
-    name:'john',
-    lastName:'doe',
-    email:'example@email.com',
-    password:'12345',
-    phone:'+0123456789',
-    image:'',
-    adresses:[
-      {
-        id:'1',
-        country:'usa',
-        state:'new york',
-        city:'adams',
-        postCode:'0123456789',
-        street:''
-      }
-    ],
-    orders:[
-{status:{
-  pending:false,
-  canceled:false,
-  recieved:false,
-},}
-    ],
-    role:'Admin/User/SuperAdmin',
-  }
+// const userModel= {
+//     id:'1',
+//     name:'john',
+//     lastName:'doe',
+//     email:'example@email.com',
+//     password:'12345',
+//     phone:'+0123456789',
+//     image:'',
+//     adresses:[
+//       {
+//         id:'1',
+//         country:'usa',
+//         state:'new york',
+//         city:'adams',
+//         postCode:'0123456789',
+//         street:''
+//       }
+//     ],
+//     orders:[
+//     ],
+//     wishlist:[
+//     ],
+//     role:'Admin/User/SuperAdmin',
+//   }
+
+  // export const orders=[
+  //   {
+  //     id:'123',
+  //     status:'pending/recieved/canceled',
+  //     username:'tohid',
+  //     email:'example@.com',
+  //     total:12,
+  //     date:'2022-10-08'
+  //   }
+  // ]
