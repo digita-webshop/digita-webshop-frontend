@@ -1,9 +1,7 @@
-import { PanelOrders as MyOrders } from "../../../../Components/PanelOrders"
+import { PanelOrders as MyOrders } from "../../../../Components";
 
 const PanelOrders = () => {
-  return (
-    <MyOrders />
-  )
-}
+  return <MyOrders />;
+};
 
-export default PanelOrders
+export default PanelOrders;
