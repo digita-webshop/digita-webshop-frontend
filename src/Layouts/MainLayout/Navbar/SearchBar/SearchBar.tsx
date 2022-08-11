@@ -1,4 +1,4 @@
-import { CloseRounded } from "@mui/icons-material";
+import { CloseRounded, SearchOutlined } from "@mui/icons-material";
 import {
   Box,
   Divider,
@@ -8,6 +8,12 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
+import { Link } from "react-router-dom";
+import {
+  categoriesList,
+  productData,
+} from "../../../../Services/Utils/Data/data";
+import { searchBarDropdown } from "../../../../Styles/Appbar";
 
 type SearchBarProps = {
   selectedCategory: string;
@@ -21,10 +27,31 @@ function SearchBar({
 }: SearchBarProps) {
   return (
     <Box display={"flex"} sx={{ height: "90px", alignItems: "center" }}>
-      <InputBase
-        placeholder="Type then hit enter to search"
-        sx={{ width: "100%", height: "100%", fontSize: "20px" }}
-      />
+      <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
+        <Box sx={{ display: "flex", height: "100%" }}>
+          <InputBase
+            placeholder="Type then hit enter to search"
+            sx={{ width: "100%", height: "100%", fontSize: "20px" }}
+          />
+          <Box>
+            <SearchOutlined
+              sx={{
+                color: "common.digitaGrey",
+                cursor: "pointer",
+                margin: "auto",
+                fontSize: "28px",
+              }}
+            />
+          </Box>
+        </Box>
+        <Box sx={searchBarDropdown}>
+          {productData.slice(0, 6).map(({ id, name }) => (
+            <Box component={Link} to={`/`} key={id}>
+              {name}
+            </Box>
+          ))}
+        </Box>
+      </Box>
       <Divider
         orientation="vertical"
         sx={{ height: "50%", margin: "auto" }}
@@ -42,21 +69,11 @@ function SearchBar({
             sx={{ border: "0" }}
           >
             <MenuItem value="">Select Category</MenuItem>
-            <MenuItem value={"audio-video-game"}>Audio & Video Game</MenuItem>
-            <MenuItem value={"bluetooth-speaker"}>Bluetooth Speaker</MenuItem>
-            <MenuItem value={"camera-photo"}>Camera & Photo </MenuItem>
-            <MenuItem value={"headphone"}>Headphone </MenuItem>
-            <MenuItem value={"houseware"}>Houseware</MenuItem>
-            <MenuItem value={"pc-laptop"}>PC & Laptop</MenuItem>
-            <MenuItem value={"phone-accessories"}>Phone Accessories</MenuItem>
-            <MenuItem value={"smart-tv"}>Smart TV</MenuItem>
-            <MenuItem value={"smart-watch"}>Smart Watch</MenuItem>
-            <MenuItem value={"smartphone-ipad"}>Smartphone & Ipad</MenuItem>
-            <MenuItem value={"technologies"}>Technologies</MenuItem>
-            <MenuItem value={"virtual-reality-glasses"}>
-              Virtual Reality Glasses
-            </MenuItem>
-            <MenuItem value={"Xboxconsole"}>Xbox(Console)</MenuItem>
+            {categoriesList.map(({ name }, index) => (
+              <MenuItem key={index} value={`${name.replace(/\s/g, "-")}`}>
+                {name}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Box>
