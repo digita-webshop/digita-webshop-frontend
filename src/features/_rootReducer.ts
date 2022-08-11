@@ -1,7 +1,9 @@
 import cartReducer from "./cart/cartSlice";
+import compareReducer from "./compare/compareSlice";
 
 const reducers = {
-    cartReducer
+  cartReducer,
+  compareReducer,
 };
 
 export default reducers;

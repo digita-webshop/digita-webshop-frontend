@@ -1,7 +1,8 @@
 import { Close } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
-import { productData } from "../../Services/Utils/Data/data";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 import { CompareWrapper } from "../../Styles/Compare";
 import ItemsTable from "./ItemsTable/ItemsTable";
 
@@ -10,6 +11,9 @@ interface Props {
 }
 
 function CompareModal({ setOpenCompareModal }: Props) {
+  const compareList = useSelector(
+    (state: RootState) => state.compareReducer.compareList
+  );
   return (
     <CompareWrapper>
       <Box sx={{ height: "90%", overflow: "auto" }}>
@@ -22,7 +26,7 @@ function CompareModal({ setOpenCompareModal }: Props) {
         <Box className="title">
           <Typography component={"h2"}>Compare Products</Typography>
         </Box>
-        <ItemsTable productData={productData.slice(0, 2)} />
+        <ItemsTable productData={compareList} />
       </Box>
     </CompareWrapper>
   );

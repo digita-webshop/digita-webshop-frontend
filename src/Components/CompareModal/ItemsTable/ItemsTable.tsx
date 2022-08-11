@@ -1,5 +1,7 @@
 import { Close } from "@mui/icons-material";
 import { Box, Table, TableBody, TableRow } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { removeFromCompareList } from "../../../features/compare/compareSlice";
 import {
   compareTableStyles,
   CTButton,
@@ -21,8 +23,12 @@ interface Props {
   productData: any[];
 }
 function ItemsTable({ productData }: Props) {
+  const dispatch = useDispatch();
   let widthClass = `w-${productData.length + 1}`;
 
+  const removeHandler = (id: number) => () => {
+    dispatch(removeFromCompareList(id));
+  };
   return (
     <Table>
       <TableBody sx={compareTableStyles} className={widthClass}>
@@ -30,7 +36,10 @@ function ItemsTable({ productData }: Props) {
           <CTHCell className="td"></CTHCell>
           {productData.map((product, index) => (
             <CTCell key={index}>
-              <Box sx={tableRemoveBtnStyles}>
+              <Box
+                sx={tableRemoveBtnStyles}
+                onClick={removeHandler(product.id)}
+              >
                 Remove
                 <Close />
               </Box>
