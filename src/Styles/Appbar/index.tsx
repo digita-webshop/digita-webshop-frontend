@@ -140,3 +140,23 @@ export const iconsWrapperStyles = {
   display: "flex",
   alignItems: "center",
 };
+
+export const searchBarDropdown = {
+  background: "white",
+  position: "absolute",
+  width: "100%",
+  border: "1px solid #e9e9e9",
+  a: {
+    display: "block",
+    textDecoration: "none",
+    fontSize: "16px",
+    color: "common.digitaBlack",
+    padding: "10px",
+    cursor: "pointer",
+    fontFamily: "jost",
+    transition: "all 200ms",
+    "&:hover": {
+      backgroundColor: "#0000000A",
+    },
+  },
+};
