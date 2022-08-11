@@ -3,10 +3,14 @@ import { PButton, PTitle } from "../../../Styles/panelCommon";
 import { Add } from "@mui/icons-material";
 import { ContentWrapper, simpleBtn } from "../../../Styles/PanelProducts";
 
-const ContentHeader = () => {
+interface T {
+  title: string;
+}
+
+const ContentHeader = ({title}: T) => {
   return (
     <ContentWrapper>
-      <PTitle>Products</PTitle>
+      <PTitle>{title}</PTitle>
       <Box sx={{display: "flex", gap: 1}}>
         <Button variant="outlined" sx={simpleBtn}>
           Export
