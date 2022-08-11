@@ -1629,7 +1629,7 @@ export const panelSidebarItems = [
     id: 4,
     title: "articles",
     route: "/panel/articles",
-    icon: "local_grocery_store",
+    icon: "article",
   },
   {
     id: 5,
