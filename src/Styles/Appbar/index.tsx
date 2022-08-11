@@ -146,6 +146,7 @@ export const searchBarDropdown = {
   position: "absolute",
   width: "100%",
   border: "1px solid #e9e9e9",
+  "&.hidden": { display: "none" },
   a: {
     display: "block",
     textDecoration: "none",

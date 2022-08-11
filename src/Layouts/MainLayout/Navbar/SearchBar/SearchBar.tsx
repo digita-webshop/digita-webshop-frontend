@@ -8,6 +8,7 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   categoriesList,
@@ -20,11 +21,28 @@ type SearchBarProps = {
   selectedCategoryHandler: (event: SelectChangeEvent) => void;
   openSearchBarHandler: () => void;
 };
+
 function SearchBar({
   selectedCategory,
   selectedCategoryHandler,
   openSearchBarHandler,
 }: SearchBarProps) {
+  const [searchValue, setSearchValue] = useState("");
+
+  const filteredProducts = productData
+    .filter((item) =>
+      selectedCategory ? selectedCategory === item.category : true
+    )
+    .filter((item) => {
+      const searchTerm = searchValue.toLowerCase();
+      const fullName = item.name.toLowerCase();
+
+      return (
+        searchTerm && fullName.startsWith(searchTerm) && fullName !== searchTerm
+      );
+    })
+    .slice(0, 6);
+
   return (
     <Box display={"flex"} sx={{ height: "90px", alignItems: "center" }}>
       <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
@@ -32,8 +50,10 @@ function SearchBar({
           <InputBase
             placeholder="Type then hit enter to search"
             sx={{ width: "100%", height: "100%", fontSize: "20px" }}
+            onChange={(event) => setSearchValue(event.target.value)}
+            value={searchValue}
           />
-          <Box>
+          <Box sx={{ display: "flex", padding: "10px" }}>
             <SearchOutlined
               sx={{
                 color: "common.digitaGrey",
@@ -44,9 +64,24 @@ function SearchBar({
             />
           </Box>
         </Box>
-        <Box sx={searchBarDropdown}>
-          {productData.slice(0, 6).map(({ id, name }) => (
-            <Box component={Link} to={`/`} key={id}>
+        <Box
+          sx={searchBarDropdown}
+          className={
+            searchValue.trim().length === 0 || filteredProducts.length === 0
+              ? "hidden"
+              : ""
+          }
+        >
+          {filteredProducts.map(({ id, name }) => (
+            <Box
+              component={Link}
+              to={`product/${id}`}
+              key={id}
+              onClick={() => {
+                openSearchBarHandler();
+                setSearchValue("");
+              }}
+            >
               {name}
             </Box>
           ))}
