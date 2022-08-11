@@ -28,6 +28,8 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { closeStyle } from "../../../../Styles/Products";
 import CompareModal from "../../../CompareModal/CompareModal";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCompareList } from "../../../../features/compare/compareSlice";
 
 type Props = {
   name: string;
@@ -57,6 +59,7 @@ const ProductItem = ({
   const [addWish, setAddWish] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openCompareModal, setOpenCompareModal] = useState(false);
+  const dispatch = useDispatch();
 
   const handleWishList = () => {
     setOpenWish(false);
@@ -65,6 +68,10 @@ const ProductItem = ({
     }, 500);
   };
 
+  const compareClickHandler = () => {
+    dispatch(addToCompareList(id));
+    setOpenCompareModal(true);
+  };
   return (
     <Card
       sx={{
@@ -142,7 +149,7 @@ const ProductItem = ({
                   display: "flex",
                   marginLeft: "10px",
                 }}
-                onClick={() => setOpenCompareModal(true)}
+                onClick={compareClickHandler}
                 aria-label="add an alarm"
               >
                 <CompareArrowsIcon fontSize="small" sx={{ margin: "auto" }} />
