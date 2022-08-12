@@ -5,7 +5,6 @@ interface StyledTabProps {
   label: string;
   component: any;
   value: string;
-  iconPosition?: any;
 }
 
 export const AntTab = styled((props: StyledTabProps) => (
@@ -160,4 +159,14 @@ export const searchBarDropdown = {
       backgroundColor: "#0000000A",
     },
   },
+};
+
+export const tabLinkStyles = {
+  color: "common.digitaBlack",
+  textDecoration: "none",
+  display: "flex",
+  height: "100%",
+  alignItems: "center",
+  padding: "12px 16px",
+  overflow: "visible !important",
 };
