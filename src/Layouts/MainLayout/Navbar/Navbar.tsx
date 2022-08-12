@@ -21,6 +21,7 @@ import {
   appBarStyles,
   menuIconStyles,
   ShopMenuWrapper,
+  tabLinkStyles,
 } from "../../../Styles/Appbar";
 import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
@@ -123,12 +124,16 @@ function Navbar() {
                           label={item.name}
                           component={forwardRef((props, ref) => (
                             <Box
-                              component={Link}
-                              to={item.route}
-                              className="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary css-csphq2-MuiButtonBase-root-MuiTab-root"
                               sx={{
+                                padding: "0 !important",
                                 "&:hover ": {
                                   zIndex: 99,
+                                  a: {
+                                    color:
+                                      tabValue === item.route
+                                        ? ""
+                                        : "common.digitaRed",
+                                  },
                                   "& .shop-menu": {
                                     display:
                                       item.name === "shop" ? "block" : "none",
@@ -139,8 +144,14 @@ function Navbar() {
                               {...props}
                               ref={ref}
                             >
-                              <Box>{item.name}</Box>
-                              {item.name === "shop" && <KeyboardArrowDown />}
+                              <Box
+                                component={Link}
+                                to={item.route}
+                                sx={tabLinkStyles}
+                              >
+                                <Box>{item.name}</Box>
+                                {item.name === "shop" && <KeyboardArrowDown />}
+                              </Box>
                               {item.name === "shop" && (
                                 <ShopMenuWrapper className={"shop-menu"}>
                                   <ShopMenu />
@@ -149,7 +160,6 @@ function Navbar() {
                             </Box>
                           ))}
                           value={item.route}
-                          iconPosition="end"
                         />
                       ))}
                     </AntTabs>
