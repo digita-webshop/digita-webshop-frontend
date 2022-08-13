@@ -6,10 +6,10 @@ import {
 } from "../../../Styles/ShopPage";
 
 interface Props {
-  selectCategoryHandler: (name: string) => () => void;
+  addQueryParams: (filter: string, name: string) => () => void;
 }
 
-function CategoriesFilter({ selectCategoryHandler }: Props) {
+function CategoriesFilter({ addQueryParams }: Props) {
   return (
     <Box sx={{ padding: "20px", border: "1px solid #e9e9e9" }}>
       <FilterTitleWrapper className="underline">
@@ -30,7 +30,7 @@ function CategoriesFilter({ selectCategoryHandler }: Props) {
               position: "relative",
               paddingY: "4px",
             }}
-            onClick={selectCategoryHandler(name)}
+            onClick={addQueryParams("category", name)}
           >
             <FilterListItemText>{name}</FilterListItemText>
           </ListItem>

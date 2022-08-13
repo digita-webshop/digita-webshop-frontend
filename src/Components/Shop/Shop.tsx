@@ -43,24 +43,37 @@ function Shop() {
     );
   }
 
+  let colorQueryParams = queryParams.get("color");
+
+  if (colorQueryParams) {
+    const selectedColors = colorQueryParams.split("/");
+
+    currentProducts = currentProducts.filter((item) =>
+      selectedColors.some((color) =>
+        item.colors.some((productColor) => productColor === color)
+      )
+    );
+  }
+
   const toggleDrawer = (open: boolean) => {
     setDisplayDrawer(open);
   };
 
-  const selectCategoryHandler = (name: string) => () => {
-    let firstCatParams = categoryQueryParams?.split("/").length === 2;
+  const addQueryParams = (filter: string, name: string) => () => {
+    let selectedQueryParams = queryParams.get(filter);
+    let firstCatParams = selectedQueryParams?.split("/").length === 2;
 
-    if (categoryQueryParams?.includes(name) && !firstCatParams) {
+    if (selectedQueryParams?.includes(name) && !firstCatParams) {
       searchParams.set(
-        "category",
-        `${categoryQueryParams.replace(`/${name}`, "")}`
+        filter,
+        `${selectedQueryParams.replace(`/${name}`, "")}`
       );
-    } else if (categoryQueryParams?.includes(name) && firstCatParams) {
-      searchParams.delete("category");
+    } else if (selectedQueryParams?.includes(name) && firstCatParams) {
+      searchParams.delete(filter);
     } else {
       searchParams.set(
-        "category",
-        categoryQueryParams ? `${categoryQueryParams}/${name}` : `/${name}`
+        filter,
+        selectedQueryParams ? `${selectedQueryParams}/${name}` : `/${name}`
       );
     }
     setSearchParams(searchParams);
@@ -73,8 +86,8 @@ function Shop() {
         <Grid container columnSpacing={4}>
           {matches && (
             <Grid item xs={3.5}>
-              <CategoriesFilter selectCategoryHandler={selectCategoryHandler} />
-              <ColorFilter drawer={true} />
+              <CategoriesFilter addQueryParams={addQueryParams} />
+              <ColorFilter drawer={true} addQueryParams={addQueryParams} />
               <PriceFilter drawer={true} />
             </Grid>
           )}
@@ -82,6 +95,7 @@ function Shop() {
             <FiltersDrawer
               displayDrawer={displayDrawer}
               toggleDrawer={toggleDrawer}
+              addQueryParams={addQueryParams}
             />
           )}
           <Grid item xs={12} md={8.5}>

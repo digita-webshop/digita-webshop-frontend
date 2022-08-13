@@ -16,11 +16,13 @@ import PriceFilter from "../PriceFilter/PriceFilter";
 type ShopFiltersDrawerProps = {
   displayDrawer: boolean;
   toggleDrawer: (open: boolean) => void;
+  addQueryParams: (filter: string, name: string) => () => void;
 };
 
 function FiltersDrawer({
   displayDrawer,
   toggleDrawer,
+  addQueryParams,
 }: ShopFiltersDrawerProps) {
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -77,7 +79,7 @@ function FiltersDrawer({
             </Select>
           </FormControl>
         </Box>
-        <ColorFilter drawer={false} />
+        <ColorFilter drawer={false} addQueryParams={addQueryParams} />
         <PriceFilter drawer={false} />
       </Box>
     </Drawer>
