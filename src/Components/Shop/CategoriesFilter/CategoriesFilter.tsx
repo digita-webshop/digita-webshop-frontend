@@ -5,7 +5,11 @@ import {
   FilterTitleWrapper,
 } from "../../../Styles/ShopPage";
 
-function CategoriesFilter() {
+interface Props {
+  selectCategoryHandler: (name: string) => () => void;
+}
+
+function CategoriesFilter({ selectCategoryHandler }: Props) {
   return (
     <Box sx={{ padding: "20px", border: "1px solid #e9e9e9" }}>
       <FilterTitleWrapper className="underline">
@@ -19,13 +23,14 @@ function CategoriesFilter() {
         </Typography>
       </FilterTitleWrapper>
       <List>
-        {categoriesList.map(({ id, name }) => (
+        {categoriesList.map(({ id, name }, index) => (
           <ListItem
             key={id}
             sx={{
               position: "relative",
               paddingY: "4px",
             }}
+            onClick={selectCategoryHandler(name)}
           >
             <FilterListItemText>{name}</FilterListItemText>
           </ListItem>

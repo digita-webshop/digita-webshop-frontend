@@ -10,6 +10,7 @@ import Toolbar from "./Toolbar/Toolbar";
 import ProductItem from "../Products/Components/ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
 import { productData } from "../../Services/Utils/Data/data";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 function Shop() {
   const [displayDrawer, setDisplayDrawer] = useState(false);
@@ -20,20 +21,49 @@ function Shop() {
     grid: true,
     list: false,
   });
+  let [searchParams, setSearchParams] = useSearchParams();
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const { search } = useLocation();
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
+  let currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const queryParams = new URLSearchParams(search);
+  let categoryQueryParams = queryParams.get("category");
+
+  if (categoryQueryParams) {
+    const selectedCategories = categoryQueryParams.split("/");
+
+    currentProducts = currentProducts.filter((item) =>
+      selectedCategories.some((cat) => item.category === cat)
+    );
+  }
 
   const toggleDrawer = (open: boolean) => {
     setDisplayDrawer(open);
+  };
+
+  const selectCategoryHandler = (name: string) => () => {
+    let firstCatParams = categoryQueryParams?.split("/").length === 2;
+
+    if (categoryQueryParams?.includes(name) && !firstCatParams) {
+      searchParams.set(
+        "category",
+        `${categoryQueryParams.replace(`/${name}`, "")}`
+      );
+    } else if (categoryQueryParams?.includes(name) && firstCatParams) {
+      searchParams.delete("category");
+    } else {
+      searchParams.set(
+        "category",
+        categoryQueryParams ? `${categoryQueryParams}/${name}` : `/${name}`
+      );
+    }
+    setSearchParams(searchParams);
   };
 
   return (
@@ -43,7 +73,7 @@ function Shop() {
         <Grid container columnSpacing={4}>
           {matches && (
             <Grid item xs={3.5}>
-              <CategoriesFilter />
+              <CategoriesFilter selectCategoryHandler={selectCategoryHandler} />
               <ColorFilter drawer={true} />
               <PriceFilter drawer={true} />
             </Grid>
