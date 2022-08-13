@@ -5,12 +5,16 @@ import {
     Card,
     CardMedia,
     Typography,
+    styled,
+    Paper,
     Modal,
+    Link,
   } from "@mui/material";
   import { useState } from "react";
   import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
   import EditIcon from "@mui/icons-material/Edit";
   import { cartModal } from "../../../Styles/PanelProducts";
+  import { Link as RouterLink } from 'react-router-dom';
   
   import {
     cardWrapper,
@@ -19,17 +23,31 @@ import {
     deleteBtn,
     editBtn,
   } from "../../../Styles/PanelProducts";
-  import { Link } from "react-router-dom";
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
+import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
   
+
+  const Item = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body2,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    fontSize: 10,
+  }));
+
   type T = {
     id: number;
-    name: string;
-    price: number;
+    title: string;
     image: string;
+    author: string;
+    releaseDate: string;
+    category: string;
     onRemove: Function;
   };
   
-  const Article = ({ id, name, price, image, onRemove }: T) => {
+  const Article = ({ id, title, image, author, releaseDate, category, onRemove }: T) => {
     const [openDelete, setOpenDelete] = useState(false);
   
     return (
@@ -41,22 +59,80 @@ import {
           alt="green iguana"
           sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
         />
+        <Box
+      display='flex'
+      flexDirection='row'
+      flexWrap='wrap'
+      alignItems='flex-end'
+    >
+      {/* Author article */}
+      <Item>
+        <Box display='flex' alignItems='flex-end'>
+          <PersonOutlineOutlinedIcon
+            style={{ fontSize: '1rem' }}
+            color='secondary'
+          />
+          <Link
+            component={RouterLink}
+            to={`/blog/${id}/author/${author.replace(/\s+/g, '-')}`}
+            underline='none'
+            color='secondary'
+            sx={{
+              '&:hover': {
+                color: '#f03637',
+                transition: 'all 500ms',
+              },
+            }}
+          >
+            {author} -
+          </Link>
+        </Box>
+      </Item>
+      {/* Release date article */}
+      <Item>
+        <Box display='flex'>
+          &nbsp;
+          <AccessTimeOutlinedIcon
+            style={{ fontSize: '13px' }}
+            color='secondary'
+          />
+          &nbsp;{releaseDate} -
+        </Box>
+      </Item>
+      {/* category article */}
+      <Item>
+        <Box display='flex'>
+          &nbsp;
+          <FolderOutlinedIcon style={{ fontSize: '13px' }} color='secondary' />
+          <Link
+            component={RouterLink}
+            to={`/blog/${id}/category/${category.replace(/\s+/g, '-')}`}
+            underline='none'
+            color='secondary'
+            sx={{
+              '&:hover': {
+                color: '#f03637',
+                transition: 'all 500ms',
+              },
+            }}
+          >
+            &nbsp;{category}
+          </Link>
+        </Box>
+      </Item>
+    </Box>
+
+
         <CardContent sx={titleWrapper}>
           <Typography component="p" sx={titleStyle}>
-            {name}
+            {title}
           </Typography>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ pt: "2px", fontSize: "16px" }}
-          >
-            {"$" + price}
-          </Typography>
+          
           <Box sx={{ display: "flex", mt: 1, gap: 1 }}>
             <Button
               variant="contained"
               sx={editBtn}
-              component={Link}
+              component={RouterLink}
               to={`/panel/product/${id}`}
             >
               <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
