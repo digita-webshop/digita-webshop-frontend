@@ -177,40 +177,48 @@ export const productData = [
     name: "Beats by Dr. Dre Studio (Orange)",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-      gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],
-    offPrice: 79.0, 
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 79.0,
     price: 69.0,
     sold: true,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -219,39 +227,48 @@ export const productData = [
     name: "Corsair HS35 Headphones(Red)",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 70.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -260,39 +277,48 @@ export const productData = [
     name: "Microsoft Xbox One S Blue Grey",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 52.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -301,39 +327,48 @@ export const productData = [
     name: "Sam Sung Galaxy Note 10 Lite",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 79.0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "audio & video game",
+    colors: ["blue", "grey", "red"],
+    offPrice: 79.0,
     price: 52.0,
     sold: true,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -342,39 +377,48 @@ export const productData = [
     name: "Samsung Galaxy M21",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 79.0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "audio & video game",
+    colors: ["blue", "grey", "red"],
+    offPrice: 79.0,
     price: 55.0,
     sold: true,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 0,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -383,39 +427,48 @@ export const productData = [
     name: "Samsung Galaxy V21",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -424,39 +477,48 @@ export const productData = [
     name: "SIRUM 360 Mobile Holder Trip",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-8-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-8-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-8-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 12.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -465,39 +527,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -506,39 +577,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -547,39 +627,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -588,39 +677,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -629,39 +727,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -670,39 +777,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -711,39 +827,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -752,39 +877,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -793,39 +927,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -834,39 +977,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -875,39 +1027,48 @@ export const productData = [
     name: "SmartPhone & Ipad",
     image:
       "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
-     gallery:[{
-              id:1,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg'
-            },
-            {
-              id:2,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg'
-            },
-            {
-              id:3,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg'
-            },
-            {
-              id:4,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg'
-            },
-            {
-              id:5,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg'
-            },
-            {
-              id:6,
-              image:'https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg'
-            }],
-    category:'technologies',
-    colors:['blue','grey','red'],offPrice: 0,
+    gallery: [
+      {
+        id: 1,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+      },
+      {
+        id: 2,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+      },
+      {
+        id: 3,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7-330x330.jpg",
+      },
+      {
+        id: 4,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+      },
+      {
+        id: 5,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-2-330x330.jpg",
+      },
+      {
+        id: 6,
+        image:
+          "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+      },
+    ],
+    category: "technologies",
+    colors: ["blue", "grey", "red"],
+    offPrice: 0,
     price: 75.0,
     sold: false,
-    brand:'microsoft',
+    brand: "microsoft",
     starRate: 5,
-     tags:['tag1','tag2','tag3'],
-     quantity:12,
-     sku:'WVN-13',
+    tags: ["tag1", "tag2", "tag3"],
+    quantity: 12,
+    sku: "WVN-13",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
   },
@@ -1205,102 +1366,101 @@ export const panelProducts = [
 export const articlesBlogPage = [
   {
     id: 1,
-    title: 'On Salvatore Ferragamo’s New Chapter',
+    title: "On Salvatore Ferragamo’s New Chapter",
     image: `${IMAGES.blog6}`,
-    author: 'Peter Giroud',
-    releaseDate: 'July 9, 2019',
-    category: 'Browse Our Sales',
+    author: "Peter Giroud",
+    releaseDate: "July 9, 2019",
+    category: "Browse Our Sales",
   },
   {
     id: 2,
-    title: 'Decoding #OOTD Pose In The Modeling Industry',
+    title: "Decoding #OOTD Pose In The Modeling Industry",
     image: `${IMAGES.blog5}`,
-    author: 'Peter Giroud',
-    releaseDate: 'October 5, 2018',
-    category: 'Men',
+    author: "Peter Giroud",
+    releaseDate: "October 5, 2018",
+    category: "Men",
   },
   {
     id: 3,
-    title: '8 Fashion Photographers In UK',
+    title: "8 Fashion Photographers In UK",
     image: `${IMAGES.blog4}`,
-    author: 'Peter Giroud',
-    releaseDate: 'June 10, 2018',
-    category: 'On Sale',
+    author: "Peter Giroud",
+    releaseDate: "June 10, 2018",
+    category: "On Sale",
   },
   {
     id: 4,
-    title: 'Sample Post With Format Chat',
+    title: "Sample Post With Format Chat",
     image: `${IMAGES.blog3}`,
-    author: 'Peter Giroud',
-    releaseDate: 'June 8, 2018',
-    category: 'Women',
+    author: "Peter Giroud",
+    releaseDate: "June 8, 2018",
+    category: "Women",
   },
   {
     id: 5,
-    title: 'Sample Post With Format Audio',
+    title: "Sample Post With Format Audio",
     image: `${IMAGES.blog2}`,
-    author: 'Peter Giroud',
-    releaseDate: 'April 5, 2018',
-    category: 'Browse Our Sales',
+    author: "Peter Giroud",
+    releaseDate: "April 5, 2018",
+    category: "Browse Our Sales",
   },
   {
     id: 6,
-    title: 'Sample Post With Format Image',
+    title: "Sample Post With Format Image",
     image: `${IMAGES.blog1}`,
-    author: 'Peter Giroud',
-    releaseDate: 'February 8, 2018',
-    category: 'Newest Items',
+    author: "Peter Giroud",
+    releaseDate: "February 8, 2018",
+    category: "Newest Items",
   },
   {
     id: 7,
-    title: 'Sample Post With Format Image',
+    title: "Sample Post With Format Image",
     image: `${IMAGES.blog1}`,
-    author: 'Peter Giroud',
-    releaseDate: 'February 8, 2018',
-    category: 'Newest Items',
+    author: "Peter Giroud",
+    releaseDate: "February 8, 2018",
+    category: "Newest Items",
   },
   {
     id: 8,
-    title: 'Sample Post With Format Image',
+    title: "Sample Post With Format Image",
     image: `${IMAGES.blog1}`,
-    author: 'Peter Giroud',
-    releaseDate: 'February 8, 2018',
-    category: 'Newest Items',
+    author: "Peter Giroud",
+    releaseDate: "February 8, 2018",
+    category: "Newest Items",
   },
   {
     id: 9,
-    title: 'Sample Post With Format Image',
+    title: "Sample Post With Format Image",
     image: `${IMAGES.blog1}`,
-    author: 'Peter Giroud',
-    releaseDate: 'February 8, 2018',
-    category: 'Newest Items',
+    author: "Peter Giroud",
+    releaseDate: "February 8, 2018",
+    category: "Newest Items",
   },
   {
     id: 10,
-    title: 'Sample Post With Format Image',
+    title: "Sample Post With Format Image",
     image: `${IMAGES.blog1}`,
-    author: 'Peter Giroud',
-    releaseDate: 'February 8, 2018',
-    category: 'Newest Items',
+    author: "Peter Giroud",
+    releaseDate: "February 8, 2018",
+    category: "Newest Items",
   },
   {
     id: 11,
-    title: 'Sample Post With Format Image',
+    title: "Sample Post With Format Image",
     image: `${IMAGES.blog1}`,
-    author: 'Peter Giroud',
-    releaseDate: 'February 8, 2018',
-    category: 'Newest Items',
+    author: "Peter Giroud",
+    releaseDate: "February 8, 2018",
+    category: "Newest Items",
   },
   {
     id: 12,
-    title: 'Sample Post With Format Image',
+    title: "Sample Post With Format Image",
     image: `${IMAGES.blog1}`,
-    author: 'Peter Giroud',
-    releaseDate: 'February 8, 2018',
-    category: 'Newest Items',
+    author: "Peter Giroud",
+    releaseDate: "February 8, 2018",
+    category: "Newest Items",
   },
 ];
-
 
 export const RecentCommentsBlogPage = [
   {
@@ -1398,15 +1558,13 @@ export const brands = [
   {
     id: 1,
     name: "apple",
-    image:
-      "https://www.ecommerce-admin.com/demo/images/brands/1.png",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/1.png",
     count: 398,
   },
   {
     id: 2,
     name: "motorola",
-    image:
-      "https://www.ecommerce-admin.com/demo/images/brands/2.png",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/2.png",
     count: 87,
   },
   {
@@ -1430,8 +1588,7 @@ export const brands = [
   {
     id: 6,
     name: "LG",
-    image:
-      "https://www.ecommerce-admin.com/demo/images/brands/7.png",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/7.png",
     count: 123,
   },
   {
@@ -1452,31 +1609,121 @@ export const brands = [
     image: "https://www.ecommerce-admin.com/demo/images/brands/10.png",
     count: 456,
   },
-  
+
   {
     id: 10,
     name: "microsoft",
     image: "https://www.ecommerce-admin.com/demo/images/brands/3.png",
     count: 79,
   },
-
 ];
 
 export const reviews = [
-  {id: 1, pId: 23, product: "A-Line Mini Dress in Blue", name: "Devon Lane", rating: 3, date: "10.03.2019"},
-  {id: 2, pId: 24, product: "Fashion Woman Bag", name: "Guy Hawkins", rating: 5, date: "10.03.2019"},
-  {id: 3, pId: 25, product: "Air Jordan 1 Top 3 Sneaker (DS)", name: "Savannah Nguyen", rating: 4.5, date: "10.03.2019"},
-  {id: 4, pId: 26, product: "Samsung Galaxy S20 (SM-G980F/DS) Dual SIM", name: "Kristin Watson", rating: 4.5, date: "10.03.2019"},
-  {id: 5, pId: 27, product: "Macbook Pro 16 inch (2020 ) For Sale", name: "Jane Cooper", rating: 5, date: "10.03.2019"},
-  {id: 6, pId: 28, product: "Gaming Chair, local pickup only", name: "Courtney Henry", rating: 5, date: "10.03.2019"},
-  {id: 7, pId: 29, product: "Coach Tabby 26 for sale", name: "Ralph Edwards", rating: 3, date: "10.03.2019"},
-  {id: 8, pId: 30, product: "Oneplus 7 Pro GM1910 256GB", name: "Courtney Henry", rating: 5, date: "10.03.2019"},
-  {id: 9, pId: 31, product: "DJI Mavic Pro 2", name: "Theresa Webb", rating: 1, date: "10.03.2019"},
-  {id: 10, pId: 32, product: "Heimer Miller Sofa (Mint Condition)", name: "Darrell Steward", rating: 4, date: "10.03.2019"},
-  {id: 11, pId: 33, product: "Dell XPS 13 9380, 13.3 4K UHD 3840X2160", name: "Leslie Alexander", rating: 2.5, date: "10.03.2019"},
-  {id: 12, pId: 34, product: "Fashion Woman Bag", name: "Esther Howard", rating: 5, date: "10.03.2019"},
-  {id: 13, pId: 35, product: "iPad Pro 2017 Model", name: "Savannah Nguyen", rating: 5, date: "10.03.2019"},
-]
+  {
+    id: 1,
+    pId: 23,
+    product: "A-Line Mini Dress in Blue",
+    name: "Devon Lane",
+    rating: 3,
+    date: "10.03.2019",
+  },
+  {
+    id: 2,
+    pId: 24,
+    product: "Fashion Woman Bag",
+    name: "Guy Hawkins",
+    rating: 5,
+    date: "10.03.2019",
+  },
+  {
+    id: 3,
+    pId: 25,
+    product: "Air Jordan 1 Top 3 Sneaker (DS)",
+    name: "Savannah Nguyen",
+    rating: 4.5,
+    date: "10.03.2019",
+  },
+  {
+    id: 4,
+    pId: 26,
+    product: "Samsung Galaxy S20 (SM-G980F/DS) Dual SIM",
+    name: "Kristin Watson",
+    rating: 4.5,
+    date: "10.03.2019",
+  },
+  {
+    id: 5,
+    pId: 27,
+    product: "Macbook Pro 16 inch (2020 ) For Sale",
+    name: "Jane Cooper",
+    rating: 5,
+    date: "10.03.2019",
+  },
+  {
+    id: 6,
+    pId: 28,
+    product: "Gaming Chair, local pickup only",
+    name: "Courtney Henry",
+    rating: 5,
+    date: "10.03.2019",
+  },
+  {
+    id: 7,
+    pId: 29,
+    product: "Coach Tabby 26 for sale",
+    name: "Ralph Edwards",
+    rating: 3,
+    date: "10.03.2019",
+  },
+  {
+    id: 8,
+    pId: 30,
+    product: "Oneplus 7 Pro GM1910 256GB",
+    name: "Courtney Henry",
+    rating: 5,
+    date: "10.03.2019",
+  },
+  {
+    id: 9,
+    pId: 31,
+    product: "DJI Mavic Pro 2",
+    name: "Theresa Webb",
+    rating: 1,
+    date: "10.03.2019",
+  },
+  {
+    id: 10,
+    pId: 32,
+    product: "Heimer Miller Sofa (Mint Condition)",
+    name: "Darrell Steward",
+    rating: 4,
+    date: "10.03.2019",
+  },
+  {
+    id: 11,
+    pId: 33,
+    product: "Dell XPS 13 9380, 13.3 4K UHD 3840X2160",
+    name: "Leslie Alexander",
+    rating: 2.5,
+    date: "10.03.2019",
+  },
+  {
+    id: 12,
+    pId: 34,
+    product: "Fashion Woman Bag",
+    name: "Esther Howard",
+    rating: 5,
+    date: "10.03.2019",
+  },
+  {
+    id: 13,
+    pId: 35,
+    product: "iPad Pro 2017 Model",
+    name: "Savannah Nguyen",
+    rating: 5,
+    date: "10.03.2019",
+  },
+];
 
 export const userWishlistProducts = [
   {
@@ -1556,7 +1803,7 @@ export const userWishlistProducts = [
       "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
     price: 179,
   },
-]
+];
 
 export const rows = [
   {
@@ -1582,29 +1829,79 @@ export const rows = [
 ];
 
 export const userSidebarItems = [
-  {id: 1, title: "Status", route: "/user/status", icon: "dashboard"},
-  {id: 2, title: "My Orders", route: "/user/orders", icon: "local_grocery_store"},
-  {id: 3, title: "Personal Info", route: "/user/personal-info", icon: "person"},
-  {id: 4, title: "Wishlist", route: "/user/wishlist", icon: "favorite"},
-  {id: 5, title: "Addresses", route: "/user/addresses", icon: "home"},
-]
+  { id: 1, title: "Status", route: "/user/status", icon: "dashboard" },
+  {
+    id: 2,
+    title: "My Orders",
+    route: "/user/orders",
+    icon: "local_grocery_store",
+  },
+  {
+    id: 3,
+    title: "Personal Info",
+    route: "/user/personal-info",
+    icon: "person",
+  },
+  { id: 4, title: "Wishlist", route: "/user/wishlist", icon: "favorite" },
+  { id: 5, title: "Addresses", route: "/user/addresses", icon: "home" },
+];
 
 export const pendingItems = [
-  {id: 1, date: '21 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg", code: 44353254, price: 655, status: 'pending'},
-  {id: 2, date: '8 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg", code: 54656221, price: 120, status: 'pending'},
-]
+  {
+    id: 1,
+    date: "21 may 2022",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-10-330x330.jpg",
+    code: 44353254,
+    price: 655,
+    status: "pending",
+  },
+  {
+    id: 2,
+    date: "8 may 2022",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-14-330x330.jpg",
+    code: 54656221,
+    price: 120,
+    status: "pending",
+  },
+];
 
 export const deliveredItems = [
-  {id: 1, date: '2 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg", code: 12344234, price: 65, status: 'delivered'},
-]
+  {
+    id: 1,
+    date: "2 may 2022",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-4-330x330.jpg",
+    code: 12344234,
+    price: 65,
+    status: "delivered",
+  },
+];
 
 export const referredItems = [
-  {id: 1, date: '16 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg", code: 33554367, price: 587, status: 'referred'},
-]
+  {
+    id: 1,
+    date: "16 may 2022",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg",
+    code: 33554367,
+    price: 587,
+    status: "referred",
+  },
+];
 
 export const canceledItems = [
-  {id: 4, date: '9 may 2022', image: "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg", code: 56754844, price: 405, status: 'canceled'},
-]
+  {
+    id: 4,
+    date: "9 may 2022",
+    image:
+      "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-1-330x330.jpg",
+    code: 56754844,
+    price: 405,
+    status: "canceled",
+  },
+];
 
 export const panelSidebarItems = [
   {
@@ -1728,31 +2025,30 @@ export const marketingProgress = [
   },
 ];
 
-  export const panelSettingItems=[
-    {
-      id:1,
-      title:'general',
-    },
-    {
-      id:2,
-      title:'password',
-    },
-    {
-      id:3,
-      title:'addresses',
-    },
-   
-  ]
-  export const userSettingItems=[
-    {
-      id:1,
-      title:'general',
-    },
-    {
-      id:2,
-      title:'password',
-    },
-  ]
+export const panelSettingItems = [
+  {
+    id: 1,
+    title: "general",
+  },
+  {
+    id: 2,
+    title: "password",
+  },
+  {
+    id: 3,
+    title: "addresses",
+  },
+];
+export const userSettingItems = [
+  {
+    id: 1,
+    title: "general",
+  },
+  {
+    id: 2,
+    title: "password",
+  },
+];
 export const orders = [
   {
     id: 101,
@@ -1948,25 +2244,28 @@ export const orders = [
   },
 ];
 
-export const productShareItems=[
+export const productShareItems = [
   {
-    id:'1',
-    name:'facebook',
-    color:'#4267b2'
-  },{
-    id:'2',
-    name:'twitter',
-    color:'#0693e3'
-  },{
-    id:'3',
-    name:'mail',
-    color:'#61CE70'
-  },{
-    id:'4',
-    name:'pin',
-    color:'#E60023'
+    id: "1",
+    name: "facebook",
+    color: "#4267b2",
   },
-]
+  {
+    id: "2",
+    name: "twitter",
+    color: "#0693e3",
+  },
+  {
+    id: "3",
+    name: "mail",
+    color: "#61CE70",
+  },
+  {
+    id: "4",
+    name: "pin",
+    color: "#E60023",
+  },
+];
 
 // const productModel=[{
 //   id: 1,
@@ -2002,10 +2301,10 @@ export const productShareItems=[
 //   rating: 5,
 //   quantity:4,
 //   sku:'WVN-14',
-  // colors:['blue','greyexared
+// colors:['blue','greyexared
 //   category:'Audio & Video Game',
 //   tags:['tag1','tag2','tag3'],
-      
+
 //   shortDescription:
 //     "Lorem ipsum dolor sit amet, consetetur sadipscing elitr. Consetetur sadipscing elitr, sed diam nonumy eirmod. Suspendisse ultrices mauris diam Donec nunc nunc, gravida vitae diam vel, varius interdum erat. Quisque…",
 //     fullDescription:'<h2>title</h2> ',
@@ -2061,13 +2360,13 @@ export const productShareItems=[
 //     role:'Admin/User/SuperAdmin',
 //   }
 
-  // export const orders=[
-  //   {
-  //     id:'123',
-  //     status:'pending/recieved/canceled',
-  //     username:'tohid',
-  //     email:'example@.com',
-  //     total:12,
-  //     date:'2022-10-08'
-  //   }
-  // ]
+// export const orders=[
+//   {
+//     id:'123',
+//     status:'pending/recieved/canceled',
+//     username:'tohid',
+//     email:'example@.com',
+//     total:12,
+//     date:'2022-10-08'
+//   }
+// ]
