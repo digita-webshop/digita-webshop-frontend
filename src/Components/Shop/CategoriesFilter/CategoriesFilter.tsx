@@ -7,9 +7,11 @@ import {
 
 interface Props {
   addQueryParams: (filter: string, name: string) => () => void;
+  categoryQueryParams: string | null;
 }
 
-function CategoriesFilter({ addQueryParams }: Props) {
+function CategoriesFilter({ addQueryParams, categoryQueryParams }: Props) {
+  const selectedCategories = categoryQueryParams?.split("/");
   return (
     <Box sx={{ padding: "20px", border: "1px solid #e9e9e9" }}>
       <FilterTitleWrapper className="underline">
@@ -23,18 +25,30 @@ function CategoriesFilter({ addQueryParams }: Props) {
         </Typography>
       </FilterTitleWrapper>
       <List>
-        {categoriesList.map(({ id, name }, index) => (
-          <ListItem
-            key={id}
-            sx={{
-              position: "relative",
-              paddingY: "4px",
-            }}
-            onClick={addQueryParams("category", name)}
-          >
-            <FilterListItemText>{name}</FilterListItemText>
-          </ListItem>
-        ))}
+        {categoriesList.map(({ id, name }) => {
+          let selected = categoryQueryParams
+            ? selectedCategories?.indexOf(name) === -1
+            : true;
+
+          return (
+            <ListItem
+              key={id}
+              sx={{
+                position: "relative",
+                paddingY: "4px",
+              }}
+              onClick={addQueryParams("category", name)}
+            >
+              <FilterListItemText
+                sx={{
+                  color: selected ? "" : "#f03637",
+                }}
+              >
+                {name}
+              </FilterListItemText>
+            </ListItem>
+          );
+        })}
       </List>
     </Box>
   );
