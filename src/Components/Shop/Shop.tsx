@@ -37,7 +37,6 @@ function Shop() {
 
   if (categoryQueryParams) {
     const selectedCategories = categoryQueryParams.split("/");
-
     currentProducts = currentProducts.filter((item) =>
       selectedCategories.some((cat) => item.category === cat)
     );
@@ -86,7 +85,10 @@ function Shop() {
         <Grid container columnSpacing={4}>
           {matches && (
             <Grid item xs={3.5}>
-              <CategoriesFilter addQueryParams={addQueryParams} />
+              <CategoriesFilter
+                addQueryParams={addQueryParams}
+                categoryQueryParams={categoryQueryParams}
+              />
               <ColorFilter drawer={true} addQueryParams={addQueryParams} />
               <PriceFilter drawer={true} />
             </Grid>
