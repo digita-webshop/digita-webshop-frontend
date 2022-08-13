@@ -4,7 +4,11 @@ import { colorFilterData } from "../../../Services/Utils/Data/data";
 import { FilterTitleWrapper } from "../../../Styles/ShopPage";
 import ColorFilterCard from "./ColorFilterCard/ColorFilterCard";
 
-function ColorFilter({ drawer }: { drawer: boolean }) {
+interface Props {
+  drawer: boolean;
+  addQueryParams: (filter: string, name: string) => () => void;
+}
+function ColorFilter({ drawer, addQueryParams }: Props) {
   const [checked, setChecked] = useState([""]);
 
   const handleToggle = (value: string) => () => {
@@ -18,6 +22,7 @@ function ColorFilter({ drawer }: { drawer: boolean }) {
     }
 
     setChecked(newChecked);
+    addQueryParams("color", value)();
   };
   return (
     <Box
