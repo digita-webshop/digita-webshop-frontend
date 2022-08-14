@@ -1,12 +1,21 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { FilterTitleWrapper, PriceSlider } from "../../../Styles/ShopPage";
 
-function PriceFilter({ drawer }: { drawer: boolean }) {
+interface Props {
+  drawer: boolean;
+}
+function PriceFilter({ drawer }: Props) {
   const [value, setValue] = useState<number[]>([10, 1000]);
+  let [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
+  };
+  const addPriceQueryParams = () => {
+    searchParams.set("priceRange", `min=${value[0]}/max=${value[1]}`);
+    setSearchParams(searchParams);
   };
   return (
     <Box
@@ -47,7 +56,11 @@ function PriceFilter({ drawer }: { drawer: boolean }) {
           variant="body2"
           color="primary"
         >{`Price : $${value[0]} — $${value[1]}`}</Typography>
-        <Button variant="contained" sx={{ paddingY: "4px" }}>
+        <Button
+          variant="contained"
+          sx={{ paddingY: "4px" }}
+          onClick={addPriceQueryParams}
+        >
           Filter
         </Button>
       </Box>

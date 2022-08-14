@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { categoriesList } from "../../../Services/Utils/Data/data";
 import { FilterTitleWrapper } from "../../../Styles/ShopPage";
 import ColorFilter from "../ColorFilter/ColorFilter";
@@ -25,9 +26,12 @@ function FiltersDrawer({
   addQueryParams,
 }: ShopFiltersDrawerProps) {
   const [selectedCategory, setSelectedCategory] = useState("");
+  let [searchParams, setSearchParams] = useSearchParams();
 
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     setSelectedCategory(event.target.value);
+    searchParams.set("category", `/${event.target.value}`);
+    setSearchParams(searchParams);
   };
   return (
     <Drawer
@@ -72,7 +76,7 @@ function FiltersDrawer({
               <MenuItem value="">Select a category</MenuItem>
 
               {categoriesList.map(({ name }, index) => (
-                <MenuItem key={index} value={`${name.replace(/\s/g, "-")}`}>
+                <MenuItem key={index} value={`${name}`}>
                   {name}
                 </MenuItem>
               ))}
