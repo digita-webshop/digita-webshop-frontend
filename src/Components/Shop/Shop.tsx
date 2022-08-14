@@ -10,7 +10,7 @@ import Toolbar from "./Toolbar/Toolbar";
 import ProductItem from "../Products/Components/ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
 import { productData } from "../../Services/Utils/Data/data";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 function Shop() {
   const [displayDrawer, setDisplayDrawer] = useState(false);
@@ -25,15 +25,13 @@ function Shop() {
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
-  const { search } = useLocation();
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  let currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  let currentProducts = products;
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  const queryParams = new URLSearchParams(search);
-  let categoryQueryParams = queryParams.get("category");
+  let categoryQueryParams = searchParams.get("category");
 
   if (categoryQueryParams) {
     const selectedCategories = categoryQueryParams.split("/");
@@ -42,7 +40,7 @@ function Shop() {
     );
   }
 
-  let colorQueryParams = queryParams.get("color");
+  let colorQueryParams = searchParams.get("color");
 
   if (colorQueryParams) {
     const selectedColors = colorQueryParams.split("/");
@@ -59,7 +57,7 @@ function Shop() {
   };
 
   const addQueryParams = (filter: string, name: string) => () => {
-    let selectedQueryParams = queryParams.get(filter);
+    let selectedQueryParams = searchParams.get(filter);
     let firstCatParams = selectedQueryParams?.split("/").length === 2;
 
     if (selectedQueryParams?.includes(name) && !firstCatParams) {
@@ -108,48 +106,50 @@ function Shop() {
               selectedLayout={selectedLayout}
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
-              {currentProducts.map((item) => (
-                <Fragment key={item.id}>
-                  {selectedLayout.grid && (
-                    <Fade in={selectedLayout.grid}>
-                      <Grid item xs={12} sm={4} md={4} key={item.id}>
-                        <ProductItem
-                          id={item.id}
-                          name={item.name}
-                          image={item.image}
-                          offPrice={item.offPrice}
-                          price={item.price}
-                          sold={item.sold}
-                          starRate={item.starRate}
-                          description={item.description}
-                          listView={false}
-                        />
-                      </Grid>
-                    </Fade>
-                  )}
-                  {selectedLayout.list && (
-                    <Fade in={selectedLayout.list}>
-                      <Grid item xs={12}>
-                        <ProductItem
-                          id={item.id}
-                          name={item.name}
-                          image={item.image}
-                          offPrice={item.offPrice}
-                          price={item.price}
-                          sold={item.sold}
-                          starRate={item.starRate}
-                          description={item.description}
-                          listView={true}
-                        />
-                      </Grid>
-                    </Fade>
-                  )}
-                </Fragment>
-              ))}
+              {currentProducts
+                .slice(indexOfFirstProduct, indexOfLastProduct)
+                .map((item) => (
+                  <Fragment key={item.id}>
+                    {selectedLayout.grid && (
+                      <Fade in={selectedLayout.grid}>
+                        <Grid item xs={12} sm={4} md={4} key={item.id}>
+                          <ProductItem
+                            id={item.id}
+                            name={item.name}
+                            image={item.image}
+                            offPrice={item.offPrice}
+                            price={item.price}
+                            sold={item.sold}
+                            starRate={item.starRate}
+                            description={item.description}
+                            listView={false}
+                          />
+                        </Grid>
+                      </Fade>
+                    )}
+                    {selectedLayout.list && (
+                      <Fade in={selectedLayout.list}>
+                        <Grid item xs={12}>
+                          <ProductItem
+                            id={item.id}
+                            name={item.name}
+                            image={item.image}
+                            offPrice={item.offPrice}
+                            price={item.price}
+                            sold={item.sold}
+                            starRate={item.starRate}
+                            description={item.description}
+                            listView={true}
+                          />
+                        </Grid>
+                      </Fade>
+                    )}
+                  </Fragment>
+                ))}
             </Grid>
             <Pagination
               productsPerPage={productsPerPage}
-              totalProducts={products.length}
+              totalProducts={currentProducts.length}
               paginate={paginate}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
