@@ -53,11 +53,11 @@ export const editStyle = {
   "&:hover": { backgroundColor: "transparent", borderColor: "#999" },
 };
 
-
 export const AuthorWrapper = styled("div")(({ theme }) => ({
   marginLeft: "1rem",
   display: "flex",
-  flexWrap: "nowrap",
-  alignItems: "center",
-  overflow: "hidden",
+  flexDirection: "row",
+  alignItems: "flex-end",
+  overFlow: "hidden",
+  whiteSpace: "nowrap",
 }));
