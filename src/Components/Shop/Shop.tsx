@@ -52,6 +52,18 @@ function Shop() {
     );
   }
 
+  let priceQueryParams = searchParams.get("priceRange");
+
+  if (priceQueryParams) {
+    const priceRange = priceQueryParams.split("/");
+    let min = priceRange[0].replace(/^\D+/g, "");
+    let max = priceRange[1].replace(/^\D+/g, "");
+
+    currentProducts = currentProducts.filter(
+      (item) => item.price >= +min && item.price <= +max
+    );
+  }
+
   const toggleDrawer = (open: boolean) => {
     setDisplayDrawer(open);
   };
@@ -75,7 +87,6 @@ function Shop() {
     }
     setSearchParams(searchParams);
   };
-
   return (
     <Box bgcolor={"white"}>
       <Breadcrumbs title={"products"} />
