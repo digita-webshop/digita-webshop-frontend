@@ -64,6 +64,20 @@ function Shop() {
     );
   }
 
+  let sortQueryParams = searchParams.get("sort");
+
+  if (sortQueryParams) {
+    if (sortQueryParams === "price-low-to-high") {
+      currentProducts = currentProducts.sort((a, b) => a.price - b.price);
+    }
+    if (sortQueryParams === "price-high-to-low") {
+      currentProducts = currentProducts.sort((a, b) => b.price - a.price);
+    }
+    if (sortQueryParams === "rating") {
+      currentProducts = currentProducts.sort((a, b) => b.starRate - a.starRate);
+    }
+  }
+
   const toggleDrawer = (open: boolean) => {
     setDisplayDrawer(open);
   };

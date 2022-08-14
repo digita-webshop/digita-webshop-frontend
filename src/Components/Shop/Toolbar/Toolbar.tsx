@@ -10,6 +10,7 @@ import {
 import { FilterList, GridView, TableRows } from "@mui/icons-material";
 import { useState } from "react";
 import { ToolbarButton } from "../../../Styles/ShopPage";
+import { useSearchParams } from "react-router-dom";
 
 type ShopToolbarProps = {
   matches: boolean;
@@ -30,6 +31,7 @@ function Toolbar({
     all: false,
   });
   const [selectedSorting, setSelectedSorting] = useState("");
+  let [searchParams, setSearchParams] = useSearchParams();
 
   const productNumberHandler = (amount: string) => {
     setProductNumber({
@@ -40,7 +42,15 @@ function Toolbar({
     });
   };
   const selectedSortingHandler = (event: SelectChangeEvent) => {
-    setSelectedSorting(event.target.value);
+    let value = event.target.value;
+    setSelectedSorting(value);
+    if (value) {
+      searchParams.set("sort", value);
+    } else {
+      searchParams.delete("sort");
+    }
+
+    setSearchParams(searchParams);
   };
   return (
     <Box
@@ -137,7 +147,6 @@ function Toolbar({
           onChange={selectedSortingHandler}
         >
           <MenuItem value="">Default Sorting</MenuItem>
-          <MenuItem value={"popularity"}>Sort By Popularity</MenuItem>
           <MenuItem value={"rating"}>Sort By Average Rating </MenuItem>
           <MenuItem value={"latest"}>Sort By Latest </MenuItem>
           <MenuItem value={"price-low-to-high"}>
