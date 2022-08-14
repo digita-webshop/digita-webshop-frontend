@@ -20,11 +20,8 @@ export const titleWrapper = {
   webkitBoxOrient: "vertical",
   display: "webkitBox",
   overflow: "hidden !important",
-  webkitLineClamp: 1,
-  whiteSpace: "nowrap",
-  "& .delete": {
-    color: 'common.digitaRed',
-  }
+  webkitLineClamp: 2,
+  whiteSpace: "wrap",
 };
 
 export const titleStyle = {
@@ -51,3 +48,14 @@ export const editStyle = {
 };
 
 
+export const AuthorWrapper = styled("div")(({ theme }) => ({
+  marginLeft: "1rem",
+  display: "flex",
+  alignItems: "center",
+  [theme.breakpoints.only("md")]: {
+    flexDirection: "column",
+    "& .MuiPaper-elevation":{
+      padding: "2px 0",
+    }
+  },
+}));
