@@ -1,5 +1,11 @@
 import { styled, Paper } from "@mui/material";
 
+export const cardWrapper = {
+  width: "100%",
+  border: "1px solid #d8d8d8",
+  cursor: "pointer",
+  "&:hover": { borderColor: "#999" },
+};
 
 export const ArticleWrapper = styled("div")(({ theme }) => ({
   margin: "2rem 0",
@@ -51,11 +57,7 @@ export const editStyle = {
 export const AuthorWrapper = styled("div")(({ theme }) => ({
   marginLeft: "1rem",
   display: "flex",
+  flexWrap: "nowrap",
   alignItems: "center",
-  [theme.breakpoints.only("md")]: {
-    flexDirection: "column",
-    "& .MuiPaper-elevation":{
-      padding: "2px 0",
-    }
-  },
+  overflow: "hidden",
 }));
