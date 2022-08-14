@@ -17,7 +17,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import { cartModal } from "../../../Styles/PanelProducts";
 import { Link as RouterLink } from "react-router-dom";
 
-import { cardWrapper } from "../../../Styles/PanelProducts";
+import { cardWrapper } from "../../../Styles/Articles";
 import {
   titleStyle,
   titleWrapper,
@@ -69,7 +69,7 @@ const Article = ({
     <Card sx={cardWrapper}>
       <CardMedia
         component="img"
-        height="240"
+        height="auto"
         image={image}
         alt="green iguana"
         sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
