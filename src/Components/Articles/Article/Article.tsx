@@ -4,9 +4,12 @@ import {
   Button,
   Card,
   CardMedia,
+  Menu,
   Typography,
+  MenuItem,
   Modal,
   Link,
+  Fade,
 } from "@mui/material";
 import { useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
@@ -14,17 +17,16 @@ import EditIcon from "@mui/icons-material/Edit";
 import { cartModal } from "../../../Styles/PanelProducts";
 import { Link as RouterLink } from "react-router-dom";
 
+import { cardWrapper } from "../../../Styles/PanelProducts";
 import {
-  cardWrapper,
+  titleStyle,
   titleWrapper,
-  deleteBtn,
-  editBtn,   
-} from "../../../Styles/PanelProducts";
-import { titleStyle } from "../../../Styles/Articles";
+  Item,
+  editStyle,
+} from "../../../Styles/Articles";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
-import { Item } from "../../../Styles/Articles";
 
 type T = {
   id: number;
@@ -46,6 +48,21 @@ const Article = ({
   onRemove,
 }: T) => {
   const [openDelete, setOpenDelete] = useState(false);
+
+  /* Edit part */
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleDelete = () => {
+    setAnchorEl(null);
+    setOpenDelete(true);
+  };
+  /* Edit part */
 
   return (
     <Card sx={cardWrapper}>
@@ -124,79 +141,95 @@ const Article = ({
       </Box>
 
       <CardContent sx={titleWrapper}>
-        <Typography component="p" sx={titleStyle}>
-          {title}
-        </Typography>
-
-        <Box sx={{ display: "flex", gap: 1 }}>
-          <Button
-            variant="contained"
-            sx={editBtn}
-            component={RouterLink}
-            to={`/panel/product/${id}`}
-          >
-            <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
-            Edit
-          </Button>
-          <Button
-            variant="contained"
-            sx={deleteBtn}
-            onClick={() => setOpenDelete(true)}
-          >
-            <DeleteForeverIcon sx={{ margin: "0 0.2rem" }} />
-            Delete
-          </Button>
-        </Box>
-
-        <Modal
-          open={openDelete}
-          onClose={() => setOpenDelete(false)}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
-          <Box sx={cartModal}>
-            <DeleteForeverIcon
-              sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }}
-            />
-            <Typography
-              id="modal-modal-title"
-              variant="h5"
-              component="h2"
-              sx={{ textAlign: "center" }}
+          <Typography component="p" sx={titleStyle}>
+            {title}
+          </Typography>
+
+          <Box>
+            <Button
+              id="fade-button"
+              sx={editStyle}
+              aria-controls={open ? "fade-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
             >
-              Delete this item?
-            </Typography>
-            <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>
-              <Button
-                variant="contained"
-                sx={{
-                  p: "0.8rem 2.2rem",
-                  borderRadius: "4px",
-                  fontSize: "15px",
-                  height: "46px",
-                }}
-                onClick={() => setOpenDelete(false)}
-              >
-                Cancel
-              </Button>
-              <Button
-                onClick={() => onRemove(id)}
-                variant="contained"
-                sx={{
-                  p: "0.8rem 2.2rem",
-                  background: "#f03637",
-                  borderRadius: "4px",
-                  fontSize: "15px",
-                  height: "46px",
-                  "&:hover": { background: "#333" },
-                }}
-              >
-                Delete
-              </Button>
-            </Box>
+              <EditIcon sx={{ color: "#999" }} />
+            </Button>
+            <Menu
+              id="fade-menu"
+              MenuListProps={{
+                "aria-labelledby": "fade-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              TransitionComponent={Fade}
+            >
+              <MenuItem>Edit</MenuItem>
+              <MenuItem onClick={handleDelete}>
+                <Typography sx={{color: 'common.digitaRed'}}>Delete</Typography>
+              </MenuItem>
+            </Menu>
           </Box>
-        </Modal>
+        </Box>
       </CardContent>
+
+      <Modal
+        open={openDelete}
+        onClose={() => setOpenDelete(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={cartModal}>
+          <DeleteForeverIcon
+            sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }}
+          />
+          <Typography
+            id="modal-modal-title"
+            variant="h5"
+            component="h2"
+            sx={{ textAlign: "center" }}
+          >
+            Delete this item?
+          </Typography>
+          <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>
+            <Button
+              variant="contained"
+              sx={{
+                p: "0.8rem 2.2rem",
+                borderRadius: "4px",
+                fontSize: "15px",
+                height: "46px",
+              }}
+              onClick={() => setOpenDelete(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={() => onRemove(id)}
+              variant="contained"
+              sx={{
+                p: "0.8rem 2.2rem",
+                background: "#f03637",
+                borderRadius: "4px",
+                fontSize: "15px",
+                height: "46px",
+                "&:hover": { background: "#333" },
+              }}
+            >
+              Delete
+            </Button>
+          </Box>
+        </Box>
+      </Modal>
     </Card>
   );
 };

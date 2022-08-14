@@ -14,7 +14,21 @@ export const Item = styled(Paper)(({ theme }) => ({
   fontSize: 10,
 }));
 
+export const titleWrapper = {
+  paddingBottom: "1rem !important",
+
+  webkitBoxOrient: "vertical",
+  display: "webkitBox",
+  overflow: "hidden !important",
+  webkitLineClamp: 1,
+  whiteSpace: "nowrap",
+  "& .delete": {
+    color: 'common.digitaRed',
+  }
+};
+
 export const titleStyle = {
+  width: "75%",
   color: "gray",
   fontSize: "15px",
   height: "45px",
@@ -24,3 +38,16 @@ export const titleStyle = {
   WebkitBoxOrient: "vertical",
   "&:hover": { color: "#f03637" },
 };
+
+export const editStyle = {
+  borderRadius: "4px",
+  padding: "0.5rem",
+  backgroundColor: "#fff",
+  color: "#333",
+  fontWeight: 400,
+  border: "1px solid #d8d8d8",
+  fontSize: "15px",
+  "&:hover": { backgroundColor: "transparent", borderColor: "#999" },
+};
+
+
