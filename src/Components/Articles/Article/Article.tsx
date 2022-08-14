@@ -23,6 +23,7 @@ import {
   titleWrapper,
   Item,
   editStyle,
+  AuthorWrapper,
 } from "../../../Styles/Articles";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
@@ -73,13 +74,7 @@ const Article = ({
         alt="green iguana"
         sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
       />
-      <Box
-        marginLeft="1rem"
-        display="flex"
-        flexDirection="row"
-        flexWrap="wrap"
-        alignItems="flex-end"
-      >
+      <AuthorWrapper>
         {/* Author article */}
         <Item>
           <Box display="flex" alignItems="flex-end">
@@ -138,7 +133,7 @@ const Article = ({
             </Link>
           </Box>
         </Item>
-      </Box>
+      </AuthorWrapper>
 
       <CardContent sx={titleWrapper}>
         <Box
@@ -175,7 +170,9 @@ const Article = ({
             >
               <MenuItem>Edit</MenuItem>
               <MenuItem onClick={handleDelete}>
-                <Typography sx={{color: 'common.digitaRed'}}>Delete</Typography>
+                <Typography sx={{ color: "common.digitaRed" }}>
+                  Delete
+                </Typography>
               </MenuItem>
             </Menu>
           </Box>

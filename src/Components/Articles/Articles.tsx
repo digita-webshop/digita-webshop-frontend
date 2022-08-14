@@ -55,7 +55,7 @@ const Articles = () => {
         <ArticleWrapper>
           <Grid container spacing={2}>
             {currentProducts.map(({ id, title, image, author, releaseDate, category }) => (
-              <Grid item xs={12} sm={6} md={5} lg={4} xl={3} key={id}>
+              <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={id}>
                 <Article
                   id={id}
                   title={title}
