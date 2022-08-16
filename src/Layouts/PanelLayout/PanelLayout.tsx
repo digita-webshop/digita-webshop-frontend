@@ -40,7 +40,9 @@ function PanelLayout() {
       )}
       <Main className={menuOpen ? "" : "menu"}>
         <MainNavbar setDrawerOpen={setDrawerOpen} mdMatches={mdMatches} />
-        <Box sx={{ padding: "30px 3%" }}>
+        <Box
+          sx={{ padding: "30px 3%", "& .MuiGrid-container": { zIndex: "-1" } }}
+        >
           <Outlet />
         </Box>
       </Main>

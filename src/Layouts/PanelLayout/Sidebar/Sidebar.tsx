@@ -1,9 +1,22 @@
 import { Divider, Icon, List, ListItemIcon, ListItemText } from "@mui/material";
-import { Dispatch, Fragment, SetStateAction } from "react";
+import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { panelSidebarItems } from "../../../Services/Utils/Data/data";
 import { PanelItem } from "../../../Styles/Panel";
+import ItemAccordion from "./ItemAccordion/ItemAccordion";
+import ItemMenu from "./ItemMenu/ItemMenu";
 import SidebarTop from "./SidebarTop/SidebarTop";
+
+const products = [
+  { id: "1", name: "product list", route: "/panel/products/list" },
+  { id: "2", name: "add product", route: "/panel/products/add" },
+  { id: "3", name: "product reviews", route: "/panel/products/reviews" },
+];
+const articles = [
+  { id: "1", name: "article list", route: "/panel/articles/list" },
+  { id: "2", name: "add article", route: "/panel/articles/add" },
+  { id: "3", name: "article reviews", route: "/panel/articles/reviews" },
+];
 
 interface Props {
   menuOpen: boolean;
@@ -11,6 +24,8 @@ interface Props {
   setDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
 function Sidebar({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
+  const [open, setOpen] = useState({ products: false, articles: false });
+
   const { pathname } = useLocation();
   const settingsPath = pathname.split("/")[2];
 
@@ -26,6 +41,25 @@ function Sidebar({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
           const settingsActive =
             settingsPath === "settings" && title === "settings" && "active";
 
+          if (title === "products" || title === "articles") {
+            const data = title === "products" ? products : articles;
+            return menuOpen ? (
+              <ItemAccordion
+                title={title}
+                icon={icon}
+                data={data}
+                menuOpen={menuOpen}
+              />
+            ) : (
+              <ItemMenu
+                title={title}
+                icon={icon}
+                data={data}
+                open={open[title]}
+                setOpen={setOpen}
+              />
+            );
+          }
           return (
             <Fragment key={id}>
               {title === "my wishlist" && <Divider sx={{ marginY: "10px" }} />}

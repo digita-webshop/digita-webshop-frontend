@@ -1917,34 +1917,16 @@ export const panelSidebarItems = [
     icon: "shopping_bag",
   },
   {
-    id: 3,
-    title: "orders",
-    route: "/panel/orders",
-    icon: "local_grocery_store",
-  },
-  {
     id: 4,
     title: "articles",
     route: "/panel/articles",
     icon: "article",
   },
   {
-    id: 5,
-    title: "add product",
-    route: "/panel/add-product",
-    icon: "add_box",
-  },
-  {
-    id: 6,
-    title: "add article",
-    route: "/panel/add-article",
-    icon: "add_card",
-  },
-  {
-    id: 7,
-    title: "reviews",
-    route: "/panel/reviews",
-    icon: "comment",
+    id: 3,
+    title: "orders",
+    route: "/panel/orders",
+    icon: "local_grocery_store",
   },
   {
     id: 8,
