@@ -1,108 +1,29 @@
-import {
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { Dispatch, SetStateAction } from "react";
-import { inputStyles } from "../../../Styles/Article";
-interface Props {
-  enteredName: string;
-  setEnteredName: Dispatch<SetStateAction<string>>;
-  setNameTouched: Dispatch<SetStateAction<boolean>>;
-  nameIsValid: boolean;
-  nameTouched: boolean;
-  enteredEmail: string;
-  setEnteredEmail: Dispatch<SetStateAction<string>>;
-  setEmailTouched: Dispatch<SetStateAction<boolean>>;
-  emailIsValid: boolean;
-  emailTouched: boolean;
-}
-function ReplyForm({
-  enteredName,
-  setEnteredName,
-  setNameTouched,
-  nameIsValid,
-  nameTouched,
-  enteredEmail,
-  setEnteredEmail,
-  setEmailTouched,
-  emailIsValid,
-  emailTouched,
-}: Props) {
+import { Button, FormControl, Grid, TextareaAutosize } from "@mui/material";
+
+function ReplyForm() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <FormControl fullWidth>
-          <TextField
+          <TextareaAutosize
+            aria-label="article comment textarea"
             placeholder="Your Comment Here..."
-            multiline
-            rows={6}
-            sx={{
-              "& .MuiOutlinedInput-root": {},
+            style={{
+              minWidth: "98%",
+              maxWidth: "98%",
+              maxHeight: "400px",
               backgroundColor: "#F5F5F5",
+              borderColor: "#bbb",
+              padding: "5px",
+              fontFamily: "jost",
+              outline: "none",
             }}
+            minRows={9}
+            maxRows={12}
           />
         </FormControl>
       </Grid>
-      <Grid item xs={12} sm={4}>
-        <FormControl fullWidth>
-          <TextField
-            placeholder="Name (required)"
-            sx={inputStyles}
-            value={enteredName}
-            onChange={(e) => setEnteredName(e.target.value)}
-            onBlur={() => setNameTouched(true)}
-          />
-          {!nameIsValid && nameTouched && (
-            <Typography sx={{ color: "#f03637", marginTop: "2px" }}>
-              name is required
-            </Typography>
-          )}
-        </FormControl>
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <FormControl fullWidth>
-          <TextField
-            placeholder="Email (required)"
-            sx={inputStyles}
-            value={enteredEmail}
-            onChange={(e) => setEnteredEmail(e.target.value)}
-            onBlur={() => setEmailTouched(true)}
-          />
-          {!emailIsValid && emailTouched && (
-            <Typography sx={{ color: "#f03637", marginTop: "2px" }}>
-              please enter a valid email address
-            </Typography>
-          )}
-        </FormControl>
-      </Grid>
-      <Grid item xs={12} sm={4}>
-        <FormControl fullWidth>
-          <TextField placeholder="Website" sx={inputStyles} />
-        </FormControl>
-      </Grid>
-      <Grid item xs={12}>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox
-                sx={{
-                  color: "#f03637",
-                  "&.Mui-checked": {
-                    color: "#f03637",
-                  },
-                }}
-              />
-            }
-            label="Save my name, email, and website in this browser for the next time I comment."
-          />
-        </FormGroup>
-      </Grid>
+
       <Grid item xs={12}>
         <Button
           variant="contained"
