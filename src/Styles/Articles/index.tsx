@@ -13,8 +13,8 @@ export const ArticleWrapper = styled("div")(({ theme }) => ({
 
 export const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
-  paddingTop: theme.spacing(2),
-  paddingBottom: theme.spacing(1),
+  // paddingTop: theme.spacing(2),
+  // paddingBottom: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
   fontSize: 10,
@@ -54,10 +54,10 @@ export const editStyle = {
 };
 
 export const AuthorWrapper = styled("div")(({ theme }) => ({
-  marginLeft: "1rem",
+  margin: "10px  16px 0px",
   display: "flex",
   flexDirection: "row",
   alignItems: "flex-end",
-  overFlow: "hidden",
+  flexWrap: "wrap",
   whiteSpace: "nowrap",
 }));
