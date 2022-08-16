@@ -8,27 +8,14 @@ import { posterStyle } from "../../Styles/About";
 import ArticleDescription from "./articleDescription/ArticleDescription";
 import Divider from "@mui/material/Divider";
 import Contents from "./Contents/Contents";
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import { useParams } from "react-router-dom";
 import { articleTitleStyles } from "../../Styles/Article";
 import ReplyForm from "./ReplyForm/ReplyForm";
 
 function Article() {
-  const [enteredName, setEnteredName] = useState("");
-  const [nameTouched, setNameTouched] = useState(false);
-  const [enteredEmail, setEnteredEmail] = useState("");
-  const [emailTouched, setEmailTouched] = useState(false);
-
-  const nameIsValid = enteredName.trim() !== "";
-
-  const emailRegex = /^\S+@\S+\.\S+$/;
-  const emailIsValid = emailRegex.test(enteredEmail);
-
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
-    if (!emailIsValid && !nameIsValid) {
-      return;
-    }
   };
 
   const { id }: any = useParams();
@@ -71,25 +58,14 @@ function Article() {
             {/* TODO: add design is the silent section */}
             <Grid container sx={{ mb: "20px" }}></Grid>
             <Contents />
-            <Divider />
+            <Divider sx={{ width: "100%", margin: "35px 0" }} />
             {/* comments */}
-            <Box>
+            <Box width={"100%"}>
               <Typography fontWeight={500} marginBottom={4} variant="h6">
-                LEAVE A REPLY
+                LEAVE A COMMENT
               </Typography>
               <form onSubmit={submitHandler}>
-                <ReplyForm
-                  enteredName={enteredName}
-                  setEnteredName={setEnteredName}
-                  setNameTouched={setNameTouched}
-                  nameIsValid={nameIsValid}
-                  nameTouched={nameTouched}
-                  enteredEmail={enteredEmail}
-                  setEnteredEmail={setEnteredEmail}
-                  setEmailTouched={setEmailTouched}
-                  emailIsValid={emailIsValid}
-                  emailTouched={emailTouched}
-                />
+                <ReplyForm />
               </form>
             </Box>
           </Grid>
