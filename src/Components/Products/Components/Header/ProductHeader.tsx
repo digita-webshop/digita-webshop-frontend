@@ -1,8 +1,14 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { StyledProducts, navStyle } from "../../../../Styles/Products/index";
 
-const ProductHeader = () => {
+const categories = ["audio & video game", "camera & photo", "headphone"];
+
+interface Props {
+  selectedCategory: string;
+  setSelectedCategory: Dispatch<SetStateAction<string>>;
+}
+const ProductHeader = ({ selectedCategory, setSelectedCategory }: Props) => {
   return (
     <Box>
       <StyledProducts>
@@ -17,24 +23,21 @@ const ProductHeader = () => {
           TOP PRODUCTS
         </Typography>
         <Box sx={navStyle}>
-          <Button
-            variant="text"
-            sx={{ color: "gray", fontSize: { xs: "0.70rem", sm: "0.85rem" } }}
-          >
-            AUDIO & VIDEO GAME
-          </Button>
-          <Button
-            variant="text"
-            sx={{ color: "gray", fontSize: { xs: "0.70rem", sm: "0.85rem" } }}
-          >
-            CAMERA & PHOTO
-          </Button>
-          <Button
-            variant="text"
-            sx={{ color: "gray", fontSize: { xs: "0.70rem", sm: "0.85rem" } }}
-          >
-            HEADPHONE
-          </Button>
+          {categories.map((cat, index) => (
+            <Button
+              key={index}
+              variant="text"
+              sx={{
+                color: selectedCategory === cat ? "common.digitaRed" : "gray",
+                backgroundColor: selectedCategory === cat ? "#FDEBEB" : "",
+                fontSize: { xs: "0.70rem", sm: "0.85rem" },
+                textTransform: "uppercase",
+              }}
+              onClick={() => setSelectedCategory(cat)}
+            >
+              {cat}
+            </Button>
+          ))}
         </Box>
       </StyledProducts>
     </Box>
