@@ -9,3 +9,4 @@ export { default as Settings } from "./Settings/Settings";
 export { default as PanelWishlist } from "./PanelWishlist/PanelWishlist";
 export { default as PanelOrders } from "./PanelOrders/PanelOrders";
 export { default as ManageAccess } from "./ManageAccess/ManageAccess";
+export { default as Articles } from "./Articles/Articles";

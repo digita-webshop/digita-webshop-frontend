@@ -26,6 +26,7 @@ import {
   Products,
   Reviews,
   Settings,
+  Articles,
 } from "./Pages/Panel/Admin";
 
 import {
@@ -70,6 +71,7 @@ function App() {
               <Route path="products" element={<Products />} />
               <Route path="product/:id" element={<EditProduct />} />
               <Route path="orders" element={<Orders />} />
+              <Route path="articles" element={<Articles />} />
               <Route path="add-product" element={<AddProduct />} />
               <Route path="add-article" element={<AddArticle />} />
               <Route path="reviews" element={<Reviews />} />

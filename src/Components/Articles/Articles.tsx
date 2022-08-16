@@ -1,14 +1,15 @@
+import ContentHeader from "../PanelProducts/ContentHeader/ContentHeader";
+import Pagination from "../PanelProducts/Pagination/Pagination";
 import { useState } from "react";
-import ContentHeader from "./ContentHeader/ContentHeader";
 import GridHeader from "./GridHeader/GridHeader";
 import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
-import Product from "./Product/Product";
-import { productData } from "../../Services/Utils/Data/data";
-import Pagination from "./Pagination/Pagination";
+import Article from "./Article/Article";
+import { articlesBlogPage } from "../../Services/Utils/Data/data";
+import { ArticleWrapper } from "../../Styles/Articles";
 
-const PanelProducts = () => {
-  const [list, setList] = useState(productData);
+const Articles = () => {
+  const [list, setList] = useState(articlesBlogPage);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -34,7 +35,7 @@ const PanelProducts = () => {
   return (
     <Grid container rowSpacing={4}>
       <Grid item xs={12}>
-        <ContentHeader title="Products"/>
+        <ContentHeader title="Articles" />
       </Grid>
 
       <Grid item xs={12}>
@@ -51,21 +52,17 @@ const PanelProducts = () => {
         <Divider
           sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
         />
-        <DashWrapper
-          sx={{
-            borderTopLeftRadius: "0",
-            borderTopRightRadius: "0",
-            overflow: "hidden",
-          }}
-        >
+        <ArticleWrapper>
           <Grid container spacing={2}>
-            {currentProducts.map(({ id, name, price, image }) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={id}>
-                <Product
+            {currentProducts.map(({ id, title, image, author, releaseDate, category }) => (
+              <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={id}>
+                <Article
                   id={id}
-                  name={name}
-                  price={price}
+                  title={title}
                   image={image}
+                  author={author}
+                  releaseDate={releaseDate}
+                  category={category}
                   onRemove={handleRemove}
                 />
               </Grid>
@@ -80,10 +77,10 @@ const PanelProducts = () => {
               setCurrentPage={setCurrentPage}
             />
           </Box>
-        </DashWrapper>
+        </ArticleWrapper>
       </Grid>
     </Grid>
   );
 };
 
-export default PanelProducts;
+export default Articles;
