@@ -127,3 +127,28 @@ export const panelToolbarStyles = {
     },
   },
 };
+
+export const accordionDetailStyles = {
+  fontFamily: "jost ",
+  marginLeft: "34px",
+  padding: "0px 16px 16px",
+  a: {
+    textDecoration: "none",
+    display: "block",
+    color: "common.digitaGrey1",
+    margin: "10px 0",
+    transition: "all 200ms",
+    textTransform: "capitalize",
+    "&:hover": {
+      color: "common.digitaBlack",
+    },
+  },
+};
+export const accordionSummaryStyles = {
+  padding: "8px 10px",
+  width: "100%",
+  minHeight: "unset !important",
+  "& .MuiAccordionSummary-content": {
+    margin: "0 !important",
+  },
+};

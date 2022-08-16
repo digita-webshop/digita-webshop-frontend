@@ -68,13 +68,18 @@ function App() {
             </Route>
             <Route path="/panel/*" element={<PanelLayout />}>
               <Route path="dashboard" element={<Dashboard />} />
-              <Route path="products" element={<Products />} />
+              <Route path="products/*">
+                <Route path="list" element={<Products />} />
+                <Route path="add" element={<AddProduct />} />
+                <Route path="reviews" element={<Reviews />} />
+              </Route>
               <Route path="product/:id" element={<EditProduct />} />
               <Route path="orders" element={<Orders />} />
-              <Route path="articles" element={<Articles />} />
-              <Route path="add-product" element={<AddProduct />} />
-              <Route path="add-article" element={<AddArticle />} />
-              <Route path="reviews" element={<Reviews />} />
+              <Route path="articles/*">
+                <Route path="list" element={<Articles />} />
+                <Route path="add" element={<AddArticle />} />
+                <Route path="reviews" element={<Reviews />} />
+              </Route>
               <Route path="brands" element={<Brands />} />
               <Route path="wishlist" element={<PanelWishlist />} />
               <Route path="my-orders" element={<PanelOrders />} />
