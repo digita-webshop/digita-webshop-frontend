@@ -1618,6 +1618,14 @@ export const brands = [
   },
 ];
 
+export const articleReviews = [
+  {id: 1, pId: 1, review: "A-Line Mini Dress in Blue", name: "Devon Lane", date: "10.03.2019"},
+  {id: 2, pId: 2, review: "A-Line Mini Dress in Blue", name: "Guy Hawkins", date: "10.03.2019"},
+  {id: 3, pId: 3, review: "A-Line Mini Dress in Blue", name: "Savannah Nguyen", date: "10.03.2019"},
+  {id: 4, pId: 4, review: "A-Line Mini Dress in Blue", name: "Kristin Watson", date: "10.03.2019"},
+  {id: 5, pId: 5, review: "A-Line Mini Dress in Blue", name: "Courtney Henry", date: "10.03.2019"},
+]
+
 export const reviews = [
   {
     id: 1,
