@@ -1,11 +1,12 @@
 import {
+  ArrowDropDown,
   CompareArrows,
   LocalGroceryStoreOutlined,
-  LoginOutlined,
+  PersonOutline,
   SearchOutlined,
 } from "@mui/icons-material";
 import { Badge, Box } from "@mui/material";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   iconsBadgeStyles,
@@ -13,6 +14,7 @@ import {
   IconWrapper,
 } from "../../../../Styles/Appbar";
 import ShopCart from "../ShopCart/ShopCart";
+import UserDropDown from "../UserDropDown/UserDropDown";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -37,6 +39,23 @@ function Icons({
   matches,
   setOpenCompareModal,
 }: Props) {
+  const [open, setOpen] = useState(false);
+  const userDropRef = useRef<HTMLDivElement>(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event: Event | React.SyntheticEvent) => {
+    if (
+      userDropRef.current &&
+      userDropRef.current.contains(event.target as HTMLElement)
+    ) {
+      return;
+    }
+
+    setOpen(false);
+  };
   const navigate = useNavigate();
 
   const shopClickHandler = () => {
@@ -54,11 +73,38 @@ function Icons({
             <SearchOutlined color="primary" sx={navbarIcons} />
           </Badge>
         </IconWrapper>
-        <IconWrapper onClick={loginModalHandler(true)}>
+        <IconWrapper
+          ref={userDropRef}
+          id="user-drop-button"
+          aria-controls={open ? "user-drop-menu" : undefined}
+          aria-expanded={open ? "true" : undefined}
+          aria-haspopup="true"
+          onClick={handleToggle}
+        >
+          <Badge showZero sx={iconsBadgeStyles}>
+            <PersonOutline color="primary" sx={navbarIcons} />
+            <ArrowDropDown
+              color="primary"
+              sx={{
+                transition: "all 200ms",
+                cursor: "pointer",
+                fontSize: "28px",
+                "&:hover": { color: "#f03637" },
+              }}
+            />
+          </Badge>
+        </IconWrapper>
+        <UserDropDown
+          open={open}
+          handleClose={handleClose}
+          userDropRef={userDropRef}
+        />
+        {/* <IconWrapper onClick={loginModalHandler(true)}>
           <Badge showZero sx={iconsBadgeStyles}>
             <LoginOutlined color="primary" sx={navbarIcons} />
           </Badge>
-        </IconWrapper>
+        </IconWrapper> */}
+
         <IconWrapper
           display={"flex"}
           height={"100%"}
