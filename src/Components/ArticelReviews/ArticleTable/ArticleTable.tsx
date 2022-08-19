@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -7,13 +7,12 @@ import {
   Typography,
   TableHead,
   TableRow,
-  useMediaQuery,
 } from "@mui/material";
 import { articleReviews } from "../../../Services/Utils/Data/data";
 import { TCheckBox, THCell } from "../../../Styles/Reviews";
 import { TCell } from "../../../Styles/ArticleReview";
-import { useTheme } from "@mui/material/styles";
 import { cartModal } from "../../../Styles/PanelProducts";
+import { Close } from "@mui/icons-material";
 
 const tableHead = [<TCheckBox />, "#ID", "reviews", "name", "date"];
 
@@ -23,12 +22,9 @@ interface Props {
 
 function ArticleTable({ selectedAmount }: Props) {
   const [open, setOpen] = useState(false);
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("md"));
-  const matchesSm = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Table onClick={() => setOpen(true)}>
+    <Table>
       <TableHead>
         <TableRow>
           {tableHead.map((item, index) => (
@@ -48,8 +44,9 @@ function ArticleTable({ selectedAmount }: Props) {
         {articleReviews
           .slice(0, +selectedAmount)
           .map(({ id, pId, review, name, date }) => (
-            <React.Fragment>
+            <>
               <TableRow
+                onClick={() => setOpen(true)}
                 key={id}
                 sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
               >
@@ -81,12 +78,24 @@ function ArticleTable({ selectedAmount }: Props) {
                     variant="h5"
                     component="h2"
                     sx={{ textAlign: "center" }}
-                >
+                  >
                     {review}
                   </Typography>
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: "0",
+                      right: "0",
+                      padding: 1,
+                      cursor: "pointer",
+                    }}
+                    onClick={() => setOpen(false)}
+                  >
+                    <Close />
+                  </Box>
                 </Box>
               </Modal>
-            </React.Fragment>
+            </>
           ))}
       </TableBody>
     </Table>
