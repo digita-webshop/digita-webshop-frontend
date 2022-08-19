@@ -2,6 +2,7 @@ import {
   ArrowDropDown,
   CompareArrows,
   LocalGroceryStoreOutlined,
+  LoginOutlined,
   PersonOutline,
   SearchOutlined,
 } from "@mui/icons-material";
@@ -31,6 +32,8 @@ interface Props {
   toggleDrawer: (anchor: Anchor, open: boolean) => () => void;
   matches: boolean;
   setOpenCompareModal: Dispatch<SetStateAction<boolean>>;
+  openDropdown: boolean;
+  setOpenDropdown: Dispatch<SetStateAction<boolean>>;
 }
 function Icons({
   openSearchBarHandler,
@@ -38,12 +41,18 @@ function Icons({
   toggleDrawer,
   matches,
   setOpenCompareModal,
+  openDropdown,
+  setOpenDropdown,
 }: Props) {
-  const [open, setOpen] = useState(false);
   const userDropRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+    if (matches) {
+      setOpenDropdown((prevOpen) => !prevOpen);
+    } else {
+      navigate("/user");
+    }
   };
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
@@ -54,9 +63,8 @@ function Icons({
       return;
     }
 
-    setOpen(false);
+    setOpenDropdown(false);
   };
-  const navigate = useNavigate();
 
   const shopClickHandler = () => {
     if (!matches) {
@@ -73,15 +81,15 @@ function Icons({
             <SearchOutlined color="primary" sx={navbarIcons} />
           </Badge>
         </IconWrapper>
-        <IconWrapper
+        {/* <IconWrapper
           ref={userDropRef}
           id="user-drop-button"
-          aria-controls={open ? "user-drop-menu" : undefined}
-          aria-expanded={open ? "true" : undefined}
+          aria-controls={openDropdown ? "user-drop-menu" : undefined}
+          aria-expanded={openDropdown ? "true" : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          <Badge showZero sx={iconsBadgeStyles}>
+          <Badge showZero sx={{ margin: "auto" }}>
             <PersonOutline color="primary" sx={navbarIcons} />
             <ArrowDropDown
               color="primary"
@@ -90,20 +98,21 @@ function Icons({
                 cursor: "pointer",
                 fontSize: "28px",
                 "&:hover": { color: "#f03637" },
+                display: { xs: "none", md: "inline-block" },
               }}
             />
           </Badge>
-        </IconWrapper>
+        </IconWrapper> */}
         <UserDropDown
-          open={open}
+          openDropdown={openDropdown}
           handleClose={handleClose}
           userDropRef={userDropRef}
         />
-        {/* <IconWrapper onClick={loginModalHandler(true)}>
+        <IconWrapper onClick={loginModalHandler(true)}>
           <Badge showZero sx={iconsBadgeStyles}>
             <LoginOutlined color="primary" sx={navbarIcons} />
           </Badge>
-        </IconWrapper> */}
+        </IconWrapper>
 
         <IconWrapper
           display={"flex"}

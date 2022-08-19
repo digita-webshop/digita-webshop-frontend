@@ -17,14 +17,14 @@ import { Link } from "react-router-dom";
 import { DropMenuItem } from "../../../../Styles/Appbar";
 
 interface Props {
-  open: boolean;
+  openDropdown: boolean;
   handleClose: (event: Event | React.SyntheticEvent) => void;
   userDropRef: MutableRefObject<HTMLDivElement | null>;
 }
-function UserDropDown({ open, handleClose, userDropRef }: Props) {
+function UserDropDown({ openDropdown, handleClose, userDropRef }: Props) {
   return (
     <Popper
-      open={open}
+      open={openDropdown}
       anchorEl={userDropRef?.current}
       role={undefined}
       placement="bottom-end"
@@ -45,7 +45,7 @@ function UserDropDown({ open, handleClose, userDropRef }: Props) {
           <Paper>
             <ClickAwayListener onClickAway={handleClose}>
               <MenuList
-                autoFocusItem={open}
+                autoFocusItem={openDropdown}
                 id="composition-menu"
                 aria-labelledby="composition-button"
                 disablePadding
