@@ -32,7 +32,7 @@ function SidebarTop({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
       }}
     >
       {menuOpen && (
-        <Link to="/panel/dashboard">
+        <Link to="/">
           <img src={logoImg} alt="digita-logo" />
         </Link>
       )}
