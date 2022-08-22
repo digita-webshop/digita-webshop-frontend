@@ -13,6 +13,8 @@ import {
   IconWrapper,
 } from "../../../../Styles/Appbar";
 import ShopCart from "../ShopCart/ShopCart";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../../store";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -38,6 +40,7 @@ function Icons({
   setOpenCompareModal,
 }: Props) {
   const navigate = useNavigate();
+  const cartList = useSelector((state:RootState) => state.cartReducer.cartList);
 
   const shopClickHandler = () => {
     if (!matches) {
@@ -77,7 +80,7 @@ function Icons({
         >
           <Box onClick={shopClickHandler} sx={{ display: "flex" }}>
             <Badge
-              badgeContent={4}
+              badgeContent={cartList.length}
               overlap="circular"
               color="error"
               sx={{
