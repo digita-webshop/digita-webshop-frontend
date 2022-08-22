@@ -20,7 +20,6 @@ import {handleRowDelete} from "../../../../Components/ShoppingCart/Services";
 
 function ShopCart() {
     const dispatch = useDispatch()
-
     useEffect(()=>{
         const dummyCartData = [
             {
@@ -87,12 +86,7 @@ function ShopCart() {
         dispatch(setCart(dummyCartData));
           dispatch(setQuantity(dummyCartData));
     },[])
-    const cart = useSelector((state: RootState) => state.cartReducer);
-    const total = cart.total
-    const cartList = cart.cartList
-    console.log('total', total)
-    console.log('list', cart.cartList)
-
+    const cartList = useSelector((state: RootState) => state.cartReducer.cartList);
     const subtotal = cartList.reduce((acc: number, curr: CartItem) => {
         acc += curr.quantity * curr.price;
         return acc;

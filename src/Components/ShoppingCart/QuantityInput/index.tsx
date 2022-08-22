@@ -18,14 +18,10 @@ type Props = {
 const QuantityInput = ({
   setUpdateButtonDisabled,
   row,
-  values,
-  setValues,
   updateButtonDisabled,
-  cartList,
 }: Props) => {
   const dispatch = useDispatch()
   const quantities : CartItem[] = useSelector((state:RootState) => state.cartReducer.quantities);
-    console.log(quantities,quantities)
   const quantity :number= quantities.filter((item: CartItem) => item.id === row.id)[0].quantity;
   const handleDecValue = () => {
     if (quantity === 0) {
@@ -39,7 +35,6 @@ const QuantityInput = ({
       }
     });
 
-    // @ts-ignore todo fix me later
     dispatch(setQuantity(clone));
     updateButtonDisabled && setUpdateButtonDisabled(false);
   };
@@ -52,7 +47,6 @@ const QuantityInput = ({
       }
     });
 
-    // @ts-ignore todo fix me later
     dispatch(setQuantity(clone));
     updateButtonDisabled && setUpdateButtonDisabled(false);
   };

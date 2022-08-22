@@ -20,7 +20,6 @@ const ShoppingCart = () => {
   const [values, setValues] = useState<CartItem[]>([]);
   const cartList = useSelector((state:RootState) => state.cartReducer.cartList);
   const dispatch = useDispatch()
-  console.log('wtfff ',cartList)
   // useEffect(() => {
   //   const temp: CartItem[] = [];
   //   cartList.map((item: CartItem) => {
