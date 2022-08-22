@@ -8,7 +8,6 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { articleReviews } from "../../../Services/Utils/Data/data";
 import { TCheckBox, THCell } from "../../../Styles/Reviews";
 import { TCell } from "../../../Styles/ArticleReview";
 import { cartModal } from "../../../Styles/PanelProducts";
@@ -17,10 +16,14 @@ import { Close } from "@mui/icons-material";
 const tableHead = [<TCheckBox />, "#ID", "reviews", "name", "date"];
 
 interface Props {
-  selectedAmount: string;
+  id: number;
+  pId: number;
+  review: string;
+  name: string;
+  date: string;
 }
 
-function ArticleTable({ selectedAmount }: Props) {
+function ArticleTable({ id, pId, review, name, date }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -41,62 +44,56 @@ function ArticleTable({ selectedAmount }: Props) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {articleReviews
-          .slice(0, +selectedAmount)
-          .map(({ id, pId, review, name, date }) => (
-            <>
-              <TableRow
-                onClick={() => setOpen(true)}
-                key={id}
-                sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
-              >
-                <TCell>
-                  <TCheckBox />
-                </TCell>
-                <TCell>{pId}</TCell>
-                <TCell
-                  sx={{
-                    fontWeight: 500,
-                    wordBreak: "break-word",
-                  }}
-                >
-                  {review}
-                </TCell>
-                <TCell sx={{ wordBreak: "break-all" }}>{name}</TCell>
-                <TCell sx={{ textAlign: "right" }}>{date}</TCell>
-              </TableRow>
+        <TableRow
+          onClick={() => setOpen(true)}
+          key={id}
+          sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
+        >
+          <TCell>
+            <TCheckBox />
+          </TCell>
+          <TCell>{pId}</TCell>
+          <TCell
+            sx={{
+              fontWeight: 500,
+              wordBreak: "break-word",
+            }}
+          >
+            {review}
+          </TCell>
+          <TCell sx={{ wordBreak: "break-all" }}>{name}</TCell>
+          <TCell sx={{ textAlign: "right" }}>{date}</TCell>
+        </TableRow>
 
-              <Modal
-                open={open}
-                onClose={() => setOpen(false)}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-              >
-                <Box sx={cartModal}>
-                  <Typography
-                    id="modal-modal-title"
-                    variant="h5"
-                    component="h2"
-                    sx={{ textAlign: "center" }}
-                  >
-                    {review}
-                  </Typography>
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: "0",
-                      right: "0",
-                      padding: 1,
-                      cursor: "pointer",
-                    }}
-                    onClick={() => setOpen(false)}
-                  >
-                    <Close />
-                  </Box>
-                </Box>
-              </Modal>
-            </>
-          ))}
+        <Modal
+          open={open}
+          onClose={() => setOpen(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={cartModal}>
+            <Typography
+              id="modal-modal-title"
+              variant="h5"
+              component="h2"
+              sx={{ textAlign: "center" }}
+            >
+              {review}
+            </Typography>
+            <Box
+              sx={{
+                position: "absolute",
+                top: "0",
+                right: "0",
+                padding: 1,
+                cursor: "pointer",
+              }}
+              onClick={() => setOpen(false)}
+            >
+              <Close />
+            </Box>
+          </Box>
+        </Modal>
       </TableBody>
     </Table>
   );

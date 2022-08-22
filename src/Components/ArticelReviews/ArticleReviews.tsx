@@ -1,10 +1,10 @@
-import {useState} from "react";
+import { useState } from "react";
 import { Grid, SelectChangeEvent, Divider } from "@mui/material";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import { CardWrapper } from "../../Styles/panelCommon";
 import TableHeader from "../Orders/TableHeader/TableHeader";
 import ArticleTable from "./ArticleTable/ArticleTable";
-
+import { articleReviews } from "../../Services/Utils/Data/data";
 
 const ArticleReviews = () => {
   const [selectedStatus, setSelectedStatus] = useState("status");
@@ -16,6 +16,8 @@ const ArticleReviews = () => {
   const selectedAmountHandler = (event: SelectChangeEvent) => {
     setSelectedAmount(event.target.value);
   };
+
+
   return (
     <>
       <Grid container rowSpacing={4}>
@@ -36,9 +38,17 @@ const ArticleReviews = () => {
             <Divider
               sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
             />
-          </CardWrapper>
+          </CardWrapper>  
           <CardWrapper>
-            <ArticleTable selectedAmount={selectedAmount} />
+            {articleReviews.map(({ id, pId, review, name, date }) => (
+              <ArticleTable
+                id={id}
+                pId={pId}
+                review={review}
+                name={name}
+                date={date}
+              />
+            ))}
           </CardWrapper>
         </Grid>
       </Grid>
