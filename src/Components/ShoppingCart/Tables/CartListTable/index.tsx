@@ -17,6 +17,7 @@ import { UpdateCart } from "../../ShoppingCart";
 import { UpdateType } from "../../CartUpdated";
 import {useDispatch, useSelector} from "react-redux";
 import {setCart} from "../../../../features/cart/cartSlice";
+import {RootState} from "../../../../store";
 
 type Props = {
   cartList: CartItem[];
@@ -32,14 +33,12 @@ const CartListTable = ({
   setCartUpdated,
 }: Props) => {
   const [updateButtonDisabled, setUpdateButtonDisabled] = useState(true);
-  // @ts-ignore todo fix later
-  const quantities = useSelector((state) => state.cartReducer.quantities);
+  const quantities = useSelector((state:RootState) => state.cartReducer.quantities);
   const dispatch = useDispatch()
 
   const handleUpdateCart = () => {
     setUpdateButtonDisabled(true);
 
-    // @ts-ignore todo fix later
     dispatch(setCart(quantities));
 
     setCartUpdated((prevState) => {

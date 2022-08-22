@@ -4,6 +4,7 @@ import React from "react";
 import CartItem from "../Types/CartItemType";
 import {useDispatch, useSelector} from "react-redux";
 import {setQuantity} from "../../../features/cart/cartSlice"
+import {RootState} from "../../../store";
 
 type Props = {
   updateButtonDisabled: boolean;
@@ -22,11 +23,10 @@ const QuantityInput = ({
   updateButtonDisabled,
   cartList,
 }: Props) => {
-    const dispatch = useDispatch()
-    // @ts-ignore todo fix later
-  const quantities = useSelector((state) => state.cartReducer.quantities);
-  const quantity = quantities.filter((item: CartItem) => item.id === row.id)[0]
-    .quantity;
+  const dispatch = useDispatch()
+  const quantities : CartItem[] = useSelector((state:RootState) => state.cartReducer.quantities);
+    console.log(quantities,quantities)
+  const quantity :number= quantities.filter((item: CartItem) => item.id === row.id)[0].quantity;
   const handleDecValue = () => {
     if (quantity === 0) {
       return;
