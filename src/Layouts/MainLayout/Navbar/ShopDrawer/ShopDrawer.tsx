@@ -10,7 +10,10 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import React from "react";
+import {useSelector} from "react-redux";
+import {RootState} from "../../../../store";
 
 type Anchor = "left" | "right";
 type ShopDrawerProps = {
@@ -19,6 +22,7 @@ type ShopDrawerProps = {
 };
 function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
   const navigate = useNavigate();
+  const total = useSelector((state: RootState) => state.cartReducer.total);
 
   return (
     <Drawer
@@ -109,7 +113,7 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
             SUBTOTAL:
           </Typography>
           <Typography variant="subtitle2" color={"primary"}>
-            $325:00
+              {total.toFixed(2)}
           </Typography>
         </Box>
         <Divider />

@@ -8,6 +8,7 @@ import CartItem from "./Types/CartItemType";
 import { styled } from "@mui/material/styles";
 import {useDispatch, useSelector} from "react-redux";
 import {setCart,setQuantity} from "../../features/cart/cartSlice";
+import {RootState} from "../../store";
 
 export type UpdateCart = {
   item?: CartItem;
@@ -17,50 +18,50 @@ export type UpdateCart = {
 const ShoppingCart = () => {
   const [cartUpdated, setCartUpdated] = useState<UpdateCart | null>(null);
   const [values, setValues] = useState<CartItem[]>([]);
-  // @ts-ignore todo fix later
-  const cartList = useSelector((state) => state.cartReducer.cartList);
+  const cartList = useSelector((state:RootState) => state.cartReducer.cartList);
   const dispatch = useDispatch()
-  useEffect(() => {
-    const temp: CartItem[] = [];
-    cartList.map((item: CartItem) => {
-      temp.push(item);
-    });
-    setValues(temp);
-    const dummyCartData = [
-      {
-        id: 1,
-        image:
-          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-6.jpg",
-        product: "IPhone",
-        price: 5,
-        quantity: 4,
-        total: 3,
-        alt: "iphone-image",
-      },
-      {
-        id: 2,
-        image:
-          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-6.jpg",
-        product: "Microsoft Xbox One SP",
-        price: 4,
-        quantity: 2,
-        total: 3,
-        alt: "xbox-image",
-      },
-      {
-        id: 3,
-        image:
-          "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7.jpg",
-        product: "Microsoft Xbox One S Blue Grey",
-        price: 1,
-        quantity: 3,
-        total: 1,
-        alt: "xbox-1-image",
-      },
-    ];
-    dispatch(setCart(dummyCartData));
-    dispatch(setQuantity(dummyCartData));
-  }, []);
+  console.log('wtfff ',cartList)
+  // useEffect(() => {
+  //   const temp: CartItem[] = [];
+  //   cartList.map((item: CartItem) => {
+  //     temp.push(item);
+  //   });
+  //   setValues(temp);
+  //   const dummyCartData = [
+  //     {
+  //       id: 1,
+  //       image:
+  //         "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-6.jpg",
+  //       product: "IPhone",
+  //       price: 5,
+  //       quantity: 4,
+  //       total: 3,
+  //       alt: "iphone-image",
+  //     },
+  //     {
+  //       id: 2,
+  //       image:
+  //         "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-6.jpg",
+  //       product: "Microsoft Xbox One SP",
+  //       price: 4,
+  //       quantity: 2,
+  //       total: 3,
+  //       alt: "xbox-image",
+  //     },
+  //     {
+  //       id: 3,
+  //       image:
+  //         "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7.jpg",
+  //       product: "Microsoft Xbox One S Blue Grey",
+  //       price: 1,
+  //       quantity: 3,
+  //       total: 1,
+  //       alt: "xbox-1-image",
+  //     },
+  //   ];
+  //   dispatch(setCart(dummyCartData));
+  //   dispatch(setQuantity(dummyCartData));
+  // }, []);
 
   const total = cartList.reduce((acc: number, curr: CartItem) => {
     acc += curr.quantity * curr.price;

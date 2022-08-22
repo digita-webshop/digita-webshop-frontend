@@ -58,7 +58,7 @@ const CartTotalTable = ({ total }: Props) => {
                   color: "#f03637",
                 }}
               >
-                ${total.toFixed(2)}
+                {total.toFixed(2)}
               </TableCell>
             </TableRow>
             <TableRow>
@@ -77,7 +77,7 @@ const CartTotalTable = ({ total }: Props) => {
                     }
                   )}
                 >
-                  ${total.toFixed(2)}
+                  {total.toFixed(2)}
                 </Typography>
               </TableCell>
             </TableRow>
