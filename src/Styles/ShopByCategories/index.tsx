@@ -38,3 +38,12 @@ export const boxStyles = {
   flexDirection: "column",
   alignItems: "center",
 };
+
+export const Card = styled(Box)(({ theme }) => ({
+  width: "100%",
+  position: "relative",
+  img: {
+    maxWidth: "100%",
+    height: "auto",
+  },
+}));
