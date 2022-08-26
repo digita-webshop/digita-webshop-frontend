@@ -11,7 +11,11 @@ const SliderCard = ({ item }: Props) => {
   const navigate = useNavigate();
 
   const clickHandler = () => {
-    navigate(`/shop/?category=${item.name}`);
+    const query = item.name.replaceAll(" ", "+").replaceAll("&", "%26");
+    navigate({
+      pathname: `/shop`,
+      search: `?category=%2F${query}`,
+    });
   };
 
   return (
