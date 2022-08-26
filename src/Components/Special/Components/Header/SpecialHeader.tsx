@@ -1,11 +1,13 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
-import {
-  navStyle,
-  StyledProducts,
-} from "../../../../Styles/Products";
+import React, { Dispatch, SetStateAction } from "react";
+import { navStyle, StyledProducts } from "../../../../Styles/Products";
 
-const SpecialHeader = () => {
+const sortList = ["latest products", "top rating"];
+interface Props {
+  selectedSorting: string;
+  setSelectedSorting: Dispatch<SetStateAction<string>>;
+}
+const SpecialHeader = ({ selectedSorting, setSelectedSorting }: Props) => {
   return (
     <Box>
       <StyledProducts>
@@ -16,15 +18,21 @@ const SpecialHeader = () => {
           SPECIAL
         </Typography>
         <Box sx={navStyle}>
-          <Button variant="text" sx={{ color: "gray", fontSize: "0.85rem" }}>
-            LATEST PRODUCTS
-          </Button>
-          <Button variant="text" sx={{ color: "gray", fontSize: "0.85rem" }}>
-            BEST SELLING
-          </Button>
-          <Button variant="text" sx={{ color: "gray", fontSize: "0.85rem" }}>
-            FEATURED
-          </Button>
+          {sortList.map((sort, index) => (
+            <Button
+              key={index}
+              variant="text"
+              sx={{
+                color: selectedSorting === sort ? "common.digitaRed" : "gray",
+                backgroundColor: selectedSorting === sort ? "#FDEBEB" : "",
+                fontSize: { xs: "0.70rem", sm: "0.85rem" },
+                textTransform: "uppercase",
+              }}
+              onClick={() => setSelectedSorting(sort)}
+            >
+              {sort}
+            </Button>
+          ))}
         </Box>
       </StyledProducts>
     </Box>

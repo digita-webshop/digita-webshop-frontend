@@ -1,13 +1,23 @@
 import { Container, Grid, Box } from "@mui/material";
 import SpecialHeader from "./Components/Header/SpecialHeader";
 import SpecialItem from "./Components/SpecialItem/SpecialItem";
-import { specialProducts } from "../../Services/Utils/Data/data";
+import { productData } from "../../Services/Utils/Data/data";
 import SupportItems from "./Components/SupportItems/SupportItems";
 import SpecialCards from "./Components/SpecialCards/SpecialCards";
 import { useInView } from "react-intersection-observer";
+import { useState } from "react";
 
 const Special = () => {
+  const [selectedSorting, setSelectedSorting] = useState("latest products");
   const { ref, inView } = useInView({ triggerOnce: true });
+  let filteredProducts = productData;
+
+  if (selectedSorting === "latest products") {
+    // filteredProducts = productData.sort((a, b) => b.starRate - a.starRate);
+  }
+  if (selectedSorting === "top rating") {
+    filteredProducts = productData.sort((a, b) => b.starRate - a.starRate);
+  }
 
   return (
     <Container
@@ -32,11 +42,14 @@ const Special = () => {
               : "",
         }}
       >
-        <SpecialHeader />
+        <SpecialHeader
+          selectedSorting={selectedSorting}
+          setSelectedSorting={setSelectedSorting}
+        />
 
         <Box>
           <Grid container spacing={{ xs: 2, md: 3 }}>
-            {specialProducts.map((item) => (
+            {filteredProducts.slice(0, 9).map((item) => (
               <SpecialItem
                 key={item.id}
                 id={item.id}

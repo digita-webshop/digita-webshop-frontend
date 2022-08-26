@@ -10,7 +10,14 @@ import {
 function General() {
   return (
     <Grid container spacing={3}>
-      <Grid container item xs={12} md={8} spacing={3}>
+      <Grid
+        container
+        item
+        xs={12}
+        md={8}
+        spacing={3}
+        sx={{ zIndex: "1 !important" }}
+      >
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
             <PFormLabel>first name</PFormLabel>

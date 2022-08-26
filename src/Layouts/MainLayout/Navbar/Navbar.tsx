@@ -40,6 +40,7 @@ function Navbar() {
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openCompareModal, setOpenCompareModal] = useState(false);
+
   const [collapse, setCollapse] = useState(true);
   const [modalType, setModalType] = useState("login");
 
@@ -48,6 +49,8 @@ function Navbar() {
     right: false,
   });
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [openDropdown, setOpenDropdown] = useState(false);
+
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const { pathname } = useLocation();
@@ -89,6 +92,7 @@ function Navbar() {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 180 && lastScroll < window.scrollY && matches) {
         setCollapse(false);
+        setOpenDropdown(false);
       } else {
         setCollapse(true);
       }
@@ -111,7 +115,9 @@ function Navbar() {
                 </Box>
               </Box>
               <Box sx={{ marginRight: { sx: "0", md: "30px" } }}>
-                <img src={logoImg} alt="digita-logo" />
+                <Link to="/">
+                  <img src={logoImg} alt="digita-logo" />
+                </Link>
               </Box>
 
               {!openSearchBar && (
@@ -170,6 +176,8 @@ function Navbar() {
                     matches={matches}
                     toggleDrawer={toggleDrawer}
                     setOpenCompareModal={setOpenCompareModal}
+                    openDropdown={openDropdown}
+                    setOpenDropdown={setOpenDropdown}
                   />
                 </Fragment>
               )}
