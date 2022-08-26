@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Tab, Tabs, Box, Typography, Button } from "@mui/material";
+import { Tab, Tabs, Box, Typography, Button, MenuItem } from "@mui/material";
 
 interface StyledTabProps {
   label: string;
@@ -101,6 +101,7 @@ export const IconWrapper = styled(Box)(({ theme }) => ({
   cursor: "pointer",
   "&:hover .MuiSvgIcon-root": { color: theme.palette.common.digitaRed },
 }));
+
 export const ShopMenuWrapper = styled(Box)(({ theme }) => ({
   border: "1px solid #dedede",
   boxSizing: "border-box",
@@ -170,3 +171,17 @@ export const tabLinkStyles = {
   padding: "12px 16px",
   overflow: "visible !important",
 };
+export const DropMenuItem = styled(MenuItem)(({ theme }) => ({
+  minWidth: "240px",
+  padding: "0",
+  a: {
+    color: theme.palette.common.digitaBlack,
+    padding: "13px 0px",
+    margin: "0 16px",
+    borderBottom: `1px solid ${theme.palette.common.digitaGrey6}`,
+    display: "flex",
+    width: "100%",
+    gap: "8px",
+    textDecoration: "none",
+  },
+}));

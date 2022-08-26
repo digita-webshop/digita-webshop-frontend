@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from "@mui/material/Modal";
-import AddToCartModal from "../Modals/AddToCartModal/AddToCartModal";
+import CartModal from "../../../Products/Components/Modals/CartModal/CartModal";
 import {
   Grid,
   Button,
@@ -18,17 +18,10 @@ import {
   productMetaStyle,
   linkStyle,
   filledPrice,
-  nextButton,
-  nextButtonStyle,
   starLink,
   productButtonStyles,
 } from "../../../../Styles/Product/index";
-import {
-  ArrowBackIos,
-  ArrowForwardIos,
-  FavoriteBorder,
-  Shuffle,
-} from "@mui/icons-material";
+import { FavoriteBorder, Shuffle } from "@mui/icons-material";
 import Gallery from "./Gallery/Gallery";
 import ColorPicker from "./ColorPicker/ColorPicker";
 
@@ -57,14 +50,6 @@ const ProductDetails = ({ product }: Props) => {
               <Typography variant="h4" sx={productTitle}>
                 {name}
               </Typography>
-              <Box sx={nextButton}>
-                <Box sx={nextButtonStyle} component="button">
-                  <ArrowBackIos />
-                </Box>
-                <Box sx={nextButtonStyle} component="button">
-                  <ArrowForwardIos />
-                </Box>
-              </Box>
             </Box>
             <Box sx={starLink}>
               <Rating
@@ -100,7 +85,7 @@ const ProductDetails = ({ product }: Props) => {
                   aria-labelledby="modal-modal-title"
                   aria-describedby="modal-modal-description"
                 >
-                  <AddToCartModal />
+                  <CartModal price={price} />
                 </Modal>
                 <Button variant="contained">View Cart</Button>
               </Box>

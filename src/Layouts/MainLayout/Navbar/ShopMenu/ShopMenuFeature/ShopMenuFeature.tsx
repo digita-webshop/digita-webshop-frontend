@@ -1,9 +1,15 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { Fragment } from "react";
+import { useNavigate } from "react-router-dom";
 import { shopMenuCategories } from "../../../../../Services/Utils/Data/data";
 import { ShopSubTitle } from "../../../../../Styles/Appbar";
 
 function ShopMenuFeature() {
+  const navigate = useNavigate();
+
+  const clickHandler = (name: string) => () => {
+    navigate(`/shop/?category=${name}`);
+  };
   return (
     <Fragment>
       <Typography
@@ -25,6 +31,7 @@ function ShopMenuFeature() {
 
                 marginBottom: "5px",
               }}
+              onClick={clickHandler(item.name)}
             >
               <img src={`${item.img}`} alt="category-img" />
             </Box>
@@ -37,6 +44,7 @@ function ShopMenuFeature() {
                 lineHeight: "1.2",
                 cursor: "pointer",
               }}
+              onClick={clickHandler(item.name)}
             >
               {item.name}
             </ShopSubTitle>

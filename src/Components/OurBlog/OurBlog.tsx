@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import BlogCard from "./BlogCard/BlogCard";
 import { ContainerWrapper, WrapperBox } from "../../Styles/OurBlog";
 import { useInView } from "react-intersection-observer";
+import { articlesBlogPage } from "../../Services/Utils/Data/data";
 
 function OurBlog() {
   const { ref, inView } = useInView({ triggerOnce: true });
@@ -43,9 +44,9 @@ function OurBlog() {
               },
             }}
           >
-            {ourBlogData.map((item, index) => {
+            {articlesBlogPage.slice(1, 6).map((item) => {
               return (
-                <SwiperSlide key={index}>
+                <SwiperSlide key={item.id}>
                   <BlogCard item={item} />
                 </SwiperSlide>
               );
