@@ -8,7 +8,11 @@ function ShopMenuFeature() {
   const navigate = useNavigate();
 
   const clickHandler = (name: string) => () => {
-    navigate(`/shop/?category=${name}`);
+    const query = name.replaceAll(" ", "+").replaceAll("&", "%26");
+    navigate({
+      pathname: `/shop`,
+      search: `?category=%2F${query}`,
+    });
   };
   return (
     <Fragment>

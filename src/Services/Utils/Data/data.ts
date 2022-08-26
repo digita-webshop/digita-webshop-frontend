@@ -88,7 +88,7 @@ export const shopMenuCategories = [
   },
   {
     id: 5,
-    name: "camera & photo",
+    name: "camera photo",
     img: "https://demo-61.woovinapro.com/wp-content/uploads/2021/01/image-megamenu-5.png",
   },
   {
