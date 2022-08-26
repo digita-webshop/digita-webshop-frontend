@@ -1,29 +1,25 @@
-import React from 'react';
-import {styled} from "@mui/material/styles";
-import {Box} from "@mui/material";
 import Item from "./Types/Item";
-import {Name} from './Styles'
+import { Name } from "./Styles";
+import { useNavigate } from "react-router-dom";
+import { Card } from "../../../Styles/ShopByCategories";
 
 type Props = {
-    item: Item
+  item: Item;
 };
 
-const SliderCard = ({item}: Props) => {
+const SliderCard = ({ item }: Props) => {
+  const navigate = useNavigate();
 
-    const Card = styled(Box)(({theme}) => ({
-        width: '100%',
-        position: 'relative',
-        img: {
-            maxWidth: '100%',
-            height: 'auto'
-        }
-    }));
-    return (
-        <Card>
-            <img src={item.img}/>
-            <Name>{item.name}</Name>
-        </Card>
-    );
+  const clickHandler = () => {
+    navigate(`/shop/?category=${item.name}`);
+  };
+
+  return (
+    <Card onClick={clickHandler}>
+      <img src={item.img} alt="category-img" />
+      <Name>{item.name}</Name>
+    </Card>
+  );
 };
 
 export default SliderCard;
