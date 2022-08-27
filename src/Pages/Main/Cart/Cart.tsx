@@ -1,12 +1,11 @@
 import React from "react";
 import { Breadcrumbs } from "../../../Components";
 import ShoppingCart from "../../../Components/ShoppingCart/ShoppingCart";
-import {useGetPokemonByNameQuery} from '../../../api/cart'
+import { useGetPokemonByNameQuery } from "../../../features/cart/cartApi";
 const Cart = () => {
+  const { data, error, isLoading } = useGetPokemonByNameQuery("bulbasaur");
 
-    const { data, error, isLoading } = useGetPokemonByNameQuery('bulbasaur')
-
-    console.log('zz',data)
+  console.log("zz", data);
 
   return (
     <>
