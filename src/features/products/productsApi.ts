@@ -1,16 +1,17 @@
+import { IProduct, IReviews } from "../../Services/Utils/Types/product";
 import { api } from "../api";
 
 export const productApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getAllProducts: build.query<any, void>({
+    getAllProducts: build.query<IProduct[], void>({
       query: () => "products",
       providesTags: ["Product"],
     }),
-    getProduct: build.query<any, string>({
+    getProduct: build.query<IProduct, string>({
       query: (id) => `products/find/${id}`,
       providesTags: ["Product"],
     }),
-    updateProduct: build.mutation<any, any>({
+    updateProduct: build.mutation<IProduct, any>({
       query(data) {
         const { id, ...body } = data;
         return {
@@ -30,7 +31,7 @@ export const productApi = api.injectEndpoints({
       },
       invalidatesTags: ["Product"],
     }),
-    addProduct: build.mutation<any, any>({
+    addProduct: build.mutation<any, IProduct>({
       query(body) {
         return {
           url: `products/`,
@@ -40,7 +41,7 @@ export const productApi = api.injectEndpoints({
       },
       invalidatesTags: ["Product"],
     }),
-    getProductReviews: build.query<any, string>({
+    getProductReviews: build.query<IReviews[], string>({
       query: (id) => `products/reviews/${id}`,
       providesTags: ["Product"],
     }),
