@@ -1,6 +1,6 @@
 export interface IReviews {
   userId: string;
-  rating: number;
+  rating?: number;
   description: string;
 }
 export interface IGallery {
