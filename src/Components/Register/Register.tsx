@@ -121,10 +121,10 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
       };
       const data = await signUp(userCredentials).unwrap();
       if (data?.message === "User created successfully") {
-        dispatch(setCredentials({ user: data?.data?.details, role: "user" }));
+        dispatch(setCredentials({ user: data?.data, role: "user" }));
         navigate("/user/status", { replace: true });
       }
-      // console.log(data);
+      console.log(data);
     } catch (err: any) {
       if (err?.status === 422) {
         setErrorMessage(err?.data?.message);
