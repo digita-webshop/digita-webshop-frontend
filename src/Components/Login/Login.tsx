@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../features/auth/authApi";
 import { setCredentials } from "../../features/auth/authSlice";
 import {
+  errorStyles,
   forgetPassStyles,
   FormFooter,
   FormWrapper,
@@ -32,6 +33,8 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [validationError, setValidationError] = useState(false);
+  const [displayError, setDisplayError] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -71,18 +74,20 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
       console.log(data);
     } catch (err) {
       console.log(err);
+      setDisplayError(true);
     }
   };
   return (
     <FormWrapper>
       <Box sx={{ position: "relative" }}>
         <Header title={"log in"} subtitle={"Become a part of our community!"} />
-
-        {/* <Box sx={errorStyles}>
-        <Typography component="span">
-          ERROR: Username or password incorrect!
-        </Typography>
-      </Box> */}
+        {displayError && (
+          <Box sx={errorStyles}>
+            <Typography component="span">
+              ERROR: Username or password incorrect!
+            </Typography>
+          </Box>
+        )}
         <form onSubmit={submitHandler}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
