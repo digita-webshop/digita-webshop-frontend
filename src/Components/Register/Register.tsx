@@ -124,6 +124,7 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
         dispatch(setCredentials({ user: data?.data, role: "user" }));
         navigate("/user/status", { replace: true });
       }
+      closeLoginModal();
       console.log(data);
     } catch (err: any) {
       if (err?.status === 422) {
