@@ -72,6 +72,7 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
           navigate("/user/status", { replace: true });
         }
       }
+      closeLoginModal();
       console.log(data);
     } catch (err) {
       console.log(err);
