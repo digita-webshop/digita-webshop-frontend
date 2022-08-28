@@ -1,4 +1,3 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
 import { api } from "../api";
 
 const authApi = api.injectEndpoints({
@@ -10,7 +9,14 @@ const authApi = api.injectEndpoints({
         body: credentials,
       }),
     }),
+    signUp: build.mutation<any, any>({
+      query: (credentials) => ({
+        url: "auth/signup",
+        method: "POST",
+        body: credentials,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useSignUpMutation } = authApi;
