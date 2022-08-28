@@ -11,7 +11,10 @@ import {
   Typography,
 } from "@mui/material";
 import { FormEvent, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../features/auth/authApi";
+import { setCredentials } from "../../features/auth/authSlice";
 import {
   forgetPassStyles,
   FormFooter,
@@ -29,6 +32,8 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [validationError, setValidationError] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //* username validation
   let emailIsValid = enteredEmail.trim() !== "";
@@ -51,8 +56,19 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
         password: enteredPassword,
       };
 
-      const user = await login(userCredentials).unwrap();
-      console.log(user);
+      const data = await login(userCredentials).unwrap();
+      if (data?.message === "Login successful") {
+        dispatch(
+          setCredentials({ user: data?.data?.details, role: data.data.role })
+        );
+        if (data.data.role === "admin") {
+          navigate("/panel/dashboard", { replace: true });
+        }
+        if (data.data.role === "user") {
+          navigate("/user/status", { replace: true });
+        }
+      }
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
