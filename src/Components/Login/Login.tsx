@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { FormEvent, useState } from "react";
+import { useLoginMutation } from "../../features/auth/authApi";
 import {
   forgetPassStyles,
   FormFooter,
@@ -25,23 +26,35 @@ type Props = {
   modalTypeToggle: (type: Modal) => void;
 };
 function Login({ closeLoginModal, modalTypeToggle }: Props) {
-  const [enteredUsername, setEnteredUsername] = useState("");
+  const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [validationError, setValidationError] = useState(false);
 
   //* username validation
-  let usernameIsValid = enteredUsername.trim() !== "";
-  const usernameError = !usernameIsValid && validationError;
+  let emailIsValid = enteredEmail.trim() !== "";
+  const emailError = !emailIsValid && validationError;
 
   //* password validation
   let passwordIsValid = enteredPassword.trim() !== "";
   const passwordError = !passwordIsValid && validationError;
 
-  const submitHandler = (event: FormEvent) => {
+  const [login] = useLoginMutation();
+  const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
-    if (!usernameIsValid && !passwordIsValid) {
+    if (!emailIsValid && !passwordIsValid) {
       setValidationError(true);
       return;
+    }
+    try {
+      const userCredentials = {
+        email: enteredEmail,
+        password: enteredPassword,
+      };
+
+      const user = await login(userCredentials).unwrap();
+      console.log(user);
+    } catch (err) {
+      console.log(err);
     }
   };
   return (
@@ -60,16 +73,16 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
               <FormControl fullWidth>
                 <TextField
                   variant="standard"
-                  label="Username"
-                  sx={usernameError ? inputErrorStyles : {}}
-                  value={enteredUsername}
-                  onChange={(e) => setEnteredUsername(e.target.value)}
+                  label="Email"
+                  sx={emailError ? inputErrorStyles : {}}
+                  value={enteredEmail}
+                  onChange={(e) => setEnteredEmail(e.target.value)}
                 />
-                {usernameError && (
+                {emailError && (
                   <Typography
                     sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
                   >
-                    Username is required
+                    Email is required
                   </Typography>
                 )}
               </FormControl>
