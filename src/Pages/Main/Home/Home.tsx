@@ -6,8 +6,12 @@ import {
   WhatClientSay,
   OurBlog,
 } from "../../../Components";
+import { useGetAllProductsQuery } from "../../../features/products/productsApi";
 
 function Home() {
+  const { data } = useGetAllProductsQuery();
+  console.log(data);
+
   return (
     <>
       <Header />
