@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "proxy":"http://localhost:8080",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -23,6 +24,7 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
     "@types/uuid": "^8.3.4",
+    "axios": "^0.27.2",
     "chart.js": "^3.8.0",
     "country-state-city": "^3.0.1",
     "draft-js": "^0.11.7",
