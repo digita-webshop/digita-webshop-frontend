@@ -8,6 +8,10 @@ import {
   Typography,
 } from "@mui/material";
 import { FormEvent, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSignUpMutation } from "../../features/auth/authApi";
+import { setCredentials } from "../../features/auth/authSlice";
 import {
   errorStyles,
   FormFooter,
@@ -32,6 +36,11 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
   const [passwordTouched, setPasswordTouched] = useState(false);
   const [enteredConfirmPassword, setEnteredConfirmPassword] = useState("");
   const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [signUp] = useSignUpMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //* username validation
   let usernameIsValid = true;
@@ -94,8 +103,34 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
   const confirmPasswordError =
     !confirmPasswordIsValid && confirmPasswordTouched;
 
-  const submitHandler = (event: FormEvent) => {
+  const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
+    if (
+      !usernameIsValid &&
+      !emailIsValid &&
+      !passwordIsValid &&
+      !confirmPasswordIsValid
+    ) {
+      return;
+    }
+    try {
+      const userCredentials = {
+        userName: enteredUsername,
+        email: enteredEmail,
+        password: enteredPassword,
+      };
+      const data = await signUp(userCredentials).unwrap();
+      if (data?.message === "User created successfully") {
+        dispatch(setCredentials({ user: data?.data?.details, role: "user" }));
+        navigate("/user/status", { replace: true });
+      }
+      // console.log(data);
+    } catch (err: any) {
+      if (err?.status === 422) {
+        setErrorMessage(err?.data?.message);
+      }
+      console.log(err);
+    }
   };
   return (
     <FormWrapper>
@@ -104,11 +139,11 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
           title={"create an account"}
           subtitle={"Welcome! Register for an account"}
         />
-        {/* <Box sx={errorStyles}>
-          <Typography component="span">
-            ERROR: Username or password incorrect!
-          </Typography>
-        </Box> */}
+        {errorMessage && (
+          <Box sx={errorStyles}>
+            <Typography component="span">{errorMessage}</Typography>
+          </Box>
+        )}
         <form onSubmit={submitHandler}>
           <Grid container spacing={1.5}>
             <Grid item xs={12}>

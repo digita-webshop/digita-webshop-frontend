@@ -47,6 +47,7 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
   const passwordError = !passwordIsValid && validationError;
 
   const [login] = useLoginMutation();
+
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
     if (!emailIsValid && !passwordIsValid) {
