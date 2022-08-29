@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Grid, SelectChangeEvent, Divider, Table, TableRow, TableHead, TableBody } from "@mui/material";
+import {
+  Grid,
+  SelectChangeEvent,
+  Divider,
+  Table,
+  TableRow,
+  TableHead,
+  TableBody,
+} from "@mui/material";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import { CardWrapper } from "../../Styles/panelCommon";
 import TableHeader from "../Orders/TableHeader/TableHeader";
@@ -7,7 +15,7 @@ import ArticleTable from "./ArticleTable/ArticleTable";
 import { articleReviews } from "../../Services/Utils/Data/data";
 import { TCheckBox, THCell } from "../../Styles/Reviews";
 
-const tableHead = [<TCheckBox />, "#ID", "reviews", "name", "date"];
+const tableHead = [<TCheckBox />, "#ID", "reviews", "name", "date", "action"];
 
 const ArticleReviews = () => {
   const [selectedStatus, setSelectedStatus] = useState("status");

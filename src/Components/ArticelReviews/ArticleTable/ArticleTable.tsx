@@ -1,17 +1,12 @@
-import React, { useState } from "react";
-import {
-  Table,
-  TableBody,
-  Modal,
-  Box,
-  Typography,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useState } from "react";
+import { Modal, Box, Typography, TableRow, useMediaQuery } from "@mui/material";
 import { TCheckBox } from "../../../Styles/Reviews";
+import { TableButton } from "../../../Styles/Orders";
 import { TCell } from "../../../Styles/ArticleReview";
 import { cartModal } from "../../../Styles/PanelProducts";
 import { Close } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
 
 interface Props {
   id: number;
@@ -22,12 +17,13 @@ interface Props {
 }
 
 function ArticleTable({ id, pId, review, name, date }: Props) {
+  const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
       <TableRow
-        onClick={() => setOpen(true)}
         key={id}
         sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
       >
@@ -44,7 +40,23 @@ function ArticleTable({ id, pId, review, name, date }: Props) {
           {review}
         </TCell>
         <TCell sx={{ wordBreak: "break-all" }}>{name}</TCell>
-        <TCell sx={{ textAlign: "right" }}>{date}</TCell>
+        <TCell sx={{ textAlign: "left" }}>{date}</TCell>
+
+        {!matches && (
+          <TCell
+            sx={{
+              display: { xs: "none", sm: "flex" },
+              justifyContent: "flex-end",
+              gap: "4px",
+              flexWrap: "wrap",
+            }}
+          >
+            <TableButton onClick={() => setOpen(true)}>Detail</TableButton>
+            <TableButton sx={{ display: "flex", paddingY: "0" }}>
+              <DeleteIcon sx={{ margin: "auto", color: "common.panelGrey" }} />
+            </TableButton>
+          </TCell>
+        )}
       </TableRow>
 
       <Modal
