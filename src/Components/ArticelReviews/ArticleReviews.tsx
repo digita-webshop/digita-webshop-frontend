@@ -18,6 +18,7 @@ import { TCheckBox, THCell } from "../../Styles/Reviews";
 const tableHead = [<TCheckBox />, "#ID", "reviews", "name", "date", "action"];
 
 const ArticleReviews = () => {
+  const [list, setList] = useState(articleReviews);
   const [selectedStatus, setSelectedStatus] = useState("status");
   const [selectedAmount, setSelectedAmount] = useState("20");
 
@@ -27,6 +28,11 @@ const ArticleReviews = () => {
   const selectedAmountHandler = (event: SelectChangeEvent) => {
     setSelectedAmount(event.target.value);
   };
+
+  function handleRemove(id: number) {
+    const newList = list.filter((item) => item.id !== id);
+    setList(newList);
+  }
 
   return (
     <>
@@ -67,13 +73,14 @@ const ArticleReviews = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {articleReviews.map(({ id, pId, review, name, date }) => (
+                {list.map(({ id, pId, review, name, date }) => (
                   <ArticleTable
                     id={id}
                     pId={pId}
                     review={review}
                     name={name}
                     date={date}
+                    onRemove={handleRemove}
                   />
                 ))}
               </TableBody>

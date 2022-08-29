@@ -1,9 +1,16 @@
 import DeleteIcon from "@mui/icons-material/Delete";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useState } from "react";
-import { Modal, Box, Typography, TableRow, useMediaQuery } from "@mui/material";
+import {
+  Modal,
+  Box,
+  Typography,
+  TableRow,
+  useMediaQuery,
+  Button,
+} from "@mui/material";
 import { TCheckBox } from "../../../Styles/Reviews";
-import { TableButton } from "../../../Styles/Orders";
-import { TCell } from "../../../Styles/ArticleReview";
+import { TCell, TableButton } from "../../../Styles/ArticleReview";
 import { cartModal } from "../../../Styles/PanelProducts";
 import { Close } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
@@ -14,12 +21,19 @@ interface Props {
   review: string;
   name: string;
   date: string;
+  onRemove: Function;
 }
 
-function ArticleTable({ id, pId, review, name, date }: Props) {
+function ArticleTable({ id, pId, review, name, date, onRemove }: Props) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
   const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+  function handleDelete() {
+    onRemove(id);
+    setOpenDelete(false);
+  }
 
   return (
     <>
@@ -52,7 +66,10 @@ function ArticleTable({ id, pId, review, name, date }: Props) {
             }}
           >
             <TableButton onClick={() => setOpen(true)}>Detail</TableButton>
-            <TableButton sx={{ display: "flex", paddingY: "0" }}>
+            <TableButton
+              sx={{ display: "flex", paddingY: "0" }}
+              onClick={() => setOpenDelete(true)}
+            >
               <DeleteIcon sx={{ margin: "auto", color: "common.panelGrey" }} />
             </TableButton>
           </TCell>
@@ -85,6 +102,55 @@ function ArticleTable({ id, pId, review, name, date }: Props) {
             onClick={() => setOpen(false)}
           >
             <Close />
+          </Box>
+        </Box>
+      </Modal>
+
+      <Modal
+        open={openDelete}
+        onClose={() => setOpenDelete(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={cartModal}>
+          <DeleteForeverIcon
+            sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }}
+          />
+          <Typography
+            id="modal-modal-title"
+            variant="h5"
+            component="h2"
+            sx={{ textAlign: "center" }}
+          >
+            Delete this item?
+          </Typography>
+          <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>
+            <Button
+              variant="contained"
+              sx={{
+                p: "0.8rem 2.2rem",
+                borderRadius: "4px",
+                fontSize: "15px",
+                height: "46px",
+              }}
+              onClick={() => setOpenDelete(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleDelete}
+              variant="contained"
+              sx={{
+                p: "0.8rem 2.2rem",
+                background: "#f03637",
+                borderRadius: "4px",
+                fontSize: "15px",
+                height: "46px",
+                "&:hover": { background: "#333" },
+              }}
+            >
+              Delete
+            </Button>
           </Box>
         </Box>
       </Modal>
