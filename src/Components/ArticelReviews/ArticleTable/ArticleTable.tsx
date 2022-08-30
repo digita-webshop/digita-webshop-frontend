@@ -1,6 +1,6 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import {
   Modal,
   Box,
@@ -22,9 +22,20 @@ interface Props {
   name: string;
   date: string;
   onRemove: Function;
+  handleToggle: any;
+  checked: number[];
 }
 
-function ArticleTable({ id, pId, review, name, date, onRemove }: Props) {
+function ArticleTable({
+  id,
+  pId,
+  review,
+  name,
+  date,
+  onRemove,
+  handleToggle,
+  checked,
+}: Props) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
@@ -42,7 +53,10 @@ function ArticleTable({ id, pId, review, name, date, onRemove }: Props) {
         sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
       >
         <TCell>
-          <TCheckBox />
+          <TCheckBox
+            onChange={handleToggle(id)}
+            checked={checked.indexOf(id) !== -1}
+          />
         </TCell>
         <TCell>{pId}</TCell>
         <TCell
@@ -61,15 +75,13 @@ function ArticleTable({ id, pId, review, name, date, onRemove }: Props) {
             sx={{
               display: { xs: "none", sm: "flex" },
               justifyContent: "flex-end",
+              alignItems: "center",
               gap: "4px",
               flexWrap: "wrap",
             }}
           >
             <TableButton onClick={() => setOpen(true)}>Detail</TableButton>
-            <TableButton
-              sx={{ display: "flex", paddingY: "0" }}
-              onClick={() => setOpenDelete(true)}
-            >
+            <TableButton onClick={() => setOpenDelete(true)}>
               <DeleteIcon sx={{ margin: "auto", color: "common.panelGrey" }} />
             </TableButton>
           </TCell>

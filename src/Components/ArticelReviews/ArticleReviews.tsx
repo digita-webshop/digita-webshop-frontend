@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import {
   Grid,
   SelectChangeEvent,
@@ -15,10 +15,10 @@ import ArticleTable from "./ArticleTable/ArticleTable";
 import { articleReviews } from "../../Services/Utils/Data/data";
 import { TCheckBox, THCell } from "../../Styles/Reviews";
 
-const tableHead = [<TCheckBox />, "#ID", "reviews", "name", "date", "action"];
 
 const ArticleReviews = () => {
   const [list, setList] = useState(articleReviews);
+  const [checked, setChecked] = useState<number[]>([]);
   const [selectedStatus, setSelectedStatus] = useState("status");
   const [selectedAmount, setSelectedAmount] = useState("20");
 
@@ -29,6 +29,36 @@ const ArticleReviews = () => {
     setSelectedAmount(event.target.value);
   };
 
+  const handleToggle = (value: any) => () => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
+  };
+
+  const handleToggleAll = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      let allChecked = list.map((item) => item.id);
+      setChecked(allChecked);
+    } else {
+      setChecked([]);
+    }
+  };
+
+  const tableHead = [
+    <TCheckBox onChange={handleToggleAll} />,
+    "#ID",
+    "reviews",
+    "name",
+    "date",
+    "action",
+  ];
   function handleRemove(id: number) {
     const newList = list.filter((item) => item.id !== id);
     setList(newList);
@@ -81,6 +111,8 @@ const ArticleReviews = () => {
                     name={name}
                     date={date}
                     onRemove={handleRemove}
+                    handleToggle={handleToggle}
+                    checked={checked}
                   />
                 ))}
               </TableBody>
