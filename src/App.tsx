@@ -40,8 +40,33 @@ import MainLayout from "./Layouts/MainLayout/MainLayout";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
 import { ScrollToTop, EditProduct } from "./Components";
 import UserLayout from "./Layouts/UserLayout/UserLayout";
+import { useEffect } from "react";
+import { RootState, useAppSelector } from "./store";
+import jwt from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "./features/auth/authSlice";
+import { useGetUserMutation } from "./features/auth/authApi";
 
 function App() {
+  const { token } = useAppSelector((state) => state.authReducer);
+  const dispatch = useDispatch();
+  const [getUser] = useGetUserMutation();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (token) {
+        try {
+          const { id, role } = jwt(token) as any;
+          const data = await getUser(id).unwrap();
+          dispatch(setCredentials({ user: data.data, role }));
+          console.log(data);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    };
+    fetchUserData();
+  }, [dispatch, token, getUser]);
   return (
     <ThemeProvider theme={theme}>
       <Router>
