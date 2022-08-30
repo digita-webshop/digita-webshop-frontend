@@ -7,14 +7,15 @@ import {
   TableRow,
   TableHead,
   TableBody,
+  Box,
+  Button,
 } from "@mui/material";
-import ContentHeader from "./ContentHeader/ContentHeader";
-import { CardWrapper } from "../../Styles/panelCommon";
+import { CardWrapper, PTitle } from "../../Styles/panelCommon";
 import TableHeader from "../Orders/TableHeader/TableHeader";
 import ArticleTable from "./ArticleTable/ArticleTable";
 import { articleReviews } from "../../Services/Utils/Data/data";
 import { TCheckBox, THCell } from "../../Styles/Reviews";
-
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const ArticleReviews = () => {
   const [list, setList] = useState(articleReviews);
@@ -68,7 +69,29 @@ const ArticleReviews = () => {
     <>
       <Grid container rowSpacing={4}>
         <Grid item xs={12}>
-          <ContentHeader />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <PTitle>Article Reviews</PTitle>
+            {checked.length > 0 && (
+              <Button
+                sx={{
+                  borderRadius: "4px",
+                  fontSize: "15px",
+                  height: "46px",
+                  border: "1px solid #181818",
+                  "&:hover": { color: "#fff", border: "none" },
+                }}
+                onClick={() => console.log('items deleted')}
+              >
+                <DeleteForeverIcon />
+              </Button>
+            )}
+          </Box>
         </Grid>
 
         <Grid item xs={12}>
