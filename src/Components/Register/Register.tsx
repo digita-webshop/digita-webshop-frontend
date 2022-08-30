@@ -129,9 +129,7 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
       closeLoginModal();
       console.log(data);
     } catch (err: any) {
-      if (err?.status === 422) {
-        setErrorMessage(err?.data?.message);
-      }
+      setErrorMessage(err?.data?.message);
       console.log(err);
     }
   };
@@ -144,7 +142,7 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
         />
         {errorMessage && (
           <Box sx={errorStyles}>
-            <Typography component="span">{errorMessage}</Typography>
+            <Typography component="span"> ERROR:{errorMessage}</Typography>
           </Box>
         )}
         <form onSubmit={submitHandler}>
