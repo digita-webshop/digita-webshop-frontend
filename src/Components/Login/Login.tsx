@@ -47,7 +47,6 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
   const passwordError = !passwordIsValid && validationError;
 
   const [login] = useLoginMutation();
-
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
     if (!emailIsValid && !passwordIsValid) {
@@ -63,7 +62,10 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
       const data = await login(userCredentials).unwrap();
       if (data?.message === "Login successful") {
         dispatch(
-          setCredentials({ user: data?.data?.details, role: data.data.role })
+          setCredentials({
+            user: data?.data?.details,
+            role: data.data.role,
+          })
         );
         if (data.data.role === "admin") {
           navigate("/panel/dashboard", { replace: true });

@@ -11,6 +11,7 @@ import { useGetAllProductsQuery } from "../../../features/products/productsApi";
 function Home() {
   const { data } = useGetAllProductsQuery();
   console.log(data);
+  // console.log(token);
 
   return (
     <>

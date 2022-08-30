@@ -120,6 +120,8 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
         password: enteredPassword,
       };
       const data = await signUp(userCredentials).unwrap();
+      console.log(data);
+
       if (data?.message === "User created successfully") {
         dispatch(setCredentials({ user: data?.data, role: "user" }));
         navigate("/user/status", { replace: true });
