@@ -37,12 +37,7 @@ const authApi = api.injectEndpoints({
         body: credentials,
       }),
     }),
-    // getUser: build.mutation<any, any>({
-    //   query: (id) => ({
-    //     url: `users/${id}`,
-    //     method: "POST",
-    //   }),
-    // }),
+
     getUser: build.mutation<any, string>({
       query: (id) => `users/${id}`,
     }),

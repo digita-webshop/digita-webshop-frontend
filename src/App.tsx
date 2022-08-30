@@ -41,7 +41,7 @@ import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
 import { ScrollToTop, EditProduct } from "./Components";
 import UserLayout from "./Layouts/UserLayout/UserLayout";
 import { useEffect } from "react";
-import { RootState, useAppSelector } from "./store";
+import { useAppSelector } from "./store";
 import jwt from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./features/auth/authSlice";

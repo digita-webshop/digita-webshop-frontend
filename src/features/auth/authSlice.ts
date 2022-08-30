@@ -30,8 +30,14 @@ const authSlice = createSlice({
       console.log(accessToken);
       state.token = accessToken ? accessToken : null;
     },
+    logout(state) {
+      cookie.remove("access_token");
+      state.user = null;
+      state.role = null;
+      state.token = null;
+    },
   },
 });
 
-export const { setCredentials } = authSlice.actions;
+export const { setCredentials, logout } = authSlice.actions;
 export default authSlice.reducer;

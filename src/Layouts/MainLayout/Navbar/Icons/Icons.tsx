@@ -16,8 +16,7 @@ import {
 } from "../../../../Styles/Appbar";
 import ShopCart from "../ShopCart/ShopCart";
 import UserDropDown from "../UserDropDown/UserDropDown";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../../store";
+import { useAppSelector } from "../../../../store";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -48,9 +47,8 @@ function Icons({
 }: Props) {
   const userDropRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const cartList = useSelector(
-    (state: RootState) => state.cartReducer.cartList
-  );
+  const cartList = useAppSelector((state) => state.cartReducer.cartList);
+  const { user, role } = useAppSelector((state) => state.authReducer);
 
   const handleToggle = () => {
     if (matches) {
@@ -86,39 +84,44 @@ function Icons({
             <SearchOutlined color="primary" sx={navbarIcons} />
           </Badge>
         </IconWrapper>
-        {/* <IconWrapper
-          ref={userDropRef}
-          id="user-drop-button"
-          aria-controls={openDropdown ? "user-drop-menu" : undefined}
-          aria-expanded={openDropdown ? "true" : undefined}
-          aria-haspopup="true"
-          onClick={handleToggle}
-        >
-          <Badge showZero sx={{ margin: "auto" }}>
-            <PersonOutline color="primary" sx={navbarIcons} />
-            <ArrowDropDown
-              color="primary"
-              sx={{
-                transition: "all 200ms",
-                cursor: "pointer",
-                fontSize: "28px",
-                "&:hover": { color: "#f03637" },
-                display: { xs: "none", md: "inline-block" },
-              }}
-            />
-          </Badge>
-        </IconWrapper> */}
+        {user && (
+          <IconWrapper
+            ref={userDropRef}
+            id="user-drop-button"
+            aria-controls={openDropdown ? "user-drop-menu" : undefined}
+            aria-expanded={openDropdown ? "true" : undefined}
+            aria-haspopup="true"
+            onClick={handleToggle}
+          >
+            <Badge showZero sx={{ margin: "auto" }}>
+              <PersonOutline color="primary" sx={navbarIcons} />
+              <ArrowDropDown
+                color="primary"
+                sx={{
+                  transition: "all 200ms",
+                  cursor: "pointer",
+                  fontSize: "28px",
+                  "&:hover": { color: "#f03637" },
+                  display: { xs: "none", md: "inline-block" },
+                }}
+              />
+            </Badge>
+          </IconWrapper>
+        )}
         <UserDropDown
           openDropdown={openDropdown}
           handleClose={handleClose}
           userDropRef={userDropRef}
+          user={user}
+          role={role}
         />
-        <IconWrapper onClick={loginModalHandler(true)}>
-          <Badge showZero sx={iconsBadgeStyles}>
-            <LoginOutlined color="primary" sx={navbarIcons} />
-          </Badge>
-        </IconWrapper>
-
+        {!user && (
+          <IconWrapper onClick={loginModalHandler(true)}>
+            <Badge showZero sx={iconsBadgeStyles}>
+              <LoginOutlined color="primary" sx={navbarIcons} />
+            </Badge>
+          </IconWrapper>
+        )}
         <IconWrapper
           display={"flex"}
           height={"100%"}
