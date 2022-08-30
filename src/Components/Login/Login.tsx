@@ -33,7 +33,7 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [validationError, setValidationError] = useState(false);
-  const [displayError, setDisplayError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -76,20 +76,18 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
       }
       closeLoginModal();
       console.log(data);
-    } catch (err) {
+    } catch (err: any) {
       console.log(err);
-      setDisplayError(true);
+      setErrorMessage(err?.data?.message);
     }
   };
   return (
     <FormWrapper>
       <Box sx={{ position: "relative" }}>
         <Header title={"log in"} subtitle={"Become a part of our community!"} />
-        {displayError && (
+        {errorMessage && (
           <Box sx={errorStyles}>
-            <Typography component="span">
-              ERROR: Username or password incorrect!
-            </Typography>
+            <Typography component="span">ERROR: {errorMessage}</Typography>
           </Box>
         )}
         <form onSubmit={submitHandler}>
