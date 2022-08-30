@@ -52,6 +52,14 @@ const ArticleReviews = () => {
     }
   };
 
+  // No conclution yet ...
+  const headerDelete = () => {
+    const newList = list.filter((item) => 
+      checked.some((i) => item.id !== i)
+    );
+    console.log(newList);
+  };
+
   const tableHead = [
     <TCheckBox onChange={handleToggleAll} />,
     "#ID",
@@ -86,7 +94,7 @@ const ArticleReviews = () => {
                   border: "1px solid #181818",
                   "&:hover": { color: "#fff", border: "none" },
                 }}
-                onClick={() => console.log('items deleted')}
+                onClick={headerDelete}
               >
                 <DeleteForeverIcon />
               </Button>
