@@ -5,6 +5,7 @@ export const Aside = styled(Box)(({ theme }) => ({
   position: "fixed",
   backgroundColor: "white",
   width: "240px",
+  zIndex: 1,
 
   [theme.breakpoints.up("md")]: {
     width: "20%",
@@ -19,6 +20,7 @@ export const Aside = styled(Box)(({ theme }) => ({
   "&.menu": {
     width: "65px",
   },
+  "&.overflow": { overflowY: "overlay" },
 }));
 
 export const Main = styled(Box)(({ theme }) => ({

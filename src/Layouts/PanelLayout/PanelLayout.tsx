@@ -19,7 +19,7 @@ function PanelLayout() {
   return (
     <>
       {mdMatches && (
-        <Aside className={menuOpen ? "" : "menu"}>
+        <Aside className={menuOpen ? "overflow" : "menu"}>
           <Sidebar
             menuOpen={menuOpen}
             setMenuOpen={setMenuOpen}
@@ -40,9 +40,7 @@ function PanelLayout() {
       )}
       <Main className={menuOpen ? "" : "menu"}>
         <MainNavbar setDrawerOpen={setDrawerOpen} mdMatches={mdMatches} />
-        <Box
-          sx={{ padding: "30px 3%", "& .MuiGrid-container": { zIndex: "-1" } }}
-        >
+        <Box sx={{ padding: "30px 3%" }}>
           <Outlet />
         </Box>
       </Main>

@@ -65,7 +65,7 @@ function ItemAccordion({ title, icon, data, menuOpen }: Props) {
       </PanelItem>
       <AccordionDetails sx={accordionDetailStyles}>
         {data.map((item) => (
-          <NavLink to={item.route} key={item.id}>
+          <NavLink key={item.id} to={item.route}>
             {item.name}
           </NavLink>
         ))}

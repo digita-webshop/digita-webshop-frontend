@@ -10,6 +10,7 @@ import TextEditor from "../../TextEditor/TextEditor";
 
 function ArticleForm() {
   const [uploadImageName, setUploadImageName] = useState("no chosen file");
+  const [fullDescription, setFullDescription] = useState<string>("");
 
   const inputFileRef = useRef<HTMLInputElement>(null);
   const clickInputHandler = () => {
@@ -60,7 +61,7 @@ function ArticleForm() {
           <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
             description
           </PFormLabel>
-          <TextEditor />
+          <TextEditor setFullDescription={setFullDescription} />
         </Grid>
       </Grid>
     </CardWrapper>
