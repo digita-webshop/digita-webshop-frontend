@@ -55,9 +55,9 @@ const ArticleReviews = () => {
   // No conclution yet ...
   const headerDelete = () => {
     const newList = list.filter((item) => 
-      checked.some((i) => item.id !== i)
+      !checked.includes(item.id)
     );
-    console.log(newList);
+    setList(newList);
   };
 
   const tableHead = [
