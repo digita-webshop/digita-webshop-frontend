@@ -1,3 +1,4 @@
+import { useState, ChangeEvent } from "react";
 import { MoreHoriz } from "@mui/icons-material";
 import {
   Table,
@@ -12,25 +13,48 @@ import { TableButton } from "../../../Styles/Orders";
 import { TCell, TCheckBox, THCell } from "../../../Styles/Reviews";
 import StarIcon from "@mui/icons-material/Star";
 import { useTheme } from "@mui/material/styles";
-
-const tableHead = [
-  <TCheckBox />,
-  "#ID",
-  "product",
-  "name",
-  "rating",
-  "date",
-  "action",
-];
-
 interface Props {
   selectedAmount: string;
 }
 
 function ReviewsTable({ selectedAmount }: Props) {
+  const [list, setList] = useState(reviews);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSm = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const [checked, setChecked] = useState<number[]>([]);
+
+  const handleToggle = (value: any) => () => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
+  };
+
+  const handleToggleAll = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      let allChecked = list.map((item) => item.id);
+      setChecked(allChecked);
+    } else {
+      setChecked([]);
+    }
+  };
+  const tableHead = [
+    <TCheckBox onChange={handleToggleAll} />,
+    "#ID",
+    "product",
+    "name",
+    "rating",
+    "date",
+    "action",
+  ];
 
   return (
     <Table>
@@ -50,7 +74,7 @@ function ReviewsTable({ selectedAmount }: Props) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {reviews
+        {list
           .slice(0, +selectedAmount)
           .map(({ id, pId, product, name, rating, date }) => (
             <TableRow
@@ -58,7 +82,10 @@ function ReviewsTable({ selectedAmount }: Props) {
               sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
             >
               <TCell>
-                <TCheckBox />
+                <TCheckBox
+                  onChange={handleToggle(id)}
+                  checked={checked.indexOf(id) !== -1}
+                />
               </TCell>
               <TCell>{pId}</TCell>
               <TCell

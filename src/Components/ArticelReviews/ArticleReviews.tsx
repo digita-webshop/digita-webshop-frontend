@@ -8,9 +8,9 @@ import {
   TableHead,
   TableBody,
   Box,
-  Button,
+  Typography,
 } from "@mui/material";
-import { CardWrapper, PTitle } from "../../Styles/panelCommon";
+import { CardWrapper, POutlinedButton, PTitle } from "../../Styles/panelCommon";
 import TableHeader from "../Orders/TableHeader/TableHeader";
 import ArticleTable from "./ArticleTable/ArticleTable";
 import { articleReviews } from "../../Services/Utils/Data/data";
@@ -53,9 +53,7 @@ const ArticleReviews = () => {
   };
 
   const headerDelete = () => {
-    const newList = list.filter((item) => 
-      !checked.includes(item.id)
-    );
+    const newList = list.filter((item) => !checked.includes(item.id));
     setList(newList);
   };
 
@@ -85,18 +83,16 @@ const ArticleReviews = () => {
           >
             <PTitle>Article Reviews</PTitle>
             {checked.length > 0 && (
-              <Button
+              <POutlinedButton
                 sx={{
                   borderRadius: "4px",
                   fontSize: "15px",
                   height: "46px",
-                  border: "1px solid #181818",
-                  "&:hover": { color: "#fff", border: "none" },
                 }}
                 onClick={headerDelete}
               >
                 <DeleteForeverIcon />
-              </Button>
+              </POutlinedButton>
             )}
           </Box>
         </Grid>
@@ -147,6 +143,18 @@ const ArticleReviews = () => {
                 ))}
               </TableBody>
             </Table>
+            {list.length === 0 && (
+              <Box
+                sx={{
+                  padding: "1.5rem 0 0 0",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Typography>Your Article Review is empty</Typography>
+              </Box>
+            )}
           </CardWrapper>
         </Grid>
       </Grid>

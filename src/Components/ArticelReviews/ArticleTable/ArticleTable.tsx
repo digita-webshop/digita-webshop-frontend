@@ -81,8 +81,11 @@ function ArticleTable({
             }}
           >
             <TableButton onClick={() => setOpen(true)}>Detail</TableButton>
-            <TableButton onClick={() => setOpenDelete(true)}>
-              <DeleteIcon sx={{ margin: "auto", color: "common.panelGrey" }} />
+            <TableButton
+              onClick={() => setOpenDelete(true)}
+              sx={{ display: "flex", justifyContent: "center" }}
+            >
+              <DeleteIcon sx={{ color: "common.panelGrey" }} />
             </TableButton>
           </TCell>
         )}

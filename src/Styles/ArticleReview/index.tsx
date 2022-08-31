@@ -22,7 +22,7 @@ export const TableButton = styled("div")(({ theme }) => ({
   backgroundColor: "white",
   border: "1px solid",
   borderColor: theme.palette.common.panelBorderGrey,
-  padding: "4px 10px",
+  padding: "6px 10px",
   borderRadius: "3px",
   cursor: "pointer",
   "&:hover": {
