@@ -40,33 +40,41 @@ import MainLayout from "./Layouts/MainLayout/MainLayout";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
 import { ScrollToTop, EditProduct } from "./Components";
 import UserLayout from "./Layouts/UserLayout/UserLayout";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "./store";
 import jwt from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./features/auth/authSlice";
 import { useGetUserMutation } from "./features/auth/authApi";
+import Loading from "./Components/Loading/Loading";
 
 function App() {
   const { token } = useAppSelector((state) => state.authReducer);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const [getUser] = useGetUserMutation();
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      if (token) {
-        try {
-          const { id, role } = jwt(token) as any;
-          const data = await getUser(id).unwrap();
-          dispatch(setCredentials({ user: data.data, role }));
-          console.log(data);
-        } catch (err) {
-          console.log(err);
-        }
+  const fetchUserData = async () => {
+    if (token) {
+      try {
+        const { id, role } = jwt(token) as any;
+        const data = await getUser(id).unwrap();
+        dispatch(setCredentials({ user: data.data, role }));
+        console.log(data);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
       }
-    };
+    }
+  };
+  useEffect(() => {
     fetchUserData();
   }, [dispatch, token, getUser]);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <ThemeProvider theme={theme}>
       <Router>
