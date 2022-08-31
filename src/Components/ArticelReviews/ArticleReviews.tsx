@@ -52,7 +52,6 @@ const ArticleReviews = () => {
     }
   };
 
-  // No conclution yet ...
   const headerDelete = () => {
     const newList = list.filter((item) => 
       !checked.includes(item.id)
