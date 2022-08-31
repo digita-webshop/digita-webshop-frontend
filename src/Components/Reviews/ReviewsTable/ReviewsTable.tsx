@@ -46,6 +46,12 @@ function ReviewsTable({ selectedAmount }: Props) {
       setChecked([]);
     }
   };
+
+  /* const headerDelete = () => {
+    const newList = list.filter((item) => !checked.includes(item.id));
+    setList(newList);
+  }; */
+
   const tableHead = [
     <TCheckBox onChange={handleToggleAll} />,
     "#ID",
