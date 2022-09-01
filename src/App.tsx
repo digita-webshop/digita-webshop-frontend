@@ -52,7 +52,6 @@ function App() {
   const dispatch = useDispatch();
   const [getUser] = useGetUserMutation();
 
-
   useEffect(() => {
     const fetchUserData = async () => {
       if (token) {
@@ -123,7 +122,14 @@ function App() {
               <Route path="brands" element={<Brands />} />
               <Route path="wishlist" element={<PanelWishlist />} />
               <Route path="my-orders" element={<PanelOrders />} />
-              <Route path="manage-access" element={<ManageAccess />} />
+              <Route
+                path="manage-access"
+                element={
+                  <Protected role={role}>
+                    <ManageAccess />
+                  </Protected>
+                }
+              />
               <Route path="settings" element={<Settings />} />
             </Route>
           </Routes>
