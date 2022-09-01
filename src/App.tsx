@@ -52,6 +52,7 @@ function App() {
   const dispatch = useDispatch();
   const [getUser] = useGetUserMutation();
 
+
   useEffect(() => {
     const fetchUserData = async () => {
       if (token) {
