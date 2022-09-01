@@ -6,7 +6,7 @@ import {
   PersonOutline,
   SearchOutlined,
 } from "@mui/icons-material";
-import { Badge, Box } from "@mui/material";
+import { Badge, Box, Skeleton } from "@mui/material";
 import { Dispatch, Fragment, SetStateAction, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -48,8 +48,9 @@ function Icons({
   const userDropRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const cartList = useAppSelector((state) => state.cartReducer.cartList);
-  const { user, role } = useAppSelector((state) => state.authReducer);
-
+  const { user, role, getUserLoading } = useAppSelector(
+    (state) => state.authReducer
+  );
   const handleToggle = () => {
     if (matches) {
       setOpenDropdown((prevOpen) => !prevOpen);
@@ -119,10 +120,20 @@ function Icons({
         ) : (
           <IconWrapper onClick={loginModalHandler(true)}>
             <Badge showZero sx={iconsBadgeStyles}>
-              <LoginOutlined color="primary" sx={navbarIcons} />
+              {getUserLoading ? (
+                <Skeleton>
+                  <LoginOutlined
+                    color="primary"
+                    sx={{ ...navbarIcons, padding: "10px 8px" }}
+                  />
+                </Skeleton>
+              ) : (
+                <LoginOutlined color="primary" sx={navbarIcons} />
+              )}
             </Badge>
           </IconWrapper>
         )}
+
         {/* <IconWrapper
           display={"flex"}
           height={"100%"}

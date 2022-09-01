@@ -8,12 +8,14 @@ type AuthState = {
   user: null | IUser;
   role: null | string;
   token: null | string;
+  getUserLoading: boolean;
 };
 
 const initialState = {
   user: null,
   role: null,
   token: accessToken ? accessToken : null,
+  getUserLoading: true,
 } as AuthState;
 
 const authSlice = createSlice({
@@ -37,8 +39,11 @@ const authSlice = createSlice({
       state.role = null;
       state.token = null;
     },
+    setLoading(state, action) {
+      state.getUserLoading = action.payload;
+    },
   },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setCredentials, logout, setLoading } = authSlice.actions;
 export default authSlice.reducer;
