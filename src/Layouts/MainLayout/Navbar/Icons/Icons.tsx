@@ -84,7 +84,7 @@ function Icons({
             <SearchOutlined color="primary" sx={navbarIcons} />
           </Badge>
         </IconWrapper>
-        {user && (
+        {user && role ? (
           <Fragment>
             <IconWrapper
               ref={userDropRef}
@@ -116,15 +116,14 @@ function Icons({
               role={role}
             />
           </Fragment>
-        )}
-        {!user && (
+        ) : (
           <IconWrapper onClick={loginModalHandler(true)}>
             <Badge showZero sx={iconsBadgeStyles}>
               <LoginOutlined color="primary" sx={navbarIcons} />
             </Badge>
           </IconWrapper>
         )}
-        <IconWrapper
+        {/* <IconWrapper
           display={"flex"}
           height={"100%"}
           onClick={() => setOpenCompareModal(true)}
@@ -132,7 +131,7 @@ function Icons({
           <Badge showZero sx={iconsBadgeStyles}>
             <CompareArrows color="primary" sx={navbarIcons} />
           </Badge>
-        </IconWrapper>
+        </IconWrapper> */}
         <IconWrapper
           sx={{
             "&:hover .shop-cart": {

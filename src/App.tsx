@@ -47,6 +47,8 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "./features/auth/authSlice";
 import { useGetUserMutation } from "./features/auth/authApi";
 import Loading from "./Components/Loading/Loading";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { token } = useAppSelector((state) => state.authReducer);
@@ -121,6 +123,7 @@ function App() {
           </Routes>
         </ScrollToTop>
       </Router>
+      <ToastContainer />
     </ThemeProvider>
   );
 }

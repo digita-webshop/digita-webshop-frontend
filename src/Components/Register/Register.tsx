@@ -9,9 +9,9 @@ import {
 } from "@mui/material";
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useSignUpMutation } from "../../features/auth/authApi";
 import { setCredentials } from "../../features/auth/authSlice";
+import { successMessage } from "../../Services/Utils/toastMessages";
 import {
   errorStyles,
   FormFooter,
@@ -24,7 +24,7 @@ type Modal = "login" | "register" | "reset";
 
 type Props = {
   closeLoginModal: () => void;
-  modalTypeToggle: (trpe: Modal) => void;
+  modalTypeToggle: (type: Modal) => void;
 };
 
 function Register({ closeLoginModal, modalTypeToggle }: Props) {
@@ -40,7 +40,6 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
 
   const [signUp] = useSignUpMutation();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   //* username validation
   let usernameIsValid = true;
@@ -123,10 +122,10 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
       console.log(data);
 
       if (data?.message === "User created successfully") {
-        dispatch(setCredentials({ user: data?.data, role: "user" }));
-        navigate("/user/status", { replace: true });
+        dispatch(setCredentials({ user: data?.data, role: null }));
+        successMessage("account created successfully");
+        modalTypeToggle("login");
       }
-      closeLoginModal();
       console.log(data);
     } catch (err: any) {
       setErrorMessage(err?.data?.message);

@@ -15,6 +15,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../features/auth/authApi";
 import { setCredentials } from "../../features/auth/authSlice";
+import { successMessage } from "../../Services/Utils/toastMessages";
+import { useAppSelector } from "../../store";
 import {
   errorStyles,
   forgetPassStyles,
@@ -30,7 +32,9 @@ type Props = {
   modalTypeToggle: (type: Modal) => void;
 };
 function Login({ closeLoginModal, modalTypeToggle }: Props) {
-  const [enteredEmail, setEnteredEmail] = useState("");
+  const { user } = useAppSelector((state) => state.authReducer);
+  const registeredEmail = user?.email ? user?.email : "";
+  const [enteredEmail, setEnteredEmail] = useState(registeredEmail);
   const [enteredPassword, setEnteredPassword] = useState("");
   const [validationError, setValidationError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -75,6 +79,7 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
         }
       }
       closeLoginModal();
+      successMessage("login successfully");
       console.log(data);
     } catch (err: any) {
       console.log(err);
