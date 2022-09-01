@@ -54,23 +54,22 @@ function App() {
   const dispatch = useDispatch();
   const [getUser] = useGetUserMutation();
 
-  const fetchUserData = async () => {
-    if (token) {
-      try {
-        const { id, role } = jwt(token) as any;
-        const data = await getUser(id).unwrap();
-        dispatch(setCredentials({ user: data.data, role }));
-        console.log(data);
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
-        setLoading(false);
-      }
-    }
-  };
   useEffect(() => {
+    const fetchUserData = async () => {
+      if (token) {
+        try {
+          const { id, role } = jwt(token) as any;
+          const data = await getUser(id).unwrap();
+          dispatch(setCredentials({ user: data.data, role }));
+          console.log(data);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      setLoading(false);
+    };
     fetchUserData();
-  }, [dispatch, token, getUser]);
+  }, [dispatch, token, getUser, setLoading]);
 
   if (loading) {
     return <Loading />;
