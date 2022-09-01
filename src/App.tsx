@@ -38,7 +38,7 @@ import {
 } from "./Pages/Panel/User";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
-import { ScrollToTop, EditProduct } from "./Components";
+import { ScrollToTop, EditProduct, Protected } from "./Components";
 import UserLayout from "./Layouts/UserLayout/UserLayout";
 import { useEffect } from "react";
 import { useAppSelector } from "./store";
@@ -48,7 +48,7 @@ import { setCredentials } from "./features/auth/authSlice";
 import { useGetUserMutation } from "./features/auth/authApi";
 
 function App() {
-  const { token } = useAppSelector((state) => state.authReducer);
+  const { token, role } = useAppSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const [getUser] = useGetUserMutation();
 
@@ -83,7 +83,14 @@ function App() {
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/user/*" element={<UserLayout />}>
+              <Route
+                path="/user/*"
+                element={
+                  <Protected role={role}>
+                    <UserLayout />
+                  </Protected>
+                }
+              >
                 <Route path="personal-info" element={<PersonalInfo />} />
                 <Route path="status" element={<Status />} />
                 <Route path="addresses" element={<Addresses />} />
@@ -91,7 +98,14 @@ function App() {
                 <Route path="wishlist" element={<UserWishlist />} />
               </Route>
             </Route>
-            <Route path="/panel/*" element={<PanelLayout />}>
+            <Route
+              path="/panel/*"
+              element={
+                <Protected role={role}>
+                  <PanelLayout />
+                </Protected>
+              }
+            >
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="products/*">
                 <Route path="list" element={<Products />} />

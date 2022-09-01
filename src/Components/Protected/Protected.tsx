@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 interface Props {
-  role: string;
+  role: null | string;
   children: JSX.Element;
 }
 
