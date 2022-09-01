@@ -10,7 +10,7 @@ const ContentHeader = () => {
         alignItems: "center",
       }}
     >
-      <PTitle>Reviews</PTitle>
+      <PTitle>Article Reviews</PTitle>
       <Box> </Box>
     </Box>
   )
