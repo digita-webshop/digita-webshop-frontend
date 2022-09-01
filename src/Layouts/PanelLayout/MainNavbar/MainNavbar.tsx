@@ -1,34 +1,33 @@
 import {
-  ArrowDropDown,
+  LogoutOutlined,
   NightsStay,
   NotificationsActive,
   Search,
 } from "@mui/icons-material";
-import { Box, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
+import { Box, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Dispatch, MouseEvent, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, SyntheticEvent } from "react";
 import {
   MainSearchBtn,
   navbarIconStyles,
-  panelAvatarStyles,
   panelToolbarStyles,
 } from "../../../Styles/Panel";
 import { PTextField } from "../../../Styles/panelCommon";
+import { logout } from "../../../features/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 interface Props {
   setDrawerOpen: Dispatch<SetStateAction<boolean>>;
   mdMatches: boolean;
 }
 function MainNavbar({ setDrawerOpen, mdMatches }: Props) {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const menuToggler = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const logoutHandler = (event: Event | SyntheticEvent) => {
+    dispatch(logout());
+    navigate("/", { replace: true });
   };
-  const menuCloseHandler = () => {
-    setAnchorEl(null);
-  };
-
   return (
     <Box
       component={"div"}
@@ -71,29 +70,10 @@ function MainNavbar({ setDrawerOpen, mdMatches }: Props) {
             <IconButton sx={navbarIconStyles}>
               <NotificationsActive />
             </IconButton>
-            <Box sx={panelAvatarStyles} id="user-button" onClick={menuToggler}>
-              <img
-                src="https://www.ecommerce-admin.com/demo/images/people/avatar1.jpg"
-                alt="avatar"
-              />
-              <ArrowDropDown />
-            </Box>
+            <IconButton sx={navbarIconStyles} onClick={logoutHandler}>
+              <LogoutOutlined />
+            </IconButton>
           </Box>
-          <Menu
-            id="user-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={menuCloseHandler}
-          >
-            <MenuItem onClick={menuCloseHandler}>Profile</MenuItem>
-            <MenuItem onClick={menuCloseHandler}>Settings</MenuItem>
-            <MenuItem
-              onClick={menuCloseHandler}
-              sx={{ color: "common.digitaRed" }}
-            >
-              Logout
-            </MenuItem>
-          </Menu>
         </Box>
       </Toolbar>
     </Box>
