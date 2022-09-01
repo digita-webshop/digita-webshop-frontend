@@ -22,12 +22,13 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (
       state,
-      { payload: { user, role } }: PayloadAction<{ user: any; role: string }>
+      {
+        payload: { user, role },
+      }: PayloadAction<{ user: any; role: string | null }>
     ) => {
       state.user = user;
       state.role = role;
       const accessToken = cookie.get("access_token");
-      console.log(accessToken);
       state.token = accessToken ? accessToken : null;
     },
     logout(state) {

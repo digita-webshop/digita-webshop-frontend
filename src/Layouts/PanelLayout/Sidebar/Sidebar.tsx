@@ -45,6 +45,7 @@ function Sidebar({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
             const data = title === "products" ? products : articles;
             return menuOpen ? (
               <ItemAccordion
+                key={id}
                 title={title}
                 icon={icon}
                 data={data}
@@ -52,6 +53,7 @@ function Sidebar({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
               />
             ) : (
               <ItemMenu
+                key={id}
                 title={title}
                 icon={icon}
                 data={data}

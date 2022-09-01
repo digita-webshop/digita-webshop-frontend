@@ -97,6 +97,7 @@ function ItemMenu({ title, icon, data, open, setOpen }: Props) {
                 >
                   {data.map((item) => (
                     <MenuItem
+                      key={item.id}
                       onClick={handleClose}
                       sx={{
                         a: {
@@ -107,9 +108,7 @@ function ItemMenu({ title, icon, data, open, setOpen }: Props) {
                         },
                       }}
                     >
-                      <Link to={item.route} key={item.id}>
-                        {item.name}
-                      </Link>
+                      <Link to={item.route}>{item.name}</Link>
                     </MenuItem>
                   ))}
                 </MenuList>

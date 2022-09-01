@@ -2,13 +2,14 @@ import { Grid } from "@mui/material";
 import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
 import { productData } from "../../../../Services/Utils/Data/data";
+import { CardWrapper, PFormLabel } from "../../../../Styles/panelCommon";
 
 import ContentHeader from "../../../AddArticle/ContentHeader/ContentHeader";
 import { ITag } from "../../../AddProduct/AddProduct";
-import Description from "../../../AddProduct/Description/Description";
 import Details from "../../../AddProduct/Details/Details";
 import Gallery from "../../../AddProduct/Gallery/Gallery";
 import Sidebar from "../../../AddProduct/Sidebar/Sidebar";
+import TextEditor from "../../../TextEditor/TextEditor";
 
 function EditProduct() {
   const { id }: any = useParams();
@@ -40,6 +41,7 @@ function EditProduct() {
   });
   const [tags, setTags] = useState<ITag[]>(tagsList);
   const [selectedCategory, setSelectedCategory] = useState(category);
+  const [fullDescription, setFullDescription] = useState<string>("");
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
@@ -65,7 +67,12 @@ function EditProduct() {
               setEnteredShortDesc={setEnteredShortDesc}
             />
             <Gallery setAddedImages={setAddedImages} />
-            <Description />
+            <CardWrapper mt={4}>
+              <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
+                description
+              </PFormLabel>
+              <TextEditor setFullDescription={setFullDescription} />
+            </CardWrapper>
           </Grid>
           <Grid item xs={12} md={4}>
             <Sidebar

@@ -31,10 +31,11 @@ export const productApi = api.injectEndpoints({
       },
       invalidatesTags: ["Product"],
     }),
-    addProduct: build.mutation<any, IProduct>({
+    addProduct: build.mutation<any, any>({
       query(body) {
+        console.log(body);
         return {
-          url: `products/`,
+          url: `products`,
           method: "POST",
           body,
         };

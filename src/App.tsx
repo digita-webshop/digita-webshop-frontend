@@ -41,15 +41,19 @@ import MainLayout from "./Layouts/MainLayout/MainLayout";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
 import { ScrollToTop, EditProduct } from "./Components";
 import UserLayout from "./Layouts/UserLayout/UserLayout";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "./store";
 import jwt from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "./features/auth/authSlice";
 import { useGetUserMutation } from "./features/auth/authApi";
+import Loading from "./Components/Loading/Loading";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const { token } = useAppSelector((state) => state.authReducer);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const [getUser] = useGetUserMutation();
 
@@ -65,9 +69,14 @@ function App() {
           console.log(err);
         }
       }
+      setLoading(false);
     };
     fetchUserData();
-  }, [dispatch, token, getUser]);
+  }, [dispatch, token, getUser, setLoading]);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -115,6 +124,7 @@ function App() {
           </Routes>
         </ScrollToTop>
       </Router>
+      <ToastContainer />
     </ThemeProvider>
   );
 }

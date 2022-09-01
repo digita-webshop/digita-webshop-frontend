@@ -3,9 +3,9 @@ import { Box, Grid } from "@mui/material";
 import { ImageWrapper } from "../../../Styles/AddProduct";
 import { CardWrapper, PFormLabel } from "../../../Styles/panelCommon";
 import previewImg from "../../../Assets/Images/upload-preview.jpg";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
-function Gallery({ setAddedImages }: any) {
+function Gallery({ setAddedImages, addedImages }: any) {
   const mainImgRef = useRef<HTMLInputElement>(null);
   const firstImgRef = useRef<HTMLInputElement>(null);
   const secondImgRef = useRef<HTMLInputElement>(null);
@@ -29,7 +29,7 @@ function Gallery({ setAddedImages }: any) {
         thirdImgRef.current!.click();
         break;
       case "fourth":
-        thirdImgRef.current!.click();
+        fourthImgRef.current!.click();
         break;
       case "fifth":
         fifthImgRef.current!.click();
@@ -39,7 +39,6 @@ function Gallery({ setAddedImages }: any) {
         break;
     }
   };
-  console.log(firstImgRef.current?.files);
   const addImageHandler = (name: string) => () => {
     switch (name) {
       case "main":
@@ -86,6 +85,7 @@ function Gallery({ setAddedImages }: any) {
         break;
     }
   };
+
   return (
     <CardWrapper mt={4}>
       <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
@@ -99,7 +99,14 @@ function Gallery({ setAddedImages }: any) {
               ref={mainImgRef}
               onChange={addImageHandler("main")}
             />
-            <img src={previewImg} alt="product-img" />
+            <img
+              src={
+                addedImages?.main
+                  ? URL.createObjectURL(addedImages.main)
+                  : previewImg
+              }
+              alt="product-img"
+            />
             <Box onClick={imageClickHandler("main")}>
               <Edit />
             </Box>
@@ -113,7 +120,14 @@ function Gallery({ setAddedImages }: any) {
                 ref={firstImgRef}
                 onChange={addImageHandler("first")}
               />
-              <img src={previewImg} alt="product-img" />
+              <img
+                src={
+                  addedImages?.first
+                    ? URL.createObjectURL(addedImages.first)
+                    : previewImg
+                }
+                alt="product-img"
+              />
               <Box onClick={imageClickHandler("first")}>
                 <Edit />
               </Box>
@@ -126,7 +140,14 @@ function Gallery({ setAddedImages }: any) {
                 ref={secondImgRef}
                 onChange={addImageHandler("second")}
               />
-              <img src={previewImg} alt="product-img" />
+              <img
+                src={
+                  addedImages?.second
+                    ? URL.createObjectURL(addedImages.second)
+                    : previewImg
+                }
+                alt="product-img"
+              />
               <Box onClick={imageClickHandler("second")}>
                 <Edit />
               </Box>
@@ -139,7 +160,14 @@ function Gallery({ setAddedImages }: any) {
                 ref={thirdImgRef}
                 onChange={addImageHandler("third")}
               />
-              <img src={previewImg} alt="product-img" />
+              <img
+                src={
+                  addedImages?.third
+                    ? URL.createObjectURL(addedImages.third)
+                    : previewImg
+                }
+                alt="product-img"
+              />
               <Box onClick={imageClickHandler("third")}>
                 <Edit />
               </Box>
@@ -152,7 +180,14 @@ function Gallery({ setAddedImages }: any) {
                 ref={fourthImgRef}
                 onChange={addImageHandler("fourth")}
               />
-              <img src={previewImg} alt="product-img" />
+              <img
+                src={
+                  addedImages?.fourth
+                    ? URL.createObjectURL(addedImages.fourth)
+                    : previewImg
+                }
+                alt="product-img"
+              />
               <Box onClick={imageClickHandler("fourth")}>
                 <Edit />
               </Box>
@@ -165,8 +200,15 @@ function Gallery({ setAddedImages }: any) {
                 ref={fifthImgRef}
                 onChange={addImageHandler("fifth")}
               />
-              <img src={previewImg} alt="product-img" />
-              <Box onClick={imageClickHandler("third")}>
+              <img
+                src={
+                  addedImages?.fifth
+                    ? URL.createObjectURL(addedImages.fifth)
+                    : previewImg
+                }
+                alt="product-img"
+              />
+              <Box onClick={imageClickHandler("fifth")}>
                 <Edit />
               </Box>
             </ImageWrapper>
@@ -178,8 +220,15 @@ function Gallery({ setAddedImages }: any) {
                 ref={sixthImgRef}
                 onChange={addImageHandler("sixth")}
               />
-              <img src={previewImg} alt="product-img" />
-              <Box onClick={imageClickHandler("fourth")}>
+              <img
+                src={
+                  addedImages?.sixth
+                    ? URL.createObjectURL(addedImages.sixth)
+                    : previewImg
+                }
+                alt="product-img"
+              />
+              <Box onClick={imageClickHandler("sixth")}>
                 <Edit />
               </Box>
             </ImageWrapper>
