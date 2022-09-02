@@ -48,7 +48,7 @@ import { setCredentials } from "./features/auth/authSlice";
 import { useGetUserMutation } from "./features/auth/authApi";
 
 function App() {
-  const { token, role } = useAppSelector((state) => state.authReducer);
+  const { token } = useAppSelector((state) => state.authReducer);
   const dispatch = useDispatch();
   const [getUser] = useGetUserMutation();
 
@@ -86,7 +86,7 @@ function App() {
               <Route
                 path="/user/*"
                 element={
-                  <Protected role={role}>
+                  <Protected>
                     <UserLayout />
                   </Protected>
                 }
@@ -101,7 +101,7 @@ function App() {
             <Route
               path="/panel/*"
               element={
-                <Protected role={role}>
+                <Protected>
                   <PanelLayout />
                 </Protected>
               }
@@ -125,7 +125,7 @@ function App() {
               <Route
                 path="manage-access"
                 element={
-                  <Protected role={role}>
+                  <Protected>
                     <ManageAccess />
                   </Protected>
                 }

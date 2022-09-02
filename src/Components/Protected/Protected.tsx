@@ -1,34 +1,35 @@
 import { Navigate, useLocation } from "react-router-dom";
+import { useAppSelector } from "../../store";
+import jwt from "jwt-decode";
 interface Props {
-  role: null | string;
   children: JSX.Element;
 }
 
-const Protected = ({ role, children }: Props) => {
-  const location = useLocation().pathname.split("/");
+const Protected = ({ children }: Props) => {
+  const { pathname } = useLocation();
+  const { token } = useAppSelector((state) => state.authReducer);
 
-  //* Admin dont have access to user
-  if (role === "admin" && location[1] !== "user") {
-    return children;
+  let role = null;
+  if (token) {
+    const decodedToken = jwt(token) as any;
+    role = decodedToken.role;
   }
 
-  //* User dont have access to panel
-  else if (role === "user" && location[1] !== "panel") {
-    return <Navigate to="/user" replace />;
-  }
-
-  //* User dont access to panel and admin dont have access to user routes
-  else if (
-    (role === "user" && location[1] === "panel") ||
-    (role === "admin" && location[1] === "user")
+  if (
+    (role === "admin" && pathname.includes("user")) ||
+    pathname === "/panel/manage-access"
   ) {
     return <Navigate to="/" replace />;
-  } else if (role === null) {
+  }
+
+  if (role === "user" && pathname.includes("panel")) {
     return <Navigate to="/" replace />;
   }
-  /* else if (role === "superadmin") {
-    return <Navigate to="/panel/manage-access" replace />;
-  } */
+
+  if (!role && (pathname.includes("user") || pathname.includes("panel"))) {
+    return <Navigate to="/" replace />;
+  }
+
   return children;
 };
 
