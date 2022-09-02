@@ -39,7 +39,7 @@ import {
 } from "./Pages/Panel/User";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
-import { ScrollToTop, EditProduct } from "./Components";
+import { ScrollToTop, EditProduct, Protected } from "./Components";
 import UserLayout from "./Layouts/UserLayout/UserLayout";
 import { useEffect } from "react";
 import { useAppSelector } from "./store";
@@ -88,7 +88,14 @@ function App() {
               <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/user/*" element={<UserLayout />}>
+              <Route
+                path="/user/*"
+                element={
+                  <Protected>
+                    <UserLayout />
+                  </Protected>
+                }
+              >
                 <Route path="personal-info" element={<PersonalInfo />} />
                 <Route path="status" element={<Status />} />
                 <Route path="addresses" element={<Addresses />} />
@@ -96,7 +103,14 @@ function App() {
                 <Route path="wishlist" element={<UserWishlist />} />
               </Route>
             </Route>
-            <Route path="/panel/*" element={<PanelLayout />}>
+            <Route
+              path="/panel/*"
+              element={
+                <Protected>
+                  <PanelLayout />
+                </Protected>
+              }
+            >
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="products/*">
                 <Route path="list" element={<Products />} />
@@ -113,7 +127,14 @@ function App() {
               <Route path="brands" element={<Brands />} />
               <Route path="wishlist" element={<PanelWishlist />} />
               <Route path="my-orders" element={<PanelOrders />} />
-              <Route path="manage-access" element={<ManageAccess />} />
+              <Route
+                path="manage-access"
+                element={
+                  <Protected>
+                    <ManageAccess />
+                  </Protected>
+                }
+              />
               <Route path="settings" element={<Settings />} />
             </Route>
           </Routes>
