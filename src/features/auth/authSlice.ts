@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../../Services/Utils/Types/user";
 import Cookies from "universal-cookie";
+
 const cookie = new Cookies();
 const accessToken = cookie.get("access_token");
 
@@ -34,7 +35,7 @@ const authSlice = createSlice({
       state.token = accessToken ? accessToken : null;
     },
     logout(state) {
-      cookie.remove("access_token");
+      cookie.remove("access_token", { path: "/" });
       state.user = null;
       state.role = null;
       state.token = null;
