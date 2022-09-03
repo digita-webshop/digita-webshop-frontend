@@ -27,7 +27,7 @@ const Protected = ({ children }: Props) => {
   }
 
   if (!role && (pathname.includes("user") || pathname.includes("panel"))) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/?login=open" replace />;
   }
 
   return children;

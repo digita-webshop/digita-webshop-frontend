@@ -28,10 +28,10 @@ import Header from "./Header/Header";
 
 type Modal = "login" | "register" | "reset";
 type Props = {
-  closeLoginModal: () => void;
+  loginModalHandler: (value: boolean) => () => void;
   modalTypeToggle: (type: Modal) => void;
 };
-function Login({ closeLoginModal, modalTypeToggle }: Props) {
+function Login({ loginModalHandler, modalTypeToggle }: Props) {
   const { user } = useAppSelector((state) => state.authReducer);
   const registeredEmail = user?.email ? user?.email : "";
   const [enteredEmail, setEnteredEmail] = useState(registeredEmail);
@@ -78,7 +78,7 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
           navigate("/user/status", { replace: true });
         }
       }
-      closeLoginModal();
+      loginModalHandler(false)();
       successMessage("login successfully");
       console.log(data);
     } catch (err: any) {
@@ -182,7 +182,7 @@ function Login({ closeLoginModal, modalTypeToggle }: Props) {
             sign up
           </Button>
         </FormFooter>
-        <Box className="close-button" onClick={closeLoginModal}>
+        <Box className="close-button" onClick={loginModalHandler(false)}>
           <CloseRounded fontSize="large" />
         </Box>
       </Box>

@@ -13,10 +13,10 @@ import Header from "../Login/Header/Header";
 
 type Modal = "login" | "register" | "reset";
 type Props = {
-  closeLoginModal: () => void;
+  loginModalHandler: (open: boolean) => () => void;
   modalTypeToggle: (type: Modal) => void;
 };
-function ResetPassword({ closeLoginModal, modalTypeToggle }: Props) {
+function ResetPassword({ loginModalHandler, modalTypeToggle }: Props) {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [validationError, setValidationError] = useState(false);
 
@@ -83,7 +83,7 @@ function ResetPassword({ closeLoginModal, modalTypeToggle }: Props) {
             LOGIN
           </Button>
         </FormFooter>
-        <Box className="close-button" onClick={closeLoginModal}>
+        <Box className="close-button" onClick={loginModalHandler(false)}>
           <CloseRounded fontSize="large" />
         </Box>
       </Box>

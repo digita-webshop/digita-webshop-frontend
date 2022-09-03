@@ -23,11 +23,11 @@ import Header from "../Login/Header/Header";
 type Modal = "login" | "register" | "reset";
 
 type Props = {
-  closeLoginModal: () => void;
+  loginModalHandler: (open: boolean) => () => void;
   modalTypeToggle: (type: Modal) => void;
 };
 
-function Register({ closeLoginModal, modalTypeToggle }: Props) {
+function Register({ loginModalHandler, modalTypeToggle }: Props) {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [usernameTouched, setUsernameTouched] = useState(false);
   const [enteredEmail, setEnteredEmail] = useState("");
@@ -247,7 +247,7 @@ function Register({ closeLoginModal, modalTypeToggle }: Props) {
             sign in
           </Button>
         </FormFooter>
-        <Box className="close-button" onClick={closeLoginModal}>
+        <Box className="close-button" onClick={loginModalHandler(false)}>
           <CloseRounded fontSize="large" />
         </Box>
       </Box>

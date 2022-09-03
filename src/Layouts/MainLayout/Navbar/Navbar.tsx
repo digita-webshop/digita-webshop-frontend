@@ -26,7 +26,7 @@ import {
 import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
 import SearchBar from "./SearchBar/SearchBar";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import ShopMenu from "./ShopMenu/ShopMenu";
 import {
   CompareModal,
@@ -38,7 +38,7 @@ import Icons from "./Icons/Icons";
 
 function Navbar() {
   const [openSearchBar, setOpenSearchBar] = useState(false);
-  const [openLoginModal, setOpenLoginModal] = useState(false);
+  // const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openCompareModal, setOpenCompareModal] = useState(false);
 
   const [collapse, setCollapse] = useState(true);
@@ -50,6 +50,8 @@ function Navbar() {
   });
   const [selectedCategory, setSelectedCategory] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const openLoginModal = !!searchParams.get("login");
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
@@ -70,15 +72,15 @@ function Navbar() {
     }
   };
   const loginModalHandler = (open: boolean) => () => {
-    setOpenLoginModal(open);
+    if (open) {
+      searchParams.set("login", "open");
+    } else {
+      searchParams.delete("login");
+    }
+    setSearchParams(searchParams);
   };
-
   const openSearchBarHandler = () => {
     setOpenSearchBar((prevOpenSearchBar) => !prevOpenSearchBar);
-  };
-
-  const closeLoginModal = () => {
-    setOpenLoginModal(false);
   };
 
   type Modal = "login" | "register" | "reset";
@@ -209,7 +211,7 @@ function Navbar() {
       <Box sx={{ marginTop: { xs: "56px", sm: "64px", md: "90px" } }}></Box>
       <Modal
         open={openLoginModal}
-        onClose={() => setOpenLoginModal(false)}
+        onClose={loginModalHandler(false)}
         closeAfterTransition
         BackdropProps={{
           timeout: 500,
@@ -218,19 +220,19 @@ function Navbar() {
         <div>
           {modalType === "login" && (
             <Login
-              closeLoginModal={closeLoginModal}
+              loginModalHandler={loginModalHandler}
               modalTypeToggle={modalTypeToggle}
             />
           )}
           {modalType === "register" && (
             <Register
-              closeLoginModal={closeLoginModal}
+              loginModalHandler={loginModalHandler}
               modalTypeToggle={modalTypeToggle}
             />
           )}
           {modalType === "reset" && (
             <ResetPassword
-              closeLoginModal={closeLoginModal}
+              loginModalHandler={loginModalHandler}
               modalTypeToggle={modalTypeToggle}
             />
           )}
