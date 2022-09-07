@@ -11,7 +11,7 @@ import {
   TableRow,
   Rating,
 } from "@mui/material";
-import { MoreHoriz } from "@mui/icons-material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useState, ChangeEvent } from "react";
 import TableHeader from "../Orders/TableHeader/TableHeader";
 import { CardWrapper, POutlinedButton, PTitle } from "../../Styles/panelCommon";
@@ -183,10 +183,10 @@ const Reviews = () => {
                         }}
                       >
                         <TableButton>Detail</TableButton>
-                        <TableButton sx={{ display: "flex", paddingY: "0" }}>
-                          <MoreHoriz
-                            sx={{ margin: "auto", color: "common.panelGrey" }}
-                          />
+                        <TableButton
+                          sx={{ display: "flex", justifyContent: "center" }}
+                        >
+                          <DeleteIcon sx={{ color: "common.panelGrey" }} />
                         </TableButton>
                       </TCell>
                     )}
