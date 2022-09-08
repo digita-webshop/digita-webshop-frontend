@@ -4,18 +4,23 @@ import ArticleForm from "./ArticleForm/ArticleForm";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import { useState } from "react";
 import { useAddArticleMutation } from "../../features/articles/articlesApi";
+import { CardWrapper, PFormLabel } from "../../Styles/panelCommon";
+import TextEditor from "../TextEditor/TextEditor";
+import { convertToRaw, EditorState } from "draft-js";
 
 function AddArticle() {
   const [enteredTitle, setEnteredTitle] = useState("");
-  const [fullDescription, setFullDescription] = useState("");
   const [enteredWriter, setEnteredWriter] = useState("");
   const [addedImage, setAddedImage] = useState<any>("no chosen file");
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const [addArticle] = useAddArticleMutation();
-  const discardChangesHandler = () => {
+
+  const discardHandler = () => {
     setEnteredTitle("");
     setEnteredWriter("");
     setAddedImage("no chosen file");
+    setEditorState(EditorState.createEmpty());
   };
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -23,7 +28,9 @@ function AddArticle() {
       title: enteredTitle,
       writer: enteredWriter,
       image: addedImage,
-      description: fullDescription,
+      description: JSON.stringify(
+        convertToRaw(editorState.getCurrentContent())
+      ),
     };
 
     console.log(newArticle);
@@ -41,20 +48,31 @@ function AddArticle() {
           <ContentHeader
             title={"add article"}
             route={"/panel/articles/add"}
-            discardChangesHandler={discardChangesHandler}
+            discardHandler={discardHandler}
           />
         </Grid>
         <Grid item xs={12}>
-          <ArticleForm
-            enteredTitle={enteredTitle}
-            enteredWriter={enteredWriter}
-            setEnteredWriter={setEnteredWriter}
-            setEnteredTitle={setEnteredTitle}
-            fullDescription={fullDescription}
-            setFullDescription={setFullDescription}
-            addedImage={addedImage}
-            setAddedImage={setAddedImage}
-          />
+          <CardWrapper>
+            <Grid container spacing={3}>
+              <ArticleForm
+                enteredTitle={enteredTitle}
+                enteredWriter={enteredWriter}
+                setEnteredWriter={setEnteredWriter}
+                setEnteredTitle={setEnteredTitle}
+                addedImage={addedImage}
+                setAddedImage={setAddedImage}
+              />
+              <Grid item xs={12}>
+                <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
+                  description
+                </PFormLabel>
+                <TextEditor
+                  editorState={editorState}
+                  setEditorState={setEditorState}
+                />
+              </Grid>
+            </Grid>
+          </CardWrapper>
         </Grid>
       </Grid>
     </form>

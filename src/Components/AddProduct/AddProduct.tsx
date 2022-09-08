@@ -1,4 +1,5 @@
 import { Grid } from "@mui/material";
+import { convertToRaw, EditorState } from "draft-js";
 import { FormEvent, KeyboardEvent, useState } from "react";
 import { useAddProductMutation } from "../../features/products/productsApi";
 import { CardWrapper, PFormLabel } from "../../Styles/panelCommon";
@@ -28,7 +29,7 @@ function AddProduct() {
   const [tags, setTags] = useState<ITag[]>([]);
   const [selectedCategory, setSelectedCategory] =
     useState("audio & video game");
-  const [fullDescription, setFullDescription] = useState<string>("");
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const [addProduct] = useAddProductMutation();
 
@@ -51,7 +52,9 @@ function AddProduct() {
       colors: selectedColors,
       category: selectedCategory,
       shortDescription: enteredShortDesc,
-      fullDescription,
+      fullDescription: JSON.stringify(
+        convertToRaw(editorState.getCurrentContent())
+      ),
     };
     console.log(newProduct);
 
@@ -94,7 +97,10 @@ function AddProduct() {
               <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
                 description
               </PFormLabel>
-              <TextEditor setFullDescription={setFullDescription} />
+              <TextEditor
+                editorState={editorState}
+                setEditorState={setEditorState}
+              />
             </CardWrapper>
           </Grid>
           <Grid item xs={12} md={4}>

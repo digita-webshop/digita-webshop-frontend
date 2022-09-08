@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { convertToRaw, Editor, EditorState, RichUtils } from "draft-js";
+import { Dispatch, SetStateAction } from "react";
+import { Editor, EditorState, RichUtils } from "draft-js";
 import { Box } from "@mui/material";
 import {
   EditorButton,
@@ -8,11 +8,10 @@ import {
 } from "../../Styles/TextEditor";
 import "draft-js/dist/Draft.css";
 interface Props {
-  setFullDescription: Dispatch<SetStateAction<string>>;
+  editorState: any;
+  setEditorState: Dispatch<SetStateAction<EditorState>>;
 }
-function TextEditor({ setFullDescription }: Props) {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
+function TextEditor({ editorState, setEditorState }: Props) {
   const handleToggleClick = (e: React.MouseEvent, inlineStyle: string) => {
     e.preventDefault();
     setEditorState(RichUtils.toggleInlineStyle(editorState, inlineStyle));
@@ -23,11 +22,6 @@ function TextEditor({ setFullDescription }: Props) {
     setEditorState(RichUtils.toggleBlockType(editorState, blockType));
   };
 
-  useEffect(() => {
-    setFullDescription(
-      JSON.stringify(convertToRaw(editorState.getCurrentContent()))
-    );
-  }, [editorState]);
   return (
     <TextEditorWrapper>
       <Box sx={textEditorStyles}>

@@ -4,6 +4,7 @@ import { ImageWrapper } from "../../../Styles/AddProduct";
 import { CardWrapper, PFormLabel } from "../../../Styles/panelCommon";
 import previewImg from "../../../Assets/Images/upload-preview.jpg";
 import { ChangeEvent, useRef } from "react";
+import { useUploadImageMutation } from "../../../features/products/productsApi";
 
 const imagesData = ["image1", "image2", "image3", "image4", "image5", "image6"];
 
@@ -11,18 +12,34 @@ function Gallery({ setAddedImages, addedImages }: any) {
   const mainImgRef = useRef<HTMLInputElement>(null);
   const imageContainerRef = useRef<HTMLInputElement>(null);
 
+  const [uploadImage] = useUploadImageMutation();
   const imageClickHandler = (index: number) => () => {
     const inputs = imageContainerRef?.current?.querySelectorAll("input");
     inputs![index].click();
   };
 
-  const addImageHandler = (
+  const addImageHandler = async (
     event: ChangeEvent<HTMLInputElement>,
     name: string
   ) => {
+    const file = event.target?.files![0];
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const data = await uploadImage(formData).unwrap();
+      // const response = await fetch("/api/file/upload", {
+      //   method: "POST",
+      //   headers: myHeaders,
+      // });
+      // const data = await response.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
     setAddedImages((prev: any) => ({
       ...prev,
-      [name]: event.target?.files![0],
+      [name]: file,
     }));
   };
 

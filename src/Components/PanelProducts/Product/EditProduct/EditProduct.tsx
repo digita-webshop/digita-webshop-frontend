@@ -1,4 +1,5 @@
 import { Grid } from "@mui/material";
+import { EditorState } from "draft-js";
 import { FormEvent, useState } from "react";
 import { useParams } from "react-router-dom";
 import { productData } from "../../../../Services/Utils/Data/data";
@@ -36,12 +37,13 @@ function EditProduct() {
   const [enteredQuantity, setEnteredQuantity] = useState<number | string>(
     quantity
   );
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
   const tagsList = tagArr.map((tag, index) => {
     return { id: `${index}`, name: tag };
   });
   const [tags, setTags] = useState<ITag[]>(tagsList);
   const [selectedCategory, setSelectedCategory] = useState(category);
-  const [fullDescription, setFullDescription] = useState<string>("");
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
@@ -71,7 +73,10 @@ function EditProduct() {
               <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
                 description
               </PFormLabel>
-              <TextEditor setFullDescription={setFullDescription} />
+              <TextEditor
+                editorState={editorState}
+                setEditorState={setEditorState}
+              />
             </CardWrapper>
           </Grid>
           <Grid item xs={12} md={4}>

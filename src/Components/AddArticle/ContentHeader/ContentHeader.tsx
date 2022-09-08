@@ -6,15 +6,15 @@ import { PButton, POutlinedButton, PTitle } from "../../../Styles/panelCommon";
 interface Props {
   route: string;
   title: string;
-  discardChangesHandler?: () => void;
+  discardHandler?: () => void;
 }
-function ContentHeader({ route, title, discardChangesHandler }: Props) {
+function ContentHeader({ route, title, discardHandler }: Props) {
   const navigate = useNavigate();
 
   const discardClickHandler = () => {
     navigate(route);
-    if (discardChangesHandler) {
-      discardChangesHandler();
+    if (discardHandler) {
+      discardHandler();
     }
   };
   return (
