@@ -6,9 +6,17 @@ import { PButton, POutlinedButton, PTitle } from "../../../Styles/panelCommon";
 interface Props {
   route: string;
   title: string;
+  discardChangesHandler?: () => void;
 }
-function ContentHeader({ route, title }: Props) {
+function ContentHeader({ route, title, discardChangesHandler }: Props) {
   const navigate = useNavigate();
+
+  const discardClickHandler = () => {
+    navigate(route);
+    if (discardChangesHandler) {
+      discardChangesHandler();
+    }
+  };
   return (
     <Box
       sx={{
@@ -24,7 +32,7 @@ function ContentHeader({ route, title }: Props) {
         <POutlinedButton
           variant="contained"
           sx={{ width: "50%", paddingLeft: "11px" }}
-          onClick={() => navigate(`${route}`)}
+          onClick={discardClickHandler}
         >
           <Close fontSize={"small"} />
           discard

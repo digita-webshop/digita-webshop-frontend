@@ -32,7 +32,7 @@ function AddProduct() {
 
   const [addProduct] = useAddProductMutation();
 
-  const submitHandler = async (event: FormEvent) => {
+  const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     let galleryList = [];
@@ -67,7 +67,7 @@ function AddProduct() {
   };
 
   return (
-    <form onSubmit={submitHandler} onKeyDown={checkKeyDown}>
+    <form onSubmit={onSubmit} onKeyDown={checkKeyDown}>
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <ContentHeader title={"add product"} />

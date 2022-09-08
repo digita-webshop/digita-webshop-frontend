@@ -1,5 +1,5 @@
 import { Box, FormControl, Grid } from "@mui/material";
-import { useRef, useState } from "react";
+import { useRef, Dispatch, SetStateAction, ChangeEvent } from "react";
 import { fileInputStyles } from "../../../Styles/PanelArticle";
 import {
   CardWrapper,
@@ -7,17 +7,34 @@ import {
   PTextField,
 } from "../../../Styles/panelCommon";
 import TextEditor from "../../TextEditor/TextEditor";
-
-function ArticleForm() {
-  const [uploadImageName, setUploadImageName] = useState("no chosen file");
-  const [fullDescription, setFullDescription] = useState<string>("");
-
+interface Props {
+  enteredTitle: string;
+  setEnteredTitle: Dispatch<SetStateAction<string>>;
+  enteredWriter: string;
+  setEnteredWriter: Dispatch<SetStateAction<string>>;
+  fullDescription: string;
+  setFullDescription: Dispatch<SetStateAction<string>>;
+  addedImage: any;
+  setAddedImage: Dispatch<SetStateAction<any>>;
+}
+function ArticleForm({
+  enteredTitle,
+  setEnteredTitle,
+  enteredWriter,
+  setEnteredWriter,
+  fullDescription,
+  setFullDescription,
+  addedImage,
+  setAddedImage,
+}: Props) {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const clickInputHandler = () => {
     inputFileRef.current?.click();
   };
   const fileInputHandler = () => {
-    setUploadImageName(inputFileRef.current!.files![0].name);
+    console.log(inputFileRef.current!.files![0]);
+
+    setAddedImage(JSON.stringify(inputFileRef.current!.files![0]));
   };
   return (
     <CardWrapper>
@@ -25,13 +42,25 @@ function ArticleForm() {
         <Grid item xs={12}>
           <FormControl fullWidth>
             <PFormLabel>title</PFormLabel>
-            <PTextField placeholder="Type Here" />
+            <PTextField
+              placeholder="Type Here"
+              value={enteredTitle}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setEnteredTitle(e.target.value)
+              }
+            />
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
             <PFormLabel>writer</PFormLabel>
-            <PTextField placeholder="Type Here" />
+            <PTextField
+              placeholder="Type Here"
+              value={enteredWriter}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setEnteredWriter(e.target.value)
+              }
+            />
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -53,7 +82,11 @@ function ArticleForm() {
               >
                 Choose File
               </Box>
-              <Box>{uploadImageName}</Box>
+              <Box>
+                {addedImage === "no chosen file"
+                  ? addedImage
+                  : JSON.parse(addedImage)?.name}
+              </Box>
             </Box>
           </FormControl>
         </Grid>
