@@ -12,13 +12,13 @@ type ColorFilterProps = {
   drawer: boolean;
   color: string;
   labelId: string;
-  handleToggle: (value: string) => any;
+  addQueryParams: (filter: string, name: string) => () => void;
 };
 function ColorFilterCard({
   isChecked,
   color,
   labelId,
-  handleToggle,
+  addQueryParams,
   drawer,
 }: ColorFilterProps) {
   return (
@@ -57,7 +57,7 @@ function ColorFilterCard({
         },
       }}
       disablePadding
-      onClick={handleToggle(color)}
+      onClick={addQueryParams("color", color)}
     >
       <ListItemIcon sx={{ minWidth: 0 }}>
         <Checkbox

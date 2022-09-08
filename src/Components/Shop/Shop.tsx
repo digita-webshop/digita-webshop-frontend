@@ -1,6 +1,13 @@
 import { Fragment, useState } from "react";
 import { useTheme } from "@mui/material/styles";
-import { Container, useMediaQuery, Grid, Fade, Box } from "@mui/material";
+import {
+  Container,
+  useMediaQuery,
+  Grid,
+  Fade,
+  Box,
+  Typography,
+} from "@mui/material";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import CategoriesFilter from "./CategoriesFilter/CategoriesFilter";
 import ColorFilter from "./ColorFilter/ColorFilter";
@@ -29,7 +36,6 @@ function Shop() {
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   let currentProducts = products;
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   let categoryQueryParams = searchParams.get("category");
 
@@ -100,6 +106,7 @@ function Shop() {
       );
     }
     setSearchParams(searchParams);
+    setCurrentPage(1);
   };
   return (
     <Box bgcolor={"white"}>
@@ -131,6 +138,13 @@ function Shop() {
               selectedLayout={selectedLayout}
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
+              {currentProducts.length === 0 && (
+                <Box sx={{ textAlign: "center", margin: "40px auto" }}>
+                  <Typography variant="h5" sx={{ color: "common.digitaBlack" }}>
+                    No result found!
+                  </Typography>
+                </Box>
+              )}
               {currentProducts
                 .slice(indexOfFirstProduct, indexOfLastProduct)
                 .map((item) => (
@@ -175,7 +189,6 @@ function Shop() {
             <Pagination
               productsPerPage={productsPerPage}
               totalProducts={currentProducts.length}
-              paginate={paginate}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />

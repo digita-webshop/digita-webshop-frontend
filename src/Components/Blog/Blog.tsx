@@ -21,7 +21,6 @@ function Blog() {
     indexOfFirstArticle,
     indexOfLastArticle
   );
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <Box bgcolor={"white"}>
@@ -50,7 +49,6 @@ function Blog() {
             <Pagination
               productsPerPage={articlesPerPage}
               totalProducts={articles.length}
-              paginate={paginate}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />
@@ -66,7 +64,6 @@ function Blog() {
             <Pagination
               productsPerPage={articlesPerPage}
               totalProducts={articles.length}
-              paginate={paginate}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />

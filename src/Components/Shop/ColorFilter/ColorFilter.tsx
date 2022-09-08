@@ -1,5 +1,5 @@
 import { Box, List, Typography } from "@mui/material";
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { colorFilterData } from "../../../Services/Utils/Data/data";
 import { FilterTitleWrapper } from "../../../Styles/ShopPage";
 import ColorFilterCard from "./ColorFilterCard/ColorFilterCard";
@@ -9,21 +9,8 @@ interface Props {
   addQueryParams: (filter: string, name: string) => () => void;
 }
 function ColorFilter({ drawer, addQueryParams }: Props) {
-  const [checked, setChecked] = useState([""]);
+  let [searchParams, setSearchParams] = useSearchParams();
 
-  const handleToggle = (value: string) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-    addQueryParams("color", value)();
-  };
   return (
     <Box
       sx={{
@@ -53,15 +40,16 @@ function ColorFilter({ drawer, addQueryParams }: Props) {
       >
         {colorFilterData.map(({ id, color }) => {
           const labelId = `checkbox-list-label-${id}`;
-          const isChecked = checked.indexOf(color) !== -1;
+          let colorQueryParams = searchParams.get("color");
+          let isChecked = colorQueryParams?.includes(color);
 
           return (
             <ColorFilterCard
               key={id}
-              isChecked={isChecked}
+              isChecked={!!isChecked}
               labelId={labelId}
               color={color}
-              handleToggle={handleToggle}
+              addQueryParams={addQueryParams}
               drawer={drawer}
             />
           );

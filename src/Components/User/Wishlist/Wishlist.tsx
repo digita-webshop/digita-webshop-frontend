@@ -17,7 +17,6 @@ const Wishlist = () => {
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   function handleRemove(id: number) {
     const newList = list.filter((item) => item.id !== id);
@@ -72,7 +71,6 @@ const Wishlist = () => {
           <Pagination
             productsPerPage={productsPerPage}
             totalProducts={list.length}
-            paginate={paginate}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           />
