@@ -22,7 +22,7 @@ function AddProduct() {
   const [selectedBrand, setSelectedBrand] = useState("apple");
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [enteredShortDesc, setEnteredShortDesc] = useState("");
-  const [addedImages, setAddedImages] = useState<any>();
+  const [addedImages, setAddedImages] = useState<any>({});
   const [enteredPrice, setEnteredPrice] = useState<number | string>("");
   const [enteredQuantity, setEnteredQuantity] = useState<number | string>("");
   const [tags, setTags] = useState<ITag[]>([]);
