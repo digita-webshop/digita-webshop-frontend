@@ -38,16 +38,16 @@ function AddProduct() {
 
     let galleryList = [];
     for (let img in addedImages) {
-      galleryList.push({ image: JSON.stringify(addedImages[img]) });
+      galleryList.push({ image: addedImages[img] });
     }
-
+    let tagList = tags.map((t) => t.name);
     const newProduct = {
       title: enteredTitle,
-      image: JSON.stringify(addedImages?.main),
+      image: addedImages?.main,
       gallery: galleryList,
       price: +enteredPrice,
       sku: enteredSku,
-      tags,
+      tags: tagList,
       quantity: +enteredQuantity,
       colors: selectedColors,
       category: selectedCategory,

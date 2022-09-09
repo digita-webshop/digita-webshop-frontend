@@ -4,7 +4,6 @@ import { ImageWrapper } from "../../../Styles/AddProduct";
 import { CardWrapper, PFormLabel } from "../../../Styles/panelCommon";
 import previewImg from "../../../Assets/Images/upload-preview.jpg";
 import { ChangeEvent, useRef } from "react";
-import { useUploadImageMutation } from "../../../features/products/productsApi";
 
 const imagesData = ["image1", "image2", "image3", "image4", "image5", "image6"];
 
@@ -12,7 +11,6 @@ function Gallery({ setAddedImages, addedImages }: any) {
   const mainImgRef = useRef<HTMLInputElement>(null);
   const imageContainerRef = useRef<HTMLInputElement>(null);
 
-  const [uploadImage] = useUploadImageMutation();
   const imageClickHandler = (index: number) => () => {
     const inputs = imageContainerRef?.current?.querySelectorAll("input");
     inputs![index].click();
@@ -25,22 +23,25 @@ function Gallery({ setAddedImages, addedImages }: any) {
     const file = event.target?.files![0];
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("upload_preset", "digita");
 
     try {
-      const data = await uploadImage(formData).unwrap();
-      // const response = await fetch("/api/file/upload", {
-      //   method: "POST",
-      //   headers: myHeaders,
-      // });
-      // const data = await response.json();
+      const response = await fetch(
+        " https://api.cloudinary.com/v1_1/dmgb7kvmn/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const data = await response.json();
+      setAddedImages((prev: any) => ({
+        ...prev,
+        [name]: data?.url,
+      }));
       console.log(data);
     } catch (err) {
       console.log(err);
     }
-    setAddedImages((prev: any) => ({
-      ...prev,
-      [name]: file,
-    }));
   };
 
   return (
@@ -57,11 +58,7 @@ function Gallery({ setAddedImages, addedImages }: any) {
               onChange={(event) => addImageHandler(event, "main")}
             />
             <img
-              src={
-                addedImages?.main
-                  ? URL.createObjectURL(addedImages.main)
-                  : previewImg
-              }
+              src={addedImages?.main ? addedImages.main : previewImg}
               alt="product-img"
             />
             <Box onClick={() => mainImgRef.current!.click()}>
@@ -78,11 +75,7 @@ function Gallery({ setAddedImages, addedImages }: any) {
                   onChange={(event) => addImageHandler(event, image)}
                 />
                 <img
-                  src={
-                    image in addedImages
-                      ? URL.createObjectURL(addedImages[image])
-                      : previewImg
-                  }
+                  src={image in addedImages ? addedImages[image] : previewImg}
                   alt="product-img"
                 />
                 <Box onClick={imageClickHandler(index)}>

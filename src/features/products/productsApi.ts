@@ -46,15 +46,6 @@ export const productApi = api.injectEndpoints({
       query: (id) => `products/reviews/${id}`,
       providesTags: ["Product"],
     }),
-    uploadImage: build.mutation<any, any>({
-      query(body) {
-        return {
-          url: "file/upload",
-          method: "POST",
-          body: body,
-        };
-      },
-    }),
   }),
 });
 
@@ -65,5 +56,4 @@ export const {
   useDeleteProductMutation,
   useAddProductMutation,
   useGetProductReviewsQuery,
-  useUploadImageMutation,
 } = productApi;

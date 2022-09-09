@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { itemContent } from "../../../../Styles/Special";
+import { Link } from "react-router-dom";
 
 type Props = {
   id: number;
@@ -26,14 +27,19 @@ const SpecialItem = ({ id, name, image, offPrice, price, starRate }: Props) => {
         sx={{
           display: "flex",
           height: "150px",
+          "& .image-link": {
+            width: "40%",
+          },
         }}
       >
-        <CardMedia
-          component="img"
-          sx={{ width: "40%", height: "100%" }}
-          image={`${image}`}
-          alt="Live from space album cover"
-        />
+        <Link to={`/shop/${id}`} className="image-link">
+          <CardMedia
+            component="img"
+            sx={{ height: "100%" }}
+            image={`${image}`}
+            alt="Live from space album cover"
+          />
+        </Link>
         <Box
           sx={{
             display: "flex",
@@ -65,15 +71,19 @@ const SpecialItem = ({ id, name, image, offPrice, price, starRate }: Props) => {
             <Typography
               gutterBottom
               variant="body2"
-              component="div"
+              component={"div"}
               fontWeight={700}
               sx={{
                 whiteSpace: "nowrap",
                 textOverflow: "ellipsis",
                 overflow: "hidden",
+                a: {
+                  textDecoration: "none",
+                  color: "common.digitaBlack",
+                },
               }}
             >
-              {name}
+              <Link to={`/shop/${id}`}>{name}</Link>
             </Typography>
             <Typography
               variant="body2"
