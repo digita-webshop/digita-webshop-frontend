@@ -1,7 +1,12 @@
 import { Grid } from "@mui/material";
 import { convertToRaw, EditorState } from "draft-js";
 import { FormEvent, KeyboardEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAddProductMutation } from "../../features/products/productsApi";
+import {
+  errorMessage,
+  successMessage,
+} from "../../Services/Utils/toastMessages";
 import { CardWrapper, PFormLabel } from "../../Styles/panelCommon";
 import TextEditor from "../TextEditor/TextEditor";
 import ContentHeader from "./ContentHeader/ContentHeader";
@@ -25,6 +30,7 @@ function AddProduct() {
   const [enteredShortDesc, setEnteredShortDesc] = useState("");
   const [addedImages, setAddedImages] = useState<any>({});
   const [enteredPrice, setEnteredPrice] = useState<number | string>("");
+  const [enteredOffPrice, setEnteredOffPrice] = useState<number | string>("");
   const [enteredQuantity, setEnteredQuantity] = useState<number | string>("");
   const [tags, setTags] = useState<ITag[]>([]);
   const [selectedCategory, setSelectedCategory] =
@@ -32,7 +38,7 @@ function AddProduct() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const [addProduct] = useAddProductMutation();
-
+  const navigate = useNavigate();
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
@@ -46,6 +52,7 @@ function AddProduct() {
       image: addedImages?.main,
       gallery: galleryList,
       price: +enteredPrice,
+      offPrice: +enteredOffPrice,
       sku: enteredSku,
       tags: tagList,
       quantity: +enteredQuantity,
@@ -55,13 +62,17 @@ function AddProduct() {
       fullDescription: JSON.stringify(
         convertToRaw(editorState.getCurrentContent())
       ),
+      rating: 5,
     };
     console.log(newProduct);
 
     try {
-      const data = await addProduct(newProduct);
-      console.log(data);
-    } catch (err) {
+      const response = await addProduct(newProduct).unwrap();
+      successMessage(response?.message);
+      navigate("/panel/products/list", { replace: true });
+      console.log(response);
+    } catch (err: any) {
+      errorMessage(err.message);
       console.log(err);
     }
   };
@@ -107,6 +118,8 @@ function AddProduct() {
             <Sidebar
               enteredPrice={enteredPrice}
               setEnteredPrice={setEnteredPrice}
+              enteredOffPrice={enteredOffPrice}
+              setEnteredOffPrice={setEnteredOffPrice}
               enteredQuantity={enteredQuantity}
               setEnteredQuantity={setEnteredQuantity}
               tags={tags}

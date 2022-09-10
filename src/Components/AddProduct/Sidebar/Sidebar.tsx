@@ -24,6 +24,8 @@ import { ITag } from "../AddProduct";
 interface Props {
   enteredPrice: number | string;
   setEnteredPrice: Dispatch<SetStateAction<number | string>>;
+  enteredOffPrice: number | string;
+  setEnteredOffPrice: Dispatch<SetStateAction<number | string>>;
   enteredQuantity: number | string;
   setEnteredQuantity: Dispatch<SetStateAction<number | string>>;
   tags: ITag[];
@@ -35,6 +37,8 @@ interface Props {
 function Sidebar({
   enteredPrice,
   setEnteredPrice,
+  enteredOffPrice,
+  setEnteredOffPrice,
   enteredQuantity,
   setEnteredQuantity,
   tags,
@@ -79,6 +83,17 @@ function Sidebar({
               placeholder="Type Here"
               value={enteredPrice}
               onChange={(e) => setEnteredPrice(e.target.value)}
+            />
+          </FormControl>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl fullWidth>
+            <PFormLabel>off price</PFormLabel>
+            <PTextField
+              type={"number"}
+              placeholder="Type Here"
+              value={enteredOffPrice}
+              onChange={(e) => setEnteredOffPrice(e.target.value)}
             />
           </FormControl>
         </Grid>

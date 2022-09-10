@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { Edit } from "@mui/icons-material";
 import { Box, Grid } from "@mui/material";
 import { ImageWrapper } from "../../../Styles/AddProduct";
@@ -6,8 +7,11 @@ import previewImg from "../../../Assets/Images/upload-preview.jpg";
 import { ChangeEvent, useRef } from "react";
 
 const imagesData = ["image1", "image2", "image3", "image4", "image5", "image6"];
-
-function Gallery({ setAddedImages, addedImages }: any) {
+interface Props {
+  setAddedImages: Dispatch<SetStateAction<any>>;
+  addedImages: any;
+}
+function Gallery({ setAddedImages, addedImages }: Props) {
   const mainImgRef = useRef<HTMLInputElement>(null);
   const imageContainerRef = useRef<HTMLInputElement>(null);
 

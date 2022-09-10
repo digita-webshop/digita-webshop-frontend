@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import GridHeader from "./GridHeader/GridHeader";
 import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
@@ -6,15 +6,26 @@ import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Product from "./Product/Product";
 import { productData } from "../../Services/Utils/Data/data";
 import Pagination from "./Pagination/Pagination";
+import {
+  useDeleteProductMutation,
+  useGetAllProductsQuery,
+} from "../../features/products/productsApi";
+import { IProduct } from "../../Services/Utils/Types/product";
+import {
+  errorMessage,
+  successMessage,
+} from "../../Services/Utils/toastMessages";
 
 const PanelProducts = () => {
-  const [list, setList] = useState(productData);
+  const [list, setList] = useState<IProduct[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const { data } = useGetAllProductsQuery();
+  const [deleteProduct] = useDeleteProductMutation();
 
   const [selectedStatus, setSelectedStatus] = useState("status");
   const [selectedAmount, setSelectedAmount] = useState("20");
@@ -26,15 +37,24 @@ const PanelProducts = () => {
     setSelectedAmount(event.target.value);
   };
 
-  function handleRemove(id: number) {
-    const newList = list.filter((item) => item.id !== id);
-    setList(newList);
+  async function handleRemove(id: string) {
+    try {
+      const response = await deleteProduct(id).unwrap();
+      successMessage(response?.message);
+    } catch (err: any) {
+      errorMessage(err?.message);
+    }
   }
+  useEffect(() => {
+    if (data?.data) {
+      setList(data.data);
+    }
+  }, [data?.data]);
 
   return (
     <Grid container rowSpacing={4}>
       <Grid item xs={12}>
-        <ContentHeader title="Products"/>
+        <ContentHeader title="Products" />
       </Grid>
 
       <Grid item xs={12}>
@@ -59,11 +79,11 @@ const PanelProducts = () => {
           }}
         >
           <Grid container spacing={2}>
-            {currentProducts.map(({ id, name, price, image }) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={id}>
+            {currentProducts.map(({ _id, title, price, image }) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={_id}>
                 <Product
-                  id={id}
-                  name={name}
+                  id={_id}
+                  title={title}
                   price={price}
                   image={image}
                   onRemove={handleRemove}

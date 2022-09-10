@@ -116,8 +116,8 @@ function App() {
                 <Route path="list" element={<Products />} />
                 <Route path="add" element={<AddProduct />} />
                 <Route path="reviews" element={<Reviews />} />
+                <Route path="edit/:id" element={<EditProduct />} />
               </Route>
-              <Route path="product/:id" element={<EditProduct />} />
               <Route path="orders" element={<Orders />} />
               <Route path="articles/*">
                 <Route path="list" element={<Articles />} />

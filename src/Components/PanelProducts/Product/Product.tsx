@@ -22,14 +22,14 @@ import {
 import { Link } from "react-router-dom";
 
 type T = {
-  id: number;
-  name: string;
+  id: string;
+  title: string;
   price: number;
   image: string;
   onRemove: Function;
 };
 
-const Product = ({ id, name, price, image, onRemove }: T) => {
+const Product = ({ id, title, price, image, onRemove }: T) => {
   const [openDelete, setOpenDelete] = useState(false);
 
   return (
@@ -43,7 +43,7 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
       />
       <CardContent sx={titleWrapper}>
         <Typography component="p" sx={titleStyle}>
-          {name}
+          {title}
         </Typography>
         <Typography
           variant="h6"
@@ -57,7 +57,7 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
             variant="contained"
             sx={editBtn}
             component={Link}
-            to={`/panel/product/${id}`}
+            to={`/panel/products/edit/${id}`}
           >
             <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
             Edit

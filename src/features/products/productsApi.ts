@@ -1,13 +1,20 @@
 import { IProduct, IReviews } from "../../Services/Utils/Types/product";
 import { api } from "../api";
-
+type GetAllProductsResponse = {
+  message: string;
+  data: IProduct[];
+};
+type GetProductResponse = {
+  message: string;
+  data: IProduct;
+};
 export const productApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getAllProducts: build.query<IProduct[], void>({
+    getAllProducts: build.query<GetAllProductsResponse, void>({
       query: () => "products",
       providesTags: ["Product"],
     }),
-    getProduct: build.query<IProduct, string>({
+    getProduct: build.query<GetProductResponse, string>({
       query: (id) => `products/find/${id}`,
       providesTags: ["Product"],
     }),

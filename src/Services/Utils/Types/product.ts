@@ -9,7 +9,7 @@ export interface IGallery {
 }
 
 export interface IProduct {
-  id: string;
+  _id: string;
   title: string;
   image: string;
   gallery: IGallery[];

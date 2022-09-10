@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import { EditorState } from "draft-js";
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { productData } from "../../../../Services/Utils/Data/data";
+import { useGetProductQuery } from "../../../../features/products/productsApi";
 import { CardWrapper, PFormLabel } from "../../../../Styles/panelCommon";
 
 import ContentHeader from "../../../AddArticle/ContentHeader/ContentHeader";
@@ -13,41 +13,50 @@ import Sidebar from "../../../AddProduct/Sidebar/Sidebar";
 import TextEditor from "../../../TextEditor/TextEditor";
 
 function EditProduct() {
-  const { id }: any = useParams();
-  const product = productData.find((item) => item.id === +id);
-  const {
-    name,
-    sku,
-    brand,
-    description,
-    price,
-    quantity,
-    gallery,
-    tags: tagArr,
-    category,
-    colors,
-  } = product!;
-  const [enteredTitle, setEnteredTitle] = useState(name);
-  const [enteredSku, setEnteredSku] = useState(sku);
-  const [selectedBrand, setSelectedBrand] = useState(brand);
-  const [selectedColors, setSelectedColors] = useState(colors);
-  const [enteredShortDesc, setEnteredShortDesc] = useState(description);
-  const [addedImages, setAddedImages] = useState({});
-  const [enteredPrice, setEnteredPrice] = useState<number | string>(price);
-  const [enteredQuantity, setEnteredQuantity] = useState<number | string>(
-    quantity
-  );
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredSku, setEnteredSku] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
+  const [enteredShortDesc, setEnteredShortDesc] = useState("");
+  const [addedImages, setAddedImages] = useState<any>({});
+  const [enteredPrice, setEnteredPrice] = useState<number | string>("");
+  const [enteredOffPrice, setEnteredOffPrice] = useState<number | string>("");
+  const [enteredQuantity, setEnteredQuantity] = useState<number | string>("");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
-  const tagsList = tagArr.map((tag, index) => {
-    return { id: `${index}`, name: tag };
-  });
-  const [tags, setTags] = useState<ITag[]>(tagsList);
-  const [selectedCategory, setSelectedCategory] = useState(category);
+  const [tags, setTags] = useState<ITag[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  const { id }: any = useParams();
+  console.log(id);
+
+  const { data } = useGetProductQuery(id);
+  console.log(data);
 
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
   };
+  useEffect(() => {
+    console.log(data?.data);
+
+    if (data?.data) {
+      const product = data?.data;
+      setEnteredTitle(product.title);
+      setEnteredSku(product.sku);
+      setEnteredPrice(product.price);
+      setEnteredOffPrice(product.offPrice);
+      setSelectedColors(product.colors);
+      setEnteredShortDesc(product.shortDescription);
+      setSelectedCategory(product.category);
+      setAddedImages(product.gallery);
+      const tagList = product.tags.map((tag, index) => {
+        return { id: `${index}`, name: tag };
+      });
+      setTags(tagList);
+      setEnteredQuantity(product.quantity);
+    }
+  }, [data?.data]);
+
   return (
     <form onSubmit={submitHandler}>
       <Grid container spacing={4}>
@@ -68,7 +77,10 @@ function EditProduct() {
               enteredShortDesc={enteredShortDesc}
               setEnteredShortDesc={setEnteredShortDesc}
             />
-            <Gallery setAddedImages={setAddedImages} />
+            <Gallery
+              setAddedImages={setAddedImages}
+              addedImages={addedImages}
+            />
             <CardWrapper mt={4}>
               <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
                 description
@@ -83,6 +95,8 @@ function EditProduct() {
             <Sidebar
               enteredPrice={enteredPrice}
               setEnteredPrice={setEnteredPrice}
+              enteredOffPrice={enteredOffPrice}
+              setEnteredOffPrice={setEnteredOffPrice}
               enteredQuantity={enteredQuantity}
               setEnteredQuantity={setEnteredQuantity}
               tags={tags}
