@@ -6,7 +6,6 @@ import { CardWrapper, PFormLabel } from "../../../Styles/panelCommon";
 import previewImg from "../../../Assets/Images/upload-preview.jpg";
 import { ChangeEvent, useRef } from "react";
 
-const imagesData = ["image1", "image2", "image3", "image4", "image5", "image6"];
 interface Props {
   setAddedImages: Dispatch<SetStateAction<any>>;
   addedImages: any;
@@ -22,12 +21,13 @@ function Gallery({ setAddedImages, addedImages }: Props) {
 
   const addImageHandler = async (
     event: ChangeEvent<HTMLInputElement>,
-    name: string
+    index: number
   ) => {
     const file = event.target?.files![0];
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "digita");
+    console.log(index);
 
     try {
       const response = await fetch(
@@ -38,10 +38,16 @@ function Gallery({ setAddedImages, addedImages }: Props) {
         }
       );
       const data = await response.json();
-      setAddedImages((prev: any) => ({
-        ...prev,
-        [name]: data?.url,
-      }));
+      setAddedImages((prev: any) => {
+        let images = [...prev];
+        if (!images[index]) {
+          for (let i = addedImages.length - 1; i < 7; i++) {
+            images.push({ image: "" });
+          }
+        }
+        images[index] = { image: data?.url };
+        return images;
+      });
       console.log(data);
     } catch (err) {
       console.log(err);
@@ -59,10 +65,10 @@ function Gallery({ setAddedImages, addedImages }: Props) {
             <input
               type={"file"}
               ref={mainImgRef}
-              onChange={(event) => addImageHandler(event, "main")}
+              onChange={(event) => addImageHandler(event, 0)}
             />
             <img
-              src={addedImages?.main ? addedImages.main : previewImg}
+              src={addedImages[0].image ? addedImages[0].image : previewImg}
               alt="product-img"
             />
             <Box onClick={() => mainImgRef.current!.click()}>
@@ -71,18 +77,23 @@ function Gallery({ setAddedImages, addedImages }: Props) {
           </ImageWrapper>
         </Grid>
         <Grid container item xs={12} sm={5} spacing={2} ref={imageContainerRef}>
-          {imagesData.map((image, index) => (
+          {[1, 2, 3, 4, 5, 6].map((index) => (
             <Grid item xs={6} sm={6} display={"flex"} key={index}>
               <ImageWrapper>
                 <input
                   type={"file"}
-                  onChange={(event) => addImageHandler(event, image)}
+                  className={`${index}`}
+                  onChange={(event) => addImageHandler(event, index)}
                 />
                 <img
-                  src={image in addedImages ? addedImages[image] : previewImg}
+                  src={
+                    !!addedImages[index]?.image
+                      ? addedImages[index].image
+                      : previewImg
+                  }
                   alt="product-img"
                 />
-                <Box onClick={imageClickHandler(index)}>
+                <Box onClick={imageClickHandler(index - 1)}>
                   <Edit />
                 </Box>
               </ImageWrapper>

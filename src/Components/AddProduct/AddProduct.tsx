@@ -1,8 +1,12 @@
 import { Grid } from "@mui/material";
-import { convertToRaw, EditorState } from "draft-js";
-import { FormEvent, KeyboardEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAddProductMutation } from "../../features/products/productsApi";
+import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
+import { FormEvent, KeyboardEvent, useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  useAddProductMutation,
+  useGetProductQuery,
+  useUpdateProductMutation,
+} from "../../features/products/productsApi";
 import {
   errorMessage,
   successMessage,
@@ -21,14 +25,22 @@ export interface ITag {
   id: string;
   name: string;
 }
-
+const galleryInitialState = [
+  { image: "" },
+  { image: "" },
+  { image: "" },
+  { image: "" },
+  { image: "" },
+  { image: "" },
+  { image: "" },
+];
 function AddProduct() {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredSku, setEnteredSku] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("apple");
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [enteredShortDesc, setEnteredShortDesc] = useState("");
-  const [addedImages, setAddedImages] = useState<any>({});
+  const [addedImages, setAddedImages] = useState<any>(galleryInitialState);
   const [enteredPrice, setEnteredPrice] = useState<number | string>("");
   const [enteredOffPrice, setEnteredOffPrice] = useState<number | string>("");
   const [enteredQuantity, setEnteredQuantity] = useState<number | string>("");
@@ -37,20 +49,21 @@ function AddProduct() {
     useState("audio & video game");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
+  const { id }: any = useParams();
+  const { data } = useGetProductQuery(id || "");
   const [addProduct] = useAddProductMutation();
+  const [updateProduct] = useUpdateProductMutation();
   const navigate = useNavigate();
+
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    let galleryList = [];
-    for (let img in addedImages) {
-      galleryList.push({ image: addedImages[img] });
-    }
     let tagList = tags.map((t) => t.name);
-    const newProduct = {
+
+    let newProduct: any = {
       title: enteredTitle,
-      image: addedImages?.main,
-      gallery: galleryList,
+      image: addedImages[0]?.image,
+      gallery: addedImages,
       price: +enteredPrice,
       offPrice: +enteredOffPrice,
       sku: enteredSku,
@@ -62,29 +75,65 @@ function AddProduct() {
       fullDescription: JSON.stringify(
         convertToRaw(editorState.getCurrentContent())
       ),
-      rating: 5,
+      rating: id ? data?.data.rating : 5,
     };
+    if (id) {
+      newProduct["_id"] = data?.data._id;
+    }
     console.log(newProduct);
+    console.log(newProduct._id);
 
     try {
-      const response = await addProduct(newProduct).unwrap();
+      let response;
+      if (id) {
+        console.log("update");
+
+        response = await updateProduct(newProduct).unwrap();
+      } else {
+        console.log("add");
+        response = await addProduct(newProduct).unwrap();
+      }
+      console.log(response);
       successMessage(response?.message);
       navigate("/panel/products/list", { replace: true });
-      console.log(response);
     } catch (err: any) {
       errorMessage(err.message);
       console.log(err);
     }
   };
+
   const checkKeyDown = (event: KeyboardEvent) => {
     if (event.code === "Enter") event.preventDefault();
   };
 
+  useEffect(() => {
+    if (data?.data) {
+      const product = data?.data;
+      setEnteredTitle(product.title);
+      setEnteredSku(product.sku);
+      setEnteredPrice(product.price);
+      setEnteredOffPrice(product.offPrice);
+      setSelectedColors(product.colors);
+      setEnteredShortDesc(product.shortDescription);
+      setSelectedCategory(product.category);
+      setAddedImages(product.gallery);
+      const tagList = product.tags.map((tag, index) => {
+        return { id: `${index}`, name: tag };
+      });
+      setTags(tagList);
+      setEnteredQuantity(product.quantity);
+      setEditorState(
+        EditorState.createWithContent(
+          convertFromRaw(JSON.parse(product.fullDescription))
+        )
+      );
+    }
+  }, [data?.data]);
   return (
     <form onSubmit={onSubmit} onKeyDown={checkKeyDown}>
       <Grid container spacing={4}>
         <Grid item xs={12}>
-          <ContentHeader title={"add product"} />
+          <ContentHeader title={`${id ? "edit" : "add"} product`} />
         </Grid>
         <Grid container item xs={12} spacing={3}>
           <Grid item xs={12} md={8}>

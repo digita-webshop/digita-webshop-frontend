@@ -20,11 +20,13 @@ export const productApi = api.injectEndpoints({
     }),
     updateProduct: build.mutation<IProduct, any>({
       query(data) {
-        const { id, ...body } = data;
+        const { _id, ...body } = data;
+        console.log(_id);
+
         return {
-          url: `products/${id}`,
+          url: `products/${_id}`,
           method: "PUT",
-          body,
+          body: data,
         };
       },
       invalidatesTags: ["Product"],

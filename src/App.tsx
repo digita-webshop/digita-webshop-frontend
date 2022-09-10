@@ -39,7 +39,7 @@ import {
 } from "./Pages/Panel/User";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
-import { ScrollToTop, EditProduct, Protected } from "./Components";
+import { ScrollToTop, Protected } from "./Components";
 import UserLayout from "./Layouts/UserLayout/UserLayout";
 import { useEffect } from "react";
 import { useAppSelector } from "./store";
@@ -116,7 +116,7 @@ function App() {
                 <Route path="list" element={<Products />} />
                 <Route path="add" element={<AddProduct />} />
                 <Route path="reviews" element={<Reviews />} />
-                <Route path="edit/:id" element={<EditProduct />} />
+                <Route path="edit/:id" element={<AddProduct />} />
               </Route>
               <Route path="orders" element={<Orders />} />
               <Route path="articles/*">

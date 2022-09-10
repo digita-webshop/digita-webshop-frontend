@@ -29,7 +29,6 @@ export { default as Reviews } from "./Reviews/Reviews";
 export { default as PanelProducts } from "./PanelProducts/PanelProducts";
 export { default as CompareModal } from "./CompareModal/CompareModal";
 export { default as Product } from "./Product/Product";
-export { default as EditProduct } from "./PanelProducts/Product/EditProduct/EditProduct";
 export { default as ManageAccess } from "./ManageAccess/ManageAccess";
 export { default as PanelOrders } from "./PanelOrders/PanelOrders";
 export { default as Articles } from "./Articles/Articles";
