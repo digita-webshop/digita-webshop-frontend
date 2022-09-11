@@ -4,13 +4,13 @@ import { FormEvent, KeyboardEvent, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useAddProductMutation,
-  useGetProductQuery,
   useUpdateProductMutation,
 } from "../../features/products/productsApi";
 import {
   errorMessage,
   successMessage,
 } from "../../Services/Utils/toastMessages";
+import { IProduct } from "../../Services/Utils/Types/product";
 import { CardWrapper, PFormLabel } from "../../Styles/panelCommon";
 import TextEditor from "../TextEditor/TextEditor";
 import ContentHeader from "./ContentHeader/ContentHeader";
@@ -18,29 +18,17 @@ import Details from "./Details/Details";
 import Gallery from "./Gallery/Gallery";
 import Sidebar from "./Sidebar/Sidebar";
 
-export interface IImages {
-  main: string;
-}
 export interface ITag {
   id: string;
   name: string;
 }
-const galleryInitialState = [
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-];
 function AddProduct() {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredSku, setEnteredSku] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("apple");
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [enteredShortDesc, setEnteredShortDesc] = useState("");
-  const [addedImages, setAddedImages] = useState<any>(galleryInitialState);
+  const [addedImages, setAddedImages] = useState<any>([{ image: "" }]);
   const [enteredPrice, setEnteredPrice] = useState<number | string>("");
   const [enteredOffPrice, setEnteredOffPrice] = useState<number | string>("");
   const [enteredQuantity, setEnteredQuantity] = useState<number | string>("");
@@ -48,9 +36,9 @@ function AddProduct() {
   const [selectedCategory, setSelectedCategory] =
     useState("audio & video game");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [product, setProduct] = useState<IProduct>();
 
   const { id }: any = useParams();
-  const { data } = useGetProductQuery(id || "");
   const [addProduct] = useAddProductMutation();
   const [updateProduct] = useUpdateProductMutation();
   const navigate = useNavigate();
@@ -59,11 +47,12 @@ function AddProduct() {
     event.preventDefault();
 
     let tagList = tags.map((t) => t.name);
+    let galleryList = addedImages.filter((item: any) => item.image);
 
     let newProduct: any = {
       title: enteredTitle,
-      image: addedImages[0]?.image,
-      gallery: addedImages,
+      image: galleryList[0]?.image,
+      gallery: galleryList,
       price: +enteredPrice,
       offPrice: +enteredOffPrice,
       sku: enteredSku,
@@ -75,30 +64,26 @@ function AddProduct() {
       fullDescription: JSON.stringify(
         convertToRaw(editorState.getCurrentContent())
       ),
-      rating: id ? data?.data.rating : 5,
+      rating: id ? product?.rating : 5,
     };
     if (id) {
-      newProduct["_id"] = data?.data._id;
+      newProduct["_id"] = product?._id;
     }
     console.log(newProduct);
-    console.log(newProduct._id);
 
     try {
       let response;
       if (id) {
-        console.log("update");
-
         response = await updateProduct(newProduct).unwrap();
       } else {
-        console.log("add");
         response = await addProduct(newProduct).unwrap();
       }
       console.log(response);
       successMessage(response?.message);
       navigate("/panel/products/list", { replace: true });
     } catch (err: any) {
-      errorMessage(err.message);
       console.log(err);
+      errorMessage(err.message);
     }
   };
 
@@ -107,28 +92,40 @@ function AddProduct() {
   };
 
   useEffect(() => {
-    if (data?.data) {
-      const product = data?.data;
-      setEnteredTitle(product.title);
-      setEnteredSku(product.sku);
-      setEnteredPrice(product.price);
-      setEnteredOffPrice(product.offPrice);
-      setSelectedColors(product.colors);
-      setEnteredShortDesc(product.shortDescription);
-      setSelectedCategory(product.category);
-      setAddedImages(product.gallery);
-      const tagList = product.tags.map((tag, index) => {
-        return { id: `${index}`, name: tag };
-      });
-      setTags(tagList);
-      setEnteredQuantity(product.quantity);
-      setEditorState(
-        EditorState.createWithContent(
-          convertFromRaw(JSON.parse(product.fullDescription))
-        )
-      );
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/products/find/${id}`).then((res) =>
+          res.json()
+        );
+        const productData = response?.data;
+        setEnteredTitle(productData.title);
+        setEnteredSku(productData.sku);
+        setEnteredPrice(productData.price);
+        setEnteredOffPrice(productData.offPrice);
+        setSelectedColors(productData.colors);
+        setEnteredShortDesc(productData.shortDescription);
+        setSelectedCategory(productData.category);
+        setAddedImages(productData.gallery);
+        const tagList = productData.tags.map((tag: any, index: number) => {
+          return { id: `${index}`, name: tag };
+        });
+        setTags(tagList);
+        setEnteredQuantity(productData.quantity);
+        setEditorState(
+          EditorState.createWithContent(
+            convertFromRaw(JSON.parse(productData.fullDescription))
+          )
+        );
+        setProduct(productData);
+      } catch (err: any) {
+        errorMessage(err.message);
+        console.log(err);
+      }
+    };
+    if (id) {
+      fetchData();
     }
-  }, [data?.data]);
+  }, [id]);
   return (
     <form onSubmit={onSubmit} onKeyDown={checkKeyDown}>
       <Grid container spacing={4}>

@@ -27,7 +27,6 @@ function Gallery({ setAddedImages, addedImages }: Props) {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "digita");
-    console.log(index);
 
     try {
       const response = await fetch(
@@ -68,7 +67,7 @@ function Gallery({ setAddedImages, addedImages }: Props) {
               onChange={(event) => addImageHandler(event, 0)}
             />
             <img
-              src={addedImages[0].image ? addedImages[0].image : previewImg}
+              src={!!addedImages[0]?.image ? addedImages[0].image : previewImg}
               alt="product-img"
             />
             <Box onClick={() => mainImgRef.current!.click()}>
