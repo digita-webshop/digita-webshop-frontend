@@ -1,5 +1,8 @@
 import { Box } from "@mui/material";
-import { PaginationList, PaginationListItem } from "../../../Styles/PanelProducts";
+import {
+  PaginationList,
+  PaginationListItem,
+} from "../../../Styles/PanelProducts";
 
 type PaginationProps = {
   productsPerPage: number;
@@ -22,11 +25,16 @@ function Pagination({
     pageNumber.push(i);
   }
   return (
-    <Box marginTop={4}>
+    <Box marginTop={4} sx={{ display: totalProducts === 0 ? "none" : "block" }}>
       <PaginationList>
         <PaginationListItem
           onClick={() => setCurrentPage(currentPage - 1)}
-          sx={{ display: currentPage === 1 ? "none" : "flex", width: "auto !important", padding: "0 0.7rem", borderRadius: "5px 0 0 5px" }}
+          sx={{
+            display: currentPage === 1 ? "none" : "flex",
+            width: "auto !important",
+            padding: "0 0.7rem",
+            borderRadius: "5px 0 0 5px",
+          }}
         >
           Previous
         </PaginationListItem>
@@ -43,7 +51,12 @@ function Pagination({
 
         <PaginationListItem
           onClick={() => setCurrentPage(currentPage + 1)}
-          sx={{ display: currentPage === pageNumber.length ? "none" : "flex",  width: "auto !important", padding: "0 0.7rem", borderRadius: "0 5px 5px 0" }}
+          sx={{
+            display: currentPage === pageNumber.length ? "none" : "flex",
+            width: "auto !important",
+            padding: "0 0.7rem",
+            borderRadius: "0 5px 5px 0",
+          }}
         >
           Next
         </PaginationListItem>

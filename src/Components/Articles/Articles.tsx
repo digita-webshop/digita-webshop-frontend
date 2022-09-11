@@ -1,21 +1,33 @@
 import ContentHeader from "../PanelProducts/ContentHeader/ContentHeader";
 import Pagination from "../PanelProducts/Pagination/Pagination";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GridHeader from "./GridHeader/GridHeader";
 import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Article from "./Article/Article";
-import { articlesBlogPage } from "../../Services/Utils/Data/data";
 import { ArticleWrapper } from "../../Styles/Articles";
+import { IArticle } from "../../Services/Utils/Types/article";
+import {
+  useDeleteArticleMutation,
+  useGetAllArticlesQuery,
+} from "../../features/articles/articlesApi";
+import NotFound from "../EmptyList/NotFound";
+import {
+  errorMessage,
+  successMessage,
+} from "../../Services/Utils/toastMessages";
 
 const Articles = () => {
-  const [list, setList] = useState(articlesBlogPage);
+  const [list, setList] = useState<IArticle[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  const { data: articles } = useGetAllArticlesQuery();
+  const [deleteArticle] = useDeleteArticleMutation();
 
   const [selectedStatus, setSelectedStatus] = useState("status");
   const [selectedAmount, setSelectedAmount] = useState("20");
@@ -27,10 +39,21 @@ const Articles = () => {
     setSelectedAmount(event.target.value);
   };
 
-  function handleRemove(id: number) {
-    const newList = list.filter((item) => item.id !== id);
-    setList(newList);
+  async function handleRemove(id: string) {
+    try {
+      const response = await deleteArticle(id).unwrap();
+      successMessage(response?.message);
+    } catch (err: any) {
+      errorMessage(err?.message);
+    }
   }
+
+  useEffect(() => {
+    if (articles?.data) {
+      console.log(articles);
+      setList(articles?.data);
+    }
+  }, [articles]);
 
   return (
     <Grid container rowSpacing={4}>
@@ -54,19 +77,25 @@ const Articles = () => {
         />
         <ArticleWrapper>
           <Grid container spacing={2}>
-            {currentProducts.map(({ id, title, image, author, releaseDate, category }) => (
-              <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={id}>
-                <Article
-                  id={id}
-                  title={title}
-                  image={image}
-                  author={author}
-                  releaseDate={releaseDate}
-                  category={category}
-                  onRemove={handleRemove}
-                />
-              </Grid>
-            ))}
+            {list.length === 0 ? (
+              <NotFound />
+            ) : (
+              currentProducts.map(
+                ({ _id, title, image, writer, createdAt, category }) => (
+                  <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={_id}>
+                    <Article
+                      id={_id}
+                      title={title}
+                      image={image}
+                      writer={writer}
+                      createdAt={createdAt}
+                      category={category}
+                      onRemove={handleRemove}
+                    />
+                  </Grid>
+                )
+              )
+            )}
           </Grid>
           <Box sx={paginationStyle}>
             <Pagination

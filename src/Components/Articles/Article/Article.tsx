@@ -30,12 +30,12 @@ import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
 
 type T = {
-  id: number;
+  id: string;
   title: string;
   image: string;
-  author: string;
-  releaseDate: string;
-  category: string;
+  writer: string;
+  createdAt?: string;
+  category?: string;
   onRemove: Function;
 };
 
@@ -43,8 +43,8 @@ const Article = ({
   id,
   title,
   image,
-  author,
-  releaseDate,
+  writer,
+  createdAt,
   category,
   onRemove,
 }: T) => {
@@ -84,7 +84,7 @@ const Article = ({
             />
             <Link
               component={RouterLink}
-              to={`/blog/${id}/author/${author.replace(/\s+/g, "-")}`}
+              to={`/blog/${id}/writer/${writer.replace(/\s+/g, "-")}`}
               underline="none"
               color="secondary"
               sx={{
@@ -94,7 +94,7 @@ const Article = ({
                 },
               }}
             >
-              {author} -
+              {writer} -
             </Link>
           </Box>
         </Item>
@@ -106,7 +106,7 @@ const Article = ({
               style={{ fontSize: "13px" }}
               color="secondary"
             />
-            &nbsp;{releaseDate} -
+            &nbsp;{createdAt} -
           </Box>
         </Item>
         {/* category article */}
@@ -119,7 +119,7 @@ const Article = ({
             />
             <Link
               component={RouterLink}
-              to={`/blog/${id}/category/${category.replace(/\s+/g, "-")}`}
+              to={`/blog/${id}/category/${category?.replace(/\s+/g, "-")}`}
               underline="none"
               color="secondary"
               sx={{

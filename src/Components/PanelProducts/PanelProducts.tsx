@@ -4,7 +4,6 @@ import GridHeader from "./GridHeader/GridHeader";
 import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Product from "./Product/Product";
-import { productData } from "../../Services/Utils/Data/data";
 import Pagination from "./Pagination/Pagination";
 import {
   useDeleteProductMutation,
@@ -15,6 +14,7 @@ import {
   errorMessage,
   successMessage,
 } from "../../Services/Utils/toastMessages";
+import NotFound from "../EmptyList/NotFound";
 
 const PanelProducts = () => {
   const [list, setList] = useState<IProduct[]>([]);
@@ -24,7 +24,7 @@ const PanelProducts = () => {
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-  const { data } = useGetAllProductsQuery();
+  const { data: products } = useGetAllProductsQuery();
   const [deleteProduct] = useDeleteProductMutation();
 
   const [selectedStatus, setSelectedStatus] = useState("status");
@@ -46,10 +46,10 @@ const PanelProducts = () => {
     }
   }
   useEffect(() => {
-    if (data?.data) {
-      setList(data.data);
+    if (products?.data) {
+      setList(products.data);
     }
-  }, [data?.data]);
+  }, [products]);
 
   return (
     <Grid container rowSpacing={4}>
@@ -79,17 +79,21 @@ const PanelProducts = () => {
           }}
         >
           <Grid container spacing={2}>
-            {currentProducts.map(({ _id, title, price, image }) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={_id}>
-                <Product
-                  id={_id}
-                  title={title}
-                  price={price}
-                  image={image}
-                  onRemove={handleRemove}
-                />
-              </Grid>
-            ))}
+            {list.length === 0 ? (
+              <NotFound />
+            ) : (
+              currentProducts.map(({ _id, title, price, image }) => (
+                <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={_id}>
+                  <Product
+                    id={_id}
+                    title={title}
+                    price={price}
+                    image={image}
+                    onRemove={handleRemove}
+                  />
+                </Grid>
+              ))
+            )}
           </Grid>
           <Box sx={paginationStyle}>
             <Pagination
