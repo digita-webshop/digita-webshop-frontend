@@ -25,7 +25,10 @@ function Pagination({
     pageNumber.push(i);
   }
   return (
-    <Box marginTop={4} sx={{ display: totalProducts === 0 ? "none" : "block" }}>
+    <Box
+      marginTop={4}
+      sx={{ display: totalProducts <= productsPerPage ? "none" : "block" }}
+    >
       <PaginationList>
         <PaginationListItem
           onClick={() => setCurrentPage(currentPage - 1)}

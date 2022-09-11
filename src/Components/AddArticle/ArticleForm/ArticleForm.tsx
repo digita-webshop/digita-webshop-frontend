@@ -1,5 +1,13 @@
 import { Box, FormControl, Grid } from "@mui/material";
-import { useRef, Fragment, Dispatch, SetStateAction, ChangeEvent } from "react";
+import {
+  useRef,
+  Fragment,
+  Dispatch,
+  useState,
+  SetStateAction,
+  ChangeEvent,
+} from "react";
+import { errorMessage } from "../../../Services/Utils/toastMessages";
 import { fileInputStyles } from "../../../Styles/PanelArticle";
 import { PFormLabel, PTextField } from "../../../Styles/panelCommon";
 interface Props {
@@ -18,14 +26,32 @@ function ArticleForm({
   addedImage,
   setAddedImage,
 }: Props) {
+  const [imageName, setImageName] = useState("");
   const inputFileRef = useRef<HTMLInputElement>(null);
+
   const clickInputHandler = () => {
     inputFileRef.current?.click();
   };
-  const fileInputHandler = () => {
-    console.log(inputFileRef.current!.files![0]);
+  const fileInputHandler = async (event: ChangeEvent<HTMLInputElement>) => {
+    const formData = new FormData();
+    formData.append("file", event.target?.files![0]);
+    formData.append("upload_preset", "digita");
 
-    setAddedImage(JSON.stringify(inputFileRef.current!.files![0]));
+    try {
+      const response = await fetch(
+        " https://api.cloudinary.com/v1_1/dmgb7kvmn/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const data = await response.json();
+      setAddedImage(data?.url);
+      setImageName(data?.original_filename);
+    } catch (err) {
+      errorMessage("image upload failed");
+      console.log(err);
+    }
   };
   return (
     <Fragment>
@@ -68,15 +94,12 @@ function ArticleForm({
               sx={{
                 backgroundColor: "common.panelHoverGrey",
                 width: "32%",
+                overflow: "hidden",
               }}
             >
               Choose File
             </Box>
-            <Box>
-              {addedImage === "no chosen file"
-                ? addedImage
-                : JSON.parse(addedImage)?.name}
-            </Box>
+            <Box>{addedImage ? imageName : "no chosen file"}</Box>
           </Box>
         </FormControl>
       </Grid>

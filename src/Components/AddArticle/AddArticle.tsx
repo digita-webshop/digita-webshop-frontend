@@ -1,12 +1,20 @@
-import { FormEvent } from "react";
 import { Grid } from "@mui/material";
 import ArticleForm from "./ArticleForm/ArticleForm";
 import ContentHeader from "./ContentHeader/ContentHeader";
-import { useState } from "react";
-import { useAddArticleMutation } from "../../features/articles/articlesApi";
+import { useState, FormEvent, useEffect } from "react";
+import {
+  useAddArticleMutation,
+  useUpdateArticleMutation,
+} from "../../features/articles/articlesApi";
 import { CardWrapper, PFormLabel } from "../../Styles/panelCommon";
 import TextEditor from "../TextEditor/TextEditor";
-import { convertToRaw, EditorState } from "draft-js";
+import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
+import {
+  errorMessage,
+  successMessage,
+} from "../../Services/Utils/toastMessages";
+import { useNavigate, useParams } from "react-router-dom";
+import { IArticle } from "../../Services/Utils/Types/article";
 
 function AddArticle() {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -14,7 +22,10 @@ function AddArticle() {
   const [addedImage, setAddedImage] = useState<any>("no chosen file");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
+  const navigate = useNavigate();
+  const { id }: any = useParams();
   const [addArticle] = useAddArticleMutation();
+  const [updateArticle] = useUpdateArticleMutation();
 
   const discardHandler = () => {
     setEnteredTitle("");
@@ -24,7 +35,8 @@ function AddArticle() {
   };
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    const newArticle = {
+
+    let newArticle: IArticle = {
       title: enteredTitle,
       writer: enteredWriter,
       image: addedImage,
@@ -32,15 +44,48 @@ function AddArticle() {
         convertToRaw(editorState.getCurrentContent())
       ),
     };
-
-    console.log(newArticle);
+    if (id) {
+      newArticle["_id"] = id;
+    }
     try {
-      const data = await addArticle(newArticle).unwrap();
-      console.log(data);
+      let response;
+      if (id) {
+        response = await updateArticle(newArticle).unwrap();
+      } else {
+        response = await addArticle(newArticle).unwrap();
+      }
+      successMessage(response.message);
+      navigate("/panel/articles/list", { replace: true });
+      console.log(response);
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`/api/articles/find/${id}`).then((res) =>
+          res.json()
+        );
+        const articleData = response?.data;
+        setEnteredTitle(articleData.title);
+        setEnteredWriter(articleData.writer);
+        setAddedImage(articleData.image);
+        setEditorState(
+          EditorState.createWithContent(
+            convertFromRaw(JSON.parse(articleData.description))
+          )
+        );
+      } catch (err: any) {
+        errorMessage(err.message);
+        console.log(err);
+      }
+    };
+    if (id) {
+      fetchData();
+    }
+  }, [id]);
   return (
     <form onSubmit={onSubmit}>
       <Grid container maxWidth={"768px"} margin={"auto"} rowSpacing={3}>

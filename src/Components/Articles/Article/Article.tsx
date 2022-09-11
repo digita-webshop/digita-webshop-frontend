@@ -15,7 +15,7 @@ import { useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import { cartModal } from "../../../Styles/PanelProducts";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 import { cardWrapper } from "../../../Styles/Articles";
 import {
@@ -50,6 +50,7 @@ const Article = ({
 }: T) => {
   const [openDelete, setOpenDelete] = useState(false);
 
+  const navigate = useNavigate();
   /* Edit part */
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -64,7 +65,10 @@ const Article = ({
     setOpenDelete(true);
   };
   /* Edit part */
-
+  const handleEdit = () => {
+    navigate(`/panel/articles/edit/${id}`);
+    setAnchorEl(null);
+  };
   return (
     <Card sx={cardWrapper}>
       <CardMedia
@@ -168,7 +172,7 @@ const Article = ({
               onClose={handleClose}
               TransitionComponent={Fade}
             >
-              <MenuItem>Edit</MenuItem>
+              <MenuItem onClick={handleEdit}>Edit</MenuItem>
               <MenuItem onClick={handleDelete}>
                 <Typography sx={{ color: "common.digitaRed" }}>
                   Delete

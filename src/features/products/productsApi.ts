@@ -18,11 +18,9 @@ export const productApi = api.injectEndpoints({
       query: (id) => `products/find/${id}`,
       providesTags: ["Product"],
     }),
-    updateProduct: build.mutation<IProduct, any>({
+    updateProduct: build.mutation<GetProductResponse, IProduct>({
       query(data) {
-        const { _id, ...body } = data;
-        console.log(_id);
-
+        const { _id } = data;
         return {
           url: `products/${_id}`,
           method: "PUT",
@@ -31,7 +29,7 @@ export const productApi = api.injectEndpoints({
       },
       invalidatesTags: ["Product"],
     }),
-    deleteProduct: build.mutation<any, string>({
+    deleteProduct: build.mutation<{ data: {}; message: string }, string>({
       query(id) {
         return {
           url: `products/${id}`,
@@ -40,9 +38,8 @@ export const productApi = api.injectEndpoints({
       },
       invalidatesTags: ["Product"],
     }),
-    addProduct: build.mutation<any, any>({
+    addProduct: build.mutation<GetProductResponse, IProduct>({
       query(body) {
-        console.log(body);
         return {
           url: `products`,
           method: "POST",

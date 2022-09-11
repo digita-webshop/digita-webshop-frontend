@@ -5,6 +5,7 @@ import { ImageWrapper } from "../../../Styles/AddProduct";
 import { CardWrapper, PFormLabel } from "../../../Styles/panelCommon";
 import previewImg from "../../../Assets/Images/upload-preview.jpg";
 import { ChangeEvent, useRef } from "react";
+import { errorMessage } from "../../../Services/Utils/toastMessages";
 
 interface Props {
   setAddedImages: Dispatch<SetStateAction<any>>;
@@ -49,6 +50,7 @@ function Gallery({ setAddedImages, addedImages }: Props) {
       });
       console.log(data);
     } catch (err) {
+      errorMessage("image upload failed");
       console.log(err);
     }
   };

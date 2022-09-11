@@ -24,7 +24,7 @@ const PanelProducts = () => {
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-  const { data: products } = useGetAllProductsQuery();
+  const { data: products, isLoading } = useGetAllProductsQuery();
   const [deleteProduct] = useDeleteProductMutation();
 
   const [selectedStatus, setSelectedStatus] = useState("status");
@@ -79,13 +79,15 @@ const PanelProducts = () => {
           }}
         >
           <Grid container spacing={2}>
-            {list.length === 0 ? (
+            {isLoading && <NotFound message="Loading..." />}
+
+            {products?.data.length === 0 && !isLoading ? (
               <NotFound />
             ) : (
               currentProducts.map(({ _id, title, price, image }) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={_id}>
                   <Product
-                    id={_id}
+                    id={_id!}
                     title={title}
                     price={price}
                     image={image}

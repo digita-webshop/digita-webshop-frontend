@@ -49,7 +49,7 @@ function AddProduct() {
     let tagList = tags.map((t) => t.name);
     let galleryList = addedImages.filter((item: any) => item.image);
 
-    let newProduct: any = {
+    let newProduct: IProduct = {
       title: enteredTitle,
       image: galleryList[0]?.image,
       gallery: galleryList,

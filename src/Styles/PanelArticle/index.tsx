@@ -7,6 +7,7 @@ export const fileInputStyles = {
   fontFamily: "jost",
   border: "1px solid",
   borderColor: "common.panelBorderGrey",
+  overflow: "hidden",
   transition: "all 100ms ease-in",
   "&:hover": {
     borderColor: "common.digitaRed",

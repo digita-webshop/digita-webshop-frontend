@@ -9,13 +9,13 @@ export interface IGallery {
 }
 
 export interface IProduct {
-  _id: string;
+  _id?: string;
   title: string;
   image: string;
   gallery: IGallery[];
   offPrice: number;
   price: number;
-  rating: number;
+  rating?: number;
   quantity: number;
   sku: string;
   colors: string[];
@@ -23,5 +23,5 @@ export interface IProduct {
   tags: string[];
   shortDescription: string;
   fullDescription: string;
-  reviews: IReviews[];
+  reviews?: IReviews[];
 }

@@ -26,7 +26,7 @@ const Articles = () => {
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  const { data: articles } = useGetAllArticlesQuery();
+  const { data: articles, isLoading } = useGetAllArticlesQuery();
   const [deleteArticle] = useDeleteArticleMutation();
 
   const [selectedStatus, setSelectedStatus] = useState("status");
@@ -50,7 +50,6 @@ const Articles = () => {
 
   useEffect(() => {
     if (articles?.data) {
-      console.log(articles);
       setList(articles?.data);
     }
   }, [articles]);
@@ -77,14 +76,15 @@ const Articles = () => {
         />
         <ArticleWrapper>
           <Grid container spacing={2}>
-            {list.length === 0 ? (
+            {isLoading && <NotFound message="Loading..." />}
+            {articles?.data.length === 0 && !isLoading ? (
               <NotFound />
             ) : (
               currentProducts.map(
                 ({ _id, title, image, writer, createdAt, category }) => (
                   <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={_id}>
                     <Article
-                      id={_id}
+                      id={_id!}
                       title={title}
                       image={image}
                       writer={writer}
