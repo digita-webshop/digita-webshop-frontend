@@ -57,6 +57,13 @@ const Reviews = () => {
     setList(newList);
   };
 
+  /* const handleSearch = (data) => {
+    if (input !== "") {
+      const filteredData = data.map((item) => item.startsWith(input));
+      return filteredData;
+    }
+  }; */
+
   const selectedStatusHandler = (event: SelectChangeEvent) => {
     setSelectedStatus(event.target.value);
   };
@@ -211,4 +218,5 @@ const Reviews = () => {
     </Grid>
   );
 };
+
 export default Reviews;
