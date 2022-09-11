@@ -5,8 +5,10 @@ import {
   Divider,
   useMediaQuery,
   Table,
+  Button,
   TableBody,
   Typography,
+  Modal,
   TableHead,
   TableRow,
   Rating,
@@ -54,6 +56,11 @@ const Reviews = () => {
 
   const headerDelete = () => {
     const newList = list.filter((item) => !checked.includes(item.id));
+    setList(newList);
+  };
+
+  const handleDelete = (id: number) => {
+    const newList = list.filter((item) => item.id !== id);
     setList(newList);
   };
 
@@ -192,6 +199,7 @@ const Reviews = () => {
                         <TableButton>Detail</TableButton>
                         <TableButton
                           sx={{ display: "flex", justifyContent: "center" }}
+                          onClick={() => handleDelete(id)}
                         >
                           <DeleteIcon sx={{ color: "common.panelGrey" }} />
                         </TableButton>
