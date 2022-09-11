@@ -9,8 +9,11 @@ import { ContainerWrapper, WrapperBox } from "../../Styles/OurBlog";
 import { useInView } from "react-intersection-observer";
 import { articlesBlogPage } from "../../Services/Utils/Data/data";
 import { useGetAllArticlesQuery } from "../../features/articles/articlesApi";
-
-function OurBlog() {
+import { IArticle } from "../../Services/Utils/Types/article";
+interface Props {
+  articles: IArticle[];
+}
+function OurBlog({ articles }: Props) {
   const { ref, inView } = useInView({ triggerOnce: true });
   const { data } = useGetAllArticlesQuery();
   console.log(data);

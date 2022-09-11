@@ -7,8 +7,11 @@ import ProductCards from "./Components/ProductCards/ProductCards";
 import { useInView } from "react-intersection-observer";
 import { subMainContainer } from "../../Styles/Products";
 import { useState } from "react";
-
-const Products = () => {
+import { IProduct } from "../../Services/Utils/Types/product";
+interface Props {
+  products: IProduct[];
+}
+const Products = ({ products }: Props) => {
   const [selectedCategory, setSelectedCategory] =
     useState("audio & video game");
   const { ref, inView } = useInView({ triggerOnce: true });

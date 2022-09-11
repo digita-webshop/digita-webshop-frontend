@@ -6,8 +6,11 @@ import SupportItems from "./Components/SupportItems/SupportItems";
 import SpecialCards from "./Components/SpecialCards/SpecialCards";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
-
-const Special = () => {
+import { IProduct } from "../../Services/Utils/Types/product";
+interface Props {
+  products: IProduct[];
+}
+const Special = ({ products }: Props) => {
   const [selectedSorting, setSelectedSorting] = useState("latest products");
   const { ref, inView } = useInView({ triggerOnce: true });
   let filteredProducts = productData;

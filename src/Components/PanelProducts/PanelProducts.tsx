@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import GridHeader from "./GridHeader/GridHeader";
-import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
+import {
+  Grid,
+  SelectChangeEvent,
+  Divider,
+  Box,
+  CircularProgress,
+} from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Product from "./Product/Product";
 import Pagination from "./Pagination/Pagination";
@@ -15,6 +21,7 @@ import {
   successMessage,
 } from "../../Services/Utils/toastMessages";
 import NotFound from "../EmptyList/NotFound";
+import { ErrorText, PStack } from "../../Styles/panelCommon";
 
 const PanelProducts = () => {
   const [list, setList] = useState<IProduct[]>([]);
@@ -24,7 +31,7 @@ const PanelProducts = () => {
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-  const { data: products, isLoading } = useGetAllProductsQuery();
+  const { data: products, isLoading, isError } = useGetAllProductsQuery();
   const [deleteProduct] = useDeleteProductMutation();
 
   const [selectedStatus, setSelectedStatus] = useState("status");
@@ -79,8 +86,12 @@ const PanelProducts = () => {
           }}
         >
           <Grid container spacing={2}>
-            {isLoading && <NotFound message="Loading..." />}
-
+            {isLoading && (
+              <PStack>
+                <CircularProgress color="error" />
+              </PStack>
+            )}
+            {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
             {products?.data.length === 0 && !isLoading ? (
               <NotFound />
             ) : (

@@ -2,7 +2,13 @@ import ContentHeader from "../PanelProducts/ContentHeader/ContentHeader";
 import Pagination from "../PanelProducts/Pagination/Pagination";
 import { useState, useEffect } from "react";
 import GridHeader from "./GridHeader/GridHeader";
-import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
+import {
+  Grid,
+  SelectChangeEvent,
+  Divider,
+  Box,
+  CircularProgress,
+} from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Article from "./Article/Article";
 import { ArticleWrapper } from "../../Styles/Articles";
@@ -16,6 +22,7 @@ import {
   errorMessage,
   successMessage,
 } from "../../Services/Utils/toastMessages";
+import { ErrorText, PStack } from "../../Styles/panelCommon";
 
 const Articles = () => {
   const [list, setList] = useState<IArticle[]>([]);
@@ -26,7 +33,7 @@ const Articles = () => {
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  const { data: articles, isLoading } = useGetAllArticlesQuery();
+  const { data: articles, isLoading, isError } = useGetAllArticlesQuery();
   const [deleteArticle] = useDeleteArticleMutation();
 
   const [selectedStatus, setSelectedStatus] = useState("status");
@@ -74,9 +81,14 @@ const Articles = () => {
         <Divider
           sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
         />
-        <ArticleWrapper>
+        <ArticleWrapper sx={{ position: "relative" }}>
           <Grid container spacing={2}>
-            {isLoading && <NotFound message="Loading..." />}
+            {isLoading && (
+              <PStack>
+                <CircularProgress color="error" />
+              </PStack>
+            )}
+            {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
             {articles?.data.length === 0 && !isLoading ? (
               <NotFound />
             ) : (

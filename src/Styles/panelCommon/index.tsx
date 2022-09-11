@@ -1,4 +1,11 @@
-import { Box, Button, FormControl, FormLabel } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const PButton = styled(Button)(({ theme }) => ({
@@ -74,4 +81,15 @@ export const POutlinedButton = styled(Button)(({ theme }) => ({
     backgroundColor: theme.palette.common.digitaDarkRed,
     color: theme.palette.common.white,
   },
+}));
+export const PStack = styled(Stack)(({ theme }) => ({
+  width: "100%",
+  justifyContent: "center",
+  span: { margin: "auto" },
+}));
+export const ErrorText = styled(Typography)(({ theme }) => ({
+  width: "100%",
+  textAlign: "center",
+  color: theme.palette.common.digitaRed,
+  fontSize: "1rem",
 }));

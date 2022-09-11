@@ -6,20 +6,25 @@ import {
   WhatClientSay,
   OurBlog,
 } from "../../../Components";
+import Loading from "../../../Components/Loading/Loading";
 import { useGetAllArticlesQuery } from "../../../features/articles/articlesApi";
 import { useGetAllProductsQuery } from "../../../features/products/productsApi";
 
 function Home() {
-  const { data } = useGetAllProductsQuery();
-  console.log(data);
+  const { data: products, isLoading } = useGetAllProductsQuery();
+  const { data: articles } = useGetAllArticlesQuery();
+  console.log(products);
+  if (isLoading) {
+    return <Loading full />;
+  }
   return (
     <>
       <Header />
-      <Products />
+      <Products products={products?.data!} />
       <ShopByCategories />
-      <Special />
+      <Special products={products?.data!} />
       <WhatClientSay />
-      <OurBlog />
+      <OurBlog articles={articles?.data!} />
     </>
   );
 }
