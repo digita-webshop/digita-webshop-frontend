@@ -71,14 +71,12 @@ const Reviews = () => {
   };
 
   const handleSearch = (e: any) => {
-    setSearch(e.target.value);
-    if (search !== "") {
-      const filteredData = list.filter((item: any) =>
-        item.product.startsWith(search)
-      );
+    const data = e.target.value;
+    setSearch(data);
+    if (data !== "") {
+      const filteredData = list.filter((item: any) => item.product.match(data));
       setList(filteredData);
-    }
-    if (search.length === 1) {
+    } else {
       setList(reviews);
     }
   };
@@ -87,7 +85,11 @@ const Reviews = () => {
     setSelectedStatus(event.target.value);
   };
   const selectedAmountHandler = (event: SelectChangeEvent) => {
-    setSelectedAmount(event.target.value);
+    const data = event.target.value;
+    setSelectedAmount(data);
+    /* const filtered = list.filter((item) => (
+      
+    )) */
   };
 
   const tableHead = [
