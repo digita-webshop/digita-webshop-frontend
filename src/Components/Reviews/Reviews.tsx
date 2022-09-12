@@ -1,22 +1,27 @@
 import {
   Box,
   Grid,
-  SelectChangeEvent,
   Divider,
   useMediaQuery,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
   Table,
-  Button,
   TableBody,
   Typography,
-  Modal,
   TableHead,
   TableRow,
   Rating,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState, ChangeEvent } from "react";
-import TableHeader from "../Orders/TableHeader/TableHeader";
-import { CardWrapper, POutlinedButton, PTitle } from "../../Styles/panelCommon";
+import {
+  CardWrapper,
+  POutlinedButton,
+  PTitle,
+  PTextField,
+  PFormControl,
+} from "../../Styles/panelCommon";
 import { reviews } from "../../Services/Utils/Data/data";
 import { TableButton } from "../../Styles/Orders";
 import { TCell, TCheckBox, THCell } from "../../Styles/Reviews";
@@ -26,6 +31,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 const Reviews = () => {
   const [list, setList] = useState(reviews);
+  const [search, setSearch] = useState<string>("");
   const [selectedStatus, setSelectedStatus] = useState("status");
   const [selectedAmount, setSelectedAmount] = useState("20");
   const [checked, setChecked] = useState<number[]>([]);
@@ -64,12 +70,18 @@ const Reviews = () => {
     setList(newList);
   };
 
-  /* const handleSearch = (data) => {
-    if (input !== "") {
-      const filteredData = data.map((item) => item.startsWith(input));
-      return filteredData;
+  const handleSearch = (e: any) => {
+    setSearch(e.target.value);
+    if (search !== "") {
+      const filteredData = list.filter((item: any) =>
+        item.product.startsWith(search)
+      );
+      setList(filteredData);
     }
-  }; */
+    if (search.length === 1) {
+      setList(reviews);
+    }
+  };
 
   const selectedStatusHandler = (event: SelectChangeEvent) => {
     setSelectedStatus(event.target.value);
@@ -117,12 +129,55 @@ const Reviews = () => {
         <CardWrapper
           sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}
         >
-          <TableHeader
-            selectedStatus={selectedStatus}
-            selectedAmount={selectedAmount}
-            selectedStatusHandler={selectedStatusHandler}
-            selectedAmountHandler={selectedAmountHandler}
-          />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "20px",
+            }}
+          >
+            <Box sx={{ width: { xs: "100%", sm: "40%", lg: "30%" } }}>
+              <PTextField
+                placeholder="Search... "
+                value={search}
+                onChange={handleSearch}
+              />
+            </Box>
+            <Box
+              sx={{
+                width: { xs: "100%", sm: "45%", lg: "30%" },
+                display: "flex",
+                gap: "10px",
+              }}
+            >
+              <PFormControl size="small">
+                <Select
+                  variant="outlined"
+                  displayEmpty
+                  value={selectedStatus}
+                  onChange={selectedStatusHandler}
+                >
+                  <MenuItem value="status">Status</MenuItem>
+                  <MenuItem value={"active"}>Active</MenuItem>
+                  <MenuItem value={"disable"}>Disable </MenuItem>
+                  <MenuItem value={"show-all"}>Show All </MenuItem>
+                </Select>
+              </PFormControl>
+              <PFormControl size="small">
+                <Select
+                  variant="outlined"
+                  displayEmpty
+                  value={selectedAmount}
+                  onChange={selectedAmountHandler}
+                >
+                  <MenuItem value="20">Show 20</MenuItem>
+                  <MenuItem value={"30"}>Show 30 </MenuItem>
+                  <MenuItem value={"40"}>Show 40</MenuItem>
+                </Select>
+              </PFormControl>
+            </Box>
+          </Box>
           <Divider
             sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
           />
