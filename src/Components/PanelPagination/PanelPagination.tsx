@@ -1,21 +1,16 @@
 import { Box } from "@mui/material";
-import {
-  PaginationList,
-  PaginationListItem,
-} from "../../../Styles/PanelProducts";
+import { PaginationList, PaginationListItem } from "../../Styles/PanelProducts";
 
 type PaginationProps = {
   productsPerPage: number;
   totalProducts: number;
-  paginate: (pageNumber: number) => void;
   currentPage: number;
   setCurrentPage: any;
 };
 
-function Pagination({
+function PanelPagination({
   productsPerPage,
   totalProducts,
-  paginate,
   currentPage,
   setCurrentPage,
 }: PaginationProps) {
@@ -45,7 +40,7 @@ function Pagination({
         {pageNumber.map((number, index) => (
           <PaginationListItem
             key={index}
-            onClick={() => paginate(number)}
+            onClick={() => setCurrentPage(number)}
             className={`${number === currentPage && "active"}`}
           >
             {number}
@@ -68,4 +63,4 @@ function Pagination({
   );
 }
 
-export default Pagination;
+export default PanelPagination;

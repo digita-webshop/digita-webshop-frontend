@@ -2,6 +2,7 @@ export interface IReviews {
   userId: string;
   rating?: number;
   description: string;
+  createdAt: string;
 }
 export interface IGallery {
   id: string;

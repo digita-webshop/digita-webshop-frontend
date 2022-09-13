@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Product from "./Product/Product";
-import Pagination from "./Pagination/Pagination";
+import PanelPagination from "../PanelPagination/PanelPagination";
 import {
   useDeleteProductMutation,
   useGetAllProductsQuery,
@@ -30,7 +30,6 @@ const PanelProducts = () => {
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
   const { data: products, isLoading, isError } = useGetAllProductsQuery();
   const [deleteProduct] = useDeleteProductMutation();
 
@@ -109,10 +108,9 @@ const PanelProducts = () => {
             )}
           </Grid>
           <Box sx={paginationStyle}>
-            <Pagination
+            <PanelPagination
               productsPerPage={productsPerPage}
               totalProducts={list.length}
-              paginate={paginate}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />

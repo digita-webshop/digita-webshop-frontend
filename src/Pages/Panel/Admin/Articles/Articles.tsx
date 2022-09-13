@@ -1,9 +1,7 @@
-import {Articles as ArticlesPage} from "../../../../Components";
+import { PanelArticles } from "../../../../Components";
 
 const Articles = () => {
-  return (
-    <ArticlesPage />
-  )
-}
+  return <PanelArticles />;
+};
 
-export default Articles
+export default Articles;

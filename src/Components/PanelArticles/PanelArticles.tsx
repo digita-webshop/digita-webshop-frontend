@@ -1,5 +1,5 @@
 import ContentHeader from "../PanelProducts/ContentHeader/ContentHeader";
-import Pagination from "../PanelProducts/Pagination/Pagination";
+import PanelPagination from "../PanelPagination/PanelPagination";
 import { useState, useEffect } from "react";
 import GridHeader from "./GridHeader/GridHeader";
 import {
@@ -31,7 +31,6 @@ const Articles = () => {
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   const { data: articles, isLoading, isError } = useGetAllArticlesQuery();
   const [deleteArticle] = useDeleteArticleMutation();
@@ -110,10 +109,9 @@ const Articles = () => {
             )}
           </Grid>
           <Box sx={paginationStyle}>
-            <Pagination
+            <PanelPagination
               productsPerPage={productsPerPage}
               totalProducts={list.length}
-              paginate={paginate}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />

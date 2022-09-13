@@ -17,7 +17,6 @@ import {
 import {
   AddArticle,
   AddProduct,
-  ArticleReviews,
   Brands,
   Dashboard,
   ManageAccess,
@@ -122,7 +121,7 @@ function App() {
               <Route path="articles/*">
                 <Route path="list" element={<Articles />} />
                 <Route path="add" element={<AddArticle />} />
-                <Route path="reviews" element={<ArticleReviews />} />
+                <Route path="reviews" element={<Reviews />} />
                 <Route path="edit/:id" element={<AddArticle />} />
               </Route>
               <Route path="brands" element={<Brands />} />
