@@ -1,5 +1,5 @@
 import ContentHeader from "../PanelProducts/ContentHeader/ContentHeader";
-import Pagination from "../PanelProducts/Pagination/Pagination";
+import PanelPagination from "../PanelPagination/PanelPagination";
 import { useState } from "react";
 import GridHeader from "./GridHeader/GridHeader";
 import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
@@ -54,25 +54,26 @@ const Articles = () => {
         />
         <ArticleWrapper>
           <Grid container spacing={2}>
-            {currentProducts.map(({ id, title, image, author, releaseDate, category }) => (
-              <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={id}>
-                <Article
-                  id={id}
-                  title={title}
-                  image={image}
-                  author={author}
-                  releaseDate={releaseDate}
-                  category={category}
-                  onRemove={handleRemove}
-                />
-              </Grid>
-            ))}
+            {currentProducts.map(
+              ({ id, title, image, author, releaseDate, category }) => (
+                <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={id}>
+                  <Article
+                    id={id}
+                    title={title}
+                    image={image}
+                    author={author}
+                    releaseDate={releaseDate}
+                    category={category}
+                    onRemove={handleRemove}
+                  />
+                </Grid>
+              )
+            )}
           </Grid>
           <Box sx={paginationStyle}>
-            <Pagination
+            <PanelPagination
               productsPerPage={productsPerPage}
               totalProducts={list.length}
-              paginate={paginate}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />

@@ -1,18 +1,16 @@
 import { Box } from "@mui/material";
-import { PaginationList, PaginationListItem } from "../../../Styles/PanelProducts";
+import { PaginationList, PaginationListItem } from "../../Styles/PanelProducts";
 
 type PaginationProps = {
   productsPerPage: number;
   totalProducts: number;
-  paginate: (pageNumber: number) => void;
   currentPage: number;
   setCurrentPage: any;
 };
 
-function Pagination({
+function PanelPagination({
   productsPerPage,
   totalProducts,
-  paginate,
   currentPage,
   setCurrentPage,
 }: PaginationProps) {
@@ -26,7 +24,12 @@ function Pagination({
       <PaginationList>
         <PaginationListItem
           onClick={() => setCurrentPage(currentPage - 1)}
-          sx={{ display: currentPage === 1 ? "none" : "flex", width: "auto !important", padding: "0 0.7rem", borderRadius: "5px 0 0 5px" }}
+          sx={{
+            display: currentPage === 1 ? "none" : "flex",
+            width: "auto !important",
+            padding: "0 0.7rem",
+            borderRadius: "5px 0 0 5px",
+          }}
         >
           Previous
         </PaginationListItem>
@@ -34,7 +37,7 @@ function Pagination({
         {pageNumber.map((number, index) => (
           <PaginationListItem
             key={index}
-            onClick={() => paginate(number)}
+            onClick={() => setCurrentPage(number)}
             className={`${number === currentPage && "active"}`}
           >
             {number}
@@ -43,7 +46,12 @@ function Pagination({
 
         <PaginationListItem
           onClick={() => setCurrentPage(currentPage + 1)}
-          sx={{ display: currentPage === pageNumber.length ? "none" : "flex",  width: "auto !important", padding: "0 0.7rem", borderRadius: "0 5px 5px 0" }}
+          sx={{
+            display: currentPage === pageNumber.length ? "none" : "flex",
+            width: "auto !important",
+            padding: "0 0.7rem",
+            borderRadius: "0 5px 5px 0",
+          }}
         >
           Next
         </PaginationListItem>
@@ -52,4 +60,4 @@ function Pagination({
   );
 }
 
-export default Pagination;
+export default PanelPagination;

@@ -14,7 +14,7 @@ import {
   Rating,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import {
   CardWrapper,
   POutlinedButton,
@@ -28,16 +28,32 @@ import { TCell, TCheckBox, THCell } from "../../Styles/Reviews";
 import StarIcon from "@mui/icons-material/Star";
 import { useTheme } from "@mui/material/styles";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import PanelPagination from "../PanelPagination/PanelPagination";
+import { paginationStyle } from "../../Styles/PanelProducts";
+import { useLocation } from "react-router-dom";
 
+interface IReviews {
+  id: number;
+  pId: number;
+  product: string;
+  name: string;
+  rating: number;
+  date: string;
+}
 const Reviews = () => {
-  const [list, setList] = useState(reviews);
-  const [search, setSearch] = useState<string>("");
-  const [selectedStatus, setSelectedStatus] = useState("status");
-  const [selectedAmount, setSelectedAmount] = useState("20");
+  const [list, setList] = useState<IReviews[]>([]);
+  const [reviewsPerPage, setReviewsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
   const [checked, setChecked] = useState<number[]>([]);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSm = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+
+  const { pathname } = useLocation();
+  const isArticlePage = pathname.includes("articles");
 
   const handleToggle = (value: any) => () => {
     const currentIndex = checked.indexOf(value);
@@ -53,7 +69,7 @@ const Reviews = () => {
 
   const handleToggleAll = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      let allChecked = list.map((item) => item.id);
+      let allChecked = list?.map((item) => item.id);
       setChecked(allChecked);
     } else {
       setChecked([]);
@@ -70,29 +86,19 @@ const Reviews = () => {
     setList(newList);
   };
 
-  const handleSearch = (e: any) => {
-    const data = e.target.value;
-    setSearch(data);
-    if (data !== "") {
-      const filteredData = list.filter((item: any) => item.product.match(data));
-      setList(filteredData);
-    } else {
-      setList(reviews);
-    }
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    const data = event.target.value;
+    const filteredData = reviews.filter((item: any) =>
+      item.product.toLowerCase().includes(data.toLowerCase())
+    );
+    setList(filteredData);
   };
 
-  const selectedStatusHandler = (event: SelectChangeEvent) => {
-    setSelectedStatus(event.target.value);
-  };
   const selectedAmountHandler = (event: SelectChangeEvent) => {
     const data = event.target.value;
-    setSelectedAmount(data);
-    /* const filtered = list.filter((item) => (
-      
-    )) */
+    setReviewsPerPage(+data);
   };
-
-  const tableHead = [
+  let tableHead = [
     <TCheckBox onChange={handleToggleAll} />,
     "#ID",
     "product",
@@ -101,7 +107,20 @@ const Reviews = () => {
     "date",
     "action",
   ];
+  if (isArticlePage) {
+    tableHead = tableHead.filter((item) => item !== "rating");
+    tableHead.splice(2, 1, "article");
+  }
 
+  useEffect(() => {
+    if (isArticlePage) {
+      //? fetch article reviews
+      setList(reviews);
+    } else {
+      //? fetch product reviews
+      setList(reviews);
+    }
+  }, [isArticlePage]);
   return (
     <Grid container rowSpacing={4}>
       <Grid item xs={12}>
@@ -112,7 +131,7 @@ const Reviews = () => {
             alignItems: "center",
           }}
         >
-          <PTitle>Reviews</PTitle>
+          <PTitle>{`${isArticlePage ? "Article" : "Product"} Reviews`}</PTitle>
           {checked.length > 0 && (
             <POutlinedButton
               sx={{
@@ -140,15 +159,11 @@ const Reviews = () => {
             }}
           >
             <Box sx={{ width: { xs: "100%", sm: "40%", lg: "30%" } }}>
-              <PTextField
-                placeholder="Search... "
-                value={search}
-                onChange={handleSearch}
-              />
+              <PTextField placeholder="Search... " onChange={handleSearch} />
             </Box>
             <Box
               sx={{
-                width: { xs: "100%", sm: "45%", lg: "30%" },
+                width: { xs: "100%", sm: "35%", lg: "25%" },
                 display: "flex",
                 gap: "10px",
               }}
@@ -157,25 +172,12 @@ const Reviews = () => {
                 <Select
                   variant="outlined"
                   displayEmpty
-                  value={selectedStatus}
-                  onChange={selectedStatusHandler}
-                >
-                  <MenuItem value="status">Status</MenuItem>
-                  <MenuItem value={"active"}>Active</MenuItem>
-                  <MenuItem value={"disable"}>Disable </MenuItem>
-                  <MenuItem value={"show-all"}>Show All </MenuItem>
-                </Select>
-              </PFormControl>
-              <PFormControl size="small">
-                <Select
-                  variant="outlined"
-                  displayEmpty
-                  value={selectedAmount}
+                  value={`${reviewsPerPage}`}
                   onChange={selectedAmountHandler}
                 >
-                  <MenuItem value="20">Show 20</MenuItem>
-                  <MenuItem value={"30"}>Show 30 </MenuItem>
-                  <MenuItem value={"40"}>Show 40</MenuItem>
+                  <MenuItem value="10">Show 10</MenuItem>
+                  <MenuItem value={"20"}>Show 20 </MenuItem>
+                  <MenuItem value={"30"}>Show 30</MenuItem>
                 </Select>
               </PFormControl>
             </Box>
@@ -203,7 +205,7 @@ const Reviews = () => {
             </TableHead>
             <TableBody>
               {list
-                .slice(0, +selectedAmount)
+                .slice(indexOfFirstReview, indexOfLastReview)
                 .map(({ id, pId, product, name, rating, date }) => (
                   <TableRow
                     key={id}
@@ -226,7 +228,7 @@ const Reviews = () => {
                     </TCell>
                     <TCell sx={{ wordBreak: "break-all" }}>{name}</TCell>
 
-                    {!matchesSm && (
+                    {!matchesSm && !isArticlePage && (
                       <TCell>
                         <Rating
                           name="text-feedback"
@@ -255,7 +257,14 @@ const Reviews = () => {
                       >
                         <TableButton>Detail</TableButton>
                         <TableButton
-                          sx={{ display: "flex", justifyContent: "center" }}
+                          sx={{
+                            display: "flex",
+                            justifyContent: "center",
+                            "&:hover": {
+                              borderColor: "common.digitaRed",
+                              svg: { color: "common.digitaRed" },
+                            },
+                          }}
                           onClick={() => handleDelete(id)}
                         >
                           <DeleteIcon sx={{ color: "common.panelGrey" }} />
@@ -278,6 +287,14 @@ const Reviews = () => {
               <Typography>Your Product Review is empty</Typography>
             </Box>
           )}
+          <Box sx={paginationStyle}>
+            <PanelPagination
+              productsPerPage={reviewsPerPage}
+              totalProducts={list.length}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </Box>
         </CardWrapper>
       </Grid>
     </Grid>

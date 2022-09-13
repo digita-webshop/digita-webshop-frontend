@@ -5,7 +5,7 @@ import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Product from "./Product/Product";
 import { productData } from "../../Services/Utils/Data/data";
-import Pagination from "./Pagination/Pagination";
+import PanelPagination from "../PanelPagination/PanelPagination";
 
 const PanelProducts = () => {
   const [list, setList] = useState(productData);
@@ -14,7 +14,6 @@ const PanelProducts = () => {
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   const [selectedStatus, setSelectedStatus] = useState("status");
   const [selectedAmount, setSelectedAmount] = useState("20");
@@ -34,7 +33,7 @@ const PanelProducts = () => {
   return (
     <Grid container rowSpacing={4}>
       <Grid item xs={12}>
-        <ContentHeader title="Products"/>
+        <ContentHeader title="Products" />
       </Grid>
 
       <Grid item xs={12}>
@@ -72,10 +71,9 @@ const PanelProducts = () => {
             ))}
           </Grid>
           <Box sx={paginationStyle}>
-            <Pagination
+            <PanelPagination
               productsPerPage={productsPerPage}
               totalProducts={list.length}
-              paginate={paginate}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />
