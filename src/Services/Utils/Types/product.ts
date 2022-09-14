@@ -17,6 +17,7 @@ export interface IProduct {
   offPrice: number;
   price: number;
   rating?: number;
+  brand: string;
   quantity: number;
   sku: string;
   colors: string[];

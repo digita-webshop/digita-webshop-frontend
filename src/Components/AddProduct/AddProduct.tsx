@@ -61,6 +61,7 @@ function AddProduct() {
       colors: selectedColors,
       category: selectedCategory,
       shortDescription: enteredShortDesc,
+      brand: selectedBrand,
       fullDescription: JSON.stringify(
         convertToRaw(editorState.getCurrentContent())
       ),

@@ -12,7 +12,7 @@ function ContentHeader({ title }: { title: string }) {
     >
       <PTitle>{title}</PTitle>
       <PButton variant="contained" type="submit">
-        publish
+        {title.includes("add") ? "publish" : "save"}
       </PButton>
     </Box>
   );

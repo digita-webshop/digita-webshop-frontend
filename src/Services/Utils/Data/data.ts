@@ -1616,6 +1616,24 @@ export const brands = [
     image: "https://www.ecommerce-admin.com/demo/images/brands/3.png",
     count: 79,
   },
+  {
+    id: 11,
+    name: "lenovo",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/3.png",
+    count: 79,
+  },
+  {
+    id: 12,
+    name: "asus",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/3.png",
+    count: 79,
+  },
+  {
+    id: 13,
+    name: "dell",
+    image: "https://www.ecommerce-admin.com/demo/images/brands/3.png",
+    count: 79,
+  },
 ];
 
 export const articleReviews = [
