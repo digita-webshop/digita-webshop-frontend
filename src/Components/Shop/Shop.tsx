@@ -40,9 +40,19 @@ function Shop() {
   let currentProducts = products;
   let queries: any = `page=${currentPage}&limit=${productsPerPage}`;
 
+  let searchQueryParams = searchParams.get("search");
+  if (searchQueryParams) {
+    console.log(searchQueryParams);
+
+    queries = `${queries} &search=${searchQueryParams}`;
+  }
+
   let categoryQueryParams = searchParams.get("category");
   if (categoryQueryParams) {
-    queries = `&category=${categoryQueryParams.replaceAll("&", "%26")}`;
+    queries = `${queries} &category=${categoryQueryParams.replaceAll(
+      "&",
+      "%26"
+    )}`;
   }
 
   let colorQueryParams = searchParams.get("color");
@@ -64,6 +74,7 @@ function Shop() {
     setDisplayDrawer(open);
   };
 
+  console.log(queries);
   const {
     data: productsData,
     isLoading,

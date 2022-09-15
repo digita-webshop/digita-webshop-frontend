@@ -20,7 +20,6 @@ const Products = () => {
   } = useGetAllProductsQuery(
     `category=${selectedCategory.replace("&", "%26")}`
   );
-  console.log(products);
 
   return (
     <Container
@@ -67,8 +66,8 @@ const Products = () => {
               : Array(8)
                   .fill(null)
                   .map((item, index) => (
-                    <Grid item xs={12} sm={4} md={3}>
-                      <ProductPlaceholder key={index} />
+                    <Grid item xs={12} sm={4} md={3} key={index}>
+                      <ProductPlaceholder />
                     </Grid>
                   ))}
           </Grid>

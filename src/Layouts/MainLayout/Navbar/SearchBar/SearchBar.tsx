@@ -9,40 +9,33 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import {
-  categoriesList,
-  productData,
-} from "../../../../Services/Utils/Data/data";
+import { useNavigate } from "react-router-dom";
+import { useGetAllProductsQuery } from "../../../../features/products/productsApi";
+import { categoriesList } from "../../../../Services/Utils/Data/data";
 import { searchBarDropdown } from "../../../../Styles/Appbar";
 
 type SearchBarProps = {
-  selectedCategory: string;
-  selectedCategoryHandler: (event: SelectChangeEvent) => void;
   openSearchBarHandler: () => void;
 };
 
-function SearchBar({
-  selectedCategory,
-  selectedCategoryHandler,
-  openSearchBarHandler,
-}: SearchBarProps) {
+function SearchBar({ openSearchBarHandler }: SearchBarProps) {
   const [searchValue, setSearchValue] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  const filteredProducts = productData
-    .filter((item) =>
-      selectedCategory ? selectedCategory === item.category : true
-    )
-    .filter((item) => {
-      const searchTerm = searchValue.toLowerCase();
-      const fullName = item.name.toLowerCase();
+  const navigate = useNavigate();
+  let queries = `search=${searchValue}`;
+  if (selectedCategory) {
+    queries = `${queries} &category=/${selectedCategory.replace("&", "%26")}`;
+  }
+  console.log(queries);
 
-      return (
-        searchTerm && fullName.startsWith(searchTerm) && fullName !== searchTerm
-      );
-    })
-    .slice(0, 6);
+  const { data: productsData } = useGetAllProductsQuery(queries);
+  console.log(productsData);
 
+  const filteredProducts = productsData?.data.slice(0, 6);
+  const selectedCategoryHandler = (event: SelectChangeEvent) => {
+    setSelectedCategory(event.target.value);
+  };
   return (
     <Box display={"flex"} sx={{ height: "90px", alignItems: "center" }}>
       <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
@@ -53,7 +46,10 @@ function SearchBar({
             onChange={(event) => setSearchValue(event.target.value)}
             value={searchValue}
           />
-          <Box sx={{ display: "flex", padding: "10px" }}>
+          <Box
+            sx={{ display: "flex", padding: "10px" }}
+            onClick={() => navigate(`/shop?${queries}`)}
+          >
             <SearchOutlined
               sx={{
                 color: "common.digitaGrey",
@@ -67,24 +63,30 @@ function SearchBar({
         <Box
           sx={searchBarDropdown}
           className={
-            searchValue.trim().length === 0 || filteredProducts.length === 0
+            searchValue.trim().length === 0 || filteredProducts?.length === 0
               ? "hidden"
               : ""
           }
         >
-          {filteredProducts.map(({ id, name }) => (
-            <Box
-              component={Link}
-              to={`product/${id}`}
-              key={id}
-              onClick={() => {
-                openSearchBarHandler();
-                setSearchValue("");
-              }}
-            >
-              {name}
-            </Box>
-          ))}
+          {filteredProducts &&
+            filteredProducts?.map(({ _id, title }) => (
+              <Box
+                key={_id}
+                onClick={() => {
+                  let path = `/shop?search=${title}`;
+                  if (selectedCategory) {
+                    path = `${path} &category=/${selectedCategory.replace(
+                      "&",
+                      "%26"
+                    )}`;
+                  }
+                  setSearchValue(title);
+                  navigate(path);
+                }}
+              >
+                {title}
+              </Box>
+            ))}
         </Box>
       </Box>
       <Divider
@@ -105,7 +107,7 @@ function SearchBar({
           >
             <MenuItem value="">Select Category</MenuItem>
             {categoriesList.map(({ name }, index) => (
-              <MenuItem key={index} value={`${name.replace(/\s/g, "-")}`}>
+              <MenuItem key={index} value={name}>
                 {name}
               </MenuItem>
             ))}
@@ -115,7 +117,11 @@ function SearchBar({
 
       <Box
         sx={{ display: "flex", alignItems: "center" }}
-        onClick={openSearchBarHandler}
+        onClick={() => {
+          setSearchValue("");
+          setSelectedCategory("");
+          openSearchBarHandler();
+        }}
       >
         <CloseRounded
           color="primary"

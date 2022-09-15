@@ -5,7 +5,6 @@ import {
   Toolbar,
   useMediaQuery,
   Fade,
-  SelectChangeEvent,
   Collapse,
   Modal,
 } from "@mui/material";
@@ -48,7 +47,6 @@ function Navbar() {
     left: false,
     right: false,
   });
-  const [selectedCategory, setSelectedCategory] = useState("");
   const [openDropdown, setOpenDropdown] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const openLoginModal = !!searchParams.get("login");
@@ -59,10 +57,6 @@ function Navbar() {
   const userPath = pathname.includes("user");
   const tabRoutes = ["/", "/shop", "/blog", "/contact-us", "/about-us"];
   let tabValue = tabRoutes.find((v) => v === pathname);
-
-  const selectedCategoryHandler = (event: SelectChangeEvent) => {
-    setSelectedCategory(event.target.value);
-  };
 
   type Anchor = "left" | "right";
 
@@ -188,11 +182,7 @@ function Navbar() {
                 in={openSearchBar}
               >
                 <Box width={"100%"}>
-                  <SearchBar
-                    selectedCategory={selectedCategory}
-                    selectedCategoryHandler={selectedCategoryHandler}
-                    openSearchBarHandler={openSearchBarHandler}
-                  />
+                  <SearchBar openSearchBarHandler={openSearchBarHandler} />
                 </Box>
               </Fade>
             </Toolbar>
