@@ -2,20 +2,16 @@ import { Container } from "@mui/material";
 import { Title } from "../../Styles/ShopByCategories";
 import iconLoading from "../../Assets/Images/icon-loading.png";
 import { Navigation, Pagination } from "swiper";
-import { ourBlogData } from "./data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import BlogCard from "./BlogCard/BlogCard";
 import { ContainerWrapper, WrapperBox } from "../../Styles/OurBlog";
 import { useInView } from "react-intersection-observer";
-import { articlesBlogPage } from "../../Services/Utils/Data/data";
 import { useGetAllArticlesQuery } from "../../features/articles/articlesApi";
-import { IArticle } from "../../Services/Utils/Types/article";
-interface Props {
-  articles: IArticle[];
-}
-function OurBlog({ articles }: Props) {
+import BlogPlaceholder from "../Placeholders/BlogPlaceholder";
+
+function OurBlog() {
   const { ref, inView } = useInView({ triggerOnce: true });
-  const { data } = useGetAllArticlesQuery();
+  const { data: articlesData, isLoading, isError } = useGetAllArticlesQuery();
 
   return (
     <ContainerWrapper
@@ -49,13 +45,19 @@ function OurBlog({ articles }: Props) {
               },
             }}
           >
-            {articlesBlogPage.slice(1, 6).map((item) => {
-              return (
-                <SwiperSlide key={item.id}>
-                  <BlogCard item={item} />
-                </SwiperSlide>
-              );
-            })}
+            {!isLoading && !isError
+              ? articlesData?.data.slice(0, 6).map((item) => (
+                  <SwiperSlide key={item._id!}>
+                    <BlogCard item={item} />
+                  </SwiperSlide>
+                ))
+              : Array(6)
+                  .fill(null)
+                  .map((item, index) => (
+                    <SwiperSlide key={index}>
+                      <BlogPlaceholder />
+                    </SwiperSlide>
+                  ))}
           </Swiper>
           <div className="swiper-button-prev-blog" />
           <div className="swiper-button-next-blog" />

@@ -6,13 +6,9 @@ import ProductCards from "./Components/ProductCards/ProductCards";
 import { useInView } from "react-intersection-observer";
 import { subMainContainer } from "../../Styles/Products";
 import { useState } from "react";
-import { IProduct } from "../../Services/Utils/Types/product";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
-interface Props {
-  products: IProduct[] | undefined;
-  isLoading: boolean;
-}
+
 const Products = () => {
   const [selectedCategory, setSelectedCategory] =
     useState("audio & video game");

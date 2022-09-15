@@ -1,6 +1,7 @@
 import { IArticle } from "../../Services/Utils/Types/article";
 import { api } from "../api";
 type GetAllArticlesResponse = {
+  code: number;
   message: string;
   data: IArticle[];
 };

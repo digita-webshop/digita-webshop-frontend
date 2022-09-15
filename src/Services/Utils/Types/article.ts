@@ -7,6 +7,6 @@ export interface IArticle {
   description: string;
   writer: string;
   createdAt?: string;
-  category?: string;
+  category: string;
   reviews?: IReviews[];
 }

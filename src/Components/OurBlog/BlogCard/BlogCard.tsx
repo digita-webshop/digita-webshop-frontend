@@ -4,12 +4,17 @@ import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { Card, iconStyle, textStyle } from "./Styles";
 import { Link } from "react-router-dom";
+import { IArticle } from "../../../Services/Utils/Types/article";
 
-function BlogCard({ item }: any) {
+interface Props {
+  item: IArticle;
+}
+
+function BlogCard({ item }: Props) {
   return (
     <Card>
       <Box>
-        <Link to={`article/${item.id}`}>
+        <Link to={`article/${item._id}`}>
           <img src={item.image} alt="article" />
         </Link>
         <Grid container spacing={2}>
@@ -23,11 +28,11 @@ function BlogCard({ item }: any) {
                 }}
               >
                 <PermIdentityIcon sx={iconStyle} />
-                <Typography sx={textStyle}>{item.author}</Typography>
+                <Typography sx={textStyle}>{item.writer}</Typography>
               </Box>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <AccessTimeIcon sx={iconStyle} />
-                <Typography sx={textStyle}>{item.releaseDate}</Typography>
+                <Typography sx={textStyle}>{item.createdAt}</Typography>
               </Box>
             </Box>
           </Grid>
@@ -48,7 +53,7 @@ function BlogCard({ item }: any) {
                 },
               }}
             >
-              <Link to={`article/${item.id}`}>{item.title}</Link>
+              <Link to={`article/${item._id}`}>{item.title}</Link>
             </Typography>
           </Grid>
         </Grid>

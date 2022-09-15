@@ -40,6 +40,7 @@ function AddArticle() {
       title: enteredTitle,
       writer: enteredWriter,
       image: addedImage,
+      category: "",
       description: JSON.stringify(
         convertToRaw(editorState.getCurrentContent())
       ),
