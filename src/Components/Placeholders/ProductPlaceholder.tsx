@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Box, Grid, Skeleton } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 function ProductPlaceholder() {
   return (
     <Fragment>

@@ -1,7 +1,5 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { teamTitleStyle } from "../../Styles/Product/index";
-
-import { productData } from "../../Services/Utils/Data/data";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import BoughtTogether from "./Components/BoughtTogether/BoughtTogether";
 import Tabs from "./Components/Tabs/Tabs";

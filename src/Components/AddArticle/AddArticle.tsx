@@ -20,6 +20,7 @@ function AddArticle() {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredWriter, setEnteredWriter] = useState("");
   const [addedImage, setAddedImage] = useState<any>("no chosen file");
+  const [selectedCategory, setSelectedCategory] = useState("information");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const navigate = useNavigate();
@@ -32,6 +33,7 @@ function AddArticle() {
     setEnteredWriter("");
     setAddedImage("no chosen file");
     setEditorState(EditorState.createEmpty());
+    setSelectedCategory("information");
   };
   const onSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -40,7 +42,7 @@ function AddArticle() {
       title: enteredTitle,
       writer: enteredWriter,
       image: addedImage,
-      category: "",
+      category: selectedCategory,
       description: JSON.stringify(
         convertToRaw(editorState.getCurrentContent())
       ),
@@ -107,6 +109,8 @@ function AddArticle() {
                 setEnteredTitle={setEnteredTitle}
                 addedImage={addedImage}
                 setAddedImage={setAddedImage}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
               />
               <Grid item xs={12}>
                 <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>

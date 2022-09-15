@@ -1,4 +1,11 @@
-import { Box, FormControl, Grid } from "@mui/material";
+import {
+  Box,
+  FormControl,
+  Grid,
+  Select,
+  MenuItem,
+  SelectChangeEvent,
+} from "@mui/material";
 import {
   useRef,
   Fragment,
@@ -7,9 +14,14 @@ import {
   SetStateAction,
   ChangeEvent,
 } from "react";
+import { blogCategories } from "../../../Services/Utils/Data/data";
 import { errorMessage } from "../../../Services/Utils/toastMessages";
 import { fileInputStyles } from "../../../Styles/PanelArticle";
-import { PFormLabel, PTextField } from "../../../Styles/panelCommon";
+import {
+  PFormControl,
+  PFormLabel,
+  PTextField,
+} from "../../../Styles/panelCommon";
 interface Props {
   enteredTitle: string;
   setEnteredTitle: Dispatch<SetStateAction<string>>;
@@ -17,6 +29,8 @@ interface Props {
   setEnteredWriter: Dispatch<SetStateAction<string>>;
   addedImage: any;
   setAddedImage: Dispatch<SetStateAction<any>>;
+  selectedCategory: string;
+  setSelectedCategory: Dispatch<SetStateAction<string>>;
 }
 function ArticleForm({
   enteredTitle,
@@ -25,12 +39,17 @@ function ArticleForm({
   setEnteredWriter,
   addedImage,
   setAddedImage,
+  selectedCategory,
+  setSelectedCategory,
 }: Props) {
   const [imageName, setImageName] = useState("");
   const inputFileRef = useRef<HTMLInputElement>(null);
 
   const clickInputHandler = () => {
     inputFileRef.current?.click();
+  };
+  const selectedBrandHandler = (event: SelectChangeEvent) => {
+    setSelectedCategory(event.target.value);
   };
   const fileInputHandler = async (event: ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();
@@ -80,6 +99,23 @@ function ArticleForm({
         </FormControl>
       </Grid>
       <Grid item xs={12} sm={6}>
+        <PFormControl size="small">
+          <PFormLabel>category</PFormLabel>
+          <Select
+            variant="outlined"
+            displayEmpty
+            value={selectedCategory}
+            onChange={selectedBrandHandler}
+          >
+            {blogCategories.map(({ id, name }) => (
+              <MenuItem key={id} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+        </PFormControl>
+      </Grid>
+      <Grid item xs={12}>
         <FormControl fullWidth>
           <PFormLabel>image</PFormLabel>
           <PTextField
