@@ -2,7 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import React, { Dispatch, SetStateAction } from "react";
 import { navStyle, StyledProducts } from "../../../../Styles/Products";
 
-const sortList = ["latest products", "top rating"];
+const sortList = ["latest", "rating"];
 interface Props {
   selectedSorting: string;
   setSelectedSorting: Dispatch<SetStateAction<string>>;
@@ -30,7 +30,7 @@ const SpecialHeader = ({ selectedSorting, setSelectedSorting }: Props) => {
               }}
               onClick={() => setSelectedSorting(sort)}
             >
-              {sort}
+              {sort === "latest" ? "latest products" : "top rating"}
             </Button>
           ))}
         </Box>

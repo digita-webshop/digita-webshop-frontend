@@ -24,16 +24,25 @@ import {
 import { FavoriteBorder, Shuffle } from "@mui/icons-material";
 import Gallery from "./Gallery/Gallery";
 import ColorPicker from "./ColorPicker/ColorPicker";
+import { IProduct } from "../../../../Services/Utils/Types/product";
 
 interface Props {
-  product: any;
+  product: IProduct;
 }
 const ProductDetails = ({ product }: Props) => {
   const [openAddToCart, setOpenAddToCart] = useState(false);
   const handleCloseAddToCart = () => setOpenAddToCart(false);
 
-  const { name, price, image, starRate, sku, colors, description, gallery } =
-    product;
+  const {
+    title,
+    price,
+    image,
+    rating,
+    sku,
+    colors,
+    shortDescription,
+    gallery,
+  } = product;
 
   return (
     <Box my={5}>
@@ -48,13 +57,13 @@ const ProductDetails = ({ product }: Props) => {
             </Box>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <Typography variant="h4" sx={productTitle}>
-                {name}
+                {title}
               </Typography>
             </Box>
             <Box sx={starLink}>
               <Rating
-                name="read-only"
-                defaultValue={starRate}
+                title="read-only"
+                defaultValue={rating}
                 size="small"
                 readOnly
                 sx={starRating}
@@ -66,7 +75,7 @@ const ProductDetails = ({ product }: Props) => {
             </Box>
 
             <Typography variant="body2" sx={ProductDetailsStyle} component="p">
-              {description}
+              {shortDescription}
             </Typography>
 
             <ColorPicker colors={colors} />
@@ -83,7 +92,7 @@ const ProductDetails = ({ product }: Props) => {
                   open={openAddToCart}
                   onClose={handleCloseAddToCart}
                   aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
+                  aria-describedby="modal-modal-shortDescription"
                 >
                   <CartModal price={price} />
                 </Modal>

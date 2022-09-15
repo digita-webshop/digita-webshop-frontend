@@ -16,7 +16,6 @@ interface Props {
 function OurBlog({ articles }: Props) {
   const { ref, inView } = useInView({ triggerOnce: true });
   const { data } = useGetAllArticlesQuery();
-  console.log(data);
 
   return (
     <ContainerWrapper

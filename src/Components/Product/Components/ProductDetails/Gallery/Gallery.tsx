@@ -11,10 +11,8 @@ import {
 import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
 import GalleryModal from "./GalleryModal/GalleryModal";
 import ReactImageMagnify from "react-image-magnify";
-export interface IGallery {
-  id: number;
-  image: string;
-}
+import { IGallery } from "../../../../../Services/Utils/Types/product";
+
 interface Props {
   gallery: IGallery[];
 }
@@ -51,8 +49,8 @@ export default function Gallery({ gallery }: Props) {
           }}
           modules={matchesMd ? [] : [Pagination]}
         >
-          {gallery.map(({ id, image }) => (
-            <SwiperSlide key={id}>
+          {gallery.map(({ _id, image }) => (
+            <SwiperSlide key={_id}>
               <Box sx={swiperImageWrapper}>
                 {matchesMd ? (
                   <ReactImageMagnify
@@ -126,8 +124,8 @@ export default function Gallery({ gallery }: Props) {
             },
           }}
         >
-          {gallery.map(({ id, image }, index) => (
-            <SwiperSlide key={id}>
+          {gallery.map(({ _id, image }, index) => (
+            <SwiperSlide key={_id}>
               <Box onClick={sliderClickHandler(index)}>
                 <img
                   src={image}

@@ -32,25 +32,25 @@ import { useDispatch } from "react-redux";
 import { addToCompareList } from "../../../../features/compare/compareSlice";
 
 type Props = {
-  name: string;
-  id: number;
+  title: string;
+  id: string;
   image: string;
   offPrice: number | null;
   price: number;
   sold: boolean;
-  starRate: number;
+  rating: number;
   description: string;
   listView: boolean;
 };
 
 const ProductItem = ({
-  name,
+  title,
   id,
   image,
   offPrice,
   price,
   sold,
-  starRate,
+  rating,
   description,
   listView,
 }: Props) => {
@@ -85,7 +85,7 @@ const ProductItem = ({
         flexDirection: { xs: "column", sm: "row" },
       }}
     >
-      <Box sx={{ position: "relative", backgroundColor: "#f2f2f3cc" }}>
+      <Box sx={{ position: "relative", borderBottom: "2px solid #f2f2f3cc" }}>
         <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div>
         <Link to={`/shop/${id}`}>
           <CardMedia
@@ -229,9 +229,9 @@ const ProductItem = ({
       >
         <div>
           <ModalView
-            name={name}
+            title={title}
             image={image}
-            starRate={starRate}
+            rating={rating}
             price={price}
             offPrice={offPrice}
             sold={sold}
@@ -255,9 +255,9 @@ const ProductItem = ({
       </Modal>
       <CardContent>
         <Rating
-          name="text-feedback"
+          title="text-feedback"
           size="small"
-          value={starRate}
+          value={rating}
           readOnly
           precision={0.5}
           emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
@@ -281,7 +281,7 @@ const ProductItem = ({
               }}
               fontWeight={500}
             >
-              {name}
+              {title}
             </Typography>
           </Link>
         </Box>

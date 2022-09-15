@@ -1,26 +1,22 @@
 import { Container, Grid, Box } from "@mui/material";
 import SpecialHeader from "./Components/Header/SpecialHeader";
 import SpecialItem from "./Components/SpecialItem/SpecialItem";
-import { productData } from "../../Services/Utils/Data/data";
 import SupportItems from "./Components/SupportItems/SupportItems";
 import SpecialCards from "./Components/SpecialCards/SpecialCards";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
-import { IProduct } from "../../Services/Utils/Types/product";
-interface Props {
-  products: IProduct[];
-}
-const Special = ({ products }: Props) => {
-  const [selectedSorting, setSelectedSorting] = useState("latest products");
-  const { ref, inView } = useInView({ triggerOnce: true });
-  let filteredProducts = productData;
+import SpecialProductPlaceholder from "../Placeholders/SpecialProductPlaceholder";
+import { useGetAllProductsQuery } from "../../features/products/productsApi";
 
-  if (selectedSorting === "latest products") {
-    // filteredProducts = productData.sort((a, b) => b.starRate - a.starRate);
-  }
-  if (selectedSorting === "top rating") {
-    filteredProducts = productData.sort((a, b) => b.starRate - a.starRate);
-  }
+const Special = () => {
+  const [selectedSorting, setSelectedSorting] = useState("latest");
+
+  const { ref, inView } = useInView({ triggerOnce: true });
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useGetAllProductsQuery(`page=1&limit=9&sort=${selectedSorting}`);
 
   return (
     <Container
@@ -52,17 +48,25 @@ const Special = ({ products }: Props) => {
 
         <Box>
           <Grid container spacing={{ xs: 2, md: 3 }}>
-            {filteredProducts.slice(0, 9).map((item) => (
-              <SpecialItem
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                image={item.image}
-                offPrice={item.offPrice}
-                price={item.price}
-                starRate={item.starRate}
-              />
-            ))}
+            {!isLoading && !isError
+              ? products?.data
+                  .slice(0, 8)
+                  .map((item) => (
+                    <SpecialItem
+                      key={item._id!}
+                      id={item._id!}
+                      title={item.title}
+                      image={item.image}
+                      offPrice={item.offPrice}
+                      price={item.price}
+                      rating={item.rating}
+                    />
+                  ))
+              : Array(9)
+                  .fill(null)
+                  .map((item, index) => (
+                    <SpecialProductPlaceholder key={index} />
+                  ))}
           </Grid>
         </Box>
         <SpecialCards />

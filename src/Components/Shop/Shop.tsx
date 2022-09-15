@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 import {
   Container,
@@ -16,12 +16,14 @@ import FiltersDrawer from "./FiltersDrawer/FiltersDrawer";
 import Toolbar from "./Toolbar/Toolbar";
 import ProductItem from "../Products/Components/ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
-import { productData } from "../../Services/Utils/Data/data";
 import { useSearchParams } from "react-router-dom";
+import { IProduct } from "../../Services/Utils/Types/product";
+import { useGetAllProductsQuery } from "../../features/products/productsApi";
+import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
 
 function Shop() {
   const [displayDrawer, setDisplayDrawer] = useState(false);
-  const [products] = useState(productData);
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [productsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedLayout, setSelectedLayout] = useState({
@@ -33,60 +35,41 @@ function Shop() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
 
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  // const indexOfLastProduct = currentPage * productsPerPage;
+  // const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   let currentProducts = products;
+  let queries: any = `page=${currentPage}&limit=${productsPerPage}`;
 
   let categoryQueryParams = searchParams.get("category");
-
   if (categoryQueryParams) {
-    const selectedCategories = categoryQueryParams.split("/");
-    currentProducts = currentProducts.filter((item) =>
-      selectedCategories.some((cat) => item.category === cat)
-    );
+    queries = `&category=${categoryQueryParams.replaceAll("&", "%26")}`;
   }
 
   let colorQueryParams = searchParams.get("color");
-
   if (colorQueryParams) {
-    const selectedColors = colorQueryParams.split("/");
-
-    currentProducts = currentProducts.filter((item) =>
-      selectedColors.some((color) =>
-        item.colors.some((productColor) => productColor === color)
-      )
-    );
+    queries = `${queries} &color=${colorQueryParams}`;
   }
 
   let priceQueryParams = searchParams.get("priceRange");
-
   if (priceQueryParams) {
-    const priceRange = priceQueryParams.split("/");
-    let min = priceRange[0].replace(/^\D+/g, "");
-    let max = priceRange[1].replace(/^\D+/g, "");
-
-    currentProducts = currentProducts.filter(
-      (item) => item.price >= +min && item.price <= +max
-    );
+    queries = `${queries} &price=${priceQueryParams}`;
   }
 
   let sortQueryParams = searchParams.get("sort");
-
   if (sortQueryParams) {
-    if (sortQueryParams === "price-low-to-high") {
-      currentProducts = currentProducts.sort((a, b) => a.price - b.price);
-    }
-    if (sortQueryParams === "price-high-to-low") {
-      currentProducts = currentProducts.sort((a, b) => b.price - a.price);
-    }
-    if (sortQueryParams === "rating") {
-      currentProducts = currentProducts.sort((a, b) => b.starRate - a.starRate);
-    }
+    queries = `${queries} &sort=${sortQueryParams}`;
   }
 
   const toggleDrawer = (open: boolean) => {
     setDisplayDrawer(open);
   };
+
+  const {
+    data: productsData,
+    isLoading,
+    isError,
+  } = useGetAllProductsQuery(queries);
+  console.log(productsData);
 
   const addQueryParams = (filter: string, name: string) => () => {
     let selectedQueryParams = searchParams.get(filter);
@@ -108,6 +91,11 @@ function Shop() {
     setSearchParams(searchParams);
     setCurrentPage(1);
   };
+  useEffect(() => {
+    if (productsData?.code === 200) {
+      setProducts(productsData?.data);
+    }
+  }, [productsData]);
   return (
     <Box bgcolor={"white"}>
       <Breadcrumbs title={"products"} />
@@ -138,53 +126,67 @@ function Shop() {
               selectedLayout={selectedLayout}
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
-              {currentProducts.length === 0 && (
-                <Box sx={{ textAlign: "center", margin: "40px auto" }}>
-                  <Typography variant="h5" sx={{ color: "common.digitaBlack" }}>
-                    No result found!
-                  </Typography>
-                </Box>
-              )}
-              {currentProducts
-                .slice(indexOfFirstProduct, indexOfLastProduct)
-                .map((item) => (
-                  <Fragment key={item.id}>
-                    {selectedLayout.grid && (
-                      <Fade in={selectedLayout.grid}>
-                        <Grid item xs={12} sm={4} md={4} key={item.id}>
-                          <ProductItem
-                            id={item.id}
-                            name={item.name}
-                            image={item.image}
-                            offPrice={item.offPrice}
-                            price={item.price}
-                            sold={item.sold}
-                            starRate={item.starRate}
-                            description={item.description}
-                            listView={false}
-                          />
-                        </Grid>
-                      </Fade>
-                    )}
-                    {selectedLayout.list && (
-                      <Fade in={selectedLayout.list}>
-                        <Grid item xs={12}>
-                          <ProductItem
-                            id={item.id}
-                            name={item.name}
-                            image={item.image}
-                            offPrice={item.offPrice}
-                            price={item.price}
-                            sold={item.sold}
-                            starRate={item.starRate}
-                            description={item.description}
-                            listView={true}
-                          />
-                        </Grid>
-                      </Fade>
-                    )}
-                  </Fragment>
-                ))}
+              {!isLoading && !isError
+                ? currentProducts.map((item) => {
+                    if (currentProducts.length === 0) {
+                      return (
+                        <Box sx={{ textAlign: "center", margin: "40px auto" }}>
+                          <Typography
+                            variant="h5"
+                            sx={{ color: "common.digitaBlack" }}
+                          >
+                            No result found!
+                          </Typography>
+                        </Box>
+                      );
+                    }
+                    return (
+                      <Fragment key={item._id}>
+                        {selectedLayout.grid && (
+                          <Fade in={selectedLayout.grid}>
+                            <Grid item xs={12} sm={4} key={item._id}>
+                              <ProductItem
+                                id={item._id!}
+                                title={item.title}
+                                image={item.image}
+                                offPrice={item.offPrice}
+                                price={item.price}
+                                sold={false}
+                                rating={item.rating!}
+                                description={item.shortDescription}
+                                listView={false}
+                              />
+                            </Grid>
+                          </Fade>
+                        )}
+                        {selectedLayout.list && (
+                          <Fade in={selectedLayout.list}>
+                            <Grid item xs={12}>
+                              <ProductItem
+                                id={item._id!}
+                                title={item.title}
+                                image={item.image}
+                                offPrice={item.offPrice}
+                                price={item.price}
+                                sold={false}
+                                rating={item.rating!}
+                                description={item.shortDescription}
+                                listView={true}
+                              />
+                            </Grid>
+                          </Fade>
+                        )}
+                      </Fragment>
+                    );
+                  })
+                : Array(12)
+                    .fill(null)
+                    .map((item, index) => (
+                      <Grid item xs={12} sm={4}>
+                        {" "}
+                        <ProductPlaceholder key={index} />
+                      </Grid>
+                    ))}
             </Grid>
             <Pagination
               productsPerPage={productsPerPage}

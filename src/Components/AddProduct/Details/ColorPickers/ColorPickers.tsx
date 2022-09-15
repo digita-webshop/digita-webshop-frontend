@@ -1,19 +1,8 @@
 import { Box } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
+import { colorsList } from "../../../../Services/Utils/Data/data";
 import { GreyTooltip, ProductColor } from "../../../../Styles/Product";
 
-const dummyColors = [
-  { id: "1", name: "red", hex: "#f03637" },
-  { id: "2", name: "blue", hex: "#72bcfb" },
-  { id: "3", name: "green", hex: "#00FF00" },
-  { id: "4", name: "orange", hex: "#FFA500" },
-  { id: "5", name: "black", hex: "#000000" },
-  { id: "6", name: "purple", hex: "#A020F0" },
-  { id: "7", name: "white", hex: "#FFFFFF" },
-  { id: "8", name: "brown", hex: "#964B00" },
-  { id: "9", name: "grey", hex: "#808080" },
-  { id: "10", name: "yellow", hex: "#FFFF00" },
-];
 interface Props {
   selectedColors: string[];
   setSelectedColors: Dispatch<SetStateAction<string[]>>;
@@ -40,7 +29,7 @@ function ColorPickers({ selectedColors, setSelectedColors }: Props) {
         marginTop: "4px",
       }}
     >
-      {dummyColors.map(({ id, name, hex }) => (
+      {colorsList.map(({ id, name, hex }) => (
         <GreyTooltip key={id} title={name} placement="top">
           <ProductColor
             sx={{ background: hex }}

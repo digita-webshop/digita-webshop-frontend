@@ -8,8 +8,8 @@ import {
   GalleryModalWrapper,
   modalSwiperStyles,
 } from "../../../../../../Styles/Product";
-import { IGallery } from "../Gallery";
 import ReactImageMagnify from "react-image-magnify";
+import { IGallery } from "../../../../../../Services/Utils/Types/product";
 
 interface Props {
   gallery: IGallery[];
@@ -56,8 +56,8 @@ function GalleryModal({ gallery, setOpenModal, slideIndex }: Props) {
           effect={"fade"}
           modules={[EffectFade, Navigation]}
         >
-          {gallery.map(({ id, image }) => (
-            <SwiperSlide key={id}>
+          {gallery.map(({ _id, image }) => (
+            <SwiperSlide key={_id}>
               <ReactImageMagnify
                 {...{
                   smallImage: {

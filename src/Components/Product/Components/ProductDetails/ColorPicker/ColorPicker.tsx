@@ -5,17 +5,13 @@ import {
   ProductColor,
 } from "../../../../../Styles/Product";
 import { useState } from "react";
-
-const dummyColors = [
-  { id: "1", name: "red", hex: "#f03637" },
-  { id: "2", name: "blue", hex: "#72bcfb" },
-];
+import { colorsList } from "../../../../../Services/Utils/Data/data";
 
 interface Props {
   colors: string[];
 }
 function ColorPicker({ colors }: Props) {
-  const [selectedColor, setSelectedColor] = useState(dummyColors[0].name);
+  const [selectedColor, setSelectedColor] = useState("");
 
   const selectColorHandler = (name: string) => () => {
     setSelectedColor(name);
@@ -40,15 +36,17 @@ function ColorPicker({ colors }: Props) {
           width: "80%",
         }}
       >
-        {dummyColors.map(({ id, name, hex }) => (
-          <GreyTooltip key={id} title={name} placement="top">
-            <ProductColor
-              sx={{ background: hex }}
-              className={selectedColor === name ? "selected" : ""}
-              onClick={selectColorHandler(name)}
-            ></ProductColor>
-          </GreyTooltip>
-        ))}
+        {colorsList
+          .filter((color) => colors.includes(color.name))
+          .map(({ id, name, hex }) => (
+            <GreyTooltip key={id} title={name} placement="top">
+              <ProductColor
+                sx={{ background: hex }}
+                className={selectedColor === name ? "selected" : ""}
+                onClick={selectColorHandler(name)}
+              ></ProductColor>
+            </GreyTooltip>
+          ))}
       </Box>
     </Box>
   );

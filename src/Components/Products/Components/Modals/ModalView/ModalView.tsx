@@ -25,12 +25,12 @@ import {
 } from "../../../../../Styles/Products";
 
 type T = {
-  name: string;
+  title: string;
   image: string;
   offPrice: number | null;
   price: number;
   sold: boolean;
-  starRate: number;
+  rating: number;
   handleClose: any;
 };
 
@@ -49,12 +49,12 @@ const customBtn = {
 };
 
 const ModalView = ({
-  name,
+  title,
   image,
   sold,
   price,
   offPrice,
-  starRate,
+  rating,
   handleClose,
 }: T) => {
   const [value, setValue] = useState(1);
@@ -99,13 +99,13 @@ const ModalView = ({
             component="h2"
             sx={{ fontWeight: "500", color: "#444" }}
           >
-            {name}
+            {title}
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <Rating
-              name="text-feedback"
+              title="text-feedback"
               size="small"
-              value={starRate}
+              value={rating}
               readOnly
               precision={0.5}
               emptyIcon={

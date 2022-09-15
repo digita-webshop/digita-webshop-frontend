@@ -59,13 +59,13 @@ function AddProduct() {
       tags: tagList,
       quantity: +enteredQuantity,
       colors: selectedColors,
-      category: selectedCategory,
+      category: selectedCategory.replace("&", ""),
       shortDescription: enteredShortDesc,
       brand: selectedBrand,
       fullDescription: JSON.stringify(
         convertToRaw(editorState.getCurrentContent())
       ),
-      rating: id ? product?.rating : 5,
+      rating: id ? product?.rating! : 5,
     };
     if (id) {
       newProduct["_id"] = product?._id;
@@ -98,7 +98,7 @@ function AddProduct() {
         const response = await fetch(`/api/products/find/${id}`).then((res) =>
           res.json()
         );
-        const productData = response?.data;
+        const productData: IProduct = response?.data;
         setEnteredTitle(productData.title);
         setEnteredSku(productData.sku);
         setEnteredPrice(productData.price);

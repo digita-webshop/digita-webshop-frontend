@@ -1,6 +1,7 @@
 import { IProduct, IReviews } from "../../Services/Utils/Types/product";
 import { api } from "../api";
 type GetAllProductsResponse = {
+  code: number;
   message: string;
   data: IProduct[];
 };
@@ -10,8 +11,13 @@ type GetProductResponse = {
 };
 export const productApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getAllProducts: build.query<GetAllProductsResponse, void>({
-      query: () => "products",
+    getAllProducts: build.query<GetAllProductsResponse, string | undefined>({
+      query(query) {
+        console.log(query);
+        return {
+          url: `products?${query}`,
+        };
+      },
       providesTags: ["Product"],
     }),
     getProduct: build.query<GetProductResponse, string>({

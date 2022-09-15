@@ -5,7 +5,7 @@ export interface IReviews {
   createdAt: string;
 }
 export interface IGallery {
-  id: string;
+  _id?: string;
   image: string;
 }
 
@@ -16,7 +16,7 @@ export interface IProduct {
   gallery: IGallery[];
   offPrice: number;
   price: number;
-  rating?: number;
+  rating: number;
   brand: string;
   quantity: number;
   sku: string;

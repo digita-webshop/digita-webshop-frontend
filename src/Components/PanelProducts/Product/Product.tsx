@@ -39,7 +39,7 @@ const Product = ({ id, title, price, image, onRemove }: T) => {
         height="240"
         image={image}
         alt="green iguana"
-        sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
+        sx={{ objectFit: "contain" }}
       />
       <CardContent sx={titleWrapper}>
         <Typography component="p" sx={titleStyle}>

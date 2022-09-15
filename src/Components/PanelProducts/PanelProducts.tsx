@@ -30,7 +30,9 @@ const PanelProducts = () => {
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
-  const { data: products, isLoading, isError } = useGetAllProductsQuery();
+  const { data: products, isLoading, isError } = useGetAllProductsQuery("");
+  console.log(products);
+
   const [deleteProduct] = useDeleteProductMutation();
 
   const [selectedStatus, setSelectedStatus] = useState("status");

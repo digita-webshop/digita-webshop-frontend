@@ -12,17 +12,17 @@ import { itemContent } from "../../../../Styles/Special";
 import { Link } from "react-router-dom";
 
 type Props = {
-  id: number;
-  name: string;
+  id: string;
+  title: string;
   image: string;
   offPrice: number | null;
   price: number;
-  starRate: number;
+  rating: number;
 };
 
-const SpecialItem = ({ id, name, image, offPrice, price, starRate }: Props) => {
+const SpecialItem = ({ id, title, image, offPrice, price, rating }: Props) => {
   return (
-    <Grid item xs={12} sm={6} lg={4} key={id}>
+    <Grid item xs={12} sm={6} lg={4}>
       <Box
         sx={{
           display: "flex",
@@ -59,7 +59,7 @@ const SpecialItem = ({ id, name, image, offPrice, price, starRate }: Props) => {
             <Rating
               name="text-feedback"
               size="small"
-              value={starRate}
+              value={rating}
               readOnly
               precision={0.5}
               emptyIcon={
@@ -83,7 +83,7 @@ const SpecialItem = ({ id, name, image, offPrice, price, starRate }: Props) => {
                 },
               }}
             >
-              <Link to={`/shop/${id}`}>{name}</Link>
+              <Link to={`/shop/${id}`}>{title}</Link>
             </Typography>
             <Typography
               variant="body2"
