@@ -22,6 +22,8 @@ import {
   modalLeft,
   modalStyle,
   StyledModal,
+  CartInput,
+  AmountBtn,
 } from "../../../../../Styles/Products";
 
 type T = {
@@ -32,20 +34,6 @@ type T = {
   sold: boolean;
   rating: number;
   handleClose: any;
-};
-
-const customBtn = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: "#555",
-  width: "30px",
-  cursor: "pointer",
-  height: "100%",
-  fontSize: "20px",
-  userSelect: "none",
-  border: "1px solid #e4e4e4",
-  fontWeight: "700",
 };
 
 const ModalView = ({
@@ -170,32 +158,21 @@ const ModalView = ({
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center", height: "3rem" }}>
-              <Box sx={customBtn} onClick={handleDecValue}>
+              <AmountBtn width={"40px"} onClick={handleDecValue}>
                 -
-              </Box>
-              <TextField
+              </AmountBtn>
+              <CartInput
                 id="outlined-number"
                 type="number"
                 value={value}
                 sx={{
                   width: "40px",
-                  height: "100%",
-                  "& .MuiInputBase-root": {
-                    height: "100%",
-                    borderRadius: "0",
-                  },
-                  "& .MuiInputBase-input": {
-                    textAlign: "center",
-                  },
-                  input: {
-                    "&::-webkit-inner-spin-button": { appearance: "none" },
-                  },
                 }}
                 size="small"
               />
-              <Box sx={customBtn} onClick={handleIncValue}>
+              <AmountBtn onClick={handleIncValue} width={"40px"}>
                 +
-              </Box>
+              </AmountBtn>
             </Box>
             <Button variant="contained" sx={{ fontSize: "14px" }}>
               Add to Cart

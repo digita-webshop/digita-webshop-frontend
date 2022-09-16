@@ -42,8 +42,6 @@ function Shop() {
 
   let searchQueryParams = searchParams.get("search");
   if (searchQueryParams) {
-    console.log(searchQueryParams);
-
     queries = `${queries} &search=${searchQueryParams}`;
   }
 

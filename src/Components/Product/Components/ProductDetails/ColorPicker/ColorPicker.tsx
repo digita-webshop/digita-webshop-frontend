@@ -11,7 +11,7 @@ interface Props {
   colors: string[];
 }
 function ColorPicker({ colors }: Props) {
-  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const selectColorHandler = (name: string) => () => {
     setSelectedColor(name);

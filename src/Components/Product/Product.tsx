@@ -23,6 +23,7 @@ const Product = () => {
 
   const product: IProduct = productData?.data!;
   const products: IProduct[] = productsData?.data!;
+
   if (productLoading || productsLoading) {
     return <Loading full />;
   }
@@ -31,7 +32,7 @@ const Product = () => {
       <Breadcrumbs title={"product"} lastPath={product?.title} />
       <Container maxWidth={"lg"}>
         <ProductDetails product={product} />
-        <BoughtTogether />
+        <BoughtTogether products={products} />
         <Tabs product={product} />
         <ShareProduct />
 

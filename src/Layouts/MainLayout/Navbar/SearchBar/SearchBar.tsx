@@ -32,7 +32,6 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
   }
 
   const { data: productsData, isLoading } = useGetAllProductsQuery(queries);
-  console.log(productsData);
 
   const filteredProducts = productsData?.data.slice(0, 6);
   const selectedCategoryHandler = (event: SelectChangeEvent) => {

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Modal from "@mui/material/Modal";
-import CartModal from "../../../Products/Components/Modals/CartModal/CartModal";
 import {
   Grid,
   Button,
@@ -21,22 +19,20 @@ import {
   starLink,
   productButtonStyles,
 } from "../../../../Styles/Product/index";
-import { FavoriteBorder, Shuffle } from "@mui/icons-material";
+import { DeleteForever, FavoriteBorder, Shuffle } from "@mui/icons-material";
 import Gallery from "./Gallery/Gallery";
 import ColorPicker from "./ColorPicker/ColorPicker";
 import { IProduct } from "../../../../Services/Utils/Types/product";
+import { AmountBtn, CartInput } from "../../../../Styles/Products";
 
 interface Props {
   product: IProduct;
 }
 const ProductDetails = ({ product }: Props) => {
-  const [openAddToCart, setOpenAddToCart] = useState(false);
-  const handleCloseAddToCart = () => setOpenAddToCart(false);
-
   const {
     title,
     price,
-    image,
+    offPrice,
     rating,
     sku,
     colors,
@@ -71,7 +67,26 @@ const ProductDetails = ({ product }: Props) => {
               <Link className="customerReview">(1 customer review)</Link>
             </Box>
             <Box sx={filledPrice}>
-              <bdi>{`$${price}`}</bdi>
+              <bdi>{`$${offPrice ? offPrice : price}`}</bdi>
+              {offPrice && (
+                <Typography
+                  component={"span"}
+                  sx={{
+                    position: "relative",
+                    fontSize: "16px",
+                    marginLeft: "14px",
+                    "&:after": {
+                      content: '" "',
+                      position: "absolute",
+                      top: "55%",
+                      left: "0",
+                      width: "100%",
+                      height: "1.5px",
+                      backgroundColor: "common.digitaBlack",
+                    },
+                  }}
+                >{`$${price}`}</Typography>
+              )}
             </Box>
 
             <Typography variant="body2" sx={ProductDetailsStyle} component="p">
@@ -81,22 +96,35 @@ const ProductDetails = ({ product }: Props) => {
             <ColorPicker colors={colors} />
             <Box>
               <Box sx={CartButtonsStyle}>
-                <Button
-                  variant="contained"
-                  className="addCart"
-                  onClick={() => setOpenAddToCart(true)}
-                >
+                <Button variant="contained" className="addCart">
                   Add To Cart
                 </Button>
-                <Modal
-                  open={openAddToCart}
-                  onClose={handleCloseAddToCart}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-shortDescription"
+                {/* <Box
+                  sx={{ display: "flex", alignItems: "center", height: "3rem" }}
                 >
-                  <CartModal price={price} />
-                </Modal>
-                <Button variant="contained">View Cart</Button>
+                  <AmountBtn width={"40px"}>-</AmountBtn>
+                  <CartInput
+                    id="outlined-number"
+                    type="number"
+                    sx={{
+                      width: "40px",
+                    }}
+                    size="small"
+                  />
+                  <AmountBtn width={"40px"}>+</AmountBtn>
+                </Box> */}
+                {/* <Button
+                  variant="outlined"
+                  color="error"
+                  sx={{
+                    padding: "0 20px!important",
+                    "&:hover .delete-icon": { color: "#fff" },
+                  }}
+                >
+                  <DeleteForever className="delete-icon" />
+                </Button> */}
+
+                {/* <Button variant="contained">View Cart</Button> */}
               </Box>
             </Box>
 
