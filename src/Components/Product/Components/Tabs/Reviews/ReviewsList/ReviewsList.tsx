@@ -1,7 +1,27 @@
+import { useState, useEffect } from "react";
 import { Avatar, Box, Divider, Rating, Typography } from "@mui/material";
 import avatar from "../../../../../../Assets/Images/Product/avatar.png";
+import { useGetUserMutation } from "../../../../../../features/auth/authApi";
+interface Props {
+  userId: string;
+  rating: number;
+  description: string;
+}
+function ReviewsList({ userId, rating, description }: Props) {
+  const [username, setUsername] = useState("");
+  const [getUser] = useGetUserMutation();
 
-function ReviewsList() {
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await getUser(userId).unwrap();
+        console.log(response);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUser();
+  }, []);
   return (
     <>
       <Box sx={{ display: "flex", gap: "15px" }} mb={2}>
@@ -27,10 +47,15 @@ function ReviewsList() {
               component="p"
               sx={{ fontSize: { xs: "12px", sm: "14px" } }}
             >
-              <span className="userName">Peter Giroud </span>
+              <span className="userName">{username} </span>
               <time> – September 17, 2019</time>
             </Typography>
-            <Rating name="read-only" defaultValue={5} size="small" readOnly />
+            <Rating
+              name="read-only"
+              defaultValue={rating}
+              size="small"
+              readOnly
+            />
           </Box>
 
           <Box sx={{ width: "100%", marginTop: "10px " }}>
@@ -41,8 +66,7 @@ function ReviewsList() {
                 fontSize: { xs: "14px", sm: "16px" },
               }}
             >
-              Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam,
-              purus eget sagittis vulputate, sapien libero hendrerit est
+              {description}
             </Typography>
           </Box>
         </Box>

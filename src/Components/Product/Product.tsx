@@ -16,7 +16,6 @@ import Loading from "../Loading/Loading";
 
 const Product = () => {
   const { id }: any = useParams();
-  // const product: IProduct = productData.find((product) => product.id === +id);
   const { data: productData, isLoading: productLoading } =
     useGetProductQuery(id);
   const { data: productsData, isLoading: productsLoading } =
@@ -33,7 +32,11 @@ const Product = () => {
       <Container maxWidth={"lg"}>
         <ProductDetails product={product} />
         <BoughtTogether />
-        <Tabs />
+        <Tabs
+          description={product.fullDescription}
+          reviews={product.reviews!}
+          brand={product.brand}
+        />
         <ShareProduct />
 
         <Box sx={{ textAlign: "left", pb: 8 }}>

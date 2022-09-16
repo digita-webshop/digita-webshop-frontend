@@ -1,6 +1,7 @@
 import { CloseRounded, SearchOutlined } from "@mui/icons-material";
 import {
   Box,
+  CircularProgress,
   Divider,
   FormControl,
   InputBase,
@@ -13,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../../../features/products/productsApi";
 import { categoriesList } from "../../../../Services/Utils/Data/data";
 import { searchBarDropdown } from "../../../../Styles/Appbar";
+import { PStack } from "../../../../Styles/panelCommon";
 
 type SearchBarProps = {
   openSearchBarHandler: () => void;
@@ -21,15 +23,15 @@ type SearchBarProps = {
 function SearchBar({ openSearchBarHandler }: SearchBarProps) {
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [closeDropdown, setCloseDropdown] = useState(true);
 
   const navigate = useNavigate();
   let queries = `search=${searchValue}`;
   if (selectedCategory) {
     queries = `${queries} &category=/${selectedCategory.replace("&", "%26")}`;
   }
-  console.log(queries);
 
-  const { data: productsData } = useGetAllProductsQuery(queries);
+  const { data: productsData, isLoading } = useGetAllProductsQuery(queries);
   console.log(productsData);
 
   const filteredProducts = productsData?.data.slice(0, 6);
@@ -45,6 +47,8 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
             sx={{ width: "100%", height: "100%", fontSize: "20px" }}
             onChange={(event) => setSearchValue(event.target.value)}
             value={searchValue}
+            onBlur={() => setCloseDropdown(true)}
+            onFocus={() => setCloseDropdown(false)}
           />
           <Box
             sx={{ display: "flex", padding: "10px" }}
@@ -63,12 +67,18 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
         <Box
           sx={searchBarDropdown}
           className={
-            searchValue.trim().length === 0 || filteredProducts?.length === 0
-              ? "hidden"
-              : ""
+            searchValue.trim().length === 0 || closeDropdown ? "hidden" : ""
           }
         >
-          {filteredProducts &&
+          {isLoading ? (
+            <Box>
+              <PStack>
+                <CircularProgress color="error" />
+              </PStack>
+            </Box>
+          ) : filteredProducts?.length === 0 ? (
+            <Box sx={{ textTransform: "capitalize" }}>no result found!</Box>
+          ) : (
             filteredProducts?.map(({ _id, title }) => (
               <Box
                 key={_id}
@@ -86,7 +96,8 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
               >
                 {title}
               </Box>
-            ))}
+            ))
+          )}
         </Box>
       </Box>
       <Divider

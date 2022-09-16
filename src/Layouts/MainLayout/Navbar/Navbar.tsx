@@ -111,7 +111,7 @@ function Navbar() {
                 </Box>
               </Box>
               <Box sx={{ marginRight: { sx: "0", md: "30px" } }}>
-                <Link to="/">
+                <Link to="/" onClick={() => setOpenSearchBar(false)}>
                   <img src={logoImg} alt="digita-logo" />
                 </Link>
               </Box>

@@ -5,7 +5,7 @@ import {
   ProductTextStyle,
 } from "../../../../../Styles/Product";
 
-const AboutBrand = () => {
+const AboutBrand = ({ brand }: { brand: string }) => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
       <Box sx={ProductContentStyle}>

@@ -15,14 +15,24 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import ReviewsList from "./ReviewsList/ReviewsList";
+import { IReviews } from "../../../../../Services/Utils/Types/product";
 
-const Reviews = () => {
+interface Props {
+  reviews: IReviews[] | [];
+}
+const Reviews = ({ reviews }: Props) => {
   const [rating, setRating] = useState(1);
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }} id="review">
       <Box sx={ProductContentStyle}>
-        <ReviewsList />
+        {reviews.map((review) => (
+          <ReviewsList
+            userId={review.userId}
+            rating={review.rating!}
+            description={review.description}
+          />
+        ))}
 
         <Typography
           component="p"

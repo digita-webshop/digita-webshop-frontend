@@ -16,8 +16,13 @@ import Reviews from "./Reviews/Reviews";
 import { Box, Collapse, Typography } from "@mui/material";
 import { useState } from "react";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
-
-function Tabs() {
+import { IReviews } from "../../../../Services/Utils/Types/product";
+interface Props {
+  description: string;
+  reviews: IReviews[] | [];
+  brand: string;
+}
+function Tabs(props: Props) {
   const [openDescription, setOpenDescription] = useState(true);
   const [openReviews, setOpenReviews] = useState(false);
   const [openAbout, setOpenAbout] = useState(false);
@@ -33,13 +38,13 @@ function Tabs() {
             <Tab> SHIPPING &#38; DELIVERY</Tab>
           </TabsList>
           <TabPanel value={0}>
-            <Description />
+            <Description description={props.description} />
           </TabPanel>
           <TabPanel value={1}>
-            <Reviews />
+            <Reviews reviews={props.reviews} />
           </TabPanel>
           <TabPanel value={2}>
-            <AboutBrand />
+            <AboutBrand brand={props.brand} />
           </TabPanel>
           <TabPanel value={3}>
             <Delivery />
@@ -61,7 +66,7 @@ function Tabs() {
             </Typography>
           </Box>
           <Collapse in={openDescription}>
-            <Description />
+            <Description description={props.description} />
           </Collapse>
         </Box>
 
@@ -83,7 +88,7 @@ function Tabs() {
             </Typography>
           </Box>
           <Collapse in={openReviews}>
-            <Reviews />
+            <Reviews reviews={props.reviews} />
           </Collapse>
         </Box>
 
@@ -97,7 +102,7 @@ function Tabs() {
             </Typography>
           </Box>
           <Collapse in={openAbout}>
-            <AboutBrand />
+            <AboutBrand brand={props.brand} />
           </Collapse>
         </Box>
 

@@ -74,7 +74,6 @@ function Shop() {
     setDisplayDrawer(open);
   };
 
-  console.log(queries);
   const {
     data: productsData,
     isLoading,
