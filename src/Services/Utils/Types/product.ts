@@ -1,8 +1,8 @@
 export interface IReviews {
   userId: string;
-  rating?: number;
+  rating: number;
   description: string;
-  createdAt: string;
+  createdAt?: string;
 }
 export interface IGallery {
   _id?: string;

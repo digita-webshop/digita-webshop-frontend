@@ -13,7 +13,7 @@ export interface IOrder {
   userId: string;
 }
 export interface IUser {
-  id: string;
+  _id?: string;
   email: string;
   userName: string;
   createdAt: string;

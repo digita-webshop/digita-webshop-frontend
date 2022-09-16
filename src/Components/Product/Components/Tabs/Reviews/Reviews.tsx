@@ -15,24 +15,72 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import ReviewsList from "./ReviewsList/ReviewsList";
-import { IReviews } from "../../../../../Services/Utils/Types/product";
+import { IProduct } from "../../../../../Services/Utils/Types/product";
+import { useAppSelector } from "../../../../../store";
+import { useUpdateProductMutation } from "../../../../../features/products/productsApi";
+import { useSearchParams } from "react-router-dom";
 
 interface Props {
-  reviews: IReviews[] | [];
+  product: IProduct;
 }
-const Reviews = ({ reviews }: Props) => {
+const Reviews = ({ product }: Props) => {
+  const user = useAppSelector((state) => state.authReducer.user);
   const [rating, setRating] = useState(1);
+  const [reviewDescription, setReviewDescription] = useState("");
+  let [searchParams, setSearchParams] = useSearchParams();
 
+  const { reviews }: any = product;
+  const [updateProduct] = useUpdateProductMutation();
+
+  const submitReviewHandler = async () => {
+    if (user) {
+      let review = {
+        userId: user?._id,
+        rating,
+        description: reviewDescription,
+      };
+      let updatedReviews = [...reviews];
+      updatedReviews.push(review);
+      let newProduct = { ...product, reviews: updatedReviews };
+      try {
+        let response = await updateProduct(newProduct).unwrap();
+        console.log(response);
+        if (response.code === 200) {
+          setReviewDescription("");
+          setRating(1);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      searchParams.set("login", "open");
+      setSearchParams(searchParams);
+    }
+  };
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }} id="review">
       <Box sx={ProductContentStyle}>
-        {reviews.map((review) => (
-          <ReviewsList
-            userId={review.userId}
-            rating={review.rating!}
-            description={review.description}
-          />
-        ))}
+        {reviews?.length !== 0 ? (
+          reviews?.map((review: any) => (
+            <ReviewsList
+              userId={review.userId}
+              rating={review.rating!}
+              description={review.description}
+            />
+          ))
+        ) : (
+          <Box>
+            <Typography
+              component="p"
+              sx={{
+                color: "common.digitaGrey3",
+                fontSize: "16px",
+              }}
+            >
+              There is no review for this product, be the first reviewer
+            </Typography>
+          </Box>
+        )}
 
         <Typography
           component="p"
@@ -114,12 +162,18 @@ const Reviews = ({ reviews }: Props) => {
                   backgroundColor: "common.digitaGrey6",
                 },
               }}
+              value={reviewDescription}
+              onChange={(e) => setReviewDescription(e.target.value)}
             />
           </PFormControl>
         </Box>
 
-        <Button variant="contained" sx={SubmitButton}>
-          SUBMIT
+        <Button
+          variant="contained"
+          sx={SubmitButton}
+          onClick={submitReviewHandler}
+        >
+          {user ? "SUBMIT" : "LOGIN AND SUBMIT"}
         </Button>
       </Box>
     </Box>

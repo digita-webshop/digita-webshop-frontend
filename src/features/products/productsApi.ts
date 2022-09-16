@@ -6,6 +6,7 @@ type GetAllProductsResponse = {
   data: IProduct[];
 };
 type GetProductResponse = {
+  code: number;
   message: string;
   data: IProduct;
 };

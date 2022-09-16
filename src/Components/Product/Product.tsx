@@ -32,11 +32,7 @@ const Product = () => {
       <Container maxWidth={"lg"}>
         <ProductDetails product={product} />
         <BoughtTogether />
-        <Tabs
-          description={product.fullDescription}
-          reviews={product.reviews!}
-          brand={product.brand}
-        />
+        <Tabs product={product} />
         <ShareProduct />
 
         <Box sx={{ textAlign: "left", pb: 8 }}>

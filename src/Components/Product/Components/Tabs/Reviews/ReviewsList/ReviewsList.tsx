@@ -16,6 +16,7 @@ function ReviewsList({ userId, rating, description }: Props) {
       try {
         const response = await getUser(userId).unwrap();
         console.log(response);
+        setUsername(response.data.userName);
       } catch (err) {
         console.log(err);
       }
@@ -24,7 +25,7 @@ function ReviewsList({ userId, rating, description }: Props) {
   }, []);
   return (
     <>
-      <Box sx={{ display: "flex", gap: "15px" }} mb={2}>
+      <Box sx={{ display: "flex", gap: "15px" }} my={2}>
         <Box>
           <Avatar
             alt="avatar"

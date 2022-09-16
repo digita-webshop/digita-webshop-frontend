@@ -16,13 +16,11 @@ import Reviews from "./Reviews/Reviews";
 import { Box, Collapse, Typography } from "@mui/material";
 import { useState } from "react";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import { IReviews } from "../../../../Services/Utils/Types/product";
+import { IProduct, IReviews } from "../../../../Services/Utils/Types/product";
 interface Props {
-  description: string;
-  reviews: IReviews[] | [];
-  brand: string;
+  product: IProduct;
 }
-function Tabs(props: Props) {
+function Tabs({ product }: Props) {
   const [openDescription, setOpenDescription] = useState(true);
   const [openReviews, setOpenReviews] = useState(false);
   const [openAbout, setOpenAbout] = useState(false);
@@ -33,18 +31,24 @@ function Tabs(props: Props) {
         <TabsUnstyled defaultValue={0}>
           <TabsList>
             <Tab>DESCRIPTION</Tab>
-            <Tab>REVIEWS (1)</Tab>
+            <Tab>
+              {`REVIEWS ${
+                product?.reviews && product?.reviews.length !== 0
+                  ? `(${product?.reviews.length})`
+                  : ""
+              }`}
+            </Tab>
             <Tab>ABOUT BRANDS</Tab>
             <Tab> SHIPPING &#38; DELIVERY</Tab>
           </TabsList>
           <TabPanel value={0}>
-            <Description description={props.description} />
+            <Description description={product.fullDescription} />
           </TabPanel>
           <TabPanel value={1}>
-            <Reviews reviews={props.reviews} />
+            <Reviews product={product} />
           </TabPanel>
           <TabPanel value={2}>
-            <AboutBrand brand={props.brand} />
+            <AboutBrand brand={product.brand} />
           </TabPanel>
           <TabPanel value={3}>
             <Delivery />
@@ -66,7 +70,7 @@ function Tabs(props: Props) {
             </Typography>
           </Box>
           <Collapse in={openDescription}>
-            <Description description={props.description} />
+            <Description description={product.fullDescription} />
           </Collapse>
         </Box>
 
@@ -88,7 +92,7 @@ function Tabs(props: Props) {
             </Typography>
           </Box>
           <Collapse in={openReviews}>
-            <Reviews reviews={props.reviews} />
+            <Reviews product={product} />
           </Collapse>
         </Box>
 
@@ -102,7 +106,7 @@ function Tabs(props: Props) {
             </Typography>
           </Box>
           <Collapse in={openAbout}>
-            <AboutBrand brand={props.brand} />
+            <AboutBrand brand={product.brand} />
           </Collapse>
         </Box>
 
