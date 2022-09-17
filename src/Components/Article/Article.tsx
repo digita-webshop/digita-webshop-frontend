@@ -25,12 +25,12 @@ function Article() {
   const { title, writer, image, category, description, createdAt } =
     articleData?.data ?? {};
   const date = getReadableDate(createdAt || "");
-  const contentState = convertFromRaw(JSON.parse(description || ""));
-  const editorState = EditorState.createWithContent(contentState);
 
   if (isLoading) {
     return <Loading full />;
   }
+  const contentState = convertFromRaw(JSON.parse(description || ""));
+  const editorState = EditorState.createWithContent(contentState);
   return (
     <Box bgcolor={"white"}>
       <Breadcrumbs title={"blog"} lastPath={title} />

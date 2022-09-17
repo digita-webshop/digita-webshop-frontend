@@ -29,7 +29,11 @@ const Product = () => {
   }
   return (
     <Box bgcolor={"white"}>
-      <Breadcrumbs title={"product"} lastPath={product?.title} />
+      <Breadcrumbs
+        title={"product"}
+        lastPath={product?.title}
+        category={product?.category}
+      />
       <Container maxWidth={"lg"}>
         <ProductDetails product={product} />
         <BoughtTogether products={products} />

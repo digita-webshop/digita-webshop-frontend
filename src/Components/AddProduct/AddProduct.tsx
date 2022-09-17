@@ -59,7 +59,7 @@ function AddProduct() {
       tags: tagList,
       quantity: +enteredQuantity,
       colors: selectedColors,
-      category: selectedCategory.replace("&", ""),
+      category: selectedCategory,
       shortDescription: enteredShortDesc,
       brand: selectedBrand,
       fullDescription: JSON.stringify(
