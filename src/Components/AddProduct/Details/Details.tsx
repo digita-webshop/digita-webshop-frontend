@@ -7,7 +7,7 @@ import {
   TextField,
 } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
-import { brands } from "../../../Services/Utils/Data/data";
+import { brands } from "../../../Services/Data/data";
 import {
   CardWrapper,
   PFormControl,

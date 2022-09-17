@@ -1,33 +1,30 @@
-import CardImage from './Components/CardImage/CardImage';
-import CardTitle from './Components/CardTitle/CardTitle';
-import CardDescription from './Components/CardDescription/CardDescription';
-import Card from '@mui/material/Card';
-import { Grid } from '@mui/material';
-interface info {
-  id: number;
+import CardImage from "./Components/CardImage/CardImage";
+import CardTitle from "./Components/CardTitle/CardTitle";
+import CardDescription from "./Components/CardDescription/CardDescription";
+import Card from "@mui/material/Card";
+import { Grid } from "@mui/material";
+import { IArticle } from "../../../../../Services/Types/article";
+interface Props {
+  id: string;
   title: string;
   image: string;
-  author: string;
-  releaseDate: string;
+  writer: string;
+  createdAt: string;
   category: string;
 }
 
-function ArticleCard(props: info) {
+function ArticleCard(props: Props) {
   return (
-    <Grid item xs={12} sm={6} px={'15px'} mb={'35px'}>
+    <Grid item xs={12} sm={6}>
       <Card>
-        <CardImage
-          id={props.id}
-          title={props.title}
-          image={props.image}
-        ></CardImage>
+        <CardImage id={props.id} title={props.title} image={props.image} />
         <CardDescription
           id={props.id}
-          author={props.author}
-          date={props.releaseDate}
+          writer={props.writer}
+          createdAt={props.createdAt}
           category={props.category}
-        ></CardDescription>
-        <CardTitle id={props.id} title={props.title}></CardTitle>
+        />
+        <CardTitle id={props.id} title={props.title} />
       </Card>
     </Grid>
   );

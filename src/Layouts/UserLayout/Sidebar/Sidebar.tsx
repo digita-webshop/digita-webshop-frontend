@@ -9,7 +9,7 @@ import {
 import { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { UserItem } from "../../../Styles/User";
-import { userSidebarItems } from "../../../Services/Utils/Data/data";
+import { userSidebarItems } from "../../../Services/Data/data";
 import SidebarTop from "./SidebarTop/SidebarTop";
 import MyOrders from "../../../Components/User/Status/MyOrders/MyOrders";
 

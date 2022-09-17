@@ -10,7 +10,7 @@ import {
   deliveredItems,
   referredItems,
   canceledItems,
-} from "../../Services/Utils/Data/data";
+} from "../../Services/Data/data";
 import { Link } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 

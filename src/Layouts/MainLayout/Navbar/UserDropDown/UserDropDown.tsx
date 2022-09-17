@@ -16,7 +16,7 @@ import { MutableRefObject, SyntheticEvent } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../../../features/auth/authSlice";
-import { IUser } from "../../../../Services/Utils/Types/user";
+import { IUser } from "../../../../Services/Types/user";
 import { DropMenuItem } from "../../../../Styles/Appbar";
 
 interface Props {

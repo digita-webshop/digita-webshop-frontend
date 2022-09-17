@@ -14,7 +14,7 @@ import {
   successMessage,
 } from "../../Services/Utils/toastMessages";
 import { useNavigate, useParams } from "react-router-dom";
-import { IArticle } from "../../Services/Utils/Types/article";
+import { IArticle } from "../../Services/Types/article";
 
 function AddArticle() {
   const [enteredTitle, setEnteredTitle] = useState("");

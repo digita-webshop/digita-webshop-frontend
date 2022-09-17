@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import { Typography } from "@mui/material";
 import RecentPost from "./RecentPost/RecentPost";
-import { articlesBlogPage } from "../../../../../Services/Utils/Data/data";
+import { articlesBlogPage } from "../../../../../Services/Data/data";
 import { FilterTitleWrapper } from "../../../../../Styles/ShopPage";
 import { Fragment } from "react";
 

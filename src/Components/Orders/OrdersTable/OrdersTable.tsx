@@ -1,6 +1,6 @@
 import { MoreHoriz } from "@mui/icons-material";
 import { Table, TableBody, TableHead, TableRow } from "@mui/material";
-import { orders } from "../../../Services/Utils/Data/data";
+import { orders } from "../../../Services/Data/data";
 import { TableButton, TBadge, TCell, THCell } from "../../../Styles/Orders";
 
 const tableHead = ["#ID", "name", "email", "total", "status", "date", "action"];

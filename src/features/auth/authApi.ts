@@ -1,4 +1,4 @@
-import { IUser } from "../../Services/Utils/Types/user";
+import { IUser } from "../../Services/Types/user";
 import { api } from "../api";
 
 export interface UserRequest {

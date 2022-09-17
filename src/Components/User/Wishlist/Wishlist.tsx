@@ -3,7 +3,7 @@ import { Box, Typography, Grid } from "@mui/material";
 import { wrapper } from "../../../Styles/User";
 import { paginationStyle } from "../../../Styles/PanelProducts";
 import Product from "./Product/Product";
-import { userWishlistProducts } from "../../../Services/Utils/Data/data";
+import { userWishlistProducts } from "../../../Services/Data/data";
 import Pagination from "../../Pagination/Pagination";
 import EmptyList from "../../EmptyList/EmptyList";
 import { Link } from "react-router-dom";

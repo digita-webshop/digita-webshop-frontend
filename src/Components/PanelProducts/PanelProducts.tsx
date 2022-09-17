@@ -15,7 +15,7 @@ import {
   useDeleteProductMutation,
   useGetAllProductsQuery,
 } from "../../features/products/productsApi";
-import { IProduct } from "../../Services/Utils/Types/product";
+import { IProduct } from "../../Services/Types/product";
 import {
   errorMessage,
   successMessage,

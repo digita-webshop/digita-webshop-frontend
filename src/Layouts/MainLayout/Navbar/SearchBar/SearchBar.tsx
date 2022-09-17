@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../../../features/products/productsApi";
-import { categoriesList } from "../../../../Services/Utils/Data/data";
+import { categoriesList } from "../../../../Services/Data/data";
 import { searchBarDropdown } from "../../../../Styles/Appbar";
 import { PStack } from "../../../../Styles/panelCommon";
 

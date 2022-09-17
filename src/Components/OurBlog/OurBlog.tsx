@@ -7,7 +7,7 @@ import BlogCard from "./BlogCard/BlogCard";
 import { ContainerWrapper, WrapperBox } from "../../Styles/OurBlog";
 import { useInView } from "react-intersection-observer";
 import { useGetAllArticlesQuery } from "../../features/articles/articlesApi";
-import BlogPlaceholder from "../Placeholders/BlogPlaceholder";
+import ArticlePlaceholder from "../Placeholders/ArticlePlaceholder";
 
 function OurBlog() {
   const { ref, inView } = useInView({ triggerOnce: true });
@@ -55,7 +55,7 @@ function OurBlog() {
                   .fill(null)
                   .map((item, index) => (
                     <SwiperSlide key={index}>
-                      <BlogPlaceholder />
+                      <ArticlePlaceholder />
                     </SwiperSlide>
                   ))}
           </Swiper>

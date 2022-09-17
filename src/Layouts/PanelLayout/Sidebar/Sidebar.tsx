@@ -1,7 +1,7 @@
 import { Divider, Icon, List, ListItemIcon, ListItemText } from "@mui/material";
 import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { panelSidebarItems } from "../../../Services/Utils/Data/data";
+import { panelSidebarItems } from "../../../Services/Data/data";
 import { PanelItem } from "../../../Styles/Panel";
 import ItemAccordion from "./ItemAccordion/ItemAccordion";
 import ItemMenu from "./ItemMenu/ItemMenu";

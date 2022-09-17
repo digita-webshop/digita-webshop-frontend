@@ -5,7 +5,7 @@ import {
   ProductColor,
 } from "../../../../../Styles/Product";
 import { useState } from "react";
-import { colorsList } from "../../../../../Services/Utils/Data/data";
+import { colorsList } from "../../../../../Services/Data/data";
 
 interface Props {
   colors: string[];

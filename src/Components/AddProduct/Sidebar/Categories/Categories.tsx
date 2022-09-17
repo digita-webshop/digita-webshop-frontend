@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
-import { categoriesList } from "../../../../Services/Utils/Data/data";
+import { categoriesList } from "../../../../Services/Data/data";
 import { categoryCheckboxStyles } from "../../../../Styles/AddProduct";
 interface Props {
   selectedCategory: string;

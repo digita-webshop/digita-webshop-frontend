@@ -8,7 +8,7 @@ import {
 import { Button, Box, Typography, Divider } from "@mui/material";
 import { Card, CardMedia, CardActionArea } from "@mui/material";
 import { Fragment } from "react";
-import { IProduct } from "../../../../Services/Utils/Types/product";
+import { IProduct } from "../../../../Services/Types/product";
 import { useNavigate } from "react-router-dom";
 interface Props {
   products: IProduct[];

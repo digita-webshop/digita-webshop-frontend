@@ -7,7 +7,7 @@ import ShareProduct from "./Components/ShareProduct/ShareProduct";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import ProductItem from "./../Products/Components/ProductItem/ProductItem";
 import { useParams } from "react-router-dom";
-import { IProduct } from "../../Services/Utils/Types/product";
+import { IProduct } from "../../Services/Types/product";
 import {
   useGetAllProductsQuery,
   useGetProductQuery,

@@ -15,7 +15,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 
-import { rows } from "../../Services/Utils/Data/data";
+import { rows } from "../../Services/Data/data";
 import TableBody from "@mui/material/TableBody";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 

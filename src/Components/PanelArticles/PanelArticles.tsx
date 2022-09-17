@@ -12,7 +12,7 @@ import {
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Article from "./Article/Article";
 import { ArticleWrapper } from "../../Styles/Articles";
-import { IArticle } from "../../Services/Utils/Types/article";
+import { IArticle } from "../../Services/Types/article";
 import {
   useDeleteArticleMutation,
   useGetAllArticlesQuery,

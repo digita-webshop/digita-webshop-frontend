@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
-import { shopMenuItems } from "../../../../../Services/Utils/Data/data";
+import { shopMenuItems } from "../../../../../Services/Data/data";
 import { ShopSubTitle } from "../../../../../Styles/Appbar";
 
 function ShopMenuCategories() {

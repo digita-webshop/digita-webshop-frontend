@@ -1,4 +1,4 @@
-import { IArticle } from "../../Services/Utils/Types/article";
+import { IArticle } from "../../Services/Types/article";
 import { api } from "../api";
 type GetAllArticlesResponse = {
   code: number;

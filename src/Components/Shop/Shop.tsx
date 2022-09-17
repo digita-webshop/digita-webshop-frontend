@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import {
   Container,
@@ -17,13 +17,11 @@ import Toolbar from "./Toolbar/Toolbar";
 import ProductItem from "../Products/Components/ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
-import { IProduct } from "../../Services/Utils/Types/product";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
 
 function Shop() {
   const [displayDrawer, setDisplayDrawer] = useState(false);
-  const [products, setProducts] = useState<IProduct[]>([]);
   const [productsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedLayout, setSelectedLayout] = useState({
@@ -37,7 +35,7 @@ function Shop() {
 
   // const indexOfLastProduct = currentPage * productsPerPage;
   // const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  let currentProducts = products;
+  // let currentProducts = products;
   let queries: any = `page=${currentPage}&limit=${productsPerPage}`;
 
   let searchQueryParams = searchParams.get("search");
@@ -78,6 +76,7 @@ function Shop() {
     isError,
   } = useGetAllProductsQuery(queries);
   console.log(productsData);
+  const products = productsData?.data ?? [];
 
   const addQueryParams = (filter: string, name: string) => () => {
     let selectedQueryParams = searchParams.get(filter);
@@ -99,11 +98,7 @@ function Shop() {
     setSearchParams(searchParams);
     setCurrentPage(1);
   };
-  useEffect(() => {
-    if (productsData?.code === 200) {
-      setProducts(productsData?.data);
-    }
-  }, [productsData]);
+
   return (
     <Box bgcolor={"white"}>
       <Breadcrumbs title={"products"} />
@@ -135,8 +130,8 @@ function Shop() {
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
               {!isLoading && !isError
-                ? currentProducts.map((item) => {
-                    if (currentProducts.length === 0) {
+                ? products.map((item) => {
+                    if (products.length === 0) {
                       return (
                         <Box sx={{ textAlign: "center", margin: "40px auto" }}>
                           <Typography
@@ -196,12 +191,14 @@ function Shop() {
                       </Grid>
                     ))}
             </Grid>
-            <Pagination
-              productsPerPage={productsPerPage}
-              totalProducts={currentProducts.length}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            />
+            {products && (
+              <Pagination
+                productsPerPage={productsPerPage}
+                totalProducts={products.length}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            )}
           </Grid>
         </Grid>
       </Container>

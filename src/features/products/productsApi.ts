@@ -1,4 +1,4 @@
-import { IProduct, IReviews } from "../../Services/Utils/Types/product";
+import { IProduct, IReviews } from "../../Services/Types/product";
 import { api } from "../api";
 type GetAllProductsResponse = {
   code: number;
@@ -14,7 +14,6 @@ export const productApi = api.injectEndpoints({
   endpoints: (build) => ({
     getAllProducts: build.query<GetAllProductsResponse, string | undefined>({
       query(query) {
-        console.log(query);
         return {
           url: `products?${query}`,
         };

@@ -32,7 +32,7 @@ const SpecialItem = ({ id, title, image, offPrice, price, rating }: Props) => {
           },
         }}
       >
-        <Link to={`/shop/${id}`} className="image-link">
+        <Link to={`/product/${id}`} className="image-link">
           <CardMedia
             component="img"
             sx={{ height: "100%" }}
@@ -83,7 +83,7 @@ const SpecialItem = ({ id, title, image, offPrice, price, rating }: Props) => {
                 },
               }}
             >
-              <Link to={`/shop/${id}`}>{title}</Link>
+              <Link to={`/product/${id}`}>{title}</Link>
             </Typography>
             <Typography
               variant="body2"

@@ -1,6 +1,6 @@
 import { Box, List, Typography } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
-import { colorFilterData } from "../../../Services/Utils/Data/data";
+import { colorFilterData } from "../../../Services/Data/data";
 import { FilterTitleWrapper } from "../../../Styles/ShopPage";
 import ColorFilterCard from "./ColorFilterCard/ColorFilterCard";
 

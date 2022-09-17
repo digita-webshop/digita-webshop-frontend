@@ -1,5 +1,5 @@
 import { Grid, Box, Typography } from "@mui/material";
-import { productShareItems } from "../../../../Services/Utils/Data/data";
+import { productShareItems } from "../../../../Services/Data/data";
 import {
   PinterestIcon,
   FacebookIcon,

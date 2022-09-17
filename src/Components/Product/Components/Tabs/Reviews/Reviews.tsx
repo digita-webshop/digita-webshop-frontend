@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import ReviewsList from "./ReviewsList/ReviewsList";
-import { IProduct } from "../../../../../Services/Utils/Types/product";
+import { IProduct } from "../../../../../Services/Types/product";
 import { useAppSelector } from "../../../../../store";
 import { useUpdateProductMutation } from "../../../../../features/products/productsApi";
 import { useSearchParams } from "react-router-dom";

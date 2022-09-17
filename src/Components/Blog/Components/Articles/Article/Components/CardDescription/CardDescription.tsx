@@ -1,84 +1,89 @@
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
-import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
-import { styled } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
-import { Link as RouterLink } from 'react-router-dom';
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
+import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
+import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import { Link as RouterLink } from "react-router-dom";
+import { getReadableDate } from "../../../../../../../Services/Utils/getReadableDate";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   paddingTop: theme.spacing(2),
   paddingBottom: theme.spacing(1),
-  textAlign: 'center',
+  textAlign: "center",
   color: theme.palette.text.secondary,
   fontSize: 10,
 }));
 
 type props = {
-  id: number;
-  author: string;
-  date: string;
+  id: string;
+  writer: string;
+  createdAt: string;
   category: string;
 };
 
-const CardDescription = ({ id, author, date, category }: props) => {
+const CardDescription = ({ id, writer, createdAt, category }: props) => {
+  const date = getReadableDate(createdAt);
   return (
     <Box
-      display='flex'
-      flexDirection='row'
-      flexWrap='wrap'
-      alignItems='flex-end'
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      alignItems="flex-end"
     >
       {/* Author article */}
       <Item>
-        <Box display='flex' alignItems='flex-end'>
+        <Box display="flex" alignItems="center">
           <PersonOutlineOutlinedIcon
-            style={{ fontSize: '1rem' }}
-            color='secondary'
+            style={{ fontSize: "1rem" }}
+            color="secondary"
           />
           <Link
             component={RouterLink}
-            to={`/blog/${id}/author/${author.replace(/\s+/g, '-')}`}
-            underline='none'
-            color='secondary'
+            to={`/blog/${id}/writer/${writer.replace(/\s+/g, "-")}`}
+            underline="none"
+            color="secondary"
             sx={{
-              '&:hover': {
-                color: '#f03637',
-                transition: 'all 500ms',
+              fontSize: "12px",
+              "&:hover": {
+                color: "#f03637",
+                transition: "all 500ms",
               },
             }}
           >
-            {author} -
+            {writer} -
           </Link>
         </Box>
       </Item>
-      {/* Release date article */}
+      {/* Release createdAt article */}
       <Item>
-        <Box display='flex'>
+        <Box display="flex" fontSize={"12px"}>
           &nbsp;
           <AccessTimeOutlinedIcon
-            style={{ fontSize: '13px' }}
-            color='secondary'
+            style={{ fontSize: "13px" }}
+            color="secondary"
           />
           &nbsp;{date} -
         </Box>
       </Item>
       {/* category article */}
       <Item>
-        <Box display='flex'>
+        <Box display="flex">
           &nbsp;
-          <FolderOutlinedIcon style={{ fontSize: '13px' }} color='secondary' />
+          <FolderOutlinedIcon style={{ fontSize: "13px" }} color="secondary" />
           <Link
             component={RouterLink}
-            to={`/blog/${id}/category/${category.replace(/\s+/g, '-')}`}
-            underline='none'
-            color='secondary'
+            to={`/blog/${id}/category/${category.replace(/\s+/g, "-")}`}
+            underline="none"
+            color="secondary"
             sx={{
-              '&:hover': {
-                color: '#f03637',
-                transition: 'all 500ms',
+              fontSize: "12px",
+
+              "&:hover": {
+                color: "#f03637",
+                transition: "all 500ms",
               },
             }}
           >

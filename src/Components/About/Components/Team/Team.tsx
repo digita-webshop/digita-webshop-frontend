@@ -1,5 +1,5 @@
 import { Grid, Box, Typography } from "@mui/material";
-import { teamData } from "../../../../Services/Utils/Data/data";
+import { teamData } from "../../../../Services/Data/data";
 import TeamMember from "../TeamMember/TeamMember";
 import { teamTitleStyle, teamsStyle } from "../../../../Styles/About";
 

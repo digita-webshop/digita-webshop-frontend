@@ -11,7 +11,7 @@ import {
 import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
 import GalleryModal from "./GalleryModal/GalleryModal";
 import ReactImageMagnify from "react-image-magnify";
-import { IGallery } from "../../../../../Services/Utils/Types/product";
+import { IGallery } from "../../../../../Services/Types/product";
 
 interface Props {
   gallery: IGallery[];

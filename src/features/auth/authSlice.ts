@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../../Services/Utils/Types/user";
+import { IUser } from "../../Services/Types/user";
 import Cookies from "universal-cookie";
 
 const cookie = new Cookies();

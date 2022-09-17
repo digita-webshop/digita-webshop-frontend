@@ -16,7 +16,7 @@ import Reviews from "./Reviews/Reviews";
 import { Box, Collapse, Typography } from "@mui/material";
 import { useState } from "react";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import { IProduct, IReviews } from "../../../../Services/Utils/Types/product";
+import { IProduct } from "../../../../Services/Types/product";
 interface Props {
   product: IProduct;
 }

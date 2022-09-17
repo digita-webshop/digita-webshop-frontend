@@ -22,7 +22,7 @@ import {
 import { DeleteForever, FavoriteBorder, Shuffle } from "@mui/icons-material";
 import Gallery from "./Gallery/Gallery";
 import ColorPicker from "./ColorPicker/ColorPicker";
-import { IProduct } from "../../../../Services/Utils/Types/product";
+import { IProduct } from "../../../../Services/Types/product";
 import { AmountBtn, CartInput } from "../../../../Styles/Products";
 
 interface Props {

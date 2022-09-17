@@ -22,7 +22,7 @@ import {
   PTextField,
   PFormControl,
 } from "../../Styles/panelCommon";
-import { reviews } from "../../Services/Utils/Data/data";
+import { reviews } from "../../Services/Data/data";
 import { TableButton } from "../../Styles/Orders";
 import { TCell, TCheckBox, THCell } from "../../Styles/Reviews";
 import StarIcon from "@mui/icons-material/Star";

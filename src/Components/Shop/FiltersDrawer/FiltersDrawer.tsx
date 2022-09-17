@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { categoriesList } from "../../../Services/Utils/Data/data";
+import { categoriesList } from "../../../Services/Data/data";
 import { FilterTitleWrapper } from "../../../Styles/ShopPage";
 import ColorFilter from "../ColorFilter/ColorFilter";
 import PriceFilter from "../PriceFilter/PriceFilter";

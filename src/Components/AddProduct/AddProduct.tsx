@@ -10,7 +10,7 @@ import {
   errorMessage,
   successMessage,
 } from "../../Services/Utils/toastMessages";
-import { IProduct } from "../../Services/Utils/Types/product";
+import { IProduct } from "../../Services/Types/product";
 import { CardWrapper, PFormLabel } from "../../Styles/panelCommon";
 import TextEditor from "../TextEditor/TextEditor";
 import ContentHeader from "./ContentHeader/ContentHeader";

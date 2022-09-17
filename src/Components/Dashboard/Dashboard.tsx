@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import { dashboardStatisticCards } from "../../Services/Utils/Data/data";
+import { dashboardStatisticCards } from "../../Services/Data/data";
 import { DashTitle } from "../../Styles/Dashboard";
 import { CardWrapper } from "../../Styles/panelCommon";
 import OrdersTable from "../Orders/OrdersTable/OrdersTable";

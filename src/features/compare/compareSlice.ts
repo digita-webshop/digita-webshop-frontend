@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { productData } from "../../Services/Utils/Data/data";
+import { productData } from "../../Services/Data/data";
 
 const initialState: any = {
   compareList: [],

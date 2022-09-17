@@ -1,5 +1,5 @@
 import { Box, List, ListItem, Typography } from "@mui/material";
-import { categoriesList } from "../../../Services/Utils/Data/data";
+import { categoriesList } from "../../../Services/Data/data";
 import {
   FilterListItemText,
   FilterTitleWrapper,

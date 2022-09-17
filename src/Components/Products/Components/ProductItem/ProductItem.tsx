@@ -87,7 +87,7 @@ const ProductItem = ({
     >
       <Box sx={{ position: "relative", borderBottom: "2px solid #f2f2f3cc" }}>
         <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div>
-        <Link to={`/shop/${id}`}>
+        <Link to={`/product/${id}`}>
           <CardMedia
             component="img"
             image={image}
@@ -265,7 +265,7 @@ const ProductItem = ({
         <Box
           sx={{ a: { textDecoration: "none", color: "common.digitaBlack" } }}
         >
-          <Link to={`/shop/${id}`}>
+          <Link to={`/product/${id}`}>
             <Typography
               gutterBottom
               variant="body2"

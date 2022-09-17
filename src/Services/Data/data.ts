@@ -1,4 +1,4 @@
-import IMAGES from "../../../Assets/Images";
+import IMAGES from "../../Assets/Images";
 export const navbarItems = [
   {
     id: 1,
