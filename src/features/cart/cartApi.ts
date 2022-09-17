@@ -1,13 +1,40 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import {api} from "../api";
+import CartItem from "../../Components/ShoppingCart/Types/CartItemType";
+import {IProduct} from "../../Services/Utils/Types/product";
+import {ICartItem} from "../../Services/Utils/Types/cart";
 
-export const pokemonApi = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
-    endpoints: (builder) => ({
-        getPokemonByName: builder.query({
-            query: (name: string) => `pokemon/${name}`,
+export type GetAllCartItemsResponse = {
+    code: number;
+    message: string;
+    data: CartItem[];
+};
+
+type GetCartResponse = {
+    code: number;
+    message: string;
+    data: IProduct;
+};
+
+export const cartApi = api.injectEndpoints({
+    endpoints: (build) => ({
+        getAllCartItem: build.query<GetAllCartItemsResponse, void>({
+            query: () => `cart`,
+            providesTags: ["Cart"],
+        }),
+        addToCart: build.mutation<GetCartResponse, ICartItem>({
+            query(body) {
+                return {
+                    url: `cart`,
+                    method: "POST",
+                    body,
+                };
+            },
+            invalidatesTags: ["Cart"],
         }),
     }),
-})
+});
 
-// Export hooks for usage in functional components
-export const { useGetPokemonByNameQuery } = pokemonApi
+export const {
+    useGetAllCartItemQuery,
+    useAddToCartMutation
+} = cartApi;
