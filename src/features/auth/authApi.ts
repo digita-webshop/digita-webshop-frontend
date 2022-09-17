@@ -7,6 +7,7 @@ export interface UserRequest {
   password: string;
 }
 export interface LoginResponse {
+  code: number;
   data: {
     details: IUser;
     role: string;
@@ -14,6 +15,7 @@ export interface LoginResponse {
   message: string;
 }
 export interface SignUpResponse {
+  code: number;
   data: {
     email: string;
     userName: string;

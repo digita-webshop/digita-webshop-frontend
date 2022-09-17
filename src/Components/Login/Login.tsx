@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../features/auth/authApi";
 import { setCredentials } from "../../features/auth/authSlice";
 import { successMessage } from "../../Services/Utils/toastMessages";
@@ -41,6 +41,7 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location: any = useLocation();
 
   //* username validation
   let emailIsValid = enteredEmail.trim() !== "";
@@ -57,30 +58,37 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
       setValidationError(true);
       return;
     }
+    // navigate("/panel/dashboard", { replace: true });
     try {
       const userCredentials = {
         email: enteredEmail,
         password: enteredPassword,
       };
 
-      const data = await login(userCredentials).unwrap();
-      if (data?.message === "Login successful") {
+      const response = await login(userCredentials).unwrap();
+      console.log(response.data.role === "admin");
+      if (response?.code === 200) {
         dispatch(
           setCredentials({
-            user: data?.data?.details,
-            role: data.data.role,
+            user: response?.data?.details,
+            role: response.data.role,
           })
         );
-        if (data.data.role === "admin") {
-          navigate("/panel/dashboard", { replace: true });
+        loginModalHandler(false)();
+        if (response.data.role === "admin") {
+          console.log(location.state?.from);
+          const path = location.state?.from ?? "/panel/dashboard";
+          navigate(path, {
+            replace: true,
+          });
         }
-        if (data.data.role === "user") {
-          navigate("/user/status", { replace: true });
+        if (response.data.role === "user") {
+          const path = location.state?.from ?? "/user/status";
+          navigate(path, { replace: true });
         }
       }
-      loginModalHandler(false)();
       successMessage("login successfully");
-      console.log(data);
+      console.log(response);
     } catch (err: any) {
       console.log(err);
       setErrorMessage(err?.data?.message);
