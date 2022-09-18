@@ -2,9 +2,9 @@ import { Box, TextField } from "@mui/material";
 import { CustomBtn } from "../../../Styles/Cart";
 import React from "react";
 import CartItem from "../Types/CartItemType";
-import {useDispatch, useSelector} from "react-redux";
-import {setQuantity} from "../../../features/cart/cartSlice"
-import {RootState} from "../../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { setQuantity } from "../../../features/cart/cartSlice";
+import { RootState } from "../../../store";
 
 type Props = {
   updateButtonDisabled: boolean;
@@ -20,9 +20,13 @@ const QuantityInput = ({
   row,
   updateButtonDisabled,
 }: Props) => {
-  const dispatch = useDispatch()
-  const quantities : CartItem[] = useSelector((state:RootState) => state.cartReducer.quantities);
-  const quantity :number= quantities.filter((item: CartItem) => item.id === row.id)[0].quantity;
+  const dispatch = useDispatch();
+  const quantities: CartItem[] = useSelector(
+    (state: RootState) => state.reducer.cart.quantities
+  );
+  const quantity: number = quantities.filter(
+    (item: CartItem) => item.id === row.id
+  )[0].quantity;
   const handleDecValue = () => {
     if (quantity === 0) {
       return;

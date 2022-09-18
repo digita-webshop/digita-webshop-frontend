@@ -32,7 +32,7 @@ type Props = {
   modalTypeToggle: (type: Modal) => void;
 };
 function Login({ loginModalHandler, modalTypeToggle }: Props) {
-  const { user } = useAppSelector((state) => state.authReducer);
+  const { user } = useAppSelector((state) => state.reducer.auth);
   const registeredEmail = user?.email ? user?.email : "";
   const [enteredEmail, setEnteredEmail] = useState(registeredEmail);
   const [enteredPassword, setEnteredPassword] = useState("");

@@ -1,6 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useAppSelector } from "../../store";
-import jwt from "jwt-decode";
 interface Props {
   children: JSX.Element;
 }
@@ -8,13 +7,7 @@ interface Props {
 const Protected = ({ children }: Props) => {
   const location = useLocation();
   const { pathname } = location;
-  const { token } = useAppSelector((state) => state.authReducer);
-
-  let role = null;
-  if (token) {
-    const decodedToken = jwt(token) as any;
-    role = decodedToken.role;
-  }
+  const { role } = useAppSelector((state) => state.reducer.auth);
 
   if (
     (role === "admin" && pathname.includes("user")) ||

@@ -1,8 +1,7 @@
 import { Close } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { useAppSelector } from "../../store";
 import { CompareWrapper } from "../../Styles/Compare";
 import ItemsTable from "./ItemsTable/ItemsTable";
 
@@ -11,8 +10,8 @@ interface Props {
 }
 
 function CompareModal({ setOpenCompareModal }: Props) {
-  const compareList = useSelector(
-    (state: RootState) => state.compareReducer.compareList
+  const compareList = useAppSelector(
+    (state) => state.reducer.compare.compareList
   );
   return (
     <CompareWrapper>

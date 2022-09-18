@@ -11,8 +11,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../../store";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../../../store";
 import React, { useEffect } from "react";
 import { setCart, setQuantity } from "../../../../features/cart/cartSlice";
 import CartItem from "../../../../Components/ShoppingCart/Types/CartItemType";
@@ -86,9 +86,7 @@ function ShopCart() {
     dispatch(setCart(dummyCartData));
     dispatch(setQuantity(dummyCartData));
   }, []);
-  const cartList = useSelector(
-    (state: RootState) => state.cartReducer.cartList
-  );
+  const cartList = useAppSelector((state) => state.reducer.cart.cartList);
   const subtotal = cartList.reduce((acc: number, curr: CartItem) => {
     acc += curr.quantity * curr.price;
     return acc;
