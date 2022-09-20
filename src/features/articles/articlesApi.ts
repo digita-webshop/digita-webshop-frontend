@@ -3,7 +3,7 @@ import { api } from "../api";
 type GetAllArticlesResponse = {
   code: number;
   message: string;
-  data: IArticle[];
+  data: { articles: IArticle[]; length: number };
 };
 type ArticleResponse = {
   message: string;

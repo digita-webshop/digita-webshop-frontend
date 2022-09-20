@@ -51,7 +51,7 @@ const Articles = () => {
 
   useEffect(() => {
     if (articles?.data) {
-      setList(articles?.data);
+      setList(articles?.data.articles);
     }
   }, [articles]);
 

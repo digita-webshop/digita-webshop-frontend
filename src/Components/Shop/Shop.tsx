@@ -40,9 +40,6 @@ function Shop() {
   );
   const wishlist = wishlistData?.data ?? [];
 
-  // const indexOfLastProduct = currentPage * productsPerPage;
-  // const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  // let currentProducts = products;
   let queries: any = `page=${currentPage}&limit=${productsPerPage}`;
 
   let searchQueryParams = searchParams.get("search");
@@ -84,6 +81,7 @@ function Shop() {
   } = useGetAllProductsQuery(queries);
   console.log(productsData);
   const products = productsData?.data.products ?? [];
+  const productsLength = productsData?.data.length ?? 0;
 
   const addQueryParams = (filter: string, name: string) => () => {
     let selectedQueryParams = searchParams.get(filter);
@@ -207,7 +205,7 @@ function Shop() {
             {products && (
               <Pagination
                 productsPerPage={productsPerPage}
-                totalProducts={products.length}
+                totalProducts={productsLength}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
               />

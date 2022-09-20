@@ -18,10 +18,8 @@ function Blog() {
   const matches = useMediaQuery(theme.breakpoints.up("md"));
 
   const { data: articlesData, isLoading, isError } = useGetAllArticlesQuery();
-  const articles = articlesData?.data ?? [];
-  // const indexOfLastArticle = currentPage * articlesPerPage;
-  // const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-
+  const articles = articlesData?.data.articles ?? [];
+const articlesLength=articlesData?.data.length ??0
   return (
     <Box bgcolor={"white"}>
       <CustomBreadcrumbs title={"blog"} />
@@ -60,7 +58,7 @@ function Blog() {
             {matches && articles && (
               <Pagination
                 productsPerPage={articlesPerPage}
-                totalProducts={articles.length}
+                totalProducts={articlesLength}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
               />
@@ -72,10 +70,10 @@ function Blog() {
               <RecentPosts />
               <RecentComments />
             </Grid>
-            {!matches && articlesData?.data && (
+            {!matches && articles && (
               <Pagination
                 productsPerPage={articlesPerPage}
-                totalProducts={articlesData?.data.length}
+                totalProducts={articlesLength}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
               />

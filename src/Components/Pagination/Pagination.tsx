@@ -37,7 +37,6 @@ function Pagination({
           onClick={clickHandler(currentPage - 1)}
           sx={{
             display: currentPage === 1 || totalProducts === 0 ? "none" : "flex",
-            // display: "flex",
           }}
         >
           <ChevronLeft />

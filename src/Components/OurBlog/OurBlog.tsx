@@ -11,7 +11,8 @@ import ArticlePlaceholder from "../Placeholders/ArticlePlaceholder";
 
 function OurBlog() {
   const { ref, inView } = useInView({ triggerOnce: true });
-  const { data: articlesData, isLoading, isError } = useGetAllArticlesQuery();
+  const { data, isLoading, isError } = useGetAllArticlesQuery();
+  const articles = data?.data.articles ?? [];
 
   return (
     <ContainerWrapper
@@ -46,7 +47,7 @@ function OurBlog() {
             }}
           >
             {!isLoading && !isError
-              ? articlesData?.data.slice(0, 6).map((item) => (
+              ? articles.map((item) => (
                   <SwiperSlide key={item._id!}>
                     <BlogCard item={item} />
                   </SwiperSlide>
