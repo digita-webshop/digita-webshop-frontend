@@ -25,10 +25,12 @@ const Products = () => {
     `category=${selectedCategory.replace("&", "%26")}`
   );
   const products = productsData?.data?.products ?? [];
+
   const { data: wishlistData, isLoading: wishLoading } = useGetWishlistQuery(
     role!
   );
   const wishlist = wishlistData?.data ?? [];
+
   return (
     <Container
       maxWidth={"xl"}

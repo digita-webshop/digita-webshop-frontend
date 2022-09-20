@@ -7,7 +7,12 @@ type GetWishlistResponse = {
 export const wishlistApi = api.injectEndpoints({
   endpoints: (build) => ({
     getWishlist: build.query<GetWishlistResponse, any>({
-      query: (query) => `${query}s/wishlist/get`,
+      query(query) {
+        const path = query === "superAdmin" ? "superAdmin" : `${query}s`;
+        return {
+          url: `${path}/wishlist/get`,
+        };
+      },
       providesTags: ["Wishlist"],
     }),
     addWish: build.mutation<any, any>({

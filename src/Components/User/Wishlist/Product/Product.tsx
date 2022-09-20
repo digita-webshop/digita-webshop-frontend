@@ -14,28 +14,42 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { cartModal } from "../../../../Styles/PanelProducts";
 import { titleWrapper, titleStyle } from "../../../../Styles/PanelProducts";
 import { cardWrapper, deleteBtn, addBtn } from "../../../../Styles/User";
+import { useDeleteWishMutation } from "../../../../features/wishlist/wishlistApi";
+import { successMessage } from "../../../../Services/Utils/toastMessages";
+import { useAppSelector } from "../../../../store";
 
 type T = {
-  id: number;
-  name: string;
+  id: string;
+  title: string;
   price: number;
   image: string;
-  onRemove: Function;
 };
 
-const Product = ({ id, name, price, image, onRemove }: T) => {
+const Product = ({ id, title, price, image }: T) => {
   const [open, setOpen] = useState(false);
+  const { role } = useAppSelector((state) => state.reducer.auth);
+
+  const [deleteWish, { isLoading: delLoading }] = useDeleteWishMutation();
+
+  async function handleRemove(id: string) {
+    try {
+      let response = await deleteWish({ path: role!, id }).unwrap();
+      successMessage("wish deleted successfully");
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <Card sx={cardWrapper}>
       <CardMedia
         component="img"
         image={image}
         alt="green iguana"
-        sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
+        sx={{ aspectRatio: "1", objectFit: "contain" }}
       />
       <CardContent sx={titleWrapper}>
         <Typography component="p" sx={titleStyle}>
-          {name}
+          {title}
         </Typography>
         <Typography
           variant="h6"
@@ -54,13 +68,7 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
             Delete
           </Button>
           <Button variant="contained" sx={addBtn}>
-            <ShoppingCartIcon
-              className="addIcon"
-              sx={{
-                margin: "0 0.2rem",
-                color: "common.digitaRed",
-              }}
-            />
+            <ShoppingCartIcon className="addIcon" />
             Add To Cart
           </Button>
         </Box>
@@ -97,7 +105,7 @@ const Product = ({ id, name, price, image, onRemove }: T) => {
                 Cancel
               </Button>
               <Button
-                onClick={() => onRemove(id)}
+                onClick={() => handleRemove(id)}
                 variant="contained"
                 sx={{
                   p: "0.8rem 2.2rem",

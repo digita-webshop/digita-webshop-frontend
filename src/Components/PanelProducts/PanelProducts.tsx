@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import GridHeader from "./GridHeader/GridHeader";
-import {
-  Grid,
-  SelectChangeEvent,
-  Divider,
-  Box,
-  CircularProgress,
-} from "@mui/material";
+import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Product from "./Product/Product";
 import PanelPagination from "../PanelPagination/PanelPagination";
@@ -21,7 +15,8 @@ import {
   successMessage,
 } from "../../Services/Utils/toastMessages";
 import NotFound from "../EmptyList/NotFound";
-import { ErrorText, PStack } from "../../Styles/panelCommon";
+import { ErrorText } from "../../Styles/panelCommon";
+import PanelLoading from "../Loading/PanelLoading";
 
 const PanelProducts = () => {
   const [list, setList] = useState<IProduct[]>([]);
@@ -87,13 +82,9 @@ const PanelProducts = () => {
           }}
         >
           <Grid container spacing={2}>
-            {isLoading && (
-              <PStack>
-                <CircularProgress color="error" />
-              </PStack>
-            )}
+            {isLoading && <PanelLoading />}
             {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
-            {products?.data.length === 0 && !isLoading ? (
+            {products?.data.length === 0 && !isLoading && !isError ? (
               <NotFound />
             ) : (
               currentProducts.map(({ _id, title, price, image }) => (

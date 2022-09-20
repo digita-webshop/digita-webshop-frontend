@@ -2,13 +2,7 @@ import ContentHeader from "../PanelProducts/ContentHeader/ContentHeader";
 import PanelPagination from "../PanelPagination/PanelPagination";
 import { useState, useEffect } from "react";
 import GridHeader from "./GridHeader/GridHeader";
-import {
-  Grid,
-  SelectChangeEvent,
-  Divider,
-  Box,
-  CircularProgress,
-} from "@mui/material";
+import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Article from "./Article/Article";
 import { ArticleWrapper } from "../../Styles/Articles";
@@ -22,7 +16,8 @@ import {
   errorMessage,
   successMessage,
 } from "../../Services/Utils/toastMessages";
-import { ErrorText, PStack } from "../../Styles/panelCommon";
+import { ErrorText } from "../../Styles/panelCommon";
+import PanelLoading from "../Loading/PanelLoading";
 
 const Articles = () => {
   const [list, setList] = useState<IArticle[]>([]);
@@ -82,11 +77,7 @@ const Articles = () => {
         />
         <ArticleWrapper sx={{ position: "relative" }}>
           <Grid container spacing={2}>
-            {isLoading && (
-              <PStack>
-                <CircularProgress color="error" />
-              </PStack>
-            )}
+            {isLoading && <PanelLoading />}
             {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
             {articles?.data.length === 0 && !isLoading ? (
               <NotFound />

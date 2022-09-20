@@ -36,23 +36,23 @@ function Pagination({
         <PaginationListItem
           onClick={clickHandler(currentPage - 1)}
           sx={{
-            // display: currentPage === 1 || totalProducts === 0 ? "none" : "flex",
-            display: "flex",
+            display: currentPage === 1 || totalProducts === 0 ? "none" : "flex",
+            // display: "flex",
           }}
         >
           <ChevronLeft />
         </PaginationListItem>
 
-        {/* {pageNumber.length > 1 && */}
-        {pageNumber.map((number, index) => (
-          <PaginationListItem
-            key={index}
-            onClick={clickHandler(number)}
-            className={`${number === currentPage && "active"}`}
-          >
-            {number}
-          </PaginationListItem>
-        ))}
+        {pageNumber.length > 1 &&
+          pageNumber.map((number, index) => (
+            <PaginationListItem
+              key={index}
+              onClick={clickHandler(number)}
+              className={`${number === currentPage && "active"}`}
+            >
+              {number}
+            </PaginationListItem>
+          ))}
 
         <PaginationListItem
           onClick={clickHandler(currentPage + 1)}
