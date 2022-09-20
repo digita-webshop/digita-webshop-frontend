@@ -7,24 +7,31 @@ import ShareProduct from "./Components/ShareProduct/ShareProduct";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import ProductItem from "./../Products/Components/ProductItem/ProductItem";
 import { useParams } from "react-router-dom";
-import { IProduct } from "../../Services/Types/product";
 import {
   useGetAllProductsQuery,
   useGetProductQuery,
 } from "../../features/products/productsApi";
 import Loading from "../Loading/Loading";
+import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
+import { useAppSelector } from "../../store";
 
 const Product = () => {
+  const { role } = useAppSelector((state) => state.reducer.auth);
   const { id }: any = useParams();
+
   const { data: productData, isLoading: productLoading } =
     useGetProductQuery(id);
   const { data: productsData, isLoading: productsLoading } =
     useGetAllProductsQuery("");
 
-  const product: IProduct = productData?.data!;
-  const products: IProduct[] = productsData?.data!;
+  const product = productData?.data!;
+  const products = productsData?.data.products ?? [];
 
-  if (productLoading || productsLoading) {
+  const { data: wishlistData, isLoading: wishLoading } = useGetWishlistQuery(
+    role!
+  );
+  const wishlist = wishlistData?.data ?? [];
+  if (productLoading || productsLoading || wishLoading) {
     return <Loading full />;
   }
   return (
@@ -35,7 +42,10 @@ const Product = () => {
         category={product?.category}
       />
       <Container maxWidth={"lg"}>
-        <ProductDetails product={product} />
+        <ProductDetails
+          product={product}
+          wished={wishlist?.some((i) => i._id === product._id!)}
+        />
         <BoughtTogether products={products} />
         <Tabs product={product} />
         <ShareProduct />
@@ -57,6 +67,7 @@ const Product = () => {
                   rating={item.rating}
                   description={item.shortDescription}
                   listView={false}
+                  wished={wishlist?.some((i) => i._id === item._id!)}
                 />
               </Grid>
             ))}

@@ -55,7 +55,7 @@ const PanelProducts = () => {
   }
   useEffect(() => {
     if (products?.data) {
-      setList(products.data);
+      setList(products.data.products);
     }
   }, [products]);
 

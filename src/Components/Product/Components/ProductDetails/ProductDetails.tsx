@@ -7,6 +7,7 @@ import {
   Link,
   Rating,
   Typography,
+  Modal,
 } from "@mui/material";
 import {
   CartButtonsStyle,
@@ -18,18 +19,41 @@ import {
   filledPrice,
   starLink,
   productButtonStyles,
+  productIconStyles,
 } from "../../../../Styles/Product/index";
-import { DeleteForever, FavoriteBorder, Shuffle } from "@mui/icons-material";
+import {
+  DeleteForever,
+  Favorite,
+  FavoriteBorder,
+  Shuffle,
+} from "@mui/icons-material";
 import Gallery from "./Gallery/Gallery";
 import ColorPicker from "./ColorPicker/ColorPicker";
 import { IProduct } from "../../../../Services/Types/product";
 import { AmountBtn, CartInput } from "../../../../Styles/Products";
+import { useSearchParams } from "react-router-dom";
+import { useAppSelector } from "../../../../store";
+import {
+  useAddWishMutation,
+  useDeleteWishMutation,
+} from "../../../../features/wishlist/wishlistApi";
+import WishModal from "../../../Products/Components/Modals/WishModal/WishModal";
 
 interface Props {
   product: IProduct;
+  wished: boolean;
 }
-const ProductDetails = ({ product }: Props) => {
+const ProductDetails = ({ product, wished }: Props) => {
+  const [openWish, setOpenWish] = useState(false);
+  const [addedWish, setAddedWish] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { role, user } = useAppSelector((state) => state.reducer.auth);
+  console.log(wished);
+
+  const [addWish, { isLoading: addLoading }] = useAddWishMutation();
+  const [deleteWish, { isLoading: delLoading }] = useDeleteWishMutation();
   const {
+    _id,
     title,
     price,
     offPrice,
@@ -39,6 +63,30 @@ const ProductDetails = ({ product }: Props) => {
     shortDescription,
     gallery,
   } = product;
+
+  const wishlistHandler = async () => {
+    if (!user || !role) {
+      searchParams.set("login", "open");
+      setSearchParams(searchParams);
+      return;
+    }
+    try {
+      let response;
+      console.log(wished);
+      console.log({ path: role!, _id });
+      if (!wished) {
+        response = await addWish({ path: role!, id: _id }).unwrap();
+        setAddedWish(true);
+      } else {
+        response = await deleteWish({ path: role!, id: _id }).unwrap();
+        setAddedWish(false);
+      }
+      setOpenWish(true);
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Box my={5}>
@@ -115,7 +163,7 @@ const ProductDetails = ({ product }: Props) => {
                 </Box> */}
                 {/* <Button
                   variant="outlined"
-                  color="error"
+                  color="error" 
                   sx={{
                     padding: "0 20px!important",
                     "&:hover .delete-icon": { color: "#fff" },
@@ -129,8 +177,25 @@ const ProductDetails = ({ product }: Props) => {
             </Box>
 
             <Box sx={productButtonStyles}>
-              <Link component="button">
-                <FavoriteBorder />
+              <Link
+                component="button"
+                onClick={wishlistHandler}
+                sx={{
+                  color: wished ? "#f03637 !important" : "common.digitaBlack",
+                }}
+                className={addLoading || delLoading ? "wishLoading" : ""}
+              >
+                {wished ? (
+                  <Favorite
+                    sx={{ color: "common.digitaRed", ...productIconStyles }}
+                    className={addLoading || delLoading ? "wishLoading" : ""}
+                  />
+                ) : (
+                  <FavoriteBorder
+                    sx={productIconStyles}
+                    className={addLoading || delLoading ? "wishLoading" : ""}
+                  />
+                )}
                 Wishlist
               </Link>
 
@@ -164,6 +229,18 @@ const ProductDetails = ({ product }: Props) => {
           </Box>
         </Grid>
       </Grid>
+      <Modal
+        open={openWish}
+        onClose={() => setOpenWish(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <WishModal
+          setOpenWish={setOpenWish}
+          addedWish={addedWish}
+          role={role}
+        />
+      </Modal>
     </Box>
   );
 };

@@ -3,7 +3,10 @@ import { api } from "../api";
 type GetAllProductsResponse = {
   code: number;
   message: string;
-  data: IProduct[];
+  data: {
+    products: IProduct[];
+    length: number;
+  };
 };
 type GetProductResponse = {
   code: number;

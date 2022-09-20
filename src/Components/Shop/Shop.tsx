@@ -19,6 +19,8 @@ import Pagination from "../Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
+import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
+import { useAppSelector } from "../../store";
 
 function Shop() {
   const [displayDrawer, setDisplayDrawer] = useState(false);
@@ -29,9 +31,14 @@ function Shop() {
     list: false,
   });
   let [searchParams, setSearchParams] = useSearchParams();
+  const { role } = useAppSelector((state) => state.reducer.auth);
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const { data: wishlistData, isLoading: wishLoading } = useGetWishlistQuery(
+    role!
+  );
+  const wishlist = wishlistData?.data ?? [];
 
   // const indexOfLastProduct = currentPage * productsPerPage;
   // const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -76,7 +83,7 @@ function Shop() {
     isError,
   } = useGetAllProductsQuery(queries);
   console.log(productsData);
-  const products = productsData?.data ?? [];
+  const products = productsData?.data.products ?? [];
 
   const addQueryParams = (filter: string, name: string) => () => {
     let selectedQueryParams = searchParams.get(filter);
@@ -129,7 +136,7 @@ function Shop() {
               selectedLayout={selectedLayout}
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
-              {!isLoading && !isError
+              {!isLoading && !isError && !wishLoading
                 ? products.map((item) => {
                     if (products.length === 0) {
                       return (
@@ -158,6 +165,9 @@ function Shop() {
                                 rating={item.rating!}
                                 description={item.shortDescription}
                                 listView={false}
+                                wished={wishlist?.some(
+                                  (i) => i._id === item._id!
+                                )}
                               />
                             </Grid>
                           </Fade>
@@ -175,6 +185,9 @@ function Shop() {
                                 rating={item.rating!}
                                 description={item.shortDescription}
                                 listView={true}
+                                wished={wishlist?.some(
+                                  (i) => i._id === item._id!
+                                )}
                               />
                             </Grid>
                           </Fade>

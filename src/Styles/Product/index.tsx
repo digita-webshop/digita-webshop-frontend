@@ -551,3 +551,28 @@ export const moreStyles = {
   fontWeight: 500,
   textTransform: "capitalize",
 };
+
+export const productIconWrapperStyles = {
+  color: "gray",
+  "&:hover": { color: "#f03637" },
+  display: "flex",
+  marginLeft: "10px",
+  cursor: "pointer",
+};
+export const productIconStyles = {
+  "&.wishLoading": {
+    transition: "all 100ms",
+    animation: "fav 600ms linear infinite",
+    "@keyframes fav": {
+      "0%": {
+        transform: "scale(.8)",
+      },
+      "50%": {
+        transform: "scale(1)",
+      },
+      "100%": {
+        transform: "scale(1.2)",
+      },
+    },
+  },
+};

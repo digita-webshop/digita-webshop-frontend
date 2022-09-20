@@ -32,8 +32,8 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
   }
 
   const { data: productsData, isLoading } = useGetAllProductsQuery(queries);
+  const products = productsData?.data.products ?? [];
 
-  const filteredProducts = productsData?.data.slice(0, 6);
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     setSelectedCategory(event.target.value);
   };
@@ -75,10 +75,10 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
                 <CircularProgress color="error" />
               </PStack>
             </Box>
-          ) : filteredProducts?.length === 0 ? (
+          ) : products?.length === 0 ? (
             <Box sx={{ textTransform: "capitalize" }}>no result found!</Box>
           ) : (
-            filteredProducts?.map(({ _id, title }) => (
+            products?.slice(0, 6).map(({ _id, title }) => (
               <Box
                 key={_id}
                 onClick={() => {
