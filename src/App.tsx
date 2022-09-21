@@ -44,12 +44,12 @@ import { useEffect } from "react";
 import { useAppSelector } from "./store";
 import { useDispatch } from "react-redux";
 import { logout, setCredentials } from "./features/auth/authSlice";
-import { useGetUserMutation } from "./features/auth/authApi";
+import { useGetUserMutation } from "./features/user/userApi";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const { id } = useAppSelector((state) => state.reducer.auth);
+  const { id, role } = useAppSelector((state) => state.reducer.auth);
   const dispatch = useDispatch();
   const [getUser] = useGetUserMutation();
 
@@ -69,7 +69,7 @@ function App() {
       }
     };
     fetchUserData();
-  }, [dispatch, id, getUser]);
+  }, [dispatch, id, getUser, role]);
 
   return (
     <ThemeProvider theme={theme}>

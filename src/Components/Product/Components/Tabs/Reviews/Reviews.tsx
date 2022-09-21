@@ -24,7 +24,7 @@ interface Props {
   product: IProduct;
 }
 const Reviews = ({ product }: Props) => {
-  const user = useAppSelector((state) => state.reducer.auth.user);
+  const { user } = useAppSelector((state) => state.reducer.auth);
   const [rating, setRating] = useState(1);
   const [reviewDescription, setReviewDescription] = useState("");
   let [searchParams, setSearchParams] = useSearchParams();

@@ -6,6 +6,7 @@ import { CardWrapper, PFormLabel } from "../../../Styles/panelCommon";
 import previewImg from "../../../Assets/Images/upload-preview.jpg";
 import { ChangeEvent, useRef } from "react";
 import { errorMessage } from "../../../Services/Utils/toastMessages";
+import { uploadImage } from "../../../Services/Utils/uploadImage";
 
 interface Props {
   setAddedImages: Dispatch<SetStateAction<any>>;
@@ -25,19 +26,9 @@ function Gallery({ setAddedImages, addedImages }: Props) {
     index: number
   ) => {
     const file = event.target?.files![0];
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "digita");
 
     try {
-      const response = await fetch(
-        " https://api.cloudinary.com/v1_1/dmgb7kvmn/image/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-      const data = await response.json();
+      const data = await uploadImage(file);
       setAddedImages((prev: any) => {
         let images = [...prev];
         if (!images[index]) {

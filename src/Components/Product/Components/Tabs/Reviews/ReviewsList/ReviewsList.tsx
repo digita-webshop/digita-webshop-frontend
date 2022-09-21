@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Avatar, Box, Divider, Rating, Typography } from "@mui/material";
 import avatar from "../../../../../../Assets/Images/Product/avatar.png";
-import { useGetUserMutation } from "../../../../../../features/auth/authApi";
+import { useGetUserMutation } from "../../../../../../features/user/userApi";
+
 interface Props {
   userId: string;
   rating: number;

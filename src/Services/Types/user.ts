@@ -16,6 +16,9 @@ export interface IUser {
   _id?: string;
   email: string;
   userName: string;
+  phone?: string;
+  image?: string;
+  role?: string;
   createdAt: string;
   updatedAt: string;
   addresses: IAddress[];
