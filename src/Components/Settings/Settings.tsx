@@ -26,7 +26,9 @@ function Settings() {
         </Grid>
         <Grid item xs={12} lg={9}>
           {activePage === "general" && <General user={user!} />}
-          {activePage === "password" && <Password />}
+          {activePage === "password" && (
+            <Password id={user?._id!} role={user?.role!} />
+          )}
           {activePage === "addresses" && <Addresses />}
         </Grid>
       </Grid>

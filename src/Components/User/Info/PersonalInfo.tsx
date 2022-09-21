@@ -3,11 +3,11 @@ import { Box, Grid, Typography } from "@mui/material";
 import { CardWrapper } from "../../../Styles/User";
 import { wrapper } from "../../../Styles/User";
 import Sidebar from "./Sidebar/Sidebar";
-import Password from "./Password/Password";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../../store";
 import General from "../../Settings/General/General";
+import Password from "../../Settings/Password/Password";
 
 const PersonalInfo = () => {
   const { user } = useAppSelector((state) => state.reducer.auth);
@@ -46,7 +46,9 @@ const PersonalInfo = () => {
           </Grid>
           <Grid item xs={12} lg={9}>
             {activePage === "general" && <General user={user!} />}
-            {activePage === "password" && <Password />}
+            {activePage === "password" && (
+              <Password id={user?._id!} role={user?.role!} />
+            )}
           </Grid>
         </Grid>
       </CardWrapper>
