@@ -33,7 +33,6 @@ const Sidebar = () => {
                   <Icon>{icon}</Icon>
                 </ListItemIcon>
                 <ListItemText
-                  // sx={{ display: menuOpen ? "" : "none" }}
                   primaryTypographyProps={{
                     fontSize: "16px",
                     fontWeight: 600,

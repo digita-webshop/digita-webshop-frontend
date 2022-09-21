@@ -5,12 +5,14 @@ type AuthState = {
   user: null | IUser;
   role: null | string;
   id: string;
+  email: string | null;
 };
 
 const initialState = {
   user: null,
   role: null,
   id: "",
+  email: null,
 } as AuthState;
 
 const authSlice = createSlice({
@@ -20,17 +22,19 @@ const authSlice = createSlice({
     setCredentials: (
       state,
       {
-        payload: { user, role },
-      }: PayloadAction<{ user: any; role: string | null }>
+        payload: { user, role, email },
+      }: PayloadAction<{ user: any; role: string | null; email: string | null }>
     ) => {
       state.user = user;
       state.role = role;
-      state.id = user._id;
+      state.email = email;
+      state.id = user?._id ?? "";
     },
     logout(state) {
       state.user = null;
       state.role = null;
       state.id = "";
+      state.email = null;
     },
   },
 });

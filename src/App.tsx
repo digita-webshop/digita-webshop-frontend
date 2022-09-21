@@ -59,7 +59,11 @@ function App() {
         try {
           const response = await getUser(id).unwrap();
           dispatch(
-            setCredentials({ user: response.data, role: response?.data.role })
+            setCredentials({
+              user: response.data,
+              role: response?.data.role,
+              email: null,
+            })
           );
           console.log(response);
         } catch (err) {

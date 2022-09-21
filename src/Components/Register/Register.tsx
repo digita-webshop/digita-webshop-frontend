@@ -6,6 +6,7 @@ import {
   Grid,
   TextField,
   Typography,
+  CircularProgress,
 } from "@mui/material";
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -18,6 +19,7 @@ import {
   FormWrapper,
   inputErrorStyles,
 } from "../../Styles/Login";
+import { PStack } from "../../Styles/panelCommon";
 import Header from "../Login/Header/Header";
 
 type Modal = "login" | "register" | "reset";
@@ -38,7 +40,7 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
   const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [signUp] = useSignUpMutation();
+  const [signUp, { isLoading }] = useSignUpMutation();
   const dispatch = useDispatch();
 
   //* username validation
@@ -118,15 +120,17 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
         email: enteredEmail,
         password: enteredPassword,
       };
-      const data = await signUp(userCredentials).unwrap();
-      console.log(data);
+      const response = await signUp(userCredentials).unwrap();
 
-      if (data?.message === "User created successfully") {
-        dispatch(setCredentials({ user: data?.data, role: null }));
-        successMessage("account created successfully");
-        modalTypeToggle("login");
+      if (response?.code !== 200) {
+        throw new Error(response.message);
       }
-      console.log(data);
+      dispatch(
+        setCredentials({ user: {}, role: null, email: response.data.email })
+      );
+      successMessage("account created successfully");
+      modalTypeToggle("login");
+      console.log(response);
     } catch (err: any) {
       setErrorMessage(err?.data?.message);
       console.log(err);
@@ -232,7 +236,13 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
                 sx={{ height: "46px" }}
                 type={"submit"}
               >
-                REGISTER
+                {isLoading ? (
+                  <PStack sx={{ margin: "0 !important" }}>
+                    <CircularProgress color={"inherit"} />
+                  </PStack>
+                ) : (
+                  <>REGISTER</>
+                )}
               </Button>
             </Grid>
           </Grid>

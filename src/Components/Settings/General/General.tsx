@@ -69,7 +69,7 @@ function General({ user }: Props) {
         email: userInfo.email,
         phone: userInfo.phone,
       };
-      dispatch(setCredentials({ user: updatedUser, role: user.role! }));
+      dispatch(setCredentials({ user: updatedUser, role: user.role!,email:null }));
       successMessage("user information updated successfully");
     } catch (err) {
       console.log(err);
