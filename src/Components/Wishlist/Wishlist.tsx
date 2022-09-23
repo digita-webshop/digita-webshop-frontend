@@ -15,11 +15,14 @@ import NotFound from "../EmptyList/NotFound";
 const Wishlist = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
+
   const { role } = useAppSelector((state) => state.reducer.auth);
   const { pathname } = useLocation();
+
   const gridSize = pathname.includes("user") ? 6 : 4;
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+
   const { data: wishlistData, isLoading, isError } = useGetWishlistQuery(role!);
   const wishlist = wishlistData?.data ?? [];
 

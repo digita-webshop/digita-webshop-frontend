@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import GridHeader from "./GridHeader/GridHeader";
 import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
@@ -9,7 +9,6 @@ import {
   useDeleteProductMutation,
   useGetAllProductsQuery,
 } from "../../features/products/productsApi";
-import { IProduct } from "../../Services/Types/product";
 import {
   errorMessage,
   successMessage,
@@ -19,25 +18,37 @@ import { ErrorText } from "../../Styles/panelCommon";
 import PanelLoading from "../Loading/PanelLoading";
 
 const PanelProducts = () => {
-  const [list, setList] = useState<IProduct[]>([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedSorting, setSelectedSorting] = useState("latest");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
-  const { data: products, isLoading, isError } = useGetAllProductsQuery("");
-  console.log(products);
+
+  let queries: any = `page=${currentPage}&limit=${productsPerPage} &search=${searchValue}`;
+
+  if (selectedCategory) {
+    queries = `${queries} &category=${selectedCategory.replaceAll("&", "%26")}`;
+  }
+
+  if (selectedSorting) {
+    queries = `${queries} &sort=${selectedSorting}`;
+  }
+
+  const {
+    data: productsData,
+    isLoading,
+    isError,
+  } = useGetAllProductsQuery(queries);
+  const products = productsData?.data.products ?? [];
+  const length = productsData?.data.length ?? 0;
 
   const [deleteProduct] = useDeleteProductMutation();
 
-  const [selectedStatus, setSelectedStatus] = useState("status");
-  const [selectedAmount, setSelectedAmount] = useState("20");
-
-  const selectedStatusHandler = (event: SelectChangeEvent) => {
-    setSelectedStatus(event.target.value);
+  const selectedSortingHandler = (event: SelectChangeEvent) => {
+    setSelectedSorting(event.target.value);
   };
-  const selectedAmountHandler = (event: SelectChangeEvent) => {
-    setSelectedAmount(event.target.value);
+  const selectedCategoryHandler = (event: SelectChangeEvent) => {
+    setSelectedCategory(event.target.value);
   };
 
   async function handleRemove(id: string) {
@@ -48,11 +59,6 @@ const PanelProducts = () => {
       errorMessage(err?.message);
     }
   }
-  useEffect(() => {
-    if (products?.data) {
-      setList(products.data.products);
-    }
-  }, [products]);
 
   return (
     <Grid container rowSpacing={4}>
@@ -65,10 +71,12 @@ const PanelProducts = () => {
           sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}
         >
           <GridHeader
-            selectedStatus={selectedStatus}
-            selectedAmount={selectedAmount}
-            selectedStatusHandler={selectedStatusHandler}
-            selectedAmountHandler={selectedAmountHandler}
+            selectedSorting={selectedSorting}
+            selectedCategory={selectedCategory}
+            selectedSortingHandler={selectedSortingHandler}
+            selectedCategoryHandler={selectedCategoryHandler}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
           />
         </DashWrapper>
         <Divider
@@ -84,10 +92,10 @@ const PanelProducts = () => {
           <Grid container spacing={2}>
             {isLoading && <PanelLoading />}
             {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
-            {products?.data.length === 0 && !isLoading && !isError ? (
+            {products?.length === 0 && !isLoading && !isError ? (
               <NotFound />
             ) : (
-              currentProducts.map(({ _id, title, price, image }) => (
+              products.map(({ _id, title, price, image }) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={_id}>
                   <Product
                     id={_id!}
@@ -100,14 +108,16 @@ const PanelProducts = () => {
               ))
             )}
           </Grid>
-          <Box sx={paginationStyle}>
-            <PanelPagination
-              productsPerPage={productsPerPage}
-              totalProducts={list.length}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            />
-          </Box>
+          {products && (
+            <Box sx={paginationStyle}>
+              <PanelPagination
+                productsPerPage={productsPerPage}
+                totalProducts={length}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            </Box>
+          )}
         </DashWrapper>
       </Grid>
     </Grid>

@@ -1,12 +1,14 @@
 import { IProduct } from "../../Services/Types/product";
 import { api } from "../api";
-type GetWishlistResponse = {
+type WishlistResponse = {
   code: number;
-  data: IProduct[];
+  data: IProduct[] | null;
+  message?: string;
 };
+
 export const wishlistApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getWishlist: build.query<GetWishlistResponse, any>({
+    getWishlist: build.query<WishlistResponse, string>({
       query(query) {
         const path = query === "superAdmin" ? "superAdmin" : `${query}s`;
         return {
@@ -15,7 +17,10 @@ export const wishlistApi = api.injectEndpoints({
       },
       providesTags: ["Wishlist"],
     }),
-    addWish: build.mutation<any, any>({
+    addWish: build.mutation<
+      WishlistResponse,
+      { path: string; id: string | undefined }
+    >({
       query(data) {
         const { path, id } = data;
         return {
@@ -25,7 +30,10 @@ export const wishlistApi = api.injectEndpoints({
       },
       invalidatesTags: ["Wishlist"],
     }),
-    deleteWish: build.mutation<any, any>({
+    deleteWish: build.mutation<
+      WishlistResponse,
+      { path: string; id: string | undefined }
+    >({
       query(query) {
         const { path, id } = query;
         return {

@@ -37,6 +37,7 @@ const Product = ({ id, title, price, image }: T) => {
       if (response.code !== 200) {
         throw new Error(response?.message);
       }
+      console.log(response);
       successMessage("wish deleted successfully");
     } catch (err) {
       console.log(err);
