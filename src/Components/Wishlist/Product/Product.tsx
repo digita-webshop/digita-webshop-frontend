@@ -11,12 +11,12 @@ import {
 import { useState } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { cartModal } from "../../../../Styles/PanelProducts";
-import { titleWrapper, titleStyle } from "../../../../Styles/PanelProducts";
-import { cardWrapper, deleteBtn, addBtn } from "../../../../Styles/User";
-import { useDeleteWishMutation } from "../../../../features/wishlist/wishlistApi";
-import { successMessage } from "../../../../Services/Utils/toastMessages";
-import { useAppSelector } from "../../../../store";
+import { cartModal } from "../../../Styles/PanelProducts";
+import { titleWrapper, titleStyle } from "../../../Styles/PanelProducts";
+import { cardWrapper, deleteBtn, addBtn } from "../../../Styles/User";
+import { useDeleteWishMutation } from "../../../features/wishlist/wishlistApi";
+import { successMessage } from "../../../Services/Utils/toastMessages";
+import { useAppSelector } from "../../../store";
 
 type T = {
   id: string;
@@ -29,11 +29,14 @@ const Product = ({ id, title, price, image }: T) => {
   const [open, setOpen] = useState(false);
   const { role } = useAppSelector((state) => state.reducer.auth);
 
-  const [deleteWish, { isLoading: delLoading }] = useDeleteWishMutation();
+  const [deleteWish, { isLoading }] = useDeleteWishMutation();
 
   async function handleRemove(id: string) {
     try {
-      let response = await deleteWish({ path: role!, id }).unwrap();
+      const response = await deleteWish({ path: role!, id }).unwrap();
+      if (response.code !== 200) {
+        throw new Error(response?.message);
+      }
       successMessage("wish deleted successfully");
     } catch (err) {
       console.log(err);

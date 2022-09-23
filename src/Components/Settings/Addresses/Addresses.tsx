@@ -47,6 +47,9 @@ function Addresses({ user }: Props) {
         path: user?.role,
         user: newUser,
       }).unwrap();
+      if (response.code !== 200) {
+        throw new Error(response?.message);
+      }
 
       dispatch(
         setCredentials({ user: newUser, role: user.role!, email: null })

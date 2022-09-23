@@ -1,4 +1,4 @@
-import {Wishlist as WishlistPage} from "../../../../Components/User"
+import { Wishlist as WishlistPage } from "../../../../Components";
 
 function Wishlist() {
   return <WishlistPage />;
