@@ -1,6 +1,7 @@
 import { IProduct } from "./product";
 
 export interface IAddress {
+  _id?: string;
   country: string;
   state: string;
   city: string;

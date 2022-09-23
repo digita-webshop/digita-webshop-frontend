@@ -14,7 +14,6 @@ function Settings() {
   const activePageHandler = (page: string) => () => {
     setActivePage(page);
   };
-
   return (
     <CardWrapper>
       <Grid container spacing={4}>
@@ -29,7 +28,7 @@ function Settings() {
           {activePage === "password" && (
             <Password id={user?._id!} role={user?.role!} />
           )}
-          {activePage === "addresses" && <Addresses />}
+          {activePage === "addresses" && <Addresses user={user!} />}
         </Grid>
       </Grid>
     </CardWrapper>

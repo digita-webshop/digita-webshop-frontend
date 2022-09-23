@@ -315,7 +315,7 @@ const ProductItem = ({
               color: "#666666",
               marginTop: { xs: "15px", sm: "25px" },
               textAlign: "justify",
-              " -webkit-line-clamp": { xs: 2, sm: "unset" },
+              WebkitLineClamp: { xs: 2, sm: "unset" },
               display: "-webkit-box",
               overflow: "hidden",
               WebkitBoxOrient: "vertical",

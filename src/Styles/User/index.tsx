@@ -120,8 +120,6 @@ export const topMenuItem = {
 
 /* =================== Profile ===================== */
 export const wrapper = {
-  border: "1px solid #d8d8d8",
-  borderRadius: "12px",
   padding: "20px",
   overflow: "auto",
   "& .orderImg": {

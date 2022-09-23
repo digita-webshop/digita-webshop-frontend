@@ -23,8 +23,6 @@ function PlaceSelect({
   showPlaceholder,
   placeholder,
 }: Props) {
-  const property = placeholder === "city" ? "name" : "isoCode";
-
   const toggleHandler = () => {
     setDropdownOpen((prevState: any) => (showPlaceholder ? !prevState : false));
   };
@@ -33,10 +31,10 @@ function PlaceSelect({
       <Box className="input" onClick={toggleHandler}>
         <Box
           sx={{
-            "-webkit-box-orient": "vertical",
+            WebkitBoxOrient: "vertical",
             overflow: "hidden",
             display: "-webkit-box",
-            "-webkit-line-clamp": "1",
+            WebkitLineClamp: "1",
             textTransform: "capitalize",
             color: state.name ? "common.digitaBlack" : "common.digitaGrey3",
           }}
@@ -50,13 +48,13 @@ function PlaceSelect({
       </Box>
       <Fade in={dropDownOpen}>
         <ul>
-          {places.map((countryItem: any, index) => (
+          {places.map((item: any, index) => (
             <li
               key={index}
-              value={countryItem.isoCode}
-              onClick={selectHandler(countryItem[property])}
+              value={item.name}
+              onClick={selectHandler(item["name"])}
             >
-              {countryItem.name}
+              {item.name}
             </li>
           ))}
         </ul>

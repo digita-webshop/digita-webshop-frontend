@@ -15,8 +15,7 @@ import OrderTable from "./OrderTable/OrderTable";
 import PaymentMethod from "./PaymentMethod/PaymentMethod";
 import CurrentAddress from "./CurrentAddress/CurrentAddress";
 import { StyledFormControlLabel } from "../../Styles/Checkout";
-import CurrentAddressForm from "./CurrentAddressForm/CurrentAddressForm";
-import NewAddressForm from "./NewAddressForm/NewAddressForm";
+
 import Coupon from "./Coupon/Coupon";
 import OrderNotes from "./OrderNotes/OrderNotes";
 
@@ -68,9 +67,7 @@ function Checkout() {
                 </Grid>
                 <Grid item xs={12}>
                   <Collapse in={displayCurrentAddress}>
-                    <>
-                      <CurrentAddressForm />
-                    </>
+                    <>{/* <CurrentAddressForm /> */}</>
                   </Collapse>
                 </Grid>
                 <Grid item xs={12}>
@@ -82,9 +79,7 @@ function Checkout() {
                   </FormGroup>
                   <Divider sx={{ width: "97%", mt: "4px", mb: "20px" }} />
                   <Collapse in={displayNewAddressForm}>
-                    <>
-                      <NewAddressForm />
-                    </>
+                    <>{/* <NewAddressForm /> */}</>
                   </Collapse>
                 </Grid>
 

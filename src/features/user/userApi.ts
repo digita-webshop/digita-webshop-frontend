@@ -10,6 +10,7 @@ export const userApi = api.injectEndpoints({
       query(id) {
         return {
           url: `users/${id}`,
+          method: "GET",
         };
       },
       invalidatesTags: ["User"],
