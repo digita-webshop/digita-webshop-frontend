@@ -11,8 +11,8 @@ type ArticleResponse = {
 };
 export const articlesApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getAllArticles: build.query<GetAllArticlesResponse, void>({
-      query: () => "articles",
+    getAllArticles: build.query<GetAllArticlesResponse, string>({
+      query: (query) => `articles?${query}`,
       providesTags: ["Article"],
     }),
     getArticle: build.query<ArticleResponse, string>({

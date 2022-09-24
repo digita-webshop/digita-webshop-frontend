@@ -16,11 +16,7 @@ type GetProductResponse = {
 export const productApi = api.injectEndpoints({
   endpoints: (build) => ({
     getAllProducts: build.query<GetAllProductsResponse, string | undefined>({
-      query(query) {
-        return {
-          url: `products?${query}`,
-        };
-      },
+      query: (query) => `products?${query}`,
       providesTags: ["Product"],
     }),
     getProduct: build.query<GetProductResponse, string>({
