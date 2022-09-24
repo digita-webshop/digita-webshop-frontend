@@ -63,7 +63,16 @@ const Special = () => {
               : Array(9)
                   .fill(null)
                   .map((item, index) => (
-                    <SpecialProductPlaceholder key={index} />
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      lg={4}
+                      sx={{ height: "150px" }}
+                      key={index}
+                    >
+                      <SpecialProductPlaceholder />
+                    </Grid>
                   ))}
           </Grid>
         </Box>

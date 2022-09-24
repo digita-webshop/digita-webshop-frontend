@@ -33,7 +33,7 @@ function Article() {
   const editorState = EditorState.createWithContent(contentState);
   return (
     <Box bgcolor={"white"}>
-      <Breadcrumbs title={"blog"} lastPath={title} />
+      <Breadcrumbs title={"blog"} lastPath={title} category={category} />
       <Container>
         <Grid container sx={{ py: 6.25 }}>
           <Grid item md={8.5}>
@@ -85,7 +85,6 @@ function Article() {
           </Grid>
           <Grid item xs={12} md={3.5}>
             <Grid sx={{ ml: "15px" }}>
-              <SearchBar />
               <RecentPosts />
               <RecentComments />
             </Grid>

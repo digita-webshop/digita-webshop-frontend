@@ -17,6 +17,7 @@ interface Props {
 function Breadcrumbs({ title, lastPath, category = "" }: Props) {
   const Location = useLocation();
   let pathnames = Location.pathname.split("/").filter((x) => x);
+  let categoryRoute = pathnames.includes("product") ? "shop" : "blog";
   if (category) {
     pathnames.splice(pathnames.length - 1, 0, category);
   }
@@ -65,7 +66,6 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
           let route = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
           let name = path.replace(/-/g, " ");
-          console.log(route);
 
           if (name === "product") {
             name = "shop";
@@ -76,7 +76,10 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
             route = "/blog";
           }
           if (name === category) {
-            route = `/shop?category=/${category.replace("&", "%26")}`;
+            route = `/${categoryRoute}?category=/${category.replace(
+              "&",
+              "%26"
+            )}`;
           }
           return isLast ? (
             <Typography

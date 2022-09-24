@@ -9,17 +9,34 @@ import RecentComments from "./Components/SideBar/RecentComments/RecentComments";
 import CustomBreadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import { useGetAllArticlesQuery } from "../../features/articles/articlesApi";
 import ArticlePlaceholder from "../Placeholders/ArticlePlaceholder";
+import { useSearchParams } from "react-router-dom";
 
 function Blog() {
+  const [searchValue, setSearchValue] = useState("");
   const [articlesPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [searchParams] = useSearchParams();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
 
-  const { data: articlesData, isLoading, isError } = useGetAllArticlesQuery();
+  let queries: any = `page=${currentPage}&limit=${articlesPerPage} &search=${searchValue}`;
+
+  let categoryQueryParams = searchParams.get("category");
+  if (categoryQueryParams) {
+    queries = `${queries} &category=${categoryQueryParams.replaceAll(
+      "&",
+      "%26"
+    )}`;
+  }
+
+  const {
+    data: articlesData,
+    isLoading,
+    isError,
+  } = useGetAllArticlesQuery(queries);
   const articles = articlesData?.data.articles ?? [];
-const articlesLength=articlesData?.data.length ??0
+  const articlesLength = articlesData?.data.length ?? 0;
+
   return (
     <Box bgcolor={"white"}>
       <CustomBreadcrumbs title={"blog"} />
@@ -32,7 +49,7 @@ const articlesLength=articlesData?.data.length ??0
                 "& .search-bar": { padding: 0, border: "none" },
               }}
             >
-              {!matches && <SearchBar />}
+              {!matches && <SearchBar setSearchValue={setSearchValue} />}
             </Grid>
             <Grid container spacing={4}>
               {!isLoading && !isError
@@ -66,7 +83,7 @@ const articlesLength=articlesData?.data.length ??0
           </Grid>
           <Grid item xs={12} md={3.5}>
             <Grid>
-              {matches && <SearchBar />}
+              {matches && <SearchBar setSearchValue={setSearchValue} />}
               <RecentPosts />
               <RecentComments />
             </Grid>

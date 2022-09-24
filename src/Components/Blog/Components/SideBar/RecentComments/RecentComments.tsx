@@ -13,7 +13,6 @@ function RecentComments() {
         pt: "20px",
         pb: "30px",
         mb: "30px",
-        mr: "15px",
       }}
     >
       <FilterTitleWrapper className="underline">

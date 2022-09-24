@@ -2,7 +2,12 @@ import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import { Typography } from "@mui/material";
 import { FilterTitleWrapper } from "../../../../../Styles/ShopPage";
-const SearchBar = () => {
+import { SetStateAction, Dispatch } from "react";
+
+interface Props {
+  setSearchValue: Dispatch<SetStateAction<string>>;
+}
+const SearchBar = ({ setSearchValue }: Props) => {
   return (
     <Box
       sx={{
@@ -11,7 +16,6 @@ const SearchBar = () => {
         pt: "20px",
         pb: "30px",
         mb: "30px",
-        mr: "15px",
       }}
       className="search-bar"
     >
@@ -37,6 +41,7 @@ const SearchBar = () => {
         }}
         placeholder="Search"
         inputProps={{ "aria-label": "search" }}
+        onChange={(e) => setSearchValue(e.target.value)}
       />
     </Box>
   );

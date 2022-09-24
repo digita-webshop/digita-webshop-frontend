@@ -11,7 +11,7 @@ import ArticlePlaceholder from "../Placeholders/ArticlePlaceholder";
 
 function OurBlog() {
   const { ref, inView } = useInView({ triggerOnce: true });
-  const { data, isLoading, isError } = useGetAllArticlesQuery();
+  const { data, isLoading, isError } = useGetAllArticlesQuery("");
   const articles = data?.data.articles ?? [];
 
   return (
