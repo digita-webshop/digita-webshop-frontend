@@ -18,7 +18,7 @@ import ReviewsList from "./ReviewsList/ReviewsList";
 import { IProduct } from "../../../../../Services/Types/product";
 import { useAppSelector } from "../../../../../store";
 import { useUpdateProductMutation } from "../../../../../features/products/productsApi";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface Props {
   product: IProduct;
@@ -27,7 +27,8 @@ const Reviews = ({ product }: Props) => {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const [rating, setRating] = useState(1);
   const [reviewDescription, setReviewDescription] = useState("");
-  let [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const { reviews }: any = product;
   const [updateProduct] = useUpdateProductMutation();
@@ -53,8 +54,7 @@ const Reviews = ({ product }: Props) => {
         console.log(err);
       }
     } else {
-      searchParams.set("login", "open");
-      setSearchParams(searchParams);
+      navigate({ pathname, hash: "review", search: "login=open" });
     }
   };
   return (

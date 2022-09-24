@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 type Props = { children: React.ReactNode };
 
 const ScrollToTop: React.FC<Props> = ({ children }) => {
-  const location = useLocation();
+  const { pathname, hash, search } = useLocation();
 
   useEffect(() => {
     window.scroll({
@@ -12,7 +12,13 @@ const ScrollToTop: React.FC<Props> = ({ children }) => {
       left: 0,
       behavior: "smooth",
     });
-  }, [location]);
+  }, [pathname]);
+
+  useEffect(() => {
+    document
+      .getElementById(hash.replace("#", ""))
+      ?.scrollIntoView({ behavior: "smooth" });
+  }, [hash]);
 
   return <>{children}</>;
 };
