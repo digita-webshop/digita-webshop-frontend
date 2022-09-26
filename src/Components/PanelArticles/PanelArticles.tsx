@@ -34,8 +34,8 @@ const Articles = () => {
     isLoading,
     isError,
   } = useGetAllArticlesQuery(queries);
-  const articles = articlesData?.data.articles ?? [];
-  const articlesLength = articlesData?.data.length ?? 0;
+  const articles = articlesData?.data ?? [];
+  const articlesLength = articlesData?.total ?? 0;
 
   const [deleteArticle] = useDeleteArticleMutation();
 

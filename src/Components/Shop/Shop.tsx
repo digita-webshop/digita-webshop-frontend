@@ -80,8 +80,8 @@ function Shop() {
     isError,
   } = useGetAllProductsQuery(queries);
   console.log(productsData);
-  const products = productsData?.data.products ?? [];
-  const productsLength = productsData?.data.length ?? 0;
+  const products = productsData?.data ?? [];
+  const productsLength = productsData?.total ?? 0;
 
   const addQueryParams = (filter: string, name: string) => () => {
     let selectedQueryParams = searchParams.get(filter);

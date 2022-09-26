@@ -39,8 +39,8 @@ const PanelProducts = () => {
     isLoading,
     isError,
   } = useGetAllProductsQuery(queries);
-  const products = productsData?.data.products ?? [];
-  const length = productsData?.data.length ?? 0;
+  const products = productsData?.data ?? [];
+  const length = productsData?.total ?? 0;
 
   const [deleteProduct] = useDeleteProductMutation();
 

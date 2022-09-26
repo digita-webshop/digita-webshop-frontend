@@ -24,7 +24,7 @@ const Products = () => {
   } = useGetAllProductsQuery(
     `category=${selectedCategory.replace("&", "%26")}`
   );
-  const products = productsData?.data?.products ?? [];
+  const products = productsData?.data ?? [];
 
   const { data: wishlistData, isLoading: wishLoading } = useGetWishlistQuery(
     role!

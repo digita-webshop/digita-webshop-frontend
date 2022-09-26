@@ -9,9 +9,10 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../../../features/products/productsApi";
+import { useOnClickOutside } from "../../../../hooks/useOnClickOutside";
 import { categoriesList } from "../../../../Services/Data/data";
 import { searchBarDropdown } from "../../../../Styles/Appbar";
 import { PStack } from "../../../../Styles/panelCommon";
@@ -25,6 +26,14 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [closeDropdown, setCloseDropdown] = useState(true);
 
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  const searchClickOutside = () => {
+    setCloseDropdown(true);
+  };
+
+  useOnClickOutside(searchRef, searchClickOutside);
+
   const navigate = useNavigate();
   let queries = `search=${searchValue}`;
   if (selectedCategory) {
@@ -32,21 +41,35 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
   }
 
   const { data: productsData, isLoading } = useGetAllProductsQuery(queries);
-  const products = productsData?.data.products ?? [];
+  const products = productsData?.data ?? [];
 
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     setSelectedCategory(event.target.value);
   };
+
+  const suggestionClickHandler = (title: string) => () => {
+    let path = `/shop?search=${title}`;
+    if (selectedCategory) {
+      path = `${path} &category=/${selectedCategory.replace("&", "%26")}`;
+    }
+
+    setSearchValue(title);
+
+    navigate(path);
+    setCloseDropdown(true);
+  };
   return (
     <Box display={"flex"} sx={{ height: "90px", alignItems: "center" }}>
-      <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
+      <Box
+        sx={{ position: "relative", width: "100%", height: "100%" }}
+        ref={searchRef}
+      >
         <Box sx={{ display: "flex", height: "100%" }}>
           <InputBase
             placeholder="Type then hit enter to search"
             sx={{ width: "100%", height: "100%", fontSize: "20px" }}
             onChange={(event) => setSearchValue(event.target.value)}
             value={searchValue}
-            onBlur={() => setCloseDropdown(true)}
             onFocus={() => setCloseDropdown(false)}
           />
           <Box
@@ -79,20 +102,7 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
             <Box sx={{ textTransform: "capitalize" }}>no result found!</Box>
           ) : (
             products?.slice(0, 6).map(({ _id, title }) => (
-              <Box
-                key={_id}
-                onClick={() => {
-                  let path = `/shop?search=${title}`;
-                  if (selectedCategory) {
-                    path = `${path} &category=/${selectedCategory.replace(
-                      "&",
-                      "%26"
-                    )}`;
-                  }
-                  setSearchValue(title);
-                  navigate(path);
-                }}
-              >
+              <Box key={_id} onClick={suggestionClickHandler(title)}>
                 {title}
               </Box>
             ))

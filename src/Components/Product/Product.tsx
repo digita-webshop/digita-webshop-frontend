@@ -25,7 +25,7 @@ const Product = () => {
     useGetAllProductsQuery("");
 
   const product = productData?.data!;
-  const products = productsData?.data.products ?? [];
+  const products = productsData?.data ?? [];
 
   const { data: wishlistData, isLoading: wishLoading } = useGetWishlistQuery(
     role!

@@ -1,6 +1,9 @@
 export interface IReviews {
-  userId: string;
-  rating: number;
+  _id?: string;
+  productId?: any;
+  articleId?: any;
+  userId: any;
+  rating?: number;
   description: string;
   createdAt?: string;
 }

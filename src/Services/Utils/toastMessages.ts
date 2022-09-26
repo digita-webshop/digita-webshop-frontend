@@ -12,7 +12,7 @@ export const successMessage = (message: string) => {
   });
 };
 export const errorMessage = (message: string) => {
-  toast.success(message, {
+  toast.error(message, {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,

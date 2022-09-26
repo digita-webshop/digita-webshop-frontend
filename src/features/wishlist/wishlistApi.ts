@@ -12,7 +12,7 @@ export const wishlistApi = api.injectEndpoints({
       query(query) {
         const path = query === "superAdmin" ? "superAdmin" : `${query}s`;
         return {
-          url: `${path}/wishlist/get`,
+          url: `${path}/wishlist`,
         };
       },
       providesTags: ["Wishlist"],
@@ -25,7 +25,7 @@ export const wishlistApi = api.injectEndpoints({
         const { path, id } = data;
         return {
           url: `${path}s/wish/${id}`,
-          method: "GET",
+          method: "POST",
         };
       },
       invalidatesTags: ["Wishlist"],

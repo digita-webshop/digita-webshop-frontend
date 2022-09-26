@@ -12,7 +12,7 @@ import ArticlePlaceholder from "../Placeholders/ArticlePlaceholder";
 function OurBlog() {
   const { ref, inView } = useInView({ triggerOnce: true });
   const { data, isLoading, isError } = useGetAllArticlesQuery("");
-  const articles = data?.data.articles ?? [];
+  const articles = data?.data ?? [];
 
   return (
     <ContainerWrapper

@@ -12,7 +12,7 @@ function RecentPosts() {
     isLoading,
     isError,
   } = useGetAllArticlesQuery("sort=latest");
-  const articles = articlesData?.data.articles ?? [];
+  const articles = articlesData?.data ?? [];
   return (
     <Box
       sx={{

@@ -17,7 +17,7 @@ const Special = () => {
     isLoading,
     isError,
   } = useGetAllProductsQuery(`page=1&limit=9&sort=${selectedSorting}`);
-  const products = productsData?.data.products ?? [];
+  const products = productsData?.data ?? [];
   return (
     <Container
       maxWidth={"xl"}
