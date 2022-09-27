@@ -7,7 +7,7 @@ import { useGetUserMutation } from "../../../../../../features/user/userApi";
 import { useLocation } from "react-router-dom";
 
 interface Props {
-  id: number;
+  id: string;
   userId: string;
   rating: number;
   description: string;
@@ -16,6 +16,8 @@ interface Props {
 
 function Review({ id, userId, rating, description, createdAt }: Props) {
   const [user, setUser] = useState<IUser>();
+  const { hash, pathname } = useLocation();
+
   const readableDate = getReadableDate(createdAt);
   const [getUser] = useGetUserMutation();
   useEffect(() => {
@@ -29,15 +31,13 @@ function Review({ id, userId, rating, description, createdAt }: Props) {
     };
     fetchUser();
   }, []);
-  const { hash } = useLocation();
+
   useEffect(() => {
-    document
-      .getElementById(hash.replace("#", ""))
-      ?.scrollIntoView({
-        inline: "center",
-        block: "center",
-        behavior: "smooth",
-      });
+    document.getElementById(hash.replace("#", ""))?.scrollIntoView({
+      inline: "center",
+      block: "center",
+      behavior: "smooth",
+    });
   }, [hash]);
 
   return (
@@ -68,12 +68,14 @@ function Review({ id, userId, rating, description, createdAt }: Props) {
               <span className="userName">{user?.userName} </span>
               <time> {`– ${readableDate}`}</time>
             </Typography>
-            <Rating
-              name="read-only"
-              defaultValue={rating}
-              size="small"
-              readOnly
-            />
+            {pathname.includes("product") && (
+              <Rating
+                name="read-only"
+                defaultValue={rating}
+                size="small"
+                readOnly
+              />
+            )}
           </Box>
 
           <Box sx={{ width: "100%", marginTop: "10px " }}>

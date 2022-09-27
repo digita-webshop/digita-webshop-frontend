@@ -13,12 +13,13 @@ import {
   FormLabel,
   TextField,
 } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Review from "./Review/Review";
 import { useAppSelector } from "../../../../../store";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAddReviewMutation } from "../../../../../features/reviews/reviewsApi";
 import { IReviews } from "../../../../../Services/Types/product";
+import { useLoadReviews } from "../../../../../hooks/useLoadReviews";
 
 interface Props {
   reviews: IReviews[] | [];
@@ -28,60 +29,40 @@ const Reviews = ({ reviews, id }: Props) => {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const [rating, setRating] = useState(1);
   const [reviewDescription, setReviewDescription] = useState("");
-  const [indexOfLoadedReviews, setIndexOfLoadedReviews] = useState(6);
-  const { pathname, hash } = useLocation();
-
+  const { indexOfLoadedReviews, loadMoreReviewsHandler } =
+    useLoadReviews(reviews);
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   const [addReview] = useAddReviewMutation();
 
-  const loadMoreReviewsHandler = () => {
-    setIndexOfLoadedReviews((prev) => {
-      if (prev < reviews.length) {
-        return prev + 6;
-      }
-      return 6;
-    });
-  };
-
   const submitReviewHandler = async () => {
-    if (user) {
-      let review = {
-        rating,
-        description: reviewDescription,
-      };
-      try {
-        let response = await addReview({
-          path: "products",
-          id,
-          review,
-        }).unwrap();
-        console.log(response);
-        if (response.code === 200) {
-          setReviewDescription("");
-          setRating(1);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
+    if (!user) {
       navigate({
         pathname,
         hash: "reviews",
         search: `tab=reviews&login=open`,
       });
-    }
-  };
-  useEffect(() => {
-    if (!hash.includes("#review")) {
       return;
     }
-    const hashId = hash.replace("#review-", "");
-    const index = reviews.findIndex((item) => item._id === hashId);
-    if (index > indexOfLoadedReviews) {
-      setIndexOfLoadedReviews(index + 1);
+    try {
+      let response = await addReview({
+        path: "products",
+        id,
+        review: {
+          rating,
+          description: reviewDescription,
+        },
+      }).unwrap();
+      console.log(response);
+      if (response.code === 200) {
+        setReviewDescription("");
+        setRating(1);
+      }
+    } catch (err) {
+      console.log(err);
     }
-  }, []);
+  };
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }} id="reviews">
@@ -89,9 +70,9 @@ const Reviews = ({ reviews, id }: Props) => {
         {reviews?.length !== 0 ? (
           reviews
             ?.slice(0, indexOfLoadedReviews)
-            .map((review: any) => (
+            .map((review) => (
               <Review
-                id={review._id}
+                id={review._id!}
                 userId={review.userId}
                 rating={review.rating!}
                 description={review.description}

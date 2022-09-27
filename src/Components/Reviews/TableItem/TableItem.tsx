@@ -31,14 +31,17 @@ function TableItem({
 
   const clickHandler = () => {
     navigate({
-      pathname: `/product/${data._id}`,
+      pathname: `/${isArticlePage ? "article" : "product"}/${data._id}`,
       hash: `review-${review._id}`,
-      search: "tab=reviews",
+      search: isArticlePage ? "" : "tab=reviews",
     });
   };
   return (
     <TableRow
-      sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
+      sx={{
+        cursor: "pointer",
+        "&:hover": { bgcolor: "common.panelActiveRed" },
+      }}
       onClick={clickHandler}
     >
       <TCell>
@@ -79,7 +82,6 @@ function TableItem({
             flexWrap: "wrap",
           }}
         >
-          <TableButton>Detail</TableButton>
           <TableButton
             sx={{
               display: "flex",
