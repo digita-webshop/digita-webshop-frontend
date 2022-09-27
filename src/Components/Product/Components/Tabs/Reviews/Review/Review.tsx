@@ -1,36 +1,52 @@
-import { useState, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Avatar, Box, Divider, Rating, Typography } from "@mui/material";
 import avatar from "../../../../../../Assets/Images/Product/avatar.png";
+import { IUser } from "../../../../../../Services/Types/user";
+import { getReadableDate } from "../../../../../../Services/Utils/getReadableDate";
 import { useGetUserMutation } from "../../../../../../features/user/userApi";
+import { useLocation } from "react-router-dom";
 
 interface Props {
+  id: number;
   userId: string;
   rating: number;
   description: string;
+  createdAt: string;
 }
-function ReviewsList({ userId, rating, description }: Props) {
-  const [username, setUsername] = useState("");
-  const [getUser] = useGetUserMutation();
 
+function Review({ id, userId, rating, description, createdAt }: Props) {
+  const [user, setUser] = useState<IUser>();
+  const readableDate = getReadableDate(createdAt);
+  const [getUser] = useGetUserMutation();
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await getUser(userId).unwrap();
-        console.log(response);
-        setUsername(response.data.userName);
+        const res = await getUser(userId).unwrap();
+        setUser(res.data);
       } catch (err) {
         console.log(err);
       }
     };
     fetchUser();
   }, []);
+  const { hash } = useLocation();
+  useEffect(() => {
+    document
+      .getElementById(hash.replace("#", ""))
+      ?.scrollIntoView({
+        inline: "center",
+        block: "center",
+        behavior: "smooth",
+      });
+  }, [hash]);
+
   return (
-    <>
-      <Box sx={{ display: "flex", gap: "15px" }} my={2}>
+    <Fragment>
+      <Box sx={{ display: "flex", gap: "15px" }} my={2} id={`review-${id}`}>
         <Box>
           <Avatar
             alt="avatar"
-            src={avatar}
+            src={user?.image || avatar}
             sx={{
               width: "60px",
               height: "60px",
@@ -49,8 +65,8 @@ function ReviewsList({ userId, rating, description }: Props) {
               component="p"
               sx={{ fontSize: { xs: "12px", sm: "14px" } }}
             >
-              <span className="userName">{username} </span>
-              <time> – September 17, 2019</time>
+              <span className="userName">{user?.userName} </span>
+              <time> {`– ${readableDate}`}</time>
             </Typography>
             <Rating
               name="read-only"
@@ -75,8 +91,8 @@ function ReviewsList({ userId, rating, description }: Props) {
       </Box>
 
       <Divider sx={{ padding: "3px", width: "100%" }} />
-    </>
+    </Fragment>
   );
 }
 
-export default ReviewsList;
+export default Review;

@@ -4,6 +4,7 @@ import { TableButton } from "../../../Styles/Orders";
 import { TCell, TCheckBox } from "../../../Styles/Reviews";
 import { IReviews } from "../../../Services/Types/product";
 import { getReadableDate } from "../../../Services/Utils/getReadableDate";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   review: IReviews;
@@ -26,9 +27,20 @@ function TableItem({
   const data = isArticlePage ? review?.articleId : review?.productId;
   const user = review.userId;
   const readableDate = getReadableDate(review?.createdAt!);
+  const navigate = useNavigate();
 
+  const clickHandler = () => {
+    navigate({
+      pathname: `/product/${data._id}`,
+      hash: `review-${review._id}`,
+      search: "tab=reviews",
+    });
+  };
   return (
-    <TableRow sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}>
+    <TableRow
+      sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
+      onClick={clickHandler}
+    >
       <TCell>
         <TCheckBox
           onChange={handleToggle(review._id!, data._id)}

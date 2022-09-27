@@ -112,6 +112,7 @@ export const starLink = {
     cursor: "pointer",
     textDecoration: "none",
     fontSize: "13px",
+    color: "common.digitaBlack",
     "&:hover": {
       color: "#F03637",
     },

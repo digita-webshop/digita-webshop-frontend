@@ -13,38 +13,49 @@ import {
   FormLabel,
   TextField,
 } from "@mui/material";
-import { useState } from "react";
-import ReviewsList from "./ReviewsList/ReviewsList";
-import { IProduct } from "../../../../../Services/Types/product";
+import { useState, useEffect } from "react";
+import Review from "./Review/Review";
 import { useAppSelector } from "../../../../../store";
-import { useUpdateProductMutation } from "../../../../../features/products/productsApi";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAddReviewMutation } from "../../../../../features/reviews/reviewsApi";
+import { IReviews } from "../../../../../Services/Types/product";
 
 interface Props {
-  product: IProduct;
+  reviews: IReviews[] | [];
+  id: string;
 }
-const Reviews = ({ product }: Props) => {
+const Reviews = ({ reviews, id }: Props) => {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const [rating, setRating] = useState(1);
   const [reviewDescription, setReviewDescription] = useState("");
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
+  const [indexOfLoadedReviews, setIndexOfLoadedReviews] = useState(6);
+  const { pathname, hash } = useLocation();
 
-  const { reviews }: any = product;
-  const [updateProduct] = useUpdateProductMutation();
+  const navigate = useNavigate();
+
+  const [addReview] = useAddReviewMutation();
+
+  const loadMoreReviewsHandler = () => {
+    setIndexOfLoadedReviews((prev) => {
+      if (prev < reviews.length) {
+        return prev + 6;
+      }
+      return 6;
+    });
+  };
 
   const submitReviewHandler = async () => {
     if (user) {
       let review = {
-        userId: user?._id,
         rating,
         description: reviewDescription,
       };
-      let updatedReviews = [...reviews];
-      updatedReviews.push(review);
-      let newProduct = { ...product, reviews: updatedReviews };
       try {
-        let response = await updateProduct(newProduct).unwrap();
+        let response = await addReview({
+          path: "products",
+          id,
+          review,
+        }).unwrap();
         console.log(response);
         if (response.code === 200) {
           setReviewDescription("");
@@ -54,20 +65,39 @@ const Reviews = ({ product }: Props) => {
         console.log(err);
       }
     } else {
-      navigate({ pathname, hash: "review", search: "login=open" });
+      navigate({
+        pathname,
+        hash: "reviews",
+        search: `tab=reviews&login=open`,
+      });
     }
   };
+  useEffect(() => {
+    if (!hash.includes("#review")) {
+      return;
+    }
+    const hashId = hash.replace("#review-", "");
+    const index = reviews.findIndex((item) => item._id === hashId);
+    if (index > indexOfLoadedReviews) {
+      setIndexOfLoadedReviews(index + 1);
+    }
+  }, []);
+
   return (
-    <Box sx={{ display: "flex", justifyContent: "center" }} id="review">
+    <Box sx={{ display: "flex", justifyContent: "center" }} id="reviews">
       <Box sx={ProductContentStyle}>
         {reviews?.length !== 0 ? (
-          reviews?.map((review: any) => (
-            <ReviewsList
-              userId={review.userId}
-              rating={review.rating!}
-              description={review.description}
-            />
-          ))
+          reviews
+            ?.slice(0, indexOfLoadedReviews)
+            .map((review: any) => (
+              <Review
+                id={review._id}
+                userId={review.userId}
+                rating={review.rating!}
+                description={review.description}
+                createdAt={review.createdAt!}
+              />
+            ))
         ) : (
           <Box>
             <Typography
@@ -81,7 +111,16 @@ const Reviews = ({ product }: Props) => {
             </Typography>
           </Box>
         )}
-
+        {reviews.length > 6 && (
+          <Button
+            variant="contained"
+            color="error"
+            sx={{ display: "block", margin: "10px 0 0 auto" }}
+            onClick={loadMoreReviewsHandler}
+          >
+            {indexOfLoadedReviews < reviews.length ? "Load More..." : "close"}
+          </Button>
+        )}
         <Typography
           component="p"
           sx={{

@@ -1,12 +1,8 @@
-import { IProduct } from "../../Services/Types/product";
 import { api } from "../api";
-type GetWishlistResponse = {
-  code: number;
-  data: IProduct[];
-};
+
 export const userApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getUser: build.mutation<any, any>({
+    getUser: build.mutation<any, string>({
       query(id) {
         return {
           url: `users/${id}`,
@@ -22,16 +18,6 @@ export const userApi = api.injectEndpoints({
           url: `${path}s/${id}`,
           method: "PUT",
           body: user,
-        };
-      },
-      invalidatesTags: ["User"],
-    }),
-    deleteWish: build.mutation<any, any>({
-      query(query) {
-        const { path, id } = query;
-        return {
-          url: `${path}s/wish/${id}`,
-          method: "DELETE",
         };
       },
       invalidatesTags: ["User"],

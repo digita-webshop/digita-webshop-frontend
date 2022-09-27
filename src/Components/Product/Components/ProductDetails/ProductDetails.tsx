@@ -2,9 +2,9 @@ import { useState } from "react";
 import {
   Grid,
   Button,
+  Link,
   Divider,
   Box,
-  Link,
   Rating,
   Typography,
   Modal,
@@ -31,13 +31,18 @@ import Gallery from "./Gallery/Gallery";
 import ColorPicker from "./ColorPicker/ColorPicker";
 import { IProduct } from "../../../../Services/Types/product";
 import { AmountBtn, CartInput } from "../../../../Styles/Products";
-import { useSearchParams } from "react-router-dom";
+import {
+  Link as NavLink,
+  useLocation,
+  useSearchParams,
+} from "react-router-dom";
 import { useAppSelector } from "../../../../store";
 import {
   useAddWishMutation,
   useDeleteWishMutation,
 } from "../../../../features/wishlist/wishlistApi";
 import WishModal from "../../../Products/Components/Modals/WishModal/WishModal";
+import { useGetReviewsQuery } from "../../../../features/reviews/reviewsApi";
 
 interface Props {
   product: IProduct;
@@ -48,7 +53,14 @@ const ProductDetails = ({ product, wished }: Props) => {
   const [addedWish, setAddedWish] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const { role, user } = useAppSelector((state) => state.reducer.auth);
-  console.log(wished);
+
+  const { pathname } = useLocation();
+
+  const { data: reviewsData } = useGetReviewsQuery({
+    path: "products",
+    id: product._id!,
+  });
+  const reviewsLength = reviewsData?.data.length ?? 0;
 
   const [addWish, { isLoading: addLoading }] = useAddWishMutation();
   const [deleteWish, { isLoading: delLoading }] = useDeleteWishMutation();
@@ -112,7 +124,12 @@ const ProductDetails = ({ product, wished }: Props) => {
                 readOnly
                 sx={starRating}
               />
-              <Link className="customerReview">(1 customer review)</Link>
+              <NavLink
+                to={`${pathname}?tab=reviews#tabs`}
+                className="customerReview"
+              >{`(${reviewsLength} customer ${
+                reviewsLength > 1 ? "reviews" : "review"
+              })`}</NavLink>
             </Box>
             <Box sx={filledPrice}>
               <bdi>{`$${offPrice ? offPrice : price}`}</bdi>

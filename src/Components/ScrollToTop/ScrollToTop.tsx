@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type Props = { children: React.ReactNode };
 
 const ScrollToTop: React.FC<Props> = ({ children }) => {
   const { pathname, hash, search } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scroll({
@@ -18,6 +19,7 @@ const ScrollToTop: React.FC<Props> = ({ children }) => {
     document
       .getElementById(hash.replace("#", ""))
       ?.scrollIntoView({ behavior: "smooth" });
+    // navigate({ pathname, search });
   }, [hash]);
 
   return <>{children}</>;

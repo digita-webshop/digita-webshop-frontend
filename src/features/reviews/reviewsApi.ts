@@ -9,7 +9,7 @@ type GetReviewsResponse = {
 type GetReviewResponse = {
   code: number;
   message: string;
-  data: IReviews;
+  data: IReviews[];
 };
 type GetDeleteReviewResponse = {
   data?: {
@@ -26,18 +26,21 @@ type GetDeleteReviewResponse = {
 };
 export const reviewsApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getAllReviews: build.query<GetReviewsResponse, any>({
+    getAllReviews: build.query<
+      GetReviewsResponse,
+      { path: string; queries: string }
+    >({
       query: ({ path, queries }) => `${path}/reviews?${queries}`,
       providesTags: ["Product", "Article"],
     }),
-    getReview: build.query<GetReviewResponse, { id: string; path: string }>({
+    getReviews: build.query<GetReviewResponse, { id: string; path: string }>({
       query: ({ path, id }) => `${path}/reviews/${id}`,
       providesTags: ["Product", "Article"],
     }),
     addReview: build.mutation<any, any>({
       query(data) {
-        const { id, path, ...body } = data;
-        return { url: `${path}/reviews/${id}`, method: "POST", body };
+        const { id, path, review } = data;
+        return { url: `${path}/reviews/${id}`, method: "POST", body: review };
       },
       invalidatesTags: ["Product", "Article"],
     }),
@@ -53,7 +56,7 @@ export const reviewsApi = api.injectEndpoints({
 
 export const {
   useGetAllReviewsQuery,
-  useGetReviewQuery,
+  useGetReviewsQuery,
   useAddReviewMutation,
   useDeleteReviewMutation,
 } = reviewsApi;

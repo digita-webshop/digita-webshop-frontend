@@ -14,9 +14,11 @@ import AboutBrand from "./AboutBrand/AboutBrand";
 import Reviews from "./Reviews/Reviews";
 
 import { Box, Collapse, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, SyntheticEvent } from "react";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { IProduct } from "../../../../Services/Types/product";
+import { useGetReviewsQuery } from "../../../../features/reviews/reviewsApi";
+import { useSearchParams } from "react-router-dom";
 interface Props {
   product: IProduct;
 }
@@ -25,32 +27,45 @@ function Tabs({ product }: Props) {
   const [openReviews, setOpenReviews] = useState(false);
   const [openAbout, setOpenAbout] = useState(false);
   const [openShipping, setOpenShipping] = useState(false);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { data: reviewsData } = useGetReviewsQuery({
+    path: "products",
+    id: product._id!,
+  });
+  const reviews = reviewsData?.data ?? [];
+  const tabValue = searchParams.get("tab") ?? "review";
+  const tabSelectHandler = (event: SyntheticEvent, value: any) => {
+    console.log(value);
+    if (!value) {
+      searchParams.delete("tab");
+    } else {
+      searchParams.set("tab", value);
+    }
+    setSearchParams(searchParams);
+  };
   return (
-    <Box sx={ShowStyle}>
+    <Box sx={ShowStyle} id="tabs">
       <Box className="TabsShow" sx={{ width: "100%" }}>
-        <TabsUnstyled defaultValue={0}>
+        <TabsUnstyled value={tabValue} onChange={tabSelectHandler}>
           <TabsList>
-            <Tab>DESCRIPTION</Tab>
-            <Tab>
-              {`REVIEWS ${
-                product?.reviews && product?.reviews.length !== 0
-                  ? `(${product?.reviews.length})`
-                  : ""
-              }`}
+            <Tab value="">DESCRIPTION</Tab>
+            <Tab value="reviews">
+              {`REVIEWS ${reviews.length !== 0 ? `(${reviews.length})` : ""}`}
             </Tab>
-            <Tab>ABOUT BRANDS</Tab>
-            <Tab> SHIPPING &#38; DELIVERY</Tab>
+            <Tab value="about">ABOUT BRANDS</Tab>
+            <Tab value="delivery"> SHIPPING &#38; DELIVERY</Tab>
           </TabsList>
-          <TabPanel value={0}>
+          <TabPanel value={""}>
             <Description description={product.fullDescription} />
           </TabPanel>
-          <TabPanel value={1}>
-            <Reviews product={product} />
+          <TabPanel value={"reviews"}>
+            <Reviews id={product._id!} reviews={reviews} />
           </TabPanel>
-          <TabPanel value={2}>
+          <TabPanel value={"about"}>
             <AboutBrand brand={product.brand} />
           </TabPanel>
-          <TabPanel value={3}>
+          <TabPanel value={"delivery"}>
             <Delivery />
           </TabPanel>
         </TabsUnstyled>
@@ -85,14 +100,14 @@ function Tabs({ product }: Props) {
               component="div"
               id="review"
             >
-              REVIEWS (1)
+              {`REVIEWS ${reviews.length !== 0 ? `(${reviews.length})` : ""}`}
             </Typography>
             <Typography sx={moreStyles}>
               {openReviews ? <ExpandLess /> : <ExpandMore />}
             </Typography>
           </Box>
           <Collapse in={openReviews}>
-            <Reviews product={product} />
+            <Reviews id={product._id!} reviews={reviews} />
           </Collapse>
         </Box>
 
