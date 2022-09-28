@@ -23,8 +23,8 @@ function TabDrawer({ displayDrawer, toggleDrawer }: TabDrawerProps) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const listItemHandler = (route: string) => {
-    toggleDrawer("left", false);
-    navigate(`${route}`);
+    toggleDrawer("left", false)();
+    navigate(route);
   };
   return (
     <Drawer

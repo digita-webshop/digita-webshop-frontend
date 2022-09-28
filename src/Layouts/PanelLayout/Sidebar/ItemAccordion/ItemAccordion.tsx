@@ -8,6 +8,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { GridExpandMoreIcon } from "@mui/x-data-grid";
+import { Dispatch, SetStateAction } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   accordionDetailStyles,
@@ -26,9 +27,10 @@ interface Props {
   icon: string;
   data: I[];
   menuOpen: boolean;
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-function ItemAccordion({ title, icon, data, menuOpen }: Props) {
+function ItemAccordion({ title, icon, data, menuOpen, setDrawerOpen }: Props) {
   const { pathname } = useLocation();
   return (
     <Accordion
@@ -65,7 +67,11 @@ function ItemAccordion({ title, icon, data, menuOpen }: Props) {
       </PanelItem>
       <AccordionDetails sx={accordionDetailStyles}>
         {data.map((item) => (
-          <NavLink key={item.id} to={item.route}>
+          <NavLink
+            key={item.id}
+            to={item.route}
+            onClick={() => setDrawerOpen(false)}
+          >
             {item.name}
           </NavLink>
         ))}

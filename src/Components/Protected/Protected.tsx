@@ -9,9 +9,13 @@ const Protected = ({ children }: Props) => {
   const { pathname } = location;
   const { role } = useAppSelector((state) => state.reducer.auth);
 
+  if (role === "superAdmin" && pathname.includes("user")) {
+    return <Navigate to="/" replace state={{ from: location }} />;
+  }
+
   if (
-    (role === "admin" && pathname.includes("user")) ||
-    pathname === "/panel/manage-access"
+    role === "admin" &&
+    (pathname.includes("user") || pathname === "/panel/manage-access")
   ) {
     return <Navigate to="/" replace state={{ from: location }} />;
   }

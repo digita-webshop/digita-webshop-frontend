@@ -35,8 +35,8 @@ const SpecialItem = ({ id, title, image, offPrice, price, rating }: Props) => {
         <Link to={`/product/${id}`} className="image-link">
           <CardMedia
             component="img"
-            sx={{ height: "100%" }}
-            image={`${image}`}
+            sx={{ height: "100%", objectFit: "contain" }}
+            image={image}
             alt="Live from space album cover"
           />
         </Link>

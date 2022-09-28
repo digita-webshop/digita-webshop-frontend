@@ -71,9 +71,8 @@ export const productButtonStyles = {
   marginTop: "10px",
   marginBottom: "25px",
   display: "flex",
-  flexDirection: { xs: "column", sm: "row" },
   justifyContent: {
-    xs: "center",
+    xs: "space-around",
     sm: "flex-start",
   },
   alignItems: { xs: "flex-start", sm: "center" },

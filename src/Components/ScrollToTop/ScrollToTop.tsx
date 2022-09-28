@@ -18,7 +18,11 @@ const ScrollToTop: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     document
       .getElementById(hash.replace("#", ""))
-      ?.scrollIntoView({ behavior: "smooth" });
+      ?.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "center",
+      });
     // navigate({ pathname, search });
   }, [hash]);
 

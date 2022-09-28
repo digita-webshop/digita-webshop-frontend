@@ -22,12 +22,14 @@ import { useSearchParams } from "react-router-dom";
 interface Props {
   product: IProduct;
 }
+const initialTabsState = {
+  desc: true,
+  reviews: true,
+  about: false,
+  delivery: false,
+};
 function Tabs({ product }: Props) {
-  const [openDescription, setOpenDescription] = useState(true);
-  const [openReviews, setOpenReviews] = useState(false);
-  const [openAbout, setOpenAbout] = useState(false);
-  const [openShipping, setOpenShipping] = useState(false);
-
+  const [openTabs, setOpenTabs] = useState(initialTabsState);
   const [searchParams, setSearchParams] = useSearchParams();
   const { data: reviewsData } = useGetReviewsQuery({
     path: "products",
@@ -36,7 +38,6 @@ function Tabs({ product }: Props) {
   const reviews = reviewsData?.data ?? [];
   const tabValue = searchParams.get("tab") ?? "review";
   const tabSelectHandler = (event: SyntheticEvent, value: any) => {
-    console.log(value);
     if (!value) {
       searchParams.delete("tab");
     } else {
@@ -44,8 +45,12 @@ function Tabs({ product }: Props) {
     }
     setSearchParams(searchParams);
   };
+  const openTabsHandler = (value: string) => () => {
+    setOpenTabs((prev: any) => ({ ...prev, [value]: !prev[value] }));
+  };
+
   return (
-    <Box sx={ShowStyle} id="tabs">
+    <Box sx={ShowStyle}>
       <Box className="TabsShow" sx={{ width: "100%" }}>
         <TabsUnstyled value={tabValue} onChange={tabSelectHandler}>
           <TabsList>
@@ -73,27 +78,21 @@ function Tabs({ product }: Props) {
 
       <Box className="CascadinShow">
         <Box>
-          <Box
-            sx={CascadingTabs}
-            onClick={() => setOpenDescription((prev) => !prev)}
-          >
+          <Box sx={CascadingTabs} onClick={openTabsHandler("desc")}>
             <Typography variant="h4" sx={CascadingTabsTitle} component="div">
               DESCRIPTION
             </Typography>
             <Typography sx={moreStyles}>
-              {openDescription ? <ExpandLess /> : <ExpandMore />}
+              {openTabs.desc ? <ExpandLess /> : <ExpandMore />}
             </Typography>
           </Box>
-          <Collapse in={openDescription}>
+          <Collapse in={openTabs.desc}>
             <Description description={product.fullDescription} />
           </Collapse>
         </Box>
 
         <Box>
-          <Box
-            sx={CascadingTabs}
-            onClick={() => setOpenReviews((prev) => !prev)}
-          >
+          <Box sx={CascadingTabs} onClick={openTabsHandler("reviews")}>
             <Typography
               variant="h4"
               sx={CascadingTabsTitle}
@@ -103,41 +102,38 @@ function Tabs({ product }: Props) {
               {`REVIEWS ${reviews.length !== 0 ? `(${reviews.length})` : ""}`}
             </Typography>
             <Typography sx={moreStyles}>
-              {openReviews ? <ExpandLess /> : <ExpandMore />}
+              {openTabs.reviews ? <ExpandLess /> : <ExpandMore />}
             </Typography>
           </Box>
-          <Collapse in={openReviews}>
+          <Collapse in={openTabs.reviews}>
             <Reviews id={product._id!} reviews={reviews} />
           </Collapse>
         </Box>
 
         <Box>
-          <Box sx={CascadingTabs} onClick={() => setOpenAbout((prev) => !prev)}>
+          <Box sx={CascadingTabs} onClick={openTabsHandler("about")}>
             <Typography variant="h4" sx={CascadingTabsTitle} component="div">
               ABOUT BRANDS
             </Typography>
             <Typography sx={moreStyles}>
-              {openAbout ? <ExpandLess /> : <ExpandMore />}
+              {openTabs.about ? <ExpandLess /> : <ExpandMore />}
             </Typography>
           </Box>
-          <Collapse in={openAbout}>
+          <Collapse in={openTabs.about}>
             <AboutBrand brand={product.brand} />
           </Collapse>
         </Box>
 
         <Box>
-          <Box
-            sx={CascadingTabs}
-            onClick={() => setOpenShipping((prev) => !prev)}
-          >
+          <Box sx={CascadingTabs} onClick={openTabsHandler("delivery")}>
             <Typography variant="h4" sx={CascadingTabsTitle} component="div">
               SHIPPING &#38; DELIVERY
             </Typography>
             <Typography sx={moreStyles}>
-              {openShipping ? <ExpandLess /> : <ExpandMore />}
+              {openTabs.delivery ? <ExpandLess /> : <ExpandMore />}
             </Typography>
           </Box>
-          <Collapse in={openShipping}>
+          <Collapse in={openTabs.delivery}>
             <Delivery />
           </Collapse>
         </Box>

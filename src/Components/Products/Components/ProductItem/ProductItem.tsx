@@ -41,32 +41,15 @@ import {
   productIconWrapperStyles,
 } from "../../../../Styles/Product";
 import WishModal from "../Modals/WishModal/WishModal";
+import { IProduct } from "../../../../Services/Types/product";
 
 type Props = {
-  title: string;
-  id: string;
-  image: string;
-  offPrice: number | null;
-  price: number;
-  sold: boolean;
-  rating: number;
-  description: string;
+  product: IProduct;
   listView: boolean;
   wished: boolean;
 };
 
-const ProductItem = ({
-  title,
-  id,
-  image,
-  offPrice,
-  price,
-  sold,
-  rating,
-  description,
-  listView,
-  wished,
-}: Props) => {
+const ProductItem = ({ product, listView, wished }: Props) => {
   const [openView, setOpenView] = useState(false);
   const [openWish, setOpenWish] = useState(false);
   const [addedWish, setAddedWish] = useState(false);
@@ -75,12 +58,13 @@ const ProductItem = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const { role, user } = useAppSelector((state) => state.reducer.auth);
-
+  const { _id, title, price, offPrice, shortDescription, rating, image } =
+    product;
   const [addWish, { isLoading: addLoading }] = useAddWishMutation();
   const [deleteWish, { isLoading: delLoading }] = useDeleteWishMutation();
 
   const compareClickHandler = () => {
-    dispatch(addToCompareList(id));
+    dispatch(addToCompareList(product));
     setOpenCompareModal(true);
   };
 
@@ -93,10 +77,10 @@ const ProductItem = ({
     try {
       let response;
       if (!wished) {
-        response = await addWish({ path: role!, id }).unwrap();
+        response = await addWish({ path: role!, id: _id }).unwrap();
         setAddedWish(true);
       } else {
-        response = await deleteWish({ path: role!, id }).unwrap();
+        response = await deleteWish({ path: role!, id: _id }).unwrap();
         setAddedWish(false);
       }
       setOpenWish(true);
@@ -119,8 +103,8 @@ const ProductItem = ({
       }}
     >
       <Box sx={{ position: "relative", borderBottom: "2px solid #f2f2f3cc" }}>
-        <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div>
-        <Link to={`/product/${id}`}>
+        {/* <Div sx={{ fontSize: "12px" }}>{sold && "Sale!"}</Div> */}
+        <Link to={`/product/${_id}`}>
           <CardMedia
             component="img"
             image={image}
@@ -239,7 +223,6 @@ const ProductItem = ({
             rating={rating}
             price={price}
             offPrice={offPrice}
-            sold={sold}
             handleClose={() => setOpenView(false)}
           />
         </div>
@@ -270,7 +253,7 @@ const ProductItem = ({
         <Box
           sx={{ a: { textDecoration: "none", color: "common.digitaBlack" } }}
         >
-          <Link to={`/product/${id}`}>
+          <Link to={`/product/${_id}`}>
             <Typography
               gutterBottom
               variant="body2"
@@ -321,7 +304,7 @@ const ProductItem = ({
               WebkitBoxOrient: "vertical",
             }}
           >
-            {description}
+            {shortDescription}
           </Typography>
         )}
       </CardContent>

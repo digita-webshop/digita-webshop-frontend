@@ -1,8 +1,9 @@
 import { Close } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../store";
-import { CompareWrapper } from "../../Styles/Compare";
+import { CompareWrapper, CTButton } from "../../Styles/Compare";
 import ItemsTable from "./ItemsTable/ItemsTable";
 
 interface Props {
@@ -10,9 +11,20 @@ interface Props {
 }
 
 function CompareModal({ setOpenCompareModal }: Props) {
-  const compareList = useAppSelector(
-    (state) => state.reducer.compare.compareList
+  const { compareList, category } = useAppSelector(
+    (state) => state.reducer.compare
   );
+  const navigate = useNavigate();
+
+  const clickHandler = () => {
+    const query = category.replaceAll(" ", "+").replaceAll("&", "%26");
+    navigate({
+      pathname: `/shop`,
+      search: category ? `?category=%2F${query}` : "",
+    });
+    setOpenCompareModal(false);
+  };
+
   return (
     <CompareWrapper>
       <Box sx={{ height: "90%", overflow: "auto", backgroundColor: "white" }}>
@@ -26,7 +38,7 @@ function CompareModal({ setOpenCompareModal }: Props) {
           <Typography component={"h2"}>Compare Products</Typography>
         </Box>
         {compareList.length === 0 ? (
-          <Box>
+          <Box textAlign={"center"}>
             <Typography
               variant="h6"
               textTransform={"capitalize"}
@@ -35,9 +47,28 @@ function CompareModal({ setOpenCompareModal }: Props) {
             >
               no products added in compare table
             </Typography>
+            <CTButton variant="contained" onClick={clickHandler}>
+              add product
+            </CTButton>
           </Box>
         ) : (
-          <ItemsTable productData={compareList} />
+          <Box sx={{ display: "flex" }}>
+            <ItemsTable products={compareList} />
+            {compareList.length === 1 && (
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "30%",
+                }}
+              >
+                <CTButton variant="contained" onClick={clickHandler}>
+                  select product
+                </CTButton>
+              </Box>
+            )}
+          </Box>
         )}
       </Box>
     </CompareWrapper>

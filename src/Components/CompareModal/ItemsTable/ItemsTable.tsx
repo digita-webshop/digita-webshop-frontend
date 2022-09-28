@@ -15,30 +15,30 @@ const compareIndexes = [
   { key: "name", value: "title" },
   { key: "price", value: "price" },
   { key: "add to cart", value: "add to cart" },
-  { key: "description", value: "description" },
+  { key: "description", value: "shortDescription" },
   { key: "sku", value: "sku" },
-  { key: "color", value: "color" },
+  { key: "colors", value: "colors" },
 ];
 interface Props {
-  productData: any[];
+  products: any[];
 }
-function ItemsTable({ productData }: Props) {
+function ItemsTable({ products }: Props) {
   const dispatch = useDispatch();
-  let widthClass = `w-${productData.length + 1}`;
+  let widthClass = `w-${products.length + 1}`;
 
   const removeHandler = (id: number) => () => {
     dispatch(removeFromCompareList(id));
   };
   return (
-    <Table>
+    <Table sx={{ width: products.length === 1 ? "70%" : "100%" }}>
       <TableBody sx={compareTableStyles} className={widthClass}>
         <TableRow>
           <CTHCell className="td"></CTHCell>
-          {productData.map((product, index) => (
+          {products.map((product, index) => (
             <CTCell key={index}>
               <Box
                 sx={tableRemoveBtnStyles}
-                onClick={removeHandler(product.id)}
+                onClick={removeHandler(product._id)}
               >
                 Remove
                 <Close />
@@ -48,10 +48,10 @@ function ItemsTable({ productData }: Props) {
         </TableRow>
         <TableRow>
           <CTHCell></CTHCell>
-          {productData.map((product, index) => (
+          {products.map((product, index) => (
             <CTCell key={index}>
               <Box sx={tableImageStyles}>
-                <img src={product.image} alt={product.color} />
+                <img src={product.image} alt={product.title} />
               </Box>
             </CTCell>
           ))}
@@ -61,13 +61,13 @@ function ItemsTable({ productData }: Props) {
             <TableRow key={index}>
               <CTHCell>{key}</CTHCell>
 
-              {productData.map((product, index) => (
+              {products.map((product, index) => (
                 <CTCell key={index} className={value === "price" ? "bold" : ""}>
                   {key === "add to cart" && (
                     <CTButton variant="contained">{value}</CTButton>
                   )}
 
-                  {product[key]}
+                  {product[value]}
                 </CTCell>
               ))}
             </TableRow>

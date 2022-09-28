@@ -135,7 +135,7 @@ function Shop() {
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
               {!isLoading && !isError && !wishLoading
-                ? products.map((item) => {
+                ? products.map((product) => {
                     if (products.length === 0) {
                       return (
                         <Box sx={{ textAlign: "center", margin: "40px auto" }}>
@@ -149,22 +149,15 @@ function Shop() {
                       );
                     }
                     return (
-                      <Fragment key={item._id}>
+                      <Fragment key={product._id}>
                         {selectedLayout.grid && (
                           <Fade in={selectedLayout.grid}>
-                            <Grid item xs={12} sm={4} key={item._id}>
+                            <Grid item xs={12} sm={4} key={product._id}>
                               <ProductItem
-                                id={item._id!}
-                                title={item.title}
-                                image={item.image}
-                                offPrice={item.offPrice}
-                                price={item.price}
-                                sold={false}
-                                rating={item.rating!}
-                                description={item.shortDescription}
+                                product={product}
                                 listView={false}
                                 wished={wishlist?.some(
-                                  (i) => i._id === item._id!
+                                  (item) => item._id === product._id!
                                 )}
                               />
                             </Grid>
@@ -174,17 +167,10 @@ function Shop() {
                           <Fade in={selectedLayout.list}>
                             <Grid item xs={12}>
                               <ProductItem
-                                id={item._id!}
-                                title={item.title}
-                                image={item.image}
-                                offPrice={item.offPrice}
-                                price={item.price}
-                                sold={false}
-                                rating={item.rating!}
-                                description={item.shortDescription}
+                                product={product}
                                 listView={true}
                                 wished={wishlist?.some(
-                                  (i) => i._id === item._id!
+                                  (item) => item._id === product._id!
                                 )}
                               />
                             </Grid>
@@ -197,7 +183,6 @@ function Shop() {
                     .fill(null)
                     .map((item, index) => (
                       <Grid item xs={12} sm={4}>
-                        {" "}
                         <ProductPlaceholder key={index} />
                       </Grid>
                     ))}

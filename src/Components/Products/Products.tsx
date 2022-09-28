@@ -55,18 +55,13 @@ const Products = () => {
         <Box>
           <Grid container spacing={{ xs: 2, md: 3 }}>
             {!isLoading && !isError && !wishLoading
-              ? products.map((item) => (
-                  <Grid item xs={12} sm={4} md={3} key={item._id}>
+              ? products.map((product) => (
+                  <Grid item xs={12} sm={4} md={3} key={product._id}>
                     <ProductItem
-                      id={item._id!}
-                      title={item.title}
-                      image={item.image}
-                      offPrice={item.offPrice}
-                      price={item.price}
-                      sold={false}
-                      rating={item.rating}
-                      description={item.shortDescription}
-                      wished={wishlist?.some((i) => i._id === item._id!)}
+                      product={product}
+                      wished={wishlist?.some(
+                        (item) => item._id === product._id!
+                      )}
                       listView={false}
                     />
                   </Grid>

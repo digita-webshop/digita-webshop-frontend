@@ -30,7 +30,6 @@ type T = {
   image: string;
   offPrice: number | null;
   price: number;
-  sold: boolean;
   rating: number;
   handleClose: any;
 };
@@ -38,7 +37,6 @@ type T = {
 const ModalView = ({
   title,
   image,
-  sold,
   price,
   offPrice,
   rating,
@@ -61,13 +59,13 @@ const ModalView = ({
 
   return (
     <Box sx={modalStyle}>
-      {sold && (
+      {/* {sold && (
         <Box sx={{ position: "relative", top: "0", right: "0" }}>
           <IconDiv sx={{ fontSize: "12px", padding: "0.2rem 0.8rem" }}>
             Sale!
           </IconDiv>
         </Box>
-      )}
+      )} */}
 
       <StyledModal>
         <Box sx={modalLeft} className="box">

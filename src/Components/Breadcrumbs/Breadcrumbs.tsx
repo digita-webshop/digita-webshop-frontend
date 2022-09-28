@@ -46,6 +46,7 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
         {title}
       </Typography>
       <Breadcrumb
+        sx={{ "& .MuiBreadcrumbs-ol": { justifyContent: "center" } }}
         separator={
           <NavigateNext sx={{ color: "white", fontSize: "20px", margin: 0 }} />
         }

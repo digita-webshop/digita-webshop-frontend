@@ -13,7 +13,7 @@ import {
   FormLabel,
   TextField,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Review from "./Review/Review";
 import { useAppSelector } from "../../../../../store";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -31,7 +31,7 @@ const Reviews = ({ reviews, id }: Props) => {
   const [reviewDescription, setReviewDescription] = useState("");
   const { indexOfLoadedReviews, loadMoreReviewsHandler } =
     useLoadReviews(reviews);
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const navigate = useNavigate();
 
   const [addReview] = useAddReviewMutation();
@@ -63,6 +63,18 @@ const Reviews = ({ reviews, id }: Props) => {
       console.log(err);
     }
   };
+  useEffect(() => {
+    console.log(document.getElementById(hash.replace("#", "")));
+
+    document.getElementById(hash.replace("#", ""))?.scrollIntoView({
+      behavior: "smooth",
+    });
+    // window.scroll({
+    //   top: 200,
+    //   left: 0,
+    //   behavior: "smooth",
+    // });
+  }, []);
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }} id="reviews">

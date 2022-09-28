@@ -125,7 +125,7 @@ const ProductDetails = ({ product, wished }: Props) => {
                 sx={starRating}
               />
               <NavLink
-                to={`${pathname}?tab=reviews#tabs`}
+                to={`${pathname}?tab=reviews#reviews`}
                 className="customerReview"
               >{`(${reviewsLength} customer ${
                 reviewsLength > 1 ? "reviews" : "review"

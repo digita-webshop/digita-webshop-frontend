@@ -55,19 +55,12 @@ const Product = () => {
             RELATED PRODUCTS
           </Typography>
           <Grid container spacing={{ xs: 1, md: 2 }}>
-            {products.slice(0, 4).map((item) => (
-              <Grid item xs={6} sm={4} md={3} key={item._id}>
+            {products.slice(0, 4).map((product) => (
+              <Grid item xs={6} sm={4} md={3} key={product._id}>
                 <ProductItem
-                  id={item._id!}
-                  title={item.title}
-                  image={item.image}
-                  offPrice={item.offPrice}
-                  price={item.price}
-                  sold={false}
-                  rating={item.rating}
-                  description={item.shortDescription}
+                  product={product}
                   listView={false}
-                  wished={wishlist?.some((i) => i._id === item._id!)}
+                  wished={wishlist?.some((item) => item._id === product._id!)}
                 />
               </Grid>
             ))}

@@ -52,6 +52,8 @@ function Icons({
   const handleToggle = () => {
     if (matches) {
       setOpenDropdown((prevOpen) => !prevOpen);
+    } else if (role === "admin" || role === "superAdmin") {
+      navigate("/panel/dashboard");
     } else {
       navigate("/user");
     }
