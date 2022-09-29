@@ -2,11 +2,12 @@ import { Add } from "@mui/icons-material";
 import { Box, Modal } from "@mui/material";
 import { useState } from "react";
 import { CardWrapper, PButton, PTitle } from "../../Styles/panelCommon";
-import AdminTable from "./AdminTable/AdminTable";
+import UsersTable from "./UsersTable/UsersTable";
 import RegisterAdmin from "./RegisterAdmin/RegisterAdmin";
 
 function ManageAccess() {
   const [openRegister, setOpenRegister] = useState(false);
+
   return (
     <Box>
       <Box
@@ -20,6 +21,7 @@ function ManageAccess() {
         <PTitle sx={{ fontSize: { xs: "22px", sm: "32px" } }}>
           manage access
         </PTitle>
+
         <PButton
           variant="contained"
           sx={{
@@ -34,7 +36,7 @@ function ManageAccess() {
         </PButton>
       </Box>
       <CardWrapper>
-        <AdminTable />
+        <UsersTable />
       </CardWrapper>
       <Modal
         open={openRegister}

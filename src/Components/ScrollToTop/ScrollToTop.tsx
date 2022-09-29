@@ -5,7 +5,6 @@ type Props = { children: React.ReactNode };
 
 const ScrollToTop: React.FC<Props> = ({ children }) => {
   const { pathname, hash, search } = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     window.scroll({
@@ -16,14 +15,11 @@ const ScrollToTop: React.FC<Props> = ({ children }) => {
   }, [pathname]);
 
   useEffect(() => {
-    document
-      .getElementById(hash.replace("#", ""))
-      ?.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "center",
-      });
-    // navigate({ pathname, search });
+    document.getElementById(hash.replace("#", ""))?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "center",
+    });
   }, [hash]);
 
   return <>{children}</>;

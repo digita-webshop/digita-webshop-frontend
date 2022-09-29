@@ -122,9 +122,6 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
       };
       const response = await signUp(userCredentials).unwrap();
 
-      if (response?.code !== 200) {
-        throw new Error(response.message);
-      }
       dispatch(
         setCredentials({ user: {}, role: null, email: response.data.email })
       );

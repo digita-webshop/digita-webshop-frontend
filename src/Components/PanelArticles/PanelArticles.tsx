@@ -76,9 +76,8 @@ const Articles = () => {
           <Grid container spacing={2}>
             {isLoading && <PanelLoading />}
             {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
-            {articles.length === 0 && !isLoading ? (
-              <NotFound />
-            ) : (
+            {articles.length === 0 && !isLoading && !isError && <NotFound />}
+            {articles &&
               articles.map(
                 ({ _id, title, image, writer, createdAt, category }) => (
                   <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={_id}>
@@ -93,8 +92,7 @@ const Articles = () => {
                     />
                   </Grid>
                 )
-              )
-            )}
+              )}
           </Grid>
           <Box sx={paginationStyle}>
             <PanelPagination

@@ -12,7 +12,7 @@ import { cartModal } from "../../../Styles/Products";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { IAddress, IUser } from "../../../Services/Types/user";
-import Address from "./Address";
+import Address from "./Address/Address";
 import { useUpdateUserMutation } from "../../../features/user/userApi";
 import AddressForm from "../../Checkout/AddressForm/AddressForm";
 import { setCredentials } from "../../../features/auth/authSlice";
@@ -43,8 +43,8 @@ function Addresses({ user }: Props) {
 
     try {
       const response = await updateUser({
-        id: user?._id,
-        path: user?.role,
+        id: user._id!,
+        path: user.role!,
         user: newUser,
       }).unwrap();
       if (response.code !== 200) {
@@ -75,8 +75,8 @@ function Addresses({ user }: Props) {
 
     try {
       const response = await updateUser({
-        id: user?._id,
-        path: user?.role,
+        id: user._id!,
+        path: user.role!,
         user: newUser,
       }).unwrap();
 

@@ -90,11 +90,13 @@ const Reviews = () => {
 
   const handleDelete = async (id: string, rid: string) => {
     try {
-      await deleteReview({
+      const res = await deleteReview({
         path: isArticlePage ? "articles" : "products",
         id,
         rid,
       });
+      console.log(res);
+
       successMessage("review deleted successfully");
     } catch (err: any) {
       errorMessage("could not delete review");

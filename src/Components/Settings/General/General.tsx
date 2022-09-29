@@ -58,8 +58,8 @@ function General({ user }: Props) {
     try {
       const response = await updateUser({
         user: newUser,
-        id: user._id,
-        path: user.role,
+        id: user._id!,
+        path: user.role!,
       }).unwrap();
       console.log(response);
       const userInfo = response.data;
@@ -69,7 +69,9 @@ function General({ user }: Props) {
         email: userInfo.email,
         phone: userInfo.phone,
       };
-      dispatch(setCredentials({ user: updatedUser, role: user.role!,email:null }));
+      dispatch(
+        setCredentials({ user: updatedUser, role: user.role!, email: null })
+      );
       successMessage("user information updated successfully");
     } catch (err) {
       console.log(err);
