@@ -34,7 +34,7 @@ function UserDropDown({
   role,
 }: Props) {
   const dispatch = useDispatch();
-  const isAdmin = role === "admin";
+  const isAdmin = role === "admin" || role === "superAdmin";
   const logoutClickHandler = (event: Event | SyntheticEvent) => {
     handleClose(event);
     dispatch(logout());

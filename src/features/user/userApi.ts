@@ -28,7 +28,7 @@ interface UpdateUserRequest {
 export const userApi = api.injectEndpoints({
   endpoints: (build) => ({
     getAllUsers: build.query<GetAllUsersResponse, string>({
-      query: (path) => `${path}`,
+      query: (path) => `${path}s`,
       providesTags: ["Users"],
     }),
     getUser: build.mutation<any, string>({

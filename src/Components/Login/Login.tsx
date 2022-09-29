@@ -67,10 +67,8 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
       };
 
       const response = await login(userCredentials).unwrap();
-      if (response?.code !== 200) {
-        throw new Error(response.message);
-      }
       const data = response?.data;
+
       dispatch(
         setCredentials({
           user: data?.details,

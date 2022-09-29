@@ -4,9 +4,12 @@ import { useState } from "react";
 import { CardWrapper, PButton, PTitle } from "../../Styles/panelCommon";
 import UsersTable from "./UsersTable/UsersTable";
 import RegisterAdmin from "./RegisterAdmin/RegisterAdmin";
+import { useLocation } from "react-router-dom";
 
 function ManageAccess() {
   const [openRegister, setOpenRegister] = useState(false);
+  const { pathname } = useLocation();
+  const isUsersPage = pathname.includes("users");
 
   return (
     <Box>
@@ -19,7 +22,7 @@ function ManageAccess() {
         }}
       >
         <PTitle sx={{ fontSize: { xs: "22px", sm: "32px" } }}>
-          manage access
+          {isUsersPage ? "users" : "manage access"}
         </PTitle>
 
         <PButton
@@ -28,6 +31,7 @@ function ManageAccess() {
             gap: "4px",
             paddingX: "10px",
             fontSize: { xs: "14px", sm: "16px" },
+            display: isUsersPage ? "none" : "flex",
           }}
           onClick={() => setOpenRegister(true)}
         >
@@ -36,7 +40,7 @@ function ManageAccess() {
         </PButton>
       </Box>
       <CardWrapper>
-        <UsersTable />
+        <UsersTable isUsersPage={isUsersPage} />
       </CardWrapper>
       <Modal
         open={openRegister}

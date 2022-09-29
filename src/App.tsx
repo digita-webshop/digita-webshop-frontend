@@ -121,13 +121,14 @@ function App() {
                 <Route path="reviews" element={<Reviews />} />
                 <Route path="edit/:id" element={<AddProduct />} />
               </Route>
-              <Route path="orders" element={<Orders />} />
               <Route path="articles/*">
                 <Route path="list" element={<Articles />} />
                 <Route path="add" element={<AddArticle />} />
                 <Route path="reviews" element={<Reviews />} />
                 <Route path="edit/:id" element={<AddArticle />} />
               </Route>
+              <Route path="manage-users" element={<ManageAccess />} />
+              <Route path="orders" element={<Orders />} />
               <Route path="brands" element={<Brands />} />
               <Route path="wishlist" element={<PanelWishlist />} />
               <Route path="my-orders" element={<PanelOrders />} />

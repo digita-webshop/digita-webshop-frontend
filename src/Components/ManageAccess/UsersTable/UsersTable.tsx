@@ -1,11 +1,11 @@
 import { DeleteForever } from "@mui/icons-material";
 import { Box, Button, Divider, Modal, Typography } from "@mui/material";
 import { ChangeEvent, useState } from "react";
-import { useLocation } from "react-router-dom";
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
 } from "../../../features/user/userApi";
+import { IUser } from "../../../Services/Types/user";
 import {
   errorMessage,
   successMessage,
@@ -17,23 +17,23 @@ import NotFound from "../../EmptyList/NotFound";
 import PanelLoading from "../../Loading/PanelLoading";
 import PanelPagination from "../../PanelPagination/PanelPagination";
 import TableItem from "./TableItem/TableItem";
-
-function UsersTable() {
+interface Props {
+  isUsersPage: boolean;
+}
+function UsersTable({ isUsersPage }: Props) {
   const [checked, setChecked] = useState<string[]>([]);
   const [openRemove, setOpenRemove] = useState(false);
-  const [selectedUser, setSelectedUser] = useState("");
+  const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(20);
+  const userType = isUsersPage ? "user" : "admin";
 
-  const { pathname } = useLocation();
-
-  const { data: usersData, isLoading, isError } = useGetAllUsersQuery("admins");
+  const { data: usersData, isLoading, isError } = useGetAllUsersQuery(userType);
   const users = usersData?.data ?? [];
   console.log(usersData);
 
   const [deleteUser] = useDeleteUserMutation();
-  const isUsersPage = pathname.includes("users");
 
   let filteredUsers = users;
 
@@ -66,7 +66,6 @@ function UsersTable() {
     }
   };
   const removeUserHandler = async (id: string) => {
-    const userType = isUsersPage ? "user" : "admin";
     try {
       await deleteUser({
         path: userType,
@@ -134,7 +133,6 @@ function UsersTable() {
               user={user}
               handleToggle={handleToggle}
               checked={checked}
-              removeUserHandler={removeUserHandler}
               setOpenRemove={setOpenRemove}
               setSelectedUser={setSelectedUser}
             />
@@ -166,7 +164,7 @@ function UsersTable() {
             component="h2"
             sx={{ textAlign: "center" }}
           >
-            Confirm You Want To Remove This Admin!
+            {` Confirm You Want To Remove ${selectedUser?.userName}`}
           </Typography>
           <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>
             <Button
@@ -183,9 +181,9 @@ function UsersTable() {
             </Button>
             <Button
               onClick={() => {
-                removeUserHandler(selectedUser);
+                removeUserHandler(selectedUser?._id!);
                 setOpenRemove(false);
-                setSelectedUser("");
+                setSelectedUser(null);
               }}
               variant="contained"
               sx={{

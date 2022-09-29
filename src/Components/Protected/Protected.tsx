@@ -9,7 +9,7 @@ const Protected = ({ children }: Props) => {
   const { pathname } = location;
   const { role } = useAppSelector((state) => state.reducer.auth);
 
-  if (role === "superAdmin" && pathname.includes("user")) {
+  if (role === "superAdmin" && pathname.includes("/user")) {
     return <Navigate to="/" replace state={{ from: location }} />;
   }
 

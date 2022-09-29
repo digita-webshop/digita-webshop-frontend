@@ -1377,6 +1377,12 @@ export const panelSidebarItems = [
   },
   {
     id: 3,
+    title: "users",
+    route: "/panel/manage-users",
+    icon: "group",
+  },
+  {
+    id: 5,
     title: "orders",
     route: "/panel/orders",
     icon: "local_grocery_store",

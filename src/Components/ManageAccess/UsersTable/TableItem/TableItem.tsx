@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { Close } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
 import { IUser } from "../../../../Services/Types/user";
@@ -7,9 +8,8 @@ interface Props {
   user: IUser;
   checked: any;
   handleToggle: (id: string) => () => void;
-  removeUserHandler: (id: string) => void;
-  setOpenRemove: any;
-  setSelectedUser: any;
+  setOpenRemove: Dispatch<SetStateAction<boolean>>;
+  setSelectedUser: Dispatch<SetStateAction<IUser | null>>;
 }
 function TableItem({
   user,
@@ -78,7 +78,7 @@ function TableItem({
             fontSize: { xs: "12px", sm: "14px" },
           }}
           onClick={() => {
-            setSelectedUser(user._id!);
+            setSelectedUser(user);
             setOpenRemove(true);
           }}
         >
