@@ -68,6 +68,7 @@ function General({ user }: Props) {
         userName: userInfo.userName,
         email: userInfo.email,
         phone: userInfo.phone,
+        image: uploadImage,
       };
       dispatch(
         setCredentials({ user: updatedUser, role: user.role!, email: null })

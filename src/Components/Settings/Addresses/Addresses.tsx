@@ -71,27 +71,35 @@ function Addresses({ user }: Props) {
     } else {
       addressArr.push(address);
     }
-    let newUser = { ...user, addresses: addressArr };
 
     try {
       const response = await updateUser({
         id: user._id!,
         path: user.role!,
-        user: newUser,
+        user: {
+          addresses: addressArr,
+        },
       }).unwrap();
 
+      let updatedUser = {
+        ...user,
+        addresses: addressArr,
+      };
+
       dispatch(
-        setCredentials({ user: newUser, role: user.role!, email: null })
+        setCredentials({
+          user: updatedUser,
+          role: user.role!,
+          email: null,
+        })
       );
       console.log(response);
       successMessage(`address ${mode}ed successfully`);
       setNewAddress(false);
       setCurrentAddress(null);
-    } catch (err) {
-      setCurrentAddress(null);
-      errorMessage(`could not ${mode} address`);
+    } catch (err: any) {
+      errorMessage(err?.data.message);
       console.log(err);
-      setNewAddress(false);
     }
   };
   useEffect(() => {

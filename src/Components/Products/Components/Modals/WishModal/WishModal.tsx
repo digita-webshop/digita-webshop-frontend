@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 interface Props {
   setOpenWish: Dispatch<SetStateAction<boolean>>;
   addedWish: boolean;
-  role: string | null;
+  role: string | null | undefined;
 }
 function WishModal({ setOpenWish, addedWish, role }: Props) {
   return (

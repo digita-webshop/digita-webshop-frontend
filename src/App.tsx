@@ -61,7 +61,7 @@ function App() {
           dispatch(
             setCredentials({
               user: response.data,
-              role: response?.data.role,
+              role: response.data.role!,
               email: null,
             })
           );

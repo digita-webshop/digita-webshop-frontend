@@ -54,6 +54,7 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
   const [citiesList, setCitiesList] = useState<ICity[]>([]);
   const [enteredStreet, setEnteredStreet] = useState("");
   const [enteredPostCode, setEnteredPostCode] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const allCountries = Country.getAllCountries();
   const allStates = State.getAllStates();
@@ -104,6 +105,10 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
 
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
+    if (enteredPostCode.trim().length < 10) {
+      setErrorMessage("your post code must contain at least 10 numbers");
+      return;
+    }
     const address: IAddress = {
       country: country?.name,
       state: state?.name,
@@ -201,6 +206,13 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
             onChange={(e) => setEnteredPostCode(e.target.value)}
             placeholder=""
           />
+          {errorMessage && (
+            <Typography
+              sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
+            >
+              {errorMessage}
+            </Typography>
+          )}
         </FormControl>
       </Grid>
 

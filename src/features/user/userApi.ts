@@ -12,11 +12,15 @@ type UserData = {
   email: string;
   password?: string;
   _id?: string;
+  phone?: string;
 };
 interface UserResponse {
   code: number;
   message: string;
   data: UserData;
+}
+interface GetUserResponse extends UserResponse {
+  data: IUser;
 }
 
 interface UpdateUserRequest {
@@ -31,7 +35,7 @@ export const userApi = api.injectEndpoints({
       query: (path) => `${path}s`,
       providesTags: ["Users"],
     }),
-    getUser: build.mutation<any, string>({
+    getUser: build.mutation<GetUserResponse, string>({
       query(id) {
         return {
           url: `users/${id}`,
@@ -40,9 +44,10 @@ export const userApi = api.injectEndpoints({
       },
       invalidatesTags: ["User"],
     }),
-    updateUser: build.mutation<any, UpdateUserRequest>({
+    updateUser: build.mutation<UserResponse, UpdateUserRequest>({
       query(data) {
-        const { path, id, user } = data;
+        const { path: role, id, user } = data;
+        const path = role === "user" ? "user" : "admin";
         return {
           url: `${path}s/${id}`,
           method: "PUT",
