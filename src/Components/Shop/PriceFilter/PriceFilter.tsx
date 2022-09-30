@@ -15,7 +15,7 @@ function PriceFilter({ drawer }: Props) {
   };
   const addPriceQueryParams = () => {
     searchParams.set("priceRange", `min=${value[0]}/max=${value[1]}`);
-    setSearchParams(searchParams);
+    setSearchParams(searchParams, { replace: true });
   };
   return (
     <Box

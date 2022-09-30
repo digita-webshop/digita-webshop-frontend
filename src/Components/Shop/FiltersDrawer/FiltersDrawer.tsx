@@ -31,7 +31,7 @@ function FiltersDrawer({
   const selectedCategoryHandler = (event: SelectChangeEvent) => {
     setSelectedCategory(event.target.value);
     searchParams.set("category", `/${event.target.value}`);
-    setSearchParams(searchParams);
+    setSearchParams(searchParams, { replace: true });
   };
   return (
     <Drawer

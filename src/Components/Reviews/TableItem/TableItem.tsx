@@ -29,12 +29,16 @@ function TableItem({
   const readableDate = getReadableDate(review?.createdAt!);
   const navigate = useNavigate();
 
-  const clickHandler = () => {
+  const reviewClickHandler = () => {
     navigate({
       pathname: `/${isArticlePage ? "article" : "product"}/${data._id}`,
       hash: `review-${review._id}`,
       search: isArticlePage ? "" : "tab=reviews",
     });
+  };
+  const deleteClickHandler = (event: any) => {
+    event.stopPropagation();
+    handleDelete(data?._id, review?._id!);
   };
   return (
     <TableRow
@@ -42,10 +46,11 @@ function TableItem({
         cursor: "pointer",
         "&:hover": { bgcolor: "common.panelActiveRed" },
       }}
-      onClick={clickHandler}
+      onClick={reviewClickHandler}
     >
       <TCell>
         <TCheckBox
+          onClick={(e) => e.stopPropagation()}
           onChange={handleToggle(review._id!, data._id)}
           checked={checked.findIndex((item) => item.rid === review._id!) !== -1}
         />
@@ -59,7 +64,9 @@ function TableItem({
       >
         {data?.title}
       </TCell>
-      <TCell sx={{ wordBreak: "break-all" }}>{user.userName}</TCell>
+      <TCell sx={{ wordBreak: "break-all" }}>
+        {user ? user?.userName : "deleted account"}
+      </TCell>
       {!matchesSm && !isArticlePage && (
         <TCell>
           <Rating
@@ -91,7 +98,7 @@ function TableItem({
                 svg: { color: "common.digitaRed" },
               },
             }}
-            onClick={() => handleDelete(data?._id, review?._id!)}
+            onClick={deleteClickHandler}
           >
             <Delete sx={{ color: "common.panelGrey" }} />
           </TableButton>

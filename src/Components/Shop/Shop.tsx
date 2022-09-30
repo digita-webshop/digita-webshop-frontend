@@ -100,7 +100,7 @@ function Shop() {
         selectedQueryParams ? `${selectedQueryParams}/${name}` : `/${name}`
       );
     }
-    setSearchParams(searchParams);
+    setSearchParams(searchParams, { replace: true });
     setCurrentPage(1);
   };
 

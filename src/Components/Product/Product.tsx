@@ -31,6 +31,7 @@ const Product = () => {
     role!
   );
   const wishlist = wishlistData?.data ?? [];
+
   if (productLoading || productsLoading || wishLoading) {
     return <Loading full />;
   }

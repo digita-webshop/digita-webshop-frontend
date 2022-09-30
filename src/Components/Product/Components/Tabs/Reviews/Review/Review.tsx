@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Avatar, Box, Divider, Rating, Typography } from "@mui/material";
 import avatar from "../../../../../../Assets/Images/Product/avatar.png";
-import { IUser } from "../../../../../../Services/Types/user";
 import { getReadableDate } from "../../../../../../Services/Utils/getReadableDate";
 import { useGetUserMutation } from "../../../../../../features/user/userApi";
 import { useLocation } from "react-router-dom";
@@ -15,30 +14,26 @@ interface Props {
 }
 
 function Review({ id, userId, rating, description, createdAt }: Props) {
-  const [user, setUser] = useState<IUser>();
-  const { hash, pathname } = useLocation();
+  const [user, setUser] = useState<any>();
+  const { pathname } = useLocation();
 
   const readableDate = getReadableDate(createdAt);
   const [getUser] = useGetUserMutation();
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
         const res = await getUser(userId).unwrap();
         setUser(res.data);
-      } catch (err) {
+      } catch (err: any) {
+        if (err.status === 404) {
+          setUser({ userName: "deleted account" });
+        }
         console.log(err);
       }
     };
     fetchUser();
   }, []);
-
-  useEffect(() => {
-    document.getElementById(hash.replace("#", ""))?.scrollIntoView({
-      inline: "center",
-      block: "center",
-      behavior: "smooth",
-    });
-  }, [hash]);
 
   return (
     <Fragment>

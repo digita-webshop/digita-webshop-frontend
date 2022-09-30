@@ -36,15 +36,17 @@ function Tabs({ product }: Props) {
     id: product._id!,
   });
   const reviews = reviewsData?.data ?? [];
-  const tabValue = searchParams.get("tab") ?? "review";
+  const tabValue = searchParams.get("tab") ?? "";
+
   const tabSelectHandler = (event: SyntheticEvent, value: any) => {
     if (!value) {
       searchParams.delete("tab");
     } else {
       searchParams.set("tab", value);
     }
-    setSearchParams(searchParams);
+    setSearchParams(searchParams, { replace: true });
   };
+
   const openTabsHandler = (value: string) => () => {
     setOpenTabs((prev: any) => ({ ...prev, [value]: !prev[value] }));
   };
