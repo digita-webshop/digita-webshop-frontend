@@ -1,6 +1,12 @@
 import { FormEvent, ChangeEvent, useState, useRef } from "react";
 import { CloudUpload } from "@mui/icons-material";
-import { CircularProgress, Box, FormControl, Grid } from "@mui/material";
+import {
+  CircularProgress,
+  Box,
+  FormControl,
+  Grid,
+  Typography,
+} from "@mui/material";
 import {
   PButton,
   PFormLabel,
@@ -28,6 +34,7 @@ function General({ user }: Props) {
   const [enteredPhone, setEnteredPhone] = useState(user?.phone || "");
   const [uploadedImage, setUploadedImage] = useState(user?.image || "");
   const [imgLoading, setImgLoading] = useState(false);
+  const [phoneErrorMessage, setPhoneErrorMessage] = useState("");
 
   const [updateUser] = useUpdateUserMutation();
   const dispatch = useDispatch();
@@ -49,34 +56,39 @@ function General({ user }: Props) {
 
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
-    const newUser = {
+
+    const newUser: any = {
       userName: enteredUserName,
       email: enteredEmail,
-      phone: enteredPhone,
-      image: uploadedImage,
+      image: uploadedImage ?? "",
     };
+    if (enteredPhone && enteredPhone.length >= 10) {
+      newUser.phone = enteredPhone;
+    }
+    if (enteredPhone && enteredPhone.length < 10) {
+      setPhoneErrorMessage("your phone must contain at least 10 numbers");
+      return;
+    }
+
     try {
-      const response = await updateUser({
+      await updateUser({
         user: newUser,
         id: user._id!,
         path: user.role!,
       }).unwrap();
-      console.log(response);
-      const userInfo = response.data;
-      const updatedUser = {
-        ...user,
-        userName: userInfo.userName,
-        email: userInfo.email,
-        phone: userInfo.phone,
-        image: uploadImage,
-      };
       dispatch(
-        setCredentials({ user: updatedUser, role: user.role!, email: null })
+        setCredentials({
+          user: { ...user, ...newUser },
+          role: user.role!,
+          email: null,
+        })
       );
       successMessage("user information updated successfully");
+      setPhoneErrorMessage("");
     } catch (err) {
       console.log(err);
       errorMessage("could not update user information");
+      setPhoneErrorMessage("");
     }
   };
   return (
@@ -118,6 +130,13 @@ function General({ user }: Props) {
               placeholder="+1234567890"
             />
           </FormControl>
+          {phoneErrorMessage && (
+            <Typography
+              sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
+            >
+              {phoneErrorMessage}
+            </Typography>
+          )}
         </Grid>
       </Grid>
       <Grid item xs={12} md={4}>

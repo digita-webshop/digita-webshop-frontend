@@ -1409,7 +1409,7 @@ export const panelSidebarItems = [
     id: 11,
     title: "manage access",
     route: "/panel/manage-access",
-    icon: "supervisor_account",
+    icon: "manage_accounts",
   },
   {
     id: 12,

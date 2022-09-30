@@ -1,16 +1,14 @@
 import { MoreHoriz } from "@mui/icons-material";
 import { Table, TableBody, TableHead, TableRow } from "@mui/material";
-import { orders } from "../../../Services/Data/data";
 import { TableButton, TBadge, TCell, THCell } from "../../../Styles/Orders";
 
 const tableHead = ["#ID", "name", "email", "total", "status", "date", "action"];
-const statusName = ["canceled", "pending", "received"];
 
 interface Props {
-  selectedAmount: string;
+  orders?: any;
 }
 
-function OrdersTable({ selectedAmount }: Props) {
+function OrdersTable({ orders }: Props) {
   return (
     <Table>
       <TableHead>
@@ -27,47 +25,41 @@ function OrdersTable({ selectedAmount }: Props) {
         </TableRow>
       </TableHead>
       <TableBody>
-        {orders
-          .slice(0, +selectedAmount)
-          .map(({ id, name, email, status, date, total }) => (
-            <TableRow
-              key={id}
-              sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
+        {orders?.map((order: any) => (
+          <TableRow
+            key={order._id!}
+            sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
+          >
+            <TCell>{order._id!.slice(0, 2)}</TCell>
+            <TCell
+              sx={{
+                fontWeight: 500,
+                wordBreak: "break-word",
+              }}
             >
-              <TCell>{id}</TCell>
-              <TCell
-                sx={{
-                  fontWeight: 500,
-                  wordBreak: "break-word",
-                }}
-              >
-                {name}
-              </TCell>
-              <TCell sx={{ wordBreak: "break-all" }}>{email}</TCell>
-              <TCell>{`$${total.toFixed(2)}`}</TCell>
-              <TCell>
-                <TBadge className={statusName[status]}>
-                  {statusName[status]}
-                </TBadge>
-              </TCell>
-              <TCell>{date}</TCell>
-              <TCell
-                sx={{
-                  display: { xs: "none", sm: "flex" },
-                  justifyContent: "center",
-                  gap: "4px",
-                  flexWrap: "wrap",
-                }}
-              >
-                <TableButton>Detail</TableButton>
-                <TableButton sx={{ display: "flex", paddingY: "0" }}>
-                  <MoreHoriz
-                    sx={{ margin: "auto", color: "common.panelGrey" }}
-                  />
-                </TableButton>
-              </TCell>
-            </TableRow>
-          ))}
+              {order.userId?.userName}
+            </TCell>
+            <TCell sx={{ wordBreak: "break-all" }}>{order.userId?.email}</TCell>
+            <TCell>{`$${21}`}</TCell>
+            <TCell>
+              <TBadge className={order.status}>{order.status}</TBadge>
+            </TCell>
+            <TCell>{"date"}</TCell>
+            <TCell
+              sx={{
+                display: { xs: "none", sm: "flex" },
+                justifyContent: "center",
+                gap: "4px",
+                flexWrap: "wrap",
+              }}
+            >
+              <TableButton>Detail</TableButton>
+              <TableButton sx={{ display: "flex", paddingY: "0" }}>
+                <MoreHoriz sx={{ margin: "auto", color: "common.panelGrey" }} />
+              </TableButton>
+            </TCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );

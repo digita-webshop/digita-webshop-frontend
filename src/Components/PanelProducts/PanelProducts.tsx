@@ -93,7 +93,7 @@ const PanelProducts = () => {
             {isLoading && <PanelLoading />}
             {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
             {products?.length === 0 && !isLoading && !isError && <NotFound />}
-            {products &&
+            {products?.length !== 0 &&
               products.map(({ _id, title, price, image }) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={_id}>
                   <Product

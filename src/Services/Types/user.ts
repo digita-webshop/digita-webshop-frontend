@@ -9,9 +9,10 @@ export interface IAddress {
   postalCode: string;
 }
 export interface IOrder {
-  productId: string;
+  products: string;
   status: "pending" | "delivered" | "cancelled";
   userId: string;
+  createdAt?: string;
 }
 export interface IUser {
   _id?: string;

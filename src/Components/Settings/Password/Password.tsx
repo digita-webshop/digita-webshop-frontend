@@ -39,13 +39,12 @@ function Password({ role, id }: Props) {
       password: enteredNewPass,
     };
     try {
-      const response = await updateUser({
+      await updateUser({
         user: newUser,
         id,
         path: role,
       }).unwrap();
 
-      console.log(response);
       successMessage("password changed successfully");
       reset();
     } catch (err: any) {

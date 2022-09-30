@@ -8,19 +8,30 @@ import OrderItem from "../User/Orders/OrderItem/OrderItem";
 import {
   pendingItems,
   deliveredItems,
-  referredItems,
   canceledItems,
 } from "../../Services/Data/data";
 import { Link } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
+import {
+  useGetAllOrdersQuery,
+  useGetUserOrdersQuery,
+} from "../../features/orders/ordersApi";
+import { useAppSelector } from "../../store";
 
 const PanelOrders = () => {
+  const { user } = useAppSelector((state) => state.reducer.auth);
   const [value, setValue] = useState(0);
 
   const [pending, setPending] = useState(1);
   const [delivered, setDelivered] = useState(1);
-  const [referred, setReferred] = useState(1);
   const [canceled, setCanceled] = useState(1);
+
+  const {
+    data: ordersData,
+    isLoading,
+    isError,
+  } = useGetUserOrdersQuery({ path: user?.role!, id: user?._id! });
+  console.log(ordersData);
 
   const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -56,7 +67,6 @@ const PanelOrders = () => {
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs">
             <Tab label="Pending" {...a11yProps(0)} />
             <Tab label="Delivered" {...a11yProps(1)} />
-            <Tab label="Referred" {...a11yProps(2)} />
             <Tab label="Canceled" {...a11yProps(3)} />
           </Tabs>
         </Box>
@@ -88,19 +98,7 @@ const PanelOrders = () => {
             />
           ))}
         </TabPanel>
-        <TabPanel value={value} index={2}>
-          {referred === 0 && <EmptyOrder />}
-          {referredItems.map(({ id, date, image, price, code, status }) => (
-            <OrderItem
-              id={id}
-              date={date}
-              image={image}
-              price={price}
-              code={code}
-              status={status}
-            />
-          ))}
-        </TabPanel>
+
         <TabPanel value={value} index={3}>
           {canceled === 0 && <EmptyOrder />}
           {canceledItems.map(({ id, date, image, price, code, status }) => (

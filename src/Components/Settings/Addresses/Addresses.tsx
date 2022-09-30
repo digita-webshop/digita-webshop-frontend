@@ -73,7 +73,7 @@ function Addresses({ user }: Props) {
     }
 
     try {
-      const response = await updateUser({
+      await updateUser({
         id: user._id!,
         path: user.role!,
         user: {
@@ -93,7 +93,6 @@ function Addresses({ user }: Props) {
           email: null,
         })
       );
-      console.log(response);
       successMessage(`address ${mode}ed successfully`);
       setNewAddress(false);
       setCurrentAddress(null);
