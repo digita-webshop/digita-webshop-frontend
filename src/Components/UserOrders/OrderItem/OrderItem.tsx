@@ -5,20 +5,19 @@ import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import PendingIcon from "@mui/icons-material/Pending";
 import AssignmentReturnIcon from "@mui/icons-material/AssignmentReturn";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { between, wrapper } from "../../../../Styles/User";
+import { between, wrapper } from "../../../Styles/User";
 
 interface T {
-  id: number;
+  id: string;
   price: number;
-  code: number;
   date: string;
   image: string;
   status: string;
 }
 
-const OrderItem = ({ id, price, date, code, image, status }: T) => {
+const OrderItem = ({ id, price, date, image, status }: T) => {
   return (
-    <Box sx={wrapper} key={id}>
+    <Box sx={wrapper}>
       <Box sx={between}>
         <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
           {status === "pending" && (
@@ -70,7 +69,7 @@ const OrderItem = ({ id, price, date, code, image, status }: T) => {
           >
             Code
           </Typography>
-          <Typography>{code}</Typography>
+          <Typography>{id}</Typography>
         </Box>
         <Box sx={{ display: "flex", gap: 1 }}>
           <Typography

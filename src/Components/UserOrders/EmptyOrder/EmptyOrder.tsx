@@ -1,5 +1,5 @@
-import { Box, Typography } from '@mui/material'
-import { EmptyWishlistWrapper } from '../../../../Styles/EmptyList'
+import { Box, Typography } from "@mui/material";
+import { EmptyWishlistWrapper } from "../../../Styles/EmptyList";
 
 const EmptyOrder = () => {
   return (
@@ -14,7 +14,7 @@ const EmptyOrder = () => {
         You don't have any orders
       </Typography>
     </EmptyWishlistWrapper>
-  )
-}
+  );
+};
 
-export default EmptyOrder
+export default EmptyOrder;

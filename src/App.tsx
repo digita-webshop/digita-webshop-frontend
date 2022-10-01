@@ -21,7 +21,7 @@ import {
   Dashboard,
   ManageAccess,
   PanelWishlist,
-  PanelOrders,
+  UserOrders,
   Orders,
   Products,
   Reviews,
@@ -30,7 +30,7 @@ import {
 } from "./Pages/Panel/Admin";
 
 import {
-  Orders as UserOrders,
+  Orders as UserOrderss,
   Addresses,
   Wishlist as UserWishlist,
   Status,
@@ -131,7 +131,7 @@ function App() {
               <Route path="orders" element={<Orders />} />
               <Route path="brands" element={<Brands />} />
               <Route path="wishlist" element={<PanelWishlist />} />
-              <Route path="my-orders" element={<PanelOrders />} />
+              <Route path="my-orders" element={<UserOrderss />} />
               <Route
                 path="manage-access"
                 element={

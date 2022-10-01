@@ -1,4 +1,4 @@
-import {Orders as OrdersPage} from "../../../../Components/User"
+import { UserOrders as OrdersPage } from "../../../../Components";
 
 function Orders() {
   return <OrdersPage />;
