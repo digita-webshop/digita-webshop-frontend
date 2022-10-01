@@ -50,7 +50,7 @@ function Toolbar({
       searchParams.delete("sort");
     }
 
-    setSearchParams(searchParams);
+    setSearchParams(searchParams, { replace: true });
   };
   return (
     <Box

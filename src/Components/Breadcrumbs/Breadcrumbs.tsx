@@ -12,10 +12,15 @@ import { Link as RouterLink } from "react-router-dom";
 interface Props {
   title: string;
   lastPath?: string | boolean;
+  category?: string;
 }
-function Breadcrumbs({ title, lastPath }: Props) {
-  const { pathname } = useLocation();
-  const pathnames = pathname.split("/").filter((x) => x);
+function Breadcrumbs({ title, lastPath, category = "" }: Props) {
+  const Location = useLocation();
+  let pathnames = Location.pathname.split("/").filter((x) => x);
+  let categoryRoute = pathnames.includes("product") ? "shop" : "blog";
+  if (category) {
+    pathnames.splice(pathnames.length - 1, 0, category);
+  }
 
   return (
     <Box
@@ -41,6 +46,7 @@ function Breadcrumbs({ title, lastPath }: Props) {
         {title}
       </Typography>
       <Breadcrumb
+        sx={{ "& .MuiBreadcrumbs-ol": { justifyContent: "center" } }}
         separator={
           <NavigateNext sx={{ color: "white", fontSize: "20px", margin: 0 }} />
         }
@@ -58,10 +64,24 @@ function Breadcrumbs({ title, lastPath }: Props) {
           Home
         </Link>
         {pathnames.map((path, index) => {
-          const route = `/${pathnames.slice(0, index + 1).join("/")}`;
+          let route = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
-          const name = path.replace(/-/g, " ");
+          let name = path.replace(/-/g, " ");
 
+          if (name === "product") {
+            name = "shop";
+            route = "/shop";
+          }
+          if (name === "article") {
+            name = "blog";
+            route = "/blog";
+          }
+          if (name === category) {
+            route = `/${categoryRoute}?category=/${category.replace(
+              "&",
+              "%26"
+            )}`;
+          }
           return isLast ? (
             <Typography
               key={index}

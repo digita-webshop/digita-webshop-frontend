@@ -28,6 +28,7 @@ import {
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
+import { getReadableDate } from "./../../../Services/Utils/getReadableDate";
 
 type T = {
   id: string;
@@ -49,11 +50,12 @@ const Article = ({
   onRemove,
 }: T) => {
   const [openDelete, setOpenDelete] = useState(false);
-
   const navigate = useNavigate();
   /* Edit part */
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const readableDate = getReadableDate(createdAt!);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -76,7 +78,7 @@ const Article = ({
         height="auto"
         image={image}
         alt="green iguana"
-        sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
+        sx={{ aspectRatio: "1", objectFit: "cover" }}
       />
       <AuthorWrapper>
         {/* Author article */}
@@ -110,7 +112,7 @@ const Article = ({
               style={{ fontSize: "13px" }}
               color="secondary"
             />
-            &nbsp;{createdAt} -
+            &nbsp;{readableDate} -
           </Box>
         </Item>
         {/* category article */}

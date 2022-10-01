@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import {
   Container,
@@ -17,13 +17,13 @@ import Toolbar from "./Toolbar/Toolbar";
 import ProductItem from "../Products/Components/ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
-import { IProduct } from "../../Services/Utils/Types/product";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
+import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
+import { useAppSelector } from "../../store";
 
 function Shop() {
   const [displayDrawer, setDisplayDrawer] = useState(false);
-  const [products, setProducts] = useState<IProduct[]>([]);
   const [productsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedLayout, setSelectedLayout] = useState({
@@ -31,19 +31,19 @@ function Shop() {
     list: false,
   });
   let [searchParams, setSearchParams] = useSearchParams();
+  const { role } = useAppSelector((state) => state.reducer.auth);
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const { data: wishlistData, isLoading: wishLoading } = useGetWishlistQuery(
+    role!
+  );
+  const wishlist = wishlistData?.data ?? [];
 
-  // const indexOfLastProduct = currentPage * productsPerPage;
-  // const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  let currentProducts = products;
   let queries: any = `page=${currentPage}&limit=${productsPerPage}`;
 
   let searchQueryParams = searchParams.get("search");
   if (searchQueryParams) {
-    console.log(searchQueryParams);
-
     queries = `${queries} &search=${searchQueryParams}`;
   }
 
@@ -80,6 +80,8 @@ function Shop() {
     isError,
   } = useGetAllProductsQuery(queries);
   console.log(productsData);
+  const products = productsData?.data ?? [];
+  const productsLength = productsData?.total ?? 0;
 
   const addQueryParams = (filter: string, name: string) => () => {
     let selectedQueryParams = searchParams.get(filter);
@@ -98,14 +100,10 @@ function Shop() {
         selectedQueryParams ? `${selectedQueryParams}/${name}` : `/${name}`
       );
     }
-    setSearchParams(searchParams);
+    setSearchParams(searchParams, { replace: true });
     setCurrentPage(1);
   };
-  useEffect(() => {
-    if (productsData?.code === 200) {
-      setProducts(productsData?.data);
-    }
-  }, [productsData]);
+
   return (
     <Box bgcolor={"white"}>
       <Breadcrumbs title={"products"} />
@@ -136,9 +134,9 @@ function Shop() {
               selectedLayout={selectedLayout}
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
-              {!isLoading && !isError
-                ? currentProducts.map((item) => {
-                    if (currentProducts.length === 0) {
+              {!isLoading && !isError && !wishLoading
+                ? products.map((product) => {
+                    if (products.length === 0) {
                       return (
                         <Box sx={{ textAlign: "center", margin: "40px auto" }}>
                           <Typography
@@ -151,20 +149,16 @@ function Shop() {
                       );
                     }
                     return (
-                      <Fragment key={item._id}>
+                      <Fragment key={product._id}>
                         {selectedLayout.grid && (
                           <Fade in={selectedLayout.grid}>
-                            <Grid item xs={12} sm={4} key={item._id}>
+                            <Grid item xs={12} sm={4} key={product._id}>
                               <ProductItem
-                                id={item._id!}
-                                title={item.title}
-                                image={item.image}
-                                offPrice={item.offPrice}
-                                price={item.price}
-                                sold={false}
-                                rating={item.rating!}
-                                description={item.shortDescription}
+                                product={product}
                                 listView={false}
+                                wished={wishlist?.some(
+                                  (item) => item._id === product._id!
+                                )}
                               />
                             </Grid>
                           </Fade>
@@ -173,15 +167,11 @@ function Shop() {
                           <Fade in={selectedLayout.list}>
                             <Grid item xs={12}>
                               <ProductItem
-                                id={item._id!}
-                                title={item.title}
-                                image={item.image}
-                                offPrice={item.offPrice}
-                                price={item.price}
-                                sold={false}
-                                rating={item.rating!}
-                                description={item.shortDescription}
+                                product={product}
                                 listView={true}
+                                wished={wishlist?.some(
+                                  (item) => item._id === product._id!
+                                )}
                               />
                             </Grid>
                           </Fade>
@@ -193,17 +183,18 @@ function Shop() {
                     .fill(null)
                     .map((item, index) => (
                       <Grid item xs={12} sm={4}>
-                        {" "}
                         <ProductPlaceholder key={index} />
                       </Grid>
                     ))}
             </Grid>
-            <Pagination
-              productsPerPage={productsPerPage}
-              totalProducts={currentProducts.length}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-            />
+            {products && (
+              <Pagination
+                productsPerPage={productsPerPage}
+                totalProducts={productsLength}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            )}
           </Grid>
         </Grid>
       </Container>

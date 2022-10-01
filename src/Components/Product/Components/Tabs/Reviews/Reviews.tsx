@@ -14,60 +14,70 @@ import {
   TextField,
 } from "@mui/material";
 import { useState } from "react";
-import ReviewsList from "./ReviewsList/ReviewsList";
-import { IProduct } from "../../../../../Services/Utils/Types/product";
+import Review from "./Review/Review";
 import { useAppSelector } from "../../../../../store";
-import { useUpdateProductMutation } from "../../../../../features/products/productsApi";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAddReviewMutation } from "../../../../../features/reviews/reviewsApi";
+import { IReviews } from "../../../../../Services/Types/product";
+import { useLoadReviews } from "../../../../../hooks/useLoadReviews";
 
 interface Props {
-  product: IProduct;
+  reviews: IReviews[] | [];
+  id: string;
 }
-const Reviews = ({ product }: Props) => {
-  const user = useAppSelector((state) => state.authReducer.user);
+const Reviews = ({ reviews, id }: Props) => {
+  const { user } = useAppSelector((state) => state.reducer.auth);
   const [rating, setRating] = useState(1);
   const [reviewDescription, setReviewDescription] = useState("");
-  let [searchParams, setSearchParams] = useSearchParams();
+  const { indexOfLoadedReviews, loadMoreReviewsHandler } =
+    useLoadReviews(reviews);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
-  const { reviews }: any = product;
-  const [updateProduct] = useUpdateProductMutation();
+  const [addReview] = useAddReviewMutation();
 
   const submitReviewHandler = async () => {
-    if (user) {
-      let review = {
-        userId: user?._id,
-        rating,
-        description: reviewDescription,
-      };
-      let updatedReviews = [...reviews];
-      updatedReviews.push(review);
-      let newProduct = { ...product, reviews: updatedReviews };
-      try {
-        let response = await updateProduct(newProduct).unwrap();
-        console.log(response);
-        if (response.code === 200) {
-          setReviewDescription("");
-          setRating(1);
-        }
-      } catch (err) {
-        console.log(err);
+    if (!user) {
+      navigate({
+        pathname,
+        hash: "reviews",
+        search: `tab=reviews&login=open`,
+      });
+      return;
+    }
+    try {
+      let response = await addReview({
+        path: "products",
+        id,
+        review: {
+          rating,
+          description: reviewDescription,
+        },
+      }).unwrap();
+      console.log(response);
+      if (response.code === 200) {
+        setReviewDescription("");
+        setRating(1);
       }
-    } else {
-      searchParams.set("login", "open");
-      setSearchParams(searchParams);
+    } catch (err) {
+      console.log(err);
     }
   };
   return (
-    <Box sx={{ display: "flex", justifyContent: "center" }} id="review">
+    <Box sx={{ display: "flex", justifyContent: "center" }} id="reviews">
       <Box sx={ProductContentStyle}>
         {reviews?.length !== 0 ? (
-          reviews?.map((review: any) => (
-            <ReviewsList
-              userId={review.userId}
-              rating={review.rating!}
-              description={review.description}
-            />
-          ))
+          reviews
+            ?.slice(0, indexOfLoadedReviews)
+            .map((review) => (
+              <Review
+                id={review._id!}
+                userId={review.userId}
+                rating={review.rating!}
+                description={review.description}
+                createdAt={review.createdAt!}
+              />
+            ))
         ) : (
           <Box>
             <Typography
@@ -81,7 +91,16 @@ const Reviews = ({ product }: Props) => {
             </Typography>
           </Box>
         )}
-
+        {reviews.length > 6 && (
+          <Button
+            variant="contained"
+            color="error"
+            sx={{ display: "block", margin: "10px 0 0 auto" }}
+            onClick={loadMoreReviewsHandler}
+          >
+            {indexOfLoadedReviews < reviews.length ? "Load More..." : "close"}
+          </Button>
+        )}
         <Typography
           component="p"
           sx={{

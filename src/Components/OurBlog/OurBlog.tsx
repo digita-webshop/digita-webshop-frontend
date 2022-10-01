@@ -7,11 +7,12 @@ import BlogCard from "./BlogCard/BlogCard";
 import { ContainerWrapper, WrapperBox } from "../../Styles/OurBlog";
 import { useInView } from "react-intersection-observer";
 import { useGetAllArticlesQuery } from "../../features/articles/articlesApi";
-import BlogPlaceholder from "../Placeholders/BlogPlaceholder";
+import ArticlePlaceholder from "../Placeholders/ArticlePlaceholder";
 
 function OurBlog() {
   const { ref, inView } = useInView({ triggerOnce: true });
-  const { data: articlesData, isLoading, isError } = useGetAllArticlesQuery();
+  const { data, isLoading, isError } = useGetAllArticlesQuery("");
+  const articles = data?.data ?? [];
 
   return (
     <ContainerWrapper
@@ -46,7 +47,7 @@ function OurBlog() {
             }}
           >
             {!isLoading && !isError
-              ? articlesData?.data.slice(0, 6).map((item) => (
+              ? articles.map((item) => (
                   <SwiperSlide key={item._id!}>
                     <BlogCard item={item} />
                   </SwiperSlide>
@@ -55,7 +56,7 @@ function OurBlog() {
                   .fill(null)
                   .map((item, index) => (
                     <SwiperSlide key={index}>
-                      <BlogPlaceholder />
+                      <ArticlePlaceholder />
                     </SwiperSlide>
                   ))}
           </Swiper>

@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import ProductCard from "../ProductCard/ProductCard";
-import { productCardData } from "../../../../Services/Utils/Data/data";
+import { productCardData } from "../../../../Services/Data/data";
 
 const ProductCards = () => {
   return (

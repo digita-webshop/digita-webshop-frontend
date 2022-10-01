@@ -1,20 +1,36 @@
-import { Divider, Grid, SelectChangeEvent } from "@mui/material";
+import { Box, Divider, Grid, SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
-import { CardWrapper } from "../../Styles/panelCommon";
+import { useGetAllOrdersQuery } from "../../features/orders/ordersApi";
+import { CardWrapper, ErrorText } from "../../Styles/panelCommon";
+import { paginationStyle } from "../../Styles/PanelProducts";
+import NotFound from "../EmptyList/NotFound";
+import PanelLoading from "../Loading/PanelLoading";
+import PanelPagination from "../PanelPagination/PanelPagination";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import OrdersTable from "./OrdersTable/OrdersTable";
-import TableHeader from "./TableHeader/TableHeader";
+import TableToolbar from "./TableToolbar/TableToolbar";
 
 function Orders() {
-  const [selectedStatus, setSelectedStatus] = useState("status");
-  const [selectedAmount, setSelectedAmount] = useState("20");
+  const [selectedStatus, setSelectedStatus] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [ordersPerPage, setOrdersPerPage] = useState(20);
+
+  const { data: ordersData, isLoading, isError } = useGetAllOrdersQuery();
+  const orders = ordersData?.data ?? [];
+  console.log(ordersData);
+
+  let filteredOrders = orders;
+  if (selectedStatus) {
+    filteredOrders = orders.filter((order) => order.status === selectedStatus);
+  }
 
   const selectedStatusHandler = (event: SelectChangeEvent) => {
     setSelectedStatus(event.target.value);
   };
   const selectedAmountHandler = (event: SelectChangeEvent) => {
-    setSelectedAmount(event.target.value);
+    setOrdersPerPage(+event.target.value);
   };
+
   return (
     <Grid container rowSpacing={4}>
       <Grid item xs={12}>
@@ -24,9 +40,9 @@ function Orders() {
         <CardWrapper
           sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}
         >
-          <TableHeader
+          <TableToolbar
             selectedStatus={selectedStatus}
-            selectedAmount={selectedAmount}
+            ordersPerPage={ordersPerPage}
             selectedStatusHandler={selectedStatusHandler}
             selectedAmountHandler={selectedAmountHandler}
           />
@@ -41,7 +57,22 @@ function Orders() {
             overflow: "hidden",
           }}
         >
-          <OrdersTable selectedAmount={selectedAmount} />
+          {isLoading && <PanelLoading />}
+          {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
+          {filteredOrders?.length === 0 && !isLoading && !isError && (
+            <NotFound />
+          )}
+          {filteredOrders?.length !== 0 && (
+            <OrdersTable orders={filteredOrders} />
+          )}
+          <Box sx={paginationStyle}>
+            <PanelPagination
+              productsPerPage={ordersPerPage}
+              totalProducts={filteredOrders.length}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </Box>
         </CardWrapper>
       </Grid>
     </Grid>

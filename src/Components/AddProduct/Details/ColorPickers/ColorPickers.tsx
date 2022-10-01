@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
-import { colorsList } from "../../../../Services/Utils/Data/data";
+import { colorsList } from "../../../../Services/Data/data";
 import { GreyTooltip, ProductColor } from "../../../../Styles/Product";
 
 interface Props {

@@ -2,7 +2,7 @@ import Link from "@mui/material/Link";
 import { Link as RouterLink } from "react-router-dom";
 
 type props = {
-  id: number;
+  id: string;
   title: string;
 };
 
@@ -12,6 +12,7 @@ const CardTitle = ({ id, title }: props) => {
       component={RouterLink}
       to={`/article/${id}`}
       sx={{
+        fontSize: { xs: "16px", sm: "20px" },
         "&:hover": { color: "#f03637", transition: "all 500ms" },
       }}
       variant="body1"

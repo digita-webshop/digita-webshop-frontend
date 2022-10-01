@@ -1,18 +1,10 @@
 import ContentHeader from "../PanelProducts/ContentHeader/ContentHeader";
 import PanelPagination from "../PanelPagination/PanelPagination";
-import { useState, useEffect } from "react";
-import GridHeader from "./GridHeader/GridHeader";
-import {
-  Grid,
-  SelectChangeEvent,
-  Divider,
-  Box,
-  CircularProgress,
-} from "@mui/material";
+import { useState } from "react";
+import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
 import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
 import Article from "./Article/Article";
 import { ArticleWrapper } from "../../Styles/Articles";
-import { IArticle } from "../../Services/Utils/Types/article";
 import {
   useDeleteArticleMutation,
   useGetAllArticlesQuery,
@@ -22,27 +14,33 @@ import {
   errorMessage,
   successMessage,
 } from "../../Services/Utils/toastMessages";
-import { ErrorText, PStack } from "../../Styles/panelCommon";
+import { ErrorText } from "../../Styles/panelCommon";
+import PanelLoading from "../Loading/PanelLoading";
+import GridHeader from "../PanelProducts/GridHeader/GridHeader";
 
 const Articles = () => {
-  const [list, setList] = useState<IArticle[]>([]);
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(8);
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = list.slice(indexOfFirstProduct, indexOfLastProduct);
+  const [articlesPerPage] = useState(8);
 
-  const { data: articles, isLoading, isError } = useGetAllArticlesQuery();
+  let queries: any = `page=${currentPage}&limit=${articlesPerPage} &search=${searchValue}`;
+
+  if (selectedCategory) {
+    queries = `${queries} &category=${selectedCategory.replaceAll("&", "%26")}`;
+  }
+  const {
+    data: articlesData,
+    isLoading,
+    isError,
+  } = useGetAllArticlesQuery(queries);
+  const articles = articlesData?.data ?? [];
+  const articlesLength = articlesData?.total ?? 0;
+
   const [deleteArticle] = useDeleteArticleMutation();
 
-  const [selectedStatus, setSelectedStatus] = useState("status");
-  const [selectedAmount, setSelectedAmount] = useState("20");
-
-  const selectedStatusHandler = (event: SelectChangeEvent) => {
-    setSelectedStatus(event.target.value);
-  };
-  const selectedAmountHandler = (event: SelectChangeEvent) => {
-    setSelectedAmount(event.target.value);
+  const selectedCategoryHandler = (event: SelectChangeEvent) => {
+    setSelectedCategory(event.target.value);
   };
 
   async function handleRemove(id: string) {
@@ -53,12 +51,6 @@ const Articles = () => {
       errorMessage(err?.message);
     }
   }
-
-  useEffect(() => {
-    if (articles?.data) {
-      setList(articles?.data);
-    }
-  }, [articles]);
 
   return (
     <Grid container rowSpacing={4}>
@@ -71,10 +63,10 @@ const Articles = () => {
           sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}
         >
           <GridHeader
-            selectedStatus={selectedStatus}
-            selectedAmount={selectedAmount}
-            selectedStatusHandler={selectedStatusHandler}
-            selectedAmountHandler={selectedAmountHandler}
+            selectedCategory={selectedCategory}
+            selectedCategoryHandler={selectedCategoryHandler}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
           />
         </DashWrapper>
         <Divider
@@ -82,16 +74,11 @@ const Articles = () => {
         />
         <ArticleWrapper sx={{ position: "relative" }}>
           <Grid container spacing={2}>
-            {isLoading && (
-              <PStack>
-                <CircularProgress color="error" />
-              </PStack>
-            )}
+            {isLoading && <PanelLoading />}
             {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
-            {articles?.data.length === 0 && !isLoading ? (
-              <NotFound />
-            ) : (
-              currentProducts.map(
+            {articles.length === 0 && !isLoading && !isError && <NotFound />}
+            {articles?.length &&
+              articles.map(
                 ({ _id, title, image, writer, createdAt, category }) => (
                   <Grid item xs={12} sm={6} md={4} lg={4} xl={3} key={_id}>
                     <Article
@@ -105,13 +92,12 @@ const Articles = () => {
                     />
                   </Grid>
                 )
-              )
-            )}
+              )}
           </Grid>
           <Box sx={paginationStyle}>
             <PanelPagination
-              productsPerPage={productsPerPage}
-              totalProducts={list.length}
+              productsPerPage={articlesPerPage}
+              totalProducts={articlesLength}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />

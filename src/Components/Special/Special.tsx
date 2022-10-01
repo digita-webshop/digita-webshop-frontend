@@ -13,11 +13,11 @@ const Special = () => {
 
   const { ref, inView } = useInView({ triggerOnce: true });
   const {
-    data: products,
+    data: productsData,
     isLoading,
     isError,
   } = useGetAllProductsQuery(`page=1&limit=9&sort=${selectedSorting}`);
-
+  const products = productsData?.data ?? [];
   return (
     <Container
       maxWidth={"xl"}
@@ -49,23 +49,30 @@ const Special = () => {
         <Box>
           <Grid container spacing={{ xs: 2, md: 3 }}>
             {!isLoading && !isError
-              ? products?.data
-                  .slice(0, 8)
-                  .map((item) => (
-                    <SpecialItem
-                      key={item._id!}
-                      id={item._id!}
-                      title={item.title}
-                      image={item.image}
-                      offPrice={item.offPrice}
-                      price={item.price}
-                      rating={item.rating}
-                    />
-                  ))
+              ? products.map((item) => (
+                  <SpecialItem
+                    key={item._id!}
+                    id={item._id!}
+                    title={item.title}
+                    image={item.image}
+                    offPrice={item.offPrice}
+                    price={item.price}
+                    rating={item.rating}
+                  />
+                ))
               : Array(9)
                   .fill(null)
                   .map((item, index) => (
-                    <SpecialProductPlaceholder key={index} />
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      lg={4}
+                      sx={{ height: "150px" }}
+                      key={index}
+                    >
+                      <SpecialProductPlaceholder />
+                    </Grid>
                   ))}
           </Grid>
         </Box>

@@ -3,7 +3,6 @@ import {
   Button,
   Typography,
   Rating,
-  TextField,
   FormControl,
   MenuItem,
   Select,
@@ -22,6 +21,8 @@ import {
   modalLeft,
   modalStyle,
   StyledModal,
+  CartInput,
+  AmountBtn,
 } from "../../../../../Styles/Products";
 
 type T = {
@@ -29,29 +30,13 @@ type T = {
   image: string;
   offPrice: number | null;
   price: number;
-  sold: boolean;
   rating: number;
   handleClose: any;
-};
-
-const customBtn = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: "#555",
-  width: "30px",
-  cursor: "pointer",
-  height: "100%",
-  fontSize: "20px",
-  userSelect: "none",
-  border: "1px solid #e4e4e4",
-  fontWeight: "700",
 };
 
 const ModalView = ({
   title,
   image,
-  sold,
   price,
   offPrice,
   rating,
@@ -74,13 +59,13 @@ const ModalView = ({
 
   return (
     <Box sx={modalStyle}>
-      {sold && (
+      {/* {sold && (
         <Box sx={{ position: "relative", top: "0", right: "0" }}>
           <IconDiv sx={{ fontSize: "12px", padding: "0.2rem 0.8rem" }}>
             Sale!
           </IconDiv>
         </Box>
-      )}
+      )} */}
 
       <StyledModal>
         <Box sx={modalLeft} className="box">
@@ -170,32 +155,21 @@ const ModalView = ({
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center", height: "3rem" }}>
-              <Box sx={customBtn} onClick={handleDecValue}>
+              <AmountBtn width={"40px"} onClick={handleDecValue}>
                 -
-              </Box>
-              <TextField
+              </AmountBtn>
+              <CartInput
                 id="outlined-number"
                 type="number"
                 value={value}
                 sx={{
                   width: "40px",
-                  height: "100%",
-                  "& .MuiInputBase-root": {
-                    height: "100%",
-                    borderRadius: "0",
-                  },
-                  "& .MuiInputBase-input": {
-                    textAlign: "center",
-                  },
-                  input: {
-                    "&::-webkit-inner-spin-button": { appearance: "none" },
-                  },
                 }}
                 size="small"
               />
-              <Box sx={customBtn} onClick={handleIncValue}>
+              <AmountBtn onClick={handleIncValue} width={"40px"}>
                 +
-              </Box>
+              </AmountBtn>
             </Box>
             <Button variant="contained" sx={{ fontSize: "14px" }}>
               Add to Cart

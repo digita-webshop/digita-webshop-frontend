@@ -4,7 +4,7 @@ import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { Card, iconStyle, textStyle } from "./Styles";
 import { Link } from "react-router-dom";
-import { IArticle } from "../../../Services/Utils/Types/article";
+import { IArticle } from "../../../Services/Types/article";
 
 interface Props {
   item: IArticle;
@@ -14,7 +14,7 @@ function BlogCard({ item }: Props) {
   return (
     <Card>
       <Box>
-        <Link to={`article/${item._id}`}>
+        <Link to={`/article/${item._id}`}>
           <img src={item.image} alt="article" />
         </Link>
         <Grid container spacing={2}>

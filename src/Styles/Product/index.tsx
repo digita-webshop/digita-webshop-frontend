@@ -34,6 +34,7 @@ export const filledPrice = {
   maxWidth: "500",
   fontWeight: "600",
   fontSize: "26px",
+  position: "relative",
   color: (theme: any) => theme.palette.common.digitaBlack,
   backgroundColor: "#f5f5f5",
   padding: "20px",
@@ -70,9 +71,8 @@ export const productButtonStyles = {
   marginTop: "10px",
   marginBottom: "25px",
   display: "flex",
-  flexDirection: { xs: "column", sm: "row" },
   justifyContent: {
-    xs: "center",
+    xs: "space-around",
     sm: "flex-start",
   },
   alignItems: { xs: "flex-start", sm: "center" },
@@ -111,6 +111,7 @@ export const starLink = {
     cursor: "pointer",
     textDecoration: "none",
     fontSize: "13px",
+    color: "common.digitaBlack",
     "&:hover": {
       color: "#F03637",
     },
@@ -320,6 +321,8 @@ export const GallerySwiperWrapper = styled(Box)(({ theme }) => ({
     cursor: "pointer",
     border: `1px solid white`,
     transition: "all 150ms",
+    aspectRatio: "1",
+    objectFit: "contain",
     "&:hover": {
       border: `1px solid ${theme.palette.common.digitaRed}`,
     },
@@ -334,14 +337,15 @@ export const GallerySwiperWrapper = styled(Box)(({ theme }) => ({
 
 export const swiperImageWrapper = {
   textAlign: "center",
-  backgroundColor: { xs: "#f2f2f3cc", md: "unset" },
   img: {
     border: {
       xs: "1px solid #e9e9e9",
       sm: "none",
       md: "1px solid #e9e9e9",
     },
-    width: { xs: "100%", sm: "70%", md: "100%" },
+    width: { xs: "99%", sm: "70%", md: "99%!important" },
+    aspectRatio: "1",
+    objectFit: "contain",
   },
 };
 
@@ -546,4 +550,29 @@ export const moreStyles = {
   color: "common.digitaGrey",
   fontWeight: 500,
   textTransform: "capitalize",
+};
+
+export const productIconWrapperStyles = {
+  color: "gray",
+  "&:hover": { color: "#f03637" },
+  display: "flex",
+  marginLeft: "10px",
+  cursor: "pointer",
+};
+export const productIconStyles = {
+  "&.wishLoading": {
+    transition: "all 100ms",
+    animation: "fav 600ms linear infinite",
+    "@keyframes fav": {
+      "0%": {
+        transform: "scale(.8)",
+      },
+      "50%": {
+        transform: "scale(1)",
+      },
+      "100%": {
+        transform: "scale(1.2)",
+      },
+    },
+  },
 };

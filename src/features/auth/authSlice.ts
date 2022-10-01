@@ -1,22 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUser } from "../../Services/Utils/Types/user";
-import Cookies from "universal-cookie";
-
-const cookie = new Cookies();
-const accessToken = cookie.get("access_token");
+import { IUser } from "../../Services/Types/user";
 
 type AuthState = {
   user: null | IUser;
   role: null | string;
-  token: null | string;
-  getUserLoading: boolean;
+  id: string;
+  email: string | null;
 };
 
 const initialState = {
   user: null,
   role: null,
-  token: accessToken ? accessToken : null,
-  getUserLoading: true,
+  id: "",
+  email: null,
 } as AuthState;
 
 const authSlice = createSlice({
@@ -26,25 +22,22 @@ const authSlice = createSlice({
     setCredentials: (
       state,
       {
-        payload: { user, role },
-      }: PayloadAction<{ user: any; role: string | null }>
+        payload: { user, role, email },
+      }: PayloadAction<{ user: any; role: string | null; email: string | null }>
     ) => {
       state.user = user;
       state.role = role;
-      const accessToken = cookie.get("access_token");
-      state.token = accessToken ? accessToken : null;
+      state.email = email;
+      state.id = user?._id ?? "";
     },
     logout(state) {
-      cookie.remove("access_token", { path: "/" });
       state.user = null;
       state.role = null;
-      state.token = null;
-    },
-    setLoading(state, action) {
-      state.getUserLoading = action.payload;
+      state.id = "";
+      state.email = null;
     },
   },
 });
 
-export const { setCredentials, logout, setLoading } = authSlice.actions;
+export const { setCredentials, logout } = authSlice.actions;
 export default authSlice.reducer;

@@ -1,12 +1,18 @@
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
-import { Typography } from "@mui/material";
+import { Typography, Skeleton } from "@mui/material";
 import RecentPost from "./RecentPost/RecentPost";
-import { articlesBlogPage } from "../../../../../Services/Utils/Data/data";
 import { FilterTitleWrapper } from "../../../../../Styles/ShopPage";
 import { Fragment } from "react";
+import { useGetAllArticlesQuery } from "../../../../../features/articles/articlesApi";
 
 function RecentPosts() {
+  const {
+    data: articlesData,
+    isLoading,
+    isError,
+  } = useGetAllArticlesQuery("sort=latest");
+  const articles = articlesData?.data ?? [];
   return (
     <Box
       sx={{
@@ -15,7 +21,6 @@ function RecentPosts() {
         pt: "20px",
         pb: "30px",
         mb: "30px",
-        mr: "15px",
       }}
     >
       <FilterTitleWrapper className="underline">
@@ -28,19 +33,50 @@ function RecentPosts() {
           RECENT POSTS
         </Typography>
       </FilterTitleWrapper>
-      {articlesBlogPage.map((post) =>
-        post.id < 5 ? (
-          <Fragment key={post.id}>
-            <RecentPost
-              id={post.id}
-              title={post.title}
-              image={post.image}
-              date={post.releaseDate}
-            />
-            {post.id !== 4 ? <Divider sx={{ mb: "14px" }} /> : null}
-          </Fragment>
-        ) : null
-      )}
+      {!isLoading && !isError
+        ? articles.slice(0, 4).map((post, index) => (
+            <Fragment key={post._id}>
+              {index !== 0 ? <Divider sx={{ mb: "14px" }} /> : null}
+              <RecentPost
+                id={post._id!}
+                title={post.title}
+                image={post.image}
+                date={post.createdAt!}
+              />
+            </Fragment>
+          ))
+        : Array(4)
+            .fill(null)
+            .map((item, index) => (
+              <Box
+                sx={{
+                  display: "flex",
+                  height: "60px",
+                  gap: "10px",
+                  marginTop: "14px",
+                }}
+                key={index}
+              >
+                <Box sx={{ width: "40%" }}>
+                  <Skeleton
+                    width={"100%"}
+                    height={"100%"}
+                    variant="rectangular"
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    width: "60%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-evenly",
+                  }}
+                >
+                  <Skeleton width={"100%"} height={20} variant="rectangular" />
+                  <Skeleton width={"40%"} height={15} variant="rectangular" />
+                </Box>
+              </Box>
+            ))}
     </Box>
   );
 }

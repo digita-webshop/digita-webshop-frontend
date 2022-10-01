@@ -21,7 +21,7 @@ import {
   Dashboard,
   ManageAccess,
   PanelWishlist,
-  PanelOrders,
+  UserOrders,
   Orders,
   Products,
   Reviews,
@@ -30,7 +30,7 @@ import {
 } from "./Pages/Panel/Admin";
 
 import {
-  Orders as UserOrders,
+  Orders as UserOrderss,
   Addresses,
   Wishlist as UserWishlist,
   Status,
@@ -42,34 +42,38 @@ import { ScrollToTop, Protected } from "./Components";
 import UserLayout from "./Layouts/UserLayout/UserLayout";
 import { useEffect } from "react";
 import { useAppSelector } from "./store";
-import jwt from "jwt-decode";
 import { useDispatch } from "react-redux";
-import { setCredentials, setLoading } from "./features/auth/authSlice";
-import { useGetUserMutation } from "./features/auth/authApi";
+import { logout, setCredentials } from "./features/auth/authSlice";
+import { useGetUserMutation } from "./features/user/userApi";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const { token } = useAppSelector((state) => state.authReducer);
+  const { id, role } = useAppSelector((state) => state.reducer.auth);
   const dispatch = useDispatch();
   const [getUser] = useGetUserMutation();
 
   useEffect(() => {
     const fetchUserData = async () => {
-      if (token) {
+      if (id) {
         try {
-          const { id, role } = jwt(token) as any;
-          const data = await getUser(id).unwrap();
-          dispatch(setCredentials({ user: data.data, role }));
-          console.log(data);
+          const response = await getUser(id).unwrap();
+          dispatch(
+            setCredentials({
+              user: response.data,
+              role: response.data.role!,
+              email: null,
+            })
+          );
+          console.log(response);
         } catch (err) {
+          dispatch(logout());
           console.log(err);
         }
       }
-      dispatch(setLoading(false));
     };
     fetchUserData();
-  }, [dispatch, token, getUser]);
+  }, [dispatch, id, getUser, role]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -79,9 +83,9 @@ function App() {
             <Route element={<MainLayout />}>
               <Route path="/" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
-              <Route path="/shop/:id" element={<Product />} />
+              <Route path="/product/:id" element={<Product />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:id" element={<Article />} />
+              <Route path="/article/:id" element={<Article />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/wishlist" element={<Wishlist />} />
@@ -117,16 +121,17 @@ function App() {
                 <Route path="reviews" element={<Reviews />} />
                 <Route path="edit/:id" element={<AddProduct />} />
               </Route>
-              <Route path="orders" element={<Orders />} />
               <Route path="articles/*">
                 <Route path="list" element={<Articles />} />
                 <Route path="add" element={<AddArticle />} />
                 <Route path="reviews" element={<Reviews />} />
                 <Route path="edit/:id" element={<AddArticle />} />
               </Route>
+              <Route path="manage-users" element={<ManageAccess />} />
+              <Route path="orders" element={<Orders />} />
               <Route path="brands" element={<Brands />} />
               <Route path="wishlist" element={<PanelWishlist />} />
-              <Route path="my-orders" element={<PanelOrders />} />
+              <Route path="my-orders" element={<UserOrderss />} />
               <Route
                 path="manage-access"
                 element={

@@ -9,7 +9,7 @@ import {
   Modal,
 } from "@mui/material";
 import logoImg from "../../../Assets/Images/digita-logo.png";
-import { navbarItems } from "../../../Services/Utils/Data/data";
+import { navbarItems } from "../../../Services/Data/data";
 import { useTheme } from "@mui/material/styles";
 
 import { MenuRounded, KeyboardArrowDown } from "@mui/icons-material";

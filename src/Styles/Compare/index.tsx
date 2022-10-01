@@ -100,6 +100,8 @@ export const tableImageStyles = {
   border: "1px solid #DADADA",
   img: {
     width: "100%",
+    aspectRatio: "1",
+    objectFit: "contain",
   },
 };
 

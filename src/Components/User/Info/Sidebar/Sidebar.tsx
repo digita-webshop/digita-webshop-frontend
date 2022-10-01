@@ -1,5 +1,5 @@
 import { Box, List, ListItemText } from "@mui/material";
-import { userSettingItems } from "../../../../Services/Utils/Data/data";
+import { userSettingItems } from "../../../../Services/Data/data";
 import { PanelItem } from "../../../../Styles/Panel";
 
 interface Props {

@@ -32,11 +32,11 @@ const SpecialItem = ({ id, title, image, offPrice, price, rating }: Props) => {
           },
         }}
       >
-        <Link to={`/shop/${id}`} className="image-link">
+        <Link to={`/product/${id}`} className="image-link">
           <CardMedia
             component="img"
-            sx={{ height: "100%" }}
-            image={`${image}`}
+            sx={{ height: "100%", objectFit: "contain" }}
+            image={image}
             alt="Live from space album cover"
           />
         </Link>
@@ -83,7 +83,7 @@ const SpecialItem = ({ id, title, image, offPrice, price, rating }: Props) => {
                 },
               }}
             >
-              <Link to={`/shop/${id}`}>{title}</Link>
+              <Link to={`/product/${id}`}>{title}</Link>
             </Typography>
             <Typography
               variant="body2"

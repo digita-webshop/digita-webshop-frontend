@@ -7,14 +7,51 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Dispatch, FormEvent, SetStateAction } from "react";
-import { FormWrapper } from "../../../Styles/Login";
+import { Dispatch, SetStateAction, useState } from "react";
+import { useCreateAdminMutation } from "../../../features/user/userApi";
+import { successMessage } from "../../../Services/Utils/toastMessages";
+import { errorStyles, FormWrapper } from "../../../Styles/Login";
 interface Props {
   setOpenRegister: Dispatch<SetStateAction<boolean>>;
 }
 function RegisterAdmin({ setOpenRegister }: Props) {
-  const submitHandler = (event: FormEvent) => {
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [createAdmin] = useCreateAdminMutation();
+
+  const submitHandler = async (event: any) => {
     event.preventDefault();
+
+    const userName = event.target.elements.username.value;
+    const email = event.target.elements.email.value;
+    const password = event.target.elements.password.value;
+    const confirmPassword = event.target.elements.confirmPassword.value;
+
+    if (
+      !userName.trim() ||
+      !email.trim() ||
+      !password.trim() ||
+      !confirmPassword.trim()
+    ) {
+      setErrorMessage("all fields are required");
+      return;
+    }
+    if (password.trim() !== confirmPassword.trim()) {
+      setErrorMessage("passwords don't match");
+      return;
+    }
+    const admin = {
+      userName,
+      email,
+      password,
+    };
+    try {
+      await createAdmin(admin).unwrap();
+      successMessage("admin created successfully");
+      setOpenRegister(false);
+    } catch (err: any) {
+      setErrorMessage(err?.data.message);
+    }
   };
   return (
     <FormWrapper sx={{ width: "420px", form: { padding: "0px 50px 60px" } }}>
@@ -23,16 +60,21 @@ function RegisterAdmin({ setOpenRegister }: Props) {
           register new admin
         </Typography>
       </Box>
+      {errorMessage && (
+        <Box sx={errorStyles}>
+          <Typography component="span"> ERROR:{errorMessage}</Typography>
+        </Box>
+      )}
       <form onSubmit={submitHandler}>
         <Grid container spacing={1.5}>
           <Grid item xs={12}>
             <FormControl fullWidth>
-              <TextField variant="standard" label="Username" />
+              <TextField variant="standard" label="Username" name="username" />
             </FormControl>
           </Grid>
           <Grid item xs={12}>
             <FormControl fullWidth>
-              <TextField variant="standard" label="Email" />
+              <TextField variant="standard" label="Email" name="email" />
             </FormControl>
           </Grid>
           <Grid item xs={12}>
@@ -40,7 +82,8 @@ function RegisterAdmin({ setOpenRegister }: Props) {
               <TextField
                 variant="standard"
                 label="Password"
-                type={"password"}
+                type="password"
+                name="password"
               />
             </FormControl>
           </Grid>
@@ -49,7 +92,8 @@ function RegisterAdmin({ setOpenRegister }: Props) {
               <TextField
                 variant="standard"
                 label="Confirm Password"
-                type={"password"}
+                type="password"
+                name="confirmPassword"
               />
             </FormControl>
           </Grid>
@@ -59,7 +103,7 @@ function RegisterAdmin({ setOpenRegister }: Props) {
               variant="contained"
               fullWidth
               sx={{ height: "46px" }}
-              type={"submit"}
+              type="submit"
             >
               REGISTER
             </Button>

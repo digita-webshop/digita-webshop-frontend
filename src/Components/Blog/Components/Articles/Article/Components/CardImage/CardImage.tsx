@@ -3,14 +3,19 @@ import Link from "@mui/material/Link";
 import { Link as RouterLink } from "react-router-dom";
 
 type props = {
-  id: number;
+  id: string;
   title: string;
   image: string;
 };
 const CardImage = ({ id, image, title }: props) => {
   return (
     <Link component={RouterLink} to={`/article/${id}`}>
-      <CardMedia component="img" image={`${image}`} alt={`${title}`} />
+      <CardMedia
+        component="img"
+        image={image}
+        alt={title}
+        sx={{ aspectRatio: "1.2", objectFit: "fill" }}
+      />
     </Link>
   );
 };

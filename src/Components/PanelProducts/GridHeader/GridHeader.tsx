@@ -1,18 +1,29 @@
 import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { PTextField, PFormControl } from "../../../Styles/panelCommon";
+import { Dispatch, SetStateAction } from "react";
+import { blogCategories, categoriesList } from "../../../Services/Data/data";
+import { useLocation } from "react-router-dom";
 
 interface Props {
-  selectedStatus: string;
-  selectedAmount: string;
-  selectedStatusHandler: (event: SelectChangeEvent) => void;
-  selectedAmountHandler: (event: SelectChangeEvent) => void;
+  selectedSorting?: string;
+  selectedCategory: string;
+  selectedSortingHandler?: (event: SelectChangeEvent) => void;
+  selectedCategoryHandler: (event: SelectChangeEvent) => void;
+  searchValue: string;
+  setSearchValue: Dispatch<SetStateAction<string>>;
 }
 function GridHeader({
-  selectedStatus,
-  selectedAmount,
-  selectedStatusHandler,
-  selectedAmountHandler,
+  selectedSorting,
+  selectedCategory,
+  selectedSortingHandler,
+  selectedCategoryHandler,
+  searchValue,
+  setSearchValue,
 }: Props) {
+  const { pathname } = useLocation();
+  const categories = pathname.includes("articles")
+    ? blogCategories
+    : categoriesList;
   return (
     <Box
       sx={{
@@ -23,7 +34,11 @@ function GridHeader({
       }}
     >
       <Box sx={{ width: { xs: "100%", sm: "40%", lg: "30%" } }}>
-        <PTextField placeholder="Search... " />
+        <PTextField
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder="Search... "
+        />
       </Box>
       <Box
         sx={{
@@ -32,29 +47,38 @@ function GridHeader({
           gap: "10px",
         }}
       >
+        {selectedSorting && (
+          <PFormControl size="small">
+            <Select
+              variant="outlined"
+              displayEmpty
+              value={selectedSorting}
+              onChange={selectedSortingHandler}
+            >
+              <MenuItem value={"latest"}>Sort By Latest </MenuItem>
+              <MenuItem value={"rating"}>Sort By Average Rating </MenuItem>
+              <MenuItem value={"price-low-to-high"}>
+                Sort By Price: low to high
+              </MenuItem>
+              <MenuItem value={"price-high-to-low"}>
+                Sort By Price:high to low
+              </MenuItem>
+            </Select>
+          </PFormControl>
+        )}
         <PFormControl size="small">
           <Select
             variant="outlined"
             displayEmpty
-            value={selectedStatus}
-            onChange={selectedStatusHandler}
+            value={selectedCategory}
+            onChange={selectedCategoryHandler}
           >
-            <MenuItem value="status">All Category</MenuItem>
-            <MenuItem value={"active"}>Electronics</MenuItem>
-            <MenuItem value={"disable"}>Clothings</MenuItem>
-            <MenuItem value={"show-all"}>Something else</MenuItem>
-          </Select>
-        </PFormControl>
-        <PFormControl size="small">
-          <Select
-            variant="outlined"
-            displayEmpty
-            value={selectedAmount}
-            onChange={selectedAmountHandler}
-          >
-            <MenuItem value="20">Latest Added</MenuItem>
-            <MenuItem value={"30"}>Cheap First</MenuItem>
-            <MenuItem value={"40"}>Most Viewed</MenuItem>
+            <MenuItem value="">Select Category</MenuItem>
+            {categories.map(({ name }, index) => (
+              <MenuItem key={index} value={name}>
+                {name}
+              </MenuItem>
+            ))}
           </Select>
         </PFormControl>
       </Box>

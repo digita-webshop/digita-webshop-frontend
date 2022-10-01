@@ -3,14 +3,16 @@ import { Typography } from "@mui/material";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import { Link as RouterLink } from "react-router-dom";
+import { getReadableDate } from "./../../../../../../../../Services/Utils/getReadableDate";
 
 type props = {
-  id: number;
+  id: string;
   title: string;
   date: string;
 };
 
 const PostContent = ({ id, title, date }: props) => {
+  const readableDate = getReadableDate(date);
   return (
     <Box>
       <CardContent
@@ -49,7 +51,7 @@ const PostContent = ({ id, title, date }: props) => {
           mt={"6px"}
           fontSize="11px"
         >
-          {date}
+          {readableDate}
         </Typography>
       </CardContent>
     </Box>

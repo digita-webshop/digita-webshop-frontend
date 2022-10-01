@@ -79,24 +79,25 @@ function CurrentAddressForm() {
   };
 
   return (
-    <AddressForm
-      country={country}
-      setCountryDropOpen={setCountryDropOpen}
-      countryDropOpen={countryDropOpen}
-      allCountries={allCountries}
-      countrySelectHandler={countrySelectHandler}
-      state={state}
-      setStateDropOpen={setStateDropOpen}
-      stateDropOpen={stateDropOpen}
-      statesList={statesList}
-      stateSelectHandler={stateSelectHandler}
-      city={city}
-      setCityDropOpen={setCityDropOpen}
-      cityDropOpen={cityDropOpen}
-      citiesList={citiesList}
-      citySelectHandler={citySelectHandler}
-      buttonText={"update"}
-    />
+    // <AddressForm
+    //   country={country}
+    //   setCountryDropOpen={setCountryDropOpen}
+    //   countryDropOpen={countryDropOpen}
+    //   allCountries={allCountries}
+    //   countrySelectHandler={countrySelectHandler}
+    //   state={state}
+    //   setStateDropOpen={setStateDropOpen}
+    //   stateDropOpen={stateDropOpen}
+    //   statesList={statesList}
+    //   stateSelectHandler={stateSelectHandler}
+    //   city={city}
+    //   setCityDropOpen={setCityDropOpen}
+    //   cityDropOpen={cityDropOpen}
+    //   citiesList={citiesList}
+    //   citySelectHandler={citySelectHandler}
+    //   buttonText={"update"}
+    // />
+    <></>
   );
 }
 

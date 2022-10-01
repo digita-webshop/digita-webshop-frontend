@@ -1,6 +1,14 @@
+import { Dispatch, SetStateAction } from "react";
 import { Button, FormControl, Grid, TextareaAutosize } from "@mui/material";
+import { IUser } from "../../../Services/Types/user";
 
-function ReplyForm() {
+interface Props {
+  reviewDescription: string;
+  setReviewDescription: Dispatch<SetStateAction<string>>;
+  user: IUser | null;
+}
+
+function ReplyForm({ reviewDescription, setReviewDescription, user }: Props) {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -8,6 +16,8 @@ function ReplyForm() {
           <TextareaAutosize
             aria-label="article comment textarea"
             placeholder="Your Comment Here..."
+            value={reviewDescription}
+            onChange={(e) => setReviewDescription(e.target.value)}
             style={{
               minWidth: "98%",
               maxWidth: "98%",
@@ -34,8 +44,9 @@ function ReplyForm() {
             color: "white",
             "&:hover": { backgroundColor: "#333333" },
           }}
+          type="submit"
         >
-          Post Comment
+          {user ? "Post Comment" : "LOGIN AND Post Comment"}
         </Button>
       </Grid>
     </Grid>

@@ -1,11 +1,7 @@
 import { Launch } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
-import { marketingProgress } from "../../../Services/Utils/Data/data";
-import {
-  analyticsBtnStyles,
-  DashTitle,
-  
-} from "../../../Styles/Dashboard";
+import { marketingProgress } from "../../../Services/Data/data";
+import { analyticsBtnStyles, DashTitle } from "../../../Styles/Dashboard";
 import { CardWrapper } from "../../../Styles/panelCommon";
 import ProgressCard from "./ProgressCard/ProgressCard";
 

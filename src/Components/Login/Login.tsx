@@ -1,6 +1,7 @@
 import { CloseRounded } from "@mui/icons-material";
 import {
   Box,
+  CircularProgress,
   Button,
   Checkbox,
   FormControl,
@@ -12,7 +13,7 @@ import {
 } from "@mui/material";
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../features/auth/authApi";
 import { setCredentials } from "../../features/auth/authSlice";
 import { successMessage } from "../../Services/Utils/toastMessages";
@@ -24,6 +25,7 @@ import {
   FormWrapper,
   inputErrorStyles,
 } from "../../Styles/Login";
+import { PStack } from "../../Styles/panelCommon";
 import Header from "./Header/Header";
 
 type Modal = "login" | "register" | "reset";
@@ -32,15 +34,15 @@ type Props = {
   modalTypeToggle: (type: Modal) => void;
 };
 function Login({ loginModalHandler, modalTypeToggle }: Props) {
-  const { user } = useAppSelector((state) => state.authReducer);
-  const registeredEmail = user?.email ? user?.email : "";
-  const [enteredEmail, setEnteredEmail] = useState(registeredEmail);
+  const { email } = useAppSelector((state) => state.reducer.auth);
+  const [enteredEmail, setEnteredEmail] = useState(email ?? "");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [validationError, setValidationError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location: any = useLocation();
 
   //* username validation
   let emailIsValid = enteredEmail.trim() !== "";
@@ -50,7 +52,8 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
   let passwordIsValid = enteredPassword.trim() !== "";
   const passwordError = !passwordIsValid && validationError;
 
-  const [login] = useLoginMutation();
+  const [login, { isLoading }] = useLoginMutation();
+
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
     if (!emailIsValid && !passwordIsValid) {
@@ -63,24 +66,29 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
         password: enteredPassword,
       };
 
-      const data = await login(userCredentials).unwrap();
-      if (data?.message === "Login successful") {
-        dispatch(
-          setCredentials({
-            user: data?.data?.details,
-            role: data.data.role,
-          })
-        );
-        if (data.data.role === "admin") {
-          navigate("/panel/dashboard", { replace: true });
-        }
-        if (data.data.role === "user") {
-          navigate("/user/status", { replace: true });
-        }
-      }
+      const response = await login(userCredentials).unwrap();
+      const data = response?.data;
+
+      dispatch(
+        setCredentials({
+          user: data?.details,
+          role: data.role,
+          email: null,
+        })
+      );
       loginModalHandler(false)();
+      if (data.role === "admin" || data.role === "superAdmin") {
+        const path = location.state?.from ?? "/panel/dashboard";
+        navigate(path, {
+          replace: true,
+        });
+      }
+      if (data.role === "user") {
+        const path = location.state?.from ?? "/user/status";
+        navigate(path, { replace: true });
+      }
       successMessage("login successfully");
-      console.log(data);
+      console.log(response);
     } catch (err: any) {
       console.log(err);
       setErrorMessage(err?.data?.message);
@@ -159,7 +167,13 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
                 sx={{ height: "46px" }}
                 type={"submit"}
               >
-                LOGIN
+                {isLoading ? (
+                  <PStack sx={{ margin: "0 !important" }}>
+                    <CircularProgress color={"inherit"} />
+                  </PStack>
+                ) : (
+                  <>LOGIN</>
+                )}
               </Button>
             </Grid>
           </Grid>

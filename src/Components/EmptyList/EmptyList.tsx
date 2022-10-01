@@ -2,19 +2,14 @@ import { Box, Typography } from "@mui/material";
 import { EmptyWishlistWrapper } from "../../Styles/EmptyList";
 
 interface T {
-    title: string;
-    image: string;
+  title: string;
+  image: string;
 }
 
-const EmptyList = ({title, image}: T) => {
+const EmptyList = ({ title, image }: T) => {
   return (
     <EmptyWishlistWrapper>
-      <Box
-        component="img"
-        src={image}
-        alt="empty"
-        className="itemImg"
-      />
+      <Box component="img" src={image} alt="empty" className="itemImg" />
       <Typography sx={{ fontWeight: "400", fontSize: "17px" }}>
         Your {title} is empty
       </Typography>

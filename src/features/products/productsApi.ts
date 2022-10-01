@@ -1,24 +1,31 @@
-import { IProduct, IReviews } from "../../Services/Utils/Types/product";
+import { IProduct, IReviews } from "../../Services/Types/product";
 import { api } from "../api";
 type GetAllProductsResponse = {
   code: number;
   message: string;
   data: IProduct[];
+  total: number;
+};
+type GetProductReviewsResponse = {
+  code: number;
+  message: string;
+  data: IReviews[];
+  total: number;
 };
 type GetProductResponse = {
   code: number;
   message: string;
   data: IProduct;
 };
+type GetProductReviewResponse = {
+  code: number;
+  message: string;
+  data: IReviews;
+};
 export const productApi = api.injectEndpoints({
   endpoints: (build) => ({
     getAllProducts: build.query<GetAllProductsResponse, string | undefined>({
-      query(query) {
-        console.log(query);
-        return {
-          url: `products?${query}`,
-        };
-      },
+      query: (query) => `products?${query}`,
       providesTags: ["Product"],
     }),
     getProduct: build.query<GetProductResponse, string>({
@@ -55,9 +62,27 @@ export const productApi = api.injectEndpoints({
       },
       invalidatesTags: ["Product"],
     }),
-    getProductReviews: build.query<IReviews[], string>({
+    getProductReviews: build.query<GetProductReviewsResponse, void>({
+      query: () => `products/reviews`,
+      providesTags: ["Product"],
+    }),
+    getProductReview: build.query<GetProductReviewResponse, string>({
       query: (id) => `products/reviews/${id}`,
       providesTags: ["Product"],
+    }),
+    addProductReview: build.mutation<any, any>({
+      query(data) {
+        const { id, ...body } = data;
+        return { url: `products/reviews/${id}`, method: "POST", body };
+      },
+      invalidatesTags: ["Product"],
+    }),
+    deleteProductReview: build.mutation<any, any>({
+      query(data) {
+        const { pid, uid } = data;
+        return { url: `products/${pid}/reviews/${uid}`, method: "DELETE" };
+      },
+      invalidatesTags: ["Product"],
     }),
   }),
 });
@@ -69,4 +94,7 @@ export const {
   useDeleteProductMutation,
   useAddProductMutation,
   useGetProductReviewsQuery,
+  useGetProductReviewQuery,
+  useAddProductReviewMutation,
+  useDeleteProductReviewMutation,
 } = productApi;

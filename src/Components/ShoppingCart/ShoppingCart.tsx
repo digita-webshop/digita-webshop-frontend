@@ -6,9 +6,9 @@ import CartTotalTable from "./Tables/CartTotalTable";
 import CartUpdated, { UpdateType } from "./CartUpdated";
 import CartItem from "./Types/CartItemType";
 import { styled } from "@mui/material/styles";
-import {useDispatch, useSelector} from "react-redux";
-import {setCart,setQuantity} from "../../features/cart/cartSlice";
-import {RootState} from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart, setQuantity } from "../../features/cart/cartSlice";
+import { useAppSelector } from "../../store";
 
 export type UpdateCart = {
   item?: CartItem;
@@ -18,8 +18,8 @@ export type UpdateCart = {
 const ShoppingCart = () => {
   const [cartUpdated, setCartUpdated] = useState<UpdateCart | null>(null);
   const [values, setValues] = useState<CartItem[]>([]);
-  const cartList = useSelector((state:RootState) => state.cartReducer.cartList);
-  const dispatch = useDispatch()
+  const cartList = useAppSelector((state) => state.reducer.cart.cartList);
+  const dispatch = useDispatch();
   // useEffect(() => {
   //   const temp: CartItem[] = [];
   //   cartList.map((item: CartItem) => {

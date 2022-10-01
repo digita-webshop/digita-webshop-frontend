@@ -14,7 +14,7 @@ import {
   SetStateAction,
   ChangeEvent,
 } from "react";
-import { blogCategories } from "../../../Services/Utils/Data/data";
+import { blogCategories } from "../../../Services/Data/data";
 import { errorMessage } from "../../../Services/Utils/toastMessages";
 import { fileInputStyles } from "../../../Styles/PanelArticle";
 import {

@@ -26,7 +26,7 @@ export const THCell = styled(TableCell)(({ theme }) => ({
     padding: "8px 4px",
   },
   "&.hidden": {
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "none",
     },
   },
@@ -64,7 +64,7 @@ export const TBadge = styled(Box)(({ theme }) => ({
     color: "#98530c",
     backgroundColor: "#ffe8d0",
   },
-  "&.received": {
+  "&.delivered": {
     color: "#006d0e",
     backgroundColor: "#ccf0d1",
   },

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Brand from "./Brand/Brand";
 import ContentHeader from "./ContentHeader/ContentHeader";
 import TableHeader from "./TableHeader/TableHeader";
-import { brands } from "../../Services/Utils/Data/data";
+import { brands } from "../../Services/Data/data";
 import { CardWrapper } from "../../Styles/panelCommon";
 
 const Brands = () => {

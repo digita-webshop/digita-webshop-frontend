@@ -1,7 +1,10 @@
-import { Address as AddressPage} from "../../../../Components/User";
+import AddressPage from "../../../../Components/Settings/Addresses/Addresses";
+import { useAppSelector } from "../../../../store";
 
 function Addresses() {
-  return <AddressPage />;
+  const { user } = useAppSelector((state) => state.reducer.auth);
+
+  return <AddressPage user={user!} />;
 }
 
 export default Addresses;

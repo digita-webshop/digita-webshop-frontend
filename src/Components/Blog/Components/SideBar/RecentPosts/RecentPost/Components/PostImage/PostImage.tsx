@@ -3,7 +3,7 @@ import Link from "@mui/material/Link";
 import { Link as RouterLink } from "react-router-dom";
 
 type props = {
-  id: number;
+  id: string;
   title: string;
   image: string;
 };

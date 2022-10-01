@@ -1,4 +1,4 @@
-import { IUser } from "../../Services/Utils/Types/user";
+import { IUser } from "../../Services/Types/user";
 import { api } from "../api";
 
 export interface UserRequest {
@@ -7,6 +7,7 @@ export interface UserRequest {
   password: string;
 }
 export interface LoginResponse {
+  code: number;
   data: {
     details: IUser;
     role: string;
@@ -14,6 +15,7 @@ export interface LoginResponse {
   message: string;
 }
 export interface SignUpResponse {
+  code: number;
   data: {
     email: string;
     userName: string;
@@ -37,12 +39,8 @@ const authApi = api.injectEndpoints({
         body: credentials,
       }),
     }),
-
-    getUser: build.mutation<any, string>({
-      query: (id) => `users/${id}`,
-    }),
   }),
 });
 
-export const { useLoginMutation, useSignUpMutation, useGetUserMutation } =
+export const { useLoginMutation, useSignUpMutation } =
   authApi;

@@ -1,66 +1,75 @@
 import {
   Box,
   Grid,
-  Divider,
   useMediaQuery,
-  MenuItem,
-  Select,
   SelectChangeEvent,
   Table,
   TableBody,
-  Typography,
   TableHead,
   TableRow,
-  Rating,
 } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { useState, ChangeEvent, useEffect } from "react";
+import { useState, ChangeEvent } from "react";
 import {
   CardWrapper,
+  ErrorText,
   POutlinedButton,
   PTitle,
-  PTextField,
-  PFormControl,
 } from "../../Styles/panelCommon";
-import { reviews } from "../../Services/Utils/Data/data";
-import { TableButton } from "../../Styles/Orders";
-import { TCell, TCheckBox, THCell } from "../../Styles/Reviews";
-import StarIcon from "@mui/icons-material/Star";
+import { TCheckBox, THCell } from "../../Styles/Reviews";
 import { useTheme } from "@mui/material/styles";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import PanelPagination from "../PanelPagination/PanelPagination";
 import { paginationStyle } from "../../Styles/PanelProducts";
 import { useLocation } from "react-router-dom";
-
-interface IReviews {
-  id: number;
-  pId: number;
-  product: string;
-  name: string;
-  rating: number;
-  date: string;
-}
+import TableHeader from "./TableHeader/TableHeader";
+import TableItem from "./TableItem/TableItem";
+import {
+  useDeleteReviewMutation,
+  useGetAllReviewsQuery,
+} from "../../features/reviews/reviewsApi";
+import PanelLoading from "../Loading/PanelLoading";
+import NotFound from "../EmptyList/NotFound";
+import {
+  errorMessage,
+  successMessage,
+} from "../../Services/Utils/toastMessages";
 const Reviews = () => {
-  const [list, setList] = useState<IReviews[]>([]);
+  const [searchValue, setSearchValue] = useState("");
   const [reviewsPerPage, setReviewsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [checked, setChecked] = useState<number[]>([]);
+  const [checked, setChecked] = useState<any[]>([]);
+
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const matchesSm = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const indexOfLastReview = currentPage * reviewsPerPage;
-  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
-
   const { pathname } = useLocation();
   const isArticlePage = pathname.includes("articles");
 
-  const handleToggle = (value: any) => () => {
-    const currentIndex = checked.indexOf(value);
+  let queries = `page=${currentPage}&limit=${reviewsPerPage} `;
+  if (searchValue) {
+    queries = `${queries} &search=${searchValue}`;
+  }
+  const path = isArticlePage ? "articles" : "products";
+  const {
+    data: reviewsData,
+    isLoading,
+    isError,
+  } = useGetAllReviewsQuery({
+    path,
+    queries,
+  });
+  const reviews = reviewsData?.data ?? [];
+  const reviewsLength = reviewsData?.total ?? 0;
+  console.log(reviewsData);
+  const [deleteReview] = useDeleteReviewMutation();
+
+  const handleToggle = (rid: string, id: string) => () => {
+    const currentIndex = checked.findIndex((item) => item.rid === rid);
     const newChecked = [...checked];
 
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newChecked.push({ rid, id });
     } else {
       newChecked.splice(currentIndex, 1);
     }
@@ -69,29 +78,36 @@ const Reviews = () => {
 
   const handleToggleAll = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      let allChecked = list?.map((item) => item.id);
+      let allChecked = reviews?.map((item) => ({
+        rid: item._id,
+        id: isArticlePage ? item.articleId._id : item.productId._id,
+      }));
       setChecked(allChecked);
     } else {
       setChecked([]);
     }
   };
 
+  const handleDelete = async (id: string, rid: string) => {
+    try {
+      const res = await deleteReview({
+        path: isArticlePage ? "articles" : "products",
+        id,
+        rid,
+      });
+      console.log(res);
+
+      successMessage("review deleted successfully");
+    } catch (err: any) {
+      errorMessage("could not delete review");
+      console.log(err);
+    }
+  };
+
   const headerDelete = () => {
-    const newList = list.filter((item) => !checked.includes(item.id));
-    setList(newList);
-  };
-
-  const handleDelete = (id: number) => {
-    const newList = list.filter((item) => item.id !== id);
-    setList(newList);
-  };
-
-  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
-    const data = event.target.value;
-    const filteredData = reviews.filter((item: any) =>
-      item.product.toLowerCase().includes(data.toLowerCase())
-    );
-    setList(filteredData);
+    for (let i = 0; i < checked.length; i++) {
+      handleDelete(checked[i].id, checked[i].rid);
+    }
   };
 
   const selectedAmountHandler = (event: SelectChangeEvent) => {
@@ -112,15 +128,6 @@ const Reviews = () => {
     tableHead.splice(2, 1, "article");
   }
 
-  useEffect(() => {
-    if (isArticlePage) {
-      //? fetch article reviews
-      setList(reviews);
-    } else {
-      //? fetch product reviews
-      setList(reviews);
-    }
-  }, [isArticlePage]);
   return (
     <Grid container rowSpacing={4}>
       <Grid item xs={12}>
@@ -147,150 +154,55 @@ const Reviews = () => {
         </Box>
       </Grid>
       <Grid item xs={12}>
-        <CardWrapper
-          sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: "20px",
-            }}
-          >
-            <Box sx={{ width: { xs: "100%", sm: "40%", lg: "30%" } }}>
-              <PTextField placeholder="Search... " onChange={handleSearch} />
-            </Box>
-            <Box
-              sx={{
-                width: { xs: "100%", sm: "35%", lg: "25%" },
-                display: "flex",
-                gap: "10px",
-              }}
-            >
-              <PFormControl size="small">
-                <Select
-                  variant="outlined"
-                  displayEmpty
-                  value={`${reviewsPerPage}`}
-                  onChange={selectedAmountHandler}
-                >
-                  <MenuItem value="10">Show 10</MenuItem>
-                  <MenuItem value={"20"}>Show 20 </MenuItem>
-                  <MenuItem value={"30"}>Show 30</MenuItem>
-                </Select>
-              </PFormControl>
-            </Box>
-          </Box>
-          <Divider
-            sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
-          />
-        </CardWrapper>
+        <TableHeader
+          setSearchValue={setSearchValue}
+          reviewsPerPage={reviewsPerPage}
+          selectedAmountHandler={selectedAmountHandler}
+        />
         <CardWrapper>
-          <Table>
-            <TableHead>
-              <TableRow>
-                {tableHead.map((item, index) => (
-                  <THCell
-                    key={index}
-                    align="left"
-                    className={`${item === "action" && "hidden"} ${
-                      item === "rating" && "hiddenSm"
-                    }`}
-                  >
-                    {item}
-                  </THCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {list
-                .slice(indexOfFirstReview, indexOfLastReview)
-                .map(({ id, pId, product, name, rating, date }) => (
-                  <TableRow
-                    key={id}
-                    sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
-                  >
-                    <TCell>
-                      <TCheckBox
-                        onChange={handleToggle(id)}
-                        checked={checked.indexOf(id) !== -1}
-                      />
-                    </TCell>
-                    <TCell>{pId}</TCell>
-                    <TCell
-                      sx={{
-                        fontWeight: 500,
-                        wordBreak: "break-word",
-                      }}
-                    >
-                      {product}
-                    </TCell>
-                    <TCell sx={{ wordBreak: "break-all" }}>{name}</TCell>
-
-                    {!matchesSm && !isArticlePage && (
-                      <TCell>
-                        <Rating
-                          name="text-feedback"
-                          size="small"
-                          value={rating}
-                          readOnly
-                          precision={0.5}
-                          emptyIcon={
-                            <StarIcon
-                              style={{ opacity: 0.55 }}
-                              fontSize="inherit"
-                            />
-                          }
-                        />
-                      </TCell>
-                    )}
-                    <TCell>{date}</TCell>
-                    {!matches && (
-                      <TCell
-                        sx={{
-                          display: { xs: "none", sm: "flex" },
-                          justifyContent: "center",
-                          gap: "4px",
-                          flexWrap: "wrap",
-                        }}
-                      >
-                        <TableButton>Detail</TableButton>
-                        <TableButton
-                          sx={{
-                            display: "flex",
-                            justifyContent: "center",
-                            "&:hover": {
-                              borderColor: "common.digitaRed",
-                              svg: { color: "common.digitaRed" },
-                            },
-                          }}
-                          onClick={() => handleDelete(id)}
-                        >
-                          <DeleteIcon sx={{ color: "common.panelGrey" }} />
-                        </TableButton>
-                      </TCell>
-                    )}
-                  </TableRow>
-                ))}
-            </TableBody>
-          </Table>
-          {list.length === 0 && (
-            <Box
-              sx={{
-                padding: "1.5rem 0 0 0",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Typography>Your Product Review is empty</Typography>
-            </Box>
+          {isLoading && <PanelLoading />}
+          {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
+          {reviews?.length === 0 && !isLoading && !isError && (
+            <NotFound message="Reviews list is empty" />
           )}
+          {reviews?.length !== 0 && !isLoading && !isError && (
+            <Table>
+              <TableHead>
+                <TableRow>
+                  {tableHead.map((item, index) => (
+                    <THCell
+                      key={index}
+                      align="left"
+                      className={`${item === "action" && "hidden"} ${
+                        item === "rating" && "hiddenSm"
+                      }`}
+                    >
+                      {item}
+                    </THCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {reviews?.map((review) => (
+                  <TableItem
+                    key={review._id!}
+                    review={review}
+                    matches={matches}
+                    matchesSm={matchesSm}
+                    isArticlePage={isArticlePage}
+                    checked={checked}
+                    handleToggle={handleToggle}
+                    handleDelete={handleDelete}
+                  />
+                ))}
+              </TableBody>
+            </Table>
+          )}
+
           <Box sx={paginationStyle}>
             <PanelPagination
               productsPerPage={reviewsPerPage}
-              totalProducts={list.length}
+              totalProducts={reviewsLength}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
             />

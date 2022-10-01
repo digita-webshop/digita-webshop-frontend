@@ -9,7 +9,7 @@ import {
   modalSwiperStyles,
 } from "../../../../../../Styles/Product";
 import ReactImageMagnify from "react-image-magnify";
-import { IGallery } from "../../../../../../Services/Utils/Types/product";
+import { IGallery } from "../../../../../../Services/Types/product";
 
 interface Props {
   gallery: IGallery[];

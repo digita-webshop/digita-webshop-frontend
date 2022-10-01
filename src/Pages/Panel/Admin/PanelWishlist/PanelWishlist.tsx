@@ -1,9 +1,7 @@
-import { PanelWishlist as MyWishlist } from "../../../../Components/PanelWishlist";
+import { Wishlist } from "../../../../Components";
 
 const PanelWishlist = () => {
-  return (
-    <MyWishlist />
-  )
-}
+  return <Wishlist />;
+};
 
-export default PanelWishlist
+export default PanelWishlist;

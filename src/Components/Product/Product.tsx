@@ -7,31 +7,47 @@ import ShareProduct from "./Components/ShareProduct/ShareProduct";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import ProductItem from "./../Products/Components/ProductItem/ProductItem";
 import { useParams } from "react-router-dom";
-import { IProduct } from "../../Services/Utils/Types/product";
 import {
   useGetAllProductsQuery,
   useGetProductQuery,
 } from "../../features/products/productsApi";
 import Loading from "../Loading/Loading";
+import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
+import { useAppSelector } from "../../store";
 
 const Product = () => {
+  const { role } = useAppSelector((state) => state.reducer.auth);
   const { id }: any = useParams();
+
   const { data: productData, isLoading: productLoading } =
     useGetProductQuery(id);
   const { data: productsData, isLoading: productsLoading } =
     useGetAllProductsQuery("");
 
-  const product: IProduct = productData?.data!;
-  const products: IProduct[] = productsData?.data!;
-  if (productLoading || productsLoading) {
+  const product = productData?.data!;
+  const products = productsData?.data ?? [];
+
+  const { data: wishlistData, isLoading: wishLoading } = useGetWishlistQuery(
+    role!
+  );
+  const wishlist = wishlistData?.data ?? [];
+
+  if (productLoading || productsLoading || wishLoading) {
     return <Loading full />;
   }
   return (
     <Box bgcolor={"white"}>
-      <Breadcrumbs title={"product"} lastPath={product?.title} />
+      <Breadcrumbs
+        title={"product"}
+        lastPath={product?.title}
+        category={product?.category}
+      />
       <Container maxWidth={"lg"}>
-        <ProductDetails product={product} />
-        <BoughtTogether />
+        <ProductDetails
+          product={product}
+          wished={wishlist?.some((i) => i._id === product._id!)}
+        />
+        <BoughtTogether products={products} />
         <Tabs product={product} />
         <ShareProduct />
 
@@ -40,18 +56,12 @@ const Product = () => {
             RELATED PRODUCTS
           </Typography>
           <Grid container spacing={{ xs: 1, md: 2 }}>
-            {products.slice(0, 4).map((item) => (
-              <Grid item xs={6} sm={4} md={3} key={item._id}>
+            {products.slice(0, 4).map((product) => (
+              <Grid item xs={6} sm={4} md={3} key={product._id}>
                 <ProductItem
-                  id={item._id!}
-                  title={item.title}
-                  image={item.image}
-                  offPrice={item.offPrice}
-                  price={item.price}
-                  sold={false}
-                  rating={item.rating}
-                  description={item.shortDescription}
+                  product={product}
                   listView={false}
+                  wished={wishlist?.some((item) => item._id === product._id!)}
                 />
               </Grid>
             ))}

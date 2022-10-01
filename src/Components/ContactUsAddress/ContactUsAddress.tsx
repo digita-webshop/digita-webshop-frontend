@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
-import { ContactUsData } from "../../Services/Utils/Data/data";
+import { ContactUsData } from "../../Services/Data/data";
 
 function ContactUsAddress() {
   return (

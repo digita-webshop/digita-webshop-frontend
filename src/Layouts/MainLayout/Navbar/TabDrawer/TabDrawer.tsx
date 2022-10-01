@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import React, { Fragment } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { navbarItems } from "../../../../Services/Utils/Data/data";
+import { navbarItems } from "../../../../Services/Data/data";
 
 type Anchor = "left" | "right";
 type TabDrawerProps = {
@@ -23,8 +23,8 @@ function TabDrawer({ displayDrawer, toggleDrawer }: TabDrawerProps) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const listItemHandler = (route: string) => {
-    toggleDrawer("left", false);
-    navigate(`${route}`);
+    toggleDrawer("left", false)();
+    navigate(route);
   };
   return (
     <Drawer

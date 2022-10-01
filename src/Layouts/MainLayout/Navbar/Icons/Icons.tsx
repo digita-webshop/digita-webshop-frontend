@@ -47,13 +47,13 @@ function Icons({
 }: Props) {
   const userDropRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const cartList = useAppSelector((state) => state.cartReducer.cartList);
-  const { user, role, getUserLoading } = useAppSelector(
-    (state) => state.authReducer
-  );
+  const cartList = useAppSelector((state) => state.reducer.cart.cartList);
+  const { user, role } = useAppSelector((state) => state.reducer.auth);
   const handleToggle = () => {
     if (matches) {
       setOpenDropdown((prevOpen) => !prevOpen);
+    } else if (role === "admin" || role === "superAdmin") {
+      navigate("/panel/dashboard");
     } else {
       navigate("/user");
     }
@@ -120,16 +120,13 @@ function Icons({
         ) : (
           <IconWrapper onClick={loginModalHandler(true)}>
             <Badge showZero sx={iconsBadgeStyles}>
-              {getUserLoading ? (
-                <Skeleton>
+              {/* <Skeleton>
                   <LoginOutlined
                     color="primary"
                     sx={{ ...navbarIcons, padding: "10px 8px" }}
                   />
-                </Skeleton>
-              ) : (
-                <LoginOutlined color="primary" sx={navbarIcons} />
-              )}
+                </Skeleton> */}
+              <LoginOutlined color="primary" sx={navbarIcons} />
             </Badge>
           </IconWrapper>
         )}

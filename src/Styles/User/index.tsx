@@ -120,8 +120,6 @@ export const topMenuItem = {
 
 /* =================== Profile ===================== */
 export const wrapper = {
-  border: "1px solid #d8d8d8",
-  borderRadius: "12px",
   padding: "20px",
   overflow: "auto",
   "& .orderImg": {
@@ -181,7 +179,7 @@ export const addBtn = {
   color: "common.digitaRed",
   fontWeight: 400,
   border: "1px solid #f03637",
-  fontSize: "16px",
+  fontSize: { sx: "16px", md: "13px", lg: "16px" },
   padding: "0.1rem 0.4rem 0.1rem 0 !important",
   "&:hover": {
     backgroundColor: "#f03637",
@@ -191,6 +189,11 @@ export const addBtn = {
       transition: "0.15s",
       color: "#fff",
     },
+  },
+  "& .addIcon": {
+    margin: "0 0.2rem",
+    color: "common.digitaRed",
+    fontSize: { xs: "24px", md: "18px", lg: "24px" },
   },
 };
 

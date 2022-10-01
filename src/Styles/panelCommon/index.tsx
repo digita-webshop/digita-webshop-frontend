@@ -85,8 +85,10 @@ export const POutlinedButton = styled(Button)(({ theme }) => ({
 export const PStack = styled(Stack)(({ theme }) => ({
   width: "100%",
   justifyContent: "center",
+  margin: "150px 0  100px",
   span: { margin: "auto" },
 }));
+
 export const ErrorText = styled(Typography)(({ theme }) => ({
   width: "100%",
   textAlign: "center",

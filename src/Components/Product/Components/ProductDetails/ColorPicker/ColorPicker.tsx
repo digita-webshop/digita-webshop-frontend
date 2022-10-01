@@ -5,13 +5,13 @@ import {
   ProductColor,
 } from "../../../../../Styles/Product";
 import { useState } from "react";
-import { colorsList } from "../../../../../Services/Utils/Data/data";
+import { colorsList } from "../../../../../Services/Data/data";
 
 interface Props {
   colors: string[];
 }
 function ColorPicker({ colors }: Props) {
-  const [selectedColor, setSelectedColor] = useState("");
+  const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const selectColorHandler = (name: string) => () => {
     setSelectedColor(name);

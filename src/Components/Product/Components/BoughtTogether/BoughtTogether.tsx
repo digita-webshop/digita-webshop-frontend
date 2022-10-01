@@ -5,14 +5,18 @@ import {
   BoughtTextStyle,
   BoughtButton,
 } from "../../../../Styles/Product";
-
 import { Button, Box, Typography, Divider } from "@mui/material";
-
 import { Card, CardMedia, CardActionArea } from "@mui/material";
-import { productData } from "../../../../Services/Utils/Data/data";
 import { Fragment } from "react";
-
-const BoughtTogether = () => {
+import { IProduct } from "../../../../Services/Types/product";
+import { useNavigate } from "react-router-dom";
+interface Props {
+  products: IProduct[];
+}
+const BoughtTogether = ({ products }: Props) => {
+  const navigate = useNavigate();
+  const index = Math.floor(Math.random() * products?.length - 3);
+  const randomProducts = products?.slice(index, index + 2);
   return (
     <Box sx={boughtPriceStyle}>
       <Typography variant="h3" component="h3" sx={boughttitleStyle}>
@@ -22,8 +26,7 @@ const BoughtTogether = () => {
 
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
         <Box sx={boughtTogether}>
-          {/* ===========================imageBought================ */}
-          {productData.slice(1, 3).map((product, index) => (
+          {randomProducts.map((product, index) => (
             <Fragment>
               {index !== 0 && (
                 <Typography
@@ -34,7 +37,7 @@ const BoughtTogether = () => {
                   +
                 </Typography>
               )}
-              <Box>
+              <Box onClick={() => navigate(`/shop/${product._id}`)}>
                 <Card
                   sx={{ border: " 1px solid #ebebeb", margin: "0 0.5rem " }}
                 >
@@ -52,7 +55,6 @@ const BoughtTogether = () => {
             </Fragment>
           ))}
         </Box>
-        {/* ===========================allBought================ */}
         <Box>
           <Typography sx={{ marginTop: "20px", fontSize: "14px" }}>
             Price for all: <span className="newPrice">$77.00</span>
@@ -66,15 +68,15 @@ const BoughtTogether = () => {
       <Box>
         <Typography variant="body2" component="p" sx={BoughtTextStyle}>
           <ul className="boughtList">
-            <li>
-              This Product: Microsoft Xbox One S Blue Grey –{" "}
-              <span className="newPrice">$52.00</span>
-            </li>
-            <li>
-              PC Gaming Mainboard B460 –{" "}
-              <del className="previousPrice">$29.00</del>{" "}
-              <span className="newPrice">$25.00</span>
-            </li>
+            {randomProducts.map(({ title, price, offPrice }) => (
+              <li>
+                {title} –
+                {offPrice && <del className="previousPrice">{`$${price}`}</del>}
+                <span className="newPrice">{`$${
+                  offPrice ? offPrice : price
+                }`}</span>
+              </li>
+            ))}
           </ul>
         </Typography>
       </Box>

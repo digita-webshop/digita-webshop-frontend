@@ -29,6 +29,6 @@ export { default as PanelProducts } from "./PanelProducts/PanelProducts";
 export { default as CompareModal } from "./CompareModal/CompareModal";
 export { default as Product } from "./Product/Product";
 export { default as ManageAccess } from "./ManageAccess/ManageAccess";
-export { default as PanelOrders } from "./PanelOrders/PanelOrders";
+export { default as UserOrders } from "./UserOrders/UserOrders";
 export { default as PanelArticles } from "./PanelArticles/PanelArticles";
 export { default as Protected } from "./Protected/Protected";
