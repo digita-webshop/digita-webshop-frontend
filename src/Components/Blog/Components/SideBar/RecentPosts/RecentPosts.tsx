@@ -11,7 +11,7 @@ function RecentPosts() {
     data: articlesData,
     isLoading,
     isError,
-  } = useGetAllArticlesQuery("sort=latest");
+  } = useGetAllArticlesQuery("page=1 &limit=4 &sort=latest");
   const articles = articlesData?.data ?? [];
   return (
     <Box
@@ -34,7 +34,7 @@ function RecentPosts() {
         </Typography>
       </FilterTitleWrapper>
       {!isLoading && !isError
-        ? articles.slice(0, 4).map((post, index) => (
+        ? articles.map((post, index) => (
             <Fragment key={post._id}>
               {index !== 0 ? <Divider sx={{ mb: "14px" }} /> : null}
               <RecentPost

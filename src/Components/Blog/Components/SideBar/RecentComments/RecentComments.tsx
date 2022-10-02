@@ -1,10 +1,16 @@
-import { Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-import { RecentCommentsBlogPage } from "../../../../../Services/Data/data";
+import { Typography, Skeleton, Box } from "@mui/material";
 import RecentComment from "./RecentComment/RecentComment";
 import { FilterTitleWrapper } from "../../../../../Styles/ShopPage";
+import { useGetAllReviewsQuery } from "../../../../../features/reviews/reviewsApi";
 
 function RecentComments() {
+  const {
+    data: reviewsData,
+    isLoading,
+    isError,
+  } = useGetAllReviewsQuery({ path: "articles", queries: "page=0 &limit=4" });
+  const reviews = reviewsData?.data ?? [];
+
   return (
     <Box
       sx={{
@@ -25,14 +31,32 @@ function RecentComments() {
           RECENT COMMENTS
         </Typography>
       </FilterTitleWrapper>
-      {RecentCommentsBlogPage.map((comment) => (
-        <RecentComment
-          key={comment.id}
-          id={comment.id}
-          title={comment.title}
-          author={comment.author}
-        />
-      ))}
+      {!isLoading && !isError
+        ? reviews.map((review) => (
+            <RecentComment
+              key={review._id!}
+              id={review._id!}
+              description={review?.description}
+              userName={review?.userId.userName}
+            />
+          ))
+        : Array(4)
+            .fill(null)
+            .map((item, index) => (
+              <Box
+                sx={{
+                  display: "flex",
+                  height: "40px",
+                  marginTop: "14px",
+                  flexDirection: "column",
+                  justifyContent: "space-evenly",
+                }}
+                key={index}
+              >
+                <Skeleton width={"100%"} height={20} variant="rectangular" />
+                <Skeleton width={"40%"} height={15} variant="rectangular" />
+              </Box>
+            ))}
     </Box>
   );
 }
