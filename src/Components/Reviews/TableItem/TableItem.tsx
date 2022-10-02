@@ -3,7 +3,7 @@ import { Delete, Star } from "@mui/icons-material";
 import { TableButton } from "../../../Styles/Orders";
 import { TCell, TCheckBox } from "../../../Styles/Reviews";
 import { IReviews } from "../../../Services/Types/product";
-import { getReadableDate } from "../../../Services/Utils/getReadableDate";
+import { getReadableDate } from "../../../Utils/getReadableDate";
 import { useNavigate } from "react-router-dom";
 
 interface Props {

@@ -12,7 +12,7 @@ import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSignUpMutation } from "../../features/auth/authApi";
 import { setCredentials } from "../../features/auth/authSlice";
-import { successMessage } from "../../Services/Utils/toastMessages";
+import { successMessage } from "../../Utils/toastMessages";
 import {
   errorStyles,
   FormFooter,

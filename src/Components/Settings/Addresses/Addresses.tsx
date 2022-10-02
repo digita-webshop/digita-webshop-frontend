@@ -17,10 +17,7 @@ import { useUpdateUserMutation } from "../../../features/user/userApi";
 import AddressForm from "../../Checkout/AddressForm/AddressForm";
 import { setCredentials } from "../../../features/auth/authSlice";
 import { useDispatch } from "react-redux";
-import {
-  errorMessage,
-  successMessage,
-} from "./../../../Services/Utils/toastMessages";
+import { errorMessage, successMessage } from "../../../Utils/toastMessages";
 interface Props {
   user: IUser;
 }

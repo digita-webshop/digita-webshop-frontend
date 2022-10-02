@@ -12,7 +12,7 @@ import { articleTitleStyles } from "../../Styles/Article";
 import ReplyForm from "./ReplyForm/ReplyForm";
 import { useGetArticleQuery } from "../../features/articles/articlesApi";
 import Loading from "../Loading/Loading";
-import { getReadableDate } from "../../Services/Utils/getReadableDate";
+import { getReadableDate } from "../../Utils/getReadableDate";
 import { convertFromRaw, Editor, EditorState } from "draft-js";
 import Review from "../Product/Components/Tabs/Reviews/Review/Review";
 import {

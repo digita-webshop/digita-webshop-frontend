@@ -15,7 +15,7 @@ import { cartModal } from "../../../Styles/PanelProducts";
 import { titleWrapper, titleStyle } from "../../../Styles/PanelProducts";
 import { cardWrapper, deleteBtn, addBtn } from "../../../Styles/User";
 import { useDeleteWishMutation } from "../../../features/wishlist/wishlistApi";
-import { successMessage } from "../../../Services/Utils/toastMessages";
+import { successMessage } from "../../../Utils/toastMessages";
 import { useAppSelector } from "../../../store";
 
 type T = {

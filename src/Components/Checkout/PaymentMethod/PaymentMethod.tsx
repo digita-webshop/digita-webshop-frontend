@@ -9,7 +9,7 @@ import {
   CustomRadio,
   paymentTitleStyles,
 } from "../../../Styles/Checkout";
-import IMAGES from "../../../Assets/Images";
+import paypalImage from "../../../Assets/Images/paypal.png";
 
 function PaymentMethod() {
   const [expanded, setExpanded] = useState("cash");
@@ -79,7 +79,7 @@ function PaymentMethod() {
               What is Paypal?
             </Typography>
           </Box>
-          <img src={`${IMAGES.paypal}`} alt="paypal" />
+          <img src={paypalImage} alt="paypal" />
         </AccordionSummary>
         <AccordionDetails sx={accordionDetailStyles}>
           <Typography component={"span"}>

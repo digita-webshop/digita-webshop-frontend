@@ -9,10 +9,7 @@ import {
 import { CardWrapper, PFormLabel } from "../../Styles/panelCommon";
 import TextEditor from "../TextEditor/TextEditor";
 import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
-import {
-  errorMessage,
-  successMessage,
-} from "../../Services/Utils/toastMessages";
+import { errorMessage, successMessage } from "../../Utils/toastMessages";
 import { useNavigate, useParams } from "react-router-dom";
 import { IArticle } from "../../Services/Types/article";
 

@@ -10,10 +10,7 @@ import {
   useGetAllArticlesQuery,
 } from "../../features/articles/articlesApi";
 import NotFound from "../EmptyList/NotFound";
-import {
-  errorMessage,
-  successMessage,
-} from "../../Services/Utils/toastMessages";
+import { errorMessage, successMessage } from "../../Utils/toastMessages";
 import { ErrorText } from "../../Styles/panelCommon";
 import PanelLoading from "../Loading/PanelLoading";
 import GridHeader from "../PanelProducts/GridHeader/GridHeader";

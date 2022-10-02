@@ -1,10 +1,10 @@
-import { AddProduct as AddProductPage } from "../../../../Components";
-function AddProduct() {
+import { AddProduct } from "../../../../Components";
+function AddProductPage() {
   return (
     <>
-      <AddProductPage />
+      <AddProduct />
     </>
   );
 }
 
-export default AddProduct;
+export default AddProductPage;

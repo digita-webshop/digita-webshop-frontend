@@ -1,7 +1,7 @@
 import { PanelArticles } from "../../../../Components";
 
-const Articles = () => {
+const ArticlesPage = () => {
   return <PanelArticles />;
 };
 
-export default Articles;
+export default ArticlesPage;

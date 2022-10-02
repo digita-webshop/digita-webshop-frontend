@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../../store";
 import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 import ShopCartItem from "../ShopCart/ShopCartItem/ShopCartItem";
-import { getSubtotal } from "../../../../Services/Utils/getSubtotal";
+import { getSubtotal } from "../../../../Utils/getSubtotal";
 
 type Anchor = "left" | "right";
 type ShopDrawerProps = {

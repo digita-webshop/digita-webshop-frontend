@@ -1,7 +1,7 @@
-import { UserOrders as MyOrders } from "../../../../Components";
+import { UserOrders } from "../../../../Components";
 
-const UserOrders = () => {
-  return <MyOrders />;
+const UserOrdersPage = () => {
+  return <UserOrders />;
 };
 
-export default UserOrders;
+export default UserOrdersPage;

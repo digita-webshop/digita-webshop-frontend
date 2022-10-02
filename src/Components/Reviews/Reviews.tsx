@@ -29,10 +29,7 @@ import {
 } from "../../features/reviews/reviewsApi";
 import PanelLoading from "../Loading/PanelLoading";
 import NotFound from "../EmptyList/NotFound";
-import {
-  errorMessage,
-  successMessage,
-} from "../../Services/Utils/toastMessages";
+import { errorMessage, successMessage } from "../../Utils/toastMessages";
 const Reviews = () => {
   const [searchValue, setSearchValue] = useState("");
   const [reviewsPerPage, setReviewsPerPage] = useState(10);

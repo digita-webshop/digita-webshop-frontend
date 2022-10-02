@@ -1,8 +1,8 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { Avatar, Box, Divider, Rating, Typography } from "@mui/material";
-import avatar from "../../../../../../Assets/Images/Product/avatar.png";
-import { getReadableDate } from "../../../../../../Services/Utils/getReadableDate";
-import { useGetUserMutation } from "../../../../../../features/user/userApi";
+import avatar from "../../../../../../Assets/Images/avatar.png";
+import { getReadableDate } from "../../../../../../Utils/getReadableDate";
+import { useGetUserQuery } from "../../../../../../features/user/userApi";
 import { useLocation } from "react-router-dom";
 
 interface Props {
@@ -14,26 +14,12 @@ interface Props {
 }
 
 function Review({ id, userId, rating, description, createdAt }: Props) {
-  const [user, setUser] = useState<any>();
   const { pathname } = useLocation();
 
   const readableDate = getReadableDate(createdAt);
-  const [getUser] = useGetUserMutation();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await getUser(userId).unwrap();
-        setUser(res.data);
-      } catch (err: any) {
-        if (err.status === 404) {
-          setUser({ userName: "deleted account" });
-        }
-        console.log(err);
-      }
-    };
-    fetchUser();
-  }, []);
+  const { data: userData } = useGetUserQuery(userId);
+  const user = userData?.data ?? { userName: "deleted account", image: "" };
 
   return (
     <Fragment>
@@ -41,7 +27,7 @@ function Review({ id, userId, rating, description, createdAt }: Props) {
         <Box>
           <Avatar
             alt="avatar"
-            src={user?.image || avatar}
+            src={user?.image ?? avatar}
             sx={{
               width: "60px",
               height: "60px",

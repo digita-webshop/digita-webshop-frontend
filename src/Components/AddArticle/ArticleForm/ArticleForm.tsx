@@ -15,7 +15,7 @@ import {
   ChangeEvent,
 } from "react";
 import { blogCategories } from "../../../Services/Data/data";
-import { errorMessage } from "../../../Services/Utils/toastMessages";
+import { errorMessage } from "../../../Utils/toastMessages";
 import { fileInputStyles } from "../../../Styles/PanelArticle";
 import {
   PFormControl,

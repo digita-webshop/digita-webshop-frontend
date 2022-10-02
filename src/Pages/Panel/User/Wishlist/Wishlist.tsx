@@ -1,7 +1,7 @@
-import { Wishlist as WishlistPage } from "../../../../Components";
+import { Wishlist } from "../../../../Components";
 
-function Wishlist() {
-  return <WishlistPage />;
+function WishlistPage() {
+  return <Wishlist />;
 }
 
-export default Wishlist;
+export default WishlistPage;

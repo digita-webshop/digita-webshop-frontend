@@ -1,7 +1,7 @@
-import { Dashboard as DashboardPage } from "../../../../Components";
+import { Dashboard } from "../../../../Components";
 
-function Dashboard() {
-  return <DashboardPage />;
+function DashboardPage() {
+  return <Dashboard />;
 }
 
-export default Dashboard;
+export default DashboardPage;

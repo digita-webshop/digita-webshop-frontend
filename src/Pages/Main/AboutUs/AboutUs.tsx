@@ -1,6 +1,6 @@
 import About from "../../../Components/About/About";
 
-function AboutUs() {
+function AboutUsPage() {
   return (
     <>
       <About />
@@ -8,4 +8,4 @@ function AboutUs() {
   );
 }
 
-export default AboutUs;
+export default AboutUsPage;

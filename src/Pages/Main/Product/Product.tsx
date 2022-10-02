@@ -1,14 +1,14 @@
 import { Box } from "@mui/material";
-import  {Product as ProductPage} from "../../../Components";
+import { Product } from "../../../Components";
 
-function Product() {
+function ProductPage() {
   return (
     <>
       <Box>
-        <ProductPage />
+        <Product />
       </Box>
     </>
   );
 }
 
-export default Product;
+export default ProductPage;

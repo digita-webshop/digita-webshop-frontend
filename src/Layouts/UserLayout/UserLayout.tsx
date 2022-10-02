@@ -2,6 +2,7 @@ import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { Aside, Main, UserWrapper } from "../../Styles/User";
 import Sidebar from "./Sidebar/Sidebar";
 import { Outlet, useLocation } from "react-router-dom";
+import Navbar from "../MainLayout/Navbar/Navbar";
 
 function UserLayout() {
   const { pathname } = useLocation();
@@ -10,6 +11,7 @@ function UserLayout() {
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   return (
     <>
+      <Navbar />
       <UserWrapper maxWidth={"xl"}>
         <Box>
           {matches ? (

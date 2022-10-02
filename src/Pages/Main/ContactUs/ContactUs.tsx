@@ -7,7 +7,7 @@ import {
   Map,
 } from "../../../Components";
 
-function ContactUs() {
+function ContactUsPage() {
   return (
     <Box bgcolor={"white"}>
       <Breadcrumbs title={"contact us "} />
@@ -26,4 +26,4 @@ function ContactUs() {
   );
 }
 
-export default ContactUs;
+export default ContactUsPage;

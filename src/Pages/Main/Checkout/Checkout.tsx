@@ -1,11 +1,11 @@
-import { Checkout as CheckoutPage, Breadcrumbs } from "../../../Components";
-function Checkout() {
+import { Checkout, Breadcrumbs } from "../../../Components";
+function CheckoutPage() {
   return (
     <>
       <Breadcrumbs title="Checkout" />
-      <CheckoutPage />
+      <Checkout />
     </>
   );
 }
 
-export default Checkout;
+export default CheckoutPage;

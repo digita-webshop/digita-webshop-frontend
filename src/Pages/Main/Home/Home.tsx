@@ -7,7 +7,7 @@ import {
   OurBlog,
 } from "../../../Components";
 
-function Home() {
+function HomePage() {
   return (
     <>
       <Header />
@@ -20,4 +20,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

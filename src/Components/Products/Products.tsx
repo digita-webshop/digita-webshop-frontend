@@ -11,7 +11,7 @@ import { useGetAllProductsQuery } from "../../features/products/productsApi";
 import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
 import { useAppSelector } from "../../store";
 import { useGetAllCartItemQuery } from "../../features/cart/cartApi";
-import { isInList } from "../../Services/Utils/isInList";
+import { isInList } from "../../Utils/isInList";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] =

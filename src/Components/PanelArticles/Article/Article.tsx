@@ -28,7 +28,7 @@ import {
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
-import { getReadableDate } from "./../../../Services/Utils/getReadableDate";
+import { getReadableDate } from "../../../Utils/getReadableDate";
 
 type T = {
   id: string;

@@ -1,7 +1,7 @@
-import { Orders as OrdersPage } from "../../../../Components";
+import { Orders } from "../../../../Components";
 
-function Orders() {
-  return <OrdersPage />;
+function OrdersPage() {
+  return <Orders />;
 }
 
-export default Orders;
+export default OrdersPage;

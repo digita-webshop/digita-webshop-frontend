@@ -1,7 +1,7 @@
 import { KeyboardArrowRight } from "@mui/icons-material";
 import { Box, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { profileWrapper, topMenuItem, wrapper } from "../../../../Styles/User";
+import { profileWrapper, topMenuItem, wrapper } from "../../../Styles/User";
 
 function MyOrders({ sidebar }: { sidebar: boolean }) {
   const navigate = useNavigate();
@@ -18,7 +18,10 @@ function MyOrders({ sidebar }: { sidebar: boolean }) {
           My Orders
         </Typography>
         <Box sx={topMenuItem}>
-          <Box sx={{ display: "flex", gap: 1 }} onClick={() => navigate("/user/orders")}>
+          <Box
+            sx={{ display: "flex", gap: 1 }}
+            onClick={() => navigate("/user/orders")}
+          >
             <Typography sx={{ fontSize: "18px" }}>See All</Typography>
             <KeyboardArrowRight className="navIcon" />
           </Box>

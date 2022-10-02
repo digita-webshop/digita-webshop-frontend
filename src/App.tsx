@@ -7,7 +7,6 @@ import {
   ContactUs,
   Home,
   Shop,
-  Wishlist,
   Checkout,
   Cart,
   Article,
@@ -20,7 +19,7 @@ import {
   Brands,
   Dashboard,
   ManageAccess,
-  PanelWishlist,
+  Wishlist as PanelWishlist,
   UserOrders,
   Orders,
   Products,
@@ -34,46 +33,42 @@ import {
   Addresses,
   Wishlist as UserWishlist,
   Status,
-  PersonalInfo,
+  Info,
 } from "./Pages/Panel/User";
 import MainLayout from "./Layouts/MainLayout/MainLayout";
 import PanelLayout from "./Layouts/PanelLayout/PanelLayout";
-import { ScrollToTop, Protected } from "./Components";
+import { ScrollToTop } from "./Components";
 import UserLayout from "./Layouts/UserLayout/UserLayout";
 import { useEffect } from "react";
 import { useAppSelector } from "./store";
 import { useDispatch } from "react-redux";
 import { logout, setCredentials } from "./features/auth/authSlice";
-import { useGetUserMutation } from "./features/user/userApi";
+import { useGetUserQuery } from "./features/user/userApi";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
-  const { id, role } = useAppSelector((state) => state.reducer.auth);
+  const { id } = useAppSelector((state) => state.reducer.auth);
+
   const dispatch = useDispatch();
-  const [getUser] = useGetUserMutation();
+
+  const { data: userData } = useGetUserQuery(id);
+  const user = userData?.data;
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      if (id) {
-        try {
-          const response = await getUser(id).unwrap();
-          dispatch(
-            setCredentials({
-              user: response.data,
-              role: response.data.role!,
-              email: null,
-            })
-          );
-          console.log(response);
-        } catch (err) {
-          dispatch(logout());
-          console.log(err);
-        }
-      }
-    };
-    fetchUserData();
-  }, [dispatch, id, getUser, role]);
+    if (user) {
+      dispatch(
+        setCredentials({
+          user,
+          role: user.role!,
+          email: null,
+        })
+      );
+    } else {
+      dispatch(logout());
+    }
+  }, [user, dispatch]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -88,30 +83,29 @@ function App() {
               <Route path="/article/:id" element={<Article />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/contact-us" element={<ContactUs />} />
-              <Route path="/wishlist" element={<Wishlist />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/cart" element={<Cart />} />
-              <Route
-                path="/user/*"
-                element={
-                  <Protected>
-                    <UserLayout />
-                  </Protected>
-                }
-              >
-                <Route path="personal-info" element={<PersonalInfo />} />
-                <Route path="status" element={<Status />} />
-                <Route path="addresses" element={<Addresses />} />
-                <Route path="orders" element={<UserOrders />} />
-                <Route path="wishlist" element={<UserWishlist />} />
-              </Route>
+            </Route>
+            <Route
+              path="/user/*"
+              element={
+                <PrivateRoute>
+                  <UserLayout />
+                </PrivateRoute>
+              }
+            >
+              <Route path="personal-info" element={<Info />} />
+              <Route path="status" element={<Status />} />
+              <Route path="addresses" element={<Addresses />} />
+              <Route path="orders" element={<UserOrders />} />
+              <Route path="wishlist" element={<UserWishlist />} />
             </Route>
             <Route
               path="/panel/*"
               element={
-                <Protected>
+                <PrivateRoute>
                   <PanelLayout />
-                </Protected>
+                </PrivateRoute>
               }
             >
               <Route path="dashboard" element={<Dashboard />} />
@@ -135,9 +129,9 @@ function App() {
               <Route
                 path="manage-access"
                 element={
-                  <Protected>
+                  <PrivateRoute>
                     <ManageAccess />
-                  </Protected>
+                  </PrivateRoute>
                 }
               />
               <Route path="settings" element={<Settings />} />

@@ -5,8 +5,8 @@ import { ImageWrapper } from "../../../Styles/AddProduct";
 import { CardWrapper, PFormLabel } from "../../../Styles/panelCommon";
 import previewImg from "../../../Assets/Images/upload-preview.jpg";
 import { ChangeEvent, useRef } from "react";
-import { errorMessage } from "../../../Services/Utils/toastMessages";
-import { uploadImage } from "../../../Services/Utils/uploadImage";
+import { errorMessage } from "../../../Utils/toastMessages";
+import { uploadImage } from "../../../Utils/uploadImage";
 
 interface Props {
   setAddedImages: Dispatch<SetStateAction<any>>;

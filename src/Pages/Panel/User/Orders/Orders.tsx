@@ -1,7 +1,7 @@
-import { UserOrders as OrdersPage } from "../../../../Components";
+import { UserOrders } from "../../../../Components";
 
-function Orders() {
-  return <OrdersPage />;
+function OrdersPage() {
+  return <UserOrders />;
 }
 
-export default Orders;
+export default OrdersPage;

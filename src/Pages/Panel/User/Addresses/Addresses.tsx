@@ -1,10 +1,10 @@
-import AddressPage from "../../../../Components/Settings/Addresses/Addresses";
+import Addresses from "../../../../Components/Settings/Addresses/Addresses";
 import { useAppSelector } from "../../../../store";
 
-function Addresses() {
+function AddressesPage() {
   const { user } = useAppSelector((state) => state.reducer.auth);
 
-  return <AddressPage user={user!} />;
+  return <Addresses user={user!} />;
 }
 
-export default Addresses;
+export default AddressesPage;

@@ -1,11 +1,11 @@
-import { Brands as BrandsPage } from "../../../../Components";
+import { Brands } from "../../../../Components";
 
-function Brands() {
+function BrandsPage() {
   return (
     <>
-      <BrandsPage />
+      <Brands />
     </>
   );
 }
 
-export default Brands;
+export default BrandsPage;

@@ -1,13 +1,13 @@
 import React from "react";
 import { Breadcrumbs } from "../../../Components";
-import { Cart as CartPage } from "../../../Components";
-const Cart = () => {
+import { Cart } from "../../../Components";
+const CartPage = () => {
   return (
     <>
       <Breadcrumbs title={"cart"} />
-      <CartPage />
+      <Cart />
     </>
   );
 };
 
-export default Cart;
+export default CartPage;

@@ -1,11 +1,11 @@
-import { ManageAccess as ManageAccessPage } from "../../../../Components";
+import { ManageAccess } from "../../../../Components";
 
-function ManageAccess() {
+function ManageAccessPage() {
   return (
     <>
-      <ManageAccessPage />
+      <ManageAccess />
     </>
   );
 }
 
-export default ManageAccess;
+export default ManageAccessPage;

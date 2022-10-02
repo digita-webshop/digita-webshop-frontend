@@ -43,7 +43,7 @@ import {
 } from "../../../../features/cart/cartApi";
 import DotSpinner from "../../../Loading/DotSpinner";
 import { addProductToCart } from "../../../../features/cart/cartSlice";
-import { isInList } from "../../../../Services/Utils/isInList";
+import { isInList } from "../../../../Utils/isInList";
 
 type Props = {
   product: IProduct;

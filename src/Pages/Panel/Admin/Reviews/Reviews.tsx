@@ -1,7 +1,7 @@
-import { Reviews as ReviewsPage } from "../../../../Components";
+import { Reviews } from "../../../../Components";
 
-function Reviews() {
-  return <ReviewsPage />;
+function ReviewsPage() {
+  return <Reviews />;
 }
 
-export default Reviews;
+export default ReviewsPage;

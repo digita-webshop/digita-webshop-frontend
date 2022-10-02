@@ -1,7 +1,7 @@
-import { Article as ArticlePage } from "../../../Components";
+import { Article } from "../../../Components";
 
-function Article() {
-  return <ArticlePage />;
+function ArticlePage() {
+  return <Article />;
 }
 
-export default Article;
+export default ArticlePage;

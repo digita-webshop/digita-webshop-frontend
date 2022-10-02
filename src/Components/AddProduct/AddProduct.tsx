@@ -6,10 +6,7 @@ import {
   useAddProductMutation,
   useUpdateProductMutation,
 } from "../../features/products/productsApi";
-import {
-  errorMessage,
-  successMessage,
-} from "../../Services/Utils/toastMessages";
+import { errorMessage, successMessage } from "../../Utils/toastMessages";
 import { IProduct } from "../../Services/Types/product";
 import { CardWrapper, PFormLabel } from "../../Styles/panelCommon";
 import TextEditor from "../TextEditor/TextEditor";

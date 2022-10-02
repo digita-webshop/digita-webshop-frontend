@@ -1,10 +1,10 @@
-import { Settings as SettingsPage } from "../../../../Components";
-function Settings() {
+import { Settings } from "../../../../Components";
+function SettingsPage() {
   return (
     <>
-      <SettingsPage />
+      <Settings />
     </>
   );
 }
 
-export default Settings;
+export default SettingsPage;

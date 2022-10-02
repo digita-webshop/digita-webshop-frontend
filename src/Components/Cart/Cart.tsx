@@ -8,7 +8,7 @@ import CartUpdated, { UpdateType } from "./Components/CartUpdated/CartUpdated";
 import { useAppSelector } from "../../store";
 import { useGetAllCartItemQuery } from "../../features/cart/cartApi";
 import { CartContainer, TableContainer } from "./styles";
-import { getSubtotal } from "../../Services/Utils/getSubtotal";
+import { getSubtotal } from "../../Utils/getSubtotal";
 import { ICartItem } from "../../Services/Types/cart";
 
 export type UpdateCart = {

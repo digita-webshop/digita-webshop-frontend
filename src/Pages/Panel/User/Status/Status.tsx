@@ -1,7 +1,7 @@
-import { Status as StatusPage } from "../../../../Components/User";
+import { UserStatus } from "../../../../Components";
 
-function Status() {
-  return <StatusPage />;
+function StatusPage() {
+  return <UserStatus />;
 }
 
-export default Status;
+export default StatusPage;

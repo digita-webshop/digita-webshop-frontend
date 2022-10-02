@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { ICartItem } from "../../Services/Types/cart";
-import { getSubtotal } from "../../Services/Utils/getSubtotal";
+import { getSubtotal } from "../../Utils/getSubtotal";
 
 interface InitialStateProps {
   cartList: ICartItem[];

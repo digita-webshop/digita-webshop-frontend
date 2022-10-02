@@ -1,6 +1,6 @@
-import { AddArticle as AddArticlePage } from "../../../../Components";
-function AddArticle() {
-  return <AddArticlePage />;
+import { AddArticle } from "../../../../Components";
+function AddArticlePage() {
+  return <AddArticle />;
 }
 
-export default AddArticle;
+export default AddArticlePage;

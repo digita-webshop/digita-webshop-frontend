@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import { CardWrapper } from "../../../Styles/User";
-import { wrapper } from "../../../Styles/User";
+import { CardWrapper } from "../../Styles/User";
+import { wrapper } from "../../Styles/User";
 import Sidebar from "./Sidebar/Sidebar";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../../store";
-import General from "../../Settings/General/General";
-import Password from "../../Settings/Password/Password";
+import { useAppSelector } from "../../store";
+import General from "../Settings/General/General";
+import Password from "../Settings/Password/Password";
 
 const PersonalInfo = () => {
   const { user } = useAppSelector((state) => state.reducer.auth);

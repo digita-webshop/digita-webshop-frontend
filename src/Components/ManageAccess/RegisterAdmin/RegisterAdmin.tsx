@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useCreateAdminMutation } from "../../../features/user/userApi";
-import { successMessage } from "../../../Services/Utils/toastMessages";
+import { successMessage } from "../../../Utils/toastMessages";
 import { errorStyles, FormWrapper } from "../../../Styles/Login";
 interface Props {
   setOpenRegister: Dispatch<SetStateAction<boolean>>;

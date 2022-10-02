@@ -2,7 +2,7 @@ import { useState, FormEvent } from "react";
 import { FormControl, Grid, Typography } from "@mui/material";
 import { PButton, PFormLabel, PTextField } from "../../../Styles/panelCommon";
 import { useUpdateUserMutation } from "../../../features/user/userApi";
-import { successMessage } from "../../../Services/Utils/toastMessages";
+import { successMessage } from "../../../Utils/toastMessages";
 
 interface Props {
   role: string;

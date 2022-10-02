@@ -6,10 +6,7 @@ import {
   useGetAllUsersQuery,
 } from "../../../features/user/userApi";
 import { IUser } from "../../../Services/Types/user";
-import {
-  errorMessage,
-  successMessage,
-} from "../../../Services/Utils/toastMessages";
+import { errorMessage, successMessage } from "../../../Utils/toastMessages";
 import { ErrorText, PTextField } from "../../../Styles/panelCommon";
 import { cartModal, paginationStyle } from "../../../Styles/PanelProducts";
 import { TCheckBox } from "../../../Styles/Reviews";

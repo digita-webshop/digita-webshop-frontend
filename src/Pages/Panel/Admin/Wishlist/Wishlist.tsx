@@ -1,7 +1,7 @@
 import { Wishlist } from "../../../../Components";
 
-const PanelWishlist = () => {
+const WishlistPage = () => {
   return <Wishlist />;
 };
 
-export default PanelWishlist;
+export default WishlistPage;

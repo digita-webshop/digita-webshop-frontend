@@ -1,7 +1,7 @@
-import { Shop as ShopPage } from "../../../Components";
+import { Shop } from "../../../Components";
 
-function Shop() {
-  return <ShopPage />;
+function ShopPage() {
+  return <Shop />;
 }
 
-export default Shop;
+export default ShopPage;

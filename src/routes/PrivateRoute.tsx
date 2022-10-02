@@ -1,10 +1,10 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../store";
 interface Props {
   children: JSX.Element;
 }
 
-const Protected = ({ children }: Props) => {
+const PrivateRoute = ({ children }: Props) => {
   const location = useLocation();
   const { pathname } = location;
   const { role } = useAppSelector((state) => state.reducer.auth);
@@ -31,4 +31,4 @@ const Protected = ({ children }: Props) => {
   return children;
 };
 
-export default Protected;
+export default PrivateRoute;

@@ -32,4 +32,5 @@ export { default as Product } from "./Product/Product";
 export { default as ManageAccess } from "./ManageAccess/ManageAccess";
 export { default as UserOrders } from "./UserOrders/UserOrders";
 export { default as PanelArticles } from "./PanelArticles/PanelArticles";
-export { default as Protected } from "./Protected/Protected";
+export { default as UserInfo } from "./UserInfo/UserInfo";
+export { default as UserStatus } from "./UserStatus/UserStatus";

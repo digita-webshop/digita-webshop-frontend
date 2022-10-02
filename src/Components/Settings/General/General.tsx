@@ -15,14 +15,11 @@ import {
   PTextField,
 } from "../../../Styles/panelCommon";
 import { IUser } from "../../../Services/Types/user";
-import {
-  errorMessage,
-  successMessage,
-} from "../../../Services/Utils/toastMessages";
+import { errorMessage, successMessage } from "../../../Utils/toastMessages";
 import { useUpdateUserMutation } from "../../../features/user/userApi";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../../../features/auth/authSlice";
-import { uploadImage } from "../../../Services/Utils/uploadImage";
+import { uploadImage } from "../../../Utils/uploadImage";
 
 interface Props {
   user: IUser;

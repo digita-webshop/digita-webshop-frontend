@@ -1,7 +1,7 @@
 import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
-import { cardWrapper } from "../../../Styles/User";
-import { productData } from "../../../Services/Data/data";
-import { titleStyle } from "../../../Styles/PanelProducts";
+import { cardWrapper } from "../../Styles/User";
+import { productData } from "../../Services/Data/data";
+import { titleStyle } from "../../Styles/PanelProducts";
 import { Fragment } from "react";
 import MyOrders from "./MyOrders/MyOrders";
 

@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 import { UserItem } from "../../../Styles/User";
 import { userSidebarItems } from "../../../Services/Data/data";
 import SidebarTop from "./SidebarTop/SidebarTop";
-import MyOrders from "../../../Components/User/Status/MyOrders/MyOrders";
+import MyOrders from "../../../Components/UserStatus/MyOrders/MyOrders";
 
 const Sidebar = () => {
   return (

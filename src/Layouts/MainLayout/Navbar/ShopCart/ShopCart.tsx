@@ -5,7 +5,7 @@ import { useAppSelector } from "../../../../store";
 import { shopCartWrapper } from "../../../../Styles/Appbar";
 import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 import ShopCartItem from "./ShopCartItem/ShopCartItem";
-import { getSubtotal } from "../../../../Services/Utils/getSubtotal";
+import { getSubtotal } from "../../../../Utils/getSubtotal";
 
 function ShopCart() {
   const { user } = useAppSelector((state) => state.reducer.auth);
