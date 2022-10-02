@@ -19,10 +19,11 @@ import Pagination from "../Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
-import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
 import { useAppSelector } from "../../store";
 
 function Shop() {
+  const { role } = useAppSelector((state) => state.reducer.auth);
+
   const [displayDrawer, setDisplayDrawer] = useState(false);
   const [productsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(1);
@@ -30,15 +31,10 @@ function Shop() {
     grid: true,
     list: false,
   });
-  let [searchParams, setSearchParams] = useSearchParams();
-  const { role } = useAppSelector((state) => state.reducer.auth);
 
+  let [searchParams, setSearchParams] = useSearchParams();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
-  const { data: wishlistData, isLoading: wishLoading } = useGetWishlistQuery(
-    role!
-  );
-  const wishlist = wishlistData?.data ?? [];
 
   let queries: any = `page=${currentPage}&limit=${productsPerPage}`;
 
@@ -134,7 +130,7 @@ function Shop() {
               selectedLayout={selectedLayout}
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
-              {!isLoading && !isError && !wishLoading
+              {!isLoading && !isError
                 ? products.map((product) => {
                     if (products.length === 0) {
                       return (
@@ -153,26 +149,14 @@ function Shop() {
                         {selectedLayout.grid && (
                           <Fade in={selectedLayout.grid}>
                             <Grid item xs={12} sm={4} key={product._id}>
-                              <ProductItem
-                                product={product}
-                                listView={false}
-                                wished={wishlist?.some(
-                                  (item) => item._id === product._id!
-                                )}
-                              />
+                              <ProductItem product={product} listView={false} />
                             </Grid>
                           </Fade>
                         )}
                         {selectedLayout.list && (
                           <Fade in={selectedLayout.list}>
                             <Grid item xs={12}>
-                              <ProductItem
-                                product={product}
-                                listView={true}
-                                wished={wishlist?.some(
-                                  (item) => item._id === product._id!
-                                )}
-                              />
+                              <ProductItem product={product} listView={true} />
                             </Grid>
                           </Fade>
                         )}

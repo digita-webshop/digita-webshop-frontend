@@ -82,7 +82,7 @@ const ShoppingCart = () => {
 
   return (
     <CustomContainer>
-      {cartUpdated && (
+      {/* {cartUpdated && (
         <CartUpdated
           item={cartUpdated.item}
           type={cartUpdated.type}
@@ -103,7 +103,7 @@ const ShoppingCart = () => {
           />
           <CartTotalTable total={total} />
         </TableContainer>
-      )}
+      )} */}
     </CustomContainer>
   );
 };

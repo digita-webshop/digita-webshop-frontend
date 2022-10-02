@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Box,
-  Button,
   Card,
   CardContent,
   CardMedia,
@@ -11,21 +10,9 @@ import {
 import Modal from "@mui/material/Modal";
 import Stack from "@mui/material/Stack";
 import StarIcon from "@mui/icons-material/Star";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import CartModal from "../Modals/CartModal/CartModal";
 import ModalView from "../Modals/ModalView/ModalView";
-import {
-  Div,
-  RedTooltip,
-  StyledIcons,
-  wishStyle,
-} from "../../../../Styles/Products/index";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { closeStyle } from "../../../../Styles/Products";
+import { RedTooltip, StyledIcons } from "../../../../Styles/Products/index";
 import CompareModal from "../../../CompareModal/CompareModal";
 import { Link, useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -33,35 +20,64 @@ import { addToCompareList } from "../../../../features/compare/compareSlice";
 import {
   useAddWishMutation,
   useDeleteWishMutation,
+  useGetWishlistQuery,
 } from "../../../../features/wishlist/wishlistApi";
 import { useAppSelector } from "../../../../store";
-import { Favorite } from "@mui/icons-material";
+import {
+  CompareArrows,
+  Favorite,
+  FavoriteBorder,
+  ShoppingCart,
+  Visibility,
+} from "@mui/icons-material";
+import { v4 as uuidv4 } from "uuid";
 import {
   productIconStyles,
   productIconWrapperStyles,
 } from "../../../../Styles/Product";
 import WishModal from "../Modals/WishModal/WishModal";
 import { IProduct } from "../../../../Services/Types/product";
+import {
+  useAddToCartMutation,
+  useGetAllCartItemQuery,
+} from "../../../../features/cart/cartApi";
+import DotSpinner from "../../../Loading/DotSpinner";
+import { addProductToCart } from "../../../../features/cart/cartSlice";
+import { isInList } from "../../../../Services/Utils/isInList";
 
 type Props = {
   product: IProduct;
   listView: boolean;
-  wished: boolean;
 };
 
-const ProductItem = ({ product, listView, wished }: Props) => {
+const ProductItem = ({ product, listView }: Props) => {
+  const { role, user } = useAppSelector((state) => state.reducer.auth);
+  const { cartList } = useAppSelector((state) => state.reducer.cart);
+
   const [openView, setOpenView] = useState(false);
   const [openWish, setOpenWish] = useState(false);
   const [addedWish, setAddedWish] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [openCompareModal, setOpenCompareModal] = useState(false);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const { role, user } = useAppSelector((state) => state.reducer.auth);
+
+  const [addWish, { isLoading: addWishLoading }] = useAddWishMutation();
+  const [deleteWish, { isLoading: delWishLoading }] = useDeleteWishMutation();
+  const [addToCart, { isLoading: cartIsLoading }] = useAddToCartMutation();
+
+  const { data: cartData } = useGetAllCartItemQuery();
+  const cart = cartData?.data.products ?? [];
+  const cartItems = user ? cart : cartList;
+  const inCart = isInList(cartItems, product._id!);
+
+  const { data: wishlistData } = useGetWishlistQuery(role!);
+  const wishlist = wishlistData?.data ?? [];
+  const wished = isInList(wishlist, product._id!);
+
   const { _id, title, price, offPrice, shortDescription, rating, image } =
     product;
-  const [addWish, { isLoading: addLoading }] = useAddWishMutation();
-  const [deleteWish, { isLoading: delLoading }] = useDeleteWishMutation();
 
   const compareClickHandler = () => {
     dispatch(addToCompareList(product));
@@ -87,6 +103,28 @@ const ProductItem = ({ product, listView, wished }: Props) => {
       console.log(response);
     } catch (err) {
       console.log(err);
+    }
+  };
+  const addToCartHandler = async () => {
+    if (inCart) return;
+    const cartItem: any = {
+      productId: product,
+      name: title,
+      price,
+      quantity: 1,
+    };
+    if (user) {
+      try {
+        const res = await addToCart(cartItem).unwrap();
+        console.log(res);
+        setOpenCart(true);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      cartItem["_id"] = uuidv4();
+      dispatch(addProductToCart(cartItem));
+      setOpenCart(true);
     }
   };
   return (
@@ -134,8 +172,17 @@ const ProductItem = ({ product, listView, wished }: Props) => {
         >
           <Stack direction="row">
             <RedTooltip title="Add To Cart " placement="top">
-              <Box sx={productIconStyles} onClick={() => setOpenCart(true)}>
-                <ShoppingCartIcon fontSize="small" sx={{ margin: "auto" }} />
+              <Box sx={productIconWrapperStyles} onClick={addToCartHandler}>
+                {cartIsLoading && <DotSpinner />}
+                {!cartIsLoading && (
+                  <ShoppingCart
+                    fontSize="small"
+                    sx={{
+                      color: inCart ? "common.digitaRed" : "gray",
+                      margin: "auto",
+                    }}
+                  />
+                )}
               </Box>
             </RedTooltip>
             <RedTooltip title="Wishlist " placement="top">
@@ -148,13 +195,17 @@ const ProductItem = ({ product, listView, wished }: Props) => {
                       margin: "auto",
                       color: "common.digitaRed",
                     }}
-                    className={addLoading || delLoading ? "wishLoading" : ""}
+                    className={
+                      addWishLoading || delWishLoading ? "wishLoading" : ""
+                    }
                   />
                 ) : (
-                  <FavoriteBorderIcon
+                  <FavoriteBorder
                     fontSize="small"
                     sx={{ ...productIconStyles, margin: "auto" }}
-                    className={addLoading || delLoading ? "wishLoading" : ""}
+                    className={
+                      addWishLoading || delWishLoading ? "wishLoading" : ""
+                    }
                   />
                 )}
               </Box>
@@ -165,7 +216,7 @@ const ProductItem = ({ product, listView, wished }: Props) => {
                 onClick={compareClickHandler}
                 aria-label="add an alarm"
               >
-                <CompareArrowsIcon fontSize="small" sx={{ margin: "auto" }} />
+                <CompareArrows fontSize="small" sx={{ margin: "auto" }} />
               </Box>
             </RedTooltip>
             <RedTooltip title="Quick View" placement="top">
@@ -173,7 +224,7 @@ const ProductItem = ({ product, listView, wished }: Props) => {
                 sx={productIconWrapperStyles}
                 onClick={() => setOpenView(true)}
               >
-                <VisibilityIcon fontSize="small" sx={{ margin: "auto" }} />
+                <Visibility fontSize="small" sx={{ margin: "auto" }} />
               </Box>
             </RedTooltip>
           </Stack>
@@ -189,7 +240,7 @@ const ProductItem = ({ product, listView, wished }: Props) => {
         aria-describedby="modal-modal-description"
       >
         <div>
-          <CartModal price={price} />
+          <CartModal cartItems={cartItems} setOpenCart={setOpenCart} />
         </div>
       </Modal>
       {/* ============= CART Modal ============ */}

@@ -17,6 +17,7 @@ import {
 import ShopCart from "../ShopCart/ShopCart";
 import UserDropDown from "../UserDropDown/UserDropDown";
 import { useAppSelector } from "../../../../store";
+import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -47,8 +48,15 @@ function Icons({
 }: Props) {
   const userDropRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-  const cartList = useAppSelector((state) => state.reducer.cart.cartList);
   const { user, role } = useAppSelector((state) => state.reducer.auth);
+  const { cartList } = useAppSelector((state) => state.reducer.cart);
+
+  const { data: cartData } = useGetAllCartItemQuery();
+  const cart = cartData?.data.products ?? [];
+
+  const cartItems = user ? cart : cartList;
+  console.log(cartItems.length);
+
   const handleToggle = () => {
     if (matches) {
       setOpenDropdown((prevOpen) => !prevOpen);
@@ -143,13 +151,14 @@ function Icons({
         <IconWrapper
           sx={{
             "&:hover .shop-cart": {
-              display: matches ? "inline-block" : "none",
+              display:
+                matches && cartItems.length !== 0 ? "inline-block" : "none",
             },
           }}
         >
           <Box onClick={shopClickHandler} sx={{ display: "flex" }}>
             <Badge
-              badgeContent={cartList.length}
+              badgeContent={cartItems.length}
               overlap="circular"
               color="error"
               sx={{

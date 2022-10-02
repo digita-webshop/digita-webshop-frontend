@@ -1,28 +1,59 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import CartItem from "../../Components/ShoppingCart/Types/CartItemType";
+import { getSubtotal } from "../../Services/Utils/getSubtotal";
 
-const initialState = {
-    cartList: [],
-    quantities: [],
-    total: 0
+interface InitialStateProps {
+  cartList: CartItem[];
+  quantities: any;
+  subtotal: number;
+  total: number;
 }
 
-const cartSlice = createSlice({
-    name: 'cart',
-    initialState,
-    reducers: {
-        setCart(state, action) {
-            state.cartList = action.payload
-        },
-        setQuantity(state, action) {
-            state.quantities = action.payload
-        },
-        removeFromCart(state, action) {
-            state.cartList = state.cartList.filter((item: CartItem) => item.id !== action.payload)
-            state.quantities = state.cartList.filter((item: CartItem) => item.id !== action.payload)
-        },
-    },
-})
+const initialState: InitialStateProps = {
+  cartList: [],
+  quantities: [],
+  subtotal: 0,
+  total: 0,
+};
 
-export const {setCart, setQuantity, removeFromCart} = cartSlice.actions
-export default cartSlice.reducer
+const cartSlice = createSlice({
+  name: "cart",
+  initialState,
+  reducers: {
+    setCart(state, action) {
+      state.cartList = action.payload;
+    },
+    addProductToCart(state, action: { payload: CartItem }) {
+      let cartItem = action.payload;
+      let isInCart = state.cartList.some(
+        (item) => item?.productId._id === cartItem?.productId._id
+      );
+
+      if (!isInCart) {
+        state.cartList.push(cartItem);
+      } else if (isInCart) {
+        let cartItemIndex = state.cartList.findIndex(
+          (item) => item?.productId._id === cartItem?.productId._id
+        );
+        state.cartList[cartItemIndex].quantity += cartItem.quantity;
+      }
+      state.subtotal = getSubtotal(state.cartList);
+    },
+    setQuantity(state, action) {
+      state.quantities = action.payload;
+    },
+    removeFromCart(state, action) {
+      state.cartList = state.cartList.filter(
+        (item: CartItem) => item._id !== action.payload
+      );
+      state.quantities = state.cartList.filter(
+        (item: CartItem) => item._id !== action.payload
+      );
+      state.subtotal = getSubtotal(state.cartList);
+    },
+  },
+});
+
+export const { setCart, setQuantity, removeFromCart, addProductToCart } =
+  cartSlice.actions;
+export default cartSlice.reducer;

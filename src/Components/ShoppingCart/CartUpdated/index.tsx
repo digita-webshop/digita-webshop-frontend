@@ -57,7 +57,7 @@ const CartUpdated = ({ item, type, setCartUpdated }: Props) => {
         }}
       >
         {type === UpdateType.Remove
-          ? `${`“${item?.product}“ removed.`}`
+          ? `${`“${item?.productId}“ removed.`}`
           : "Cart updated."}
       </Typography>
       {type === UpdateType.Remove && (

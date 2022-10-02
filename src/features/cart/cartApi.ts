@@ -6,7 +6,12 @@ import { ICartItem } from "../../Services/Types/cart";
 export type GetAllCartItemsResponse = {
   code: number;
   message: string;
-  data: CartItem[];
+  data: {
+    createdAt: string;
+    updatedAt: string;
+    userId: string;
+    products: CartItem[];
+  };
 };
 
 type GetCartResponse = {

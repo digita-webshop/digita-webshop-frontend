@@ -185,3 +185,29 @@ export const DropMenuItem = styled(MenuItem)(({ theme }) => ({
     textDecoration: "none",
   },
 }));
+export const shopCartWrapper = {
+  position: "absolute",
+  right: "0px",
+  top: "82px ",
+  padding: "15px",
+  backgroundColor: "white",
+  display: "none",
+  cursor: "auto",
+  width: "470px",
+  "&:hover": {
+    display: "inline-block",
+  },
+};
+export const shopCartCloseIcon = {
+  border: "1px solid black",
+  borderRadius: "50%",
+  display: "flex",
+  justifyContent: "center",
+  padding: "3px",
+  color: "#333333 !important",
+  "&:hover": {
+    border: "1px solid #f03637",
+    color: "#f03637 !important",
+  },
+  cursor: "pointer",
+};

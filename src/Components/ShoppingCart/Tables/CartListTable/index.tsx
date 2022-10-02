@@ -68,7 +68,7 @@ const CartListTable = ({
         <TableBody>
           {cartList.map((row) => (
             <CartListTableRow
-              key={row.id}
+              key={row._id}
               row={row}
               cartList={cartList}
               setUpdateButtonDisabled={setUpdateButtonDisabled}

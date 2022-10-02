@@ -21,6 +21,7 @@ import {
   GetAllCartItemsResponse,
   useGetAllCartItemQuery,
 } from "../../../../features/cart/cartApi";
+import ShopCartItem from "../ShopCart/ShopCartItem/ShopCartItem";
 
 type Anchor = "left" | "right";
 type ShopDrawerProps = {
@@ -30,22 +31,15 @@ type ShopDrawerProps = {
 
 function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
   const navigate = useNavigate();
-  const user = useAppSelector((state) => state.reducer.auth.user);
-  const [cartList, setCartList] = useState<any>();
+  const { user } = useAppSelector((state) => state.reducer.auth);
+  const { cartList } = useAppSelector((state) => state.reducer.cart);
 
-  const { data: cartData, isLoading, isError } = useGetAllCartItemQuery();
-  const cartItems = cartData?.data ?? [];
+  const { data: cartData, isLoading } = useGetAllCartItemQuery();
+  const cart = cartData?.data.products ?? [];
 
-  useEffect(() => {
-    if (user) {
-      setCartList(cartItems);
-    } else {
-      const localCartList = localStorage.getItem("cartList") || "";
-      setCartList(JSON.parse(localCartList));
-    }
-  }, [user, cartItems]);
+  const cartItems = user ? cart : cartList;
 
-  const subtotal = cartList?.reduce((acc: number, curr: CartItem) => {
+  const subtotal = cartItems?.reduce((acc: number, curr: CartItem) => {
     acc += curr.quantity * curr.price;
     return acc;
   }, 0);
@@ -81,56 +75,17 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
         </Box>
         <Divider />
         <List sx={{ maxHeight: "360px", overflow: "auto" }}>
-          {cartList?.map((item: CartItem) => {
-            return (
-              <ListItem key={item.id} disableGutters>
-                <img
-                  src="https://demo-61.woovinapro.com/wp-content/uploads/2018/09/product-16-330x330.jpg"
-                  alt="product"
-                  width={75}
-                  height={75}
-                />
-                <ListItemText sx={{ marginLeft: "16px", marginRight: "40px" }}>
-                  <Typography variant="body2" color={"primary"}>
-                    {item.product}
-                  </Typography>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "4px",
-                    }}
-                  >
-                    <Typography variant="subtitle1" color={"secondary"}>
-                      {item.quantity} x
-                    </Typography>
-                    <Typography variant="body2" color={"primary"}>
-                      {item.price.toFixed(2)}
-                    </Typography>
-                  </Box>
-                </ListItemText>
-                <ListItemIcon>
-                  <Box>
-                    <CloseRounded
-                      onClick={() => handleRowDelete(item.id)}
-                      sx={{
-                        border: "1px solid black",
-                        borderRadius: "50%",
-                        display: "flex",
-                        justifyContent: "center",
-                        padding: "3px",
-                        "&:hover": {
-                          border: "1px solid red",
-                          color: "red",
-                        },
-                        cursor: "pointer",
-                      }}
-                    />
-                  </Box>
-                </ListItemIcon>
-              </ListItem>
-            );
-          })}
+          {cartItems?.map((item) => (
+            <ShopCartItem
+              key={item?._id}
+              id={item?._id}
+              name={item?.name}
+              price={item?.price}
+              quantity={item?.quantity}
+              image={item?.productId?.image ?? ""}
+              handleRowDelete={handleRowDelete}
+            />
+          ))}
           <Divider />
         </List>
         <Box

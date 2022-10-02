@@ -25,7 +25,7 @@ const QuantityInput = ({
     (state: RootState) => state.reducer.cart.quantities
   );
   const quantity: number = quantities.filter(
-    (item: CartItem) => item.id === row.id
+    (item: CartItem) => item._id === row._id
   )[0].quantity;
   const handleDecValue = () => {
     if (quantity === 0) {
@@ -34,7 +34,7 @@ const QuantityInput = ({
 
     const clone = [...quantities];
     clone.forEach((element: CartItem, index: number) => {
-      if (element.id === row.id) {
+      if (element._id === row._id) {
         clone[index] = { ...element, quantity: quantity - 1 };
       }
     });
@@ -46,7 +46,7 @@ const QuantityInput = ({
   const handleIncValue = () => {
     const clone = [...quantities];
     clone.forEach((element: CartItem, index: number) => {
-      if (element.id === row.id) {
+      if (element?._id === row?._id) {
         clone[index] = { ...element, quantity: quantity + 1 };
       }
     });

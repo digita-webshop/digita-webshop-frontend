@@ -17,6 +17,7 @@ import { useAppSelector } from "../../store";
 
 const Product = () => {
   const { role } = useAppSelector((state) => state.reducer.auth);
+
   const { id }: any = useParams();
 
   const { data: productData, isLoading: productLoading } =
@@ -58,11 +59,7 @@ const Product = () => {
           <Grid container spacing={{ xs: 1, md: 2 }}>
             {products.slice(0, 4).map((product) => (
               <Grid item xs={6} sm={4} md={3} key={product._id}>
-                <ProductItem
-                  product={product}
-                  listView={false}
-                  wished={wishlist?.some((item) => item._id === product._id!)}
-                />
+                <ProductItem product={product} listView={false} />
               </Grid>
             ))}
           </Grid>
