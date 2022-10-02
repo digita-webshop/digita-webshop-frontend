@@ -2,14 +2,12 @@ import {
   Paper,
   Table,
   TableCell,
-  TableContainer,
   Typography,
   TableRow,
   Box,
   TableBody,
 } from "@mui/material";
-import React from "react";
-import { StyledTableCell, TotalTextStyle } from "../../../../Styles/Cart";
+import { StyledTableCell, TotalTextStyle } from "../../../styles";
 import DynamicButton from "../../DynamicButton/DynamicButton";
 import { styled } from "@mui/material/styles";
 

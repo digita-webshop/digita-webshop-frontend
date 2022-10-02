@@ -1,5 +1,18 @@
 import { styled } from "@mui/material/styles";
-import { Box, TableCell, tableCellClasses, TableRow } from "@mui/material";
+import { Box, TableCell, tableCellClasses, Container } from "@mui/material";
+
+export const TableContainer = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+  },
+}));
+
+export const CartContainer = styled(Container)(({ theme }) => ({
+  background: "white",
+  [theme.breakpoints.up("md")]: {
+    padding: "50px 16px",
+  },
+}));
 
 export const ImageBox = styled(Box)(({ theme }) => ({
   position: "relative",

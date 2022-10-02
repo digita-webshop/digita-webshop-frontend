@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import CartItem from "../../Components/ShoppingCart/Types/CartItemType";
+import { ICartItem } from "../../Services/Types/cart";
 import { getSubtotal } from "../../Services/Utils/getSubtotal";
 
 interface InitialStateProps {
-  cartList: CartItem[];
+  cartList: ICartItem[];
   subtotal: number;
 }
 
@@ -16,7 +16,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addProductToCart(state, action: { payload: CartItem }) {
+    addProductToCart(state, action: { payload: ICartItem }) {
       let cartItem = action.payload;
       let isInCart = state.cartList.some(
         (item) => item?.productId._id === cartItem?.productId._id
@@ -47,7 +47,7 @@ const cartSlice = createSlice({
 
     removeFromCart(state, action) {
       state.cartList = state.cartList.filter(
-        (item: CartItem) => item._id !== action.payload
+        (item) => item._id !== action.payload
       );
       state.subtotal = getSubtotal(state.cartList);
     },

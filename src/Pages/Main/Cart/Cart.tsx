@@ -1,12 +1,11 @@
 import React from "react";
 import { Breadcrumbs } from "../../../Components";
-import ShoppingCart from "../../../Components/ShoppingCart/ShoppingCart";
+import { Cart as CartPage } from "../../../Components";
 const Cart = () => {
-
   return (
     <>
       <Breadcrumbs title={"cart"} />
-      <ShoppingCart />
+      <CartPage />
     </>
   );
 };

@@ -2,8 +2,6 @@ import { Box, Button, Divider, Link, List, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../../../store";
-import CartItem from "../../../../Components/ShoppingCart/Types/CartItemType";
-import { handleRowDelete } from "../../../../Components/ShoppingCart/Services";
 import { shopCartWrapper } from "../../../../Styles/Appbar";
 import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 import ShopCartItem from "./ShopCartItem/ShopCartItem";
@@ -13,7 +11,6 @@ function ShopCart() {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const { cartList, subtotal } = useAppSelector((state) => state.reducer.cart);
 
-  const dispatch = useDispatch();
   const { data: cartData, isLoading, isError } = useGetAllCartItemQuery();
   const cart = cartData?.data.products ?? [];
 
@@ -49,7 +46,6 @@ function ShopCart() {
               price={item?.price}
               quantity={item?.quantity}
               image={item?.productId?.image ?? ""}
-              handleRowDelete={handleRowDelete}
             />
           ))}
         <Divider />

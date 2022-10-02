@@ -1,5 +1,4 @@
 import { api } from "../api";
-import CartItem from "../../Components/ShoppingCart/Types/CartItemType";
 import { IProduct } from "../../Services/Types/product";
 import { ICartItem } from "../../Services/Types/cart";
 
@@ -10,7 +9,7 @@ export type GetAllCartItemsResponse = {
     createdAt: string;
     updatedAt: string;
     userId: string;
-    products: CartItem[];
+    products: ICartItem[];
   };
 };
 

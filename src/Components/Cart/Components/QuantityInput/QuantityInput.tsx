@@ -1,12 +1,12 @@
-import { Box, TextField } from "@mui/material";
-import { CustomBtn } from "../../../Styles/Cart";
 import { useState } from "react";
-import CartItem from "../Types/CartItemType";
+import { Box, TextField } from "@mui/material";
+import { CustomBtn } from "../../styles";
 import { useDispatch } from "react-redux";
-import { updateCart } from "../../../features/cart/cartSlice";
+import { updateCart } from "../../../../features/cart/cartSlice";
+import { ICartItem } from "../../../../Services/Types/cart";
 
 type Props = {
-  cartItem: CartItem;
+  cartItem: ICartItem;
 };
 
 const QuantityInput = ({ cartItem }: Props) => {

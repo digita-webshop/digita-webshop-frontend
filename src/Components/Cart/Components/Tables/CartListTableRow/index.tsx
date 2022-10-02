@@ -1,24 +1,22 @@
 import { Box, Button, TableRow, useMediaQuery, useTheme } from "@mui/material";
-import {
-  closeButtonStyles,
-  ImageBox,
-  StyledTableCell,
-} from "../../../../Styles/Cart";
+import { closeButtonStyles, ImageBox, StyledTableCell } from "../../../styles";
 import CloseIcon from "@mui/icons-material/Close";
-import QuantityInput from "../../QuantityInput";
-import CartItem from "../../Types/CartItemType";
-import { handleRowDelete } from "../../Services";
+import QuantityInput from "../../QuantityInput/QuantityInput";
+import { ICartItem } from "../../../../../Services/Types/cart";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../../../../features/cart/cartSlice";
 
 type Props = {
-  cartItem: CartItem;
+  cartItem: ICartItem;
 };
 
 const CartListTableRow = ({ cartItem }: Props) => {
   const theme = useTheme();
   const matchesSm = useMediaQuery(theme.breakpoints.down("sm"));
+  const dispatch = useDispatch();
 
   const deleteCartHandler = () => {
-    handleRowDelete(cartItem?._id);
+    dispatch(removeFromCart(cartItem?._id));
   };
   return (
     <TableRow key={cartItem._id}>

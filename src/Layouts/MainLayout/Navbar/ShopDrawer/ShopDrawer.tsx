@@ -2,7 +2,6 @@ import { CloseRounded } from "@mui/icons-material";
 import { Box, Button, Divider, Drawer, List, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../../store";
-import { handleRowDelete } from "../../../../Components/ShoppingCart/Services";
 import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 import ShopCartItem from "../ShopCart/ShopCartItem/ShopCartItem";
 import { getSubtotal } from "../../../../Services/Utils/getSubtotal";
@@ -64,7 +63,6 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
               price={item?.price}
               quantity={item?.quantity}
               image={item?.productId?.image ?? ""}
-              handleRowDelete={handleRowDelete}
             />
           ))}
           <Divider />

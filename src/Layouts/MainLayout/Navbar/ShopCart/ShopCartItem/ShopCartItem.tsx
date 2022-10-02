@@ -6,9 +6,8 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useGetProductQuery } from "../../../../../features/products/productsApi";
-import { IProduct } from "../../../../../Services/Types/product";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../../../../features/cart/cartSlice";
 import { shopCartCloseIcon } from "../../../../../Styles/Appbar";
 
 interface Props {
@@ -17,16 +16,14 @@ interface Props {
   price: number;
   quantity: number;
   image: string;
-  handleRowDelete: (id: string) => void;
 }
-function ShopCartItem({
-  id,
-  name,
-  price,
-  quantity,
-  image,
-  handleRowDelete,
-}: Props) {
+function ShopCartItem({ id, name, price, quantity, image }: Props) {
+  const dispatch = useDispatch();
+
+  const cartItemRemoveHandler = () => {
+    dispatch(removeFromCart(id));
+  };
+
   return (
     <ListItem disableGutters sx={{ img: { objectFit: "contain" } }}>
       <img src={image} alt="product" width={75} height={75} />
@@ -46,7 +43,7 @@ function ShopCartItem({
       <ListItemIcon>
         <Box>
           <CloseRounded
-            onClick={() => handleRowDelete(id)}
+            onClick={cartItemRemoveHandler}
             sx={shopCartCloseIcon}
           />
         </Box>

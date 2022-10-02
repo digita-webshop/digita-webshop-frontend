@@ -2,10 +2,8 @@ import { Box, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import React from "react";
 import DynamicButton from "../DynamicButton/DynamicButton";
-import CartItem from "../Types/CartItemType";
-import { useDispatch, useSelector } from "react-redux";
-import { UpdateCart } from "../ShoppingCart";
-import { RootState } from "../../../store";
+import { UpdateCart } from "../../Cart";
+import { ICartItem } from "../../../../Services/Types/cart";
 
 export enum UpdateType {
   Remove = 1,
@@ -13,18 +11,12 @@ export enum UpdateType {
 }
 
 type Props = {
-  item?: CartItem;
+  item?: ICartItem;
   type?: UpdateType;
   setCartUpdated: React.Dispatch<React.SetStateAction<UpdateCart | null>>;
 };
 
 const CartUpdated = ({ item, type, setCartUpdated }: Props) => {
-  const dispatch = useDispatch();
-
-  const cartList = useSelector(
-    (state: RootState) => state.reducer.cart.cartList
-  );
-
   const handleUndo = () => {
     setCartUpdated(null);
   };

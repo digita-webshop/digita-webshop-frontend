@@ -6,13 +6,13 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { StyledTableCell } from "../../../../Styles/Cart";
-import CartItem from "../../Types/CartItemType";
-import { columnsData } from "./data";
+import { StyledTableCell } from "../../../styles";
+import { columnsData } from "../../../data";
 import CartListTableRow from "../CartListTableRow";
+import { ICartItem } from "../../../../../Services/Types/cart";
 
 type Props = {
-  cartList: CartItem[];
+  cartList: ICartItem[];
 };
 
 const CartListTable = ({ cartList }: Props) => {

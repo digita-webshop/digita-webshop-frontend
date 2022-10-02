@@ -2,13 +2,13 @@ import { Dispatch, SetStateAction } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { cartModal } from "../../../../../Styles/Products";
-import CartItem from "../../../../ShoppingCart/Types/CartItemType";
 import { useAppSelector } from "../../../../../store";
 import { getSubtotal } from "../../../../../Services/Utils/getSubtotal";
 import { Link } from "react-router-dom";
+import { ICartItem } from "../../../../../Services/Types/cart";
 
 type T = {
-  cartItems: CartItem[];
+  cartItems: ICartItem[];
   setOpenCart: Dispatch<SetStateAction<boolean>>;
 };
 

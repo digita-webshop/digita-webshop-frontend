@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
-import DynamicButton from "./DynamicButton/DynamicButton";
-import CartListTable from "./Tables/CartListTable";
-import CartTotalTable from "./Tables/CartTotalTable";
-import CartUpdated, { UpdateType } from "./CartUpdated";
-import CartItem from "./Types/CartItemType";
+import DynamicButton from "./Components/DynamicButton/DynamicButton";
+import CartListTable from "./Components/Tables/CartListTable";
+import CartTotalTable from "./Components/Tables/CartTotalTable";
+import CartUpdated, { UpdateType } from "./Components/CartUpdated/CartUpdated";
 
 import { useAppSelector } from "../../store";
 import { useGetAllCartItemQuery } from "../../features/cart/cartApi";
 import { CartContainer, TableContainer } from "./styles";
 import { getSubtotal } from "../../Services/Utils/getSubtotal";
+import { ICartItem } from "../../Services/Types/cart";
 
 export type UpdateCart = {
-  item?: CartItem;
+  item?: ICartItem;
   type?: UpdateType;
 };
 
-const ShoppingCart = () => {
+const Cart = () => {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const { cartList, subtotal } = useAppSelector((state) => state.reducer.cart);
 
@@ -54,4 +54,4 @@ const ShoppingCart = () => {
   );
 };
 
-export default ShoppingCart;
+export default Cart;

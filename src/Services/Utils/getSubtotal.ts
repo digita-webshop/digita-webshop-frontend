@@ -1,7 +1,7 @@
-import CartItem from "../../Components/ShoppingCart/Types/CartItemType";
+import { ICartItem } from "../Types/cart";
 
-export const getSubtotal = (cartList: CartItem[]) => {
-  return cartList?.reduce((acc: number, curr: CartItem) => {
+export const getSubtotal = (cartList: ICartItem[]) => {
+  return cartList?.reduce((acc: number, curr: ICartItem) => {
     acc += curr.quantity * curr.price;
     return acc;
   }, 0);
