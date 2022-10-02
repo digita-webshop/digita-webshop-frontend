@@ -5,7 +5,6 @@ import DynamicButton from "../DynamicButton/DynamicButton";
 import CartItem from "../Types/CartItemType";
 import { useDispatch, useSelector } from "react-redux";
 import { UpdateCart } from "../ShoppingCart";
-import { setCart, setQuantity } from "../../../features/cart/cartSlice";
 import { RootState } from "../../../store";
 
 export enum UpdateType {
@@ -28,9 +27,6 @@ const CartUpdated = ({ item, type, setCartUpdated }: Props) => {
 
   const handleUndo = () => {
     setCartUpdated(null);
-
-    dispatch(setCart([...cartList, item as CartItem]));
-    dispatch(setQuantity([...cartList, item as CartItem]));
   };
 
   return (

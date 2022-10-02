@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+import { Box } from "@mui/material";
 import DynamicButton from "./DynamicButton/DynamicButton";
-import { Box, Container } from "@mui/material";
 import CartListTable from "./Tables/CartListTable";
 import CartTotalTable from "./Tables/CartTotalTable";
 import CartUpdated, { UpdateType } from "./CartUpdated";
 import CartItem from "./Types/CartItemType";
-import { styled } from "@mui/material/styles";
-import { useDispatch, useSelector } from "react-redux";
-import { setCart, setQuantity } from "../../features/cart/cartSlice";
+
 import { useAppSelector } from "../../store";
+import { useGetAllCartItemQuery } from "../../features/cart/cartApi";
+import { CartContainer, TableContainer } from "./styles";
+import { getSubtotal } from "../../Services/Utils/getSubtotal";
 
 export type UpdateCart = {
   item?: CartItem;
@@ -16,73 +17,23 @@ export type UpdateCart = {
 };
 
 const ShoppingCart = () => {
+  const { user } = useAppSelector((state) => state.reducer.auth);
+  const { cartList, subtotal } = useAppSelector((state) => state.reducer.cart);
+
   const [cartUpdated, setCartUpdated] = useState<UpdateCart | null>(null);
-  const [values, setValues] = useState<CartItem[]>([]);
-  const cartList = useAppSelector((state) => state.reducer.cart.cartList);
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  //   const temp: CartItem[] = [];
-  //   cartList.map((item: CartItem) => {
-  //     temp.push(item);
-  //   });
-  //   setValues(temp);
-  //   const dummyCartData = [
-  //     {
-  //       id: 1,
-  //       image:
-  //         "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-6.jpg",
-  //       product: "IPhone",
-  //       price: 5,
-  //       quantity: 4,
-  //       total: 3,
-  //       alt: "iphone-image",
-  //     },
-  //     {
-  //       id: 2,
-  //       image:
-  //         "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-6.jpg",
-  //       product: "Microsoft Xbox One SP",
-  //       price: 4,
-  //       quantity: 2,
-  //       total: 3,
-  //       alt: "xbox-image",
-  //     },
-  //     {
-  //       id: 3,
-  //       image:
-  //         "https://demo-61.woovinapro.com/wp-content/uploads/2020/11/product-7.jpg",
-  //       product: "Microsoft Xbox One S Blue Grey",
-  //       price: 1,
-  //       quantity: 3,
-  //       total: 1,
-  //       alt: "xbox-1-image",
-  //     },
-  //   ];
-  //   dispatch(setCart(dummyCartData));
-  //   dispatch(setQuantity(dummyCartData));
-  // }, []);
 
-  const total = cartList.reduce((acc: number, curr: CartItem) => {
-    acc += curr.quantity * curr.price;
-    return acc;
-  }, 0);
+  const { data: cartData } = useGetAllCartItemQuery();
+  const cart = cartData?.data.products ?? [];
+  const cartItems = user ? cart : cartList;
 
-  const TableContainer = styled(Box)(({ theme }) => ({
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-    },
-  }));
-
-  const CustomContainer = styled(Container)(({ theme }) => ({
-    background: "white",
-    [theme.breakpoints.up("md")]: {
-      padding: "50px 16px",
-    },
-  }));
+  let cartSubtotal = subtotal;
+  if (user) {
+    cartSubtotal = getSubtotal(cartItems);
+  }
 
   return (
-    <CustomContainer>
-      {/* {cartUpdated && (
+    <CartContainer>
+      {cartUpdated && (
         <CartUpdated
           item={cartUpdated.item}
           type={cartUpdated.type}
@@ -95,16 +46,11 @@ const ShoppingCart = () => {
         </Box>
       ) : (
         <TableContainer sx={{ display: "flex" }}>
-          <CartListTable
-            cartList={cartList}
-            values={values}
-            setValues={setValues}
-            setCartUpdated={setCartUpdated}
-          />
-          <CartTotalTable total={total} />
+          <CartListTable cartList={cartItems} />
+          <CartTotalTable total={cartSubtotal} />
         </TableContainer>
-      )} */}
-    </CustomContainer>
+      )}
+    </CartContainer>
   );
 };
 

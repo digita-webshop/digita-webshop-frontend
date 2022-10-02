@@ -1,27 +1,11 @@
 import { CloseRounded } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Divider,
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Divider, Drawer, List, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useAppSelector } from "../../../../store";
-import { setCart, setQuantity } from "../../../../features/cart/cartSlice";
-import CartItem from "../../../../Components/ShoppingCart/Types/CartItemType";
 import { handleRowDelete } from "../../../../Components/ShoppingCart/Services";
-import {
-  GetAllCartItemsResponse,
-  useGetAllCartItemQuery,
-} from "../../../../features/cart/cartApi";
+import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 import ShopCartItem from "../ShopCart/ShopCartItem/ShopCartItem";
+import { getSubtotal } from "../../../../Services/Utils/getSubtotal";
 
 type Anchor = "left" | "right";
 type ShopDrawerProps = {
@@ -34,15 +18,12 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const { cartList } = useAppSelector((state) => state.reducer.cart);
 
-  const { data: cartData, isLoading } = useGetAllCartItemQuery();
+  const { data: cartData } = useGetAllCartItemQuery();
   const cart = cartData?.data.products ?? [];
 
   const cartItems = user ? cart : cartList;
 
-  const subtotal = cartItems?.reduce((acc: number, curr: CartItem) => {
-    acc += curr.quantity * curr.price;
-    return acc;
-  }, 0);
+  const subtotal = getSubtotal(cartItems);
 
   return (
     <Drawer

@@ -1,5 +1,4 @@
 import {
-  Box,
   Paper,
   Table,
   TableBody,
@@ -8,46 +7,15 @@ import {
   TableRow,
 } from "@mui/material";
 import { StyledTableCell } from "../../../../Styles/Cart";
-import DynamicButton from "../../DynamicButton/DynamicButton";
-import React, { useState } from "react";
 import CartItem from "../../Types/CartItemType";
 import { columnsData } from "./data";
 import CartListTableRow from "../CartListTableRow";
-import { UpdateCart } from "../../ShoppingCart";
-import { UpdateType } from "../../CartUpdated";
-import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "../../../../features/cart/cartSlice";
-import { RootState } from "../../../../store";
 
 type Props = {
   cartList: CartItem[];
-  values: CartItem[];
-  setValues: React.Dispatch<React.SetStateAction<CartItem[]>>;
-  setCartUpdated: React.Dispatch<React.SetStateAction<UpdateCart | null>>;
 };
 
-const CartListTable = ({
-  cartList,
-  values,
-  setValues,
-  setCartUpdated,
-}: Props) => {
-  const [updateButtonDisabled, setUpdateButtonDisabled] = useState(true);
-  const quantities = useSelector(
-    (state: RootState) => state.reducer.cart.quantities
-  );
-  const dispatch = useDispatch();
-
-  const handleUpdateCart = () => {
-    setUpdateButtonDisabled(true);
-
-    dispatch(setCart(quantities));
-
-    setCartUpdated((prevState) => {
-      return { ...prevState, type: UpdateType.Update };
-    });
-  };
-
+const CartListTable = ({ cartList }: Props) => {
   return (
     <TableContainer
       component={Paper}
@@ -66,35 +34,9 @@ const CartListTable = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {cartList.map((row) => (
-            <CartListTableRow
-              key={row._id}
-              row={row}
-              cartList={cartList}
-              setUpdateButtonDisabled={setUpdateButtonDisabled}
-              updateButtonDisabled={updateButtonDisabled}
-              values={values}
-              setValues={setValues}
-              setCartUpdated={setCartUpdated}
-            />
+          {cartList.map((cart) => (
+            <CartListTableRow key={cart._id} cartItem={cart} />
           ))}
-          <TableRow>
-            <StyledTableCell colSpan={6} align="left">
-              <Box
-                sx={{
-                  width: "100%",
-                  maxWidth: { md: "240px" },
-                  marginLeft: "auto",
-                }}
-              >
-                <DynamicButton
-                  title="Update cart"
-                  disabled={updateButtonDisabled}
-                  action={updateButtonDisabled ? undefined : handleUpdateCart}
-                />
-              </Box>
-            </StyledTableCell>
-          </TableRow>
         </TableBody>
       </Table>
     </TableContainer>

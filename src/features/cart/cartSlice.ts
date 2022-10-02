@@ -4,25 +4,18 @@ import { getSubtotal } from "../../Services/Utils/getSubtotal";
 
 interface InitialStateProps {
   cartList: CartItem[];
-  quantities: any;
   subtotal: number;
-  total: number;
 }
 
 const initialState: InitialStateProps = {
   cartList: [],
-  quantities: [],
   subtotal: 0,
-  total: 0,
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    setCart(state, action) {
-      state.cartList = action.payload;
-    },
     addProductToCart(state, action: { payload: CartItem }) {
       let cartItem = action.payload;
       let isInCart = state.cartList.some(
@@ -39,14 +32,21 @@ const cartSlice = createSlice({
       }
       state.subtotal = getSubtotal(state.cartList);
     },
-    setQuantity(state, action) {
-      state.quantities = action.payload;
+
+    updateCart(state, action) {
+      let cartItem = action.payload;
+
+      let cartItemIndex = state.cartList.findIndex(
+        (item) => item?.productId._id === cartItem?.productId._id
+      );
+      const cartList = [...state.cartList];
+      cartList[cartItemIndex] = cartItem;
+      state.cartList = cartList;
+      state.subtotal = getSubtotal(state.cartList);
     },
+
     removeFromCart(state, action) {
       state.cartList = state.cartList.filter(
-        (item: CartItem) => item._id !== action.payload
-      );
-      state.quantities = state.cartList.filter(
         (item: CartItem) => item._id !== action.payload
       );
       state.subtotal = getSubtotal(state.cartList);
@@ -54,6 +54,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { setCart, setQuantity, removeFromCart, addProductToCart } =
+export const { removeFromCart, addProductToCart, updateCart } =
   cartSlice.actions;
 export default cartSlice.reducer;

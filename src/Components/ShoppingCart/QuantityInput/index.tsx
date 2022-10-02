@@ -1,58 +1,34 @@
 import { Box, TextField } from "@mui/material";
 import { CustomBtn } from "../../../Styles/Cart";
-import React from "react";
+import { useState } from "react";
 import CartItem from "../Types/CartItemType";
-import { useDispatch, useSelector } from "react-redux";
-import { setQuantity } from "../../../features/cart/cartSlice";
-import { RootState } from "../../../store";
+import { useDispatch } from "react-redux";
+import { updateCart } from "../../../features/cart/cartSlice";
 
 type Props = {
-  updateButtonDisabled: boolean;
-  setUpdateButtonDisabled: React.Dispatch<React.SetStateAction<boolean>>;
-  row: CartItem;
-  cartList: any;
-  values: CartItem[];
-  setValues: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  cartItem: CartItem;
 };
 
-const QuantityInput = ({
-  setUpdateButtonDisabled,
-  row,
-  updateButtonDisabled,
-}: Props) => {
+const QuantityInput = ({ cartItem }: Props) => {
+  const [disableDecButton, setDisableDecButton] = useState(false);
+  const [disableIncButton, setDisableIncButton] = useState(false);
   const dispatch = useDispatch();
-  const quantities: CartItem[] = useSelector(
-    (state: RootState) => state.reducer.cart.quantities
-  );
-  const quantity: number = quantities.filter(
-    (item: CartItem) => item._id === row._id
-  )[0].quantity;
-  const handleDecValue = () => {
-    if (quantity === 0) {
+
+  const handleInputClick = (value: number) => () => {
+    if (cartItem.quantity === 1 && value === -1) {
+      setDisableDecButton(true);
       return;
     }
+    if (cartItem.quantity === cartItem.productId.quantity && value === +1) {
+      setDisableIncButton(true);
+      return;
+    }
+    let updatedCartItem = { ...cartItem };
+    updatedCartItem.quantity += value;
 
-    const clone = [...quantities];
-    clone.forEach((element: CartItem, index: number) => {
-      if (element._id === row._id) {
-        clone[index] = { ...element, quantity: quantity - 1 };
-      }
-    });
-
-    dispatch(setQuantity(clone));
-    updateButtonDisabled && setUpdateButtonDisabled(false);
-  };
-
-  const handleIncValue = () => {
-    const clone = [...quantities];
-    clone.forEach((element: CartItem, index: number) => {
-      if (element?._id === row?._id) {
-        clone[index] = { ...element, quantity: quantity + 1 };
-      }
-    });
-
-    dispatch(setQuantity(clone));
-    updateButtonDisabled && setUpdateButtonDisabled(false);
+    dispatch(updateCart(updatedCartItem));
+    setDisableDecButton(false);
+    setDisableIncButton(false);
   };
 
   return (
@@ -74,15 +50,18 @@ const QuantityInput = ({
       >
         <Box
           sx={CustomBtn}
-          style={{ borderRight: "1px solid #e4e4e4" }}
-          onClick={handleDecValue}
+          style={{
+            borderRight: "1px solid #e4e4e4",
+            cursor: disableDecButton ? "not-allowed" : "pointer",
+          }}
+          onClick={handleInputClick(-1)}
         >
           -
         </Box>
         <TextField
           id="outlined-number"
           type="number"
-          value={quantity}
+          value={cartItem.quantity}
           sx={{
             width: { xs: "58px", sm: "40px", lg: "58px" },
             height: { xs: "58px", sm: "40px", lg: "58px" },
@@ -91,6 +70,7 @@ const QuantityInput = ({
               borderRadius: "0",
             },
             "& .MuiInputBase-input": {
+              padding: 0,
               textAlign: "center",
             },
             ".MuiOutlinedInput-notchedOutline": {
@@ -104,8 +84,11 @@ const QuantityInput = ({
         />
         <Box
           sx={CustomBtn}
-          onClick={handleIncValue}
-          style={{ borderLeft: "1px solid #e4e4e4" }}
+          onClick={handleInputClick(+1)}
+          style={{
+            borderLeft: "1px solid #e4e4e4",
+            cursor: disableIncButton ? "not-allowed" : "pointer",
+          }}
         >
           +
         </Box>
