@@ -1,7 +1,7 @@
 import { UserOrders } from "../../../../Components";
 
-function OrdersPage() {
+function UserOrdersPage() {
   return <UserOrders />;
 }
 
-export default OrdersPage;
+export default UserOrdersPage;

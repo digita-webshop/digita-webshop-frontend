@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import { useState } from "react";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 import { CardWrapper } from "../../Styles/panelCommon";
 import Addresses from "./Addresses/Addresses";
 import General from "./General/General";

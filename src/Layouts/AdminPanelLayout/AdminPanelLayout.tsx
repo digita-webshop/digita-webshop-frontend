@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import { useTheme } from "@mui/material/styles";
 import MainNavbar from "./MainNavbar/MainNavbar";
 
-function PanelLayout() {
+function AdminPanelLayout() {
   const [menuOpen, setMenuOpen] = useState(true);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -48,4 +48,4 @@ function PanelLayout() {
   );
 }
 
-export default PanelLayout;
+export default AdminPanelLayout;

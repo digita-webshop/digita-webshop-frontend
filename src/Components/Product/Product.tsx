@@ -13,7 +13,7 @@ import {
 } from "../../features/products/productsApi";
 import Loading from "../Loading/Loading";
 import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 
 const Product = () => {
   const { role } = useAppSelector((state) => state.reducer.auth);

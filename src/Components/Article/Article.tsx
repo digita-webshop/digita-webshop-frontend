@@ -20,7 +20,7 @@ import {
   useGetReviewsQuery,
 } from "../../features/reviews/reviewsApi";
 import { useLoadReviews } from "../../hooks/useLoadReviews";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 
 function Article() {
   const { user } = useAppSelector((state) => state.reducer.auth);

@@ -1,7 +1,7 @@
 import { CloseRounded } from "@mui/icons-material";
 import { Box, Button, Divider, Drawer, List, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../../../store";
+import { useAppSelector } from "../../../../features/store";
 import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 import ShopCartItem from "../ShopCart/ShopCartItem/ShopCartItem";
 import { getSubtotal } from "../../../../Utils/getSubtotal";

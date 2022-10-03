@@ -8,7 +8,7 @@ import OrderItem from "./OrderItem/OrderItem";
 import { Link } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 import { useGetUserOrdersQuery } from "../../features/orders/ordersApi";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 
 const statuses = ["pending", "delivered", "cancelled"];
 

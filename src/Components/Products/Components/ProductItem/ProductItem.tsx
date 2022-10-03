@@ -22,7 +22,7 @@ import {
   useDeleteWishMutation,
   useGetWishlistQuery,
 } from "../../../../features/wishlist/wishlistApi";
-import { useAppSelector } from "../../../../store";
+import { useAppSelector } from "../../../../features/store";
 import {
   CompareArrows,
   Favorite,

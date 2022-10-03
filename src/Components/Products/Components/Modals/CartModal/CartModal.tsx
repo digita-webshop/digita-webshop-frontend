@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { cartModal } from "../../../../../Styles/Products";
-import { useAppSelector } from "../../../../../store";
+import { useAppSelector } from "../../../../../features/store";
 import { getSubtotal } from "../../../../../Utils/getSubtotal";
 import { Link } from "react-router-dom";
 import { ICartItem } from "../../../../../Services/Types/cart";

@@ -5,7 +5,7 @@ import { wrapper } from "../../Styles/User";
 import Sidebar from "./Sidebar/Sidebar";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 import General from "../Settings/General/General";
 import Password from "../Settings/Password/Password";
 

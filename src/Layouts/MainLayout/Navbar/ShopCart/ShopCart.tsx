@@ -1,7 +1,7 @@
 import { Box, Button, Divider, Link, List, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useAppSelector } from "../../../../store";
+import { useAppSelector } from "../../../../features/store";
 import { shopCartWrapper } from "../../../../Styles/Appbar";
 import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 import ShopCartItem from "./ShopCartItem/ShopCartItem";

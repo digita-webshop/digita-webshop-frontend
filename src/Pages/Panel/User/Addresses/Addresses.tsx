@@ -1,5 +1,5 @@
 import Addresses from "../../../../Components/Settings/Addresses/Addresses";
-import { useAppSelector } from "../../../../store";
+import { useAppSelector } from "../../../../features/store";
 
 function AddressesPage() {
   const { user } = useAppSelector((state) => state.reducer.auth);

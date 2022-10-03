@@ -7,7 +7,7 @@ import Pagination from "../Pagination/Pagination";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 import { ErrorText } from "../../Styles/panelCommon";
 import PanelLoading from "../Loading/PanelLoading";
 import NotFound from "../EmptyList/NotFound";

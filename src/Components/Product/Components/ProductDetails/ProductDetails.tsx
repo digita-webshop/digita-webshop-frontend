@@ -36,7 +36,7 @@ import {
   useLocation,
   useSearchParams,
 } from "react-router-dom";
-import { useAppSelector } from "../../../../store";
+import { useAppSelector } from "../../../../features/store";
 import {
   useAddWishMutation,
   useDeleteWishMutation,

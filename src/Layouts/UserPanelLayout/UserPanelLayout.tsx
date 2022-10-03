@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../MainLayout/Navbar/Navbar";
 
-function UserLayout() {
+function UserPanelLayout() {
   const { pathname } = useLocation();
 
   const theme = useTheme();
@@ -36,4 +36,4 @@ function UserLayout() {
   );
 }
 
-export default UserLayout;
+export default UserPanelLayout;

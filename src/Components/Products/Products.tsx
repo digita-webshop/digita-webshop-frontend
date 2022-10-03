@@ -9,7 +9,7 @@ import { useState } from "react";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
 import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 import { useGetAllCartItemQuery } from "../../features/cart/cartApi";
 import { isInList } from "../../Utils/isInList";
 

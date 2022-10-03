@@ -26,10 +26,10 @@ interface Props {
 }
 
 function General({ user }: Props) {
-  const [enteredUserName, setEnteredUserName] = useState(user.userName);
-  const [enteredEmail, setEnteredEmail] = useState(user.email);
-  const [enteredPhone, setEnteredPhone] = useState(user?.phone || "");
-  const [uploadedImage, setUploadedImage] = useState(user?.image || "");
+  const [enteredUserName, setEnteredUserName] = useState(user?.userName ?? "");
+  const [enteredEmail, setEnteredEmail] = useState(user?.email ?? "");
+  const [enteredPhone, setEnteredPhone] = useState(user?.phone ?? "");
+  const [uploadedImage, setUploadedImage] = useState(user?.image ?? "");
   const [imgLoading, setImgLoading] = useState(false);
   const [phoneErrorMessage, setPhoneErrorMessage] = useState("");
 

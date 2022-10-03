@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAppSelector } from "../store";
+import { useAppSelector } from "../features/store";
 interface Props {
   children: JSX.Element;
 }

@@ -19,7 +19,7 @@ import Pagination from "../Pagination/Pagination";
 import { useSearchParams } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 
 function Shop() {
   const { role } = useAppSelector((state) => state.reducer.auth);

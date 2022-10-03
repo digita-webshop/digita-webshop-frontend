@@ -5,7 +5,7 @@ import CartListTable from "./Components/Tables/CartListTable";
 import CartTotalTable from "./Components/Tables/CartTotalTable";
 import CartUpdated, { UpdateType } from "./Components/CartUpdated/CartUpdated";
 
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 import { useGetAllCartItemQuery } from "../../features/cart/cartApi";
 import { CartContainer, TableContainer } from "./styles";
 import { getSubtotal } from "../../Utils/getSubtotal";

@@ -2,7 +2,7 @@ import { Close } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 import { CompareWrapper, CTButton } from "../../Styles/Compare";
 import ItemsTable from "./ItemsTable/ItemsTable";
 

@@ -17,7 +17,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../features/auth/authApi";
 import { setCredentials } from "../../features/auth/authSlice";
 import { successMessage } from "../../Utils/toastMessages";
-import { useAppSelector } from "../../store";
+import { useAppSelector } from "../../features/store";
 import {
   errorStyles,
   forgetPassStyles,

@@ -16,7 +16,7 @@ import {
 } from "../../../../Styles/Appbar";
 import ShopCart from "../ShopCart/ShopCart";
 import UserDropDown from "../UserDropDown/UserDropDown";
-import { useAppSelector } from "../../../../store";
+import { useAppSelector } from "../../../../features/store";
 import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 
 const navbarIcons = {

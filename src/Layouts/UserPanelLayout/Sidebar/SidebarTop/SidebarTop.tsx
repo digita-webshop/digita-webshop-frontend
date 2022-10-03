@@ -7,7 +7,7 @@ import {
   topMenuItem,
 } from "../../../../Styles/User";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../../../store";
+import { useAppSelector } from "../../../../features/store";
 
 const SidebarTop = () => {
   const { user } = useAppSelector((state) => state.reducer.auth);

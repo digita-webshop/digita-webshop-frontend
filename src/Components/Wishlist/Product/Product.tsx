@@ -16,7 +16,7 @@ import { titleWrapper, titleStyle } from "../../../Styles/PanelProducts";
 import { cardWrapper, deleteBtn, addBtn } from "../../../Styles/User";
 import { useDeleteWishMutation } from "../../../features/wishlist/wishlistApi";
 import { successMessage } from "../../../Utils/toastMessages";
-import { useAppSelector } from "../../../store";
+import { useAppSelector } from "../../../features/store";
 
 type T = {
   id: string;
