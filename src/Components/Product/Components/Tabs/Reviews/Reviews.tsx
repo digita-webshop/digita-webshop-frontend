@@ -13,7 +13,7 @@ import {
   FormLabel,
   TextField,
 } from "@mui/material";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Review from "./Review/Review";
 import { useAppSelector } from "../../../../../features/store";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -72,6 +72,7 @@ const Reviews = ({ reviews, id }: Props) => {
             .map((review) => (
               <Review
                 id={review._id!}
+                key={review._id!}
                 userId={review.userId}
                 rating={review.rating!}
                 description={review.description}
@@ -133,7 +134,7 @@ const Reviews = ({ reviews, id }: Props) => {
 
           <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {[1, 2, 3, 4, 5].map((rate) => (
-              <>
+              <Fragment key={rate}>
                 {rate !== 1 && (
                   <Divider orientation="vertical" variant="middle" flexItem />
                 )}
@@ -154,7 +155,7 @@ const Reviews = ({ reviews, id }: Props) => {
                     max={rate}
                   />
                 </Box>
-              </>
+              </Fragment>
             ))}
           </Box>
         </Box>

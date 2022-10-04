@@ -252,11 +252,13 @@ const ProductItem = ({ product, listView }: Props) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <WishModal
-          setOpenWish={setOpenWish}
-          addedWish={addedWish}
-          role={role}
-        />
+        <div>
+          <WishModal
+            setOpenWish={setOpenWish}
+            addedWish={addedWish}
+            role={role}
+          />
+        </div>
       </Modal>
       {/* =========== Wishlist Modal ======== */}
 
@@ -270,7 +272,7 @@ const ProductItem = ({ product, listView }: Props) => {
         <div>
           <ModalView
             title={title}
-            image={image}
+            gallery={product?.gallery}
             rating={rating}
             price={price}
             offPrice={offPrice}

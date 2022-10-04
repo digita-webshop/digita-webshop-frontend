@@ -6,16 +6,22 @@ import {
   TableRow,
   Box,
   TableBody,
+  Button,
 } from "@mui/material";
 import { StyledTableCell, TotalTextStyle } from "../../../styles";
-import DynamicButton from "../../DynamicButton/DynamicButton";
 import { styled } from "@mui/material/styles";
+import { useAppSelector } from "@/features/store";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type Props = {
   total: number;
 };
 
 const CartTotalTable = ({ total }: Props) => {
+  const { user } = useAppSelector((state) => state.reducer.auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const CustomTableContainer = styled(Box)(({ theme }) => ({
     width: "40%",
     marginLeft: "30px",
@@ -26,6 +32,17 @@ const CartTotalTable = ({ total }: Props) => {
       margin: "0 0 44px ",
     },
   }));
+
+  const checkoutHandler = () => {
+    if (!user) {
+      navigate(
+        { pathname: location.pathname, search: "login=open" },
+        { state: { from: location }, replace: true }
+      );
+    } else {
+      navigate({ pathname: "/checkout" });
+    }
+  };
 
   return (
     <CustomTableContainer component={Paper}>
@@ -60,6 +77,36 @@ const CartTotalTable = ({ total }: Props) => {
               </TableCell>
             </TableRow>
             <TableRow>
+              <StyledTableCell variant="head">Shipping</StyledTableCell>
+              <TableCell
+                sx={{
+                  borderLeft: "1px solid #ebebeb",
+                  borderColor: "#ebebeb",
+                  color: "#666",
+                }}
+              >
+                <Typography component="span" fontSize="14px">
+                  Enter your address to view shipping options
+                </Typography>
+                <Typography
+                  component="a"
+                  sx={{
+                    display: "block",
+                    fontSize: "13px",
+                    color: "common.digitaBlack",
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    marginTop: "4px",
+                    "&:hover": {
+                      color: "common.digitaRed",
+                    },
+                  }}
+                >
+                  CALCULATE SHIPPING
+                </Typography>
+              </TableCell>
+            </TableRow>
+            <TableRow>
               <StyledTableCell sx={{ lineHeight: "1.5em" }} variant="head">
                 Total
               </StyledTableCell>
@@ -81,10 +128,13 @@ const CartTotalTable = ({ total }: Props) => {
             </TableRow>
           </TableBody>
         </Table>
-        <DynamicButton
-          classes={{ padding: "14px 20px" }}
-          title={"Proceed to checkout"}
-        />
+        <Button
+          variant="contained"
+          sx={{ width: "100%", height: "40px" }}
+          onClick={checkoutHandler}
+        >
+          {`${!user ? "login and " : ""} proceed to checkout`}
+        </Button>
       </Box>
     </CustomTableContainer>
   );

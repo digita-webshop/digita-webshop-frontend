@@ -55,7 +55,6 @@ function Icons({
   const cart = cartData?.data.products ?? [];
 
   const cartItems = user ? cart : cartList;
-  console.log(cartItems.length);
 
   const handleToggle = () => {
     if (matches) {
@@ -127,7 +126,10 @@ function Icons({
           </Fragment>
         ) : (
           <IconWrapper onClick={loginModalHandler(true)}>
-            <Badge showZero sx={iconsBadgeStyles}>
+            <Badge
+              showZero
+              sx={{ ...iconsBadgeStyles, display: "inline-flex" }}
+            >
               {/* <Skeleton>
                   <LoginOutlined
                     color="primary"

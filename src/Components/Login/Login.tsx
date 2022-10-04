@@ -77,6 +77,7 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
         })
       );
       loginModalHandler(false)();
+
       if (data.role === "admin" || data.role === "superAdmin") {
         const path = location.state?.from ?? "/panel/dashboard";
         navigate(path, {

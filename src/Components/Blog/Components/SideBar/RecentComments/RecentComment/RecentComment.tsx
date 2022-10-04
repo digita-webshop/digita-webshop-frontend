@@ -4,17 +4,18 @@ import { Link as RouterLink } from "react-router-dom";
 
 type props = {
   id: string;
-  description: string;
+  title: string;
   userName: string;
+  articleId: string;
 };
 
-const RecentComment = ({ id, userName, description }: props) => {
+const RecentComment = ({ id, userName, title, articleId }: props) => {
   return (
     <Typography variant="body2" color="text.secondary" pt={2}>
       {userName} on&nbsp;
       <Link
         component={RouterLink}
-        to={`/shop`}
+        to={`/article/${articleId}`}
         underline="none"
         sx={{
           "&:hover": {
@@ -23,7 +24,7 @@ const RecentComment = ({ id, userName, description }: props) => {
           },
         }}
       >
-        {description}
+        {title}
       </Link>
     </Typography>
   );

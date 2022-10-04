@@ -7,7 +7,8 @@ export const Card = styled(Box)(({ theme }) => ({
   img: {
     maxWidth: "100%",
     height: "auto",
-    AspectRatio: "1.4",
+    aspectRatio: "1.4",
+    objectFit: "cover",
   },
 }));
 export const textStyle = { fontSize: "15px", color: "#777777" };

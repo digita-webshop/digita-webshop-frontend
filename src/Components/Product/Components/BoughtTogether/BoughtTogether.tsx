@@ -27,7 +27,7 @@ const BoughtTogether = ({ products }: Props) => {
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
         <Box sx={boughtTogether}>
           {randomProducts.map((product, index) => (
-            <Fragment>
+            <Fragment key={index}>
               {index !== 0 && (
                 <Typography
                   variant="body2"
@@ -65,20 +65,18 @@ const BoughtTogether = ({ products }: Props) => {
         </Box>
       </Box>
 
-      <Box>
-        <Typography variant="body2" component="p" sx={BoughtTextStyle}>
-          <ul className="boughtList">
-            {randomProducts.map(({ title, price, offPrice }) => (
-              <li>
-                {title} –
-                {offPrice && <del className="previousPrice">{`$${price}`}</del>}
-                <span className="newPrice">{`$${
-                  offPrice ? offPrice : price
-                }`}</span>
-              </li>
-            ))}
-          </ul>
-        </Typography>
+      <Box sx={BoughtTextStyle}>
+        <ul className="boughtList">
+          {randomProducts.map(({ title, price, offPrice }) => (
+            <li key={title}>
+              {title} –
+              {offPrice && <del className="previousPrice">{`$${price}`}</del>}
+              <span className="newPrice">{`$${
+                offPrice ? offPrice : price
+              }`}</span>
+            </li>
+          ))}
+        </ul>
       </Box>
     </Box>
   );

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Box } from "@mui/material";
-import DynamicButton from "./Components/DynamicButton/DynamicButton";
+import { Box, Button } from "@mui/material";
 import CartListTable from "./Components/Tables/CartListTable";
 import CartTotalTable from "./Components/Tables/CartTotalTable";
 import CartUpdated, { UpdateType } from "./Components/CartUpdated/CartUpdated";
@@ -10,6 +9,7 @@ import { useGetAllCartItemQuery } from "../../features/cart/cartApi";
 import { CartContainer, TableContainer } from "./styles";
 import { getSubtotal } from "../../Utils/getSubtotal";
 import { ICartItem } from "../../Services/Types/cart";
+import { Link } from "react-router-dom";
 
 export type UpdateCart = {
   item?: ICartItem;
@@ -42,7 +42,9 @@ const Cart = () => {
       )}
       {cartList.length === 0 ? (
         <Box sx={{ padding: "35px 0 50px" }}>
-          <DynamicButton icon={true} title={"Return To Shop"} href={"/"} />
+          <Button variant="contained" LinkComponent={Link} href="/shop">
+            Return to shop
+          </Button>
         </Box>
       ) : (
         <TableContainer sx={{ display: "flex" }}>

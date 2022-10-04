@@ -10,6 +10,7 @@ function RecentComments() {
     isError,
   } = useGetAllReviewsQuery({ path: "articles", queries: "page=0 &limit=4" });
   const reviews = reviewsData?.data ?? [];
+  console.log(reviewsData);
 
   return (
     <Box
@@ -36,8 +37,9 @@ function RecentComments() {
             <RecentComment
               key={review._id!}
               id={review._id!}
-              description={review?.description}
-              userName={review?.userId.userName}
+              title={review?.articleId?.title}
+              articleId={review.articleId._id!}
+              userName={review?.userId?.userName ?? "deleted account "}
             />
           ))
         : Array(4)

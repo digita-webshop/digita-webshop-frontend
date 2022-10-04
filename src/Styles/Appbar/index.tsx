@@ -193,7 +193,7 @@ export const shopCartWrapper = {
   backgroundColor: "white",
   display: "none",
   cursor: "auto",
-  width: "470px",
+  width: "400px",
   "&:hover": {
     display: "inline-block",
   },

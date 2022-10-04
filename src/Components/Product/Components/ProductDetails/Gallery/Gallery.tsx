@@ -87,11 +87,13 @@ export default function Gallery({ gallery }: Props) {
         onClose={() => setOpenModal(false)}
         sx={{ "& .MuiBackdrop-root": { backgroundColor: "rgba(0,0,0,0.85)" } }}
       >
-        <GalleryModal
-          gallery={gallery}
-          setOpenModal={setOpenModal}
-          slideIndex={slideIndex}
-        />
+        <div>
+          <GalleryModal
+            gallery={gallery}
+            setOpenModal={setOpenModal}
+            slideIndex={slideIndex}
+          />
+        </div>
       </Modal>
       <GallerySwiperWrapper className={matchesMd ? "" : "hidden"}>
         <div className="gallery-swiper-button-prev">

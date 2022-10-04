@@ -4,14 +4,14 @@ import { IUser } from "../../Services/Types/user";
 type AuthState = {
   user: null | IUser;
   role: null | string;
-  id: string;
+  id: string | null;
   email: string | null;
 };
 
 const initialState = {
   user: null,
   role: null,
-  id: "",
+  id: null,
   email: null,
 } as AuthState;
 
@@ -33,7 +33,7 @@ const authSlice = createSlice({
     logout(state) {
       state.user = null;
       state.role = null;
-      state.id = "";
+      state.id = null;
       state.email = null;
     },
   },

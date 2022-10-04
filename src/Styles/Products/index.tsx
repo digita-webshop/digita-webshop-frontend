@@ -90,6 +90,7 @@ export const StyledBtn = styled(Button)`
 /*  ============= Modal View =============   */
 export const StyledModal = styled("div")(({ theme }) => ({
   display: "flex",
+  width: "100%",
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
     "& .img-box": {
@@ -113,7 +114,7 @@ export const modalStyle = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  height: "85%",
+  minHeight: "80%",
   width: { xs: "85%", sm: "450px", md: "75%", lg: "75%", xl: "1200px" },
   display: "flex",
   bgcolor: "background.paper",
@@ -130,9 +131,12 @@ export const modalLeft = {
   height: "100%",
   overflow: "hidden",
   overflowY: "scroll",
+  display: "flex",
+  alignItems: "center ",
   "& .img-box": {
     width: "100%",
     height: { xs: "100%", md: "65%" },
+    apectRatio: "1",
     objectFit: "cover",
   },
   "&::-webkit-scrollbar": {

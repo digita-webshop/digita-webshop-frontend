@@ -1,9 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Avatar, Box, Divider, Rating, Typography } from "@mui/material";
 import avatar from "../../../../../../Assets/Images/avatar.png";
 import { getReadableDate } from "../../../../../../Utils/getReadableDate";
-import { useGetUserQuery } from "../../../../../../features/user/userApi";
 import { useLocation } from "react-router-dom";
+import { useGetUserMutation } from "@/features/user/userApi";
 
 interface Props {
   id: string;
@@ -14,12 +14,26 @@ interface Props {
 }
 
 function Review({ id, userId, rating, description, createdAt }: Props) {
+  const [user, setUser] = useState<any>();
   const { pathname } = useLocation();
 
   const readableDate = getReadableDate(createdAt);
+  const [getUser] = useGetUserMutation();
 
-  const { data: userData } = useGetUserQuery(userId);
-  const user = userData?.data ?? { userName: "deleted account", image: "" };
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await getUser(userId).unwrap();
+        setUser(res.data);
+      } catch (err: any) {
+        if (err.status === 404) {
+          setUser({ userName: "deleted account" });
+        }
+        console.log(err);
+      }
+    };
+    fetchUser();
+  }, []);
 
   return (
     <Fragment>

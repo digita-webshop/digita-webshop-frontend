@@ -84,8 +84,6 @@ const ProductDetails = ({ product, wished }: Props) => {
     }
     try {
       let response;
-      console.log(wished);
-      console.log({ path: role!, _id });
       if (!wished) {
         response = await addWish({ path: role!, id: _id }).unwrap();
         setAddedWish(true);
@@ -252,11 +250,13 @@ const ProductDetails = ({ product, wished }: Props) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <WishModal
-          setOpenWish={setOpenWish}
-          addedWish={addedWish}
-          role={role}
-        />
+        <div>
+          <WishModal
+            setOpenWish={setOpenWish}
+            addedWish={addedWish}
+            role={role}
+          />
+        </div>
       </Modal>
     </Box>
   );

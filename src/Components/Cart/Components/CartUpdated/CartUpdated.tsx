@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import React from "react";
-import DynamicButton from "../DynamicButton/DynamicButton";
 import { UpdateCart } from "../../Cart";
 import { ICartItem } from "../../../../Services/Types/cart";
 
@@ -48,18 +47,7 @@ const CartUpdated = ({ item, type, setCartUpdated }: Props) => {
           ? `${`“${item?.productId}“ removed.`}`
           : "Cart updated."}
       </Typography>
-      {type === UpdateType.Remove && (
-        <Box sx={{ marginLeft: "auto" }}>
-          <DynamicButton
-            action={handleUndo}
-            title={"Undo?"}
-            classes={{
-              background: "#f03637",
-              padding: "6px 18px",
-            }}
-          />
-        </Box>
-      )}
+      {type === UpdateType.Remove && <Box sx={{ marginLeft: "auto" }}></Box>}
     </Box>
   );
 };

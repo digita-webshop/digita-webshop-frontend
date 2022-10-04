@@ -10,7 +10,7 @@ import Routes from "./routes";
 import { useAppSelector } from "./features/store";
 import { ScrollToTop } from "./Components";
 import { logout, setCredentials } from "./features/auth/authSlice";
-import { useGetUserQuery } from "./features/user/userApi";
+import { useGetUserMutation } from "./features/user/userApi";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,22 +19,23 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const { data: userData } = useGetUserQuery(id);
-  const user = userData?.data;
+  const [getUser] = useGetUserMutation();
 
   useEffect(() => {
-    if (user) {
-      dispatch(
-        setCredentials({
-          user,
-          role: user.role!,
-          email: null,
-        })
-      );
-    } else {
-      dispatch(logout());
+    const fetchUser = async () => {
+      try {
+        const response = await getUser(id).unwrap();
+        const user = response.data;
+        dispatch(setCredentials({ user, role: user.role!, email: null }));
+      } catch (err) {
+        dispatch(logout());
+      }
+    };
+
+    if (id) {
+      fetchUser();
     }
-  }, [user, dispatch]);
+  }, [id, dispatch, getUser]);
 
   return (
     <ThemeProvider theme={theme}>

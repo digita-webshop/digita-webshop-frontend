@@ -24,10 +24,13 @@ import {
   CartInput,
   AmountBtn,
 } from "../../../../../Styles/Products";
+import { IGallery } from "@/Services/Types/product";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectFade, Navigation, Pagination } from "swiper";
 
 type T = {
   title: string;
-  image: string;
+  gallery: IGallery[];
   offPrice: number | null;
   price: number;
   rating: number;
@@ -36,7 +39,7 @@ type T = {
 
 const ModalView = ({
   title,
-  image,
+  gallery,
   price,
   offPrice,
   rating,
@@ -59,21 +62,22 @@ const ModalView = ({
 
   return (
     <Box sx={modalStyle}>
-      {/* {sold && (
-        <Box sx={{ position: "relative", top: "0", right: "0" }}>
-          <IconDiv sx={{ fontSize: "12px", padding: "0.2rem 0.8rem" }}>
-            Sale!
-          </IconDiv>
-        </Box>
-      )} */}
-
       <StyledModal>
         <Box sx={modalLeft} className="box">
-          <img src={image} className="img-box" alt="" />
-          <img src={image} className="img-box" alt="" />
-          <img src={image} className="img-box" alt="" />
-          <img src={image} className="img-box" alt="" />
-          <img src={image} className="img-box" alt="" />
+          <Swiper
+            navigation
+            loop={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Navigation, Pagination]}
+          >
+            {gallery.map(({ image, _id }) => (
+              <SwiperSlide key={_id}>
+                <img src={image} className="img-box" alt="" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </Box>
         <Box sx={modalRight} className="rightBox">
           <Box sx={closeStyle} onClick={handleClose}>

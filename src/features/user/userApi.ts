@@ -35,9 +35,9 @@ export const userApi = api.injectEndpoints({
       query: (path) => `${path}s`,
       providesTags: ["Users"],
     }),
-    getUser: build.query<GetUserResponse, string>({
+    getUser: build.mutation<GetUserResponse, string | null>({
       query: (id) => `users/${id}`,
-      providesTags: ["User"],
+      invalidatesTags: ["User"],
     }),
     updateUser: build.mutation<UserResponse, UpdateUserRequest>({
       query(data) {
@@ -75,7 +75,7 @@ export const userApi = api.injectEndpoints({
 });
 
 export const {
-  useGetUserQuery,
+  useGetUserMutation,
   useUpdateUserMutation,
   useGetAllUsersQuery,
   useDeleteUserMutation,

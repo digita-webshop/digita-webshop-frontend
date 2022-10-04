@@ -166,8 +166,8 @@ function Shop() {
                 : Array(12)
                     .fill(null)
                     .map((item, index) => (
-                      <Grid item xs={12} sm={4}>
-                        <ProductPlaceholder key={index} />
+                      <Grid item xs={12} sm={4} key={index}>
+                        <ProductPlaceholder />
                       </Grid>
                     ))}
             </Grid>
