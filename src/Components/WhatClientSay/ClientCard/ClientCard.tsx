@@ -1,41 +1,81 @@
-import {Box} from "@mui/material";
-import React from "react";
-import {ReusableTypography} from "../../../Styles/WhatClientSay";
-import ClientAvatar from "../ClientAvatar/ClientAvatar";
-import {ItemType} from "./Types/Item";
+import { IReviews } from "@/Services/Types/product";
+import { Box, Grid, Rating, Typography } from "@mui/material";
+import { ReusableTypography } from "../../../Styles/WhatClientSay";
+import avatar from "@/Assets/Images/avatar.png";
 
 type Props = {
-    item: ItemType
-}
+  review: IReviews;
+};
 
-function ClientCard({item}: Props) {
-    return (
-        <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: "center",
-            color: 'white',
-            position: 'relative',
-            width: '100%',
-        }}>
-            <ReusableTypography
-                fontWeight="400"
-                smallSizeFontSize="17px"
-                mediumSizeFontSize="24px"
-                component="p"
+function ClientCard({ review }: Props) {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        color: "white",
+        position: "relative",
+        width: "100%",
+      }}
+    >
+      <ReusableTypography
+        fontWeight="400"
+        smallSizeFontSize="17px"
+        mediumSizeFontSize="24px"
+        component="p"
+        sx={{
+          fontSize: 32,
+          textAlign: "center",
+        }}
+      >
+        {review.description}
+      </ReusableTypography>
+
+      <Box sx={{ display: "grid", placeItems: "center" }}>
+        <Box sx={{ mt: 3, "& img": { width: 70, height: 70 } }}>
+          <Grid container spacing={1}>
+            <Grid item>
+              <img src={review.userId.image ?? avatar} alt="profile" />
+            </Grid>
+            <Grid item>
+              <Grid
                 sx={{
-                    fontSize: 32,
-                    textAlign: "center",
+                  ml: "6px",
                 }}
-            >
-                {item.text}
-            </ReusableTypography>
+                container
+                direction="column"
+                spacing={0}
+                justifyContent="space-between"
+                alignItems="flex-start"
+              >
+                <Grid item>
+                  <Typography
+                    sx={{
+                      fontSize: 15,
+                      textTransform: "uppercase",
+                      fontWeight: "600",
+                    }}
+                  >
+                    {review.userId?.userName}
+                  </Typography>
+                </Grid>
 
-            <Box sx={{display: "grid", placeItems: "center"}}>
-                <ClientAvatar user={item.user}/>
-            </Box>
+                <Grid item>
+                  <Rating
+                    size="small"
+                    name="read-only"
+                    value={review.rating}
+                    readOnly
+                  />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
         </Box>
-    );
+      </Box>
+    </Box>
+  );
 }
 
 export default ClientCard;

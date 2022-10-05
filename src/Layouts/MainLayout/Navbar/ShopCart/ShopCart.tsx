@@ -1,6 +1,5 @@
 import { Box, Button, Divider, Link, List, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../../../features/store";
 import { shopCartWrapper } from "../../../../Styles/Appbar";
 import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
@@ -37,7 +36,6 @@ function ShopCart() {
         )}
         {cartItems.length !== 0 &&
           !isLoading &&
-          !isError &&
           cartItems?.map((item) => (
             <ShopCartItem
               key={item?._id}

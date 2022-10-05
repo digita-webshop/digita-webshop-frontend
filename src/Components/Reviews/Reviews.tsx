@@ -58,7 +58,7 @@ const Reviews = () => {
   });
   const reviews = reviewsData?.data ?? [];
   const reviewsLength = reviewsData?.total ?? 0;
-  console.log(reviewsData);
+
   const [deleteReview] = useDeleteReviewMutation();
 
   const handleToggle = (rid: string, id: string) => () => {

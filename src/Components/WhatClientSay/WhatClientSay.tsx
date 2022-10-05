@@ -1,4 +1,3 @@
-import React from "react";
 import { Box } from "@mui/material";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,14 +5,22 @@ import { Title } from "../../Styles/ShopByCategories";
 import iconLoading from "../../Assets/Images/icon-loading.png";
 import ClientCard from "./ClientCard/ClientCard";
 import { boxStyles, Container, WrapperBox } from "../../Styles/WhatClientSay";
-import { data } from "./data";
-import { ItemType } from "./ClientCard/Types/Item";
 import { useInView } from "react-intersection-observer";
+import { useGetAllReviewsQuery } from "@/features/reviews/reviewsApi";
 
 function WhatClientSay() {
   const { ref, inView } = useInView({ triggerOnce: true });
   SwiperCore.use([Autoplay]);
 
+  const {
+    data: reviewsData,
+    isLoading,
+    isError,
+  } = useGetAllReviewsQuery({
+    path: "products",
+    queries: "page=1 &limit=4",
+  });
+  const reviews = reviewsData?.data ?? [];
   return (
     <WrapperBox className={inView ? "slideInFromBottom" : ""} ref={ref}>
       <Box sx={boxStyles}>
@@ -34,13 +41,15 @@ function WhatClientSay() {
             }}
             modules={[Navigation, Pagination]}
           >
-            {data.map((item: ItemType) => {
-              return (
-                <SwiperSlide key={item.id}>
-                  <ClientCard item={item} />
-                </SwiperSlide>
-              );
-            })}
+            {!isError &&
+              !isLoading &&
+              reviews.map((review) => {
+                return (
+                  <SwiperSlide key={review._id}>
+                    <ClientCard review={review} />
+                  </SwiperSlide>
+                );
+              })}
           </Swiper>
         </Container>
       </Box>
