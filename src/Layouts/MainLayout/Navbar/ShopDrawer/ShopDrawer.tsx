@@ -18,7 +18,9 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
   const { cartList } = useAppSelector((state) => state.reducer.cart);
 
   const { data: cartData } = useGetAllCartItemQuery();
-  const cart = cartData?.data.products ?? [];
+  const cart = cartData?.data?.products ?? [];
+
+  console.log(cart);
 
   const cartItems = user ? cart : cartList;
 

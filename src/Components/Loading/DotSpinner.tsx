@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 import "./dot-spinner.css";
-function DotSpinner() {
+function DotSpinner({ color }: { color?: string }) {
   return (
-    <Box>
-      <svg viewBox="0 0 120 120" className="dot-spinner">
+    <Box display={"flex"}>
+      <svg viewBox="0 0 120 120" className={`dot-spinner ${color}`}>
         <circle cx="46.6" cy="10" r="10" />
         <circle cx="73.4" cy="10" r="10" />
         <circle cx="96.6" cy="23.4" r="10" />

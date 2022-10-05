@@ -123,7 +123,7 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
       const response = await signUp(userCredentials).unwrap();
 
       dispatch(
-        setCredentials({ user: {}, role: null, email: response.data.email })
+        setCredentials({ user: null, role: null, email: response.data.email })
       );
       successMessage("account created successfully");
       modalTypeToggle("login");

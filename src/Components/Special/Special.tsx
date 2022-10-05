@@ -7,8 +7,13 @@ import { useInView } from "react-intersection-observer";
 import { useState } from "react";
 import SpecialProductPlaceholder from "../Placeholders/SpecialProductPlaceholder";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
+import { useAppSelector } from "@/features/store";
+import { useGetAllCartItemQuery } from "@/features/cart/cartApi";
 
 const Special = () => {
+  const { user } = useAppSelector((state) => state.reducer.auth);
+  const { cartList } = useAppSelector((state) => state.reducer.cart);
+
   const [selectedSorting, setSelectedSorting] = useState("latest");
 
   const { ref, inView } = useInView({ triggerOnce: true });
@@ -18,6 +23,11 @@ const Special = () => {
     isError,
   } = useGetAllProductsQuery(`page=1&limit=9&sort=${selectedSorting}`);
   const products = productsData?.data ?? [];
+
+  const { data: cartData } = useGetAllCartItemQuery();
+  const cart = cartData?.data?.products ?? [];
+  const cartItems = user ? cart : cartList;
+
   return (
     <Container
       maxWidth={"xl"}
@@ -52,12 +62,8 @@ const Special = () => {
               ? products.map((item) => (
                   <SpecialItem
                     key={item._id!}
-                    id={item._id!}
-                    title={item.title}
-                    image={item.image}
-                    offPrice={item.offPrice}
-                    price={item.price}
-                    rating={item.rating}
+                    product={item}
+                    cartItems={cartItems}
                   />
                 ))
               : Array(9)

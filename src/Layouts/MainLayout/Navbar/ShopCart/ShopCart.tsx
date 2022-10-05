@@ -11,7 +11,7 @@ function ShopCart() {
   const { cartList, subtotal } = useAppSelector((state) => state.reducer.cart);
 
   const { data: cartData, isLoading, isError } = useGetAllCartItemQuery();
-  const cart = cartData?.data.products ?? [];
+  const cart = cartData?.data?.products ?? [];
 
   const cartItems = user ? cart : cartList;
 

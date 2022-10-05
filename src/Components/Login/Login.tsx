@@ -44,7 +44,7 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
   const navigate = useNavigate();
   const location: any = useLocation();
 
-  if (user) {
+  if (!!user) {
     navigate({ pathname: location.pathname, search: "" });
   }
 

@@ -56,7 +56,7 @@ export const CartButtonsStyle = {
   marginBottom: "5px",
   display: "flex",
   alignItems: "center",
-  height: "50px",
+  height: "45px",
   gap: "10px",
   button: {
     height: "100%",

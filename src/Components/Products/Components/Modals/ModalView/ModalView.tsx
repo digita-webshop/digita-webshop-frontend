@@ -19,16 +19,18 @@ import {
   modalLeft,
   modalStyle,
   StyledModal,
-  CartInput,
-  AmountBtn,
 } from "../../../../../Styles/Products";
 import { IGallery } from "@/Services/Types/product";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
-import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { DeleteForever, Favorite, FavoriteBorder } from "@mui/icons-material";
 import { productIconStyles } from "@/Styles/Product";
+import QuantityInput from "@/Components/Cart/Components/QuantityInput/QuantityInput";
+import { ICartItem } from "@/Services/Types/cart";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "@/features/cart/cartSlice";
 
-type T = {
+type Props = {
   title: string;
   gallery: IGallery[];
   offPrice: number | null;
@@ -40,6 +42,8 @@ type T = {
   addWishLoading: boolean;
   delWishLoading: boolean;
   shortDescription: string;
+  cartItem: ICartItem | undefined;
+  addToCartHandler: () => void;
   wishlistHandler: () => void;
   setOpenView: Dispatch<SetStateAction<boolean>>;
 };
@@ -56,22 +60,20 @@ const ModalView = ({
   addWishLoading,
   delWishLoading,
   shortDescription,
+  cartItem,
+  addToCartHandler,
   wishlistHandler,
   setOpenView,
-}: T) => {
-  const [value, setValue] = useState(1);
+}: Props) => {
   const [color, setColor] = useState(colors[0]);
 
-  const handleDecValue = () => {
-    if (value > 0) {
-      setValue((prev) => prev - 1);
-    }
-  };
-  const handleIncValue = () => {
-    setValue((prev) => prev + 1);
-  };
+  const dispatch = useDispatch();
+
   const handleChange = (e: any) => {
     setColor(e.target.value);
+  };
+  const cartItemDeleteHandler = () => {
+    dispatch(removeFromCart(cartItem?._id!));
   };
 
   return (
@@ -160,7 +162,6 @@ const ModalView = ({
             </Select>
             <FormHelperText></FormHelperText>
           </FormControl>
-
           <Box
             sx={{
               p: "1rem 0",
@@ -169,26 +170,31 @@ const ModalView = ({
               gap: 1,
             }}
           >
-            <Box sx={{ display: "flex", alignItems: "center", height: "3rem" }}>
-              <AmountBtn width={"40px"} onClick={handleDecValue}>
-                -
-              </AmountBtn>
-              <CartInput
-                id="outlined-number"
-                type="number"
-                value={value}
-                sx={{
-                  width: "40px",
-                }}
-                size="small"
-              />
-              <AmountBtn onClick={handleIncValue} width={"40px"}>
-                +
-              </AmountBtn>
-            </Box>
-            <Button variant="contained" sx={{ fontSize: "14px" }}>
-              Add to Cart
-            </Button>
+            {cartItem && (
+              <>
+                <QuantityInput cartItem={cartItem} />
+                <Button
+                  variant="outlined"
+                  color="error"
+                  sx={{
+                    padding: "0 20px!important",
+                    "&:hover .delete-icon": { color: "#fff" },
+                  }}
+                  onClick={cartItemDeleteHandler}
+                >
+                  <DeleteForever className="delete-icon" />
+                </Button>
+              </>
+            )}
+            {!cartItem && (
+              <Button
+                variant="contained"
+                sx={{ fontSize: "14px" }}
+                onClick={addToCartHandler}
+              >
+                Add to Cart
+              </Button>
+            )}
           </Box>
           <Box sx={label}>
             <Typography

@@ -29,16 +29,20 @@ import {
 } from "@mui/icons-material";
 import Gallery from "./Gallery/Gallery";
 import ColorPicker from "./ColorPicker/ColorPicker";
-import { IProduct } from "../../../../Services/Types/product";
-import { AmountBtn, CartInput } from "../../../../Styles/Products";
+import { IProduct } from "@/Services/Types/product";
 import { Link as NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../../../features/store";
+import { useAppSelector } from "@/features/store";
 import {
   useAddWishMutation,
   useDeleteWishMutation,
-} from "../../../../features/wishlist/wishlistApi";
+} from "@/features/wishlist/wishlistApi";
 import WishModal from "../../../Products/Components/Modals/WishModal/WishModal";
-import { useGetReviewsQuery } from "../../../../features/reviews/reviewsApi";
+import { useGetReviewsQuery } from "@/features/reviews/reviewsApi";
+import { isInList } from "@/Utils/isInList";
+import { useGetAllCartItemQuery } from "@/features/cart/cartApi";
+import QuantityInput from "@/Components/Cart/Components/QuantityInput/QuantityInput";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "@/features/cart/cartSlice";
 
 interface Props {
   product: IProduct;
@@ -48,15 +52,25 @@ const ProductDetails = ({ product, wished }: Props) => {
   const [openWish, setOpenWish] = useState(false);
   const [addedWish, setAddedWish] = useState(false);
   const { role, user } = useAppSelector((state) => state.reducer.auth);
+  const { cartList } = useAppSelector((state) => state.reducer.cart);
 
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { data: reviewsData } = useGetReviewsQuery({
     path: "products",
     id: product._id!,
   });
   const reviewsLength = reviewsData?.data.length ?? 0;
+
+  const { data: cartData } = useGetAllCartItemQuery();
+  const cart = cartData?.data.products ?? [];
+  const cartItems = user ? cart : cartList;
+  const inCart = isInList(cartItems, product?._id!);
+  const cartItem = cartItems.find(
+    (item) => item.productId._id === product?._id
+  );
 
   const [addWish, { isLoading: addLoading }] = useAddWishMutation();
   const [deleteWish, { isLoading: delLoading }] = useDeleteWishMutation();
@@ -96,6 +110,9 @@ const ProductDetails = ({ product, wished }: Props) => {
     }
   };
 
+  const cartItemDeleteHandler = () => {
+    dispatch(removeFromCart(cartItem?._id!));
+  };
   return (
     <Box my={5}>
       <Grid container spacing={4}>
@@ -157,35 +174,35 @@ const ProductDetails = ({ product, wished }: Props) => {
             <ColorPicker colors={colors} />
             <Box>
               <Box sx={CartButtonsStyle}>
-                <Button variant="contained" className="addCart">
-                  Add To Cart
-                </Button>
-                {/* <Box
-                  sx={{ display: "flex", alignItems: "center", height: "3rem" }}
-                >
-                  <AmountBtn width={"40px"}>-</AmountBtn>
-                  <CartInput
-                    id="outlined-number"
-                    type="number"
-                    sx={{
-                      width: "40px",
-                    }}
-                    size="small"
-                  />
-                  <AmountBtn width={"40px"}>+</AmountBtn>
-                </Box> */}
-                {/* <Button
-                  variant="outlined"
-                  color="error" 
-                  sx={{
-                    padding: "0 20px!important",
-                    "&:hover .delete-icon": { color: "#fff" },
-                  }}
-                >
-                  <DeleteForever className="delete-icon" />
-                </Button> */}
-
-                {/* <Button variant="contained">View Cart</Button> */}
+                {!inCart && (
+                  <Button variant="contained" className="addCart">
+                    Add To Cart
+                  </Button>
+                )}
+                {inCart && (
+                  <>
+                    <QuantityInput cartItem={cartItem!} />
+                    <Button
+                      variant="outlined"
+                      color="error"
+                      sx={{
+                        padding: "0 20px!important",
+                        "&:hover .delete-icon": { color: "#fff" },
+                      }}
+                      onClick={cartItemDeleteHandler}
+                    >
+                      <DeleteForever className="delete-icon" />
+                    </Button>
+                    <Button
+                      variant="contained"
+                      component={NavLink}
+                      to="/cart"
+                      sx={{ height: "100%" }}
+                    >
+                      View Cart
+                    </Button>
+                  </>
+                )}
               </Box>
             </Box>
 

@@ -47,7 +47,9 @@ const CartListTableRow = ({ cartItem }: Props) => {
       <StyledTableCell align="center">
         <span>quantity:</span>
         {cartItem?.productId?.quantity > 1 ? (
-          <QuantityInput cartItem={cartItem} />
+          <Box height={"50px"}>
+            <QuantityInput cartItem={cartItem} />
+          </Box>
         ) : (
           cartItem?.quantity
         )}

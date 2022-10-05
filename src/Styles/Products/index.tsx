@@ -311,29 +311,3 @@ export const subMainContainer = {
     },
   },
 };
-
-export const CartInput = styled(TextField)(({ theme }) => ({
-  height: "100%",
-  "& .MuiInputBase-root": {
-    height: "100%",
-    borderRadius: "0",
-  },
-  "& .MuiInputBase-input": {
-    textAlign: "center",
-  },
-  input: {
-    "&::-webkit-inner-spin-button": { appearance: "none" },
-  },
-}));
-export const AmountBtn = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: "#555",
-  cursor: "pointer",
-  height: "100%",
-  fontSize: "20px",
-  userSelect: "none",
-  border: "1px solid #e4e4e4",
-  fontWeight: "700",
-}));

@@ -34,8 +34,6 @@ const CartTotalTable = ({ total }: Props) => {
   }));
 
   const checkoutHandler = () => {
-    console.log(location);
-
     if (!user) {
       navigate(
         { pathname: location.pathname, search: "login=open" },

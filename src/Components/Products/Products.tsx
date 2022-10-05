@@ -8,16 +8,11 @@ import { subMainContainer } from "../../Styles/Products";
 import { useState } from "react";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
-import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
-import { useAppSelector } from "../../features/store";
-import { useGetAllCartItemQuery } from "../../features/cart/cartApi";
-import { isInList } from "../../Utils/isInList";
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] =
     useState("audio & video game");
   const { ref, inView } = useInView({ triggerOnce: true });
-  const { role, user } = useAppSelector((state) => state.reducer.auth);
 
   const {
     data: productsData,

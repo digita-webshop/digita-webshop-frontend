@@ -37,7 +37,8 @@ export const CustomBtn = {
   justifyContent: "center",
   color: "#777",
   width: { xs: "50px", sm: "40px", lg: "50px" },
-  height: { xs: "50px", sm: "40px", lg: "50px" },
+
+  height: "100%",
   cursor: "pointer",
   fontSize: "20px",
   userSelect: "none",

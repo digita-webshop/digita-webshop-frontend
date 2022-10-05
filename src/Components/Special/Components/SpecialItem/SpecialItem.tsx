@@ -6,21 +6,42 @@ import {
   CardContent,
   Box,
   Button,
+  Modal,
 } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { itemContent } from "../../../../Styles/Special";
 import { Link } from "react-router-dom";
+import { isInList } from "@/Utils/isInList";
+import { ICartItem } from "@/Services/Types/cart";
+import { IProduct } from "@/Services/Types/product";
+import { useAddToCart } from "@/hooks/useAddToCart";
+import { useState } from "react";
+import CartModal from "@/Components/Products/Components/Modals/CartModal/CartModal";
+import { ShoppingBasket } from "@mui/icons-material";
+import DotSpinner from "@/Components/Loading/DotSpinner";
 
 type Props = {
-  id: string;
-  title: string;
-  image: string;
-  offPrice: number | null;
-  price: number;
-  rating: number;
+  product: IProduct;
+  cartItems: ICartItem[];
 };
 
-const SpecialItem = ({ id, title, image, offPrice, price, rating }: Props) => {
+const SpecialItem = ({ product, cartItems }: Props) => {
+  const [openCart, setOpenCart] = useState(false);
+
+  console.log(product);
+  console.log(cartItems);
+  const { _id, title, price, offPrice, rating, image } = product;
+
+  const inCart = isInList(cartItems, _id!);
+
+  const cartItem = cartItems.find((item) => item?.productId._id === _id);
+
+  const { addToCartHandler, cartIsLoading } = useAddToCart(
+    inCart,
+    product,
+    setOpenCart
+  );
+
   return (
     <Grid item xs={12} sm={6} lg={4}>
       <Box
@@ -32,7 +53,7 @@ const SpecialItem = ({ id, title, image, offPrice, price, rating }: Props) => {
           },
         }}
       >
-        <Link to={`/product/${id}`} className="image-link">
+        <Link to={`/product/${_id}`} className="image-link">
           <CardMedia
             component="img"
             sx={{ height: "100%", objectFit: "contain" }}
@@ -83,7 +104,7 @@ const SpecialItem = ({ id, title, image, offPrice, price, rating }: Props) => {
                 },
               }}
             >
-              <Link to={`/product/${id}`}>{title}</Link>
+              <Link to={`/product/${_id}`}>{title}</Link>
             </Typography>
             <Typography
               variant="body2"
@@ -100,10 +121,28 @@ const SpecialItem = ({ id, title, image, offPrice, price, rating }: Props) => {
                 {`$${price}.00`}
               </Box>
             </Typography>
-            <Button variant="contained">Add to cart</Button>
+            <Button
+              variant="contained"
+              onClick={addToCartHandler}
+              sx={{ alignItems: "center", gap: "6px" }}
+            >
+              Add to cart
+              {cartIsLoading && <DotSpinner color="white" />}
+              {inCart && <ShoppingBasket fontSize="small" />}
+            </Button>
           </CardContent>
         </Box>
       </Box>
+      <Modal
+        open={openCart}
+        onClose={() => setOpenCart(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div>
+          <CartModal cartItems={cartItems} setOpenCart={setOpenCart} />
+        </div>
+      </Modal>
     </Grid>
   );
 };

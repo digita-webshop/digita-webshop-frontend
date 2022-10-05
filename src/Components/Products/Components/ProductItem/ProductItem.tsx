@@ -30,20 +30,16 @@ import {
   ShoppingCart,
   Visibility,
 } from "@mui/icons-material";
-import { v4 as uuidv4 } from "uuid";
 import {
   productIconStyles,
   productIconWrapperStyles,
 } from "../../../../Styles/Product";
 import WishModal from "../Modals/WishModal/WishModal";
 import { IProduct } from "../../../../Services/Types/product";
-import {
-  useAddToCartMutation,
-  useGetAllCartItemQuery,
-} from "../../../../features/cart/cartApi";
+import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 import DotSpinner from "../../../Loading/DotSpinner";
-import { addProductToCart } from "../../../../features/cart/cartSlice";
 import { isInList } from "../../../../Utils/isInList";
+import { useAddToCart } from "@/hooks/useAddToCart";
 
 type Props = {
   product: IProduct;
@@ -66,17 +62,6 @@ const ProductItem = ({ product, listView }: Props) => {
 
   const [addWish, { isLoading: addWishLoading }] = useAddWishMutation();
   const [deleteWish, { isLoading: delWishLoading }] = useDeleteWishMutation();
-  const [addToCart, { isLoading: cartIsLoading }] = useAddToCartMutation();
-
-  const { data: cartData } = useGetAllCartItemQuery();
-  const cart = cartData?.data.products ?? [];
-  const cartItems = user ? cart : cartList;
-  const inCart = isInList(cartItems, product._id!);
-
-  const { data: wishlistData } = useGetWishlistQuery(role!);
-  const wishlist = wishlistData?.data ?? [];
-  const wished = isInList(wishlist, product._id!);
-
   const {
     _id,
     title,
@@ -89,6 +74,22 @@ const ProductItem = ({ product, listView }: Props) => {
     colors,
     reviews,
   } = product;
+
+  const { data: cartData } = useGetAllCartItemQuery();
+  const cart = cartData?.data?.products ?? [];
+  const cartItems = user ? cart : cartList;
+  const inCart = isInList(cartItems, _id!);
+  const cartItem = cartItems.find((item) => item.productId._id === _id);
+
+  const { addToCartHandler, cartIsLoading } = useAddToCart(
+    inCart,
+    product,
+    setOpenCart
+  );
+
+  const { data: wishlistData } = useGetWishlistQuery(role!);
+  const wishlist = wishlistData?.data ?? [];
+  const wished = isInList(wishlist, _id!);
 
   const compareClickHandler = () => {
     dispatch(addToCompareList(product));
@@ -117,28 +118,6 @@ const ProductItem = ({ product, listView }: Props) => {
       console.log(response);
     } catch (err) {
       console.log(err);
-    }
-  };
-  const addToCartHandler = async () => {
-    if (inCart) return;
-    const cartItem: any = {
-      productId: product,
-      name: title,
-      price,
-      quantity: 1,
-    };
-    if (user) {
-      try {
-        const res = await addToCart(cartItem).unwrap();
-        console.log(res);
-        setOpenCart(true);
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      cartItem["_id"] = uuidv4();
-      dispatch(addProductToCart(cartItem));
-      setOpenCart(true);
     }
   };
   return (
@@ -296,7 +275,9 @@ const ProductItem = ({ product, listView }: Props) => {
             addWishLoading={addWishLoading}
             delWishLoading={delWishLoading}
             shortDescription={shortDescription}
+            addToCartHandler={addToCartHandler}
             wishlistHandler={wishlistHandler}
+            cartItem={cartItem}
             setOpenView={setOpenView}
           />
         </div>

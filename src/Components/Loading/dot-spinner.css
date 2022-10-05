@@ -7,6 +7,9 @@
   animation: 1.2s e infinite;
   fill: #f03637;
 }
+.dot-spinner.white circle {
+  fill: #fff;
+}
 
 .dot-spinner circle:nth-child(1) {
   animation-delay: -1.1s;
