@@ -14,7 +14,7 @@ import CartModal from "../Modals/CartModal/CartModal";
 import ModalView from "../Modals/ModalView/ModalView";
 import { RedTooltip, StyledIcons } from "../../../../Styles/Products/index";
 import CompareModal from "../../../CompareModal/CompareModal";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCompareList } from "../../../../features/compare/compareSlice";
 import {
@@ -60,7 +60,8 @@ const ProductItem = ({ product, listView }: Props) => {
   const [openCart, setOpenCart] = useState(false);
   const [openCompareModal, setOpenCompareModal] = useState(false);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [addWish, { isLoading: addWishLoading }] = useAddWishMutation();
@@ -76,8 +77,18 @@ const ProductItem = ({ product, listView }: Props) => {
   const wishlist = wishlistData?.data ?? [];
   const wished = isInList(wishlist, product._id!);
 
-  const { _id, title, price, offPrice, shortDescription, rating, image } =
-    product;
+  const {
+    _id,
+    title,
+    price,
+    offPrice,
+    shortDescription,
+    rating,
+    image,
+    gallery,
+    colors,
+    reviews,
+  } = product;
 
   const compareClickHandler = () => {
     dispatch(addToCompareList(product));
@@ -86,8 +97,11 @@ const ProductItem = ({ product, listView }: Props) => {
 
   const wishlistHandler = async () => {
     if (!user || !role) {
-      searchParams.set("login", "open");
-      setSearchParams(searchParams);
+      setOpenView(false);
+      navigate(
+        { pathname: location.pathname, search: "login=open" },
+        { replace: true, state: { from: location } }
+      );
       return;
     }
     try {
@@ -272,11 +286,18 @@ const ProductItem = ({ product, listView }: Props) => {
         <div>
           <ModalView
             title={title}
-            gallery={product?.gallery}
+            gallery={gallery}
             rating={rating}
             price={price}
             offPrice={offPrice}
-            handleClose={() => setOpenView(false)}
+            colors={colors}
+            reviewsLen={reviews?.length ?? 0}
+            wished={wished}
+            addWishLoading={addWishLoading}
+            delWishLoading={delWishLoading}
+            shortDescription={shortDescription}
+            wishlistHandler={wishlistHandler}
+            setOpenView={setOpenView}
           />
         </div>
       </Modal>

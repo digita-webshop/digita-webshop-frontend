@@ -34,10 +34,12 @@ const CartTotalTable = ({ total }: Props) => {
   }));
 
   const checkoutHandler = () => {
+    console.log(location);
+
     if (!user) {
       navigate(
         { pathname: location.pathname, search: "login=open" },
-        { state: { from: location }, replace: true }
+        { state: { from: { pathname: "/checkout" } }, replace: true }
       );
     } else {
       navigate({ pathname: "/checkout" });
@@ -130,7 +132,7 @@ const CartTotalTable = ({ total }: Props) => {
         </Table>
         <Button
           variant="contained"
-          sx={{ width: "100%", height: "40px" }}
+          sx={{ width: "100%", padding: "8px 0" }}
           onClick={checkoutHandler}
         >
           {`${!user ? "login and " : ""} proceed to checkout`}

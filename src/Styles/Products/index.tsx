@@ -136,8 +136,8 @@ export const modalLeft = {
   "& .img-box": {
     width: "100%",
     height: { xs: "100%", md: "65%" },
-    apectRatio: "1",
-    objectFit: "cover",
+    aspectRatio: "1",
+    objectFit: "contain",
   },
   "&::-webkit-scrollbar": {
     width: "5px",

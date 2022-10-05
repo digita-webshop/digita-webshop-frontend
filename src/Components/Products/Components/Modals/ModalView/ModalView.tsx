@@ -9,13 +9,11 @@ import {
   InputLabel,
   FormHelperText,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import StarIcon from "@mui/icons-material/Star";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import {
   closeStyle,
-  IconDiv,
   label,
   modalRight,
   modalLeft,
@@ -26,7 +24,9 @@ import {
 } from "../../../../../Styles/Products";
 import { IGallery } from "@/Services/Types/product";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Navigation, Pagination } from "swiper";
+import { Navigation, Pagination } from "swiper";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { productIconStyles } from "@/Styles/Product";
 
 type T = {
   title: string;
@@ -34,7 +34,14 @@ type T = {
   offPrice: number | null;
   price: number;
   rating: number;
-  handleClose: any;
+  colors: string[];
+  reviewsLen: number;
+  wished: boolean;
+  addWishLoading: boolean;
+  delWishLoading: boolean;
+  shortDescription: string;
+  wishlistHandler: () => void;
+  setOpenView: Dispatch<SetStateAction<boolean>>;
 };
 
 const ModalView = ({
@@ -43,10 +50,17 @@ const ModalView = ({
   price,
   offPrice,
   rating,
-  handleClose,
+  colors,
+  reviewsLen,
+  wished,
+  addWishLoading,
+  delWishLoading,
+  shortDescription,
+  wishlistHandler,
+  setOpenView,
 }: T) => {
   const [value, setValue] = useState(1);
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState(colors[0]);
 
   const handleDecValue = () => {
     if (value > 0) {
@@ -80,7 +94,7 @@ const ModalView = ({
           </Swiper>
         </Box>
         <Box sx={modalRight} className="rightBox">
-          <Box sx={closeStyle} onClick={handleClose}>
+          <Box sx={closeStyle} onClick={() => setOpenView(false)}>
             <CloseRoundedIcon sx={{ fontSize: "30px" }} />
           </Box>
           <Typography
@@ -102,36 +116,36 @@ const ModalView = ({
               }
             />
             <Box sx={{ color: "#777", margin: "0.6rem 0", fontSize: "13px" }}>
-              (1 customer review)
+              {`(${reviewsLen} customer review)`}
             </Box>
           </Box>
           <Box sx={{ display: "flex", gap: 3, alignItems: "center" }}>
             <Typography variant="h4" sx={{ margin: "0.8rem 0" }}>
-              {`$${price}.00`}
+              {`$${price}`}
             </Typography>
             <Box sx={{ textDecoration: "line-through", color: "#555" }}>
-              {offPrice !== 0 && `$${offPrice}.00`}
+              {offPrice !== 0 && `$${offPrice}`}
             </Box>
           </Box>
           <Typography
             variant="body2"
             component="p"
-            sx={{ margin: "0.8rem 0", color: "#777" }}
+            sx={{
+              margin: "0.8rem 0",
+              color: "#777",
+              display: { xs: "none", md: "block" },
+            }}
           >
-            The slick and designed Solar t-shirt by romi. features an intricate
-            triangle print and tops stitched chest pocket in contrast colouring.
+            {shortDescription}
           </Typography>
 
-          <Typography
-            variant="body2"
-            component="p"
-            sx={{ margin: "0.8rem 0", color: "#777" }}
+          <FormControl
+            sx={{
+              minWidth: "100%",
+              display: { xs: "none", md: "inline-flex" },
+            }}
+            size="small"
           >
-            The cotton blend t-shirt comes in a regular fit.Record smoother,
-            clearer videos. Local Heroes Transparent Heart Sweat
-          </Typography>
-
-          <FormControl sx={{ minWidth: "100%" }} size="small">
             <InputLabel id="demo-simple-select-helper-label">Color</InputLabel>
             <Select
               labelId="demo-simple-select-helper-label"
@@ -140,12 +154,9 @@ const ModalView = ({
               label="Age"
               onChange={handleChange}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Black</MenuItem>
-              <MenuItem value={20}>Red</MenuItem>
-              <MenuItem value={30}>White</MenuItem>
+              {colors.map((color) => (
+                <MenuItem value={color}>{color}</MenuItem>
+              ))}
             </Select>
             <FormHelperText></FormHelperText>
           </FormControl>
@@ -153,7 +164,7 @@ const ModalView = ({
           <Box
             sx={{
               p: "1rem 0",
-              display: "flex",
+              display: { xs: "none", md: "flex" },
               alignItems: "center",
               gap: 1,
             }}
@@ -180,11 +191,31 @@ const ModalView = ({
             </Button>
           </Box>
           <Box sx={label}>
-            <FavoriteBorderIcon fontSize="small" />
             <Typography
               className="wish"
-              sx={{ fontSize: "23px", color: "#333" }}
+              sx={{
+                display: { xs: "none", md: "flex" },
+                alignItems: "center",
+                fontSize: "23px",
+                color: wished ? "#f03637 !important" : "common.digitaBlack",
+              }}
+              onClick={wishlistHandler}
             >
+              {wished ? (
+                <Favorite
+                  sx={{ color: "common.digitaRed", ...productIconStyles }}
+                  className={
+                    addWishLoading || delWishLoading ? "wishLoading" : ""
+                  }
+                />
+              ) : (
+                <FavoriteBorder
+                  sx={productIconStyles}
+                  className={
+                    addWishLoading || delWishLoading ? "wishLoading" : ""
+                  }
+                />
+              )}
               Wishlist
             </Typography>
           </Box>

@@ -31,11 +31,7 @@ import Gallery from "./Gallery/Gallery";
 import ColorPicker from "./ColorPicker/ColorPicker";
 import { IProduct } from "../../../../Services/Types/product";
 import { AmountBtn, CartInput } from "../../../../Styles/Products";
-import {
-  Link as NavLink,
-  useLocation,
-  useSearchParams,
-} from "react-router-dom";
+import { Link as NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../../features/store";
 import {
   useAddWishMutation,
@@ -51,10 +47,10 @@ interface Props {
 const ProductDetails = ({ product, wished }: Props) => {
   const [openWish, setOpenWish] = useState(false);
   const [addedWish, setAddedWish] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
   const { role, user } = useAppSelector((state) => state.reducer.auth);
 
-  const { pathname } = useLocation();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const { data: reviewsData } = useGetReviewsQuery({
     path: "products",
@@ -78,8 +74,10 @@ const ProductDetails = ({ product, wished }: Props) => {
 
   const wishlistHandler = async () => {
     if (!user || !role) {
-      searchParams.set("login", "open");
-      setSearchParams(searchParams);
+      navigate(
+        { pathname: location.pathname, search: "login=open" },
+        { replace: true, state: { from: location } }
+      );
       return;
     }
     try {
@@ -123,7 +121,7 @@ const ProductDetails = ({ product, wished }: Props) => {
                 sx={starRating}
               />
               <NavLink
-                to={`${pathname}?tab=reviews#reviews`}
+                to={`${location.pathname}?tab=reviews#reviews`}
                 className="customerReview"
               >{`(${reviewsLength} customer ${
                 reviewsLength > 1 ? "reviews" : "review"

@@ -35,8 +35,8 @@ function ClientCard({ review }: Props) {
       <Box sx={{ display: "grid", placeItems: "center" }}>
         <Box sx={{ mt: 3, "& img": { width: 70, height: 70 } }}>
           <Grid container spacing={1}>
-            <Grid item>
-              <img src={review.userId.image ?? avatar} alt="profile" />
+            <Grid item sx={{ img: { aspectRatio: "1", borderRadius: "50%" } }}>
+              <img src={review?.userId?.image ?? avatar} alt="profile" />
             </Grid>
             <Grid item>
               <Grid
@@ -46,7 +46,8 @@ function ClientCard({ review }: Props) {
                 container
                 direction="column"
                 spacing={0}
-                justifyContent="space-between"
+                height="100%"
+                justifyContent="space-evenly"
                 alignItems="flex-start"
               >
                 <Grid item>
@@ -57,7 +58,7 @@ function ClientCard({ review }: Props) {
                       fontWeight: "600",
                     }}
                   >
-                    {review.userId?.userName}
+                    {review.userId?.userName ?? "deleted account"}
                   </Typography>
                 </Grid>
 

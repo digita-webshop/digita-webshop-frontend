@@ -34,7 +34,7 @@ type Props = {
   modalTypeToggle: (type: Modal) => void;
 };
 function Login({ loginModalHandler, modalTypeToggle }: Props) {
-  const { email } = useAppSelector((state) => state.reducer.auth);
+  const { email, user } = useAppSelector((state) => state.reducer.auth);
   const [enteredEmail, setEnteredEmail] = useState(email ?? "");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [validationError, setValidationError] = useState(false);
@@ -43,6 +43,10 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location: any = useLocation();
+
+  if (user) {
+    navigate({ pathname: location.pathname, search: "" });
+  }
 
   //* username validation
   let emailIsValid = enteredEmail.trim() !== "";
@@ -95,6 +99,7 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
       setErrorMessage(err?.data?.message);
     }
   };
+
   return (
     <FormWrapper>
       <Box sx={{ position: "relative" }}>
