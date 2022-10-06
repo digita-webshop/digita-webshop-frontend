@@ -165,6 +165,7 @@ const ModalView = ({
           <Box
             sx={{
               p: "1rem 0",
+              height: "45px",
               display: { xs: "none", md: "flex" },
               alignItems: "center",
               gap: 1,
@@ -178,6 +179,8 @@ const ModalView = ({
                   color="error"
                   sx={{
                     padding: "0 20px!important",
+                    width: "unset !important",
+                    height: "100%",
                     "&:hover .delete-icon": { color: "#fff" },
                   }}
                   onClick={cartItemDeleteHandler}
@@ -189,7 +192,7 @@ const ModalView = ({
             {!cartItem && (
               <Button
                 variant="contained"
-                sx={{ fontSize: "14px" }}
+                sx={{ fontSize: "14px", height: "100%" }}
                 onClick={addToCartHandler}
               >
                 Add to Cart

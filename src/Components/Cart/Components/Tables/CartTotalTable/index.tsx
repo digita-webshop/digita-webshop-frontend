@@ -11,7 +11,7 @@ import {
 import { StyledTableCell, TotalTextStyle } from "../../../styles";
 import { styled } from "@mui/material/styles";
 import { useAppSelector } from "@/features/store";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useCheckoutNavigate } from "@/hooks/useCheckoutNavigate";
 
 type Props = {
   total: number;
@@ -19,8 +19,8 @@ type Props = {
 
 const CartTotalTable = ({ total }: Props) => {
   const { user } = useAppSelector((state) => state.reducer.auth);
-  const navigate = useNavigate();
-  const location = useLocation();
+
+  const { checkoutHandler } = useCheckoutNavigate();
 
   const CustomTableContainer = styled(Box)(({ theme }) => ({
     width: "40%",
@@ -32,17 +32,6 @@ const CartTotalTable = ({ total }: Props) => {
       margin: "0 0 44px ",
     },
   }));
-
-  const checkoutHandler = () => {
-    if (!user) {
-      navigate(
-        { pathname: location.pathname, search: "login=open" },
-        { state: { from: { pathname: "/checkout" } }, replace: true }
-      );
-    } else {
-      navigate({ pathname: "/checkout" });
-    }
-  };
 
   return (
     <CustomTableContainer component={Paper}>
@@ -133,7 +122,7 @@ const CartTotalTable = ({ total }: Props) => {
           sx={{ width: "100%", padding: "8px 0" }}
           onClick={checkoutHandler}
         >
-          {`${!user ? "login and " : ""} proceed to checkout`}
+          {!user ? "login and " : ""}proceed to checkout
         </Button>
       </Box>
     </CustomTableContainer>

@@ -5,6 +5,7 @@ import { useAppSelector } from "../../../../features/store";
 import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 import ShopCartItem from "../ShopCart/ShopCartItem/ShopCartItem";
 import { getSubtotal } from "../../../../Utils/getSubtotal";
+import { useCheckoutNavigate } from "@/hooks/useCheckoutNavigate";
 
 type Anchor = "left" | "right";
 type ShopDrawerProps = {
@@ -13,9 +14,12 @@ type ShopDrawerProps = {
 };
 
 function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
-  const navigate = useNavigate();
   const { user } = useAppSelector((state) => state.reducer.auth);
   const { cartList } = useAppSelector((state) => state.reducer.cart);
+
+  const { checkoutHandler } = useCheckoutNavigate();
+
+  const navigate = useNavigate();
 
   const { data: cartData } = useGetAllCartItemQuery();
   const cart = cartData?.data?.products ?? [];
@@ -106,8 +110,12 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
           >
             VIEW CARD
           </Button>
-          <Button variant="contained" fullWidth={true}>
-            CHECKOUT
+          <Button
+            variant="contained"
+            fullWidth={true}
+            onClick={checkoutHandler}
+          >
+            {!user ? "LOGIN & " : ""} CHECKOUT
           </Button>
         </Box>
       </Box>

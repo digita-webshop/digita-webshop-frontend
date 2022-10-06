@@ -6,12 +6,10 @@ import { useDispatch } from "react-redux";
 import { addProductToCart } from "@/features/cart/cartSlice";
 import { useAddToCartMutation } from "@/features/cart/cartApi";
 
-type State = Dispatch<SetStateAction<boolean>>;
-
 export function useAddToCart(
   inCart: boolean,
   product: IProduct,
-  setOpenCart: State
+  setOpenCart: Dispatch<SetStateAction<boolean>>
 ) {
   const { user } = useAppSelector((state) => state.reducer.auth);
 

@@ -5,10 +5,13 @@ import { shopCartWrapper } from "../../../../Styles/Appbar";
 import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
 import ShopCartItem from "./ShopCartItem/ShopCartItem";
 import { getSubtotal } from "../../../../Utils/getSubtotal";
+import { useCheckoutNavigate } from "@/hooks/useCheckoutNavigate";
 
 function ShopCart() {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const { cartList, subtotal } = useAppSelector((state) => state.reducer.cart);
+
+  const { checkoutHandler } = useCheckoutNavigate();
 
   const { data: cartData, isLoading, isError } = useGetAllCartItemQuery();
   const cart = cartData?.data?.products ?? [];
@@ -92,8 +95,12 @@ function ShopCart() {
           to="/checkout"
           sx={{ textDecoration: "none", width: "50%" }}
         >
-          <Button variant="contained" fullWidth={true}>
-            CHECKOUT
+          <Button
+            variant="contained"
+            fullWidth={true}
+            onClick={checkoutHandler}
+          >
+            {!user ? "LOGIN &" : ""} CHECKOUT
           </Button>
         </Link>
       </Box>

@@ -43,16 +43,18 @@ import { useGetAllCartItemQuery } from "@/features/cart/cartApi";
 import QuantityInput from "@/Components/Cart/Components/QuantityInput/QuantityInput";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "@/features/cart/cartSlice";
+import { useAddToCart } from "@/hooks/useAddToCart";
 
 interface Props {
   product: IProduct;
   wished: boolean;
 }
 const ProductDetails = ({ product, wished }: Props) => {
-  const [openWish, setOpenWish] = useState(false);
-  const [addedWish, setAddedWish] = useState(false);
   const { role, user } = useAppSelector((state) => state.reducer.auth);
   const { cartList } = useAppSelector((state) => state.reducer.cart);
+  const [openCart, setOpenCart] = useState(false);
+  const [openWish, setOpenWish] = useState(false);
+  const [addedWish, setAddedWish] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -71,6 +73,8 @@ const ProductDetails = ({ product, wished }: Props) => {
   const cartItem = cartItems.find(
     (item) => item.productId._id === product?._id
   );
+
+  const { addToCartHandler } = useAddToCart(inCart, product, setOpenCart);
 
   const [addWish, { isLoading: addLoading }] = useAddWishMutation();
   const [deleteWish, { isLoading: delLoading }] = useDeleteWishMutation();
@@ -175,7 +179,11 @@ const ProductDetails = ({ product, wished }: Props) => {
             <Box>
               <Box sx={CartButtonsStyle}>
                 {!inCart && (
-                  <Button variant="contained" className="addCart">
+                  <Button
+                    variant="contained"
+                    className="addCart"
+                    onClick={addToCartHandler}
+                  >
                     Add To Cart
                   </Button>
                 )}

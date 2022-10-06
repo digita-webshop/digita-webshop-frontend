@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Box, TextField } from "@mui/material";
+import { Box } from "@mui/material";
 import { CustomBtn } from "../../styles";
 import { ICartItem } from "../../../../Services/Types/cart";
 import { useDispatch } from "react-redux";
@@ -10,26 +9,21 @@ type Props = {
 };
 
 const QuantityInput = ({ cartItem }: Props) => {
-  const [disableDecButton, setDisableDecButton] = useState(false);
-  const [disableIncButton, setDisableIncButton] = useState(false);
   const dispatch = useDispatch();
 
+  const isMax = cartItem.quantity >= cartItem.productId.quantity;
+
   const inputClickHandler = (value: number) => () => {
-    if (cartItem.quantity === 1 && value === -1) {
-      setDisableDecButton(true);
-      return;
-    }
-    if (cartItem.quantity === cartItem.productId.quantity && value === +1) {
-      setDisableIncButton(true);
-      return;
-    }
+    if (cartItem.quantity <= 1 && value === -1) return;
+
+    if (isMax && value === +1) return;
+
     let updatedCartItem = { ...cartItem };
     updatedCartItem.quantity += value;
 
     dispatch(updateCart(updatedCartItem));
-    setDisableDecButton(false);
-    setDisableIncButton(false);
   };
+
   return (
     <Box
       sx={{
@@ -43,41 +37,45 @@ const QuantityInput = ({ cartItem }: Props) => {
         sx={CustomBtn}
         style={{
           borderRight: "1px solid #e4e4e4",
-          cursor: disableDecButton ? "not-allowed" : "pointer",
+          cursor: cartItem.quantity === 1 ? "not-allowed" : "pointer",
         }}
         onClick={inputClickHandler(-1)}
       >
         -
       </Box>
-      <TextField
+      <Box
         id="outlined-number"
-        type="number"
-        value={cartItem.quantity}
         sx={{
           width: { xs: "58px", sm: "40px", lg: "58px" },
-          "& .MuiInputBase-root": {
-            height: "100%",
-            borderRadius: "0",
-          },
-          "& .MuiInputBase-input": {
-            padding: 0,
-            textAlign: "center",
-          },
-          ".MuiOutlinedInput-notchedOutline": {
-            border: "none",
-          },
-          input: {
-            "&::-webkit-inner-spin-button": { appearance: "none" },
-          },
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "relative",
         }}
-        size="small"
-      />
+      >
+        {isMax && (
+          <Box
+            sx={{
+              bgcolor: "common.digitaRed",
+              color: "#fff",
+              position: "absolute",
+              top: "-8px",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            max
+          </Box>
+        )}
+        {cartItem.quantity}
+      </Box>
       <Box
         sx={CustomBtn}
         onClick={inputClickHandler(+1)}
         style={{
           borderLeft: "1px solid #e4e4e4",
-          cursor: disableIncButton ? "not-allowed" : "pointer",
+          cursor: isMax ? "not-allowed" : "pointer",
         }}
       >
         +

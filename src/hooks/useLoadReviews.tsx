@@ -25,5 +25,6 @@ export function useLoadReviews(reviews: IReviews[] | []) {
       setIndexOfLoadedReviews(index + 1);
     }
   }, []);
+
   return { indexOfLoadedReviews, loadMoreReviewsHandler };
 }
