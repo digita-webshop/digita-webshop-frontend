@@ -7,6 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { removeFromCart } from "../../../../../features/cart/cartSlice";
 import { shopCartCloseIcon } from "../../../../../Styles/Appbar";
 
@@ -16,8 +17,9 @@ interface Props {
   price: number;
   quantity: number;
   image: string;
+  productId: string;
 }
-function ShopCartItem({ id, name, price, quantity, image }: Props) {
+function ShopCartItem({ id, name, price, quantity, image, productId }: Props) {
   const dispatch = useDispatch();
 
   const cartItemRemoveHandler = () => {
@@ -25,10 +27,21 @@ function ShopCartItem({ id, name, price, quantity, image }: Props) {
   };
 
   return (
-    <ListItem disableGutters sx={{ img: { objectFit: "contain" } }}>
-      <img src={image} alt="product" width={75} height={75} />
+    <ListItem
+      disableGutters
+      sx={{ img: { objectFit: "contain", aspectRatio: "1" } }}
+    >
+      <Link to={`/product/${productId}`}>
+        <img src={image} alt="product" width={75} height={75} />
+      </Link>
       <ListItemText sx={{ marginLeft: "16px", marginRight: "40px" }}>
-        <Typography variant="body2" color={"primary"}>
+        <Typography
+          variant="body2"
+          color={"primary"}
+          component={Link}
+          to={`/product/${productId}`}
+          sx={{ textDecoration: "none" }}
+        >
           {name}
         </Typography>
         <Box sx={{ display: "flex", alignItems: "center", gap: "4px" }}>

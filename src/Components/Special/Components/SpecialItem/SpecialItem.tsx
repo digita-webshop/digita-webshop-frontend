@@ -28,8 +28,6 @@ type Props = {
 const SpecialItem = ({ product, cartItems }: Props) => {
   const [openCart, setOpenCart] = useState(false);
 
-  console.log(product);
-  console.log(cartItems);
   const { _id, title, price, offPrice, rating, image } = product;
 
   const inCart = isInList(cartItems, _id!);

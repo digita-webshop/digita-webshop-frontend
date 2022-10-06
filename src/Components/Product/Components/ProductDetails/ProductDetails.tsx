@@ -44,6 +44,8 @@ import QuantityInput from "@/Components/Cart/Components/QuantityInput/QuantityIn
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "@/features/cart/cartSlice";
 import { useAddToCart } from "@/hooks/useAddToCart";
+import { addToCompareList } from "@/features/compare/compareSlice";
+import CompareModal from "@/Components/CompareModal/CompareModal";
 
 interface Props {
   product: IProduct;
@@ -52,9 +54,12 @@ interface Props {
 const ProductDetails = ({ product, wished }: Props) => {
   const { role, user } = useAppSelector((state) => state.reducer.auth);
   const { cartList } = useAppSelector((state) => state.reducer.cart);
+  const { compareList } = useAppSelector((state) => state.reducer.compare);
+
   const [openCart, setOpenCart] = useState(false);
   const [openWish, setOpenWish] = useState(false);
   const [addedWish, setAddedWish] = useState(false);
+  const [openCompareModal, setOpenCompareModal] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -90,6 +95,8 @@ const ProductDetails = ({ product, wished }: Props) => {
     gallery,
   } = product;
 
+  const isCompared = isInList(compareList, _id!);
+
   const wishlistHandler = async () => {
     if (!user || !role) {
       navigate(
@@ -117,6 +124,12 @@ const ProductDetails = ({ product, wished }: Props) => {
   const cartItemDeleteHandler = () => {
     dispatch(removeFromCart(cartItem?._id!));
   };
+
+  const compareClickHandler = () => {
+    dispatch(addToCompareList(product));
+    setOpenCompareModal(true);
+  };
+
   return (
     <Box my={5}>
       <Grid container spacing={4}>
@@ -237,8 +250,27 @@ const ProductDetails = ({ product, wished }: Props) => {
                 Wishlist
               </Link>
 
-              <Link component="button">
-                <Shuffle />
+              <Link
+                component="button"
+                onClick={compareClickHandler}
+                sx={{
+                  color: isCompared
+                    ? "#f03637 !important"
+                    : "common.digitaBlack",
+                  "&:hover .icon": {
+                    color: "common.digitaRed",
+                  },
+                }}
+              >
+                <Shuffle
+                  sx={{
+                    transition: "all 200ms",
+                    color: isCompared
+                      ? "#f03637 !important"
+                      : "common.digitaBlack",
+                  }}
+                  className="icon"
+                />
                 Compare
               </Link>
             </Box>
@@ -279,6 +311,18 @@ const ProductDetails = ({ product, wished }: Props) => {
             addedWish={addedWish}
             role={role}
           />
+        </div>
+      </Modal>
+      <Modal
+        open={openCompareModal}
+        onClose={() => setOpenCompareModal(false)}
+        closeAfterTransition
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <div>
+          <CompareModal setOpenCompareModal={setOpenCompareModal} />
         </div>
       </Modal>
     </Box>

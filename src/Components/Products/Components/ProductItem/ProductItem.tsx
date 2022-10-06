@@ -49,6 +49,7 @@ type Props = {
 const ProductItem = ({ product, listView }: Props) => {
   const { role, user } = useAppSelector((state) => state.reducer.auth);
   const { cartList } = useAppSelector((state) => state.reducer.cart);
+  const { compareList } = useAppSelector((state) => state.reducer.compare);
 
   const [openView, setOpenView] = useState(false);
   const [openWish, setOpenWish] = useState(false);
@@ -74,6 +75,8 @@ const ProductItem = ({ product, listView }: Props) => {
     colors,
     reviews,
   } = product;
+
+  const isCompared = isInList(compareList, _id!);
 
   const { data: cartData } = useGetAllCartItemQuery();
   const cart = cartData?.data?.products ?? [];
@@ -209,7 +212,13 @@ const ProductItem = ({ product, listView }: Props) => {
                 onClick={compareClickHandler}
                 aria-label="add an alarm"
               >
-                <CompareArrows fontSize="small" sx={{ margin: "auto" }} />
+                <CompareArrows
+                  fontSize="small"
+                  sx={{
+                    margin: "auto",
+                    color: isCompared ? "common.digitaRed" : "gray",
+                  }}
+                />
               </Box>
             </RedTooltip>
             <RedTooltip title="Quick View" placement="top">

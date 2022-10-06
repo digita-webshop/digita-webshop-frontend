@@ -47,6 +47,7 @@ function ShopCart() {
               price={item?.price}
               quantity={item?.quantity}
               image={item?.productId?.image ?? ""}
+              productId={item?.productId?._id ?? ""}
             />
           ))}
         <Divider />

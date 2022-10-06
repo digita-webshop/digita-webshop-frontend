@@ -99,26 +99,6 @@ function Navbar() {
     };
   }, []);
 
-  // const [addToCart] = useAddToCartMutation();
-
-  useEffect(()=>{
-   // const add = async ()=>{
-   //   const newCartItem ={
-   //     quantity: 1,
-   //     name: 'yay',
-   //     price: 100,
-   //   }
-   //   const response = await addToCart(newCartItem).unwrap();
-   //   console.log('response addToCart',response)
-   // }
-   // add()
-
-    /*on the other side*/
-    // if user add to server
-    // else add to localStorage
-
-  },[])
-
   return (
     <Fragment>
       <AppBar sx={appBarStyles}>

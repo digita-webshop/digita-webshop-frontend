@@ -19,6 +19,7 @@ export const ImageBox = styled(Box)(({ theme }) => ({
 
   img: {
     width: "100%",
+    aspectRatio: "1",
     [theme.breakpoints.up("sm")]: {
       width: "auto",
       maxWidth: "60px",

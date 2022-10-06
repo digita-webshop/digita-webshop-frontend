@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 import {
   Container,
@@ -16,10 +16,9 @@ import FiltersDrawer from "./FiltersDrawer/FiltersDrawer";
 import Toolbar from "./Toolbar/Toolbar";
 import ProductItem from "../Products/Components/ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../features/products/productsApi";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
-import { useAppSelector } from "../../features/store";
 
 function Shop() {
   const [displayDrawer, setDisplayDrawer] = useState(false);
@@ -33,6 +32,7 @@ function Shop() {
   let [searchParams, setSearchParams] = useSearchParams();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const { search } = useLocation();
 
   let queries: any = `page=${currentPage}&limit=${productsPerPage}`;
 
@@ -97,6 +97,14 @@ function Shop() {
     setSearchParams(searchParams, { replace: true });
     setCurrentPage(1);
   };
+
+  useEffect(() => {
+    window.scroll({
+      top: 200,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [search]);
 
   return (
     <Box bgcolor={"white"}>

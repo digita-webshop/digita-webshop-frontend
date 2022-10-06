@@ -5,6 +5,7 @@ import QuantityInput from "../../QuantityInput/QuantityInput";
 import { ICartItem } from "../../../../../Services/Types/cart";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../../../../features/cart/cartSlice";
+import { Link } from "react-router-dom";
 
 type Props = {
   cartItem: ICartItem;
@@ -29,7 +30,9 @@ const CartListTableRow = ({ cartItem }: Props) => {
       )}
       <StyledTableCell align="left">
         <ImageBox>
-          <img alt={cartItem?.name} src={cartItem?.productId.image} />
+          <Link to={`/product/${cartItem.productId._id}`}>
+            <img alt={cartItem?.name} src={cartItem?.productId.image} />
+          </Link>
           {matchesSm && (
             <Box onClick={deleteCartHandler}>
               <CloseIcon sx={{ fontSize: "28px", color: "#333333" }} />
@@ -37,9 +40,13 @@ const CartListTableRow = ({ cartItem }: Props) => {
           )}
         </ImageBox>
       </StyledTableCell>
-      <StyledTableCell align="left" scope="cartItem">
+      <StyledTableCell
+        align="left"
+        scope="cartItem"
+        sx={{ a: { textDecoration: "none", color: "common.digitaBlack" } }}
+      >
         <span>product:</span>
-        {cartItem?.name}
+        <Link to={`/product/${cartItem.productId._id}`}>{cartItem?.name}</Link>
       </StyledTableCell>
       <StyledTableCell sx={{ color: "#f03637" }} align="left">
         <span>price:</span>${cartItem?.price.toFixed(2)}

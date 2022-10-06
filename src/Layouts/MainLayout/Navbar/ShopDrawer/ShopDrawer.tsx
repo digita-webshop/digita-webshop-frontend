@@ -69,6 +69,7 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
               price={item?.price}
               quantity={item?.quantity}
               image={item?.productId?.image ?? ""}
+              productId={item?.productId?._id ?? ""}
             />
           ))}
           <Divider />
