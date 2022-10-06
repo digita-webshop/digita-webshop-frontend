@@ -1,18 +1,31 @@
-import { Box, Card, CardMedia, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardMedia,
+  Grid,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { cardWrapper } from "../../Styles/User";
-import { productData } from "../../Services/Data/data";
 import { titleStyle } from "../../Styles/PanelProducts";
 import { Fragment } from "react";
 import MyOrders from "./MyOrders/MyOrders";
-
-interface T {
-  id: number;
-  image: string;
-  name: string;
-  price: number;
-}
+import { useGetWishlistQuery } from "@/features/wishlist/wishlistApi";
+import { useAppSelector } from "@/features/store";
+import { useTheme } from "@mui/material/styles";
+import PanelLoading from "../Loading/PanelLoading";
+import { ErrorText } from "@/Styles/panelCommon";
+import NotFound from "../EmptyList/NotFound";
 
 const Status = () => {
+  const { role } = useAppSelector((state) => state.reducer.auth);
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
+  const maxNum = matches ? 4 : 3;
+  const { data: wishlistData, isLoading, isError } = useGetWishlistQuery(role!);
+  const wishlist = wishlistData?.data ?? [];
+
   return (
     <Fragment>
       <MyOrders sidebar={false} />
@@ -39,30 +52,34 @@ const Status = () => {
           }}
         >
           <Grid container spacing={2} sx={{ mt: 2 }}>
-            {productData.slice(0, 4).map((item: T) => (
-              <Grid item xs={6} sm={3} key={item.id}>
-                <Card sx={cardWrapper}>
-                  <CardMedia
-                    component="img"
-                    image={item.image}
-                    alt="green iguana"
-                    sx={{ backgroundColor: "#f2f2f3cc", objectFit: "contain" }}
-                  />
-                  <Box sx={{ m: "0 0.5rem" }}>
-                    <Typography component="p" sx={titleStyle}>
-                      {item.name}
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      component="div"
-                      sx={{ paddingY: "4px", fontSize: "15px" }}
-                    >
-                      {"$" + item.price}
-                    </Typography>
-                  </Box>
-                </Card>
-              </Grid>
-            ))}
+            {isLoading && <PanelLoading />}
+            {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
+            {wishlist.length === 0 && !isLoading && !isError && <NotFound />}
+            {wishlist?.length !== 0 &&
+              wishlist.slice(0, maxNum).map((item) => (
+                <Grid item xs={6} sm={4} lg={3} key={item._id}>
+                  <Card sx={cardWrapper}>
+                    <CardMedia
+                      component="img"
+                      image={item.image}
+                      alt="green iguana"
+                      sx={{ aspectRatio: "1", objectFit: "contain" }}
+                    />
+                    <Box sx={{ m: "0 0.5rem" }}>
+                      <Typography component="p" sx={titleStyle}>
+                        {item.title}
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        component="div"
+                        sx={{ paddingY: "4px", fontSize: "15px" }}
+                      >
+                        {"$" + item.price}
+                      </Typography>
+                    </Box>
+                  </Card>
+                </Grid>
+              ))}
           </Grid>
         </Box>
       </Box>

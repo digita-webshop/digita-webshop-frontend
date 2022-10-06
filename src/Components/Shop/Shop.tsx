@@ -22,8 +22,6 @@ import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
 import { useAppSelector } from "../../features/store";
 
 function Shop() {
-  const { role } = useAppSelector((state) => state.reducer.auth);
-
   const [displayDrawer, setDisplayDrawer] = useState(false);
   const [productsPerPage] = useState(12);
   const [currentPage, setCurrentPage] = useState(1);
@@ -128,6 +126,7 @@ function Shop() {
               toggleDrawer={toggleDrawer}
               setSelectedLayout={setSelectedLayout}
               selectedLayout={selectedLayout}
+              sortQueryParams={sortQueryParams}
             />
             <Grid container spacing={{ xs: 2, md: 3 }}>
               {!isLoading && !isError

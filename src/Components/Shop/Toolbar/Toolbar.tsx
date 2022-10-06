@@ -17,6 +17,7 @@ type ShopToolbarProps = {
   toggleDrawer: (open: boolean) => void;
   setSelectedLayout: any;
   selectedLayout: { grid: boolean; list: boolean };
+  sortQueryParams: string | null;
 };
 
 function Toolbar({
@@ -24,13 +25,14 @@ function Toolbar({
   toggleDrawer,
   setSelectedLayout,
   selectedLayout,
+  sortQueryParams,
 }: ShopToolbarProps) {
   const [productNumber, setProductNumber] = useState({
     twelve: true,
     twentyFour: false,
     all: false,
   });
-  const [selectedSorting, setSelectedSorting] = useState("");
+  const [selectedSorting, setSelectedSorting] = useState(sortQueryParams ?? "");
   let [searchParams, setSearchParams] = useSearchParams();
 
   const productNumberHandler = (amount: string) => {

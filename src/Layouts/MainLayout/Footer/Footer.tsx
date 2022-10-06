@@ -2,35 +2,8 @@ import FooterList from "./FooterList/FooterList";
 import Subscription from "./Subscription/Subscription";
 import { Grid, Typography, Link, Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
+import { companyInfo, letUsHelpYou, quickLinks, userFullLinks } from "./data";
 
-const companyInfo = [
-  "about us",
-  "contact us",
-  "blog",
-  "business with us",
-  "find a store",
-];
-const letUsHelpYou = [
-  "orders",
-  "downloads",
-  "addresses",
-  "account details",
-  "lost password",
-];
-const quickLinks = [
-  "special offers",
-  "gift cards ",
-  "privacy policy",
-  "Terms of Use",
-  "portfolio",
-];
-const userFullLinks = [
-  "latest products",
-  "top rating",
-  "best selling",
-  "featured products",
-  "new collection",
-];
 function Footer() {
   const { pathname } = useLocation();
 
@@ -42,6 +15,7 @@ function Footer() {
         flexDirection: "column",
         justifyContent: "flex-end",
         bgcolor: "#092240",
+        fontFamily: "jost",
       }}
     >
       <Grid

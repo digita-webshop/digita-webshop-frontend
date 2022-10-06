@@ -1,11 +1,14 @@
-import { Typography, Link, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { Link } from "react-router-dom";
+import { useAppSelector } from "@/features/store";
 
-interface FooterListProps {
+interface Props {
   title: string;
-  links: string[];
+  links: { name: string; route: string }[];
 }
-function FooterList({ title, links }: FooterListProps) {
+function FooterList({ title, links }: Props) {
+  const { role } = useAppSelector((state) => state.reducer.auth);
   return (
     <Box p="1rem">
       <Box>
@@ -18,25 +21,38 @@ function FooterList({ title, links }: FooterListProps) {
           {title}
         </Typography>
       </Box>
-      {links.map((link, index) => (
-        <Box key={index}>
-          <Link
+      {links?.map(({ name, route }) => {
+        let to = route;
+        if (
+          (name === "addresses" || name === "account details") &&
+          (role === "admin" || role === "superAdmin")
+        ) {
+          to = "/panel/settings";
+        }
+        if ((name === "addresses" || name === "account details") && !role) {
+          to = "#";
+        }
+        return (
+          <Box
+            key={name}
             sx={{
-              display: "flex",
-              alignItems: "center",
-              textTransform: "capitalize",
-              "&:hover": { color: "#f03637" },
+              a: {
+                display: "flex",
+                alignItems: "center",
+                textTransform: "capitalize",
+                textDecoration: "none",
+                color: "#C1C4C9CC",
+                marginBottom: "6px",
+                "&:hover": { color: "#f03637" },
+              },
             }}
-            href="#"
-            underline="none"
-            mb={1.5}
-            color="#C1C4C9CC"
-            variant="subtitle1"
           >
-            <ChevronRightIcon sx={{ fontSize: "20px" }} /> {link}
-          </Link>
-        </Box>
-      ))}
+            <Link to={to}>
+              <ChevronRightIcon sx={{ fontSize: "20px" }} /> {name}
+            </Link>
+          </Box>
+        );
+      })}
     </Box>
   );
 }
