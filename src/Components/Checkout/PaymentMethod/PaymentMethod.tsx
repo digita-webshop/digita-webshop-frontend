@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -11,23 +11,28 @@ import {
 } from "../../../Styles/Checkout";
 import paypalImage from "../../../Assets/Images/paypal.png";
 
-function PaymentMethod() {
-  const [expanded, setExpanded] = useState("cash");
-
+interface Props {
+  setSelectedPaymentMethod: Dispatch<SetStateAction<string>>;
+  selectedPaymentMethod: string;
+}
+function PaymentMethod({
+  setSelectedPaymentMethod,
+  selectedPaymentMethod,
+}: Props) {
   const accordionHandler = (panel: string) => () => {
-    setExpanded(panel);
+    setSelectedPaymentMethod(panel);
   };
 
   return (
     <Box sx={{ backgroundColor: "common.digitaGrey7", paddingY: "20px" }}>
       <Accordion
         sx={{ backgroundColor: "common.digitaGrey7" }}
-        expanded={expanded === "cash"}
+        expanded={selectedPaymentMethod === "cash"}
         onChange={accordionHandler("cash")}
       >
         <AccordionSummary
           expandIcon={
-            <RadioGroup value={expanded}>
+            <RadioGroup value={selectedPaymentMethod}>
               <CustomRadio value={"cash"} />
             </RadioGroup>
           }
@@ -48,12 +53,12 @@ function PaymentMethod() {
             display: "none",
           },
         }}
-        expanded={expanded === "paypal"}
+        expanded={selectedPaymentMethod === "paypal"}
         onChange={accordionHandler("paypal")}
       >
         <AccordionSummary
           expandIcon={
-            <RadioGroup value={expanded}>
+            <RadioGroup value={selectedPaymentMethod}>
               <CustomRadio value={"paypal"} />
             </RadioGroup>
           }

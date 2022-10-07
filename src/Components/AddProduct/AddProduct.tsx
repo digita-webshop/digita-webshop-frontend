@@ -40,7 +40,7 @@ function AddProduct() {
   const [updateProduct] = useUpdateProductMutation();
   const navigate = useNavigate();
 
-  const onSubmit = async (event: FormEvent) => {
+  const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
 
     let tagList = tags.map((t) => t.name);
@@ -125,56 +125,57 @@ function AddProduct() {
     }
   }, [id]);
   return (
-    <form onSubmit={onSubmit} onKeyDown={checkKeyDown}>
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <ContentHeader title={`${id ? "edit" : "add"} product`} />
+    <Grid
+      container
+      spacing={4}
+      component="form"
+      onSubmit={submitHandler}
+      onKeyDown={checkKeyDown}
+    >
+      <Grid item xs={12}>
+        <ContentHeader title={`${id ? "edit" : "add"} product`} />
+      </Grid>
+      <Grid container item xs={12} spacing={3}>
+        <Grid item xs={12} md={8}>
+          <Details
+            enteredTitle={enteredTitle}
+            setEnteredTitle={setEnteredTitle}
+            enteredSku={enteredSku}
+            setEnteredSku={setEnteredSku}
+            selectedBrand={selectedBrand}
+            setSelectedBrand={setSelectedBrand}
+            selectedColors={selectedColors}
+            setSelectedColors={setSelectedColors}
+            enteredShortDesc={enteredShortDesc}
+            setEnteredShortDesc={setEnteredShortDesc}
+          />
+          <Gallery setAddedImages={setAddedImages} addedImages={addedImages} />
+          <CardWrapper mt={4}>
+            <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
+              description
+            </PFormLabel>
+            <TextEditor
+              editorState={editorState}
+              setEditorState={setEditorState}
+            />
+          </CardWrapper>
         </Grid>
-        <Grid container item xs={12} spacing={3}>
-          <Grid item xs={12} md={8}>
-            <Details
-              enteredTitle={enteredTitle}
-              setEnteredTitle={setEnteredTitle}
-              enteredSku={enteredSku}
-              setEnteredSku={setEnteredSku}
-              selectedBrand={selectedBrand}
-              setSelectedBrand={setSelectedBrand}
-              selectedColors={selectedColors}
-              setSelectedColors={setSelectedColors}
-              enteredShortDesc={enteredShortDesc}
-              setEnteredShortDesc={setEnteredShortDesc}
-            />
-            <Gallery
-              setAddedImages={setAddedImages}
-              addedImages={addedImages}
-            />
-            <CardWrapper mt={4}>
-              <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
-                description
-              </PFormLabel>
-              <TextEditor
-                editorState={editorState}
-                setEditorState={setEditorState}
-              />
-            </CardWrapper>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Sidebar
-              enteredPrice={enteredPrice}
-              setEnteredPrice={setEnteredPrice}
-              enteredOffPrice={enteredOffPrice}
-              setEnteredOffPrice={setEnteredOffPrice}
-              enteredQuantity={enteredQuantity}
-              setEnteredQuantity={setEnteredQuantity}
-              tags={tags}
-              setTags={setTags}
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
-            />
-          </Grid>
+        <Grid item xs={12} md={4}>
+          <Sidebar
+            enteredPrice={enteredPrice}
+            setEnteredPrice={setEnteredPrice}
+            enteredOffPrice={enteredOffPrice}
+            setEnteredOffPrice={setEnteredOffPrice}
+            enteredQuantity={enteredQuantity}
+            setEnteredQuantity={setEnteredQuantity}
+            tags={tags}
+            setTags={setTags}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
         </Grid>
       </Grid>
-    </form>
+    </Grid>
   );
 }
 

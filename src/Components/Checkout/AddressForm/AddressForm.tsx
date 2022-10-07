@@ -103,8 +103,9 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
     setCity(selectedCity || initialCityState);
   };
 
-  const onSubmit = (event: FormEvent) => {
+  const submitHandler = (event: FormEvent) => {
     event.preventDefault();
+
     if (enteredPostCode.trim().length < 10) {
       setErrorMessage("your post code must contain at least 10 numbers");
       return;
@@ -132,7 +133,7 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
     }
   }, []);
   return (
-    <Grid container spacing={2} component={"form"} onSubmit={onSubmit}>
+    <Grid container spacing={2} component={"form"} onSubmit={submitHandler}>
       <Grid item xs={12} sm={6}>
         <FormControl
           sx={{ width: { xs: "100%" } }}

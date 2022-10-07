@@ -1,3 +1,5 @@
+import { ICartItem } from "@/Services/Types/cart";
+import { IProduct } from "@/Services/Types/product";
 import {
   Table,
   TableBody,
@@ -22,7 +24,12 @@ const cardList = [
   },
 ];
 
-function OrderTable() {
+interface Props {
+  cartItems: ICartItem[];
+  subtotal: number;
+}
+
+function OrderTable({ cartItems, subtotal }: Props) {
   return (
     <TableContainer sx={{ backgroundColor: "common.digitaGrey7" }}>
       <Table sx={{ border: "1px solid #ebebeb" }}>
@@ -34,20 +41,22 @@ function OrderTable() {
         </TableHead>
 
         <TableBody>
-          {cardList.map((cart, index) => (
-            <OrderRow key={index}>
+          {/* {cartItems.map((cart, index) => (
+            <OrderRow key={cart.product._id!}>
               <TableCell
                 sx={{ color: "common.digitaGrey3" }}
                 style={{ fontWeight: 400 }}
-              >{`${cart.name} x ${cart.quantity}`}</TableCell>
+              >{`${cart.product.title} x ${cart.quantity}`}</TableCell>
               <TableCell
                 sx={{ color: "common.digitaRed" }}
-              >{`$${cart.price}`}</TableCell>
+              >{`$${cart.products.price}`}</TableCell>
             </OrderRow>
-          ))}
+          ))} */}
           <OrderRow>
             <TableCell>Subtotal</TableCell>
-            <TableCell sx={{ color: "common.digitaRed" }}>$665.00</TableCell>
+            <TableCell
+              sx={{ color: "common.digitaRed" }}
+            >{`$${subtotal}`}</TableCell>
           </OrderRow>
           <OrderRow>
             <TableCell>Shipping</TableCell>

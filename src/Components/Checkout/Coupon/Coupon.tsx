@@ -1,7 +1,21 @@
+import { useRef, Dispatch, SetStateAction } from "react";
 import { Box, Button, FormControl, FormLabel } from "@mui/material";
 import { CheckoutInput } from "../../../Styles/Checkout";
 
-function Coupon() {
+interface Props {
+  setCouponValue: Dispatch<SetStateAction<string>>;
+}
+
+function Coupon({ setCouponValue }: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const applyCouponHandler = () => {
+    const value = inputRef?.current?.value;
+
+    if (value?.trim().length !== 0) {
+      setCouponValue(value!);
+    }
+  };
   return (
     <FormControl fullWidth>
       <FormLabel
@@ -22,7 +36,7 @@ function Coupon() {
           height: "40px",
         }}
       >
-        <CheckoutInput placeholder="" sx={{ width: "65%" }} />
+        <CheckoutInput placeholder="" sx={{ width: "65%" }} ref={inputRef} />
         <Button
           variant="contained"
           sx={{
@@ -32,6 +46,7 @@ function Coupon() {
             borderRadius: "3px",
             fontSize: { xs: "10px", lg: "14px" },
           }}
+          onClick={applyCouponHandler}
         >
           Apply Coupon
         </Button>

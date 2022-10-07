@@ -1,6 +1,9 @@
 import { Box, TextareaAutosize, Typography } from "@mui/material";
+interface Props {
+  notesRef: any;
+}
 
-function OrderNotes() {
+function OrderNotes({ notesRef }: Props) {
   return (
     <Box>
       <Typography
@@ -14,6 +17,7 @@ function OrderNotes() {
         Order notes (optional)
       </Typography>
       <TextareaAutosize
+        ref={notesRef}
         aria-label="order notes textarea"
         placeholder="Notes about your order, e.g. special notes for delivery."
         style={{

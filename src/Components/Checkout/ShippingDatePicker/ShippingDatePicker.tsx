@@ -1,8 +1,13 @@
+import { Dispatch, SetStateAction } from "react";
 import DatePicker from "react-horizontal-datepicker";
 import { Box, Typography } from "@mui/material";
+interface Props {
+  setSelectedDate: Dispatch<SetStateAction<string>>;
+}
 
-function ShippingDatePicker() {
+function ShippingDatePicker({ setSelectedDate }: Props) {
   const selectedDay = (val: any) => {
+    setSelectedDate(val);
     console.log(val);
   };
   return (

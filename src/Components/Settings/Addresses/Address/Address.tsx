@@ -1,4 +1,4 @@
-import { MoreVert } from "@mui/icons-material";
+import { Add, MoreVert } from "@mui/icons-material";
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import { MouseEvent, useState } from "react";
 import { IAddress } from "../../../../Services/Types/user";
@@ -7,10 +7,16 @@ const options = ["Edit", "Delete"];
 
 interface Props {
   address: IAddress;
-  editAddress: (address: IAddress) => void;
-  deleteAddress: (id: string) => void;
+  editAddress?: (address: IAddress) => void;
+  deleteAddress?: (id: string) => void;
+  selectAddress?: (address: IAddress) => void;
 }
-function Address({ address, editAddress, deleteAddress }: Props) {
+function Address({
+  address,
+  editAddress,
+  deleteAddress,
+  selectAddress,
+}: Props) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -19,9 +25,9 @@ function Address({ address, editAddress, deleteAddress }: Props) {
   };
   const handleClose = (option: string) => {
     if (option === "Edit") {
-      editAddress(address);
+      editAddress!(address);
     } else {
-      deleteAddress(address._id!);
+      deleteAddress!(address._id!);
     }
     setAnchorEl(null);
   };
@@ -35,47 +41,61 @@ function Address({ address, editAddress, deleteAddress }: Props) {
         border: "1px solid #d8d8d8",
         borderRadius: "12px",
         padding: "20px",
+        width: "100%",
+        boxSizing: "border-box",
       }}
     >
       <Box sx={between}>
         <Typography sx={{ fontWeight: 500 }}>{address.country}</Typography>
-        <Box>
-          <IconButton
-            aria-label="more"
-            id="long-button"
-            aria-controls={open ? "long-menu" : undefined}
-            aria-expanded={open ? "true" : undefined}
-            aria-haspopup="true"
-            onClick={handleClick}
-          >
-            <MoreVert />
-          </IconButton>
-          <Menu
-            id="long-menu"
-            MenuListProps={{
-              "aria-labelledby": "long-button",
-            }}
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            PaperProps={{
-              style: {
-                maxHeight: ITEM_HEIGHT * 4.5,
-                width: "20ch",
-              },
-            }}
-          >
-            {options.map((option, index) => (
-              <MenuItem
-                key={index}
-                selected={option === "Pyxis"}
-                onClick={() => handleClose(option)}
-              >
-                {option}
-              </MenuItem>
-            ))}
-          </Menu>
-        </Box>
+        {!selectAddress && (
+          <Box>
+            <IconButton
+              aria-label="more"
+              id="long-button"
+              aria-controls={open ? "long-menu" : undefined}
+              aria-expanded={open ? "true" : undefined}
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <MoreVert />
+            </IconButton>
+            <Menu
+              id="long-menu"
+              MenuListProps={{
+                "aria-labelledby": "long-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              PaperProps={{
+                style: {
+                  maxHeight: ITEM_HEIGHT * 4.5,
+                  width: "20ch",
+                },
+              }}
+            >
+              {options.map((option, index) => (
+                <MenuItem
+                  key={index}
+                  selected={option === "Pyxis"}
+                  onClick={() => handleClose(option)}
+                >
+                  {option}
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+        )}
+        {selectAddress && (
+          <Box sx={{ display: "flex", justifyContent: "center", width: "20%" }}>
+            <Add
+              color="error"
+              fontSize="medium"
+              sx={{ cursor: "pointer" }}
+              onClick={() => selectAddress(address)}
+            />
+          </Box>
+        )}
       </Box>
 
       <Box sx={{ mt: 2 }}>

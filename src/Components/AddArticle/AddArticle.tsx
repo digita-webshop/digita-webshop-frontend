@@ -32,7 +32,7 @@ function AddArticle() {
     setEditorState(EditorState.createEmpty());
     setSelectedCategory("information");
   };
-  const onSubmit = async (event: FormEvent) => {
+  const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
 
     let newArticle: IArticle = {
@@ -87,42 +87,47 @@ function AddArticle() {
     }
   }, [id]);
   return (
-    <form onSubmit={onSubmit}>
-      <Grid container maxWidth={"768px"} margin={"auto"} rowSpacing={3}>
-        <Grid item xs={12}>
-          <ContentHeader
-            title={"add article"}
-            route={"/panel/articles/add"}
-            discardHandler={discardHandler}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <CardWrapper>
-            <Grid container spacing={3}>
-              <ArticleForm
-                enteredTitle={enteredTitle}
-                enteredWriter={enteredWriter}
-                setEnteredWriter={setEnteredWriter}
-                setEnteredTitle={setEnteredTitle}
-                addedImage={addedImage}
-                setAddedImage={setAddedImage}
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
-              />
-              <Grid item xs={12}>
-                <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
-                  description
-                </PFormLabel>
-                <TextEditor
-                  editorState={editorState}
-                  setEditorState={setEditorState}
-                />
-              </Grid>
-            </Grid>
-          </CardWrapper>
-        </Grid>
+    <Grid
+      container
+      component="form"
+      onSubmit={submitHandler}
+      maxWidth={"768px"}
+      margin={"auto"}
+      rowSpacing={3}
+    >
+      <Grid item xs={12}>
+        <ContentHeader
+          title={"add article"}
+          route={"/panel/articles/add"}
+          discardHandler={discardHandler}
+        />
       </Grid>
-    </form>
+      <Grid item xs={12}>
+        <CardWrapper>
+          <Grid container spacing={3}>
+            <ArticleForm
+              enteredTitle={enteredTitle}
+              enteredWriter={enteredWriter}
+              setEnteredWriter={setEnteredWriter}
+              setEnteredTitle={setEnteredTitle}
+              addedImage={addedImage}
+              setAddedImage={setAddedImage}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+            <Grid item xs={12}>
+              <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
+                description
+              </PFormLabel>
+              <TextEditor
+                editorState={editorState}
+                setEditorState={setEditorState}
+              />
+            </Grid>
+          </Grid>
+        </CardWrapper>
+      </Grid>
+    </Grid>
   );
 }
 

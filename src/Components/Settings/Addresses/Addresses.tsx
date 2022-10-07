@@ -33,8 +33,9 @@ function Addresses({ user }: Props) {
     setNewAddress(true);
     setCurrentAddress(address);
   };
+
   const deleteAddress = async (id: string) => {
-    let addressArr = [...user?.addresses];
+    let addressArr = [...(user?.addresses ?? [])];
     addressArr = addressArr.filter((ads) => ads?._id !== id);
     const newUser = { ...user, addresses: addressArr };
 
@@ -143,7 +144,7 @@ function Addresses({ user }: Props) {
           }
         />
       )}
-      {user.addresses.map((item) => (
+      {user?.addresses.map((item) => (
         <Address
           key={item?._id}
           address={item}

@@ -127,3 +127,55 @@ export const StyledFormControlLabel = styled(FormControlLabel)(({ theme }) => ({
     },
   },
 }));
+
+export const addressTitleStyles = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginBottom: "12px",
+  cursor: "pointer",
+  h4: { color: "common.digitaGrey", fontSize: "14px", fontWeight: 500 },
+  "& .icon": {
+    color: "common.digitaRed",
+  },
+};
+
+export const addressModalWrapper = {
+  height: { xs: "80%", sm: "50%" },
+  padding: 0,
+  "& .close-button": {
+    position: "absolute",
+    top: "14px",
+    right: "15px",
+    display: "flex",
+    cursor: "pointer",
+    zIndex: "1111",
+  },
+  "& > div": {
+    width: "100%",
+    height: "100%",
+    overflowY: "auto",
+    overflowX: "hidden",
+    backgroundColor: "white",
+    boxSizing: "border-box",
+    padding: "30px",
+  },
+};
+
+export const checkoutTitleWrapper = {
+  borderBottom: "2px solid #eaeaea",
+  h2: {
+    color: "common.digitaBlack",
+    fontWeight: 500,
+    fontSize: "14px",
+    mb: "10px",
+  },
+};
+
+export const checkoutProceedBtn = {
+  textTransform: "uppercase",
+  width: "100%",
+  height: "55px",
+  fontSize: "15px",
+  fontWeight: 600,
+};
