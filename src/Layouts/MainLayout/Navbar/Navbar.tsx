@@ -9,7 +9,6 @@ import {
   Collapse,
   Modal,
 } from "@mui/material";
-import logoImg from "@/assets/Images/digita-logo.png";
 import { navbarItems } from "./data";
 import { useTheme } from "@mui/material/styles";
 
@@ -112,7 +111,10 @@ function Navbar() {
               </Box>
               <Box sx={{ marginRight: { sx: "0", md: "30px" } }}>
                 <Link to="/" onClick={() => setOpenSearchBar(false)}>
-                  <img src={logoImg} alt="digita-logo" />
+                  <img
+                    src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232770/digita-images/static/gw8lwcaggvlzyxmmufm3.png"
+                    alt="digita-logo"
+                  />
                 </Link>
               </Box>
 

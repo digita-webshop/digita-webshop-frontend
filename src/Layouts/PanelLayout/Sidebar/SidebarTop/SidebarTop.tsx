@@ -2,7 +2,6 @@ import { MenuOpen } from "@mui/icons-material";
 import { Box, IconButton, useMediaQuery } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
-import logoImg from "@/assets/Images/digita-logo.png";
 import { useTheme } from "@mui/material/styles";
 interface Props {
   menuOpen: boolean;
@@ -33,7 +32,10 @@ function SidebarTop({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
     >
       {menuOpen && (
         <Link to="/">
-          <img src={logoImg} alt="digita-logo" />
+          <img
+            src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232770/digita-images/static/gw8lwcaggvlzyxmmufm3.png"
+            alt="digita-logo"
+          />
         </Link>
       )}
       <IconButton

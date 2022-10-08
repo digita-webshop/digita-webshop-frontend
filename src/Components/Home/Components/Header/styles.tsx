@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Box, Button } from "@mui/material";
 import header1 from "@/assets/Images/header1.jpg";
 import header2 from "@/assets/Images/header2.jpg";
-import navigationIcon from "@/assets/Icons/right-arrow.svg";
+import navigationIcon from "@/assets/icons/right-arrow.svg";
 
 export const Container = styled(Box)(({ theme }) => ({
   "&:hover .swiper-button-next": {
@@ -74,14 +74,14 @@ export const Container = styled(Box)(({ theme }) => ({
     },
   },
   ".slide1": {
-    background: `lightblue url(${header1}) no-repeat`,
+    background: `lightblue url(https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665231400/digita-images/static/ei0sirqqw9ukivrfd5ni.jpg) no-repeat`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     width: "100%",
     height: "100%",
   },
   ".slide2": {
-    background: `lightblue url(${header2}) no-repeat`,
+    background: `lightblue url(https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665231400/digita-images/static/jtnkyhchccup0zw1s8ww.jpg) no-repeat`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     width: "100%",

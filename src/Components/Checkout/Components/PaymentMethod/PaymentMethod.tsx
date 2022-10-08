@@ -9,7 +9,6 @@ import {
   CustomRadio,
   paymentTitleStyles,
 } from "../../styles";
-import paypalImage from "@/assets/Images/paypal.png";
 
 interface Props {
   setSelectedPaymentMethod: Dispatch<SetStateAction<string>>;
@@ -84,7 +83,10 @@ function PaymentMethod({
               What is Paypal?
             </Typography>
           </Box>
-          <img src={paypalImage} alt="paypal" />
+          <img
+            src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232991/digita-images/static/waieqstsncidftw2weqb.png"
+            alt="paypal"
+          />
         </AccordionSummary>
         <AccordionDetails sx={accordionDetailStyles}>
           <Typography component={"span"}>

@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Title } from "@/components/Home/Components/ShopByCategories/styles";
-import iconLoading from "@/assets/Images/icon-loading.png";
 import {
   boxStyles,
   Container,
@@ -29,7 +28,11 @@ function WhatClientSay() {
     <WrapperBox className={inView ? "slideInFromBottom" : ""} ref={ref}>
       <Box sx={boxStyles}>
         <Title variant="h2">WHAT Client SAY</Title>
-        <img className="loading" src={iconLoading} alt="loading" />
+        <img
+          className="loading"
+          src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232874/digita-images/static/uej2dnhrgldg1jaztexn.png"
+          alt="loading"
+        />
         <Container>
           <div className="swiper-button-prev-client" />
           <div className="swiper-button-next-client" />

@@ -3,7 +3,6 @@ import { Edit } from "@mui/icons-material";
 import { Box, Grid } from "@mui/material";
 import { ImageWrapper } from "@/components/AddProduct/styles";
 import { CardWrapper, PFormLabel } from "@/styles/panel";
-import previewImg from "@/assets/Images/upload-preview.jpg";
 import { ChangeEvent, useRef } from "react";
 import { errorMessage } from "@/utils/toastMessages";
 import { uploadImage } from "@/utils/uploadImage";
@@ -39,7 +38,6 @@ function Gallery({ setAddedImages, addedImages }: Props) {
         images[index] = { image: data?.url };
         return images;
       });
-      console.log(data);
     } catch (err) {
       errorMessage("image upload failed");
       console.log(err);
@@ -60,7 +58,11 @@ function Gallery({ setAddedImages, addedImages }: Props) {
               onChange={(event) => addImageHandler(event, 0)}
             />
             <img
-              src={!!addedImages[0]?.image ? addedImages[0].image : previewImg}
+              src={
+                !!addedImages[0]?.image
+                  ? addedImages[0].image
+                  : "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233068/digita-images/static/fh7kayodjtlxsikaoyen.jpg"
+              }
               alt="product-img"
             />
             <Box onClick={() => mainImgRef.current!.click()}>
@@ -81,7 +83,7 @@ function Gallery({ setAddedImages, addedImages }: Props) {
                   src={
                     !!addedImages[index]?.image
                       ? addedImages[index].image
-                      : previewImg
+                      : "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233068/digita-images/static/fh7kayodjtlxsikaoyen.jpg"
                   }
                   alt="product-img"
                 />

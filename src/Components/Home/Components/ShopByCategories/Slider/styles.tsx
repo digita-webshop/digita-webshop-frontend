@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
-import navigationIcon from "@/assets/Icons/right-arrow.svg";
+import navigationIcon from "@/assets/icons/right-arrow.svg";
 
 export const Container = styled(Box)(({ theme }) => ({
   position: "relative",

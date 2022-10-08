@@ -1,9 +1,8 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import SliderCard from "../SliderCard/SliderCard";
-import { shopByCat } from "./shopByCat";
-import { Container } from "./Styles";
+import { shopByCat } from "./data";
+import { Container } from "./styles";
 
 const Slider = () => {
   return (

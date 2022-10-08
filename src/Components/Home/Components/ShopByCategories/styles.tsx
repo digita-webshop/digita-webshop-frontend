@@ -1,10 +1,9 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
-import bgCat from "@/assets/Images/ShopByCat/bg-cats.jpg";
 
 export const WrapperBox = styled(Box)(({ theme }) => ({
   backgroundAttachment: "fixed",
-  backgroundImage: `url(${bgCat})`,
+  backgroundImage: `url(https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232247/digita-images/static/ey69ycyc41vqregys5tq.jpg)`,
   backgroundPosition: "center center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",

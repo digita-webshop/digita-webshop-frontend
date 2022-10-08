@@ -25,7 +25,7 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${breadcrumbBg})`,
+        backgroundImage: `url(https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232694/digita-images/static/hdyr7zb5rvjbzxv2f3gs.jpg)`,
         height: { xs: "160px", sm: "210px", md: "260px" },
         display: "flex",
         flexDirection: "column",

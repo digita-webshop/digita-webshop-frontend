@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import bgCat from "@/assets/Images/WhatClientSayAssets/bg-testimonials.jpg";
-import navigationIcon from "@/assets/Icons/right-arrow.svg";
+import navigationIcon from "@/assets/icons/right-arrow.svg";
 
 interface StyledTypography {
   fontWeight: string;
@@ -25,7 +25,7 @@ export const ReusableTypography = styled((props: StyledTypography) => {
 
 export const WrapperBox = styled(Box)(({ theme }) => ({
   backgroundAttachment: "fixed",
-  backgroundImage: `url(${bgCat})`,
+  backgroundImage: `url(https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232329/digita-images/static/yvac5d6aafw93hiqpaee.jpg)`,
   backgroundPosition: "center center",
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",

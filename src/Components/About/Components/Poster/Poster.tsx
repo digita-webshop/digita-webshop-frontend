@@ -7,7 +7,7 @@ const Poster = () => {
       <Box
         component="img"
         sx={posterStyle}
-        src="https://demo-61.woovinapro.com/wp-content/uploads/2022/04/about-1.jpg"
+        src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233435/digita-images/static/iaqcbyw7zxnivmefdpvl.jpg"
       />
       <Box sx={subjectWrapper}>
         <Box

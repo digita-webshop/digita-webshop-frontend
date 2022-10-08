@@ -1,6 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
 import { Avatar, Box, Divider, Rating, Typography } from "@mui/material";
-import avatar from "@/assets/Images/avatar.png";
 import { getReadableDate } from "@/utils/getReadableDate";
 import { useLocation } from "react-router-dom";
 import { useGetUserMutation } from "@/redux/user/userApi";
@@ -41,7 +40,10 @@ function Review({ id, userId, rating, description, createdAt }: Props) {
         <Box>
           <Avatar
             alt="avatar"
-            src={user?.image ?? avatar}
+            src={
+              user?.image ??
+              "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232584/digita-images/static/hejsp2xbfaxqqqzdsmye.jpg"
+            }
             sx={{
               width: "60px",
               height: "60px",

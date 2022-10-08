@@ -69,31 +69,31 @@ export const shopMenuCategories = [
   {
     id: 1,
     name: "headphone",
-    img: "https://demo-61.woovinapro.com/wp-content/uploads/2021/01/image-megamenu-1.png",
+    img: "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233710/digita-images/static/ps8mlfms424bmjin5x0x.png",
   },
   {
     id: 2,
     name: "smartphone & ipad",
-    img: "https://demo-61.woovinapro.com/wp-content/uploads/2021/01/image-megamenu-2.png",
+    img: "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233843/digita-images/static/b8t1ncn0hdll7xujjf8v.png",
   },
   {
     id: 3,
     name: "technologies",
-    img: "https://demo-61.woovinapro.com/wp-content/uploads/2021/01/image-megamenu-3.png",
+    img: "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233867/digita-images/static/jshwc6pd7h0rewchzkm3.png",
   },
   {
     id: 4,
     name: "smart watch",
-    img: "https://demo-61.woovinapro.com/wp-content/uploads/2021/01/image-megamenu-4.png",
+    img: "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233890/digita-images/static/eltln72flhuwguetwfrq.png",
   },
   {
     id: 5,
     name: "camera photo",
-    img: "https://demo-61.woovinapro.com/wp-content/uploads/2021/01/image-megamenu-5.png",
+    img: "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233910/digita-images/static/bz6ixnxiclhfmspbvn82.png",
   },
   {
     id: 6,
     name: "bluetooth speaker",
-    img: "https://demo-61.woovinapro.com/wp-content/uploads/2021/01/image-megamenu-6.png",
+    img: "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665233939/digita-images/static/hnxjeziopulvyum56g9h.png",
   },
 ];

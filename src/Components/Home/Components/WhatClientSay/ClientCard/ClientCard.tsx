@@ -1,7 +1,6 @@
 import { IReviews } from "@/types/product";
 import { Box, Grid, Rating, Typography } from "@mui/material";
 import { ReusableTypography } from "@/components/Home/Components/WhatClientSay/styles";
-import avatar from "@/assets/Images/avatar.png";
 
 type Props = {
   review: IReviews;
@@ -36,7 +35,13 @@ function ClientCard({ review }: Props) {
         <Box sx={{ mt: 3, "& img": { width: 70, height: 70 } }}>
           <Grid container spacing={1}>
             <Grid item sx={{ img: { aspectRatio: "1", borderRadius: "50%" } }}>
-              <img src={review?.userId?.image ?? avatar} alt="profile" />
+              <img
+                src={
+                  review?.userId?.image ??
+                  "https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232584/digita-images/static/hejsp2xbfaxqqqzdsmye.jpg"
+                }
+                alt="profile"
+              />
             </Grid>
             <Grid item>
               <Grid

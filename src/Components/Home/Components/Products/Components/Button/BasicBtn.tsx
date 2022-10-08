@@ -1,5 +1,6 @@
 import { Box, Button } from "@mui/material";
 import { useInView } from "react-intersection-observer";
+import { Link } from "react-router-dom";
 
 const BasicBtn = () => {
   const { ref, inView } = useInView({ triggerOnce: true });
@@ -34,6 +35,8 @@ const BasicBtn = () => {
           fontSize: "16px",
           textTransform: "uppercase",
         }}
+        component={Link}
+        to="/shop"
       >
         shop now
       </Button>

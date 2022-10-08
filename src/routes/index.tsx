@@ -1,8 +1,8 @@
 import { useRoutes } from "react-router-dom";
 
 import MainLayout from "@/layouts/MainLayout/MainLayout";
-import AdminPanelLayout from "@/layouts/AdminPanelLayout/AdminPanelLayout";
-import UserPanelLayout from "@/layouts/UserPanelLayout/UserPanelLayout";
+import PanelLayout from "@/layouts/PanelLayout/PanelLayout";
+import UserLayout from "@/layouts/UserLayout/UserLayout";
 
 import {
   AboutUs,
@@ -61,7 +61,7 @@ function Routes() {
       path: "/user/*",
       element: (
         <PrivateRoute>
-          <UserPanelLayout />
+          <UserLayout />
         </PrivateRoute>
       ),
       children: [
@@ -79,7 +79,7 @@ function Routes() {
       path: "/panel/*",
       element: (
         <PrivateRoute>
-          <AdminPanelLayout />
+          <PanelLayout />
         </PrivateRoute>
       ),
       children: [

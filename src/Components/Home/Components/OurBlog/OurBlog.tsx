@@ -1,6 +1,5 @@
 import { Container } from "@mui/material";
 import { Title } from "../ShopByCategories/styles";
-import iconLoading from "@/assets/Images/icon-loading.png";
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import BlogCard from "./BlogCard/BlogCard";
@@ -23,7 +22,11 @@ function OurBlog() {
       <Title variant="h2" sx={{ color: "#333" }}>
         OUR BLOG
       </Title>
-      <img className="loading" src={iconLoading} alt="blog-bg" />
+      <img
+        className="loading"
+        src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665232874/digita-images/static/uej2dnhrgldg1jaztexn.png"
+        alt="blog-bg"
+      />
       <Container>
         <WrapperBox>
           <Swiper

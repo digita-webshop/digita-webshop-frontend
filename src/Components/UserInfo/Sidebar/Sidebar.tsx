@@ -1,5 +1,5 @@
 import { Box, List, ListItemText } from "@mui/material";
-import { PanelItem } from "@/layouts/AdminPanelLayout/styles";
+import { PanelItem } from "@/layouts/PanelLayout/styles";
 
 const userSettingItems = [
   {

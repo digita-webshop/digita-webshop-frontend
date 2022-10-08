@@ -29,7 +29,7 @@ function ShopMenuCard() {
           }}
         >
           <img
-            src="https://demo-61.woovinapro.com/wp-content/uploads/2021/01/image-mega.jpg"
+            src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1665234041/digita-images/static/azfqeqtpewfoilokcz7a.jpg"
             alt="gaming-pc"
             className="pc-img"
           />
