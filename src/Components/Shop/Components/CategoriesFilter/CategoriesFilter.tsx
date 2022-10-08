@@ -1,5 +1,5 @@
 import { Box, List, ListItem, Typography } from "@mui/material";
-import { categoriesList } from "../../../../data/data";
+import { productCategories } from "../../data";
 import { FilterListItemText, FilterTitleWrapper } from "../../styles";
 
 interface Props {
@@ -22,7 +22,7 @@ function CategoriesFilter({ addQueryParams, categoryQueryParams }: Props) {
         </Typography>
       </FilterTitleWrapper>
       <List>
-        {categoriesList.map(({ id, name }) => {
+        {productCategories.map(({ id, name }) => {
           let selected = categoryQueryParams
             ? selectedCategories?.indexOf(name) === -1
             : true;

@@ -7,7 +7,6 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { brands } from "@/data/data";
 import {
   CardWrapper,
   PFormControl,
@@ -15,6 +14,7 @@ import {
   PTextField,
 } from "@/styles/panel";
 import ColorPickers from "./ColorPickers/ColorPickers";
+import { productBrands } from "@/components/Brands/data";
 
 interface Props {
   enteredTitle: string;
@@ -68,14 +68,14 @@ function Details({
         </Grid>
         <Grid item xs={12} sm={6}>
           <PFormControl size="small">
-            <PFormLabel>brands</PFormLabel>
+            <PFormLabel>productBrands</PFormLabel>
             <Select
               variant="outlined"
               displayEmpty
               value={selectedBrand}
               onChange={selectedBrandHandler}
             >
-              {brands.map(({ id, name }) => (
+              {productBrands.map(({ id, name }) => (
                 <MenuItem key={id} value={name}>
                   {name}
                 </MenuItem>

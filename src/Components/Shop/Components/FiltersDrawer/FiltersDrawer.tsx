@@ -9,10 +9,10 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { categoriesList } from "@/data/data";
 import { FilterTitleWrapper } from "../../styles";
 import ColorFilter from "../ColorFilter/ColorFilter";
 import PriceFilter from "../PriceFilter/PriceFilter";
+import { productCategories } from "../../data";
 
 type ShopFiltersDrawerProps = {
   displayDrawer: boolean;
@@ -75,7 +75,7 @@ function FiltersDrawer({
             >
               <MenuItem value="">Select a category</MenuItem>
 
-              {categoriesList.map(({ name }, index) => (
+              {productCategories.map(({ name }, index) => (
                 <MenuItem key={index} value={`${name}`}>
                   {name}
                 </MenuItem>

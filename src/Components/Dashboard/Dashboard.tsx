@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import { useGetAllOrdersQuery } from "@/redux/orders/ordersApi";
-import { dashboardStatisticCards } from "@/data/data";
+import { dashboardStatisticCards } from "./data";
 import { DashTitle } from "./styles";
 import { CardWrapper, ErrorText } from "@/styles/panel";
 import NotFound from "../EmptyList/NotFound";

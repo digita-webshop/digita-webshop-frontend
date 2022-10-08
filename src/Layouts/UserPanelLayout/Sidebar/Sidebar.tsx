@@ -9,7 +9,7 @@ import {
 import { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { UserItem } from "../../../styles/user";
-import { userSidebarItems } from "../../../data/data";
+import { userSidebarOptions } from "../data";
 import SidebarTop from "./SidebarTop/SidebarTop";
 import MyOrders from "../../../components/UserStatus/MyOrders/MyOrders";
 
@@ -24,7 +24,7 @@ const Sidebar = () => {
         sx={{ borderColor: "common.panelBorderGrey", display: { md: "none" } }}
       />
       <List>
-        {userSidebarItems.map(({ id, title, route, icon }) => (
+        {userSidebarOptions.map(({ id, title, route, icon }) => (
           <Fragment key={id}>
             {title === "settings" && <Divider sx={{ marginY: "10px" }} />}
             <UserItem className={title === "Status" ? "hidden" : ""}>

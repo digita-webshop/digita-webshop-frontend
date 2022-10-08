@@ -1,4 +1,4 @@
-import Addresses from "../../../../components/Settings/Addresses/Addresses";
+import Addresses from "../../../../components/Settings/Components/Addresses/Addresses";
 import { useAppSelector } from "../../../../redux/store";
 
 function AddressesPage() {

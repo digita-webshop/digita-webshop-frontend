@@ -7,8 +7,8 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { categoriesList } from "@/data/data";
 import { categoryCheckboxStyles } from "../../../styles";
+import { productCategories } from "@/components/Shop/data";
 
 interface Props {
   selectedCategory: string;
@@ -19,7 +19,7 @@ function Categories({ selectedCategory, setSelectedCategory }: Props) {
     <>
       <Typography variant={"h6"}>Categories</Typography>
       <List>
-        {categoriesList.map(({ id, name }) => {
+        {productCategories.map(({ id, name }) => {
           const labelId = `checkbox-list-label-${id}`;
           return (
             <ListItem

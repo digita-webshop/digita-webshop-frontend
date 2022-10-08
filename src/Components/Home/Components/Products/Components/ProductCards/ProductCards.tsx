@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import ProductCard from "../ProductCard/ProductCard";
-import { productCardData } from "../../../../../../data/data";
+import { productEdition } from "../../data";
 
 const ProductCards = () => {
   return (
@@ -13,7 +13,7 @@ const ProductCards = () => {
         overflow: "hidden",
       }}
     >
-      {productCardData.map((item, index) => (
+      {productEdition.map((item, index) => (
         <ProductCard
           key={item.id}
           id={index}

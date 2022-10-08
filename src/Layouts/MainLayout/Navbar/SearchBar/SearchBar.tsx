@@ -1,4 +1,4 @@
-import { CloseRounded, SearchOutlined } from "@mui/icons-material";
+import { useState, useRef } from "react";
 import {
   Box,
   CircularProgress,
@@ -9,13 +9,13 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { useState, useRef } from "react";
+import { CloseRounded, SearchOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { useGetAllProductsQuery } from "../../../../redux/products/productsApi";
-import { useOnClickOutside } from "../../../../hooks/useOnClickOutside";
-import { categoriesList } from "../../../../data/data";
+import { useGetAllProductsQuery } from "@/redux/products/productsApi";
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { searchBarDropdown } from "../styles";
-import { PStack } from "../../../../styles/panel";
+import { PStack } from "@/styles/panel";
+import { productCategories } from "@/components/Shop/data";
 
 type SearchBarProps = {
   openSearchBarHandler: () => void;
@@ -126,7 +126,7 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
             sx={{ border: "0" }}
           >
             <MenuItem value="">Select Category</MenuItem>
-            {categoriesList.map(({ name }, index) => (
+            {productCategories.map(({ name }, index) => (
               <MenuItem key={index} value={name}>
                 {name}
               </MenuItem>

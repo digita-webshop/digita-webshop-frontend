@@ -1,7 +1,7 @@
-import { Box, Grid, Typography } from "@mui/material";
 import { Fragment } from "react";
+import { Box, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { shopMenuCategories } from "../../../../../data/data";
+import { shopMenuCategories } from "../../data";
 import { ShopSubTitle } from "../../styles";
 
 function ShopMenuFeature() {

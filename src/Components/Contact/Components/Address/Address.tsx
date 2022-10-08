@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
-import { ContactUsData } from "../../../../data/data";
+import { ourAddress } from "./data";
 
 function Address() {
   return (
@@ -18,7 +18,7 @@ function Address() {
         call us or visit place
       </Typography>
       <Grid container spacing={4}>
-        {ContactUsData.map(({ id, title, subtitle1, subtitle2 }) => (
+        {ourAddress.map(({ id, title, subtitle1, subtitle2 }) => (
           <Grid item xs={6} md={3} key={id}>
             <Box sx={{ textAlign: "center" }}>
               <Typography

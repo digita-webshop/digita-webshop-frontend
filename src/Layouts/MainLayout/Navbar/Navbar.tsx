@@ -1,3 +1,4 @@
+import { forwardRef, Fragment, useEffect, useState } from "react";
 import {
   AppBar,
   Box,
@@ -9,11 +10,10 @@ import {
   Modal,
 } from "@mui/material";
 import logoImg from "@/assets/Images/digita-logo.png";
-import { navbarItems } from "../../../data/data";
+import { navbarItems } from "./data";
 import { useTheme } from "@mui/material/styles";
 
 import { MenuRounded, KeyboardArrowDown } from "@mui/icons-material";
-import { forwardRef, Fragment, useEffect, useState } from "react";
 import {
   AntTab,
   AntTabs,

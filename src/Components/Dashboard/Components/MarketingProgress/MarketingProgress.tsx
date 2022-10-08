@@ -1,6 +1,6 @@
 import { Launch } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
-import { marketingProgress } from "../../../../data/data";
+import { marketingProgress } from "../../data";
 import { analyticsBtnStyles, DashTitle } from "../../styles";
 import { CardWrapper } from "../../../../styles/panel";
 import ProgressCard from "./ProgressCard/ProgressCard";

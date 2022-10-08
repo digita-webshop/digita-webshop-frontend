@@ -9,9 +9,9 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { navbarItems } from "../../../../data/data";
+import { navbarItems } from "../data";
 
 type Anchor = "left" | "right";
 type TabDrawerProps = {

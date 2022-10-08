@@ -1,6 +1,6 @@
 import { Box, List, ListItemText } from "@mui/material";
-import { panelSettingItems } from "../../../data/data";
-import { PanelItem } from "../../../layouts/AdminPanelLayout/styles";
+import { panelSettingOptions } from "./data";
+import { PanelItem } from "@/layouts/AdminPanelLayout/styles";
 
 interface Props {
   activePageHandler: (page: string) => () => void;
@@ -27,7 +27,7 @@ function Sidebar({ activePageHandler, activePage }: Props) {
           gap: { xs: "10px", lg: "0" },
         }}
       >
-        {panelSettingItems.map(({ id, title }) => (
+        {panelSettingOptions.map(({ id, title }) => (
           <PanelItem key={id}>
             <Box
               className={`${title === activePage && "active"} link`}

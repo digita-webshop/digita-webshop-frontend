@@ -5,7 +5,7 @@ import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import PendingIcon from "@mui/icons-material/Pending";
 import AssignmentReturnIcon from "@mui/icons-material/AssignmentReturn";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { between, wrapper } from "../../../styles/user";
+import { between, wrapper } from "../../../../styles/user";
 
 interface T {
   id: string;

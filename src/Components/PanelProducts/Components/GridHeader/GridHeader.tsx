@@ -1,8 +1,9 @@
 import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { PTextField, PFormControl } from "@/styles/panel";
 import { Dispatch, SetStateAction } from "react";
-import { blogCategories, categoriesList } from "@/data/data";
+import { blogCategories } from "./data";
 import { useLocation } from "react-router-dom";
+import { productCategories } from "@/components/Shop/data";
 
 interface Props {
   selectedSorting?: string;
@@ -23,7 +24,7 @@ function GridHeader({
   const { pathname } = useLocation();
   const categories = pathname.includes("articles")
     ? blogCategories
-    : categoriesList;
+    : productCategories;
   return (
     <Box
       sx={{

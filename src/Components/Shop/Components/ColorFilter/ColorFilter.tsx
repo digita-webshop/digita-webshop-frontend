@@ -1,6 +1,6 @@
 import { Box, List, Typography } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
-import { colorFilterData } from "@/data/data";
+import { filterColors } from "../../data";
 import { FilterTitleWrapper } from "../../styles";
 import ColorFilterCard from "./ColorFilterCard/ColorFilterCard";
 
@@ -38,7 +38,7 @@ function ColorFilter({ drawer, addQueryParams }: Props) {
           marginLeft: "12px",
         }}
       >
-        {colorFilterData.map(({ id, color }) => {
+        {filterColors.map(({ id, color }) => {
           const labelId = `checkbox-list-label-${id}`;
           let colorQueryParams = searchParams.get("color");
           let isChecked = colorQueryParams?.includes(color);

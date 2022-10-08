@@ -1,7 +1,16 @@
 import { Box, List, ListItemText } from "@mui/material";
-import { userSettingItems } from "../../../data/data";
-import { PanelItem } from "../../../layouts/AdminPanelLayout/styles";
+import { PanelItem } from "@/layouts/AdminPanelLayout/styles";
 
+const userSettingItems = [
+  {
+    id: 1,
+    title: "general",
+  },
+  {
+    id: 2,
+    title: "password",
+  },
+];
 interface Props {
   activePageHandler: (page: string) => () => void;
   activePage: string;

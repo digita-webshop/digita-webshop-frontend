@@ -1,5 +1,5 @@
 import { Grid, Box, Typography } from "@mui/material";
-import { teamData } from "../../../../data/data";
+import { teamMembers } from "./data";
 import TeamMember from "../TeamMember/TeamMember";
 import { teamTitleStyle, teamsStyle } from "../../styles";
 
@@ -10,7 +10,7 @@ const Team = () => {
         OUR TEAM
       </Typography>
       <Grid container sx={teamsStyle} spacing={2}>
-        {teamData.map((team, index) => (
+        {teamMembers.map((team, index) => (
           <TeamMember
             key={index}
             image={team.image}

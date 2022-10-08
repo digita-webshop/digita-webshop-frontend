@@ -5,19 +5,19 @@ import {
   topMenuItem,
   wrapper,
   between,
-} from "../../../styles/user";
+} from "../../../../styles/user";
 import AddLocation from "@mui/icons-material/AddLocation";
-import EmptyList from "../../EmptyList/EmptyList";
-import { cartModal } from "../../Home/Components/Products/styles";
+import EmptyList from "../../../EmptyList/EmptyList";
+import { cartModal } from "../../../Home/Components/Products/styles";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { IAddress, IUser } from "../../../types/user";
+import { IAddress, IUser } from "../../../../types/user";
 import Address from "./Address/Address";
-import { useUpdateUserMutation } from "../../../redux/user/userApi";
-import AddressForm from "../../Checkout/Components/AddressForm/AddressForm";
-import { setCredentials } from "../../../redux/auth/authSlice";
+import { useUpdateUserMutation } from "../../../../redux/user/userApi";
+import AddressForm from "../../../Checkout/Components/AddressForm/AddressForm";
+import { setCredentials } from "../../../../redux/auth/authSlice";
 import { useDispatch } from "react-redux";
-import { errorMessage, successMessage } from "../../../utils/toastMessages";
+import { errorMessage, successMessage } from "../../../../utils/toastMessages";
 interface Props {
   user: IUser;
 }

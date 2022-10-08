@@ -1,11 +1,11 @@
-import { Grid } from "@mui/material";
 import { useState } from "react";
+import { Grid } from "@mui/material";
 import { useAppSelector } from "../../redux/store";
 import { CardWrapper } from "../../styles/panel";
-import Addresses from "./Addresses/Addresses";
-import General from "./General/General";
-import Password from "./Password/Password";
-import Sidebar from "./Sidebar/Sidebar";
+import Addresses from "./Components/Addresses/Addresses";
+import General from "./Components/General/General";
+import Password from "./Components/Password/Password";
+import Sidebar from "./Components/Sidebar/Sidebar";
 
 function Settings() {
   const { user } = useAppSelector((state) => state.reducer.auth);

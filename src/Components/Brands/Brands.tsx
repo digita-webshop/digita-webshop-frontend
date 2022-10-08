@@ -3,7 +3,7 @@ import { useState } from "react";
 import Brand from "./Components/Brand/Brand";
 import ContentHeader from "./Components/ContentHeader/ContentHeader";
 import TableHeader from "./Components/TableHeader/TableHeader";
-import { brands } from "../../data/data";
+import { productBrands } from "./data";
 import { CardWrapper } from "../../styles/panel";
 
 const Brands = () => {
@@ -44,7 +44,7 @@ const Brands = () => {
           }}
         >
           <Grid container spacing={2}>
-            {brands.map(({ id, name, image, count }) => (
+            {productBrands.map(({ id, name, image, count }) => (
               <Grid item xs={6} sm={4} md={3} lg={2} xl={2} key={id}>
                 <Brand id={id} name={name} image={image} count={count} />
               </Grid>

@@ -1,23 +1,12 @@
 import { Divider, Icon, List, ListItemIcon, ListItemText } from "@mui/material";
 import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { panelSidebarItems } from "../../../data/data";
+import { articleOptions, panelSidebarOptions, productOptions } from "../data";
 import { useAppSelector } from "../../../redux/store";
 import { PanelItem } from "../styles";
 import ItemAccordion from "./ItemAccordion/ItemAccordion";
 import ItemMenu from "./ItemMenu/ItemMenu";
 import SidebarTop from "./SidebarTop/SidebarTop";
-
-const products = [
-  { id: "1", name: "product list", route: "/panel/products/list" },
-  { id: "2", name: "add product", route: "/panel/products/add" },
-  { id: "3", name: "product reviews", route: "/panel/products/reviews" },
-];
-const articles = [
-  { id: "1", name: "article list", route: "/panel/articles/list" },
-  { id: "2", name: "add article", route: "/panel/articles/add" },
-  { id: "3", name: "article reviews", route: "/panel/articles/reviews" },
-];
 
 interface Props {
   menuOpen: boolean;
@@ -39,7 +28,7 @@ function Sidebar({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
         setDrawerOpen={setDrawerOpen}
       />
       <List>
-        {panelSidebarItems
+        {panelSidebarOptions
           .filter((item) =>
             role === "superAdmin" ? item.title : item.title !== "manage access"
           )
@@ -48,7 +37,8 @@ function Sidebar({ menuOpen, setMenuOpen, setDrawerOpen }: Props) {
               settingsPath === "settings" && title === "settings" && "active";
 
             if (title === "products" || title === "articles") {
-              const data = title === "products" ? products : articles;
+              const data =
+                title === "products" ? productOptions : articleOptions;
               return menuOpen ? (
                 <ItemAccordion
                   key={id}
