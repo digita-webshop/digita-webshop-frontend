@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { IReviews } from "../Services/Types/product";
+import { IReviews } from "../types/product";
 
 export function useLoadReviews(reviews: IReviews[] | []) {
   const [indexOfLoadedReviews, setIndexOfLoadedReviews] = useState(6);

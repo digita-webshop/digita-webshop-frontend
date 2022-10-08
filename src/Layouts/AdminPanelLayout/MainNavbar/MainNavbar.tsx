@@ -7,13 +7,9 @@ import {
 import { Box, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Dispatch, SetStateAction, SyntheticEvent } from "react";
-import {
-  MainSearchBtn,
-  navbarIconStyles,
-  panelToolbarStyles,
-} from "../../../Styles/Panel";
-import { PTextField } from "../../../Styles/panelCommon";
-import { logout } from "../../../features/auth/authSlice";
+import { MainSearchBtn, navbarIconStyles, panelToolbarStyles } from "../styles";
+import { PTextField } from "../../../styles/panel";
+import { logout } from "../../../redux/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 interface Props {

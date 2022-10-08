@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { useState } from "react";
-import { useAppSelector } from "../../features/store";
-import { CardWrapper } from "../../Styles/panelCommon";
+import { useAppSelector } from "../../redux/store";
+import { CardWrapper } from "../../styles/panel";
 import Addresses from "./Addresses/Addresses";
 import General from "./General/General";
 import Password from "./Password/Password";

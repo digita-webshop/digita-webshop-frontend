@@ -14,7 +14,7 @@ import {
   accordionDetailStyles,
   accordionSummaryStyles,
   PanelItem,
-} from "../../../../Styles/Panel";
+} from "../../styles";
 
 interface I {
   id: string;

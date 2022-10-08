@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import { Typography } from "@mui/material";
-import { FilterTitleWrapper } from "../../../../../Styles/ShopPage";
+import { FilterTitleWrapper } from "../../../../Shop/styles";
 import { SetStateAction, Dispatch } from "react";
 
 interface Props {

@@ -1,5 +1,5 @@
 import { CircularProgress } from "@mui/material";
-import { PStack } from "../../Styles/panelCommon";
+import { PStack } from "../../styles/panel";
 
 function PanelLoading() {
   return (

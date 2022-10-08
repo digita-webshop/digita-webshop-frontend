@@ -1,8 +1,5 @@
-import {
-  ProductContentStyle,
-  SubmitButton,
-} from "../../../../../Styles/Product";
-import { PFormControl } from "../../../../../Styles/panelCommon";
+import { ProductContentStyle, SubmitButton } from "../../../styles";
+import { PFormControl } from "../../../../../styles/panel";
 
 import {
   Typography,
@@ -15,10 +12,10 @@ import {
 } from "@mui/material";
 import { Fragment, useState } from "react";
 import Review from "./Review/Review";
-import { useAppSelector } from "../../../../../features/store";
+import { useAppSelector } from "../../../../../redux/store";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAddReviewMutation } from "../../../../../features/reviews/reviewsApi";
-import { IReviews } from "../../../../../Services/Types/product";
+import { useAddReviewMutation } from "../../../../../redux/reviews/reviewsApi";
+import { IReviews } from "../../../../../types/product";
 import { useLoadReviews } from "../../../../../hooks/useLoadReviews";
 
 interface Props {

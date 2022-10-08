@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import breadcrumbBg from "../../Assets/Images/breadcrumb-bg.jpg";
+import breadcrumbBg from "@/assets/Images/breadcrumb-bg.jpg";
 import { Link as RouterLink } from "react-router-dom";
 
 interface Props {

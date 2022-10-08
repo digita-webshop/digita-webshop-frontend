@@ -1,19 +1,19 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import { teamTitleStyle } from "../../Styles/Product/index";
+import { teamTitleStyle } from "./styles";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import BoughtTogether from "./Components/BoughtTogether/BoughtTogether";
 import Tabs from "./Components/Tabs/Tabs";
 import ShareProduct from "./Components/ShareProduct/ShareProduct";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
-import ProductItem from "./../Products/Components/ProductItem/ProductItem";
+import ProductItem from "../Home/Components/Products/Components/ProductItem/ProductItem";
 import { useParams } from "react-router-dom";
 import {
   useGetAllProductsQuery,
   useGetProductQuery,
-} from "../../features/products/productsApi";
+} from "../../redux/products/productsApi";
 import Loading from "../Loading/Loading";
-import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
-import { useAppSelector } from "../../features/store";
+import { useGetWishlistQuery } from "../../redux/wishlist/wishlistApi";
+import { useAppSelector } from "../../redux/store";
 
 const Product = () => {
   const { role } = useAppSelector((state) => state.reducer.auth);

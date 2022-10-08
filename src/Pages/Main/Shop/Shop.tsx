@@ -1,4 +1,4 @@
-import { Shop } from "../../../Components";
+import { Shop } from "../../../components";
 
 function ShopPage() {
   return <Shop />;

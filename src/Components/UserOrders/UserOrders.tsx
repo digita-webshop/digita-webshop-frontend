@@ -1,14 +1,14 @@
 import { useState, SyntheticEvent } from "react";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { between, wrapper } from "../../Styles/User";
+import { between, wrapper } from "../../styles/user";
 import Search from "@mui/icons-material/Search";
 import { TabPanel, a11yProps } from "./TabPanel/TabPanel";
 import EmptyOrder from "./EmptyOrder/EmptyOrder";
 import OrderItem from "./OrderItem/OrderItem";
 import { Link } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
-import { useGetUserOrdersQuery } from "../../features/orders/ordersApi";
-import { useAppSelector } from "../../features/store";
+import { useGetUserOrdersQuery } from "../../redux/orders/ordersApi";
+import { useAppSelector } from "../../redux/store";
 
 const statuses = ["pending", "delivered", "cancelled"];
 

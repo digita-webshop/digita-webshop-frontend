@@ -1,14 +1,14 @@
-import { Box, Divider, Grid, SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
-import { useGetAllOrdersQuery } from "../../features/orders/ordersApi";
-import { CardWrapper, ErrorText } from "../../Styles/panelCommon";
-import { paginationStyle } from "../../Styles/PanelProducts";
+import { Box, Divider, Grid, SelectChangeEvent } from "@mui/material";
+import { useGetAllOrdersQuery } from "../../redux/orders/ordersApi";
+import { CardWrapper, ErrorText } from "../../styles/panel";
+import { paginationStyle } from "../PanelProducts/styles";
 import NotFound from "../EmptyList/NotFound";
 import PanelLoading from "../Loading/PanelLoading";
-import PanelPagination from "../PanelPagination/PanelPagination";
-import ContentHeader from "./ContentHeader/ContentHeader";
-import OrdersTable from "./OrdersTable/OrdersTable";
-import TableToolbar from "./TableToolbar/TableToolbar";
+import PanelPagination from "../Pagination/PanelPagination";
+import ContentHeader from "./Components/ContentHeader/ContentHeader";
+import OrdersTable from "./Components/OrdersTable/OrdersTable";
+import TableToolbar from "./Components/TableToolbar/TableToolbar";
 
 function Orders() {
   const [selectedStatus, setSelectedStatus] = useState("");

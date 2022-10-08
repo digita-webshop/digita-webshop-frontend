@@ -2,9 +2,9 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import { Typography, Skeleton } from "@mui/material";
 import RecentPost from "./RecentPost/RecentPost";
-import { FilterTitleWrapper } from "../../../../../Styles/ShopPage";
+import { FilterTitleWrapper } from "../../../../Shop/styles";
 import { Fragment } from "react";
-import { useGetAllArticlesQuery } from "../../../../../features/articles/articlesApi";
+import { useGetAllArticlesQuery } from "../../../../../redux/articles/articlesApi";
 
 function RecentPosts() {
   const {

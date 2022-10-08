@@ -14,21 +14,21 @@ import {
 import { useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
-import { cartModal } from "../../../Styles/PanelProducts";
+import { cartModal } from "../../PanelProducts/styles";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 
-import { cardWrapper } from "../../../Styles/Articles";
+import { cardWrapper } from "../styles";
 import {
   titleStyle,
   titleWrapper,
   Item,
   editStyle,
   AuthorWrapper,
-} from "../../../Styles/Articles";
+} from "../styles";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
-import { getReadableDate } from "../../../Utils/getReadableDate";
+import { getReadableDate } from "../../../utils/getReadableDate";
 
 type T = {
   id: string;

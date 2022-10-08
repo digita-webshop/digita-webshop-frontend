@@ -1,19 +1,19 @@
-import ContentHeader from "../PanelProducts/ContentHeader/ContentHeader";
-import PanelPagination from "../PanelPagination/PanelPagination";
+import ContentHeader from "../PanelProducts/Components/ContentHeader/ContentHeader";
+import PanelPagination from "../Pagination/PanelPagination";
 import { useState } from "react";
 import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
-import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
+import { DashWrapper, paginationStyle } from "../PanelProducts/styles";
 import Article from "./Article/Article";
-import { ArticleWrapper } from "../../Styles/Articles";
+import { ArticleWrapper } from "./styles";
 import {
   useDeleteArticleMutation,
   useGetAllArticlesQuery,
-} from "../../features/articles/articlesApi";
+} from "../../redux/articles/articlesApi";
 import NotFound from "../EmptyList/NotFound";
-import { errorMessage, successMessage } from "../../Utils/toastMessages";
-import { ErrorText } from "../../Styles/panelCommon";
+import { errorMessage, successMessage } from "../../utils/toastMessages";
+import { ErrorText } from "../../styles/panel";
 import PanelLoading from "../Loading/PanelLoading";
-import GridHeader from "../PanelProducts/GridHeader/GridHeader";
+import GridHeader from "../PanelProducts/Components/GridHeader/GridHeader";
 
 const Articles = () => {
   const [searchValue, setSearchValue] = useState("");

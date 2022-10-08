@@ -14,18 +14,18 @@ import {
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../../features/auth/authApi";
-import { setCredentials } from "../../features/auth/authSlice";
-import { successMessage } from "../../Utils/toastMessages";
-import { useAppSelector } from "../../features/store";
+import { useLoginMutation } from "../../redux/auth/authApi";
+import { setCredentials } from "../../redux/auth/authSlice";
+import { successMessage } from "../../utils/toastMessages";
+import { useAppSelector } from "../../redux/store";
 import {
   errorStyles,
   forgetPassStyles,
   FormFooter,
   FormWrapper,
   inputErrorStyles,
-} from "../../Styles/Login";
-import { PStack } from "../../Styles/panelCommon";
+} from "./styles";
+import { PStack } from "../../styles/panel";
 import Header from "./Header/Header";
 
 type Modal = "login" | "register" | "reset";

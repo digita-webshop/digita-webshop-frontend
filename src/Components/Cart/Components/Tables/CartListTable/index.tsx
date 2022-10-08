@@ -9,7 +9,7 @@ import {
 import { StyledTableCell } from "../../../styles";
 import { columnsData } from "../../../data";
 import CartListTableRow from "../CartListTableRow";
-import { ICartItem } from "../../../../../Services/Types/cart";
+import { ICartItem } from "../../../../../types/cart";
 
 type Props = {
   cartList: ICartItem[];

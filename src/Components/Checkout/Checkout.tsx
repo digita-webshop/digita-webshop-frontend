@@ -11,32 +11,32 @@ import {
   Modal,
   Typography,
 } from "@mui/material";
-import ShippingDatePicker from "./ShippingDatePicker/ShippingDatePicker";
-import OrderTable from "./OrderTable/OrderTable";
-import PaymentMethod from "./PaymentMethod/PaymentMethod";
-import CurrentAddress from "./CurrentAddress/CurrentAddress";
+import ShippingDatePicker from "./Components/ShippingDatePicker/ShippingDatePicker";
+import OrderTable from "./Components/OrderTable/OrderTable";
+import PaymentMethod from "./Components/PaymentMethod/PaymentMethod";
+import CurrentAddress from "./Components/CurrentAddress/CurrentAddress";
 import {
   addressModalWrapper,
   addressTitleStyles,
   checkoutProceedBtn,
   checkoutTitleWrapper,
   StyledFormControlLabel,
-} from "../../Styles/Checkout";
+} from "./styles";
 
-import Coupon from "./Coupon/Coupon";
-import OrderNotes from "./OrderNotes/OrderNotes";
-import AddressForm from "./AddressForm/AddressForm";
-import { IAddress } from "@/Services/Types/user";
-import { useAppSelector } from "@/features/store";
-import { setCredentials } from "@/features/auth/authSlice";
-import { errorMessage, successMessage } from "@/Utils/toastMessages";
+import Coupon from "./Components/Coupon/Coupon";
+import OrderNotes from "./Components/OrderNotes/OrderNotes";
+import AddressForm from "./Components/AddressForm/AddressForm";
+import { IAddress } from "@/types/user";
+import { useAppSelector } from "@/redux/store";
+import { setCredentials } from "@/redux/auth/authSlice";
+import { errorMessage, successMessage } from "@/utils/toastMessages";
 import { useDispatch } from "react-redux";
-import { useUpdateUserMutation } from "@/features/user/userApi";
+import { useUpdateUserMutation } from "@/redux/user/userApi";
 import Address from "../Settings/Addresses/Address/Address";
-import { cartModal } from "@/Styles/Products";
+import { cartModal } from "@/components/Home/Components/Products/styles";
 import { Add, Close } from "@mui/icons-material";
-import { useGetAllCartItemQuery } from "@/features/cart/cartApi";
-import { getSubtotal } from "@/Utils/getSubtotal";
+import { useGetAllCartItemQuery } from "@/redux/cart/cartApi";
+import { getSubtotal } from "@/utils/getSubtotal";
 
 function Checkout() {
   const { user } = useAppSelector((state) => state.reducer.auth);

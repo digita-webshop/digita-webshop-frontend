@@ -5,9 +5,9 @@ import {
   userAvatarStyle,
   UserNavItem,
   topMenuItem,
-} from "../../../../Styles/User";
+} from "../../../../styles/user";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../../../features/store";
+import { useAppSelector } from "../../../../redux/store";
 
 const SidebarTop = () => {
   const { user } = useAppSelector((state) => state.reducer.auth);

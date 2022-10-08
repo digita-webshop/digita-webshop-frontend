@@ -1,7 +1,7 @@
 import { Grid, Box, Typography } from "@mui/material";
-import { teamData } from "../../../../Services/Data/data";
+import { teamData } from "../../../../data/data";
 import TeamMember from "../TeamMember/TeamMember";
-import { teamTitleStyle, teamsStyle } from "../../../../Styles/About";
+import { teamTitleStyle, teamsStyle } from "../../styles";
 
 const Team = () => {
   return (

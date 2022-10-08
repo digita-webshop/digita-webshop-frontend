@@ -1,4 +1,4 @@
-import { Reviews } from "../../../../Components";
+import { Reviews } from "../../../../components";
 
 function ReviewsPage() {
   return <Reviews />;

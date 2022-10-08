@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import React from "react";
 import { UpdateCart } from "../../Cart";
-import { ICartItem } from "../../../../Services/Types/cart";
+import { ICartItem } from "../../../../types/cart";
 
 export enum UpdateType {
   Remove = 1,

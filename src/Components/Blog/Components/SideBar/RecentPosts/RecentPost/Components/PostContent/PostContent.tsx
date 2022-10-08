@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import { Link as RouterLink } from "react-router-dom";
-import { getReadableDate } from "../../../../../../../../Utils/getReadableDate";
+import { getReadableDate } from "../../../../../../../../utils/getReadableDate";
 
 type props = {
   id: string;

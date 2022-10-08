@@ -1,4 +1,4 @@
-import { ManageAccess } from "../../../../Components";
+import { ManageAccess } from "../../../../components";
 
 function ManageAccessPage() {
   return (

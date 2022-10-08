@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { Add } from "@mui/icons-material";
 import { Box, Modal } from "@mui/material";
-import { useState } from "react";
-import { CardWrapper, PButton, PTitle } from "../../Styles/panelCommon";
-import UsersTable from "./UsersTable/UsersTable";
-import RegisterAdmin from "./RegisterAdmin/RegisterAdmin";
+import { CardWrapper, PButton, PTitle } from "../../styles/panel";
+import UsersTable from "./Components/UsersTable/UsersTable";
+import RegisterAdmin from "./Components/RegisterAdmin/RegisterAdmin";
 import { useLocation } from "react-router-dom";
 
 function ManageAccess() {

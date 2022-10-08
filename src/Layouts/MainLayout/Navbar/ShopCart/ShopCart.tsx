@@ -1,10 +1,10 @@
 import { Box, Button, Divider, Link, List, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { useAppSelector } from "../../../../features/store";
-import { shopCartWrapper } from "../../../../Styles/Appbar";
-import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
+import { useAppSelector } from "../../../../redux/store";
+import { shopCartWrapper } from "../styles";
+import { useGetAllCartItemQuery } from "../../../../redux/cart/cartApi";
 import ShopCartItem from "./ShopCartItem/ShopCartItem";
-import { getSubtotal } from "../../../../Utils/getSubtotal";
+import { getSubtotal } from "../../../../utils/getSubtotal";
 import { useCheckoutNavigate } from "@/hooks/useCheckoutNavigate";
 
 function ShopCart() {

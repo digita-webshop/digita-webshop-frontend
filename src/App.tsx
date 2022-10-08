@@ -2,15 +2,15 @@ import { useEffect } from "react";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./Theme/theme";
+import { theme } from "./theme";
 import { useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
 import Routes from "./routes";
-import { useAppSelector } from "./features/store";
-import { ScrollToTop } from "./Components";
-import { logout, setCredentials } from "./features/auth/authSlice";
-import { useGetUserMutation } from "./features/user/userApi";
+import { useAppSelector } from "./redux/store";
+import ScrollToTop from "./routes/ScrollToTop";
+import { logout, setCredentials } from "./redux/auth/authSlice";
+import { useGetUserMutation } from "./redux/user/userApi";
 
 import "react-toastify/dist/ReactToastify.css";
 

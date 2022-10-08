@@ -14,22 +14,22 @@ import {
   ErrorText,
   POutlinedButton,
   PTitle,
-} from "../../Styles/panelCommon";
-import { TCheckBox, THCell } from "../../Styles/Reviews";
+} from "../../styles/panel";
+import { TCheckBox, THCell } from "./styles";
 import { useTheme } from "@mui/material/styles";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import PanelPagination from "../PanelPagination/PanelPagination";
-import { paginationStyle } from "../../Styles/PanelProducts";
+import PanelPagination from "../Pagination/PanelPagination";
+import { paginationStyle } from "../PanelProducts/styles";
 import { useLocation } from "react-router-dom";
-import TableHeader from "./TableHeader/TableHeader";
-import TableItem from "./TableItem/TableItem";
+import TableHeader from "./Components/TableHeader/TableHeader";
+import TableItem from "./Components/TableItem/TableItem";
 import {
   useDeleteReviewMutation,
   useGetAllReviewsQuery,
-} from "../../features/reviews/reviewsApi";
+} from "../../redux/reviews/reviewsApi";
 import PanelLoading from "../Loading/PanelLoading";
 import NotFound from "../EmptyList/NotFound";
-import { errorMessage, successMessage } from "../../Utils/toastMessages";
+import { errorMessage, successMessage } from "../../utils/toastMessages";
 const Reviews = () => {
   const [searchValue, setSearchValue] = useState("");
   const [reviewsPerPage, setReviewsPerPage] = useState(10);

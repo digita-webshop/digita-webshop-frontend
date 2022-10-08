@@ -1,4 +1,4 @@
-import { ICartItem } from "../Services/Types/cart";
+import { ICartItem } from "../types/cart";
 
 export const getSubtotal = (cartList: ICartItem[]) => {
   return cartList?.reduce((acc: number, curr: ICartItem) => {

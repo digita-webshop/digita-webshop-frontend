@@ -3,11 +3,7 @@ import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CreditScoreIcon from "@mui/icons-material/CreditScore";
 import PriceCheckIcon from "@mui/icons-material/PriceCheck";
-import {
-  serviceStyle,
-  serviceTitle,
-  itemStyle,
-} from "../../../../Styles/About";
+import { serviceStyle, serviceTitle, itemStyle } from "../../styles";
 
 const Services = () => {
   return (

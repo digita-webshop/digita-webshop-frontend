@@ -7,11 +7,11 @@ import {
   magnifyButtonStyles,
   mainSwiperWrapper,
   swiperImageWrapper,
-} from "../../../../../Styles/Product";
+} from "../../../styles";
 import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
 import GalleryModal from "./GalleryModal/GalleryModal";
 import ReactImageMagnify from "react-image-magnify";
-import { IGallery } from "../../../../../Services/Types/product";
+import { IGallery } from "../../../../../types/product";
 
 interface Props {
   gallery: IGallery[];

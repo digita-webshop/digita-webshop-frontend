@@ -1,17 +1,17 @@
 import { Grid } from "@mui/material";
-import ArticleForm from "./ArticleForm/ArticleForm";
-import ContentHeader from "./ContentHeader/ContentHeader";
+import ArticleForm from "./Components/ArticleForm/ArticleForm";
+import ContentHeader from "./Components/ContentHeader/ContentHeader";
 import { useState, FormEvent, useEffect } from "react";
 import {
   useAddArticleMutation,
   useUpdateArticleMutation,
-} from "../../features/articles/articlesApi";
-import { CardWrapper, PFormLabel } from "../../Styles/panelCommon";
+} from "../../redux/articles/articlesApi";
+import { CardWrapper, PFormLabel } from "../../styles/panel";
 import TextEditor from "../TextEditor/TextEditor";
 import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
-import { errorMessage, successMessage } from "../../Utils/toastMessages";
+import { errorMessage, successMessage } from "../../utils/toastMessages";
 import { useNavigate, useParams } from "react-router-dom";
-import { IArticle } from "../../Services/Types/article";
+import { IArticle } from "../../types/article";
 
 function AddArticle() {
   const [enteredTitle, setEnteredTitle] = useState("");

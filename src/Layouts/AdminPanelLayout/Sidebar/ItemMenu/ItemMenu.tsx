@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Dispatch, SetStateAction, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { PanelItem } from "../../../../Styles/Panel";
+import { PanelItem } from "../../styles";
 
 interface I {
   id: string;

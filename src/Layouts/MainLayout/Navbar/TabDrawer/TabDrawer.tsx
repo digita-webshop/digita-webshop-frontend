@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import React, { Fragment } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { navbarItems } from "../../../../Services/Data/data";
+import { navbarItems } from "../../../../data/data";
 
 type Anchor = "left" | "right";
 type TabDrawerProps = {

@@ -1,4 +1,4 @@
-import { UserInfo } from "../../../../Components";
+import { UserInfo } from "../../../../components";
 
 function InfoPage() {
   return <UserInfo />;

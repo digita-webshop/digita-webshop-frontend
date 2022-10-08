@@ -2,12 +2,12 @@ import { useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import { Box, Grid, useMediaQuery, Container } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import ArticleCard from "./Components/Articles/Article/ArticleCard";
+import ArticleCard from "./Components/Article/ArticleCard";
 import SearchBar from "./Components/SideBar/SearchBar/SearchBar";
 import RecentPosts from "./Components/SideBar/RecentPosts/RecentPosts";
 import RecentComments from "./Components/SideBar/RecentComments/RecentComments";
 import CustomBreadcrumbs from "../Breadcrumbs/Breadcrumbs";
-import { useGetAllArticlesQuery } from "../../features/articles/articlesApi";
+import { useGetAllArticlesQuery } from "../../redux/articles/articlesApi";
 import ArticlePlaceholder from "../Placeholders/ArticlePlaceholder";
 import { useSearchParams } from "react-router-dom";
 

@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { PaginationList, PaginationListItem } from "../../Styles/Pagination";
+import { PaginationList, PaginationListItem } from "./styles";
 
 type PaginationProps = {
   productsPerPage: number;

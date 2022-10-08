@@ -1,8 +1,8 @@
 import { useRoutes } from "react-router-dom";
 
-import MainLayout from "@/Layouts/MainLayout/MainLayout";
-import AdminPanelLayout from "@/Layouts/AdminPanelLayout/AdminPanelLayout";
-import UserPanelLayout from "@/Layouts/UserPanelLayout/UserPanelLayout";
+import MainLayout from "@/layouts/MainLayout/MainLayout";
+import AdminPanelLayout from "@/layouts/AdminPanelLayout/AdminPanelLayout";
+import UserPanelLayout from "@/layouts/UserPanelLayout/UserPanelLayout";
 
 import {
   AboutUs,
@@ -14,7 +14,7 @@ import {
   Home,
   Product,
   Shop,
-} from "@/Pages/Main";
+} from "@/pages/Main";
 import {
   AddArticle,
   AddProduct,
@@ -27,14 +27,14 @@ import {
   Reviews,
   Settings,
   UserOrders as AdminOrders,
-} from "@/Pages/Panel/Admin";
+} from "@/pages/Panel/Admin";
 import {
   Addresses,
   Info,
   Status,
   UserOrders,
   Wishlist,
-} from "@/Pages/Panel/User";
+} from "@/pages/Panel/User";
 
 import PrivateRoute from "./PrivateRoute";
 

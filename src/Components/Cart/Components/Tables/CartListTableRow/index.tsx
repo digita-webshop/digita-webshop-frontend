@@ -2,9 +2,9 @@ import { Box, Button, TableRow, useMediaQuery, useTheme } from "@mui/material";
 import { closeButtonStyles, ImageBox, StyledTableCell } from "../../../styles";
 import CloseIcon from "@mui/icons-material/Close";
 import QuantityInput from "../../QuantityInput/QuantityInput";
-import { ICartItem } from "../../../../../Services/Types/cart";
+import { ICartItem } from "../../../../../types/cart";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../../../../features/cart/cartSlice";
+import { removeFromCart } from "../../../../../redux/cart/cartSlice";
 import { Link } from "react-router-dom";
 
 type Props = {

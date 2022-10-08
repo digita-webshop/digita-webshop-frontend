@@ -10,16 +10,16 @@ import {
 } from "@mui/material";
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useSignUpMutation } from "../../features/auth/authApi";
-import { setCredentials } from "../../features/auth/authSlice";
-import { successMessage } from "../../Utils/toastMessages";
+import { useSignUpMutation } from "../../redux/auth/authApi";
+import { setCredentials } from "../../redux/auth/authSlice";
+import { successMessage } from "../../utils/toastMessages";
 import {
   errorStyles,
   FormFooter,
   FormWrapper,
   inputErrorStyles,
-} from "../../Styles/Login";
-import { PStack } from "../../Styles/panelCommon";
+} from "../Login/styles";
+import { PStack } from "../../styles/panel";
 import Header from "../Login/Header/Header";
 
 type Modal = "login" | "register" | "reset";

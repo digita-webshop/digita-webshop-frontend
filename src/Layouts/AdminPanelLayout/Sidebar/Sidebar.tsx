@@ -1,9 +1,9 @@
 import { Divider, Icon, List, ListItemIcon, ListItemText } from "@mui/material";
 import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { panelSidebarItems } from "../../../Services/Data/data";
-import { useAppSelector } from "../../../features/store";
-import { PanelItem } from "../../../Styles/Panel";
+import { panelSidebarItems } from "../../../data/data";
+import { useAppSelector } from "../../../redux/store";
+import { PanelItem } from "../styles";
 import ItemAccordion from "./ItemAccordion/ItemAccordion";
 import ItemMenu from "./ItemMenu/ItemMenu";
 import SidebarTop from "./SidebarTop/SidebarTop";

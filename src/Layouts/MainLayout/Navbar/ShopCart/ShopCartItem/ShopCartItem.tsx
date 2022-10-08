@@ -8,8 +8,8 @@ import {
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { removeFromCart } from "../../../../../features/cart/cartSlice";
-import { shopCartCloseIcon } from "../../../../../Styles/Appbar";
+import { removeFromCart } from "../../../../../redux/cart/cartSlice";
+import { shopCartCloseIcon } from "../../styles";
 
 interface Props {
   id: string;

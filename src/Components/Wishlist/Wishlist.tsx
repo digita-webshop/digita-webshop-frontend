@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Box, Typography, Grid } from "@mui/material";
-import { wrapper } from "../../Styles/User";
-import { paginationStyle } from "../../Styles/PanelProducts";
+import { wrapper } from "../../styles/user";
+import { paginationStyle } from "../PanelProducts/styles";
 import Product from "./Product/Product";
 import Pagination from "../Pagination/Pagination";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
-import { useGetWishlistQuery } from "../../features/wishlist/wishlistApi";
-import { useAppSelector } from "../../features/store";
-import { ErrorText } from "../../Styles/panelCommon";
+import { useGetWishlistQuery } from "../../redux/wishlist/wishlistApi";
+import { useAppSelector } from "../../redux/store";
+import { ErrorText } from "../../styles/panel";
 import PanelLoading from "../Loading/PanelLoading";
 import NotFound from "../EmptyList/NotFound";
 

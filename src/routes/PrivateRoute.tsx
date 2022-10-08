@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAppSelector } from "../features/store";
+import { useAppSelector } from "../redux/store";
 interface Props {
   children: JSX.Element;
 }

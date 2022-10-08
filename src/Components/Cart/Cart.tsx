@@ -4,11 +4,11 @@ import CartListTable from "./Components/Tables/CartListTable";
 import CartTotalTable from "./Components/Tables/CartTotalTable";
 import CartUpdated, { UpdateType } from "./Components/CartUpdated/CartUpdated";
 
-import { useAppSelector } from "../../features/store";
-import { useGetAllCartItemQuery } from "../../features/cart/cartApi";
+import { useAppSelector } from "../../redux/store";
+import { useGetAllCartItemQuery } from "../../redux/cart/cartApi";
 import { CartContainer, TableContainer } from "./styles";
-import { getSubtotal } from "../../Utils/getSubtotal";
-import { ICartItem } from "../../Services/Types/cart";
+import { getSubtotal } from "../../utils/getSubtotal";
+import { ICartItem } from "../../types/cart";
 import { Link } from "react-router-dom";
 
 export type UpdateCart = {

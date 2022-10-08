@@ -1,4 +1,4 @@
-import { AddArticle } from "../../../../Components";
+import { AddArticle } from "../../../../components";
 function AddArticlePage() {
   return <AddArticle />;
 }

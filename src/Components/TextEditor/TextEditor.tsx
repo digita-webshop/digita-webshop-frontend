@@ -1,11 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { Editor, EditorState, RichUtils } from "draft-js";
 import { Box } from "@mui/material";
-import {
-  EditorButton,
-  textEditorStyles,
-  TextEditorWrapper,
-} from "../../Styles/TextEditor";
+import { EditorButton, textEditorStyles, TextEditorWrapper } from "./styles";
 import "draft-js/dist/Draft.css";
 interface Props {
   editorState: any;

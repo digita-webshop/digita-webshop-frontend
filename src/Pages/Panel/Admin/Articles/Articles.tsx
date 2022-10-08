@@ -1,4 +1,4 @@
-import { PanelArticles } from "../../../../Components";
+import { PanelArticles } from "../../../../components";
 
 const ArticlesPage = () => {
   return <PanelArticles />;

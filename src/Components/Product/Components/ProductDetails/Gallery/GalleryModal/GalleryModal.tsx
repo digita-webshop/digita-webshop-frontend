@@ -7,9 +7,9 @@ import {
   galleryModalButtonStyles,
   GalleryModalWrapper,
   modalSwiperStyles,
-} from "../../../../../../Styles/Product";
+} from "../../../../styles";
 import ReactImageMagnify from "react-image-magnify";
-import { IGallery } from "../../../../../../Services/Types/product";
+import { IGallery } from "../../../../../../types/product";
 
 interface Props {
   gallery: IGallery[];

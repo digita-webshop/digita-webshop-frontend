@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { centerStyle, circleStyle, c1, c2 } from "../../Styles/Loading";
+import { centerStyle, circleStyle, c1, c2 } from "./styles";
 
 const Loading = ({ full }: { full?: boolean }) => {
   if (full) {

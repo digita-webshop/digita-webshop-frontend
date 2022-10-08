@@ -9,15 +9,11 @@ import {
 import { Badge, Box, Skeleton } from "@mui/material";
 import { Dispatch, Fragment, SetStateAction, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  iconsBadgeStyles,
-  iconsWrapperStyles,
-  IconWrapper,
-} from "../../../../Styles/Appbar";
+import { iconsBadgeStyles, iconsWrapperStyles, IconWrapper } from "../styles";
 import ShopCart from "../ShopCart/ShopCart";
 import UserDropDown from "../UserDropDown/UserDropDown";
-import { useAppSelector } from "../../../../features/store";
-import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
+import { useAppSelector } from "../../../../redux/store";
+import { useGetAllCartItemQuery } from "../../../../redux/cart/cartApi";
 
 const navbarIcons = {
   marginLeft: "12px",

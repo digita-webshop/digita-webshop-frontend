@@ -7,7 +7,7 @@ import {
   teamItemStyle,
   iconStyle,
   iconCircle,
-} from "../../../../Styles/About";
+} from "../../styles";
 
 interface T {
   image: string;

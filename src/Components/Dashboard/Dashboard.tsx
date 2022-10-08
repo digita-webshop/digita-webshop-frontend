@@ -1,15 +1,15 @@
 import { Grid } from "@mui/material";
-import { useGetAllOrdersQuery } from "../../features/orders/ordersApi";
-import { dashboardStatisticCards } from "../../Services/Data/data";
-import { DashTitle } from "../../Styles/Dashboard";
-import { CardWrapper, ErrorText } from "../../Styles/panelCommon";
+import { useGetAllOrdersQuery } from "@/redux/orders/ordersApi";
+import { dashboardStatisticCards } from "@/data/data";
+import { DashTitle } from "./styles";
+import { CardWrapper, ErrorText } from "@/styles/panel";
 import NotFound from "../EmptyList/NotFound";
 import PanelLoading from "../Loading/PanelLoading";
-import OrdersTable from "../Orders/OrdersTable/OrdersTable";
-import ContentHeader from "./ContentHeader/ContentHeader";
-import MarketingProgress from "./MarketingProgress/MarketingProgress";
-import SaleStatisticsChart from "./SaleStatisticsChart/SaleStatisticsChart";
-import StatisticsCard from "./StatisticsCard/StatisticsCard";
+import OrdersTable from "../Orders/Components/OrdersTable/OrdersTable";
+import ContentHeader from "./Components/ContentHeader/ContentHeader";
+import MarketingProgress from "./Components/MarketingProgress/MarketingProgress";
+import SaleStatisticsChart from "./Components/SaleStatisticsChart/SaleStatisticsChart";
+import StatisticsCard from "./Components/StatisticsCard/StatisticsCard";
 
 function Dashboard() {
   const { data: ordersData, isLoading, isError } = useGetAllOrdersQuery();

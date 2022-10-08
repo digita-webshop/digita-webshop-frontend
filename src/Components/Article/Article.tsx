@@ -3,24 +3,24 @@ import { Container, Button, Box, Grid, Typography } from "@mui/material";
 import RecentPosts from "../Blog/Components/SideBar/RecentPosts/RecentPosts";
 import RecentComments from "../Blog/Components/SideBar/RecentComments/RecentComments";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
-import { posterStyle } from "../../Styles/About";
-import ArticleDescription from "./articleDescription/ArticleDescription";
+import { posterStyle } from "../About/styles";
+import ArticleDescription from "./Components/articleDescription/ArticleDescription";
 import Divider from "@mui/material/Divider";
 import { FormEvent } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { articleTitleStyles } from "../../Styles/Article";
-import ReplyForm from "./ReplyForm/ReplyForm";
-import { useGetArticleQuery } from "../../features/articles/articlesApi";
+import { articleTitleStyles } from "./styles";
+import ReplyForm from "./Components/ReplyForm/ReplyForm";
+import { useGetArticleQuery } from "../../redux/articles/articlesApi";
 import Loading from "../Loading/Loading";
-import { getReadableDate } from "../../Utils/getReadableDate";
+import { getReadableDate } from "../../utils/getReadableDate";
 import { convertFromRaw, Editor, EditorState } from "draft-js";
 import Review from "../Product/Components/Tabs/Reviews/Review/Review";
 import {
   useAddReviewMutation,
   useGetReviewsQuery,
-} from "../../features/reviews/reviewsApi";
+} from "../../redux/reviews/reviewsApi";
 import { useLoadReviews } from "../../hooks/useLoadReviews";
-import { useAppSelector } from "../../features/store";
+import { useAppSelector } from "../../redux/store";
 
 function Article() {
   const { user } = useAppSelector((state) => state.reducer.auth);

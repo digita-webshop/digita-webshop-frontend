@@ -1,8 +1,8 @@
 import { Add, MoreVert } from "@mui/icons-material";
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import { MouseEvent, useState } from "react";
-import { IAddress } from "../../../../Services/Types/user";
-import { between } from "../../../../Styles/User";
+import { IAddress } from "../../../../types/user";
+import { between } from "../../../../styles/user";
 const options = ["Edit", "Delete"];
 
 interface Props {

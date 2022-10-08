@@ -1,11 +1,11 @@
 import { Grid, Box, Typography } from "@mui/material";
-import { productShareItems } from "../../../../Services/Data/data";
+import { productShareItems } from "../../../../data/data";
 import {
   PinterestIcon,
   FacebookIcon,
   MailIcon,
   TwitterIcon,
-} from "../../../../Assets/Icons/product";
+} from "../../../../assets/Icons/product";
 
 const ShareProduct = () => {
   return (

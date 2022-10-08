@@ -1,19 +1,19 @@
+import { FormEvent, KeyboardEvent, useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
-import { FormEvent, KeyboardEvent, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useAddProductMutation,
   useUpdateProductMutation,
-} from "../../features/products/productsApi";
-import { errorMessage, successMessage } from "../../Utils/toastMessages";
-import { IProduct } from "../../Services/Types/product";
-import { CardWrapper, PFormLabel } from "../../Styles/panelCommon";
+} from "@/redux/products/productsApi";
+import { errorMessage, successMessage } from "@/utils/toastMessages";
+import { IProduct } from "@/types/product";
+import { CardWrapper, PFormLabel } from "@/styles/panel";
 import TextEditor from "../TextEditor/TextEditor";
-import ContentHeader from "./ContentHeader/ContentHeader";
-import Details from "./Details/Details";
-import Gallery from "./Gallery/Gallery";
-import Sidebar from "./Sidebar/Sidebar";
+import ContentHeader from "./Components/ContentHeader/ContentHeader";
+import Details from "./Components/Details/Details";
+import Gallery from "./Components/Gallery/Gallery";
+import Sidebar from "./Components/Sidebar/Sidebar";
 
 export interface ITag {
   id: string;

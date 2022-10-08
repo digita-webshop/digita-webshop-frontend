@@ -1,8 +1,8 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
-import { shopMenuCategories } from "../../../../../Services/Data/data";
-import { ShopSubTitle } from "../../../../../Styles/Appbar";
+import { shopMenuCategories } from "../../../../../data/data";
+import { ShopSubTitle } from "../../styles";
 
 function ShopMenuFeature() {
   const navigate = useNavigate();

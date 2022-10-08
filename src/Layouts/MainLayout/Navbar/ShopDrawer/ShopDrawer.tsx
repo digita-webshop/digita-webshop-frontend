@@ -1,10 +1,10 @@
 import { CloseRounded } from "@mui/icons-material";
 import { Box, Button, Divider, Drawer, List, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../../../features/store";
-import { useGetAllCartItemQuery } from "../../../../features/cart/cartApi";
+import { useAppSelector } from "../../../../redux/store";
+import { useGetAllCartItemQuery } from "../../../../redux/cart/cartApi";
 import ShopCartItem from "../ShopCart/ShopCartItem/ShopCartItem";
-import { getSubtotal } from "../../../../Utils/getSubtotal";
+import { getSubtotal } from "../../../../utils/getSubtotal";
 import { useCheckoutNavigate } from "@/hooks/useCheckoutNavigate";
 
 type Anchor = "left" | "right";

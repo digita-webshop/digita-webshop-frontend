@@ -1,21 +1,9 @@
-import {
-  Products,
-  Special,
-  Header,
-  ShopByCategories,
-  WhatClientSay,
-  OurBlog,
-} from "../../../Components";
+import { Home } from "../../../components";
 
 function HomePage() {
   return (
     <>
-      <Header />
-      <Products />
-      <ShopByCategories />
-      <Special />
-      <WhatClientSay />
-      <OurBlog />
+      <Home />
     </>
   );
 }

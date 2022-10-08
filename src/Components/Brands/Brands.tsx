@@ -1,10 +1,10 @@
 import { Divider, Grid, SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
-import Brand from "./Brand/Brand";
-import ContentHeader from "./ContentHeader/ContentHeader";
-import TableHeader from "./TableHeader/TableHeader";
-import { brands } from "../../Services/Data/data";
-import { CardWrapper } from "../../Styles/panelCommon";
+import Brand from "./Components/Brand/Brand";
+import ContentHeader from "./Components/ContentHeader/ContentHeader";
+import TableHeader from "./Components/TableHeader/TableHeader";
+import { brands } from "../../data/data";
+import { CardWrapper } from "../../styles/panel";
 
 const Brands = () => {
   const [selectedStatus, setSelectedStatus] = useState("status20");

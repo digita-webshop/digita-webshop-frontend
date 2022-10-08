@@ -9,15 +9,15 @@ import {
   Typography,
 } from "@mui/material";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
-import CategoriesFilter from "./CategoriesFilter/CategoriesFilter";
-import ColorFilter from "./ColorFilter/ColorFilter";
-import PriceFilter from "./PriceFilter/PriceFilter";
-import FiltersDrawer from "./FiltersDrawer/FiltersDrawer";
-import Toolbar from "./Toolbar/Toolbar";
-import ProductItem from "../Products/Components/ProductItem/ProductItem";
+import CategoriesFilter from "./Components/CategoriesFilter/CategoriesFilter";
+import ColorFilter from "./Components/ColorFilter/ColorFilter";
+import PriceFilter from "./Components/PriceFilter/PriceFilter";
+import FiltersDrawer from "./Components/FiltersDrawer/FiltersDrawer";
+import Toolbar from "./Components/Toolbar/Toolbar";
+import ProductItem from "../Home/Components/Products/Components/ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { useGetAllProductsQuery } from "../../features/products/productsApi";
+import { useGetAllProductsQuery } from "../../redux/products/productsApi";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
 
 function Shop() {

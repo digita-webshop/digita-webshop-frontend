@@ -1,11 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import {
-  colorBoxStyles,
-  GreyTooltip,
-  ProductColor,
-} from "../../../../../Styles/Product";
+import { colorBoxStyles, GreyTooltip, ProductColor } from "../../../styles";
 import { useState } from "react";
-import { colorsList } from "../../../../../Services/Data/data";
+import { colorsList } from "../../../../../data/data";
 
 interface Props {
   colors: string[];

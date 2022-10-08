@@ -7,7 +7,7 @@ import {
   Tab,
   TabPanel,
   moreStyles,
-} from "../../../../Styles/Product";
+} from "../../styles";
 import Description from "./Description/Description";
 import Delivery from "./Delivery/Delivery";
 import AboutBrand from "./AboutBrand/AboutBrand";
@@ -16,8 +16,8 @@ import Reviews from "./Reviews/Reviews";
 import { Box, Collapse, Typography } from "@mui/material";
 import { useState, SyntheticEvent } from "react";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import { IProduct } from "../../../../Services/Types/product";
-import { useGetReviewsQuery } from "../../../../features/reviews/reviewsApi";
+import { IProduct } from "../../../../types/product";
+import { useGetReviewsQuery } from "../../../../redux/reviews/reviewsApi";
 import { useSearchParams } from "react-router-dom";
 interface Props {
   product: IProduct;

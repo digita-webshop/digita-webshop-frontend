@@ -1,4 +1,4 @@
-import { Wishlist } from "../../../../Components";
+import { Wishlist } from "../../../../components";
 
 function WishlistPage() {
   return <Wishlist />;

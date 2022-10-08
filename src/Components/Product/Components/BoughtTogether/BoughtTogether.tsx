@@ -4,11 +4,11 @@ import {
   boughtPriceStyle,
   BoughtTextStyle,
   BoughtButton,
-} from "../../../../Styles/Product";
+} from "../../styles";
 import { Button, Box, Typography, Divider } from "@mui/material";
 import { Card, CardMedia, CardActionArea } from "@mui/material";
 import { Fragment } from "react";
-import { IProduct } from "../../../../Services/Types/product";
+import { IProduct } from "../../../../types/product";
 import { useNavigate } from "react-router-dom";
 interface Props {
   products: IProduct[];

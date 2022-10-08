@@ -1,9 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import {
-  posterStyle,
-  subjectWrapper,
-  subjectTitle,
-} from "../../../../Styles/About";
+import { posterStyle, subjectWrapper, subjectTitle } from "../../styles";
 
 const Poster = () => {
   return (

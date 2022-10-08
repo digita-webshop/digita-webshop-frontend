@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import { CustomBtn } from "../../styles";
-import { ICartItem } from "../../../../Services/Types/cart";
+import { ICartItem } from "../../../../types/cart";
 import { useDispatch } from "react-redux";
-import { updateCart } from "@/features/cart/cartSlice";
+import { updateCart } from "@/redux/cart/cartSlice";
 
 type Props = {
   cartItem: ICartItem;

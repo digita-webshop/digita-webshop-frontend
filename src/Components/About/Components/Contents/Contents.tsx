@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { titleStyle, contentStyle } from "../../../../Styles/About";
+import { titleStyle, contentStyle } from "../../styles";
 
 const Contents = () => {
   return (

@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { FormEvent, useState } from "react";
-import { FormFooter, FormWrapper, inputErrorStyles } from "../../Styles/Login";
+import { FormFooter, FormWrapper, inputErrorStyles } from "../Login/styles";
 import Header from "../Login/Header/Header";
 
 type Modal = "login" | "register" | "reset";

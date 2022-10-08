@@ -1,6 +1,6 @@
 import { Box, List, ListItemText } from "@mui/material";
-import { panelSettingItems } from "../../../Services/Data/data";
-import { PanelItem } from "../../../Styles/Panel";
+import { panelSettingItems } from "../../../data/data";
+import { PanelItem } from "../../../layouts/AdminPanelLayout/styles";
 
 interface Props {
   activePageHandler: (page: string) => () => void;

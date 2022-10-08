@@ -1,17 +1,17 @@
 import { useState } from "react";
-import ContentHeader from "./ContentHeader/ContentHeader";
-import GridHeader from "./GridHeader/GridHeader";
+import ContentHeader from "./Components/ContentHeader/ContentHeader";
+import GridHeader from "./Components/GridHeader/GridHeader";
 import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
-import { DashWrapper, paginationStyle } from "../../Styles/PanelProducts";
-import Product from "./Product/Product";
-import PanelPagination from "../PanelPagination/PanelPagination";
+import { DashWrapper, paginationStyle } from "./styles";
+import Product from "./Components/Product/Product";
+import PanelPagination from "../Pagination/PanelPagination";
 import {
   useDeleteProductMutation,
   useGetAllProductsQuery,
-} from "../../features/products/productsApi";
-import { errorMessage, successMessage } from "../../Utils/toastMessages";
+} from "../../redux/products/productsApi";
+import { errorMessage, successMessage } from "@/utils/toastMessages";
 import NotFound from "../EmptyList/NotFound";
-import { ErrorText } from "../../Styles/panelCommon";
+import { ErrorText } from "../../styles/panel";
 import PanelLoading from "../Loading/PanelLoading";
 
 const PanelProducts = () => {

@@ -11,12 +11,12 @@ import {
 import { useState } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { cartModal } from "../../../Styles/PanelProducts";
-import { titleWrapper, titleStyle } from "../../../Styles/PanelProducts";
-import { cardWrapper, deleteBtn, addBtn } from "../../../Styles/User";
-import { useDeleteWishMutation } from "../../../features/wishlist/wishlistApi";
-import { successMessage } from "../../../Utils/toastMessages";
-import { useAppSelector } from "../../../features/store";
+import { cartModal } from "../../PanelProducts/styles";
+import { titleWrapper, titleStyle } from "../../PanelProducts/styles";
+import { cardWrapper, deleteBtn, addBtn } from "../../../styles/user";
+import { useDeleteWishMutation } from "../../../redux/wishlist/wishlistApi";
+import { successMessage } from "../../../utils/toastMessages";
+import { useAppSelector } from "../../../redux/store";
 
 type T = {
   id: string;

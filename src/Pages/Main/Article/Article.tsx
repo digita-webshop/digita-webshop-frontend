@@ -1,4 +1,4 @@
-import { Article } from "../../../Components";
+import { Article } from "../../../components";
 
 function ArticlePage() {
   return <Article />;

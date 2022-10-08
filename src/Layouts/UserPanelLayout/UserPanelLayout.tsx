@@ -1,5 +1,5 @@
 import { Box, useMediaQuery, useTheme } from "@mui/material";
-import { Aside, Main, UserWrapper } from "../../Styles/User";
+import { Aside, Main, UserWrapper } from "../../styles/user";
 import Sidebar from "./Sidebar/Sidebar";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../MainLayout/Navbar/Navbar";

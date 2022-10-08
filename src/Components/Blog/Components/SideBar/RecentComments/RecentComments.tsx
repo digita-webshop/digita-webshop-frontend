@@ -1,7 +1,7 @@
 import { Typography, Skeleton, Box } from "@mui/material";
 import RecentComment from "./RecentComment/RecentComment";
-import { FilterTitleWrapper } from "../../../../../Styles/ShopPage";
-import { useGetAllReviewsQuery } from "../../../../../features/reviews/reviewsApi";
+import { FilterTitleWrapper } from "../../../../Shop/styles";
+import { useGetAllReviewsQuery } from "../../../../../redux/reviews/reviewsApi";
 
 function RecentComments() {
   const {

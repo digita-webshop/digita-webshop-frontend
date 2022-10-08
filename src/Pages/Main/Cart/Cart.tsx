@@ -1,6 +1,6 @@
 import React from "react";
-import { Breadcrumbs } from "../../../Components";
-import { Cart } from "../../../Components";
+import { Breadcrumbs } from "../../../components";
+import { Cart } from "../../../components";
 const CartPage = () => {
   return (
     <>

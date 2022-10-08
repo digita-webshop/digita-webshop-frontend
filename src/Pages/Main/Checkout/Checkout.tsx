@@ -1,4 +1,4 @@
-import { Checkout, Breadcrumbs } from "../../../Components";
+import { Checkout, Breadcrumbs } from "../../../components";
 function CheckoutPage() {
   return (
     <>

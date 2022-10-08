@@ -1,7 +1,7 @@
 import { KeyboardArrowRight } from "@mui/icons-material";
 import { Box, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { profileWrapper, topMenuItem, wrapper } from "../../../Styles/User";
+import { profileWrapper, topMenuItem, wrapper } from "../../../styles/user";
 
 function MyOrders({ sidebar }: { sidebar: boolean }) {
   const navigate = useNavigate();

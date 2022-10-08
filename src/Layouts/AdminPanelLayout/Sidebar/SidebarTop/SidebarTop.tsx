@@ -2,7 +2,7 @@ import { MenuOpen } from "@mui/icons-material";
 import { Box, IconButton, useMediaQuery } from "@mui/material";
 import { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
-import logoImg from "../../../../Assets/Images/digita-logo.png";
+import logoImg from "@/assets/Images/digita-logo.png";
 import { useTheme } from "@mui/material/styles";
 interface Props {
   menuOpen: boolean;

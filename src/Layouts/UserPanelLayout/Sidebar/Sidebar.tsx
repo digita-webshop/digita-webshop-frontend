@@ -8,10 +8,10 @@ import {
 } from "@mui/material";
 import { Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import { UserItem } from "../../../Styles/User";
-import { userSidebarItems } from "../../../Services/Data/data";
+import { UserItem } from "../../../styles/user";
+import { userSidebarItems } from "../../../data/data";
 import SidebarTop from "./SidebarTop/SidebarTop";
-import MyOrders from "../../../Components/UserStatus/MyOrders/MyOrders";
+import MyOrders from "../../../components/UserStatus/MyOrders/MyOrders";
 
 const Sidebar = () => {
   return (

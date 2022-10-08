@@ -6,15 +6,15 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { cardWrapper } from "../../Styles/User";
-import { titleStyle } from "../../Styles/PanelProducts";
+import { cardWrapper } from "../../styles/user";
+import { titleStyle } from "../PanelProducts/styles";
 import { Fragment } from "react";
 import MyOrders from "./MyOrders/MyOrders";
-import { useGetWishlistQuery } from "@/features/wishlist/wishlistApi";
-import { useAppSelector } from "@/features/store";
+import { useGetWishlistQuery } from "@/redux/wishlist/wishlistApi";
+import { useAppSelector } from "@/redux/store";
 import { useTheme } from "@mui/material/styles";
 import PanelLoading from "../Loading/PanelLoading";
-import { ErrorText } from "@/Styles/panelCommon";
+import { ErrorText } from "@/styles/panel";
 import NotFound from "../EmptyList/NotFound";
 
 const Status = () => {

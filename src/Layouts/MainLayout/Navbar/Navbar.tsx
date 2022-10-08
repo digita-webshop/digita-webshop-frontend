@@ -8,8 +8,8 @@ import {
   Collapse,
   Modal,
 } from "@mui/material";
-import logoImg from "../../../Assets/Images/digita-logo.png";
-import { navbarItems } from "../../../Services/Data/data";
+import logoImg from "@/assets/Images/digita-logo.png";
+import { navbarItems } from "../../../data/data";
 import { useTheme } from "@mui/material/styles";
 
 import { MenuRounded, KeyboardArrowDown } from "@mui/icons-material";
@@ -21,7 +21,7 @@ import {
   menuIconStyles,
   ShopMenuWrapper,
   tabLinkStyles,
-} from "../../../Styles/Appbar";
+} from "./styles";
 import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
 import SearchBar from "./SearchBar/SearchBar";
@@ -32,7 +32,7 @@ import {
   Login,
   Register,
   ResetPassword,
-} from "../../../Components";
+} from "../../../components";
 import Icons from "./Icons/Icons";
 
 function Navbar() {

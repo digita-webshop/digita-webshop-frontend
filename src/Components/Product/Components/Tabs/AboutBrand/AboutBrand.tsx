@@ -3,7 +3,7 @@ import {
   TabsTitrStyle,
   ProductContentStyle,
   ProductTextStyle,
-} from "../../../../../Styles/Product";
+} from "../../../styles";
 
 const AboutBrand = ({ brand }: { brand: string }) => {
   return (

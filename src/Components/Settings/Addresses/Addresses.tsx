@@ -5,19 +5,19 @@ import {
   topMenuItem,
   wrapper,
   between,
-} from "../../../Styles/User";
+} from "../../../styles/user";
 import AddLocation from "@mui/icons-material/AddLocation";
 import EmptyList from "../../EmptyList/EmptyList";
-import { cartModal } from "../../../Styles/Products";
+import { cartModal } from "../../Home/Components/Products/styles";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { IAddress, IUser } from "../../../Services/Types/user";
+import { IAddress, IUser } from "../../../types/user";
 import Address from "./Address/Address";
-import { useUpdateUserMutation } from "../../../features/user/userApi";
-import AddressForm from "../../Checkout/AddressForm/AddressForm";
-import { setCredentials } from "../../../features/auth/authSlice";
+import { useUpdateUserMutation } from "../../../redux/user/userApi";
+import AddressForm from "../../Checkout/Components/AddressForm/AddressForm";
+import { setCredentials } from "../../../redux/auth/authSlice";
 import { useDispatch } from "react-redux";
-import { errorMessage, successMessage } from "../../../Utils/toastMessages";
+import { errorMessage, successMessage } from "../../../utils/toastMessages";
 interface Props {
   user: IUser;
 }
