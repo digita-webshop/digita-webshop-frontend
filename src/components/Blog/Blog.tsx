@@ -10,6 +10,7 @@ import CustomBreadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import { useGetAllArticlesQuery } from "../../redux/articles/articlesApi";
 import ArticlePlaceholder from "../Placeholders/ArticlePlaceholder";
 import { useSearchParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 function Blog() {
   const [searchValue, setSearchValue] = useState("");
@@ -39,6 +40,9 @@ function Blog() {
 
   return (
     <Box bgcolor={"white"}>
+      <Helmet>
+        <title>Blog | Best articles to read everyday</title>
+      </Helmet>
       <CustomBreadcrumbs title={"blog"} />
       <Container>
         <Grid container sx={{ py: 6.25 }} spacing={3}>

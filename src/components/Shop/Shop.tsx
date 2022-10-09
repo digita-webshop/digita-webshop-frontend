@@ -19,6 +19,7 @@ import Pagination from "../Pagination/Pagination";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { useGetAllProductsQuery } from "../../redux/products/productsApi";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
+import { Helmet } from "react-helmet-async";
 
 function Shop() {
   const [displayDrawer, setDisplayDrawer] = useState(false);
@@ -108,6 +109,9 @@ function Shop() {
 
   return (
     <Box bgcolor={"white"}>
+      <Helmet>
+        <title>Shop | Purchase products at affordable price </title>
+      </Helmet>
       <Breadcrumbs title={"products"} />
       <Container sx={{ paddingY: "50px" }}>
         <Grid container columnSpacing={4}>

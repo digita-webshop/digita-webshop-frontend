@@ -1,9 +1,13 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 function pageNotFound() {
   return (
     <Container>
+      <Helmet>
+        <title>Digita WebShop | Page not found!</title>
+      </Helmet>
       <Box
         sx={{
           height: "90vh",

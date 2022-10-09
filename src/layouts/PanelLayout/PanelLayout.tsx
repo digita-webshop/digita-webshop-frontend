@@ -5,6 +5,7 @@ import { Aside, Main } from "./styles";
 import Sidebar from "./Sidebar/Sidebar";
 import { useTheme } from "@mui/material/styles";
 import MainNavbar from "./MainNavbar/MainNavbar";
+import { Helmet } from "react-helmet-async";
 
 function PanelLayout() {
   const [menuOpen, setMenuOpen] = useState(true);
@@ -18,6 +19,9 @@ function PanelLayout() {
   };
   return (
     <>
+      <Helmet>
+        <title>Digita WebShop | Admin panel</title>
+      </Helmet>
       {mdMatches && (
         <Aside className={menuOpen ? "overflow" : "menu"}>
           <Sidebar

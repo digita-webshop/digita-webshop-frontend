@@ -10,17 +10,18 @@ import { FormEvent } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { articleTitleStyles } from "./styles";
 import ReplyForm from "./Components/ReplyForm/ReplyForm";
-import { useGetArticleQuery } from "../../redux/articles/articlesApi";
+import { useGetArticleQuery } from "redux/articles/articlesApi";
 import Loading from "../Loading/Loading";
-import { getReadableDate } from "../../utils/getReadableDate";
+import { getReadableDate } from "utils/getReadableDate";
 import { convertFromRaw, Editor, EditorState } from "draft-js";
 import Review from "../Product/Components/Tabs/Reviews/Review/Review";
 import {
   useAddReviewMutation,
   useGetReviewsQuery,
-} from "../../redux/reviews/reviewsApi";
-import { useLoadReviews } from "../../hooks/useLoadReviews";
-import { useAppSelector } from "../../redux/store";
+} from "redux/reviews/reviewsApi";
+import { useLoadReviews } from "hooks/useLoadReviews";
+import { useAppSelector } from "redux/store";
+import { Helmet } from "react-helmet-async";
 
 function Article() {
   const { user } = useAppSelector((state) => state.reducer.auth);
@@ -83,6 +84,9 @@ function Article() {
   const editorState = EditorState.createWithContent(contentState);
   return (
     <Box bgcolor={"white"}>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <Breadcrumbs title={"blog"} lastPath={title} category={category} />
       <Container>
         <Grid container sx={{ py: 6.25 }}>

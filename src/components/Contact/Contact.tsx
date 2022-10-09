@@ -2,10 +2,14 @@ import { Box, Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import { Address, Form, Map } from "./Components";
+import { Helmet } from "react-helmet-async";
 
 function Contact() {
   return (
     <Box bgcolor={"white"}>
+      <Helmet>
+        <title>Digita WebShop | Contact us</title>
+      </Helmet>
       <Breadcrumbs title={"contact us "} />
       <Container maxWidth={"lg"}>
         <Address />

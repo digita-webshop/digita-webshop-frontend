@@ -10,10 +10,11 @@ import { useParams } from "react-router-dom";
 import {
   useGetAllProductsQuery,
   useGetProductQuery,
-} from "../../redux/products/productsApi";
+} from "redux/products/productsApi";
 import Loading from "../Loading/Loading";
-import { useGetWishlistQuery } from "../../redux/wishlist/wishlistApi";
-import { useAppSelector } from "../../redux/store";
+import { useGetWishlistQuery } from "redux/wishlist/wishlistApi";
+import { useAppSelector } from "redux/store";
+import { Helmet } from "react-helmet-async";
 
 const Product = () => {
   const { role } = useAppSelector((state) => state.reducer.auth);
@@ -38,6 +39,9 @@ const Product = () => {
   }
   return (
     <Box bgcolor={"white"}>
+      <Helmet>
+        <title>{product?.title}</title>
+      </Helmet>
       <Breadcrumbs
         title={"product"}
         lastPath={product?.title}
