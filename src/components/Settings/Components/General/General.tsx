@@ -13,13 +13,13 @@ import {
   POutlinedButton,
   PStack,
   PTextField,
-} from "@/styles/panel";
-import { IUser } from "@/types/user";
-import { errorMessage, successMessage } from "@/utils/toastMessages";
-import { useUpdateUserMutation } from "@/redux/user/userApi";
+} from "../../../../styles/panel";
+import { IUser } from "../../../../types/user";
+import { errorMessage, successMessage } from "../../../../utils/toastMessages";
+import { useUpdateUserMutation } from "../../../../redux/user/userApi";
 import { useDispatch } from "react-redux";
-import { setCredentials } from "@/redux/auth/authSlice";
-import { uploadImage } from "@/utils/uploadImage";
+import { setCredentials } from "../../../../redux/auth/authSlice";
+import { uploadImage } from "../../../../utils/uploadImage";
 
 interface Props {
   user: IUser;

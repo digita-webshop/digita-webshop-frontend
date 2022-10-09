@@ -5,7 +5,7 @@ import { shopCartWrapper } from "../styles";
 import { useGetAllCartItemQuery } from "../../../../redux/cart/cartApi";
 import ShopCartItem from "./ShopCartItem/ShopCartItem";
 import { getSubtotal } from "../../../../utils/getSubtotal";
-import { useCheckoutNavigate } from "@/hooks/useCheckoutNavigate";
+import { useCheckoutNavigate } from "../../../../hooks/useCheckoutNavigate";
 
 function ShopCart() {
   const { user } = useAppSelector((state) => state.reducer.auth);

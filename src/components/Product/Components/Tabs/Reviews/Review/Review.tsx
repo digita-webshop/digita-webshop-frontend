@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { Avatar, Box, Divider, Rating, Typography } from "@mui/material";
-import { getReadableDate } from "@/utils/getReadableDate";
+import { getReadableDate } from "../../../../../../utils/getReadableDate";
 import { useLocation } from "react-router-dom";
-import { useGetUserMutation } from "@/redux/user/userApi";
+import { useGetUserMutation } from "../../../../../../redux/user/userApi";
 
 interface Props {
   id: string;

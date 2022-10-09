@@ -1,8 +1,8 @@
 import { useState, FormEvent } from "react";
 import { FormControl, Grid, Typography } from "@mui/material";
-import { PButton, PFormLabel, PTextField } from "@/styles/panel";
-import { useUpdateUserMutation } from "@/redux/user/userApi";
-import { successMessage } from "@/utils/toastMessages";
+import { PButton, PFormLabel, PTextField } from "../../../../styles/panel";
+import { useUpdateUserMutation } from "../../../../redux/user/userApi";
+import { successMessage } from "../../../../utils/toastMessages";
 
 interface Props {
   role: string;

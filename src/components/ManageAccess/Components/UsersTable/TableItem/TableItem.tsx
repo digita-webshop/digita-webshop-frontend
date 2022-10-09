@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 import { Close } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
-import { IUser } from "@/types/user";
-import { POutlinedButton } from "@/styles/panel";
+import { IUser } from "../../../../../types/user";
+import { POutlinedButton } from "../../../../../styles/panel";
 import { TCheckBox } from "../../../../Reviews/styles";
 
 interface Props {

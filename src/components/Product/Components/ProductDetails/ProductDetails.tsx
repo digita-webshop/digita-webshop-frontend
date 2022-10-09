@@ -29,23 +29,23 @@ import {
 } from "@mui/icons-material";
 import Gallery from "./Gallery/Gallery";
 import ColorPicker from "./ColorPicker/ColorPicker";
-import { IProduct } from "@/types/product";
+import { IProduct } from "../../../../types/product";
 import { Link as NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useAppSelector } from "@/redux/store";
+import { useAppSelector } from "../../../../redux/store";
 import {
   useAddWishMutation,
   useDeleteWishMutation,
-} from "@/redux/wishlist/wishlistApi";
+} from "../../../../redux/wishlist/wishlistApi";
 import WishModal from "../../../Home/Components/Products/Components/Modals/WishModal/WishModal";
-import { useGetReviewsQuery } from "@/redux/reviews/reviewsApi";
-import { isInList } from "@/utils/isInList";
-import { useGetAllCartItemQuery } from "@/redux/cart/cartApi";
-import QuantityInput from "@/components/Cart/Components/QuantityInput/QuantityInput";
+import { useGetReviewsQuery } from "../../../../redux/reviews/reviewsApi";
+import { isInList } from "../../../../utils/isInList";
+import { useGetAllCartItemQuery } from "../../../../redux/cart/cartApi";
+import QuantityInput from "../../../Cart/Components/QuantityInput/QuantityInput";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "@/redux/cart/cartSlice";
-import { useAddToCart } from "@/hooks/useAddToCart";
-import { addToCompareList } from "@/redux/compare/compareSlice";
-import CompareModal from "@/components/Compare/Compare";
+import { removeFromCart } from "../../../../redux/cart/cartSlice";
+import { useAddToCart } from "../../../../hooks/useAddToCart";
+import { addToCompareList } from "../../../../redux/compare/compareSlice";
+import CompareModal from "../../../Compare/Compare";
 
 interface Props {
   product: IProduct;

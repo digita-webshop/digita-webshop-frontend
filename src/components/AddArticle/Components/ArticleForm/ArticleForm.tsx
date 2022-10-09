@@ -14,10 +14,10 @@ import {
   MenuItem,
   SelectChangeEvent,
 } from "@mui/material";
-import { errorMessage } from "@/utils/toastMessages";
+import { errorMessage } from "utils/toastMessages";
 import { fileInputStyles } from "../../styles";
-import { PFormControl, PFormLabel, PTextField } from "@/styles/panel";
-import { blogCategories } from "@/components/PanelProducts/Components/GridHeader/data";
+import { PFormControl, PFormLabel, PTextField } from "styles/panel";
+import { blogCategories } from "components/PanelProducts/Components/GridHeader/data";
 interface Props {
   enteredTitle: string;
   setEnteredTitle: Dispatch<SetStateAction<string>>;

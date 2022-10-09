@@ -6,7 +6,7 @@ import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import { Link as RouterLink } from "react-router-dom";
-import { getReadableDate } from "@/utils/getReadableDate";
+import { getReadableDate } from "utils/getReadableDate";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,

@@ -6,9 +6,9 @@ import SpecialCards from "./Components/SpecialCards/SpecialCards";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
 import SpecialProductPlaceholder from "../../../Placeholders/SpecialProductPlaceholder";
-import { useGetAllProductsQuery } from "@/redux/products/productsApi";
-import { useAppSelector } from "@/redux/store";
-import { useGetAllCartItemQuery } from "@/redux/cart/cartApi";
+import { useGetAllProductsQuery } from "../../../../redux/products/productsApi";
+import { useAppSelector } from "../../../../redux/store";
+import { useGetAllCartItemQuery } from "../../../../redux/cart/cartApi";
 
 const Special = () => {
   const { user } = useAppSelector((state) => state.reducer.auth);

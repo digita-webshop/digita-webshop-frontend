@@ -1,6 +1,6 @@
 import { Add } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import { PButton, PTitle } from "@/styles/panel";
+import { PButton, PTitle } from "../../../../styles/panel";
 
 function ContentHeader() {
   return (

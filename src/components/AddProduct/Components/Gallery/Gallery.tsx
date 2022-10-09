@@ -1,11 +1,10 @@
-import { Dispatch, SetStateAction } from "react";
+import { ChangeEvent, useRef, Dispatch, SetStateAction } from "react";
 import { Edit } from "@mui/icons-material";
 import { Box, Grid } from "@mui/material";
-import { ImageWrapper } from "@/components/AddProduct/styles";
-import { CardWrapper, PFormLabel } from "@/styles/panel";
-import { ChangeEvent, useRef } from "react";
-import { errorMessage } from "@/utils/toastMessages";
-import { uploadImage } from "@/utils/uploadImage";
+import { ImageWrapper } from "components/AddProduct/styles";
+import { CardWrapper, PFormLabel } from "styles/panel";
+import { errorMessage } from "utils/toastMessages";
+import { uploadImage } from "utils/uploadImage";
 
 interface Props {
   setAddedImages: Dispatch<SetStateAction<any>>;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Grid,
   Rating,
@@ -11,14 +12,13 @@ import {
 import StarIcon from "@mui/icons-material/Star";
 import { itemContent } from "../../styles";
 import { Link } from "react-router-dom";
-import { isInList } from "@/utils/isInList";
-import { ICartItem } from "@/types/cart";
-import { IProduct } from "@/types/product";
-import { useAddToCart } from "@/hooks/useAddToCart";
-import { useState } from "react";
-import CartModal from "@/components/Home/Components/Products/Components/Modals/CartModal/CartModal";
+import { isInList } from "../../../../../../utils/isInList";
+import { ICartItem } from "../../../../../../types/cart";
+import { IProduct } from "../../../../../../types/product";
+import { useAddToCart } from "../../../../../../hooks/useAddToCart";
 import { ShoppingBasket } from "@mui/icons-material";
-import DotSpinner from "@/components/Loading/DotSpinner";
+import DotSpinner from "../../../../../Loading/DotSpinner";
+import CartModal from "components/Home/Components/Products/Components/Modals/CartModal/CartModal";
 
 type Props = {
   product: IProduct;

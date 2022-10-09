@@ -1,4 +1,4 @@
-import { ICartItem } from "@/types/cart";
+import { ICartItem } from "types/cart";
 import {
   Table,
   TableBody,

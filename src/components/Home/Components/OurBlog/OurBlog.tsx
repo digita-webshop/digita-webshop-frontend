@@ -5,8 +5,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import BlogCard from "./BlogCard/BlogCard";
 import { ContainerWrapper, WrapperBox } from "./styles";
 import { useInView } from "react-intersection-observer";
-import { useGetAllArticlesQuery } from "@/redux/articles/articlesApi";
-import ArticlePlaceholder from "@/components/Placeholders/ArticlePlaceholder";
+import { useGetAllArticlesQuery } from "redux/articles/articlesApi";
+import ArticlePlaceholder from "components/Placeholders/ArticlePlaceholder";
 
 function OurBlog() {
   const { ref, inView } = useInView({ triggerOnce: true });

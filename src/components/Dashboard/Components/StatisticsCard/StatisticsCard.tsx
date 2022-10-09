@@ -1,5 +1,5 @@
 import { Box, Icon, Typography } from "@mui/material";
-import { CardWrapper } from "@/styles/panel";
+import { CardWrapper } from "styles/panel";
 interface Props {
   title: string;
   subtitle: string;

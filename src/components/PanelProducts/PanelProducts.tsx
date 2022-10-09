@@ -9,7 +9,7 @@ import {
   useDeleteProductMutation,
   useGetAllProductsQuery,
 } from "../../redux/products/productsApi";
-import { errorMessage, successMessage } from "@/utils/toastMessages";
+import { errorMessage, successMessage } from "../../utils/toastMessages";
 import NotFound from "../EmptyList/NotFound";
 import { ErrorText } from "../../styles/panel";
 import PanelLoading from "../Loading/PanelLoading";

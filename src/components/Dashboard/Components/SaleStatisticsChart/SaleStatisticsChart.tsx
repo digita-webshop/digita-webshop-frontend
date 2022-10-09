@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { DashTitle } from "../../styles";
-import { CardWrapper } from "@/styles/panel";
+import { CardWrapper } from "styles/panel";
 
 ChartJS.register(
   CategoryScale,

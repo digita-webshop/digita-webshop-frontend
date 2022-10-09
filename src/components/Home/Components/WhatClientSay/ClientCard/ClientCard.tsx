@@ -1,6 +1,6 @@
-import { IReviews } from "@/types/product";
 import { Box, Grid, Rating, Typography } from "@mui/material";
-import { ReusableTypography } from "@/components/Home/Components/WhatClientSay/styles";
+import { IReviews } from "../../../../../types/product";
+import { ReusableTypography } from "../styles";
 
 type Props = {
   review: IReviews;

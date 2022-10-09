@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/redux/store";
+import { useAppSelector } from "../redux/store";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export function useCheckoutNavigate() {

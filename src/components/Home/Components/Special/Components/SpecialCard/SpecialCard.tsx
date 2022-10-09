@@ -4,9 +4,9 @@ import {
   styleContent,
   cardStyle,
   contentStyle,
-} from "@/components/Home/Components/Special/styles";
+} from "../../styles";
 import { useInView } from "react-intersection-observer";
-import { AnimatedGrid } from "@/components/Home/Components/Products/styles";
+import { AnimatedGrid } from "components/Home/Components/Products/styles";
 
 type Props = {
   title: string;

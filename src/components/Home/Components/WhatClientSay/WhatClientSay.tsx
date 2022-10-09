@@ -1,14 +1,10 @@
 import { Box } from "@mui/material";
 import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Title } from "@/components/Home/Components/ShopByCategories/styles";
-import {
-  boxStyles,
-  Container,
-  WrapperBox,
-} from "@/components/Home/Components/WhatClientSay/styles";
+import { Title } from "../ShopByCategories/styles";
+import { boxStyles, Container, WrapperBox } from "./styles";
 import { useInView } from "react-intersection-observer";
-import { useGetAllReviewsQuery } from "@/redux/reviews/reviewsApi";
+import { useGetAllReviewsQuery } from "../../../../redux/reviews/reviewsApi";
 import ClientCard from "./ClientCard/ClientCard";
 
 function WhatClientSay() {

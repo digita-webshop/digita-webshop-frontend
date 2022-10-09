@@ -4,10 +4,10 @@ import { Box, Button, Divider, Modal, Typography } from "@mui/material";
 import {
   useDeleteUserMutation,
   useGetAllUsersQuery,
-} from "@/redux/user/userApi";
-import { IUser } from "@/types/user";
-import { errorMessage, successMessage } from "@/utils/toastMessages";
-import { ErrorText, PTextField } from "@/styles/panel";
+} from "../../../../redux/user/userApi";
+import { IUser } from "../../../../types/user";
+import { errorMessage, successMessage } from "../../../../utils/toastMessages";
+import { ErrorText, PTextField } from "../../../../styles/panel";
 import { cartModal, paginationStyle } from "../../../PanelProducts/styles";
 import { TCheckBox } from "../../../Reviews/styles";
 import NotFound from "../../../EmptyList/NotFound";

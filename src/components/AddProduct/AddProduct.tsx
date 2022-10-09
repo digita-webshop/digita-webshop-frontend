@@ -5,10 +5,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   useAddProductMutation,
   useUpdateProductMutation,
-} from "@/redux/products/productsApi";
-import { errorMessage, successMessage } from "@/utils/toastMessages";
-import { IProduct } from "@/types/product";
-import { CardWrapper, PFormLabel } from "@/styles/panel";
+} from "redux/products/productsApi";
+import { errorMessage, successMessage } from "utils/toastMessages";
+import { IProduct } from "types/product";
+import { CardWrapper, PFormLabel } from "styles/panel";
 import TextEditor from "../TextEditor/TextEditor";
 import ContentHeader from "./Components/ContentHeader/ContentHeader";
 import Details from "./Components/Details/Details";

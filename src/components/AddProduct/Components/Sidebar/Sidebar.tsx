@@ -1,5 +1,3 @@
-import { Close } from "@mui/icons-material";
-import { Box, Divider, FormControl, Grid, Typography } from "@mui/material";
 import {
   ChangeEvent,
   Dispatch,
@@ -7,7 +5,9 @@ import {
   SetStateAction,
   useState,
 } from "react";
-import { CardWrapper, PFormLabel, PTextField } from "@/styles/panel";
+import { Close } from "@mui/icons-material";
+import { Box, Divider, FormControl, Grid, Typography } from "@mui/material";
+import { CardWrapper, PFormLabel, PTextField } from "styles/panel";
 import { v4 as uuidv4 } from "uuid";
 import { tagContainerStyles, tagIconStyles, tagStyles } from "../../styles";
 import Categories from "./Categories/Categories";

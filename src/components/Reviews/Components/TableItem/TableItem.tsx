@@ -2,8 +2,8 @@ import { TableRow, Rating } from "@mui/material";
 import { Delete, Star } from "@mui/icons-material";
 import { TableButton } from "../../../Orders/styles";
 import { TCell, TCheckBox } from "../../styles";
-import { IReviews } from "@/types/product";
-import { getReadableDate } from "@/utils/getReadableDate";
+import { IReviews } from "../../../../types/product";
+import { getReadableDate } from "../../../../utils/getReadableDate";
 import { useNavigate } from "react-router-dom";
 
 interface Props {

@@ -11,11 +11,11 @@ import {
 } from "@mui/material";
 import { CloseRounded, SearchOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { useGetAllProductsQuery } from "@/redux/products/productsApi";
-import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import { useGetAllProductsQuery } from "../../../../redux/products/productsApi";
+import { useOnClickOutside } from "../../../../hooks/useOnClickOutside";
 import { searchBarDropdown } from "../styles";
-import { PStack } from "@/styles/panel";
-import { productCategories } from "@/components/Shop/data";
+import { PStack } from "../../../../styles/panel";
+import { productCategories } from "../../../../components/Shop/data";
 
 type SearchBarProps = {
   openSearchBarHandler: () => void;

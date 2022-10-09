@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { Box } from "@mui/material";
 import { GreyTooltip, ProductColor } from "../../../../Product/styles";
-import { colorsList } from "@/components/Product/Components/ProductDetails/ColorPicker/data";
+import { colorsList } from "components/Product/Components/ProductDetails/ColorPicker/data";
 
 interface Props {
   selectedColors: string[];

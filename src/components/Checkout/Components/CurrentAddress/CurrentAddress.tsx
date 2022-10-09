@@ -1,7 +1,7 @@
-import { IAddress, IUser } from "@/types/user";
+import { Dispatch, SetStateAction } from "react";
+import { IAddress } from "types/user";
 import { Edit } from "@mui/icons-material";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { Dispatch, SetStateAction } from "react";
 
 type Props = {
   setDisplayCurrentAddress: Dispatch<SetStateAction<boolean>>;

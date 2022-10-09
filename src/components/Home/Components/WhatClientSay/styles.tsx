@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import bgCat from "@/assets/Images/WhatClientSayAssets/bg-testimonials.jpg";
-import navigationIcon from "@/assets/icons/right-arrow.svg";
+import navigationIcon from "../../../../assets/icons/right-arrow.svg";
 
 interface StyledTypography {
   fontWeight: string;

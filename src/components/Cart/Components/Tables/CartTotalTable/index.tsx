@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 import { StyledTableCell, TotalTextStyle } from "../../../styles";
 import { styled } from "@mui/material/styles";
-import { useAppSelector } from "@/redux/store";
-import { useCheckoutNavigate } from "@/hooks/useCheckoutNavigate";
+import { useAppSelector } from "redux/store";
+import { useCheckoutNavigate } from "hooks/useCheckoutNavigate";
 
 type Props = {
   total: number;

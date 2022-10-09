@@ -39,7 +39,7 @@ import { IProduct } from "../../../../../../types/product";
 import { useGetAllCartItemQuery } from "../../../../../../redux/cart/cartApi";
 import DotSpinner from "../../../../../Loading/DotSpinner";
 import { isInList } from "../../../../../../utils/isInList";
-import { useAddToCart } from "@/hooks/useAddToCart";
+import { useAddToCart } from "hooks/useAddToCart";
 
 type Props = {
   product: IProduct;

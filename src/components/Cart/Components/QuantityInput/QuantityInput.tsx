@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { CustomBtn } from "../../styles";
 import { ICartItem } from "../../../../types/cart";
 import { useDispatch } from "react-redux";
-import { updateCart } from "@/redux/cart/cartSlice";
+import { updateCart } from "redux/cart/cartSlice";
 
 type Props = {
   cartItem: ICartItem;

@@ -1,7 +1,7 @@
 import { Typography, Box } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "@/redux/store";
+import { useAppSelector } from "../../../../redux/store";
 
 interface Props {
   title: string;

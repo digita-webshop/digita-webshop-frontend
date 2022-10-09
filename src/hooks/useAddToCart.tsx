@@ -1,10 +1,10 @@
-import { v4 as uuidv4 } from "uuid";
-import { useAppSelector } from "@/redux/store";
-import { IProduct } from "@/types/product";
 import { Dispatch, SetStateAction } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useAppSelector } from "../redux/store";
+import { IProduct } from "../types/product";
 import { useDispatch } from "react-redux";
-import { addProductToCart } from "@/redux/cart/cartSlice";
-import { useAddToCartMutation } from "@/redux/cart/cartApi";
+import { addProductToCart } from "../redux/cart/cartSlice";
+import { useAddToCartMutation } from "../redux/cart/cartApi";
 
 export function useAddToCart(
   inCart: boolean,

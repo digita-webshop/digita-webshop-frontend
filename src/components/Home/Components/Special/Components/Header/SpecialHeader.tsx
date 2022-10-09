@@ -1,9 +1,6 @@
+import { Dispatch, SetStateAction } from "react";
 import { Box, Button, Typography } from "@mui/material";
-import React, { Dispatch, SetStateAction } from "react";
-import {
-  navStyle,
-  StyledProducts,
-} from "@/components/Home/Components/Products/styles";
+import { navStyle, StyledProducts } from "../../../Products/styles";
 
 const sortList = ["latest", "rating"];
 interface Props {

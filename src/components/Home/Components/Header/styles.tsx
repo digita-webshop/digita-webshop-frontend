@@ -1,8 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Box, Button } from "@mui/material";
-import header1 from "@/assets/Images/header1.jpg";
-import header2 from "@/assets/Images/header2.jpg";
-import navigationIcon from "@/assets/icons/right-arrow.svg";
+import navigationIcon from "assets/icons/right-arrow.svg";
 
 export const Container = styled(Box)(({ theme }) => ({
   "&:hover .swiper-button-next": {

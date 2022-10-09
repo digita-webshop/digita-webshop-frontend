@@ -1,9 +1,9 @@
-import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { PTextField, PFormControl } from "@/styles/panel";
 import { Dispatch, SetStateAction } from "react";
+import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { PTextField, PFormControl } from "../../../../styles/panel";
 import { blogCategories } from "./data";
 import { useLocation } from "react-router-dom";
-import { productCategories } from "@/components/Shop/data";
+import { productCategories } from "../../../Shop/data";
 
 interface Props {
   selectedSorting?: string;

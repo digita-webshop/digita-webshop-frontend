@@ -8,8 +8,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useCreateAdminMutation } from "@/redux/user/userApi";
-import { successMessage } from "@/utils/toastMessages";
+import { useCreateAdminMutation } from "../../../../redux/user/userApi";
+import { successMessage } from "../../../../utils/toastMessages";
 import { errorStyles, FormWrapper } from "../../../Login/styles";
 
 interface Props {

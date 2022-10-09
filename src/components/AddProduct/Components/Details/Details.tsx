@@ -12,9 +12,9 @@ import {
   PFormControl,
   PFormLabel,
   PTextField,
-} from "@/styles/panel";
+} from "styles/panel";
 import ColorPickers from "./ColorPickers/ColorPickers";
-import { productBrands } from "@/components/Brands/data";
+import { productBrands } from "components/Brands/data";
 
 interface Props {
   enteredTitle: string;

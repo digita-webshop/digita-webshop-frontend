@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { categoryCheckboxStyles } from "../../../styles";
-import { productCategories } from "@/components/Shop/data";
+import { productCategories } from "components/Shop/data";
 
 interface Props {
   selectedCategory: string;

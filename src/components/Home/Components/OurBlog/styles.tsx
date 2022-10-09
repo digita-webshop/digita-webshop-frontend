@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { Box, Container } from "@mui/material";
-import navigationIcon from "@/assets/icons/right-arrow-black.svg";
+import navigationIcon from "assets/icons/right-arrow-black.svg";
 
 export const WrapperBox = styled(Box)(({ theme }) => ({
   width: "100%",

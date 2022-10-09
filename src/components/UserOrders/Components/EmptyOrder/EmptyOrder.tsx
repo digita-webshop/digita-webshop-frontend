@@ -1,4 +1,4 @@
-import { EmptyWishlistWrapper } from "@/components/EmptyList/styles";
+import { EmptyWishlistWrapper } from "../../../EmptyList/styles";
 import { Box, Typography } from "@mui/material";
 
 const EmptyOrder = () => {

@@ -26,17 +26,17 @@ import {
 import Coupon from "./Components/Coupon/Coupon";
 import OrderNotes from "./Components/OrderNotes/OrderNotes";
 import AddressForm from "./Components/AddressForm/AddressForm";
-import { IAddress } from "@/types/user";
-import { useAppSelector } from "@/redux/store";
-import { setCredentials } from "@/redux/auth/authSlice";
-import { errorMessage, successMessage } from "@/utils/toastMessages";
+import { IAddress } from "types/user";
+import { useAppSelector } from "redux/store";
+import { setCredentials } from "redux/auth/authSlice";
+import { errorMessage, successMessage } from "utils/toastMessages";
 import { useDispatch } from "react-redux";
-import { useUpdateUserMutation } from "@/redux/user/userApi";
+import { useUpdateUserMutation } from "redux/user/userApi";
 import Address from "../Settings/Components/Addresses/Address/Address";
-import { cartModal } from "@/components/Home/Components/Products/styles";
+import { cartModal } from "components/Home/Components/Products/styles";
 import { Add, Close } from "@mui/icons-material";
-import { useGetAllCartItemQuery } from "@/redux/cart/cartApi";
-import { getSubtotal } from "@/utils/getSubtotal";
+import { useGetAllCartItemQuery } from "redux/cart/cartApi";
+import { getSubtotal } from "utils/getSubtotal";
 
 function Checkout() {
   const { user } = useAppSelector((state) => state.reducer.auth);

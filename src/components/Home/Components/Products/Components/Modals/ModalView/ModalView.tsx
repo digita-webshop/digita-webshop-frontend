@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction, useState } from "react";
 import {
   Box,
   Button,
@@ -9,7 +10,6 @@ import {
   InputLabel,
   FormHelperText,
 } from "@mui/material";
-import React, { Dispatch, SetStateAction, useState } from "react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import StarIcon from "@mui/icons-material/Star";
 import {
@@ -20,15 +20,15 @@ import {
   modalStyle,
   StyledModal,
 } from "../../../styles";
-import { IGallery } from "@/types/product";
+import { IGallery } from "types/product";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import { DeleteForever, Favorite, FavoriteBorder } from "@mui/icons-material";
-import { productIconStyles } from "@/components/Product/styles";
-import QuantityInput from "@/components/Cart/Components/QuantityInput/QuantityInput";
-import { ICartItem } from "@/types/cart";
+import { productIconStyles } from "components/Product/styles";
+import QuantityInput from "components/Cart/Components/QuantityInput/QuantityInput";
+import { ICartItem } from "types/cart";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "@/redux/cart/cartSlice";
+import { removeFromCart } from "redux/cart/cartSlice";
 
 type Props = {
   title: string;
