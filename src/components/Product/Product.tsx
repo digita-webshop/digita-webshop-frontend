@@ -12,13 +12,9 @@ import {
   useGetProductQuery,
 } from "redux/products/productsApi";
 import Loading from "../Loading/Loading";
-import { useGetWishlistQuery } from "redux/wishlist/wishlistApi";
-import { useAppSelector } from "redux/store";
 import { Helmet } from "react-helmet-async";
 
 const Product = () => {
-  const { role } = useAppSelector((state) => state.reducer.auth);
-
   const { id }: any = useParams();
 
   const { data: productData, isLoading: productLoading } =
@@ -29,12 +25,7 @@ const Product = () => {
   const product = productData?.data!;
   const products = productsData?.data ?? [];
 
-  const { data: wishlistData, isLoading: wishLoading } = useGetWishlistQuery(
-    role ?? ""
-  );
-  const wishlist = wishlistData?.data ?? [];
-
-  if (productLoading || productsLoading || wishLoading) {
+  if (productLoading || productsLoading) {
     return <Loading full />;
   }
   return (
@@ -48,10 +39,7 @@ const Product = () => {
         category={product?.category}
       />
       <Container maxWidth={"lg"}>
-        <ProductDetails
-          product={product}
-          wished={wishlist?.some((i) => i._id === product._id!)}
-        />
+        <ProductDetails product={product} />
         <BoughtTogether products={products} />
         <Tabs product={product} />
         <ShareProduct />

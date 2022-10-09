@@ -35,6 +35,7 @@ import { useAppSelector } from "../../../../redux/store";
 import {
   useAddWishMutation,
   useDeleteWishMutation,
+  useGetWishlistQuery,
 } from "../../../../redux/wishlist/wishlistApi";
 import WishModal from "../../../Home/Components/Products/Components/Modals/WishModal/WishModal";
 import { useGetReviewsQuery } from "../../../../redux/reviews/reviewsApi";
@@ -49,9 +50,8 @@ import CompareModal from "../../../Compare/Compare";
 
 interface Props {
   product: IProduct;
-  wished: boolean;
 }
-const ProductDetails = ({ product, wished }: Props) => {
+const ProductDetails = ({ product }: Props) => {
   const { role, user } = useAppSelector((state) => state.reducer.auth);
   const { cartList } = useAppSelector((state) => state.reducer.cart);
   const { compareList } = useAppSelector((state) => state.reducer.compare);
@@ -67,17 +67,21 @@ const ProductDetails = ({ product, wished }: Props) => {
 
   const { data: reviewsData } = useGetReviewsQuery({
     path: "products",
-    id: product._id!,
+    id: product?._id!,
   });
   const reviewsLength = reviewsData?.data.length ?? 0;
 
   const { data: cartData } = useGetAllCartItemQuery();
-  const cart = cartData?.data.products ?? [];
+  const cart = cartData?.data?.products ?? [];
   const cartItems = user ? cart : cartList;
   const inCart = isInList(cartItems, product?._id!);
   const cartItem = cartItems.find(
     (item) => item.productId._id === product?._id
   );
+
+  const { data: wishlistData } = useGetWishlistQuery(role ?? "");
+  const wishlist = wishlistData?.data ?? [];
+  const wished = isInList(wishlist, product?._id!);
 
   const { addToCartHandler } = useAddToCart(inCart, product, setOpenCart);
 
