@@ -1,3 +1,4 @@
+import { FormEvent, useState, useRef } from "react";
 import { CloseRounded } from "@mui/icons-material";
 import {
   Box,
@@ -11,7 +12,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../redux/auth/authApi";
@@ -27,6 +27,7 @@ import {
 } from "./styles";
 import { PStack } from "../../styles/panel";
 import Header from "./Header/Header";
+import LoadingBar from "react-top-loading-bar";
 
 type Modal = "login" | "register" | "reset";
 type Props = {
@@ -40,6 +41,7 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
   const [validationError, setValidationError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const loadingRef = useRef<any>(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location: any = useLocation();
@@ -60,8 +62,10 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
 
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
+    loadingRef?.current.staticStart();
     if (!emailIsValid && !passwordIsValid) {
       setValidationError(true);
+      loadingRef?.current.complete();
       return;
     }
     try {
@@ -80,6 +84,7 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
           email: null,
         })
       );
+      loadingRef?.current.complete();
       loginModalHandler(false)();
 
       if (data.role === "admin" || data.role === "superAdmin") {
@@ -101,112 +106,120 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
   };
 
   return (
-    <FormWrapper>
-      <Box sx={{ position: "relative" }}>
-        <Header title={"log in"} subtitle={"Become a part of our community!"} />
-        {errorMessage && (
-          <Box sx={errorStyles}>
-            <Typography component="span">ERROR: {errorMessage}</Typography>
-          </Box>
-        )}
-        <form onSubmit={submitHandler}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <TextField
-                  variant="standard"
-                  label="Email"
-                  sx={emailError ? inputErrorStyles : {}}
-                  value={enteredEmail}
-                  onChange={(e) => setEnteredEmail(e.target.value)}
-                />
-                {emailError && (
-                  <Typography
-                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
-                  >
-                    Email is required
-                  </Typography>
-                )}
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <TextField
-                  variant="standard"
-                  label="Password"
-                  type={"password"}
-                  sx={passwordError ? inputErrorStyles : {}}
-                  value={enteredPassword}
-                  onChange={(e) => setEnteredPassword(e.target.value)}
-                />
-                {passwordError && (
-                  <Typography
-                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
-                  >
-                    Password is required
-                  </Typography>
-                )}
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      size="small"
+    <>
+      <LoadingBar color="#f03637" ref={loadingRef} />
+      <FormWrapper>
+        <Box sx={{ position: "relative" }}>
+          <Header
+            title={"log in"}
+            subtitle={"Become a part of our community!"}
+          />
+          {errorMessage && (
+            <Box sx={errorStyles}>
+              <Typography component="span">ERROR: {errorMessage}</Typography>
+            </Box>
+          )}
+          <form onSubmit={submitHandler}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <TextField
+                    variant="standard"
+                    label="Email"
+                    sx={emailError ? inputErrorStyles : {}}
+                    value={enteredEmail}
+                    onChange={(e) => setEnteredEmail(e.target.value)}
+                  />
+                  {emailError && (
+                    <Typography
                       sx={{
-                        "&.Mui-checked": {
-                          color: "#f03637",
-                        },
+                        color: "#f03637",
+                        fontSize: "14px",
+                        fontWeight: 500,
                       }}
-                    />
-                  }
-                  sx={{ "& .MuiTypography-root": { fontSize: "14px" } }}
-                  label="Remember Me"
-                />
-              </FormGroup>
+                    >
+                      Email is required
+                    </Typography>
+                  )}
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <TextField
+                    variant="standard"
+                    label="Password"
+                    type={"password"}
+                    sx={passwordError ? inputErrorStyles : {}}
+                    value={enteredPassword}
+                    onChange={(e) => setEnteredPassword(e.target.value)}
+                  />
+                  {passwordError && (
+                    <Typography
+                      sx={{
+                        color: "#f03637",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                      }}
+                    >
+                      Password is required
+                    </Typography>
+                  )}
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        size="small"
+                        sx={{
+                          "&.Mui-checked": {
+                            color: "#f03637",
+                          },
+                        }}
+                      />
+                    }
+                    sx={{ "& .MuiTypography-root": { fontSize: "14px" } }}
+                    label="Remember Me"
+                  />
+                </FormGroup>
+              </Grid>
+              <Grid item xs={12}>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{ height: "46px" }}
+                  type={"submit"}
+                >
+                  LOGIN
+                </Button>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <Button
-                variant="contained"
-                fullWidth
-                sx={{ height: "46px" }}
-                type={"submit"}
-              >
-                {isLoading ? (
-                  <PStack sx={{ margin: "0 !important" }}>
-                    <CircularProgress color={"inherit"} />
-                  </PStack>
-                ) : (
-                  <>LOGIN</>
-                )}
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Typography
-            component={"div"}
-            sx={forgetPassStyles}
-            onClick={modalTypeToggle.bind(null, "reset")}
-          >
-            Forget your password? Get help
-          </Typography>
+          </form>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Typography
+              component={"div"}
+              sx={forgetPassStyles}
+              onClick={modalTypeToggle.bind(null, "reset")}
+            >
+              Forget your password? Get help
+            </Typography>
+          </Box>
+          <FormFooter>
+            <Typography component="span">Not a Member ?</Typography>
+            <Button
+              variant="contained"
+              onClick={modalTypeToggle.bind(null, "register")}
+            >
+              sign up
+            </Button>
+          </FormFooter>
+          <Box className="close-button" onClick={loginModalHandler(false)}>
+            <CloseRounded fontSize="large" />
+          </Box>
         </Box>
-        <FormFooter>
-          <Typography component="span">Not a Member ?</Typography>
-          <Button
-            variant="contained"
-            onClick={modalTypeToggle.bind(null, "register")}
-          >
-            sign up
-          </Button>
-        </FormFooter>
-        <Box className="close-button" onClick={loginModalHandler(false)}>
-          <CloseRounded fontSize="large" />
-        </Box>
-      </Box>
-    </FormWrapper>
+      </FormWrapper>
+    </>
   );
 }
 

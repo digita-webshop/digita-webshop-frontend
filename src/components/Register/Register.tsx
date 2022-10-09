@@ -1,3 +1,4 @@
+import { FormEvent, useState, useRef } from "react";
 import { CloseRounded } from "@mui/icons-material";
 import {
   Box,
@@ -8,11 +9,10 @@ import {
   Typography,
   CircularProgress,
 } from "@mui/material";
-import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useSignUpMutation } from "../../redux/auth/authApi";
-import { setCredentials } from "../../redux/auth/authSlice";
-import { successMessage } from "../../utils/toastMessages";
+import { useSignUpMutation } from "redux/auth/authApi";
+import { setCredentials } from "redux/auth/authSlice";
+import { successMessage } from "utils/toastMessages";
 import {
   errorStyles,
   FormFooter,
@@ -21,6 +21,7 @@ import {
 } from "../Login/styles";
 import { PStack } from "../../styles/panel";
 import Header from "../Login/Header/Header";
+import LoadingBar from "react-top-loading-bar";
 
 type Modal = "login" | "register" | "reset";
 
@@ -41,6 +42,8 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
   const [errorMessage, setErrorMessage] = useState("");
 
   const [signUp, { isLoading }] = useSignUpMutation();
+  const loadingRef = useRef<any>(null);
+
   const dispatch = useDispatch();
 
   //* username validation
@@ -106,12 +109,16 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
 
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
+    loadingRef?.current.staticStart();
+
     if (
       !usernameIsValid &&
       !emailIsValid &&
       !passwordIsValid &&
       !confirmPasswordIsValid
     ) {
+      loadingRef?.current.complete();
+
       return;
     }
     try {
@@ -125,6 +132,8 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
       dispatch(
         setCredentials({ user: null, role: null, email: response.data.email })
       );
+      loadingRef?.current.complete();
+
       successMessage("account created successfully");
       modalTypeToggle("login");
       console.log(response);
@@ -134,131 +143,144 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
     }
   };
   return (
-    <FormWrapper>
-      <Box sx={{ position: "relative" }}>
-        <Header
-          title={"create an account"}
-          subtitle={"Welcome! Register for an account"}
-        />
-        {errorMessage && (
-          <Box sx={errorStyles}>
-            <Typography component="span"> ERROR:{errorMessage}</Typography>
+    <>
+      <LoadingBar color="#f03637" ref={loadingRef} />
+      <FormWrapper>
+        <Box sx={{ position: "relative" }}>
+          <Header
+            title={"create an account"}
+            subtitle={"Welcome! Register for an account"}
+          />
+          {errorMessage && (
+            <Box sx={errorStyles}>
+              <Typography component="span"> ERROR:{errorMessage}</Typography>
+            </Box>
+          )}
+          <form onSubmit={submitHandler}>
+            <Grid container spacing={1.5}>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <TextField
+                    variant="standard"
+                    label="Username"
+                    sx={usernameError ? inputErrorStyles : {}}
+                    value={enteredUsername}
+                    onChange={(e) => setEnteredUsername(e.target.value)}
+                    onBlur={() => setUsernameTouched(true)}
+                  />
+                  {usernameError && (
+                    <Typography
+                      sx={{
+                        color: "#f03637",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {usernameErrorMessage}
+                    </Typography>
+                  )}
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <TextField
+                    variant="standard"
+                    label="Your Email"
+                    sx={emailError ? inputErrorStyles : {}}
+                    value={enteredEmail}
+                    onChange={(e) => setEnteredEmail(e.target.value)}
+                    onBlur={() => setEmailTouched(true)}
+                  />
+                  {emailError && (
+                    <Typography
+                      sx={{
+                        color: "#f03637",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {emailErrorMessage}
+                    </Typography>
+                  )}
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <TextField
+                    variant="standard"
+                    label="Password"
+                    type={"password"}
+                    sx={passwordError ? inputErrorStyles : {}}
+                    value={enteredPassword}
+                    onChange={(e) => setEnteredPassword(e.target.value)}
+                    onBlur={() => setPasswordTouched(true)}
+                  />
+                  {passwordError && (
+                    <Typography
+                      sx={{
+                        color: "#f03637",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {passwordErrorMessage.join(" ")}
+                    </Typography>
+                  )}
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <FormControl fullWidth>
+                  <TextField
+                    variant="standard"
+                    label="Confirm Password"
+                    type={"password"}
+                    sx={confirmPasswordError ? inputErrorStyles : {}}
+                    value={enteredConfirmPassword}
+                    onChange={(e) => setEnteredConfirmPassword(e.target.value)}
+                    onBlur={() => setConfirmPasswordTouched(true)}
+                  />
+                  {confirmPasswordError && (
+                    <Typography
+                      sx={{
+                        color: "#f03637",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {confirmPasswordErrorMessage}
+                    </Typography>
+                  )}
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={12}>
+                <Button
+                  variant="contained"
+                  fullWidth
+                  sx={{ height: "46px" }}
+                  type={"submit"}
+                >
+                  REGISTER
+                </Button>
+              </Grid>
+            </Grid>
+          </form>
+
+          <FormFooter>
+            <Typography component="span">Already a Member ?</Typography>
+            <Button
+              variant="contained"
+              onClick={modalTypeToggle.bind(null, "login")}
+            >
+              sign in
+            </Button>
+          </FormFooter>
+          <Box className="close-button" onClick={loginModalHandler(false)}>
+            <CloseRounded fontSize="large" />
           </Box>
-        )}
-        <form onSubmit={submitHandler}>
-          <Grid container spacing={1.5}>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <TextField
-                  variant="standard"
-                  label="Username"
-                  sx={usernameError ? inputErrorStyles : {}}
-                  value={enteredUsername}
-                  onChange={(e) => setEnteredUsername(e.target.value)}
-                  onBlur={() => setUsernameTouched(true)}
-                />
-                {usernameError && (
-                  <Typography
-                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
-                  >
-                    {usernameErrorMessage}
-                  </Typography>
-                )}
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <TextField
-                  variant="standard"
-                  label="Your Email"
-                  sx={emailError ? inputErrorStyles : {}}
-                  value={enteredEmail}
-                  onChange={(e) => setEnteredEmail(e.target.value)}
-                  onBlur={() => setEmailTouched(true)}
-                />
-                {emailError && (
-                  <Typography
-                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
-                  >
-                    {emailErrorMessage}
-                  </Typography>
-                )}
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <TextField
-                  variant="standard"
-                  label="Password"
-                  type={"password"}
-                  sx={passwordError ? inputErrorStyles : {}}
-                  value={enteredPassword}
-                  onChange={(e) => setEnteredPassword(e.target.value)}
-                  onBlur={() => setPasswordTouched(true)}
-                />
-                {passwordError && (
-                  <Typography
-                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
-                  >
-                    {passwordErrorMessage.join(" ")}
-                  </Typography>
-                )}
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <FormControl fullWidth>
-                <TextField
-                  variant="standard"
-                  label="Confirm Password"
-                  type={"password"}
-                  sx={confirmPasswordError ? inputErrorStyles : {}}
-                  value={enteredConfirmPassword}
-                  onChange={(e) => setEnteredConfirmPassword(e.target.value)}
-                  onBlur={() => setConfirmPasswordTouched(true)}
-                />
-                {confirmPasswordError && (
-                  <Typography
-                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
-                  >
-                    {confirmPasswordErrorMessage}
-                  </Typography>
-                )}
-              </FormControl>
-            </Grid>
-
-            <Grid item xs={12}>
-              <Button
-                variant="contained"
-                fullWidth
-                sx={{ height: "46px" }}
-                type={"submit"}
-              >
-                {isLoading ? (
-                  <PStack sx={{ margin: "0 !important" }}>
-                    <CircularProgress color={"inherit"} />
-                  </PStack>
-                ) : (
-                  <>REGISTER</>
-                )}
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-
-        <FormFooter>
-          <Typography component="span">Already a Member ?</Typography>
-          <Button
-            variant="contained"
-            onClick={modalTypeToggle.bind(null, "login")}
-          >
-            sign in
-          </Button>
-        </FormFooter>
-        <Box className="close-button" onClick={loginModalHandler(false)}>
-          <CloseRounded fontSize="large" />
         </Box>
-      </Box>
-    </FormWrapper>
+      </FormWrapper>
+    </>
   );
 }
 
