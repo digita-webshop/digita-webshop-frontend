@@ -12,6 +12,7 @@ import {
   Checkout,
   ContactUs,
   Home,
+  PageNotFound,
   Product,
   Shop,
 } from "@/pages/Main";
@@ -52,6 +53,7 @@ function Routes() {
         { path: "/contact-us", element: <ContactUs /> },
         { path: "/checkout", element: <Checkout /> },
         { path: "/cart", element: <Cart /> },
+        { path: "*", element: <PageNotFound /> },
       ],
     },
   ];
