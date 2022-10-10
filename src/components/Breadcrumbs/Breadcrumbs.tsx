@@ -1,13 +1,6 @@
 import { NavigateNext } from "@mui/icons-material";
-import {
-  Box,
-  Breadcrumbs as Breadcrumb,
-  Link,
-  Typography,
-} from "@mui/material";
-import { useLocation } from "react-router-dom";
-import breadcrumbBg from "@/assets/Images/breadcrumb-bg.jpg";
-import { Link as RouterLink } from "react-router-dom";
+import { Box, Breadcrumbs as Breadcrumb, Link, Typography } from "@mui/material";
+import { useLocation, Link as RouterLink } from "react-router-dom";
 
 interface Props {
   title: string;
@@ -47,9 +40,7 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
       </Typography>
       <Breadcrumb
         sx={{ "& .MuiBreadcrumbs-ol": { justifyContent: "center" } }}
-        separator={
-          <NavigateNext sx={{ color: "white", fontSize: "20px", margin: 0 }} />
-        }
+        separator={<NavigateNext sx={{ color: "white", fontSize: "20px", margin: 0 }} />}
       >
         <Link
           component={RouterLink}
@@ -77,16 +68,10 @@ function Breadcrumbs({ title, lastPath, category = "" }: Props) {
             route = "/blog";
           }
           if (name === category) {
-            route = `/${categoryRoute}?category=/${category.replace(
-              "&",
-              "%26"
-            )}`;
+            route = `/${categoryRoute}?category=/${category.replace("&", "%26")}`;
           }
           return isLast ? (
-            <Typography
-              key={index}
-              sx={{ color: "#fff", textTransform: "capitalize" }}
-            >
+            <Typography key={index} sx={{ color: "#fff", textTransform: "capitalize" }}>
               {`${lastPath ? lastPath : name}`}
             </Typography>
           ) : (

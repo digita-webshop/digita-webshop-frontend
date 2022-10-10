@@ -8,7 +8,7 @@ function Contact() {
   return (
     <Box bgcolor={"white"}>
       <Helmet>
-        <title>Digita WebShop | Contact us</title>
+        <title>Digita | Contact us</title>
       </Helmet>
       <Breadcrumbs title={"contact us "} />
       <Container maxWidth={"lg"}>

@@ -6,7 +6,7 @@ function pageNotFound() {
   return (
     <Container>
       <Helmet>
-        <title>Digita WebShop | Page not found!</title>
+        <title>Digita | Page not found!</title>
       </Helmet>
       <Box
         sx={{

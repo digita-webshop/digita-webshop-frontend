@@ -7,20 +7,16 @@ import ShareProduct from "./Components/ShareProduct/ShareProduct";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import ProductItem from "../Home/Components/Products/Components/ProductItem/ProductItem";
 import { useParams } from "react-router-dom";
-import {
-  useGetAllProductsQuery,
-  useGetProductQuery,
-} from "redux/products/productsApi";
+import { useGetAllProductsQuery, useGetProductQuery } from "redux/products/productsApi";
 import Loading from "../Loading/Loading";
 import { Helmet } from "react-helmet-async";
+import Error from "components/Error/Error";
 
 const Product = () => {
   const { id }: any = useParams();
 
-  const { data: productData, isLoading: productLoading } =
-    useGetProductQuery(id);
-  const { data: productsData, isLoading: productsLoading } =
-    useGetAllProductsQuery("");
+  const { data: productData, isLoading: productLoading, isError: productError } = useGetProductQuery(id);
+  const { data: productsData, isLoading: productsLoading, isError: productsError } = useGetAllProductsQuery("");
 
   const product = productData?.data!;
   const products = productsData?.data ?? [];
@@ -28,16 +24,15 @@ const Product = () => {
   if (productLoading || productsLoading) {
     return <Loading full />;
   }
+  if (productError || productsError) {
+    return <Error />;
+  }
   return (
     <Box bgcolor={"white"}>
       <Helmet>
         <title>{product?.title}</title>
       </Helmet>
-      <Breadcrumbs
-        title={"product"}
-        lastPath={product?.title}
-        category={product?.category}
-      />
+      <Breadcrumbs title={"product"} lastPath={product?.title} category={product?.category} />
       <Container maxWidth={"lg"}>
         <ProductDetails product={product} />
         <BoughtTogether products={products} />

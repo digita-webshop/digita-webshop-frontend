@@ -4,18 +4,7 @@ import MainLayout from "../layouts/MainLayout/MainLayout";
 import PanelLayout from "../layouts/PanelLayout/PanelLayout";
 import UserLayout from "../layouts/UserLayout/UserLayout";
 
-import {
-  AboutUs,
-  Article,
-  Blog,
-  Cart,
-  Checkout,
-  ContactUs,
-  Home,
-  PageNotFound,
-  Product,
-  Shop,
-} from "../pages/Main";
+import { AboutUs, Article, Blog, Cart, Checkout, ContactUs, Home, PageNotFound, Product, Shop } from "../pages/Main";
 import {
   AddArticle,
   AddProduct,
@@ -29,17 +18,11 @@ import {
   Settings,
   UserOrders as AdminOrders,
 } from "../pages/Panel/Admin";
-import {
-  Addresses,
-  Info,
-  Status,
-  UserOrders,
-  Wishlist,
-} from "../pages/Panel/User";
+import { Addresses, Info, Status, UserOrders, Wishlist } from "../pages/Panel/User";
 
 import PrivateRoute from "./PrivateRoute";
 
-function Routes() {
+function AppRoutes() {
   let mainRoutes = [
     {
       element: <MainLayout />,
@@ -119,4 +102,4 @@ function Routes() {
   return routes;
 }
 
-export default Routes;
+export default AppRoutes;

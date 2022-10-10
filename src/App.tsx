@@ -6,7 +6,7 @@ import { theme } from "./theme";
 import { useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 
-import Routes from "./routes";
+import AppRoutes from "./routes";
 import { useAppSelector } from "./redux/store";
 import ScrollToTop from "./routes/ScrollToTop";
 import { logout, setCredentials } from "./redux/auth/authSlice";
@@ -41,7 +41,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <ScrollToTop>
-          <Routes />
+          <AppRoutes />
         </ScrollToTop>
       </Router>
       <ToastContainer />

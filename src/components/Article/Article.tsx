@@ -15,13 +15,11 @@ import Loading from "../Loading/Loading";
 import { getReadableDate } from "utils/getReadableDate";
 import { convertFromRaw, Editor, EditorState } from "draft-js";
 import Review from "../Product/Components/Tabs/Reviews/Review/Review";
-import {
-  useAddReviewMutation,
-  useGetReviewsQuery,
-} from "redux/reviews/reviewsApi";
+import { useAddReviewMutation, useGetReviewsQuery } from "redux/reviews/reviewsApi";
 import { useLoadReviews } from "hooks/useLoadReviews";
 import { useAppSelector } from "redux/store";
 import { Helmet } from "react-helmet-async";
+import Error from "components/Error/Error";
 
 function Article() {
   const { user } = useAppSelector((state) => state.reducer.auth);
@@ -30,11 +28,10 @@ function Article() {
   const { pathname } = useLocation();
   const [addReview] = useAddReviewMutation();
 
-  const { data: articleData, isLoading } = useGetArticleQuery(id);
+  const { data: articleData, isLoading, isError } = useGetArticleQuery(id);
   const navigate = useNavigate();
 
-  const { title, writer, image, category, description, createdAt } =
-    articleData?.data ?? {};
+  const { title, writer, image, category, description, createdAt } = articleData?.data ?? {};
 
   const date = getReadableDate(createdAt || "");
 
@@ -44,17 +41,12 @@ function Article() {
   });
   const reviews = reviewsData?.data ?? [];
 
-  const { indexOfLoadedReviews, loadMoreReviewsHandler } =
-    useLoadReviews(reviews);
+  const { indexOfLoadedReviews, loadMoreReviewsHandler } = useLoadReviews(reviews);
 
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
     if (!user) {
-      navigate({
-        pathname,
-        hash: "reviews",
-        search: `login=open`,
-      });
+      navigate({ pathname, hash: "reviews", search: `login=open` });
       return;
     }
     try {
@@ -67,7 +59,6 @@ function Article() {
         },
       }).unwrap();
 
-      console.log(response);
       if (response.code === 200) {
         setReviewDescription("");
       }
@@ -79,7 +70,9 @@ function Article() {
   if (isLoading) {
     return <Loading full />;
   }
-
+  if (isError) {
+    return <Error />;
+  }
   const contentState = convertFromRaw(JSON.parse(description || ""));
   const editorState = EditorState.createWithContent(contentState);
   return (
@@ -96,11 +89,7 @@ function Article() {
                 {title}
               </Typography>
               <Grid container sx={{ mb: "20px" }}>
-                <ArticleDescription
-                  author={String(writer)}
-                  category={String(category)}
-                  date={String(date)}
-                />
+                <ArticleDescription author={String(writer)} category={String(category)} date={String(date)} />
               </Grid>
               <Box
                 component="img"
@@ -112,17 +101,12 @@ function Article() {
                 marginBottom={"20px"}
               />
               <Typography color={"#f03637"} mb={"20px"}>
-                Maecenas eget congue augue. Sed mollis tempor velit, et tempor
-                justo cursus vel. Phasellus lacinia placerat lacus, vulputate
-                volutpat tellus fringilla eu. Phasellus rhoncus varius tortor,
-                non ultricies felis condimentum eget unc ornare susc
+                Maecenas eget congue augue. Sed mollis tempor velit, et tempor justo cursus vel. Phasellus lacinia
+                placerat lacus, vulputate volutpat tellus fringilla eu. Phasellus rhoncus varius tortor, non ultricies
+                felis condimentum eget unc ornare susc
               </Typography>
               <Box>
-                <Editor
-                  editorState={editorState}
-                  readOnly
-                  onChange={() => {}}
-                />
+                <Editor editorState={editorState} readOnly onChange={() => {}} />
               </Box>
 
               <Divider sx={{ width: "100%", margin: "35px 0" }} />
@@ -164,9 +148,7 @@ function Article() {
                     sx={{ display: "block", margin: "10px 0 0 auto" }}
                     onClick={loadMoreReviewsHandler}
                   >
-                    {indexOfLoadedReviews < reviews.length
-                      ? "Load More..."
-                      : "close"}
+                    {indexOfLoadedReviews < reviews.length ? "Load More..." : "close"}
                   </Button>
                 )}
               </Box>

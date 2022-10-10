@@ -9,7 +9,7 @@ const About = () => {
   return (
     <Box bgcolor={"white"}>
       <Helmet>
-        <title>Digita WebShop | About us</title>
+        <title>Digita | About us</title>
       </Helmet>
       <Container maxWidth={"xl"}>
         <Poster />
