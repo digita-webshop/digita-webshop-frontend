@@ -18,13 +18,7 @@ function Footer() {
         fontFamily: "jost",
       }}
     >
-      <Grid
-        container
-        height="100%"
-        display="flex"
-        justifyContent="space-around"
-        alignItems="center"
-      >
+      <Grid container height="100%" display="flex" justifyContent="space-around" alignItems="center">
         <Grid item xs={6} sm={4} md={2} alignSelf={"flex-start"}>
           <FooterList title={"company info"} links={companyInfo} />
         </Grid>
@@ -48,17 +42,9 @@ function Footer() {
           width: "100%",
         }}
       >
-        <Typography
-          variant="body1"
-          color="lightslategray"
-          my={4}
-          mx={2}
-          textAlign="center"
-        >
-          Copyright © 2022{" "}
-          <Link sx={{ color: "#fff", cursor: "pointer" }}>Digita</Link> - All
-          Rights Reserved - Powered by{" "}
-          <Link sx={{ color: "#fff", cursor: "pointer" }}>Digita</Link>.
+        <Typography variant="body1" color="lightslategray" my={4} mx={2} textAlign="center">
+          Copyright © 2022 <Link sx={{ color: "#fff", cursor: "pointer" }}>Digita</Link> - All Rights Reserved - Powered
+          by <Link sx={{ color: "#fff", cursor: "pointer" }}>Digita</Link>.
         </Typography>
       </Box>
     </Box>

@@ -1,11 +1,4 @@
-import {
-  Box,
-  Checkbox,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Box, Checkbox, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 
 type ColorFilterProps = {
   isChecked: boolean;
@@ -14,13 +7,7 @@ type ColorFilterProps = {
   labelId: string;
   addQueryParams: (filter: string, name: string) => () => void;
 };
-function ColorFilterCard({
-  isChecked,
-  color,
-  labelId,
-  addQueryParams,
-  drawer,
-}: ColorFilterProps) {
+function ColorFilterCard({ isChecked, color, labelId, addQueryParams, drawer }: ColorFilterProps) {
   return (
     <ListItem
       secondaryAction={

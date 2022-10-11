@@ -1,15 +1,10 @@
-import {
-  LogoutOutlined,
-  NightsStay,
-  NotificationsActive,
-  Search,
-} from "@mui/icons-material";
+import { Dispatch, SetStateAction, SyntheticEvent } from "react";
+import { LogoutOutlined, NightsStay, NotificationsActive, Search } from "@mui/icons-material";
 import { Box, IconButton, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Dispatch, SetStateAction, SyntheticEvent } from "react";
 import { MainSearchBtn, navbarIconStyles, panelToolbarStyles } from "../styles";
-import { PTextField } from "../../../styles/panel";
-import { logout } from "../../../redux/auth/authSlice";
+import { PTextField } from "styles/panel";
+import { logout } from "redux/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 interface Props {
@@ -36,15 +31,9 @@ function MainNavbar({ setDrawerOpen, mdMatches }: Props) {
       }}
       style={{ paddingRight: "0px !important" }}
     >
-      <Toolbar
-        sx={panelToolbarStyles}
-        className={mdMatches ? "" : "menu-drawer"}
-      >
+      <Toolbar sx={panelToolbarStyles} className={mdMatches ? "" : "menu-drawer"}>
         <Box sx={{ width: mdMatches ? "50%" : "100%", display: "flex" }}>
-          <PTextField
-            placeholder="Search term  "
-            sx={{ borderTopRightRadius: "0", borderBottomRightRadius: "0" }}
-          />
+          <PTextField placeholder="Search term  " sx={{ borderTopRightRadius: "0", borderBottomRightRadius: "0" }} />
           <MainSearchBtn>
             <Search sx={{ color: "common.panelGrey", margin: "auto" }} />
           </MainSearchBtn>

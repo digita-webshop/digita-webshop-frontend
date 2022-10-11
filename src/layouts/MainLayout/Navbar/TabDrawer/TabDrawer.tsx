@@ -1,15 +1,6 @@
-import { CloseRounded, SearchOutlined } from "@mui/icons-material";
-import {
-  Box,
-  Divider,
-  Drawer,
-  InputBase,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from "@mui/material";
 import { Fragment } from "react";
+import { CloseRounded, SearchOutlined } from "@mui/icons-material";
+import { Box, Divider, Drawer, InputBase, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { navbarItems } from "../data";
 
@@ -27,11 +18,7 @@ function TabDrawer({ displayDrawer, toggleDrawer }: TabDrawerProps) {
     navigate(route);
   };
   return (
-    <Drawer
-      anchor="left"
-      open={displayDrawer["left"]}
-      onClose={toggleDrawer("left", false)}
-    >
+    <Drawer anchor="left" open={displayDrawer["left"]} onClose={toggleDrawer("left", false)}>
       <Box
         sx={{
           backgroundColor: "#f03637",

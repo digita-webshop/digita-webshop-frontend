@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box, Divider, Grid, SelectChangeEvent } from "@mui/material";
-import { useGetAllOrdersQuery } from "../../redux/orders/ordersApi";
-import { CardWrapper, ErrorText } from "../../styles/panel";
+import { useGetAllOrdersQuery } from "redux/orders/ordersApi";
+import { CardWrapper, ErrorText } from "styles/panel";
 import { paginationStyle } from "../PanelProducts/styles";
 import NotFound from "../EmptyList/NotFound";
 import PanelLoading from "../Loading/PanelLoading";
@@ -37,9 +37,7 @@ function Orders() {
         <ContentHeader />
       </Grid>
       <Grid item xs={12}>
-        <CardWrapper
-          sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}
-        >
+        <CardWrapper sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}>
           <TableToolbar
             selectedStatus={selectedStatus}
             ordersPerPage={ordersPerPage}
@@ -47,9 +45,7 @@ function Orders() {
             selectedAmountHandler={selectedAmountHandler}
           />
         </CardWrapper>
-        <Divider
-          sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
-        />
+        <Divider sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }} />
         <CardWrapper
           sx={{
             borderTopLeftRadius: "0",
@@ -59,12 +55,8 @@ function Orders() {
         >
           {isLoading && <PanelLoading />}
           {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
-          {filteredOrders?.length === 0 && !isLoading && !isError && (
-            <NotFound />
-          )}
-          {filteredOrders?.length !== 0 && (
-            <OrdersTable orders={filteredOrders} />
-          )}
+          {filteredOrders?.length === 0 && !isLoading && !isError && <NotFound />}
+          {filteredOrders?.length !== 0 && <OrdersTable orders={filteredOrders} />}
           <Box sx={paginationStyle}>
             <PanelPagination
               productsPerPage={ordersPerPage}

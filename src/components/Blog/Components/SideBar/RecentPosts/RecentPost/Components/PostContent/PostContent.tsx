@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import { Link as RouterLink } from "react-router-dom";
-import { getReadableDate } from "../../../../../../../../utils/getReadableDate";
+import { getReadableDate } from "utils/getReadableDate";
 
 type props = {
   id: string;
@@ -45,12 +45,7 @@ const PostContent = ({ id, title, date }: props) => {
             {title}
           </Typography>
         </Link>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          mt={"6px"}
-          fontSize="11px"
-        >
+        <Typography variant="body2" color="text.secondary" mt={"6px"} fontSize="11px">
           {readableDate}
         </Typography>
       </CardContent>

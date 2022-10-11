@@ -8,22 +8,14 @@ type PaginationProps = {
   setCurrentPage: any;
 };
 
-function PanelPagination({
-  productsPerPage,
-  totalProducts,
-  currentPage,
-  setCurrentPage,
-}: PaginationProps) {
+function PanelPagination({ productsPerPage, totalProducts, currentPage, setCurrentPage }: PaginationProps) {
   const pageNumber: number[] = [];
 
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
     pageNumber.push(i);
   }
   return (
-    <Box
-      marginTop={4}
-      sx={{ display: totalProducts <= productsPerPage ? "none" : "block" }}
-    >
+    <Box marginTop={4} sx={{ display: totalProducts <= productsPerPage ? "none" : "block" }}>
       <PaginationList>
         <PaginationListItem
           onClick={() => setCurrentPage(currentPage - 1)}

@@ -1,5 +1,5 @@
 import { Box, List, ListItemText } from "@mui/material";
-import { PanelItem } from "../../../layouts/PanelLayout/styles";
+import { PanelItem } from "layouts/PanelLayout/styles";
 
 const userSettingItems = [
   {
@@ -39,10 +39,7 @@ function Sidebar({ activePageHandler, activePage }: Props) {
       >
         {userSettingItems.map(({ id, title }) => (
           <PanelItem key={id}>
-            <Box
-              className={`${title === activePage && "active"} link`}
-              onClick={activePageHandler(title)}
-            >
+            <Box className={`${title === activePage && "active"} link`} onClick={activePageHandler(title)}>
               <ListItemText
                 primaryTypographyProps={{
                   fontSize: "16px",

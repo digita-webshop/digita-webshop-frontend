@@ -1,20 +1,8 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Icon,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
-import { GridExpandMoreIcon } from "@mui/x-data-grid";
 import { Dispatch, SetStateAction } from "react";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Icon, ListItemIcon, ListItemText } from "@mui/material";
+import { GridExpandMoreIcon } from "@mui/x-data-grid";
 import { NavLink, useLocation } from "react-router-dom";
-import {
-  accordionDetailStyles,
-  accordionSummaryStyles,
-  PanelItem,
-} from "../../styles";
+import { accordionDetailStyles, accordionSummaryStyles, PanelItem } from "../../styles";
 
 interface I {
   id: string;
@@ -40,10 +28,7 @@ function ItemAccordion({ title, icon, data, menuOpen, setDrawerOpen }: Props) {
       }}
     >
       <PanelItem>
-        <Box
-          className={`link ${pathname.includes(title) && "active"}`}
-          sx={{ padding: "0 !important" }}
-        >
+        <Box className={`link ${pathname.includes(title) && "active"}`} sx={{ padding: "0 !important" }}>
           <AccordionSummary
             expandIcon={<GridExpandMoreIcon />}
             aria-controls={`panel-item${title}`}
@@ -67,11 +52,7 @@ function ItemAccordion({ title, icon, data, menuOpen, setDrawerOpen }: Props) {
       </PanelItem>
       <AccordionDetails sx={accordionDetailStyles}>
         {data.map((item) => (
-          <NavLink
-            key={item.id}
-            to={item.route}
-            onClick={() => setDrawerOpen(false)}
-          >
+          <NavLink key={item.id} to={item.route} onClick={() => setDrawerOpen(false)}>
             {item.name}
           </NavLink>
         ))}

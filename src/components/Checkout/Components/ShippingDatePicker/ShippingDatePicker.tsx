@@ -37,12 +37,7 @@ function ShippingDatePicker({ setSelectedDate }: Props) {
       >
         <Typography>Order submission date</Typography>
       </Box>
-      <DatePicker
-        color="#f03637"
-        getSelectedDay={selectedDay}
-        shouldScroll={true}
-        endDate={30}
-      />
+      <DatePicker color="#f03637" getSelectedDay={selectedDay} shouldScroll={true} endDate={30} />
     </Box>
   );
 }

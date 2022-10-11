@@ -6,11 +6,7 @@ import { useDispatch } from "react-redux";
 import { addProductToCart } from "../redux/cart/cartSlice";
 import { useAddToCartMutation } from "../redux/cart/cartApi";
 
-export function useAddToCart(
-  inCart: boolean,
-  product: IProduct,
-  setOpenCart: Dispatch<SetStateAction<boolean>>
-) {
+export function useAddToCart(inCart: boolean, product: IProduct, setOpenCart: Dispatch<SetStateAction<boolean>>) {
   const { user } = useAppSelector((state) => state.reducer.auth);
 
   const [addToCart, { isLoading: cartIsLoading }] = useAddToCartMutation();

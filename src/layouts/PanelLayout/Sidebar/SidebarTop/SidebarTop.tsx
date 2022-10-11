@@ -1,6 +1,6 @@
+import { Dispatch, SetStateAction } from "react";
 import { MenuOpen } from "@mui/icons-material";
 import { Box, IconButton, useMediaQuery } from "@mui/material";
-import { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 interface Props {

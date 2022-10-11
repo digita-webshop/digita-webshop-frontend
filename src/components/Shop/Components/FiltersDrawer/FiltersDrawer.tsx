@@ -1,13 +1,5 @@
-import {
-  Box,
-  Drawer,
-  FormControl,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  Typography,
-} from "@mui/material";
 import { useState } from "react";
+import { Box, Drawer, FormControl, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 import { FilterTitleWrapper } from "../../styles";
 import ColorFilter from "../ColorFilter/ColorFilter";
@@ -20,11 +12,7 @@ type ShopFiltersDrawerProps = {
   addQueryParams: (filter: string, name: string) => () => void;
 };
 
-function FiltersDrawer({
-  displayDrawer,
-  toggleDrawer,
-  addQueryParams,
-}: ShopFiltersDrawerProps) {
+function FiltersDrawer({ displayDrawer, toggleDrawer, addQueryParams }: ShopFiltersDrawerProps) {
   const [selectedCategory, setSelectedCategory] = useState("");
   let [searchParams, setSearchParams] = useSearchParams();
 
@@ -34,11 +22,7 @@ function FiltersDrawer({
     setSearchParams(searchParams, { replace: true });
   };
   return (
-    <Drawer
-      anchor="left"
-      open={displayDrawer}
-      onClose={() => toggleDrawer(false)}
-    >
+    <Drawer anchor="left" open={displayDrawer} onClose={() => toggleDrawer(false)}>
       <Box
         sx={{
           bgcolor: "#f7f7f7",
@@ -54,25 +38,12 @@ function FiltersDrawer({
           }}
         >
           <FilterTitleWrapper>
-            <Typography
-              component={"h4"}
-              variant="body1"
-              color="primary"
-              fontWeight={600}
-            >
+            <Typography component={"h4"} variant="body1" color="primary" fontWeight={600}>
               CATEGORIES
             </Typography>
           </FilterTitleWrapper>
-          <FormControl
-            sx={{ width: { xs: "100%" }, marginTop: "20px" }}
-            size="small"
-          >
-            <Select
-              variant="outlined"
-              displayEmpty
-              value={selectedCategory}
-              onChange={selectedCategoryHandler}
-            >
+          <FormControl sx={{ width: { xs: "100%" }, marginTop: "20px" }} size="small">
+            <Select variant="outlined" displayEmpty value={selectedCategory} onChange={selectedCategoryHandler}>
               <MenuItem value="">Select a category</MenuItem>
 
               {productCategories.map(({ name }, index) => (

@@ -11,11 +11,11 @@ import {
 } from "@mui/material";
 import { CloseRounded, SearchOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { useGetAllProductsQuery } from "../../../../redux/products/productsApi";
-import { useOnClickOutside } from "../../../../hooks/useOnClickOutside";
+import { useGetAllProductsQuery } from "redux/products/productsApi";
+import { useOnClickOutside } from "hooks/useOnClickOutside";
 import { searchBarDropdown } from "../styles";
-import { PStack } from "../../../../styles/panel";
-import { productCategories } from "../../../../components/Shop/data";
+import { PStack } from "styles/panel";
+import { productCategories } from "components/Shop/data";
 
 type SearchBarProps = {
   openSearchBarHandler: () => void;
@@ -60,10 +60,7 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
   };
   return (
     <Box display={"flex"} sx={{ height: "90px", alignItems: "center" }}>
-      <Box
-        sx={{ position: "relative", width: "100%", height: "100%" }}
-        ref={searchRef}
-      >
+      <Box sx={{ position: "relative", width: "100%", height: "100%" }} ref={searchRef}>
         <Box sx={{ display: "flex", height: "100%" }}>
           <InputBase
             placeholder="Type then hit enter to search"
@@ -72,10 +69,7 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
             value={searchValue}
             onFocus={() => setCloseDropdown(false)}
           />
-          <Box
-            sx={{ display: "flex", padding: "10px" }}
-            onClick={() => navigate(`/shop?${queries}`)}
-          >
+          <Box sx={{ display: "flex", padding: "10px" }} onClick={() => navigate(`/shop?${queries}`)}>
             <SearchOutlined
               sx={{
                 color: "common.digitaGrey",
@@ -86,12 +80,7 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
             />
           </Box>
         </Box>
-        <Box
-          sx={searchBarDropdown}
-          className={
-            searchValue.trim().length === 0 || closeDropdown ? "hidden" : ""
-          }
-        >
+        <Box sx={searchBarDropdown} className={searchValue.trim().length === 0 || closeDropdown ? "hidden" : ""}>
           {isLoading ? (
             <Box>
               <PStack>
@@ -109,12 +98,7 @@ function SearchBar({ openSearchBarHandler }: SearchBarProps) {
           )}
         </Box>
       </Box>
-      <Divider
-        orientation="vertical"
-        sx={{ height: "50%", margin: "auto" }}
-        variant="middle"
-        flexItem
-      />
+      <Divider orientation="vertical" sx={{ height: "50%", margin: "auto" }} variant="middle" flexItem />
       <Box sx={{ marginRight: "40px", marginLeft: "20px" }}>
         <FormControl sx={{ width: "200px" }}>
           <Select

@@ -1,3 +1,4 @@
+import { FormEvent, useState } from "react";
 import {
   Box,
   Button,
@@ -10,7 +11,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { FormEvent, useState } from "react";
 
 const inputStyles = {
   "& .MuiOutlinedInput-root": {
@@ -36,30 +36,17 @@ function Form() {
     }
   };
   return (
-    <Box
-      sx={{ backgroundColor: "#F5F5F5", padding: "30px", borderRadius: "3px" }}
-    >
-      <Typography
-        variant="h4"
-        fontWeight={600}
-        marginBottom={4}
-        sx={{ fontSize: { xs: "28px", sm: " 32px" } }}
-      >
+    <Box sx={{ backgroundColor: "#F5F5F5", padding: "30px", borderRadius: "3px" }}>
+      <Typography variant="h4" fontWeight={600} marginBottom={4} sx={{ fontSize: { xs: "28px", sm: " 32px" } }}>
         SEND US A MESSAGE
       </Typography>
       <form onSubmit={submitHandler}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
-              <FormLabel
-                color="primary"
-                sx={{ fontSize: "15px", color: "#333333", display: "flex" }}
-              >
+              <FormLabel color="primary" sx={{ fontSize: "15px", color: "#333333", display: "flex" }}>
                 Your Name
-                <Typography
-                  component={"span"}
-                  sx={{ color: "#f03637", marginLeft: "2px" }}
-                >
+                <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
                   *
                 </Typography>
               </FormLabel>
@@ -71,23 +58,15 @@ function Form() {
                 onBlur={() => setNameTouched(true)}
               />
               {!nameIsValid && nameTouched && (
-                <Typography sx={{ color: "#f03637", marginTop: "2px" }}>
-                  name is required
-                </Typography>
+                <Typography sx={{ color: "#f03637", marginTop: "2px" }}>name is required</Typography>
               )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
-              <FormLabel
-                color="primary"
-                sx={{ fontSize: "15px", color: "#333333", display: "flex" }}
-              >
+              <FormLabel color="primary" sx={{ fontSize: "15px", color: "#333333", display: "flex" }}>
                 Your Email
-                <Typography
-                  component={"span"}
-                  sx={{ color: "#f03637", marginLeft: "2px" }}
-                >
+                <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
                   *
                 </Typography>
               </FormLabel>
@@ -99,18 +78,13 @@ function Form() {
                 onBlur={() => setEmailTouched(true)}
               />
               {!emailIsValid && emailTouched && (
-                <Typography sx={{ color: "#f03637", marginTop: "2px" }}>
-                  please enter a valid email address
-                </Typography>
+                <Typography sx={{ color: "#f03637", marginTop: "2px" }}>please enter a valid email address</Typography>
               )}
             </FormControl>
           </Grid>
           <Grid item xs={12}>
             <FormControl fullWidth>
-              <FormLabel
-                color="primary"
-                sx={{ fontSize: "15px", color: "#333333" }}
-              >
+              <FormLabel color="primary" sx={{ fontSize: "15px", color: "#333333" }}>
                 Subject
               </FormLabel>
               <TextField placeholder="Your Subject" sx={inputStyles} />
@@ -118,10 +92,7 @@ function Form() {
           </Grid>
           <Grid item xs={12}>
             <FormControl fullWidth>
-              <FormLabel
-                color="primary"
-                sx={{ fontSize: "15px", color: "#333333" }}
-              >
+              <FormLabel color="primary" sx={{ fontSize: "15px", color: "#333333" }}>
                 Message
               </FormLabel>
               <TextField
@@ -155,10 +126,7 @@ function Form() {
             </FormGroup>
           </Grid>
           <Grid item xs={12}>
-            <Button
-              variant="contained"
-              sx={{ width: { xs: "100%", sm: "35%" }, height: "50px" }}
-            >
+            <Button variant="contained" sx={{ width: { xs: "100%", sm: "35%" }, height: "50px" }}>
               Send Message
             </Button>
           </Grid>

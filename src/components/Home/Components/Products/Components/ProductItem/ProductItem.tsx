@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Rating,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Rating, Typography } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Stack from "@mui/material/Stack";
 import StarIcon from "@mui/icons-material/Star";
@@ -16,29 +9,16 @@ import { RedTooltip, StyledIcons } from "../../styles";
 import CompareModal from "../../../../../Compare/Compare";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCompareList } from "../../../../../../redux/compare/compareSlice";
-import {
-  useAddWishMutation,
-  useDeleteWishMutation,
-  useGetWishlistQuery,
-} from "../../../../../../redux/wishlist/wishlistApi";
-import { useAppSelector } from "../../../../../../redux/store";
-import {
-  CompareArrows,
-  Favorite,
-  FavoriteBorder,
-  ShoppingCart,
-  Visibility,
-} from "@mui/icons-material";
-import {
-  productIconStyles,
-  productIconWrapperStyles,
-} from "../../../../../Product/styles";
+import { addToCompareList } from "redux/compare/compareSlice";
+import { useAddWishMutation, useDeleteWishMutation, useGetWishlistQuery } from "redux/wishlist/wishlistApi";
+import { useAppSelector } from "redux/store";
+import { CompareArrows, Favorite, FavoriteBorder, ShoppingCart, Visibility } from "@mui/icons-material";
+import { productIconStyles, productIconWrapperStyles } from "../../../../../Product/styles";
 import WishModal from "../Modals/WishModal/WishModal";
-import { IProduct } from "../../../../../../types/product";
-import { useGetAllCartItemQuery } from "../../../../../../redux/cart/cartApi";
+import { IProduct } from "types/product";
+import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 import DotSpinner from "../../../../../Loading/DotSpinner";
-import { isInList } from "../../../../../../utils/isInList";
+import { isInList } from "utils/isInList";
 import { useAddToCart } from "hooks/useAddToCart";
 
 type Props = {
@@ -63,18 +43,7 @@ const ProductItem = ({ product, listView }: Props) => {
 
   const [addWish, { isLoading: addWishLoading }] = useAddWishMutation();
   const [deleteWish, { isLoading: delWishLoading }] = useDeleteWishMutation();
-  const {
-    _id,
-    title,
-    price,
-    offPrice,
-    shortDescription,
-    rating,
-    image,
-    gallery,
-    colors,
-    reviews,
-  } = product;
+  const { _id, title, price, offPrice, shortDescription, rating, image, gallery, colors, reviews } = product;
 
   const isCompared = isInList(compareList, _id!);
 
@@ -84,15 +53,14 @@ const ProductItem = ({ product, listView }: Props) => {
   const inCart = isInList(cartItems, _id!);
   const cartItem = cartItems.find((item) => item.productId._id === _id);
 
-  const { addToCartHandler, cartIsLoading } = useAddToCart(
-    inCart,
-    product,
-    setOpenCart
-  );
+  const { addToCartHandler, cartIsLoading } = useAddToCart(inCart, product, setOpenCart);
 
   const { data: wishlistData } = useGetWishlistQuery(role!);
   const wishlist = wishlistData?.data ?? [];
-  const wished = isInList(wishlist, _id!);
+  let wished = false;
+  if (user) {
+    wished = isInList(wishlist, _id!);
+  }
 
   const compareClickHandler = () => {
     dispatch(addToCompareList(product));
@@ -102,10 +70,7 @@ const ProductItem = ({ product, listView }: Props) => {
   const wishlistHandler = async () => {
     if (!user || !role) {
       setOpenView(false);
-      navigate(
-        { pathname: location.pathname, search: "login=open" },
-        { replace: true, state: { from: location } }
-      );
+      navigate({ pathname: location.pathname, search: "login=open" }, { replace: true, state: { from: location } });
       return;
     }
     try {
@@ -150,9 +115,7 @@ const ProductItem = ({ product, listView }: Props) => {
                 sm: "220px",
                 md: "260px",
               },
-              width: listView
-                ? { xs: "100%", sm: "220px", md: "260px" }
-                : "none",
+              width: listView ? { xs: "100%", sm: "220px", md: "260px" } : "none",
               objectFit: "contain",
             }}
           />
@@ -191,27 +154,19 @@ const ProductItem = ({ product, listView }: Props) => {
                       margin: "auto",
                       color: "common.digitaRed",
                     }}
-                    className={
-                      addWishLoading || delWishLoading ? "wishLoading" : ""
-                    }
+                    className={addWishLoading || delWishLoading ? "wishLoading" : ""}
                   />
                 ) : (
                   <FavoriteBorder
                     fontSize="small"
                     sx={{ ...productIconStyles, margin: "auto" }}
-                    className={
-                      addWishLoading || delWishLoading ? "wishLoading" : ""
-                    }
+                    className={addWishLoading || delWishLoading ? "wishLoading" : ""}
                   />
                 )}
               </Box>
             </RedTooltip>
             <RedTooltip title="Compare" placement="top">
-              <Box
-                sx={productIconWrapperStyles}
-                onClick={compareClickHandler}
-                aria-label="add an alarm"
-              >
+              <Box sx={productIconWrapperStyles} onClick={compareClickHandler} aria-label="add an alarm">
                 <CompareArrows
                   fontSize="small"
                   sx={{
@@ -222,10 +177,7 @@ const ProductItem = ({ product, listView }: Props) => {
               </Box>
             </RedTooltip>
             <RedTooltip title="Quick View" placement="top">
-              <Box
-                sx={productIconWrapperStyles}
-                onClick={() => setOpenView(true)}
-              >
+              <Box sx={productIconWrapperStyles} onClick={() => setOpenView(true)}>
                 <Visibility fontSize="small" sx={{ margin: "auto" }} />
               </Box>
             </RedTooltip>
@@ -255,11 +207,7 @@ const ProductItem = ({ product, listView }: Props) => {
         aria-describedby="modal-modal-description"
       >
         <div>
-          <WishModal
-            setOpenWish={setOpenWish}
-            addedWish={addedWish}
-            role={role}
-          />
+          <WishModal setOpenWish={setOpenWish} addedWish={addedWish} role={role} />
         </div>
       </Modal>
       {/* =========== Wishlist Modal ======== */}
@@ -314,9 +262,7 @@ const ProductItem = ({ product, listView }: Props) => {
           precision={0.5}
           emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
         />
-        <Box
-          sx={{ a: { textDecoration: "none", color: "common.digitaBlack" } }}
-        >
+        <Box sx={{ a: { textDecoration: "none", color: "common.digitaBlack" } }}>
           <Link to={`/product/${_id}`}>
             <Typography
               gutterBottom
@@ -337,16 +283,9 @@ const ProductItem = ({ product, listView }: Props) => {
             </Typography>
           </Link>
         </Box>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ margin: "0.2rem" }}
-        >
+        <Typography variant="body2" color="text.secondary" sx={{ margin: "0.2rem" }}>
           {offPrice !== 0 && (
-            <Box
-              component="span"
-              sx={{ marginRight: "0.5rem", textDecoration: "line-through" }}
-            >
+            <Box component="span" sx={{ marginRight: "0.5rem", textDecoration: "line-through" }}>
               {`$${offPrice}.00`}
             </Box>
           )}

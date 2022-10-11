@@ -2,16 +2,11 @@ import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import { Box, Modal, useMediaQuery, useTheme } from "@mui/material";
-import {
-  GallerySwiperWrapper,
-  magnifyButtonStyles,
-  mainSwiperWrapper,
-  swiperImageWrapper,
-} from "../../../styles";
+import { GallerySwiperWrapper, magnifyButtonStyles, mainSwiperWrapper, swiperImageWrapper } from "../../../styles";
 import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
 import GalleryModal from "./GalleryModal/GalleryModal";
 import ReactImageMagnify from "react-image-magnify";
-import { IGallery } from "../../../../../types/product";
+import { IGallery } from "types/product";
 
 interface Props {
   gallery: IGallery[];
@@ -31,11 +26,7 @@ export default function Gallery({ gallery }: Props) {
   return (
     <>
       <Box sx={mainSwiperWrapper}>
-        <Box
-          sx={magnifyButtonStyles}
-          className={matchesMd ? "" : "hidden"}
-          onClick={() => setOpenModal(true)}
-        >
+        <Box sx={magnifyButtonStyles} className={matchesMd ? "" : "hidden"} onClick={() => setOpenModal(true)}>
           <Search />
         </Box>
         <Swiper
@@ -60,8 +51,7 @@ export default function Gallery({ gallery }: Props) {
                         isFluidWidth: true,
                         src: image,
                         srcSet: image,
-                        sizes:
-                          "(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
+                        sizes: "(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
                       },
                       largeImage: {
                         src: image,
@@ -88,11 +78,7 @@ export default function Gallery({ gallery }: Props) {
         sx={{ "& .MuiBackdrop-root": { backgroundColor: "rgba(0,0,0,0.85)" } }}
       >
         <div>
-          <GalleryModal
-            gallery={gallery}
-            setOpenModal={setOpenModal}
-            slideIndex={slideIndex}
-          />
+          <GalleryModal gallery={gallery} setOpenModal={setOpenModal} slideIndex={slideIndex} />
         </div>
       </Modal>
       <GallerySwiperWrapper className={matchesMd ? "" : "hidden"}>
@@ -132,9 +118,7 @@ export default function Gallery({ gallery }: Props) {
                 <img
                   src={image}
                   alt="slider-img"
-                  className={`slider-img ${
-                    index === slideIndex && "selected-slide"
-                  }`}
+                  className={`slider-img ${index === slideIndex && "selected-slide"}`}
                 />
               </Box>
             </SwiperSlide>

@@ -1,13 +1,6 @@
-import { CloseRounded } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  FormControl,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
 import { FormEvent, useState } from "react";
+import { CloseRounded } from "@mui/icons-material";
+import { Box, Button, FormControl, Grid, TextField, Typography } from "@mui/material";
 import { FormFooter, FormWrapper, inputErrorStyles } from "../Login/styles";
 import Header from "../Login/Header/Header";
 
@@ -52,9 +45,7 @@ function ResetPassword({ loginModalHandler, modalTypeToggle }: Props) {
                   onChange={(e) => setEnteredUsername(e.target.value)}
                 />
                 {usernameError && (
-                  <Typography
-                    sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
-                  >
+                  <Typography sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}>
                     this field is required
                   </Typography>
                 )}
@@ -62,12 +53,7 @@ function ResetPassword({ loginModalHandler, modalTypeToggle }: Props) {
             </Grid>
 
             <Grid item xs={12}>
-              <Button
-                variant="contained"
-                fullWidth
-                sx={{ height: "46px" }}
-                type={"submit"}
-              >
+              <Button variant="contained" fullWidth sx={{ height: "46px" }} type={"submit"}>
                 SEND MY PASSWORD
               </Button>
             </Grid>
@@ -76,10 +62,7 @@ function ResetPassword({ loginModalHandler, modalTypeToggle }: Props) {
 
         <FormFooter>
           <Typography component="span">Back to</Typography>
-          <Button
-            variant="contained"
-            onClick={modalTypeToggle.bind(null, "login")}
-          >
+          <Button variant="contained" onClick={modalTypeToggle.bind(null, "login")}>
             LOGIN
           </Button>
         </FormFooter>

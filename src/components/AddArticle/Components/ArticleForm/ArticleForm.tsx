@@ -1,19 +1,5 @@
-import {
-  useRef,
-  Fragment,
-  Dispatch,
-  useState,
-  SetStateAction,
-  ChangeEvent,
-} from "react";
-import {
-  Box,
-  FormControl,
-  Grid,
-  Select,
-  MenuItem,
-  SelectChangeEvent,
-} from "@mui/material";
+import { useRef, Fragment, Dispatch, useState, SetStateAction, ChangeEvent } from "react";
+import { Box, FormControl, Grid, Select, MenuItem, SelectChangeEvent } from "@mui/material";
 import { errorMessage } from "utils/toastMessages";
 import { fileInputStyles } from "../../styles";
 import { PFormControl, PFormLabel, PTextField } from "styles/panel";
@@ -53,13 +39,10 @@ function ArticleForm({
     formData.append("upload_preset", "digita");
 
     try {
-      const response = await fetch(
-        " https://api.cloudinary.com/v1_1/dmgb7kvmn/image/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch(" https://api.cloudinary.com/v1_1/dmgb7kvmn/image/upload", {
+        method: "POST",
+        body: formData,
+      });
       const data = await response.json();
       setAddedImage(data?.url);
       setImageName(data?.original_filename);
@@ -76,9 +59,7 @@ function ArticleForm({
           <PTextField
             placeholder="Type Here"
             value={enteredTitle}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setEnteredTitle(e.target.value)
-            }
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setEnteredTitle(e.target.value)}
           />
         </FormControl>
       </Grid>
@@ -88,21 +69,14 @@ function ArticleForm({
           <PTextField
             placeholder="Type Here"
             value={enteredWriter}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setEnteredWriter(e.target.value)
-            }
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setEnteredWriter(e.target.value)}
           />
         </FormControl>
       </Grid>
       <Grid item xs={12} sm={6}>
         <PFormControl size="small">
           <PFormLabel>category</PFormLabel>
-          <Select
-            variant="outlined"
-            displayEmpty
-            value={selectedCategory}
-            onChange={selectedBrandHandler}
-          >
+          <Select variant="outlined" displayEmpty value={selectedCategory} onChange={selectedBrandHandler}>
             {blogCategories.map(({ id, name }) => (
               <MenuItem key={id} value={name}>
                 {name}

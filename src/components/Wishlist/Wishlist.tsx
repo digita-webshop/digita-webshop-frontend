@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Box, Typography, Grid } from "@mui/material";
-import { wrapper } from "../../styles/user";
+import { wrapper } from "styles/user";
 import { paginationStyle } from "../PanelProducts/styles";
 import Product from "./Product/Product";
 import Pagination from "../Pagination/Pagination";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
-import { useGetWishlistQuery } from "../../redux/wishlist/wishlistApi";
-import { useAppSelector } from "../../redux/store";
+import { useGetWishlistQuery } from "redux/wishlist/wishlistApi";
+import { useAppSelector } from "redux/store";
 import { ErrorText } from "../../styles/panel";
 import PanelLoading from "../Loading/PanelLoading";
 import NotFound from "../EmptyList/NotFound";
@@ -40,9 +40,7 @@ const Wishlist = () => {
         >
           <ArrowBack />
         </Box>
-        <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
-          Wishlist
-        </Typography>
+        <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>Wishlist</Typography>
       </Box>
 
       <Grid container spacing={2} sx={{ mt: 2 }}>
@@ -50,20 +48,16 @@ const Wishlist = () => {
 
         {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
 
-        {wishlist.length === 0 && !isLoading && !isError && (
-          <NotFound message="your wishlist is empty" />
-        )}
+        {wishlist.length === 0 && !isLoading && !isError && <NotFound message="your wishlist is empty" />}
 
         {wishlist.length !== 0 &&
           !isLoading &&
           !isError &&
-          wishlist
-            .slice(indexOfFirstProduct, indexOfLastProduct)
-            .map(({ _id, title, price, image }) => (
-              <Grid item xs={12} sm={6} md={gridSize} lg={4} xl={3} key={_id}>
-                <Product id={_id!} title={title} price={price} image={image} />
-              </Grid>
-            ))}
+          wishlist.slice(indexOfFirstProduct, indexOfLastProduct).map(({ _id, title, price, image }) => (
+            <Grid item xs={12} sm={6} md={gridSize} lg={4} xl={3} key={_id}>
+              <Product id={_id!} title={title} price={price} image={image} />
+            </Grid>
+          ))}
       </Grid>
       {wishlist.length > productsPerPage && (
         <Box sx={paginationStyle}>

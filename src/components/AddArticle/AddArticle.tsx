@@ -2,10 +2,7 @@ import { useState, FormEvent, useEffect } from "react";
 import { Grid } from "@mui/material";
 import ArticleForm from "./Components/ArticleForm/ArticleForm";
 import ContentHeader from "./Components/ContentHeader/ContentHeader";
-import {
-  useAddArticleMutation,
-  useUpdateArticleMutation,
-} from "redux/articles/articlesApi";
+import { useAddArticleMutation, useUpdateArticleMutation } from "redux/articles/articlesApi";
 import { CardWrapper, PFormLabel } from "styles/panel";
 import TextEditor from "../TextEditor/TextEditor";
 import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
@@ -40,9 +37,7 @@ function AddArticle() {
       writer: enteredWriter,
       image: addedImage,
       category: selectedCategory,
-      description: JSON.stringify(
-        convertToRaw(editorState.getCurrentContent())
-      ),
+      description: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
     };
     if (id) {
       newArticle["_id"] = id;
@@ -65,18 +60,12 @@ function AddArticle() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/articles/find/${id}`).then((res) =>
-          res.json()
-        );
+        const response = await fetch(`/api/articles/find/${id}`).then((res) => res.json());
         const articleData = response?.data;
         setEnteredTitle(articleData.title);
         setEnteredWriter(articleData.writer);
         setAddedImage(articleData.image);
-        setEditorState(
-          EditorState.createWithContent(
-            convertFromRaw(JSON.parse(articleData.description))
-          )
-        );
+        setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(articleData.description))));
       } catch (err: any) {
         errorMessage(err.message);
         console.log(err);
@@ -87,20 +76,9 @@ function AddArticle() {
     }
   }, [id]);
   return (
-    <Grid
-      container
-      component="form"
-      onSubmit={submitHandler}
-      maxWidth={"768px"}
-      margin={"auto"}
-      rowSpacing={3}
-    >
+    <Grid container component="form" onSubmit={submitHandler} maxWidth={"768px"} margin={"auto"} rowSpacing={3}>
       <Grid item xs={12}>
-        <ContentHeader
-          title={"add article"}
-          route={"/panel/articles/add"}
-          discardHandler={discardHandler}
-        />
+        <ContentHeader title={"add article"} route={"/panel/articles/add"} discardHandler={discardHandler} />
       </Grid>
       <Grid item xs={12}>
         <CardWrapper>
@@ -116,13 +94,8 @@ function AddArticle() {
               setSelectedCategory={setSelectedCategory}
             />
             <Grid item xs={12}>
-              <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>
-                description
-              </PFormLabel>
-              <TextEditor
-                editorState={editorState}
-                setEditorState={setEditorState}
-              />
+              <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>description</PFormLabel>
+              <TextEditor editorState={editorState} setEditorState={setEditorState} />
             </Grid>
           </Grid>
         </CardWrapper>

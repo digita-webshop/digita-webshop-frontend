@@ -1,19 +1,18 @@
+import { Dispatch, Fragment, SetStateAction, useRef } from "react";
 import {
   ArrowDropDown,
-  CompareArrows,
   LocalGroceryStoreOutlined,
   LoginOutlined,
   PersonOutline,
   SearchOutlined,
 } from "@mui/icons-material";
-import { Badge, Box, Skeleton } from "@mui/material";
-import { Dispatch, Fragment, SetStateAction, useRef } from "react";
+import { Badge, Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { iconsBadgeStyles, iconsWrapperStyles, IconWrapper } from "../styles";
 import ShopCart from "../ShopCart/ShopCart";
 import UserDropDown from "../UserDropDown/UserDropDown";
-import { useAppSelector } from "../../../../redux/store";
-import { useGetAllCartItemQuery } from "../../../../redux/cart/cartApi";
+import { useAppSelector } from "redux/store";
+import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 
 const navbarIcons = {
   marginLeft: "12px",
@@ -63,10 +62,7 @@ function Icons({
   };
 
   const handleClose = (event: Event | React.SyntheticEvent) => {
-    if (
-      userDropRef.current &&
-      userDropRef.current.contains(event.target as HTMLElement)
-    ) {
+    if (userDropRef.current && userDropRef.current.contains(event.target as HTMLElement)) {
       return;
     }
 
@@ -122,35 +118,15 @@ function Icons({
           </Fragment>
         ) : (
           <IconWrapper onClick={loginModalHandler(true)}>
-            <Badge
-              showZero
-              sx={{ ...iconsBadgeStyles, display: "inline-flex" }}
-            >
-              {/* <Skeleton>
-                  <LoginOutlined
-                    color="primary"
-                    sx={{ ...navbarIcons, padding: "10px 8px" }}
-                  />
-                </Skeleton> */}
+            <Badge showZero sx={{ ...iconsBadgeStyles, display: "inline-flex" }}>
               <LoginOutlined color="primary" sx={navbarIcons} />
             </Badge>
           </IconWrapper>
         )}
-
-        {/* <IconWrapper
-          display={"flex"}
-          height={"100%"}
-          onClick={() => setOpenCompareModal(true)}
-        >
-          <Badge showZero sx={iconsBadgeStyles}>
-            <CompareArrows color="primary" sx={navbarIcons} />
-          </Badge>
-        </IconWrapper> */}
         <IconWrapper
           sx={{
             "&:hover .shop-cart": {
-              display:
-                matches && cartItems.length !== 0 ? "inline-block" : "none",
+              display: matches && cartItems.length !== 0 ? "inline-block" : "none",
             },
           }}
         >

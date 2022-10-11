@@ -1,18 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
-import {
-  FormControl,
-  Grid,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  TextField,
-} from "@mui/material";
-import {
-  CardWrapper,
-  PFormControl,
-  PFormLabel,
-  PTextField,
-} from "styles/panel";
+import { FormControl, Grid, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
+import { CardWrapper, PFormControl, PFormLabel, PTextField } from "styles/panel";
 import ColorPickers from "./ColorPickers/ColorPickers";
 import { productBrands } from "components/Brands/data";
 
@@ -59,22 +47,13 @@ function Details({
         <Grid item xs={12} sm={6}>
           <FormControl fullWidth>
             <PFormLabel>SKU</PFormLabel>
-            <PTextField
-              placeholder="Type Here"
-              value={enteredSku}
-              onChange={(e) => setEnteredSku(e.target.value)}
-            />
+            <PTextField placeholder="Type Here" value={enteredSku} onChange={(e) => setEnteredSku(e.target.value)} />
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
           <PFormControl size="small">
             <PFormLabel>productBrands</PFormLabel>
-            <Select
-              variant="outlined"
-              displayEmpty
-              value={selectedBrand}
-              onChange={selectedBrandHandler}
-            >
+            <Select variant="outlined" displayEmpty value={selectedBrand} onChange={selectedBrandHandler}>
               {productBrands.map(({ id, name }) => (
                 <MenuItem key={id} value={name}>
                   {name}
@@ -85,10 +64,7 @@ function Details({
         </Grid>
         <Grid item xs={12}>
           <PFormLabel>colors</PFormLabel>
-          <ColorPickers
-            selectedColors={selectedColors}
-            setSelectedColors={setSelectedColors}
-          />
+          <ColorPickers selectedColors={selectedColors} setSelectedColors={setSelectedColors} />
         </Grid>
         <Grid item xs={12}>
           <PFormControl>

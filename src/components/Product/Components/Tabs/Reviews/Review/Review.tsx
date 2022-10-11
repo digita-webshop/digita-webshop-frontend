@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
 import { Avatar, Box, Divider, Rating, Typography } from "@mui/material";
-import { getReadableDate } from "../../../../../../utils/getReadableDate";
+import { getReadableDate } from "utils/getReadableDate";
 import { useLocation } from "react-router-dom";
-import { useGetUserMutation } from "../../../../../../redux/user/userApi";
+import { useGetUserMutation } from "redux/user/userApi";
 
 interface Props {
   id: string;
@@ -58,21 +58,11 @@ function Review({ id, userId, rating, description, createdAt }: Props) {
               justifyContent: "space-between",
             }}
           >
-            <Typography
-              component="p"
-              sx={{ fontSize: { xs: "12px", sm: "14px" } }}
-            >
+            <Typography component="p" sx={{ fontSize: { xs: "12px", sm: "14px" } }}>
               <span className="userName">{user?.userName} </span>
               <time> {`– ${readableDate}`}</time>
             </Typography>
-            {pathname.includes("product") && (
-              <Rating
-                name="read-only"
-                defaultValue={rating}
-                size="small"
-                readOnly
-              />
-            )}
+            {pathname.includes("product") && <Rating name="read-only" defaultValue={rating} size="small" readOnly />}
           </Box>
 
           <Box sx={{ width: "100%", marginTop: "10px " }}>

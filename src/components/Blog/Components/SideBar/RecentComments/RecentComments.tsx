@@ -1,7 +1,7 @@
 import { Typography, Skeleton, Box } from "@mui/material";
 import RecentComment from "./RecentComment/RecentComment";
 import { FilterTitleWrapper } from "../../../../Shop/styles";
-import { useGetAllReviewsQuery } from "../../../../../redux/reviews/reviewsApi";
+import { useGetAllReviewsQuery } from "redux/reviews/reviewsApi";
 
 function RecentComments() {
   const {
@@ -23,12 +23,7 @@ function RecentComments() {
       }}
     >
       <FilterTitleWrapper className="underline">
-        <Typography
-          component={"h4"}
-          variant="body1"
-          color="primary"
-          fontWeight={600}
-        >
+        <Typography component={"h4"} variant="body1" color="primary" fontWeight={600}>
           RECENT COMMENTS
         </Typography>
       </FilterTitleWrapper>

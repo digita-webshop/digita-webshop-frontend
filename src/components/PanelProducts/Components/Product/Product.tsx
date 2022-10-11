@@ -1,24 +1,10 @@
-import {
-  Box,
-  CardContent,
-  Button,
-  Card,
-  CardMedia,
-  Typography,
-  Modal,
-} from "@mui/material";
 import { useState } from "react";
+import { Box, CardContent, Button, Card, CardMedia, Typography, Modal } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import { cartModal } from "../../styles";
 
-import {
-  cardWrapper,
-  titleWrapper,
-  titleStyle,
-  deleteBtn,
-  editBtn,
-} from "../../styles";
+import { cardWrapper, titleWrapper, titleStyle, deleteBtn, editBtn } from "../../styles";
 import { Link } from "react-router-dom";
 
 type T = {
@@ -34,39 +20,20 @@ const Product = ({ id, title, price, image, onRemove }: T) => {
 
   return (
     <Card sx={cardWrapper}>
-      <CardMedia
-        component="img"
-        height="240"
-        image={image}
-        alt="green iguana"
-        sx={{ objectFit: "contain" }}
-      />
+      <CardMedia component="img" height="240" image={image} alt="green iguana" sx={{ objectFit: "contain" }} />
       <CardContent sx={titleWrapper}>
         <Typography component="p" sx={titleStyle}>
           {title}
         </Typography>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ pt: "2px", fontSize: "16px" }}
-        >
+        <Typography variant="h6" component="div" sx={{ pt: "2px", fontSize: "16px" }}>
           {"$" + price}
         </Typography>
         <Box sx={{ display: "flex", mt: 1, gap: 1 }}>
-          <Button
-            variant="contained"
-            sx={editBtn}
-            component={Link}
-            to={`/panel/products/edit/${id}`}
-          >
+          <Button variant="contained" sx={editBtn} component={Link} to={`/panel/products/edit/${id}`}>
             <EditIcon sx={{ margin: "0 0.2rem", color: "#999" }} />
             Edit
           </Button>
-          <Button
-            variant="contained"
-            sx={deleteBtn}
-            onClick={() => setOpenDelete(true)}
-          >
+          <Button variant="contained" sx={deleteBtn} onClick={() => setOpenDelete(true)}>
             <DeleteForeverIcon sx={{ margin: "0 0.2rem" }} />
             Delete
           </Button>
@@ -79,15 +46,8 @@ const Product = ({ id, title, price, image, onRemove }: T) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={cartModal}>
-            <DeleteForeverIcon
-              sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }}
-            />
-            <Typography
-              id="modal-modal-title"
-              variant="h5"
-              component="h2"
-              sx={{ textAlign: "center" }}
-            >
+            <DeleteForeverIcon sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }} />
+            <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ textAlign: "center" }}>
               Delete this item?
             </Typography>
             <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>

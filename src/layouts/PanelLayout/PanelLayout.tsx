@@ -1,5 +1,5 @@
-import { Box, Drawer, useMediaQuery } from "@mui/material";
 import { useState } from "react";
+import { Box, Drawer, useMediaQuery } from "@mui/material";
 import { Outlet } from "react-router-dom";
 import { Aside, Main } from "./styles";
 import Sidebar from "./Sidebar/Sidebar";
@@ -24,21 +24,13 @@ function PanelLayout() {
       </Helmet>
       {mdMatches && (
         <Aside className={menuOpen ? "overflow" : "menu"}>
-          <Sidebar
-            menuOpen={menuOpen}
-            setMenuOpen={setMenuOpen}
-            setDrawerOpen={setDrawerOpen}
-          />
+          <Sidebar menuOpen={menuOpen} setMenuOpen={setMenuOpen} setDrawerOpen={setDrawerOpen} />
         </Aside>
       )}
       {!mdMatches && (
         <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
           <Aside>
-            <Sidebar
-              menuOpen={menuOpen}
-              setMenuOpen={setMenuOpen}
-              setDrawerOpen={setDrawerOpen}
-            />
+            <Sidebar menuOpen={menuOpen} setMenuOpen={setMenuOpen} setDrawerOpen={setDrawerOpen} />
           </Aside>
         </Drawer>
       )}

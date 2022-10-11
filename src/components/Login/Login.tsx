@@ -2,7 +2,6 @@ import { FormEvent, useState, useRef } from "react";
 import { CloseRounded } from "@mui/icons-material";
 import {
   Box,
-  CircularProgress,
   Button,
   Checkbox,
   FormControl,
@@ -14,18 +13,11 @@ import {
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../../redux/auth/authApi";
-import { setCredentials } from "../../redux/auth/authSlice";
-import { successMessage } from "../../utils/toastMessages";
-import { useAppSelector } from "../../redux/store";
-import {
-  errorStyles,
-  forgetPassStyles,
-  FormFooter,
-  FormWrapper,
-  inputErrorStyles,
-} from "./styles";
-import { PStack } from "../../styles/panel";
+import { useLoginMutation } from "redux/auth/authApi";
+import { setCredentials } from "redux/auth/authSlice";
+import { successMessage } from "utils/toastMessages";
+import { useAppSelector } from "redux/store";
+import { errorStyles, forgetPassStyles, FormFooter, FormWrapper, inputErrorStyles } from "./styles";
 import Header from "./Header/Header";
 import LoadingBar from "react-top-loading-bar";
 
@@ -110,10 +102,7 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
       <LoadingBar color="#f03637" ref={loadingRef} />
       <FormWrapper>
         <Box sx={{ position: "relative" }}>
-          <Header
-            title={"log in"}
-            subtitle={"Become a part of our community!"}
-          />
+          <Header title={"log in"} subtitle={"Become a part of our community!"} />
           {errorMessage && (
             <Box sx={errorStyles}>
               <Typography component="span">ERROR: {errorMessage}</Typography>
@@ -185,32 +174,20 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
                 </FormGroup>
               </Grid>
               <Grid item xs={12}>
-                <Button
-                  variant="contained"
-                  fullWidth
-                  sx={{ height: "46px" }}
-                  type={"submit"}
-                >
+                <Button variant="contained" fullWidth sx={{ height: "46px" }} type={"submit"}>
                   LOGIN
                 </Button>
               </Grid>
             </Grid>
           </form>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <Typography
-              component={"div"}
-              sx={forgetPassStyles}
-              onClick={modalTypeToggle.bind(null, "reset")}
-            >
+            <Typography component={"div"} sx={forgetPassStyles} onClick={modalTypeToggle.bind(null, "reset")}>
               Forget your password? Get help
             </Typography>
           </Box>
           <FormFooter>
             <Typography component="span">Not a Member ?</Typography>
-            <Button
-              variant="contained"
-              onClick={modalTypeToggle.bind(null, "register")}
-            >
+            <Button variant="contained" onClick={modalTypeToggle.bind(null, "register")}>
               sign up
             </Button>
           </FormFooter>

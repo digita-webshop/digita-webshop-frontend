@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Add } from "@mui/icons-material";
 import { Box, Modal } from "@mui/material";
-import { CardWrapper, PButton, PTitle } from "../../styles/panel";
+import { CardWrapper, PButton, PTitle } from "styles/panel";
 import UsersTable from "./Components/UsersTable/UsersTable";
 import RegisterAdmin from "./Components/RegisterAdmin/RegisterAdmin";
 import { useLocation } from "react-router-dom";
@@ -21,9 +21,7 @@ function ManageAccess() {
           marginBottom: "30px",
         }}
       >
-        <PTitle sx={{ fontSize: { xs: "22px", sm: "32px" } }}>
-          {isUsersPage ? "users" : "manage access"}
-        </PTitle>
+        <PTitle sx={{ fontSize: { xs: "22px", sm: "32px" } }}>{isUsersPage ? "users" : "manage access"}</PTitle>
 
         <PButton
           variant="contained"

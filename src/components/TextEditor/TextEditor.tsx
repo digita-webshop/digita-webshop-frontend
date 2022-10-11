@@ -21,42 +21,16 @@ function TextEditor({ editorState, setEditorState }: Props) {
   return (
     <TextEditorWrapper>
       <Box sx={textEditorStyles}>
-        <EditorButton onMouseDown={(e) => handleBlockClick(e, "header-one")}>
-          H1
-        </EditorButton>
-        <EditorButton onMouseDown={(e) => handleBlockClick(e, "header-two")}>
-          H2
-        </EditorButton>
-        <EditorButton onMouseDown={(e) => handleBlockClick(e, "header-three")}>
-          H3
-        </EditorButton>
-        <EditorButton onMouseDown={(e) => handleBlockClick(e, "unstyled")}>
-          Normal
-        </EditorButton>
-        <EditorButton onMouseDown={(e) => handleToggleClick(e, "BOLD")}>
-          bold
-        </EditorButton>
-        <EditorButton onMouseDown={(e) => handleToggleClick(e, "UNDERLINE")}>
-          underline
-        </EditorButton>
-        <EditorButton onMouseDown={(e) => handleToggleClick(e, "ITALIC")}>
-          italic
-        </EditorButton>
-        <EditorButton
-          onMouseDown={(e) => handleToggleClick(e, "STRIKETHROUGH")}
-        >
-          strikthrough
-        </EditorButton>
-        <EditorButton
-          onMouseDown={(e) => handleBlockClick(e, "ordered-list-item")}
-        >
-          Ordered List
-        </EditorButton>
-        <EditorButton
-          onMouseDown={(e) => handleBlockClick(e, "unordered-list-item")}
-        >
-          Unordered List
-        </EditorButton>
+        <EditorButton onMouseDown={(e) => handleBlockClick(e, "header-one")}>H1</EditorButton>
+        <EditorButton onMouseDown={(e) => handleBlockClick(e, "header-two")}>H2</EditorButton>
+        <EditorButton onMouseDown={(e) => handleBlockClick(e, "header-three")}>H3</EditorButton>
+        <EditorButton onMouseDown={(e) => handleBlockClick(e, "unstyled")}>Normal</EditorButton>
+        <EditorButton onMouseDown={(e) => handleToggleClick(e, "BOLD")}>bold</EditorButton>
+        <EditorButton onMouseDown={(e) => handleToggleClick(e, "UNDERLINE")}>underline</EditorButton>
+        <EditorButton onMouseDown={(e) => handleToggleClick(e, "ITALIC")}>italic</EditorButton>
+        <EditorButton onMouseDown={(e) => handleToggleClick(e, "STRIKETHROUGH")}>strikthrough</EditorButton>
+        <EditorButton onMouseDown={(e) => handleBlockClick(e, "ordered-list-item")}>Ordered List</EditorButton>
+        <EditorButton onMouseDown={(e) => handleBlockClick(e, "unordered-list-item")}>Unordered List</EditorButton>
       </Box>
       <Editor editorState={editorState} onChange={setEditorState} />
     </TextEditorWrapper>

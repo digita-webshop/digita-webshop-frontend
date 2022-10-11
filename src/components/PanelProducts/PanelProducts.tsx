@@ -5,13 +5,10 @@ import { Grid, SelectChangeEvent, Divider, Box } from "@mui/material";
 import { DashWrapper, paginationStyle } from "./styles";
 import Product from "./Components/Product/Product";
 import PanelPagination from "../Pagination/PanelPagination";
-import {
-  useDeleteProductMutation,
-  useGetAllProductsQuery,
-} from "../../redux/products/productsApi";
-import { errorMessage, successMessage } from "../../utils/toastMessages";
+import { useDeleteProductMutation, useGetAllProductsQuery } from "redux/products/productsApi";
+import { errorMessage, successMessage } from "utils/toastMessages";
 import NotFound from "../EmptyList/NotFound";
-import { ErrorText } from "../../styles/panel";
+import { ErrorText } from "styles/panel";
 import PanelLoading from "../Loading/PanelLoading";
 
 const PanelProducts = () => {
@@ -31,11 +28,7 @@ const PanelProducts = () => {
     queries = `${queries} &sort=${selectedSorting}`;
   }
 
-  const {
-    data: productsData,
-    isLoading,
-    isError,
-  } = useGetAllProductsQuery(queries);
+  const { data: productsData, isLoading, isError } = useGetAllProductsQuery(queries);
   const products = productsData?.data ?? [];
   const length = productsData?.total ?? 0;
 
@@ -64,9 +57,7 @@ const PanelProducts = () => {
       </Grid>
 
       <Grid item xs={12}>
-        <DashWrapper
-          sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}
-        >
+        <DashWrapper sx={{ borderBottomLeftRadius: "0", borderBottomRightRadius: "0" }}>
           <GridHeader
             selectedSorting={selectedSorting}
             selectedCategory={selectedCategory}
@@ -76,9 +67,7 @@ const PanelProducts = () => {
             setSearchValue={setSearchValue}
           />
         </DashWrapper>
-        <Divider
-          sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }}
-        />
+        <Divider sx={{ borderColor: "common.panelBorderGrey", opacity: ".1" }} />
         <DashWrapper
           sx={{
             borderTopLeftRadius: "0",
@@ -93,13 +82,7 @@ const PanelProducts = () => {
             {products?.length !== 0 &&
               products.map(({ _id, title, price, image }) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={_id}>
-                  <Product
-                    id={_id!}
-                    title={title}
-                    price={price}
-                    image={image}
-                    onRemove={handleRemove}
-                  />
+                  <Product id={_id!} title={title} price={price} image={image} onRemove={handleRemove} />
                 </Grid>
               ))}
           </Grid>

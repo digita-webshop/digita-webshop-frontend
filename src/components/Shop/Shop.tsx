@@ -1,13 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
-import {
-  Container,
-  useMediaQuery,
-  Grid,
-  Fade,
-  Box,
-  Typography,
-} from "@mui/material";
+import { Container, useMediaQuery, Grid, Fade, Box, Typography } from "@mui/material";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import CategoriesFilter from "./Components/CategoriesFilter/CategoriesFilter";
 import ColorFilter from "./Components/ColorFilter/ColorFilter";
@@ -17,7 +10,7 @@ import Toolbar from "./Components/Toolbar/Toolbar";
 import ProductItem from "../Home/Components/Products/Components/ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { useGetAllProductsQuery } from "../../redux/products/productsApi";
+import { useGetAllProductsQuery } from "redux/products/productsApi";
 import ProductPlaceholder from "../Placeholders/ProductPlaceholder";
 import { Helmet } from "react-helmet-async";
 
@@ -44,10 +37,7 @@ function Shop() {
 
   let categoryQueryParams = searchParams.get("category");
   if (categoryQueryParams) {
-    queries = `${queries} &category=${categoryQueryParams.replaceAll(
-      "&",
-      "%26"
-    )}`;
+    queries = `${queries} &category=${categoryQueryParams.replaceAll("&", "%26")}`;
   }
 
   let colorQueryParams = searchParams.get("color");
@@ -69,11 +59,7 @@ function Shop() {
     setDisplayDrawer(open);
   };
 
-  const {
-    data: productsData,
-    isLoading,
-    isError,
-  } = useGetAllProductsQuery(queries);
+  const { data: productsData, isLoading, isError } = useGetAllProductsQuery(queries);
   console.log(productsData);
   const products = productsData?.data ?? [];
   const productsLength = productsData?.total ?? 0;
@@ -83,17 +69,11 @@ function Shop() {
     let firstCatParams = selectedQueryParams?.split("/").length === 2;
 
     if (selectedQueryParams?.includes(name) && !firstCatParams) {
-      searchParams.set(
-        filter,
-        `${selectedQueryParams.replace(`/${name}`, "")}`
-      );
+      searchParams.set(filter, `${selectedQueryParams.replace(`/${name}`, "")}`);
     } else if (selectedQueryParams?.includes(name) && firstCatParams) {
       searchParams.delete(filter);
     } else {
-      searchParams.set(
-        filter,
-        selectedQueryParams ? `${selectedQueryParams}/${name}` : `/${name}`
-      );
+      searchParams.set(filter, selectedQueryParams ? `${selectedQueryParams}/${name}` : `/${name}`);
     }
     setSearchParams(searchParams, { replace: true });
     setCurrentPage(1);
@@ -117,20 +97,13 @@ function Shop() {
         <Grid container columnSpacing={4}>
           {matches && (
             <Grid item xs={3.5}>
-              <CategoriesFilter
-                addQueryParams={addQueryParams}
-                categoryQueryParams={categoryQueryParams}
-              />
+              <CategoriesFilter addQueryParams={addQueryParams} categoryQueryParams={categoryQueryParams} />
               <ColorFilter drawer={true} addQueryParams={addQueryParams} />
               <PriceFilter drawer={true} />
             </Grid>
           )}
           {!matches && (
-            <FiltersDrawer
-              displayDrawer={displayDrawer}
-              toggleDrawer={toggleDrawer}
-              addQueryParams={addQueryParams}
-            />
+            <FiltersDrawer displayDrawer={displayDrawer} toggleDrawer={toggleDrawer} addQueryParams={addQueryParams} />
           )}
           <Grid item xs={12} md={8.5}>
             <Toolbar
@@ -146,10 +119,7 @@ function Shop() {
                     if (products.length === 0) {
                       return (
                         <Box sx={{ textAlign: "center", margin: "40px auto" }}>
-                          <Typography
-                            variant="h5"
-                            sx={{ color: "common.digitaBlack" }}
-                          >
+                          <Typography variant="h5" sx={{ color: "common.digitaBlack" }}>
                             No result found!
                           </Typography>
                         </Box>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Box,
   CardContent,
@@ -11,24 +12,17 @@ import {
   Link,
   Fade,
 } from "@mui/material";
-import { useState } from "react";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import { cartModal } from "../../PanelProducts/styles";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 import { cardWrapper } from "../styles";
-import {
-  titleStyle,
-  titleWrapper,
-  Item,
-  editStyle,
-  AuthorWrapper,
-} from "../styles";
+import { titleStyle, titleWrapper, Item, editStyle, AuthorWrapper } from "../styles";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
-import { getReadableDate } from "../../../utils/getReadableDate";
+import { getReadableDate } from "utils/getReadableDate";
 
 type T = {
   id: string;
@@ -40,15 +34,7 @@ type T = {
   onRemove: Function;
 };
 
-const Article = ({
-  id,
-  title,
-  image,
-  writer,
-  createdAt,
-  category,
-  onRemove,
-}: T) => {
+const Article = ({ id, title, image, writer, createdAt, category, onRemove }: T) => {
   const [openDelete, setOpenDelete] = useState(false);
   const navigate = useNavigate();
   /* Edit part */
@@ -84,10 +70,7 @@ const Article = ({
         {/* Author article */}
         <Item>
           <Box display="flex" alignItems="flex-end">
-            <PersonOutlineOutlinedIcon
-              style={{ fontSize: "1rem" }}
-              color="secondary"
-            />
+            <PersonOutlineOutlinedIcon style={{ fontSize: "1rem" }} color="secondary" />
             <Link
               component={RouterLink}
               to={`/blog/${id}/writer/${writer.replace(/\s+/g, "-")}`}
@@ -108,10 +91,7 @@ const Article = ({
         <Item>
           <Box display="flex">
             &nbsp;
-            <AccessTimeOutlinedIcon
-              style={{ fontSize: "13px" }}
-              color="secondary"
-            />
+            <AccessTimeOutlinedIcon style={{ fontSize: "13px" }} color="secondary" />
             &nbsp;{readableDate} -
           </Box>
         </Item>
@@ -119,10 +99,7 @@ const Article = ({
         <Item>
           <Box display="flex">
             &nbsp;
-            <FolderOutlinedIcon
-              style={{ fontSize: "13px" }}
-              color="secondary"
-            />
+            <FolderOutlinedIcon style={{ fontSize: "13px" }} color="secondary" />
             <Link
               component={RouterLink}
               to={`/blog/${id}/category/${category?.replace(/\s+/g, "-")}`}
@@ -176,9 +153,7 @@ const Article = ({
             >
               <MenuItem onClick={handleEdit}>Edit</MenuItem>
               <MenuItem onClick={handleDelete}>
-                <Typography sx={{ color: "common.digitaRed" }}>
-                  Delete
-                </Typography>
+                <Typography sx={{ color: "common.digitaRed" }}>Delete</Typography>
               </MenuItem>
             </Menu>
           </Box>
@@ -192,15 +167,8 @@ const Article = ({
         aria-describedby="modal-modal-description"
       >
         <Box sx={cartModal}>
-          <DeleteForeverIcon
-            sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }}
-          />
-          <Typography
-            id="modal-modal-title"
-            variant="h5"
-            component="h2"
-            sx={{ textAlign: "center" }}
-          >
+          <DeleteForeverIcon sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }} />
+          <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ textAlign: "center" }}>
             Delete this item?
           </Typography>
           <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>

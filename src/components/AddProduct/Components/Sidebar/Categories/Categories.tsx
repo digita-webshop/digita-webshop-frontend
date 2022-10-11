@@ -1,12 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import {
-  Checkbox,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Checkbox, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import { categoryCheckboxStyles } from "../../../styles";
 import { productCategories } from "components/Shop/data";
 
@@ -40,10 +33,7 @@ function Categories({ selectedCategory, setSelectedCategory }: Props) {
               <ListItemText
                 id={labelId}
                 primary={
-                  <Typography
-                    component={"span"}
-                    sx={{ color: "common.digitaBlack" }}
-                  >
+                  <Typography component={"span"} sx={{ color: "common.digitaBlack" }}>
                     {name}
                   </Typography>
                 }

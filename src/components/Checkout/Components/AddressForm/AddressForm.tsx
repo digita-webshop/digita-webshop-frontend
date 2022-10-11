@@ -1,15 +1,9 @@
 import { useEffect, useState, FormEvent } from "react";
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Button, FormControl, FormLabel, Grid, Typography } from "@mui/material";
 import { CheckoutInput } from "../../styles";
 import InputLabel from "./InputLabel/InputLabel";
 import PlaceSelect from "./PlaceSelect/PlaceSelect";
-import { IAddress } from "../../../../types/user";
+import { IAddress } from "types/user";
 import { City, Country, State } from "country-state-city";
 import { ICity, ICountry, IState } from "country-state-city/dist/lib/interface";
 const initialCountryState = {
@@ -64,14 +58,10 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
   const countrySelectHandler = (name: string) => () => {
     if (name === "") return;
     selectedCountry = allCountries.find((item) => item.name === name);
-    const selectedStateList = allStates.filter(
-      (item) => item.countryCode === selectedCountry?.isoCode
-    );
+    const selectedStateList = allStates.filter((item) => item.countryCode === selectedCountry?.isoCode);
     let selectedCityList: any = [];
     if (!selectedStateList) {
-      selectedCityList = allCities.filter(
-        (item) => item.countryCode === selectedCountry?.isoCode
-      );
+      selectedCityList = allCities.filter((item) => item.countryCode === selectedCountry?.isoCode);
     }
     setState(initialStateState);
     setCity(initialCityState);
@@ -84,9 +74,7 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
   const stateSelectHandler = (name: string) => () => {
     const selectedState = allStates.find((item) => item.name === name);
     const selectedCityList = allCities.filter(
-      (item) =>
-        item.stateCode === selectedState?.isoCode &&
-        item.countryCode === selectedCountry?.isoCode
+      (item) => item.stateCode === selectedState?.isoCode && item.countryCode === selectedCountry?.isoCode
     );
     setStateDropOpen(false);
     setState(selectedState || initialStateState);
@@ -95,8 +83,7 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
 
   const citySelectHandler = (cityName: string) => () => {
     const selectedCity = allCities.find(
-      (item) =>
-        item.name === cityName && item.countryCode === selectedCountry?.isoCode
+      (item) => item.name === cityName && item.countryCode === selectedCountry?.isoCode
     );
 
     setCityDropOpen(false);
@@ -135,11 +122,7 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
   return (
     <Grid container spacing={2} component={"form"} onSubmit={submitHandler}>
       <Grid item xs={12} sm={6}>
-        <FormControl
-          sx={{ width: { xs: "100%" } }}
-          size="small"
-          variant="standard"
-        >
+        <FormControl sx={{ width: { xs: "100%" } }} size="small" variant="standard">
           <InputLabel name="Country" />
           <PlaceSelect
             state={country}
@@ -195,24 +178,13 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
             }}
           >
             postcode
-            <Typography
-              component={"span"}
-              sx={{ color: "#f03637", marginLeft: "2px" }}
-            >
+            <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
               *
             </Typography>
           </FormLabel>
-          <CheckoutInput
-            value={enteredPostCode}
-            onChange={(e) => setEnteredPostCode(e.target.value)}
-            placeholder=""
-          />
+          <CheckoutInput value={enteredPostCode} onChange={(e) => setEnteredPostCode(e.target.value)} placeholder="" />
           {errorMessage && (
-            <Typography
-              sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
-            >
-              {errorMessage}
-            </Typography>
+            <Typography sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}>{errorMessage}</Typography>
           )}
         </FormControl>
       </Grid>
@@ -228,18 +200,11 @@ function AddressForm({ addAddress, buttonText, currentAddress }: Props) {
             }}
           >
             street
-            <Typography
-              component={"span"}
-              sx={{ color: "#f03637", marginLeft: "2px" }}
-            >
+            <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
               *
             </Typography>
           </FormLabel>
-          <CheckoutInput
-            value={enteredStreet}
-            onChange={(e) => setEnteredStreet(e.target.value)}
-            placeholder=""
-          />
+          <CheckoutInput value={enteredStreet} onChange={(e) => setEnteredStreet(e.target.value)} placeholder="" />
         </FormControl>
       </Grid>
 

@@ -1,22 +1,10 @@
-import {
-  ChevronRight,
-  FavoriteBorder,
-  Logout,
-  ShoppingBagOutlined,
-} from "@mui/icons-material";
-import {
-  ClickAwayListener,
-  Grow,
-  MenuList,
-  Paper,
-  Popper,
-  Typography,
-} from "@mui/material";
 import { MutableRefObject, SyntheticEvent } from "react";
+import { ChevronRight, FavoriteBorder, Logout, ShoppingBagOutlined } from "@mui/icons-material";
+import { ClickAwayListener, Grow, MenuList, Paper, Popper, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { logout } from "../../../../redux/auth/authSlice";
-import { IUser } from "../../../../types/user";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { logout } from "redux/auth/authSlice";
+import { IUser } from "types/user";
 import { DropMenuItem } from "../styles";
 
 interface Props {
@@ -26,18 +14,19 @@ interface Props {
   user: IUser | null;
   role: string | null;
 }
-function UserDropDown({
-  openDropdown,
-  handleClose,
-  userDropRef,
-  user,
-  role,
-}: Props) {
+function UserDropDown({ openDropdown, handleClose, userDropRef, user, role }: Props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
   const isAdmin = role === "admin" || role === "superAdmin";
+
   const logoutClickHandler = (event: Event | SyntheticEvent) => {
     handleClose(event);
     dispatch(logout());
+    if (pathname.includes("/user") || pathname.includes("panel")) {
+      navigate("/", { replace: true });
+    }
   };
   return (
     <Popper
@@ -98,7 +87,7 @@ function UserDropDown({
                   </Link>
                 </DropMenuItem>
                 <DropMenuItem onClick={logoutClickHandler}>
-                  <Link to="/">
+                  <Link to="#">
                     <Logout />
                     <Typography>Logout</Typography>
                   </Link>

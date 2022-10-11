@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { convertFromRaw, Editor, EditorState } from "draft-js";
 
 const Description = ({ description }: { description: string }) => {

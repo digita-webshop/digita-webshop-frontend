@@ -1,14 +1,14 @@
 import { useState, SyntheticEvent } from "react";
 import { Box, Tab, Tabs, Typography } from "@mui/material";
-import { between, wrapper } from "../../styles/user";
+import { between, wrapper } from "styles/user";
 import Search from "@mui/icons-material/Search";
 import { TabPanel, a11yProps } from "./Components/TabPanel/TabPanel";
 import EmptyOrder from "./Components/EmptyOrder/EmptyOrder";
 import OrderItem from "./Components/OrderItem/OrderItem";
 import { Link } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
-import { useGetUserOrdersQuery } from "../../redux/orders/ordersApi";
-import { useAppSelector } from "../../redux/store";
+import { useGetUserOrdersQuery } from "redux/orders/ordersApi";
+import { useAppSelector } from "redux/store";
 
 const statuses = ["pending", "delivered", "cancelled"];
 
@@ -22,9 +22,7 @@ const UserOrders = () => {
   });
   const orders = data?.data ?? [];
 
-  const filteredOrders = orders.filter(
-    (order: any) => order.status === statuses[value]
-  );
+  const filteredOrders = orders.filter((order: any) => order.status === statuses[value]);
   const handleChange = (event: SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -44,9 +42,7 @@ const UserOrders = () => {
           >
             <ArrowBack />
           </Box>
-          <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
-            Orders History
-          </Typography>
+          <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>Orders History</Typography>
         </Box>
         <Box>
           <Search />
@@ -67,13 +63,7 @@ const UserOrders = () => {
             {filteredOrders.length === 0 && <EmptyOrder />}
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {filteredOrders.map(({ _id, status }: any) => (
-                <OrderItem
-                  id={_id!}
-                  date={"date"}
-                  image={"image"}
-                  price={10}
-                  status={status}
-                />
+                <OrderItem id={_id!} date={"date"} image={"image"} price={10} status={status} />
               ))}
             </Box>
           </TabPanel>

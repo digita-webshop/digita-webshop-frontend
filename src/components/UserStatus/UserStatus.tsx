@@ -1,20 +1,13 @@
-import {
-  Box,
-  Card,
-  CardMedia,
-  Grid,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
-import { cardWrapper } from "../../styles/user";
+import { Box, Card, CardMedia, Grid, Typography, useMediaQuery } from "@mui/material";
+import { cardWrapper } from "styles/user";
 import { titleStyle } from "../PanelProducts/styles";
 import { Fragment } from "react";
 import MyOrders from "./MyOrders/MyOrders";
-import { useGetWishlistQuery } from "../../redux/wishlist/wishlistApi";
-import { useAppSelector } from "../../redux/store";
+import { useGetWishlistQuery } from "redux/wishlist/wishlistApi";
+import { useAppSelector } from "redux/store";
 import { useTheme } from "@mui/material/styles";
 import PanelLoading from "../Loading/PanelLoading";
-import { ErrorText } from "../../styles/panel";
+import { ErrorText } from "styles/panel";
 import NotFound from "../EmptyList/NotFound";
 
 const Status = () => {
@@ -40,9 +33,7 @@ const Status = () => {
           padding: "30px",
         }}
       >
-        <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
-          Latest Shops
-        </Typography>
+        <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>Latest Shops</Typography>
 
         <Box
           sx={{
@@ -69,11 +60,7 @@ const Status = () => {
                       <Typography component="p" sx={titleStyle}>
                         {item.title}
                       </Typography>
-                      <Typography
-                        variant="h6"
-                        component="div"
-                        sx={{ paddingY: "4px", fontSize: "15px" }}
-                      >
+                      <Typography variant="h6" component="div" sx={{ paddingY: "4px", fontSize: "15px" }}>
                         {"$" + item.price}
                       </Typography>
                     </Box>

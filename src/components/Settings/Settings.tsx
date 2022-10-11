@@ -18,16 +18,11 @@ function Settings() {
     <CardWrapper>
       <Grid container spacing={4}>
         <Grid item xs={12} lg={3}>
-          <Sidebar
-            activePageHandler={activePageHandler}
-            activePage={activePage}
-          />
+          <Sidebar activePageHandler={activePageHandler} activePage={activePage} />
         </Grid>
         <Grid item xs={12} lg={9}>
           {activePage === "general" && <General user={user!} />}
-          {activePage === "password" && (
-            <Password id={user?._id!} role={user?.role!} />
-          )}
+          {activePage === "password" && <Password id={user?._id!} role={user?.role!} />}
           {activePage === "addresses" && <Addresses user={user!} />}
         </Grid>
       </Grid>

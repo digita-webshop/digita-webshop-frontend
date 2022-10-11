@@ -1,15 +1,8 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { CloseRounded } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  FormControl,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { useCreateAdminMutation } from "../../../../redux/user/userApi";
-import { successMessage } from "../../../../utils/toastMessages";
+import { Box, Button, FormControl, Grid, TextField, Typography } from "@mui/material";
+import { useCreateAdminMutation } from "redux/user/userApi";
+import { successMessage } from "utils/toastMessages";
 import { errorStyles, FormWrapper } from "../../../Login/styles";
 
 interface Props {
@@ -28,12 +21,7 @@ function RegisterAdmin({ setOpenRegister }: Props) {
     const password = event.target.elements.password.value;
     const confirmPassword = event.target.elements.confirmPassword.value;
 
-    if (
-      !userName.trim() ||
-      !email.trim() ||
-      !password.trim() ||
-      !confirmPassword.trim()
-    ) {
+    if (!userName.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
       setErrorMessage("all fields are required");
       return;
     }
@@ -80,42 +68,23 @@ function RegisterAdmin({ setOpenRegister }: Props) {
           </Grid>
           <Grid item xs={12}>
             <FormControl fullWidth>
-              <TextField
-                variant="standard"
-                label="Password"
-                type="password"
-                name="password"
-              />
+              <TextField variant="standard" label="Password" type="password" name="password" />
             </FormControl>
           </Grid>
           <Grid item xs={12}>
             <FormControl fullWidth>
-              <TextField
-                variant="standard"
-                label="Confirm Password"
-                type="password"
-                name="confirmPassword"
-              />
+              <TextField variant="standard" label="Confirm Password" type="password" name="confirmPassword" />
             </FormControl>
           </Grid>
 
           <Grid item xs={12}>
-            <Button
-              variant="contained"
-              fullWidth
-              sx={{ height: "46px" }}
-              type="submit"
-            >
+            <Button variant="contained" fullWidth sx={{ height: "46px" }} type="submit">
               REGISTER
             </Button>
           </Grid>
         </Grid>
       </form>
-      <Box
-        className="close-button"
-        sx={{ top: "5px!important" }}
-        onClick={() => setOpenRegister(false)}
-      >
+      <Box className="close-button" sx={{ top: "5px!important" }} onClick={() => setOpenRegister(false)}>
         <CloseRounded fontSize="large" />
       </Box>
     </FormWrapper>

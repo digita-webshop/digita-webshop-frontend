@@ -1,5 +1,5 @@
 import { Box, Grid, Rating, Typography } from "@mui/material";
-import { IReviews } from "../../../../../types/product";
+import { IReviews } from "types/product";
 import { ReusableTypography } from "../styles";
 
 type Props = {
@@ -68,12 +68,7 @@ function ClientCard({ review }: Props) {
                 </Grid>
 
                 <Grid item>
-                  <Rating
-                    size="small"
-                    name="read-only"
-                    value={review.rating}
-                    readOnly
-                  />
+                  <Rating size="small" name="read-only" value={review.rating} readOnly />
                 </Grid>
               </Grid>
             </Grid>

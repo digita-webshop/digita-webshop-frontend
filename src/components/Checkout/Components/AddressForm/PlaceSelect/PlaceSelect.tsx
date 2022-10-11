@@ -1,8 +1,8 @@
+import { Dispatch, SetStateAction } from "react";
 import { ArrowDropDown, ArrowDropUp } from "@mui/icons-material";
 import { Box, Fade } from "@mui/material";
 import { InputWrapper } from "../../../styles";
 import { ICity, ICountry, IState } from "country-state-city/dist/lib/interface";
-import { Dispatch, SetStateAction } from "react";
 
 type Props = {
   state: ICity | ICountry | IState;
@@ -42,18 +42,12 @@ function PlaceSelect({
           {state.name && state.name}
           {!state.name && showPlaceholder ? `select your ${placeholder}` : ""}
         </Box>
-        <Box sx={{ display: "flex" }}>
-          {dropDownOpen ? <ArrowDropUp /> : <ArrowDropDown />}
-        </Box>
+        <Box sx={{ display: "flex" }}>{dropDownOpen ? <ArrowDropUp /> : <ArrowDropDown />}</Box>
       </Box>
       <Fade in={dropDownOpen}>
         <ul>
           {places.map((item: any, index) => (
-            <li
-              key={index}
-              value={item.name}
-              onClick={selectHandler(item["name"])}
-            >
+            <li key={index} value={item.name} onClick={selectHandler(item["name"])}>
               {item.name}
             </li>
           ))}

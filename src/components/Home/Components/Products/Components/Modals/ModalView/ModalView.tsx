@@ -12,14 +12,7 @@ import {
 } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import StarIcon from "@mui/icons-material/Star";
-import {
-  closeStyle,
-  label,
-  modalRight,
-  modalLeft,
-  modalStyle,
-  StyledModal,
-} from "../../../styles";
+import { closeStyle, label, modalRight, modalLeft, modalStyle, StyledModal } from "../../../styles";
 import { IGallery } from "types/product";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
@@ -99,11 +92,7 @@ const ModalView = ({
           <Box sx={closeStyle} onClick={() => setOpenView(false)}>
             <CloseRoundedIcon sx={{ fontSize: "30px" }} />
           </Box>
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{ fontWeight: "500", color: "#444" }}
-          >
+          <Typography variant="h5" component="h2" sx={{ fontWeight: "500", color: "#444" }}>
             {title}
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -113,21 +102,15 @@ const ModalView = ({
               value={rating}
               readOnly
               precision={0.5}
-              emptyIcon={
-                <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-              }
+              emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
             />
-            <Box sx={{ color: "#777", margin: "0.6rem 0", fontSize: "13px" }}>
-              {`(${reviewsLen} customer review)`}
-            </Box>
+            <Box sx={{ color: "#777", margin: "0.6rem 0", fontSize: "13px" }}>{`(${reviewsLen} customer review)`}</Box>
           </Box>
           <Box sx={{ display: "flex", gap: 3, alignItems: "center" }}>
             <Typography variant="h4" sx={{ margin: "0.8rem 0" }}>
               {`$${price}`}
             </Typography>
-            <Box sx={{ textDecoration: "line-through", color: "#555" }}>
-              {offPrice !== 0 && `$${offPrice}`}
-            </Box>
+            <Box sx={{ textDecoration: "line-through", color: "#555" }}>{offPrice !== 0 && `$${offPrice}`}</Box>
           </Box>
           <Typography
             variant="body2"
@@ -190,11 +173,7 @@ const ModalView = ({
               </>
             )}
             {!cartItem && (
-              <Button
-                variant="contained"
-                sx={{ fontSize: "14px", height: "100%" }}
-                onClick={addToCartHandler}
-              >
+              <Button variant="contained" sx={{ fontSize: "14px", height: "100%" }} onClick={addToCartHandler}>
                 Add to Cart
               </Button>
             )}
@@ -213,16 +192,12 @@ const ModalView = ({
               {wished ? (
                 <Favorite
                   sx={{ color: "common.digitaRed", ...productIconStyles }}
-                  className={
-                    addWishLoading || delWishLoading ? "wishLoading" : ""
-                  }
+                  className={addWishLoading || delWishLoading ? "wishLoading" : ""}
                 />
               ) : (
                 <FavoriteBorder
                   sx={productIconStyles}
-                  className={
-                    addWishLoading || delWishLoading ? "wishLoading" : ""
-                  }
+                  className={addWishLoading || delWishLoading ? "wishLoading" : ""}
                 />
               )}
               Wishlist

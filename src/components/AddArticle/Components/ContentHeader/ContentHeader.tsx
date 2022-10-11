@@ -1,7 +1,7 @@
 import { Close } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { PButton, POutlinedButton, PTitle } from "../../../../styles/panel";
+import { PButton, POutlinedButton, PTitle } from "styles/panel";
 
 interface Props {
   route: string;

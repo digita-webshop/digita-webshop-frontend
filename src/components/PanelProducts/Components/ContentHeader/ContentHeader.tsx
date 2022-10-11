@@ -1,7 +1,7 @@
-import { Box, Button } from "@mui/material";
-import { PButton, PTitle } from "../../../../styles/panel";
+import { Box } from "@mui/material";
+import { PButton, PTitle } from "styles/panel";
 import { Add } from "@mui/icons-material";
-import { ContentWrapper, simpleBtn } from "../../styles";
+import { ContentWrapper } from "../../styles";
 import { useNavigate } from "react-router-dom";
 
 interface T {
@@ -14,10 +14,7 @@ const ContentHeader = ({ title }: T) => {
     <ContentWrapper>
       <PTitle>{title}</PTitle>
       <Box sx={{ display: "flex", gap: 1 }}>
-        <PButton
-          variant="contained"
-          onClick={() => navigate("/panel/products/add")}
-        >
+        <PButton variant="contained" onClick={() => navigate("/panel/products/add")}>
           <Add />
           create new
         </PButton>

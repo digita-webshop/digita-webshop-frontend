@@ -14,11 +14,7 @@ function OrdersTable({ orders }: Props) {
       <TableHead>
         <TableRow>
           {tableHead.map((item, index) => (
-            <THCell
-              key={index}
-              align="center"
-              className={item === "action" ? "hidden" : ""}
-            >
+            <THCell key={index} align="center" className={item === "action" ? "hidden" : ""}>
               {item}
             </THCell>
           ))}
@@ -26,10 +22,7 @@ function OrdersTable({ orders }: Props) {
       </TableHead>
       <TableBody>
         {orders?.map((order: any) => (
-          <TableRow
-            key={order._id!}
-            sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}
-          >
+          <TableRow key={order._id!} sx={{ "&:hover": { bgcolor: "common.panelActiveRed" } }}>
             <TCell>{order._id!.slice(0, 2)}</TCell>
             <TCell
               sx={{

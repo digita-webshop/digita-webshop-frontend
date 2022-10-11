@@ -2,12 +2,7 @@ import { Grid, Box, Typography } from "@mui/material";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import {
-  avatarWrapper,
-  teamItemStyle,
-  iconStyle,
-  iconCircle,
-} from "../../styles";
+import { avatarWrapper, teamItemStyle, iconStyle, iconCircle } from "../../styles";
 
 interface T {
   image: string;

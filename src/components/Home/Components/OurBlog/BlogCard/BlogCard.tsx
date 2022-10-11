@@ -4,7 +4,7 @@ import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { Card, iconStyle, textStyle } from "./Styles";
 import { Link } from "react-router-dom";
-import { IArticle } from "../../../../../types/article";
+import { IArticle } from "types/article";
 
 interface Props {
   item: IArticle;

@@ -1,25 +1,11 @@
 import { FormEvent, useState, useRef } from "react";
 import { CloseRounded } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  FormControl,
-  Grid,
-  TextField,
-  Typography,
-  CircularProgress,
-} from "@mui/material";
+import { Box, Button, FormControl, Grid, TextField, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { useSignUpMutation } from "redux/auth/authApi";
 import { setCredentials } from "redux/auth/authSlice";
 import { successMessage } from "utils/toastMessages";
-import {
-  errorStyles,
-  FormFooter,
-  FormWrapper,
-  inputErrorStyles,
-} from "../Login/styles";
-import { PStack } from "../../styles/panel";
+import { errorStyles, FormFooter, FormWrapper, inputErrorStyles } from "../Login/styles";
 import Header from "../Login/Header/Header";
 import LoadingBar from "react-top-loading-bar";
 
@@ -104,19 +90,13 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
     confirmPasswordErrorMessage = "confirm password is required ";
     confirmPasswordIsValid = false;
   }
-  const confirmPasswordError =
-    !confirmPasswordIsValid && confirmPasswordTouched;
+  const confirmPasswordError = !confirmPasswordIsValid && confirmPasswordTouched;
 
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
     loadingRef?.current.staticStart();
 
-    if (
-      !usernameIsValid &&
-      !emailIsValid &&
-      !passwordIsValid &&
-      !confirmPasswordIsValid
-    ) {
+    if (!usernameIsValid && !emailIsValid && !passwordIsValid && !confirmPasswordIsValid) {
       loadingRef?.current.complete();
 
       return;
@@ -129,9 +109,7 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
       };
       const response = await signUp(userCredentials).unwrap();
 
-      dispatch(
-        setCredentials({ user: null, role: null, email: response.data.email })
-      );
+      dispatch(setCredentials({ user: null, role: null, email: response.data.email }));
       loadingRef?.current.complete();
 
       successMessage("account created successfully");
@@ -147,10 +125,7 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
       <LoadingBar color="#f03637" ref={loadingRef} />
       <FormWrapper>
         <Box sx={{ position: "relative" }}>
-          <Header
-            title={"create an account"}
-            subtitle={"Welcome! Register for an account"}
-          />
+          <Header title={"create an account"} subtitle={"Welcome! Register for an account"} />
           {errorMessage && (
             <Box sx={errorStyles}>
               <Typography component="span"> ERROR:{errorMessage}</Typography>
@@ -254,12 +229,7 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
               </Grid>
 
               <Grid item xs={12}>
-                <Button
-                  variant="contained"
-                  fullWidth
-                  sx={{ height: "46px" }}
-                  type={"submit"}
-                >
+                <Button variant="contained" fullWidth sx={{ height: "46px" }} type={"submit"}>
                   REGISTER
                 </Button>
               </Grid>
@@ -268,10 +238,7 @@ function Register({ loginModalHandler, modalTypeToggle }: Props) {
 
           <FormFooter>
             <Typography component="span">Already a Member ?</Typography>
-            <Button
-              variant="contained"
-              onClick={modalTypeToggle.bind(null, "login")}
-            >
+            <Button variant="contained" onClick={modalTypeToggle.bind(null, "login")}>
               sign in
             </Button>
           </FormFooter>

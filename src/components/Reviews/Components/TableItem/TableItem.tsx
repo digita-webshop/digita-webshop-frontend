@@ -2,8 +2,8 @@ import { TableRow, Rating } from "@mui/material";
 import { Delete, Star } from "@mui/icons-material";
 import { TableButton } from "../../../Orders/styles";
 import { TCell, TCheckBox } from "../../styles";
-import { IReviews } from "../../../../types/product";
-import { getReadableDate } from "../../../../utils/getReadableDate";
+import { IReviews } from "types/product";
+import { getReadableDate } from "utils/getReadableDate";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -15,15 +15,7 @@ interface Props {
   isArticlePage: boolean;
   checked: any[];
 }
-function TableItem({
-  review,
-  handleToggle,
-  handleDelete,
-  matches,
-  matchesSm,
-  checked,
-  isArticlePage,
-}: Props) {
+function TableItem({ review, handleToggle, handleDelete, matches, matchesSm, checked, isArticlePage }: Props) {
   const data = isArticlePage ? review?.articleId : review?.productId;
   const user = review.userId;
   const readableDate = getReadableDate(review?.createdAt!);
@@ -64,9 +56,7 @@ function TableItem({
       >
         {data?.title}
       </TCell>
-      <TCell sx={{ wordBreak: "break-all" }}>
-        {user ? user?.userName : "deleted account"}
-      </TCell>
+      <TCell sx={{ wordBreak: "break-all" }}>{user ? user?.userName : "deleted account"}</TCell>
       {!matchesSm && !isArticlePage && (
         <TCell>
           <Rating

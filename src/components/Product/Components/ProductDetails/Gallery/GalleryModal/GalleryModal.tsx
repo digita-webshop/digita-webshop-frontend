@@ -1,15 +1,11 @@
+import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { Close, East, West, ZoomIn } from "@mui/icons-material";
 import { Box } from "@mui/material";
-import { Dispatch, SetStateAction, useRef, useState } from "react";
 import { EffectFade, Navigation } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
-import {
-  galleryModalButtonStyles,
-  GalleryModalWrapper,
-  modalSwiperStyles,
-} from "../../../../styles";
+import { galleryModalButtonStyles, GalleryModalWrapper, modalSwiperStyles } from "../../../../styles";
 import ReactImageMagnify from "react-image-magnify";
-import { IGallery } from "../../../../../../types/product";
+import { IGallery } from "types/product";
 
 interface Props {
   gallery: IGallery[];
@@ -65,8 +61,7 @@ function GalleryModal({ gallery, setOpenModal, slideIndex }: Props) {
                     isFluidWidth: true,
                     src: image,
                     srcSet: image,
-                    sizes:
-                      "(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
+                    sizes: "(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
                   },
                   largeImage: {
                     src: image,

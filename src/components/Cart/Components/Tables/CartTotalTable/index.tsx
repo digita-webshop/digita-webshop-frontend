@@ -1,13 +1,4 @@
-import {
-  Paper,
-  Table,
-  TableCell,
-  Typography,
-  TableRow,
-  Box,
-  TableBody,
-  Button,
-} from "@mui/material";
+import { Paper, Table, TableCell, Typography, TableRow, Box, TableBody, Button } from "@mui/material";
 import { StyledTableCell, TotalTextStyle } from "../../../styles";
 import { styled } from "@mui/material/styles";
 import { useAppSelector } from "redux/store";
@@ -48,9 +39,7 @@ const CartTotalTable = ({ total }: Props) => {
       >
         Cart totals
       </Typography>
-      <Box
-        sx={{ width: "100%", padding: "0 20px 20px", boxSizing: " border-box" }}
-      >
+      <Box sx={{ width: "100%", padding: "0 20px 20px", boxSizing: " border-box" }}>
         <Table sx={{ border: "0", margin: "20px 0 20px" }}>
           <TableBody>
             <TableRow>
@@ -99,9 +88,7 @@ const CartTotalTable = ({ total }: Props) => {
               <StyledTableCell sx={{ lineHeight: "1.5em" }} variant="head">
                 Total
               </StyledTableCell>
-              <TableCell
-                sx={{ borderLeft: "1px solid #ebebeb", borderColor: "#ebebeb" }}
-              >
+              <TableCell sx={{ borderLeft: "1px solid #ebebeb", borderColor: "#ebebeb" }}>
                 <Typography
                   sx={Object.assign(
                     { ...TotalTextStyle },
@@ -117,11 +104,7 @@ const CartTotalTable = ({ total }: Props) => {
             </TableRow>
           </TableBody>
         </Table>
-        <Button
-          variant="contained"
-          sx={{ width: "100%", padding: "8px 0" }}
-          onClick={checkoutHandler}
-        >
+        <Button variant="contained" sx={{ width: "100%", padding: "8px 0" }} onClick={checkoutHandler}>
           {!user ? "login and " : ""}proceed to checkout
         </Button>
       </Box>

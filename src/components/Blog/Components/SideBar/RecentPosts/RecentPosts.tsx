@@ -1,17 +1,13 @@
+import { Fragment } from "react";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import { Typography, Skeleton } from "@mui/material";
 import RecentPost from "./RecentPost/RecentPost";
 import { FilterTitleWrapper } from "../../../../Shop/styles";
-import { Fragment } from "react";
-import { useGetAllArticlesQuery } from "../../../../../redux/articles/articlesApi";
+import { useGetAllArticlesQuery } from "redux/articles/articlesApi";
 
 function RecentPosts() {
-  const {
-    data: articlesData,
-    isLoading,
-    isError,
-  } = useGetAllArticlesQuery("page=1 &limit=4 &sort=latest");
+  const { data: articlesData, isLoading, isError } = useGetAllArticlesQuery("page=1 &limit=4 &sort=latest");
   const articles = articlesData?.data ?? [];
   return (
     <Box
@@ -24,12 +20,7 @@ function RecentPosts() {
       }}
     >
       <FilterTitleWrapper className="underline">
-        <Typography
-          component={"h4"}
-          variant="body1"
-          color="primary"
-          fontWeight={600}
-        >
+        <Typography component={"h4"} variant="body1" color="primary" fontWeight={600}>
           RECENT POSTS
         </Typography>
       </FilterTitleWrapper>
@@ -37,12 +28,7 @@ function RecentPosts() {
         ? articles.map((post, index) => (
             <Fragment key={post._id}>
               {index !== 0 ? <Divider sx={{ mb: "14px" }} /> : null}
-              <RecentPost
-                id={post._id!}
-                title={post.title}
-                image={post.image}
-                date={post.createdAt!}
-              />
+              <RecentPost id={post._id!} title={post.title} image={post.image} date={post.createdAt!} />
             </Fragment>
           ))
         : Array(4)
@@ -58,11 +44,7 @@ function RecentPosts() {
                 key={index}
               >
                 <Box sx={{ width: "40%" }}>
-                  <Skeleton
-                    width={"100%"}
-                    height={"100%"}
-                    variant="rectangular"
-                  />
+                  <Skeleton width={"100%"} height={"100%"} variant="rectangular" />
                 </Box>
                 <Box
                   sx={{

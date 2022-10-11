@@ -1,17 +1,10 @@
-import {
-  Box,
-  Divider,
-  Icon,
-  List,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
 import { Fragment } from "react";
+import { Divider, Icon, List, ListItemIcon, ListItemText } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import { UserItem } from "../../../styles/user";
+import { UserItem } from "styles/user";
 import { userSidebarOptions } from "../data";
 import SidebarTop from "./SidebarTop/SidebarTop";
-import MyOrders from "../../../components/UserStatus/MyOrders/MyOrders";
+import MyOrders from "components/UserStatus/MyOrders/MyOrders";
 
 const Sidebar = () => {
   return (
@@ -20,9 +13,7 @@ const Sidebar = () => {
       <Divider sx={{ borderColor: "common.panelBorderGrey" }} />
 
       <MyOrders sidebar={true} />
-      <Divider
-        sx={{ borderColor: "common.panelBorderGrey", display: { md: "none" } }}
-      />
+      <Divider sx={{ borderColor: "common.panelBorderGrey", display: { md: "none" } }} />
       <List>
         {userSidebarOptions.map(({ id, title, route, icon }) => (
           <Fragment key={id}>

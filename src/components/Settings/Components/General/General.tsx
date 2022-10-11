@@ -1,25 +1,13 @@
 import { FormEvent, ChangeEvent, useState, useRef } from "react";
 import { CloudUpload } from "@mui/icons-material";
-import {
-  CircularProgress,
-  Box,
-  FormControl,
-  Grid,
-  Typography,
-} from "@mui/material";
-import {
-  PButton,
-  PFormLabel,
-  POutlinedButton,
-  PStack,
-  PTextField,
-} from "../../../../styles/panel";
-import { IUser } from "../../../../types/user";
-import { errorMessage, successMessage } from "../../../../utils/toastMessages";
-import { useUpdateUserMutation } from "../../../../redux/user/userApi";
+import { CircularProgress, Box, FormControl, Grid, Typography } from "@mui/material";
+import { PButton, PFormLabel, POutlinedButton, PStack, PTextField } from "styles/panel";
+import { IUser } from "types/user";
+import { errorMessage, successMessage } from "utils/toastMessages";
+import { useUpdateUserMutation } from "redux/user/userApi";
 import { useDispatch } from "react-redux";
-import { setCredentials } from "../../../../redux/auth/authSlice";
-import { uploadImage } from "../../../../utils/uploadImage";
+import { setCredentials } from "redux/auth/authSlice";
+import { uploadImage } from "utils/uploadImage";
 
 interface Props {
   user: IUser;
@@ -90,14 +78,7 @@ function General({ user }: Props) {
   };
   return (
     <Grid container spacing={3} component={"form"} onSubmit={submitHandler}>
-      <Grid
-        container
-        item
-        xs={12}
-        md={8}
-        spacing={3}
-        sx={{ zIndex: "1 !important" }}
-      >
+      <Grid container item xs={12} md={8} spacing={3} sx={{ zIndex: "1 !important" }}>
         <Grid item xs={12}>
           <FormControl fullWidth>
             <PFormLabel>username</PFormLabel>
@@ -128,11 +109,7 @@ function General({ user }: Props) {
             />
           </FormControl>
           {phoneErrorMessage && (
-            <Typography
-              sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}
-            >
-              {phoneErrorMessage}
-            </Typography>
+            <Typography sx={{ color: "#f03637", fontSize: "14px", fontWeight: 500 }}>{phoneErrorMessage}</Typography>
           )}
         </Grid>
       </Grid>
@@ -167,10 +144,7 @@ function General({ user }: Props) {
                 <CircularProgress color="error" />
               </PStack>
             ) : (
-              <POutlinedButton
-                variant="contained"
-                onClick={() => ImageRef!.current!.click()}
-              >
+              <POutlinedButton variant="contained" onClick={() => ImageRef!.current!.click()}>
                 <CloudUpload sx={{ marginRight: "5px" }} /> upload
               </POutlinedButton>
             )}

@@ -1,15 +1,5 @@
-import {
-  Box,
-  ClickAwayListener,
-  Grow,
-  Icon,
-  ListItemIcon,
-  MenuItem,
-  MenuList,
-  Paper,
-  Popper,
-} from "@mui/material";
 import { Dispatch, SetStateAction, useRef } from "react";
+import { Box, ClickAwayListener, Grow, Icon, ListItemIcon, MenuItem, MenuList, Paper, Popper } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { PanelItem } from "../../styles";
 
@@ -34,10 +24,7 @@ function ItemMenu({ title, icon, data, open, setOpen }: Props) {
     setOpen((prevOpen) => ({ ...prevOpen, [title]: !open }));
   };
   const handleClose = (event: Event | React.SyntheticEvent) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
-    ) {
+    if (anchorRef.current && anchorRef.current.contains(event.target as HTMLElement)) {
       return;
     }
     setOpen((prevOpen) => ({ ...prevOpen, [title]: false }));
@@ -61,10 +48,7 @@ function ItemMenu({ title, icon, data, open, setOpen }: Props) {
         aria-haspopup="true"
         onClick={() => handleToggle()}
       >
-        <Box
-          className={`link ${pathname.includes(title) && "active"}`}
-          sx={{ width: "50% !important" }}
-        >
+        <Box className={`link ${pathname.includes(title) && "active"}`} sx={{ width: "50% !important" }}>
           <ListItemIcon>
             <Icon>{icon}</Icon>
           </ListItemIcon>
@@ -83,8 +67,7 @@ function ItemMenu({ title, icon, data, open, setOpen }: Props) {
           <Grow
             {...TransitionProps}
             style={{
-              transformOrigin:
-                placement === "bottom-start" ? "left bottom" : "left top",
+              transformOrigin: placement === "bottom-start" ? "left bottom" : "left top",
             }}
           >
             <Paper>

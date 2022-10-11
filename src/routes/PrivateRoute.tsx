@@ -15,10 +15,7 @@ const PrivateRoute = ({ children }: Props) => {
     return <Navigate to="/" replace state={{ from: location }} />;
   }
 
-  if (
-    role === "admin" &&
-    (pathname.includes("/user") || pathname === "/panel/manage-access")
-  ) {
+  if (role === "admin" && (pathname.includes("/user") || pathname === "/panel/manage-access")) {
     return <Navigate to="/" replace state={{ from: location }} />;
   }
 

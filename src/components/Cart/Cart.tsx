@@ -4,11 +4,11 @@ import CartListTable from "./Components/Tables/CartListTable";
 import CartTotalTable from "./Components/Tables/CartTotalTable";
 import CartUpdated, { UpdateType } from "./Components/CartUpdated/CartUpdated";
 
-import { useAppSelector } from "../../redux/store";
-import { useGetAllCartItemQuery } from "../../redux/cart/cartApi";
+import { useAppSelector } from "redux/store";
+import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 import { CartContainer, TableContainer } from "./styles";
-import { getSubtotal } from "../../utils/getSubtotal";
-import { ICartItem } from "../../types/cart";
+import { getSubtotal } from "utils/getSubtotal";
+import { ICartItem } from "types/cart";
 import { Link } from "react-router-dom";
 
 export type UpdateCart = {
@@ -33,13 +33,7 @@ const Cart = () => {
 
   return (
     <CartContainer>
-      {cartUpdated && (
-        <CartUpdated
-          item={cartUpdated.item}
-          type={cartUpdated.type}
-          setCartUpdated={setCartUpdated}
-        />
-      )}
+      {cartUpdated && <CartUpdated item={cartUpdated.item} type={cartUpdated.type} setCartUpdated={setCartUpdated} />}
       {cartList.length === 0 ? (
         <Box sx={{ padding: "35px 0 50px" }}>
           <Button variant="contained" LinkComponent={Link} href="/shop">

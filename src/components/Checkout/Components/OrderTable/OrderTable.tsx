@@ -1,11 +1,5 @@
+import { Table, TableBody, TableCell, TableContainer, TableHead } from "@mui/material";
 import { ICartItem } from "types/cart";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-} from "@mui/material";
 import { OrderRow } from "../../styles";
 
 interface Props {
@@ -38,21 +32,15 @@ function OrderTable({ cartItems, subtotal }: Props) {
           ))} */}
           <OrderRow>
             <TableCell>Subtotal</TableCell>
-            <TableCell
-              sx={{ color: "common.digitaRed" }}
-            >{`$${subtotal}`}</TableCell>
+            <TableCell sx={{ color: "common.digitaRed" }}>{`$${subtotal}`}</TableCell>
           </OrderRow>
           <OrderRow>
             <TableCell>Shipping</TableCell>
-            <TableCell sx={{ color: "#444444", width: "50%" }}>
-              Enter Your Address To View Shipping Options
-            </TableCell>
+            <TableCell sx={{ color: "#444444", width: "50%" }}>Enter Your Address To View Shipping Options</TableCell>
           </OrderRow>
           <OrderRow>
             <TableCell>Total</TableCell>
-            <TableCell sx={{ color: "common.digitaRed", fontWeight: 500 }}>
-              $430.00
-            </TableCell>
+            <TableCell sx={{ color: "common.digitaRed", fontWeight: 500 }}>$430.00</TableCell>
           </OrderRow>
         </TableBody>
       </Table>

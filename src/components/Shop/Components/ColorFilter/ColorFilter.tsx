@@ -20,12 +20,7 @@ function ColorFilter({ drawer, addQueryParams }: Props) {
       }}
     >
       <FilterTitleWrapper className={`${drawer && "underline"}`}>
-        <Typography
-          component={"h4"}
-          variant="body1"
-          color="primary"
-          fontWeight={600}
-        >
+        <Typography component={"h4"} variant="body1" color="primary" fontWeight={600}>
           COLOR
         </Typography>
       </FilterTitleWrapper>

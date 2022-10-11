@@ -1,14 +1,5 @@
 import { useState } from "react";
-import {
-  Grid,
-  Button,
-  Link,
-  Divider,
-  Box,
-  Rating,
-  Typography,
-  Modal,
-} from "@mui/material";
+import { Grid, Button, Link, Divider, Box, Rating, Typography, Modal } from "@mui/material";
 import {
   CartButtonsStyle,
   ProductDetailsStyle,
@@ -21,31 +12,22 @@ import {
   productButtonStyles,
   productIconStyles,
 } from "../../styles";
-import {
-  DeleteForever,
-  Favorite,
-  FavoriteBorder,
-  Shuffle,
-} from "@mui/icons-material";
+import { DeleteForever, Favorite, FavoriteBorder, Shuffle } from "@mui/icons-material";
 import Gallery from "./Gallery/Gallery";
 import ColorPicker from "./ColorPicker/ColorPicker";
-import { IProduct } from "../../../../types/product";
+import { IProduct } from "types/product";
 import { Link as NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../../../redux/store";
-import {
-  useAddWishMutation,
-  useDeleteWishMutation,
-  useGetWishlistQuery,
-} from "../../../../redux/wishlist/wishlistApi";
+import { useAppSelector } from "redux/store";
+import { useAddWishMutation, useDeleteWishMutation, useGetWishlistQuery } from "redux/wishlist/wishlistApi";
 import WishModal from "../../../Home/Components/Products/Components/Modals/WishModal/WishModal";
-import { useGetReviewsQuery } from "../../../../redux/reviews/reviewsApi";
-import { isInList } from "../../../../utils/isInList";
-import { useGetAllCartItemQuery } from "../../../../redux/cart/cartApi";
+import { useGetReviewsQuery } from "redux/reviews/reviewsApi";
+import { isInList } from "utils/isInList";
+import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 import QuantityInput from "../../../Cart/Components/QuantityInput/QuantityInput";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../../../redux/cart/cartSlice";
-import { useAddToCart } from "../../../../hooks/useAddToCart";
-import { addToCompareList } from "../../../../redux/compare/compareSlice";
+import { removeFromCart } from "redux/cart/cartSlice";
+import { useAddToCart } from "hooks/useAddToCart";
+import { addToCompareList } from "redux/compare/compareSlice";
 import CompareModal from "../../../Compare/Compare";
 
 interface Props {
@@ -75,38 +57,25 @@ const ProductDetails = ({ product }: Props) => {
   const cart = cartData?.data?.products ?? [];
   const cartItems = user ? cart : cartList;
   const inCart = isInList(cartItems, product?._id!);
-  const cartItem = cartItems.find(
-    (item) => item.productId._id === product?._id
-  );
+  const cartItem = cartItems.find((item) => item.productId._id === product?._id);
 
   const { data: wishlistData } = useGetWishlistQuery(role ?? "");
   const wishlist = wishlistData?.data ?? [];
-  const wished = isInList(wishlist, product?._id!);
-
+  let wished = false;
+  if (user) {
+    wished = isInList(wishlist, product?._id!);
+  }
   const { addToCartHandler } = useAddToCart(inCart, product, setOpenCart);
 
   const [addWish, { isLoading: addLoading }] = useAddWishMutation();
   const [deleteWish, { isLoading: delLoading }] = useDeleteWishMutation();
-  const {
-    _id,
-    title,
-    price,
-    offPrice,
-    rating,
-    sku,
-    colors,
-    shortDescription,
-    gallery,
-  } = product;
+  const { _id, title, price, offPrice, rating, sku, colors, shortDescription, gallery } = product;
 
   const isCompared = isInList(compareList, _id!);
 
   const wishlistHandler = async () => {
     if (!user || !role) {
-      navigate(
-        { pathname: location.pathname, search: "login=open" },
-        { replace: true, state: { from: location } }
-      );
+      navigate({ pathname: location.pathname, search: "login=open" }, { replace: true, state: { from: location } });
       return;
     }
     try {
@@ -151,19 +120,11 @@ const ProductDetails = ({ product }: Props) => {
               </Typography>
             </Box>
             <Box sx={starLink}>
-              <Rating
-                title="read-only"
-                defaultValue={rating}
-                size="small"
-                readOnly
-                sx={starRating}
-              />
+              <Rating title="read-only" defaultValue={rating} size="small" readOnly sx={starRating} />
               <NavLink
                 to={`${location.pathname}?tab=reviews#reviews`}
                 className="customerReview"
-              >{`(${reviewsLength} customer ${
-                reviewsLength > 1 ? "reviews" : "review"
-              })`}</NavLink>
+              >{`(${reviewsLength} customer ${reviewsLength > 1 ? "reviews" : "review"})`}</NavLink>
             </Box>
             <Box sx={filledPrice}>
               <bdi>{`$${offPrice ? offPrice : price}`}</bdi>
@@ -196,11 +157,7 @@ const ProductDetails = ({ product }: Props) => {
             <Box>
               <Box sx={CartButtonsStyle}>
                 {!inCart && (
-                  <Button
-                    variant="contained"
-                    className="addCart"
-                    onClick={addToCartHandler}
-                  >
+                  <Button variant="contained" className="addCart" onClick={addToCartHandler}>
                     Add To Cart
                   </Button>
                 )}
@@ -218,12 +175,7 @@ const ProductDetails = ({ product }: Props) => {
                     >
                       <DeleteForever className="delete-icon" />
                     </Button>
-                    <Button
-                      variant="contained"
-                      component={NavLink}
-                      to="/cart"
-                      sx={{ height: "100%" }}
-                    >
+                    <Button variant="contained" component={NavLink} to="/cart" sx={{ height: "100%" }}>
                       View Cart
                     </Button>
                   </>
@@ -246,10 +198,7 @@ const ProductDetails = ({ product }: Props) => {
                     className={addLoading || delLoading ? "wishLoading" : ""}
                   />
                 ) : (
-                  <FavoriteBorder
-                    sx={productIconStyles}
-                    className={addLoading || delLoading ? "wishLoading" : ""}
-                  />
+                  <FavoriteBorder sx={productIconStyles} className={addLoading || delLoading ? "wishLoading" : ""} />
                 )}
                 Wishlist
               </Link>
@@ -258,9 +207,7 @@ const ProductDetails = ({ product }: Props) => {
                 component="button"
                 onClick={compareClickHandler}
                 sx={{
-                  color: isCompared
-                    ? "#f03637 !important"
-                    : "common.digitaBlack",
+                  color: isCompared ? "#f03637 !important" : "common.digitaBlack",
                   "&:hover .icon": {
                     color: "common.digitaRed",
                   },
@@ -269,9 +216,7 @@ const ProductDetails = ({ product }: Props) => {
                 <Shuffle
                   sx={{
                     transition: "all 200ms",
-                    color: isCompared
-                      ? "#f03637 !important"
-                      : "common.digitaBlack",
+                    color: isCompared ? "#f03637 !important" : "common.digitaBlack",
                   }}
                   className="icon"
                 />
@@ -310,11 +255,7 @@ const ProductDetails = ({ product }: Props) => {
         aria-describedby="modal-modal-description"
       >
         <div>
-          <WishModal
-            setOpenWish={setOpenWish}
-            addedWish={addedWish}
-            role={role}
-          />
+          <WishModal setOpenWish={setOpenWish} addedWish={addedWish} role={role} />
         </div>
       </Modal>
       <Modal

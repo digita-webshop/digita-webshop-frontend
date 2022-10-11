@@ -10,12 +10,7 @@ type PaginationProps = {
   setCurrentPage: any;
 };
 
-function Pagination({
-  productsPerPage,
-  totalProducts,
-  currentPage,
-  setCurrentPage,
-}: PaginationProps) {
+function Pagination({ productsPerPage, totalProducts, currentPage, setCurrentPage }: PaginationProps) {
   const pageNumber: number[] = [];
   const { pathname } = useLocation();
   for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
@@ -56,10 +51,7 @@ function Pagination({
         <PaginationListItem
           onClick={clickHandler(currentPage + 1)}
           sx={{
-            display:
-              currentPage === pageNumber.length || totalProducts === 0
-                ? "none"
-                : "flex",
+            display: currentPage === pageNumber.length || totalProducts === 0 ? "none" : "flex",
           }}
         >
           <ChevronRight />

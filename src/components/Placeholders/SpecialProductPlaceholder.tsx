@@ -1,4 +1,4 @@
-import { Grid, Box, Skeleton } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 
 function SpecialProductPlaceholder() {
   return (

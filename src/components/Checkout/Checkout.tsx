@@ -1,16 +1,5 @@
 import { useRef, ChangeEvent, useState } from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  Collapse,
-  Container,
-  Divider,
-  FormGroup,
-  Grid,
-  Modal,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Checkbox, Collapse, Container, Divider, FormGroup, Grid, Modal, Typography } from "@mui/material";
 import ShippingDatePicker from "./Components/ShippingDatePicker/ShippingDatePicker";
 import OrderTable from "./Components/OrderTable/OrderTable";
 import PaymentMethod from "./Components/PaymentMethod/PaymentMethod";
@@ -47,9 +36,7 @@ function Checkout() {
   const [selectedDate, setSelectedDate] = useState("");
   const [couponValue, setCouponValue] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("cash");
-  const [currentAddress, setCurrentAddress] = useState<IAddress | null>(
-    user?.addresses[0] ?? null
-  );
+  const [currentAddress, setCurrentAddress] = useState<IAddress | null>(user?.addresses[0] ?? null);
 
   const notesRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
@@ -129,11 +116,7 @@ function Checkout() {
       <Container maxWidth={"lg"} sx={{ py: "50px" }}>
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
-            <Grid
-              container
-              rowSpacing={2}
-              sx={{ padding: "25px", border: "2px solid #eaeaea" }}
-            >
+            <Grid container rowSpacing={2} sx={{ padding: "25px", border: "2px solid #eaeaea" }}>
               <Grid item xs={12}>
                 <Box sx={checkoutTitleWrapper}>
                   <Typography component={"h2"}>BILLING DETAILS</Typography>
@@ -141,10 +124,7 @@ function Checkout() {
               </Grid>
 
               <Grid item xs={12}>
-                <CurrentAddress
-                  currentAddress={currentAddress}
-                  setDisplayCurrentAddress={setDisplayCurrentAddress}
-                />
+                <CurrentAddress currentAddress={currentAddress} setDisplayCurrentAddress={setDisplayCurrentAddress} />
               </Grid>
               <Grid item xs={12}>
                 <Collapse in={displayCurrentAddress}>
@@ -159,16 +139,11 @@ function Checkout() {
               </Grid>
               <Grid item xs={12}>
                 <Box sx={addressTitleStyles} onClick={displayAddressesToggler}>
-                  <Typography component="h4">
-                    SHIP TO A DIFFERENT ADDRESS
-                  </Typography>
+                  <Typography component="h4">SHIP TO A DIFFERENT ADDRESS</Typography>
                   <Add className="icon" />
                 </Box>
                 <Divider sx={{ width: "97%", mt: "4px", mb: "20px" }} />
-                <Modal
-                  open={displayAddresses}
-                  onClose={() => setDisplayAddresses(false)}
-                >
+                <Modal open={displayAddresses} onClose={() => setDisplayAddresses(false)}>
                   <Box
                     sx={{
                       ...cartModal,
@@ -176,18 +151,11 @@ function Checkout() {
                     }}
                   >
                     <Box>
-                      <Box
-                        className="close-button"
-                        onClick={() => setDisplayAddresses(false)}
-                      >
+                      <Box className="close-button" onClick={() => setDisplayAddresses(false)}>
                         <Close />
                       </Box>
                       {user?.addresses.map((item) => (
-                        <Address
-                          key={item?._id}
-                          address={item}
-                          selectAddress={selectAddress}
-                        />
+                        <Address key={item?._id} address={item} selectAddress={selectAddress} />
                       ))}
                     </Box>
                   </Box>
@@ -199,10 +167,7 @@ function Checkout() {
               </Grid>
               <Grid item xs={12}>
                 <FormGroup>
-                  <StyledFormControlLabel
-                    control={<Checkbox onChange={couponToggler} />}
-                    label="HAVE A COUPON?"
-                  />
+                  <StyledFormControlLabel control={<Checkbox onChange={couponToggler} />} label="HAVE A COUPON?" />
                 </FormGroup>
                 <Divider sx={{ width: "97%", mt: "4px", mb: "20px" }} />
                 <Collapse in={displayCoupon}>
@@ -217,11 +182,7 @@ function Checkout() {
             </Grid>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Grid
-              container
-              rowSpacing={2}
-              sx={{ padding: "25px", border: "2px solid #eaeaea" }}
-            >
+            <Grid container rowSpacing={2} sx={{ padding: "25px", border: "2px solid #eaeaea" }}>
               <Grid item xs={12}>
                 <Box sx={checkoutTitleWrapper}>
                   <Typography component={"h2"}>YOUR ORDER</Typography>
@@ -245,17 +206,12 @@ function Checkout() {
                     textAlign: "justify",
                   }}
                 >
-                  Your personal data will be used to process your order, support
-                  your experience throughout this website, and for other
-                  purposes described in our privacy policy.{" "}
+                  Your personal data will be used to process your order, support your experience throughout this
+                  website, and for other purposes described in our privacy policy.{" "}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
-                <Button
-                  variant="contained"
-                  sx={checkoutProceedBtn}
-                  onClick={submitOrderHandler}
-                >
+                <Button variant="contained" sx={checkoutProceedBtn} onClick={submitOrderHandler}>
                   proceed to paypal
                 </Button>
               </Grid>

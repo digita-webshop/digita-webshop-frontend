@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { Button, FormControl, Grid, TextareaAutosize } from "@mui/material";
-import { IUser } from "../../../../types/user";
+import { IUser } from "types/user";
 
 interface Props {
   reviewDescription: string;

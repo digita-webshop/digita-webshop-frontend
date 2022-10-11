@@ -1,10 +1,4 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  KeyboardEvent,
-  SetStateAction,
-  useState,
-} from "react";
+import { ChangeEvent, Dispatch, KeyboardEvent, SetStateAction, useState } from "react";
 import { Close } from "@mui/icons-material";
 import { Box, Divider, FormControl, Grid, Typography } from "@mui/material";
 import { CardWrapper, PFormLabel, PTextField } from "styles/panel";
@@ -122,10 +116,7 @@ function Sidebar({
           <Divider sx={{ marginTop: "20px" }} />
         </Grid>
         <Grid item xs={12}>
-          <Categories
-            selectedCategory={selectedCategory}
-            setSelectedCategory={setSelectedCategory}
-          />
+          <Categories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         </Grid>
       </Grid>
     </CardWrapper>

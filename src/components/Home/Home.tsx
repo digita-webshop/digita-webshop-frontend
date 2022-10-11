@@ -1,11 +1,4 @@
-import {
-  Products,
-  Special,
-  Header,
-  ShopByCategories,
-  WhatClientSay,
-  OurBlog,
-} from "./Components";
+import { Products, Special, Header, ShopByCategories, WhatClientSay, OurBlog } from "./Components";
 
 function Home() {
   return (

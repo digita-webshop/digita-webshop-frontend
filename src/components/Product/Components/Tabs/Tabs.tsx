@@ -1,13 +1,5 @@
 import TabsUnstyled from "@mui/base/TabsUnstyled";
-import {
-  ShowStyle,
-  CascadingTabsTitle,
-  CascadingTabs,
-  TabsList,
-  Tab,
-  TabPanel,
-  moreStyles,
-} from "../../styles";
+import { ShowStyle, CascadingTabsTitle, CascadingTabs, TabsList, Tab, TabPanel, moreStyles } from "../../styles";
 import Description from "./Description/Description";
 import Delivery from "./Delivery/Delivery";
 import AboutBrand from "./AboutBrand/AboutBrand";
@@ -57,9 +49,7 @@ function Tabs({ product }: Props) {
         <TabsUnstyled value={tabValue} onChange={tabSelectHandler}>
           <TabsList>
             <Tab value="">DESCRIPTION</Tab>
-            <Tab value="reviews">
-              {`REVIEWS ${reviews.length !== 0 ? `(${reviews.length})` : ""}`}
-            </Tab>
+            <Tab value="reviews">{`REVIEWS ${reviews.length !== 0 ? `(${reviews.length})` : ""}`}</Tab>
             <Tab value="about">ABOUT BRANDS</Tab>
             <Tab value="delivery"> SHIPPING &#38; DELIVERY</Tab>
           </TabsList>
@@ -84,9 +74,7 @@ function Tabs({ product }: Props) {
             <Typography variant="h4" sx={CascadingTabsTitle} component="div">
               DESCRIPTION
             </Typography>
-            <Typography sx={moreStyles}>
-              {openTabs.desc ? <ExpandLess /> : <ExpandMore />}
-            </Typography>
+            <Typography sx={moreStyles}>{openTabs.desc ? <ExpandLess /> : <ExpandMore />}</Typography>
           </Box>
           <Collapse in={openTabs.desc}>
             <Description description={product.fullDescription} />
@@ -95,17 +83,10 @@ function Tabs({ product }: Props) {
 
         <Box>
           <Box sx={CascadingTabs} onClick={openTabsHandler("reviews")}>
-            <Typography
-              variant="h4"
-              sx={CascadingTabsTitle}
-              component="div"
-              id="review"
-            >
+            <Typography variant="h4" sx={CascadingTabsTitle} component="div" id="review">
               {`REVIEWS ${reviews.length !== 0 ? `(${reviews.length})` : ""}`}
             </Typography>
-            <Typography sx={moreStyles}>
-              {openTabs.reviews ? <ExpandLess /> : <ExpandMore />}
-            </Typography>
+            <Typography sx={moreStyles}>{openTabs.reviews ? <ExpandLess /> : <ExpandMore />}</Typography>
           </Box>
           <Collapse in={openTabs.reviews}>
             <Reviews id={product._id!} reviews={reviews} />
@@ -117,9 +98,7 @@ function Tabs({ product }: Props) {
             <Typography variant="h4" sx={CascadingTabsTitle} component="div">
               ABOUT BRANDS
             </Typography>
-            <Typography sx={moreStyles}>
-              {openTabs.about ? <ExpandLess /> : <ExpandMore />}
-            </Typography>
+            <Typography sx={moreStyles}>{openTabs.about ? <ExpandLess /> : <ExpandMore />}</Typography>
           </Box>
           <Collapse in={openTabs.about}>
             <AboutBrand brand={product.brand} />
@@ -131,9 +110,7 @@ function Tabs({ product }: Props) {
             <Typography variant="h4" sx={CascadingTabsTitle} component="div">
               SHIPPING &#38; DELIVERY
             </Typography>
-            <Typography sx={moreStyles}>
-              {openTabs.delivery ? <ExpandLess /> : <ExpandMore />}
-            </Typography>
+            <Typography sx={moreStyles}>{openTabs.delivery ? <ExpandLess /> : <ExpandMore />}</Typography>
           </Box>
           <Collapse in={openTabs.delivery}>
             <Delivery />

@@ -1,15 +1,8 @@
 import { Close } from "@mui/icons-material";
 import { Box, Table, TableBody, TableRow } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { removeFromCompareList } from "../../../redux/compare/compareSlice";
-import {
-  compareTableStyles,
-  CTButton,
-  CTCell,
-  CTHCell,
-  tableImageStyles,
-  tableRemoveBtnStyles,
-} from "../styles";
+import { removeFromCompareList } from "redux/compare/compareSlice";
+import { compareTableStyles, CTButton, CTCell, CTHCell, tableImageStyles, tableRemoveBtnStyles } from "../styles";
 
 const compareIndexes = [
   { key: "name", value: "title" },
@@ -36,10 +29,7 @@ function ItemsTable({ products }: Props) {
           <CTHCell className="td"></CTHCell>
           {products.map((product, index) => (
             <CTCell key={index}>
-              <Box
-                sx={tableRemoveBtnStyles}
-                onClick={removeHandler(product._id)}
-              >
+              <Box sx={tableRemoveBtnStyles} onClick={removeHandler(product._id)}>
                 Remove
                 <Close />
               </Box>
@@ -63,9 +53,7 @@ function ItemsTable({ products }: Props) {
 
               {products.map((product, index) => (
                 <CTCell key={index} className={value === "price" ? "bold" : ""}>
-                  {key === "add to cart" && (
-                    <CTButton variant="contained">{value}</CTButton>
-                  )}
+                  {key === "add to cart" && <CTButton variant="contained">{value}</CTButton>}
 
                   {product[value]}
                 </CTCell>

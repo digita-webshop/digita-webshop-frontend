@@ -5,7 +5,7 @@ import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import PendingIcon from "@mui/icons-material/Pending";
 import AssignmentReturnIcon from "@mui/icons-material/AssignmentReturn";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { between, wrapper } from "../../../../styles/user";
+import { between, wrapper } from "styles/user";
 
 interface T {
   id: string;
@@ -58,25 +58,13 @@ const OrderItem = ({ id, price, date, image, status }: T) => {
           mt: 2,
         }}
       >
-        <Typography
-          sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}
-        >
-          {date}
-        </Typography>
+        <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>{date}</Typography>
         <Box sx={{ display: "flex", gap: 1 }}>
-          <Typography
-            sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}
-          >
-            Code
-          </Typography>
+          <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>Code</Typography>
           <Typography>{id}</Typography>
         </Box>
         <Box sx={{ display: "flex", gap: 1 }}>
-          <Typography
-            sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}
-          >
-            Price
-          </Typography>
+          <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>Price</Typography>
           <Typography>{`${price} $`}</Typography>
         </Box>
       </Box>

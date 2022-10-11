@@ -11,10 +11,7 @@ function InputLabel({ name }: { name: string }) {
       }}
     >
       {name}
-      <Typography
-        component={"span"}
-        sx={{ color: "#f03637", marginLeft: "2px" }}
-      >
+      <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
         *
       </Typography>
     </FormLabel>

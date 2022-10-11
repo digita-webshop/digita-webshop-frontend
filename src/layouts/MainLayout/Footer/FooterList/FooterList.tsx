@@ -1,7 +1,7 @@
 import { Typography, Box } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../../../redux/store";
+import { useAppSelector } from "redux/store";
 
 interface Props {
   title: string;
@@ -12,21 +12,13 @@ function FooterList({ title, links }: Props) {
   return (
     <Box p="1rem">
       <Box>
-        <Typography
-          variant="h6"
-          mb={2.5}
-          color="white"
-          textTransform={"uppercase"}
-        >
+        <Typography variant="h6" mb={2.5} color="white" textTransform={"uppercase"}>
           {title}
         </Typography>
       </Box>
       {links?.map(({ name, route }) => {
         let to = route;
-        if (
-          (name === "addresses" || name === "account details") &&
-          (role === "admin" || role === "superAdmin")
-        ) {
+        if ((name === "addresses" || name === "account details") && (role === "admin" || role === "superAdmin")) {
           to = "/panel/settings";
         }
         if ((name === "addresses" || name === "account details") && !role) {

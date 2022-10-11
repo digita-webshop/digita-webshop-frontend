@@ -1,8 +1,8 @@
+import { SetStateAction, Dispatch } from "react";
 import Box from "@mui/material/Box";
 import InputBase from "@mui/material/InputBase";
 import { Typography } from "@mui/material";
 import { FilterTitleWrapper } from "../../../../Shop/styles";
-import { SetStateAction, Dispatch } from "react";
 
 interface Props {
   setSearchValue: Dispatch<SetStateAction<string>>;
@@ -20,12 +20,7 @@ const SearchBar = ({ setSearchValue }: Props) => {
       className="search-bar"
     >
       <FilterTitleWrapper className="underline">
-        <Typography
-          component={"h4"}
-          variant="body1"
-          color="primary"
-          fontWeight={600}
-        >
+        <Typography component={"h4"} variant="body1" color="primary" fontWeight={600}>
           SEARCH
         </Typography>
       </FilterTitleWrapper>

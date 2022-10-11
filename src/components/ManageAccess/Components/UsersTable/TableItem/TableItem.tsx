@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 import { Close } from "@mui/icons-material";
 import { Box, Typography } from "@mui/material";
-import { IUser } from "../../../../../types/user";
-import { POutlinedButton } from "../../../../../styles/panel";
+import { IUser } from "types/user";
+import { POutlinedButton } from "styles/panel";
 import { TCheckBox } from "../../../../Reviews/styles";
 
 interface Props {
@@ -12,13 +12,7 @@ interface Props {
   setOpenRemove: Dispatch<SetStateAction<boolean>>;
   setSelectedUser: Dispatch<SetStateAction<IUser | null>>;
 }
-function TableItem({
-  user,
-  checked,
-  handleToggle,
-  setOpenRemove,
-  setSelectedUser,
-}: Props) {
+function TableItem({ user, checked, handleToggle, setOpenRemove, setSelectedUser }: Props) {
   return (
     <Box
       key={user?._id}
@@ -65,9 +59,7 @@ function TableItem({
           >
             {user.userName}
           </Typography>
-          <Typography sx={{ fontSize: { xs: "14px", sm: "15px" } }}>
-            {user.email}
-          </Typography>
+          <Typography sx={{ fontSize: { xs: "14px", sm: "15px" } }}>{user.email}</Typography>
         </Box>
       </Box>
       <Box sx={{ marginLeft: "auto" }}>

@@ -1,5 +1,5 @@
 import { Box, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { PFormControl } from "../../../../styles/panel";
+import { PFormControl } from "styles/panel";
 
 interface Props {
   selectedStatus: string;
@@ -7,12 +7,7 @@ interface Props {
   selectedStatusHandler: (event: SelectChangeEvent) => void;
   selectedAmountHandler: (event: SelectChangeEvent) => void;
 }
-function TableToolbar({
-  selectedStatus,
-  ordersPerPage,
-  selectedStatusHandler,
-  selectedAmountHandler,
-}: Props) {
+function TableToolbar({ selectedStatus, ordersPerPage, selectedStatusHandler, selectedAmountHandler }: Props) {
   return (
     <Box
       sx={{
@@ -23,12 +18,7 @@ function TableToolbar({
       }}
     >
       <PFormControl size="small">
-        <Select
-          variant="outlined"
-          displayEmpty
-          value={selectedStatus}
-          onChange={selectedStatusHandler}
-        >
+        <Select variant="outlined" displayEmpty value={selectedStatus} onChange={selectedStatusHandler}>
           <MenuItem value="">Status</MenuItem>
           <MenuItem value="pending">Pending</MenuItem>
           <MenuItem value="cancelled">Cancelled </MenuItem>
@@ -36,12 +26,7 @@ function TableToolbar({
         </Select>
       </PFormControl>
       <PFormControl size="small">
-        <Select
-          variant="outlined"
-          displayEmpty
-          value={String(ordersPerPage)}
-          onChange={selectedAmountHandler}
-        >
+        <Select variant="outlined" displayEmpty value={String(ordersPerPage)} onChange={selectedAmountHandler}>
           <MenuItem value="20">Show 20</MenuItem>
           <MenuItem value="30">Show 30 </MenuItem>
           <MenuItem value="40">Show 40</MenuItem>

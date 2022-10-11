@@ -1,11 +1,11 @@
 import { Box, Button, Divider, Link, List, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import { useAppSelector } from "../../../../redux/store";
+import { useAppSelector } from "redux/store";
 import { shopCartWrapper } from "../styles";
-import { useGetAllCartItemQuery } from "../../../../redux/cart/cartApi";
+import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 import ShopCartItem from "./ShopCartItem/ShopCartItem";
-import { getSubtotal } from "../../../../utils/getSubtotal";
-import { useCheckoutNavigate } from "../../../../hooks/useCheckoutNavigate";
+import { getSubtotal } from "utils/getSubtotal";
+import { useCheckoutNavigate } from "hooks/useCheckoutNavigate";
 
 function ShopCart() {
   const { user } = useAppSelector((state) => state.reducer.auth);
@@ -28,11 +28,7 @@ function ShopCart() {
       <List sx={{ maxHeight: "360px", overflow: "overlay" }}>
         {cartItems.length === 0 && !isLoading && !isError && (
           <Box width="300px" marginY={3}>
-            <Typography
-              textAlign="center"
-              textTransform="capitalize"
-              color="black"
-            >
+            <Typography textAlign="center" textTransform="capitalize" color="black">
               your cart is empty
             </Typography>
           </Box>
@@ -75,11 +71,7 @@ function ShopCart() {
           gap: "10px",
         }}
       >
-        <Link
-          component={RouterLink}
-          to="/cart"
-          sx={{ textDecoration: "none", width: "50%" }}
-        >
+        <Link component={RouterLink} to="/cart" sx={{ textDecoration: "none", width: "50%" }}>
           <Button
             variant="contained"
             fullWidth={true}
@@ -91,16 +83,8 @@ function ShopCart() {
             VIEW CARD
           </Button>
         </Link>
-        <Link
-          component={RouterLink}
-          to="/checkout"
-          sx={{ textDecoration: "none", width: "50%" }}
-        >
-          <Button
-            variant="contained"
-            fullWidth={true}
-            onClick={checkoutHandler}
-          >
+        <Link component={RouterLink} to="/checkout" sx={{ textDecoration: "none", width: "50%" }}>
+          <Button variant="contained" fullWidth={true} onClick={checkoutHandler}>
             {!user ? "LOGIN &" : ""} CHECKOUT
           </Button>
         </Link>

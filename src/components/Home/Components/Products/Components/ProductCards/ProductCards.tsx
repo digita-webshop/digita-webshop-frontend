@@ -14,13 +14,7 @@ const ProductCards = () => {
       }}
     >
       {productEdition.map((item, index) => (
-        <ProductCard
-          key={item.id}
-          id={index}
-          title={item.title}
-          name={item.name}
-          image={item.image}
-        />
+        <ProductCard key={item.id} id={index} title={item.title} name={item.name} image={item.image} />
       ))}
     </Grid>
   );

@@ -1,8 +1,8 @@
+import { MouseEvent, useState } from "react";
 import { Add, MoreVert } from "@mui/icons-material";
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
-import { MouseEvent, useState } from "react";
-import { IAddress } from "../../../../../types/user";
-import { between } from "../../../../../styles/user";
+import { IAddress } from "types/user";
+import { between } from "styles/user";
 const options = ["Edit", "Delete"];
 
 interface Props {
@@ -11,12 +11,7 @@ interface Props {
   deleteAddress?: (id: string) => void;
   selectAddress?: (address: IAddress) => void;
 }
-function Address({
-  address,
-  editAddress,
-  deleteAddress,
-  selectAddress,
-}: Props) {
+function Address({ address, editAddress, deleteAddress, selectAddress }: Props) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -75,11 +70,7 @@ function Address({
               }}
             >
               {options.map((option, index) => (
-                <MenuItem
-                  key={index}
-                  selected={option === "Pyxis"}
-                  onClick={() => handleClose(option)}
-                >
+                <MenuItem key={index} selected={option === "Pyxis"} onClick={() => handleClose(option)}>
                   {option}
                 </MenuItem>
               ))}
@@ -88,12 +79,7 @@ function Address({
         )}
         {selectAddress && (
           <Box sx={{ display: "flex", justifyContent: "center", width: "20%" }}>
-            <Add
-              color="error"
-              fontSize="medium"
-              sx={{ cursor: "pointer" }}
-              onClick={() => selectAddress(address)}
-            />
+            <Add color="error" fontSize="medium" sx={{ cursor: "pointer" }} onClick={() => selectAddress(address)} />
           </Box>
         )}
       </Box>

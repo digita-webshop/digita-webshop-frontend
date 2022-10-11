@@ -1,12 +1,7 @@
 import { Card, Box, Typography } from "@mui/material";
 import ButtonCard from "../ButtonCard/ButtonCard";
 import { useInView } from "react-intersection-observer";
-import {
-  AnimatedGrid,
-  cardStyle,
-  contentStyle,
-  styleContent,
-} from "../../styles";
+import { AnimatedGrid, cardStyle, contentStyle, styleContent } from "../../styles";
 
 type Props = {
   title: string;
@@ -20,14 +15,7 @@ const ProductCard = ({ title, name, image, id }: Props) => {
 
   const classes = id === 0 ? "slideInFromLeft" : "slideInFromRight";
   return (
-    <AnimatedGrid
-      item
-      xs={12}
-      sm={6}
-      md={6}
-      ref={ref}
-      className={inView ? classes : ""}
-    >
+    <AnimatedGrid item xs={12} sm={6} md={6} ref={ref} className={inView ? classes : ""}>
       <Card sx={cardStyle}>
         <Box sx={contentStyle} className="box">
           <img src={image} alt="img" className="img-card" />
@@ -44,13 +32,7 @@ const ProductCard = ({ title, name, image, id }: Props) => {
           >
             {title}
           </Typography>
-          <Typography
-            variant="h4"
-            component="h3"
-            color="white"
-            fontWeight="bold"
-            sx={{ width: "250px" }}
-          >
+          <Typography variant="h4" component="h3" color="white" fontWeight="bold" sx={{ width: "250px" }}>
             {name}
           </Typography>
           <ButtonCard />

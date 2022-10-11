@@ -1,20 +1,6 @@
-import {
-  Box,
-  Grid,
-  useMediaQuery,
-  SelectChangeEvent,
-  Table,
-  TableBody,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import { Box, Grid, useMediaQuery, SelectChangeEvent, Table, TableBody, TableHead, TableRow } from "@mui/material";
 import { useState, ChangeEvent } from "react";
-import {
-  CardWrapper,
-  ErrorText,
-  POutlinedButton,
-  PTitle,
-} from "../../styles/panel";
+import { CardWrapper, ErrorText, POutlinedButton, PTitle } from "../../styles/panel";
 import { TCheckBox, THCell } from "./styles";
 import { useTheme } from "@mui/material/styles";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
@@ -23,13 +9,11 @@ import { paginationStyle } from "../PanelProducts/styles";
 import { useLocation } from "react-router-dom";
 import TableHeader from "./Components/TableHeader/TableHeader";
 import TableItem from "./Components/TableItem/TableItem";
-import {
-  useDeleteReviewMutation,
-  useGetAllReviewsQuery,
-} from "../../redux/reviews/reviewsApi";
+import { useDeleteReviewMutation, useGetAllReviewsQuery } from "redux/reviews/reviewsApi";
 import PanelLoading from "../Loading/PanelLoading";
 import NotFound from "../EmptyList/NotFound";
-import { errorMessage, successMessage } from "../../utils/toastMessages";
+import { errorMessage, successMessage } from "utils/toastMessages";
+
 const Reviews = () => {
   const [searchValue, setSearchValue] = useState("");
   const [reviewsPerPage, setReviewsPerPage] = useState(10);
@@ -111,15 +95,7 @@ const Reviews = () => {
     const data = event.target.value;
     setReviewsPerPage(+data);
   };
-  let tableHead = [
-    <TCheckBox onChange={handleToggleAll} />,
-    "#ID",
-    "product",
-    "name",
-    "rating",
-    "date",
-    "action",
-  ];
+  let tableHead = [<TCheckBox onChange={handleToggleAll} />, "#ID", "product", "name", "rating", "date", "action"];
   if (isArticlePage) {
     tableHead = tableHead.filter((item) => item !== "rating");
     tableHead.splice(2, 1, "article");
@@ -159,9 +135,7 @@ const Reviews = () => {
         <CardWrapper>
           {isLoading && <PanelLoading />}
           {isError && <ErrorText>ERROR:Could not retrieve data!</ErrorText>}
-          {reviews?.length === 0 && !isLoading && !isError && (
-            <NotFound message="Reviews list is empty" />
-          )}
+          {reviews?.length === 0 && !isLoading && !isError && <NotFound message="Reviews list is empty" />}
           {reviews?.length !== 0 && !isLoading && !isError && (
             <Table>
               <TableHead>
@@ -170,9 +144,7 @@ const Reviews = () => {
                     <THCell
                       key={index}
                       align="left"
-                      className={`${item === "action" && "hidden"} ${
-                        item === "rating" && "hiddenSm"
-                      }`}
+                      className={`${item === "action" && "hidden"} ${item === "rating" && "hiddenSm"}`}
                     >
                       {item}
                     </THCell>

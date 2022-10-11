@@ -1,6 +1,6 @@
 import { Box, List, ListItemText } from "@mui/material";
 import { panelSettingOptions } from "./data";
-import { PanelItem } from "../../../../layouts/PanelLayout/styles";
+import { PanelItem } from "layouts/PanelLayout/styles";
 
 interface Props {
   activePageHandler: (page: string) => () => void;
@@ -29,10 +29,7 @@ function Sidebar({ activePageHandler, activePage }: Props) {
       >
         {panelSettingOptions.map(({ id, title }) => (
           <PanelItem key={id}>
-            <Box
-              className={`${title === activePage && "active"} link`}
-              onClick={activePageHandler(title)}
-            >
+            <Box className={`${title === activePage && "active"} link`} onClick={activePageHandler(title)}>
               <ListItemText
                 primaryTypographyProps={{
                   fontSize: "16px",

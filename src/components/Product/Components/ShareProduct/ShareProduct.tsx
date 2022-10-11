@@ -66,9 +66,7 @@ const ShareProduct = () => {
                   }}
                   className="text"
                 >
-                  {name === "facebook"
-                    ? "Share on Facebook"
-                    : `${name} this product`}
+                  {name === "facebook" ? "Share on Facebook" : `${name} this product`}
                 </Typography>
               </Box>
             </Box>

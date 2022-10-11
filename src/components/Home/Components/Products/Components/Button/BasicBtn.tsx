@@ -11,10 +11,7 @@ const BasicBtn = () => {
         display: "flex",
         justifyContent: "center",
         margin: "2rem 0",
-        animation: (theme) =>
-          inView
-            ? `btnSlideInFromBottom 1500ms ${theme.transitions.easing.easeInOut}`
-            : "",
+        animation: (theme) => (inView ? `btnSlideInFromBottom 1500ms ${theme.transitions.easing.easeInOut}` : ""),
         "@keyframes btnSlideInFromBottom": {
           "0%": {
             opacity: 0,

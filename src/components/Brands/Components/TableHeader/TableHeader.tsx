@@ -1,16 +1,10 @@
 import { useState } from "react";
-import {
-  Box,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  TextField,
-} from "@mui/material";
+import { Box, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { tableStyle } from "../../styles";
-import { PTextField, PFormControl } from "../../../../styles/panel";
+import { PTextField, PFormControl } from "styles/panel";
 interface Props {
   selectedStatus: string;
   selectedAmount: string;
@@ -18,15 +12,8 @@ interface Props {
   selectedAmountHandler: (event: SelectChangeEvent) => void;
 }
 
-const TableHeader = ({
-  selectedStatus,
-  selectedAmount,
-  selectedStatusHandler,
-  selectedAmountHandler,
-}: Props) => {
-  const [value, setValue] = useState<Date | null>(
-    new Date("2014-08-18T21:11:54")
-  );
+const TableHeader = ({ selectedStatus, selectedAmount, selectedStatusHandler, selectedAmountHandler }: Props) => {
+  const [value, setValue] = useState<Date | null>(new Date("2014-08-18T21:11:54"));
 
   const handleChange = (newValue: Date | null) => {
     setValue(newValue);
@@ -45,12 +32,7 @@ const TableHeader = ({
         }}
       >
         <PFormControl size="small">
-          <Select
-            variant="outlined"
-            displayEmpty
-            value={selectedStatus}
-            onChange={selectedStatusHandler}
-          >
+          <Select variant="outlined" displayEmpty value={selectedStatus} onChange={selectedStatusHandler}>
             <MenuItem value="status20">Status 20</MenuItem>
             <MenuItem value={"status30"}>Status 30</MenuItem>
             <MenuItem value={"status40"}>Status 40</MenuItem>

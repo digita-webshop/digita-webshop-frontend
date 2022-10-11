@@ -1,13 +1,10 @@
 import { ChangeEvent, useState } from "react";
 import { DeleteForever } from "@mui/icons-material";
 import { Box, Button, Divider, Modal, Typography } from "@mui/material";
-import {
-  useDeleteUserMutation,
-  useGetAllUsersQuery,
-} from "../../../../redux/user/userApi";
-import { IUser } from "../../../../types/user";
-import { errorMessage, successMessage } from "../../../../utils/toastMessages";
-import { ErrorText, PTextField } from "../../../../styles/panel";
+import { useDeleteUserMutation, useGetAllUsersQuery } from "redux/user/userApi";
+import { IUser } from "types/user";
+import { errorMessage, successMessage } from "utils/toastMessages";
+import { ErrorText, PTextField } from "styles/panel";
 import { cartModal, paginationStyle } from "../../../PanelProducts/styles";
 import { TCheckBox } from "../../../Reviews/styles";
 import NotFound from "../../../EmptyList/NotFound";
@@ -36,11 +33,7 @@ function UsersTable({ isUsersPage }: Props) {
   let filteredUsers = users;
 
   if (searchValue) {
-    filteredUsers = users.filter((user) =>
-      user.userName
-        .toLocaleLowerCase()
-        .includes(searchValue.toLocaleLowerCase())
-    );
+    filteredUsers = users.filter((user) => user.userName.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
   }
 
   const handleToggle = (value: string) => () => {
@@ -91,9 +84,7 @@ function UsersTable({ isUsersPage }: Props) {
           }}
         >
           <TCheckBox onChange={handleToggleAll} />
-          <Typography sx={{ color: "#ADB5BD", textTransform: "capitalize" }}>
-            select all
-          </Typography>
+          <Typography sx={{ color: "#ADB5BD", textTransform: "capitalize" }}>select all</Typography>
           {checked.length > 0 && (
             <Box
               sx={{
@@ -113,10 +104,7 @@ function UsersTable({ isUsersPage }: Props) {
             display: { xs: "none", sm: "block" },
           }}
         >
-          <PTextField
-            placeholder="Search... "
-            onChange={(e) => setSearchValue(e.target.value)}
-          />
+          <PTextField placeholder="Search... " onChange={(e) => setSearchValue(e.target.value)} />
         </Box>
       </Box>
       <Divider sx={{ marginY: "10px" }} />
@@ -153,15 +141,8 @@ function UsersTable({ isUsersPage }: Props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={cartModal}>
-          <DeleteForever
-            sx={{ fontSize: 70, fontWeight: 100, color: "#f03637", p: 2 }}
-          />
-          <Typography
-            id="modal-modal-title"
-            variant="h5"
-            component="h2"
-            sx={{ textAlign: "center" }}
-          >
+          <DeleteForever sx={{ fontSize: 70, fontWeight: 100, color: "#f03637", p: 2 }} />
+          <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ textAlign: "center" }}>
             {` Confirm You Want To Remove ${selectedUser?.userName}`}
           </Typography>
           <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>

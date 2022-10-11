@@ -13,16 +13,7 @@ import { Line } from "react-chartjs-2";
 import { DashTitle } from "../../styles";
 import { CardWrapper } from "styles/panel";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Filler,
-  Legend
-);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Filler, Legend);
 
 export const options = {
   responsive: true,
@@ -33,19 +24,7 @@ export const options = {
   },
 };
 
-const labels = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Des",
-];
+const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Aug", "Sep", "Oct", "Nov", "Des"];
 
 export const data = {
   labels,

@@ -1,42 +1,19 @@
 import { forwardRef, Fragment, useEffect, useState } from "react";
-import {
-  AppBar,
-  Box,
-  Container,
-  Toolbar,
-  useMediaQuery,
-  Fade,
-  Collapse,
-  Modal,
-} from "@mui/material";
+import { AppBar, Box, Container, Toolbar, useMediaQuery, Fade, Collapse, Modal } from "@mui/material";
 import { navbarItems } from "./data";
 import { useTheme } from "@mui/material/styles";
-
 import { MenuRounded, KeyboardArrowDown } from "@mui/icons-material";
-import {
-  AntTab,
-  AntTabs,
-  appBarStyles,
-  menuIconStyles,
-  ShopMenuWrapper,
-  tabLinkStyles,
-} from "./styles";
+import { AntTab, AntTabs, appBarStyles, menuIconStyles, ShopMenuWrapper, tabLinkStyles } from "./styles";
 import TabDrawer from "./TabDrawer/TabDrawer";
 import ShopDrawer from "./ShopDrawer/ShopDrawer";
 import SearchBar from "./SearchBar/SearchBar";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import ShopMenu from "./ShopMenu/ShopMenu";
-import {
-  CompareModal,
-  Login,
-  Register,
-  ResetPassword,
-} from "../../../components";
+import { CompareModal, Login, Register, ResetPassword } from "components";
 import Icons from "./Icons/Icons";
 
 function Navbar() {
   const [openSearchBar, setOpenSearchBar] = useState(false);
-  // const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openCompareModal, setOpenCompareModal] = useState(false);
 
   const [collapse, setCollapse] = useState(true);
@@ -133,14 +110,10 @@ function Navbar() {
                                 "&:hover ": {
                                   zIndex: 99,
                                   a: {
-                                    color:
-                                      tabValue === item.route
-                                        ? ""
-                                        : "common.digitaRed",
+                                    color: tabValue === item.route ? "" : "common.digitaRed",
                                   },
                                   "& .shop-menu": {
-                                    display:
-                                      item.name === "shop" ? "block" : "none",
+                                    display: item.name === "shop" ? "block" : "none",
                                   },
                                 },
                                 overflow: "visible !important",
@@ -148,11 +121,7 @@ function Navbar() {
                               {...props}
                               ref={ref}
                             >
-                              <Box
-                                component={Link}
-                                to={item.route}
-                                sx={tabLinkStyles}
-                              >
+                              <Box component={Link} to={item.route} sx={tabLinkStyles}>
                                 <Box>{item.name}</Box>
                                 {item.name === "shop" && <KeyboardArrowDown />}
                               </Box>
@@ -179,10 +148,7 @@ function Navbar() {
                   />
                 </Fragment>
               )}
-              <Fade
-                style={{ display: openSearchBar ? "block" : "none" }}
-                in={openSearchBar}
-              >
+              <Fade style={{ display: openSearchBar ? "block" : "none" }} in={openSearchBar}>
                 <Box width={"100%"}>
                   <SearchBar openSearchBarHandler={openSearchBarHandler} />
                 </Box>
@@ -190,14 +156,8 @@ function Navbar() {
             </Toolbar>
           </Container>
           {/*--------------------- drawers ---------------- */}
-          <ShopDrawer
-            displayDrawer={displayDrawer}
-            toggleDrawer={toggleDrawer}
-          />
-          <TabDrawer
-            displayDrawer={displayDrawer}
-            toggleDrawer={toggleDrawer}
-          />
+          <ShopDrawer displayDrawer={displayDrawer} toggleDrawer={toggleDrawer} />
+          <TabDrawer displayDrawer={displayDrawer} toggleDrawer={toggleDrawer} />
         </Collapse>
       </AppBar>
       <Box sx={{ marginTop: { xs: "56px", sm: "64px", md: "90px" } }}></Box>
@@ -210,23 +170,12 @@ function Navbar() {
         }}
       >
         <div>
-          {modalType === "login" && (
-            <Login
-              loginModalHandler={loginModalHandler}
-              modalTypeToggle={modalTypeToggle}
-            />
-          )}
+          {modalType === "login" && <Login loginModalHandler={loginModalHandler} modalTypeToggle={modalTypeToggle} />}
           {modalType === "register" && (
-            <Register
-              loginModalHandler={loginModalHandler}
-              modalTypeToggle={modalTypeToggle}
-            />
+            <Register loginModalHandler={loginModalHandler} modalTypeToggle={modalTypeToggle} />
           )}
           {modalType === "reset" && (
-            <ResetPassword
-              loginModalHandler={loginModalHandler}
-              modalTypeToggle={modalTypeToggle}
-            />
+            <ResetPassword loginModalHandler={loginModalHandler} modalTypeToggle={modalTypeToggle} />
           )}
         </div>
       </Modal>

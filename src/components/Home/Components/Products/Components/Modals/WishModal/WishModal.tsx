@@ -17,21 +17,12 @@ function WishModal({ setOpenWish, addedWish, role }: Props) {
       </Box>
       {addedWish && <Favorite sx={{ fontSize: 50, color: "#f03637" }} />}
 
-      <Typography
-        id="modal-modal-title"
-        variant="h5"
-        component="h2"
-        sx={{ padding: "1.4rem 0" }}
-      >
-        {!addedWish
-          ? "Product deleted from Wishlist"
-          : "Product added to Wishlist"}
+      <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ padding: "1.4rem 0" }}>
+        {!addedWish ? "Product deleted from Wishlist" : "Product added to Wishlist"}
       </Typography>
       <Button
         component={Link}
-        to={`/${
-          role === "admin" || role === "superAdmin" ? "panel" : "user"
-        }/wishlist`}
+        to={`/${role === "admin" || role === "superAdmin" ? "panel" : "user"}/wishlist`}
         variant="contained"
         sx={{ width: "100%", padding: "0.8rem 0" }}
       >

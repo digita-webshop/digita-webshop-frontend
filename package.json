@@ -1,6 +1,7 @@
 {
   "name": "digita-webshop",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": {"name":"Tohid Ebrahimi","email": "tohidebrahimi17@gmail.com"},
   "proxy": "http://localhost:8080",
   "private": true,
   "dependencies": {

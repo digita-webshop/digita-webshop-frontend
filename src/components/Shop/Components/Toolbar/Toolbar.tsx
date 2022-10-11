@@ -1,14 +1,6 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  Typography,
-} from "@mui/material";
-import { FilterList, GridView, TableRows } from "@mui/icons-material";
 import { useState } from "react";
+import { Box, Button, FormControl, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
+import { FilterList, GridView, TableRows } from "@mui/icons-material";
 import { ToolbarButton } from "../../styles";
 import { useSearchParams } from "react-router-dom";
 
@@ -20,13 +12,7 @@ type ShopToolbarProps = {
   sortQueryParams: string | null;
 };
 
-function Toolbar({
-  matches,
-  toggleDrawer,
-  setSelectedLayout,
-  selectedLayout,
-  sortQueryParams,
-}: ShopToolbarProps) {
+function Toolbar({ matches, toggleDrawer, setSelectedLayout, selectedLayout, sortQueryParams }: ShopToolbarProps) {
   const [productNumber, setProductNumber] = useState({
     twelve: true,
     twentyFour: false,
@@ -86,10 +72,7 @@ function Toolbar({
         >
           Filter
         </Button>
-        <Box
-          onClick={() => setSelectedLayout({ grid: true, list: false })}
-          sx={{ marginLeft: "auto" }}
-        >
+        <Box onClick={() => setSelectedLayout({ grid: true, list: false })} sx={{ marginLeft: "auto" }}>
           <GridView
             sx={{
               color: selectedLayout["grid"] ? "#f03637" : "inherit",
@@ -133,30 +116,18 @@ function Toolbar({
             24{" "}
           </ToolbarButton>
           /
-          <ToolbarButton
-            className={productNumber["all"] ? "active" : ""}
-            onClick={() => productNumberHandler("all")}
-          >
+          <ToolbarButton className={productNumber["all"] ? "active" : ""} onClick={() => productNumberHandler("all")}>
             All
           </ToolbarButton>
         </Box>
       </Box>
       <FormControl sx={{ width: { xs: "100%", sm: "200px" } }} size="small">
-        <Select
-          variant="outlined"
-          displayEmpty
-          value={selectedSorting}
-          onChange={selectedSortingHandler}
-        >
+        <Select variant="outlined" displayEmpty value={selectedSorting} onChange={selectedSortingHandler}>
           <MenuItem value="">Default Sorting</MenuItem>
           <MenuItem value={"rating"}>Sort By Average Rating </MenuItem>
           <MenuItem value={"latest"}>Sort By Latest </MenuItem>
-          <MenuItem value={"price-low-to-high"}>
-            Sort By Price: low to high{" "}
-          </MenuItem>
-          <MenuItem value={"price-high-to-low"}>
-            Sort By Price:high to low{" "}
-          </MenuItem>
+          <MenuItem value={"price-low-to-high"}>Sort By Price: low to high </MenuItem>
+          <MenuItem value={"price-high-to-low"}>Sort By Price:high to low </MenuItem>
         </Select>
       </FormControl>
     </Box>

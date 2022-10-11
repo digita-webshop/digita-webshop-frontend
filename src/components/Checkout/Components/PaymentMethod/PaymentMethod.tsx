@@ -4,20 +4,13 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import { Box, RadioGroup } from "@mui/material";
-import {
-  accordionDetailStyles,
-  CustomRadio,
-  paymentTitleStyles,
-} from "../../styles";
+import { accordionDetailStyles, CustomRadio, paymentTitleStyles } from "../../styles";
 
 interface Props {
   setSelectedPaymentMethod: Dispatch<SetStateAction<string>>;
   selectedPaymentMethod: string;
 }
-function PaymentMethod({
-  setSelectedPaymentMethod,
-  selectedPaymentMethod,
-}: Props) {
+function PaymentMethod({ setSelectedPaymentMethod, selectedPaymentMethod }: Props) {
   const accordionHandler = (panel: string) => () => {
     setSelectedPaymentMethod(panel);
   };
@@ -40,9 +33,7 @@ function PaymentMethod({
           <Typography sx={paymentTitleStyles}>Cash on delivery</Typography>
         </AccordionSummary>
         <AccordionDetails sx={accordionDetailStyles}>
-          <Typography component={"span"}>
-            Pay with cash upon delivery.
-          </Typography>
+          <Typography component={"span"}>Pay with cash upon delivery.</Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -90,8 +81,7 @@ function PaymentMethod({
         </AccordionSummary>
         <AccordionDetails sx={accordionDetailStyles}>
           <Typography component={"span"}>
-            Pay via PayPal; you can pay with your credit card if you don’t have
-            a PayPal account.
+            Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.
           </Typography>
         </AccordionDetails>
       </Accordion>

@@ -1,22 +1,13 @@
 import { Fragment, useState } from "react";
 import { ProductContentStyle, SubmitButton } from "../../../styles";
-import { PFormControl } from "../../../../../styles/panel";
-
-import {
-  Typography,
-  Box,
-  Rating,
-  Divider,
-  Button,
-  FormLabel,
-  TextField,
-} from "@mui/material";
+import { PFormControl } from "styles/panel";
+import { Typography, Box, Rating, Divider, Button, FormLabel, TextField } from "@mui/material";
 import Review from "./Review/Review";
-import { useAppSelector } from "../../../../../redux/store";
+import { useAppSelector } from "redux/store";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAddReviewMutation } from "../../../../../redux/reviews/reviewsApi";
-import { IReviews } from "../../../../../types/product";
-import { useLoadReviews } from "../../../../../hooks/useLoadReviews";
+import { useAddReviewMutation } from "redux/reviews/reviewsApi";
+import { IReviews } from "types/product";
+import { useLoadReviews } from "hooks/useLoadReviews";
 
 interface Props {
   reviews: IReviews[] | [];
@@ -26,20 +17,18 @@ const Reviews = ({ reviews, id }: Props) => {
   const { user } = useAppSelector((state) => state.reducer.auth);
   const [rating, setRating] = useState(1);
   const [reviewDescription, setReviewDescription] = useState("");
-  const { indexOfLoadedReviews, loadMoreReviewsHandler } =
-    useLoadReviews(reviews);
-  const { pathname } = useLocation();
+  const { indexOfLoadedReviews, loadMoreReviewsHandler } = useLoadReviews(reviews);
+  const location = useLocation();
   const navigate = useNavigate();
 
   const [addReview] = useAddReviewMutation();
 
   const submitReviewHandler = async () => {
     if (!user) {
-      navigate({
-        pathname,
-        hash: "reviews",
-        search: `tab=reviews&login=open`,
-      });
+      navigate(
+        { pathname: location.pathname, search: "tab=reviews&login=open" },
+        { state: { from: { pathname: location.pathname, search: "tab=reviews" } }, replace: true }
+      );
       return;
     }
     try {
@@ -121,10 +110,7 @@ const Reviews = ({ reviews, id }: Props) => {
             }}
           >
             Your rating
-            <Typography
-              component={"span"}
-              sx={{ color: "#f03637", marginLeft: "2px" }}
-            >
+            <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
               *
             </Typography>
           </Typography>
@@ -132,9 +118,7 @@ const Reviews = ({ reviews, id }: Props) => {
           <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {[1, 2, 3, 4, 5].map((rate) => (
               <Fragment key={rate}>
-                {rate !== 1 && (
-                  <Divider orientation="vertical" variant="middle" flexItem />
-                )}
+                {rate !== 1 && <Divider orientation="vertical" variant="middle" flexItem />}
                 <Box
                   sx={{
                     cursor: "pointer",
@@ -145,12 +129,7 @@ const Reviews = ({ reviews, id }: Props) => {
                   }}
                   onClick={() => setRating(rate)}
                 >
-                  <Rating
-                    name="read-only"
-                    defaultValue={rate}
-                    readOnly
-                    max={rate}
-                  />
+                  <Rating name="read-only" defaultValue={rate} readOnly max={rate} />
                 </Box>
               </Fragment>
             ))}
@@ -159,15 +138,9 @@ const Reviews = ({ reviews, id }: Props) => {
 
         <Box>
           <PFormControl>
-            <FormLabel
-              color="primary"
-              sx={{ fontSize: "15px", color: "#333333", marginBottom: "5px" }}
-            >
+            <FormLabel color="primary" sx={{ fontSize: "15px", color: "#333333", marginBottom: "5px" }}>
               Your review
-              <Typography
-                component={"span"}
-                sx={{ color: "#f03637", marginLeft: "2px" }}
-              >
+              <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
                 *
               </Typography>
             </FormLabel>
@@ -185,11 +158,7 @@ const Reviews = ({ reviews, id }: Props) => {
           </PFormControl>
         </Box>
 
-        <Button
-          variant="contained"
-          sx={SubmitButton}
-          onClick={submitReviewHandler}
-        >
+        <Button variant="contained" sx={SubmitButton} onClick={submitReviewHandler}>
           {user ? "SUBMIT" : "LOGIN AND SUBMIT"}
         </Button>
       </Box>

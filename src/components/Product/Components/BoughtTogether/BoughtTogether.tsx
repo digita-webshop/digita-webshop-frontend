@@ -1,14 +1,8 @@
-import {
-  boughtTogether,
-  boughttitleStyle,
-  boughtPriceStyle,
-  BoughtTextStyle,
-  BoughtButton,
-} from "../../styles";
+import { Fragment } from "react";
+import { boughtTogether, boughttitleStyle, boughtPriceStyle, BoughtTextStyle, BoughtButton } from "../../styles";
 import { Button, Box, Typography, Divider } from "@mui/material";
 import { Card, CardMedia, CardActionArea } from "@mui/material";
-import { Fragment } from "react";
-import { IProduct } from "../../../../types/product";
+import { IProduct } from "types/product";
 import { useNavigate } from "react-router-dom";
 interface Props {
   products: IProduct[];
@@ -29,26 +23,14 @@ const BoughtTogether = ({ products }: Props) => {
           {randomProducts.map((product, index) => (
             <Fragment key={index}>
               {index !== 0 && (
-                <Typography
-                  variant="body2"
-                  component="span"
-                  sx={BoughtTextStyle}
-                >
+                <Typography variant="body2" component="span" sx={BoughtTextStyle}>
                   +
                 </Typography>
               )}
               <Box onClick={() => navigate(`/shop/${product._id}`)}>
-                <Card
-                  sx={{ border: " 1px solid #ebebeb", margin: "0 0.5rem " }}
-                >
+                <Card sx={{ border: " 1px solid #ebebeb", margin: "0 0.5rem " }}>
                   <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      height="96"
-                      width="96"
-                      image={product.image}
-                      alt="green iguana"
-                    />
+                    <CardMedia component="img" height="96" width="96" image={product.image} alt="green iguana" />
                   </CardActionArea>
                 </Card>
               </Box>
@@ -69,11 +51,8 @@ const BoughtTogether = ({ products }: Props) => {
         <ul className="boughtList">
           {randomProducts.map(({ title, price, offPrice }) => (
             <li key={title}>
-              {title} –
-              {offPrice && <del className="previousPrice">{`$${price}`}</del>}
-              <span className="newPrice">{`$${
-                offPrice ? offPrice : price
-              }`}</span>
+              {title} –{offPrice && <del className="previousPrice">{`$${price}`}</del>}
+              <span className="newPrice">{`$${offPrice ? offPrice : price}`}</span>
             </li>
           ))}
         </ul>

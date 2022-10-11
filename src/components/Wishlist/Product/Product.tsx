@@ -1,22 +1,14 @@
-import {
-  Box,
-  CardContent,
-  Button,
-  Card,
-  CardMedia,
-  Typography,
-  Modal,
-} from "@mui/material";
+import { Box, CardContent, Button, Card, CardMedia, Typography, Modal } from "@mui/material";
 
 import { useState } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { cartModal } from "../../PanelProducts/styles";
 import { titleWrapper, titleStyle } from "../../PanelProducts/styles";
-import { cardWrapper, deleteBtn, addBtn } from "../../../styles/user";
-import { useDeleteWishMutation } from "../../../redux/wishlist/wishlistApi";
-import { successMessage } from "../../../utils/toastMessages";
-import { useAppSelector } from "../../../redux/store";
+import { cardWrapper, deleteBtn, addBtn } from "styles/user";
+import { useDeleteWishMutation } from "redux/wishlist/wishlistApi";
+import { successMessage } from "utils/toastMessages";
+import { useAppSelector } from "redux/store";
 
 type T = {
   id: string;
@@ -45,29 +37,16 @@ const Product = ({ id, title, price, image }: T) => {
   }
   return (
     <Card sx={cardWrapper}>
-      <CardMedia
-        component="img"
-        image={image}
-        alt="green iguana"
-        sx={{ aspectRatio: "1", objectFit: "contain" }}
-      />
+      <CardMedia component="img" image={image} alt="green iguana" sx={{ aspectRatio: "1", objectFit: "contain" }} />
       <CardContent sx={titleWrapper}>
         <Typography component="p" sx={titleStyle}>
           {title}
         </Typography>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ pt: "2px", fontSize: "16px" }}
-        >
+        <Typography variant="h6" component="div" sx={{ pt: "2px", fontSize: "16px" }}>
           {"$" + price}
         </Typography>
         <Box sx={{ display: "flex", mt: 1, gap: 1 }}>
-          <Button
-            variant="contained"
-            sx={deleteBtn}
-            onClick={() => setOpen(true)}
-          >
+          <Button variant="contained" sx={deleteBtn} onClick={() => setOpen(true)}>
             <DeleteForeverIcon sx={{ margin: "0 0.2rem" }} />
             Delete
           </Button>
@@ -84,15 +63,8 @@ const Product = ({ id, title, price, image }: T) => {
           aria-describedby="modal-modal-description"
         >
           <Box sx={cartModal}>
-            <DeleteForeverIcon
-              sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }}
-            />
-            <Typography
-              id="modal-modal-title"
-              variant="h5"
-              component="h2"
-              sx={{ textAlign: "center" }}
-            >
+            <DeleteForeverIcon sx={{ fontSize: 110, fontWeight: 100, color: "#f03637", p: 2 }} />
+            <Typography id="modal-modal-title" variant="h5" component="h2" sx={{ textAlign: "center" }}>
               Delete this item?
             </Typography>
             <Box sx={{ display: "flex", gap: 3, margin: "1rem 0" }}>

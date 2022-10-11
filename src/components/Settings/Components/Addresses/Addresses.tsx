@@ -1,23 +1,18 @@
 import { useEffect, useState } from "react";
 import { Box, Button, Modal, Typography } from "@mui/material";
-import {
-  addressBtn,
-  topMenuItem,
-  wrapper,
-  between,
-} from "../../../../styles/user";
+import { addressBtn, topMenuItem, wrapper, between } from "styles/user";
 import AddLocation from "@mui/icons-material/AddLocation";
 import EmptyList from "../../../EmptyList/EmptyList";
 import { cartModal } from "../../../Home/Components/Products/styles";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { IAddress, IUser } from "../../../../types/user";
+import { IAddress, IUser } from "types/user";
 import Address from "./Address/Address";
-import { useUpdateUserMutation } from "../../../../redux/user/userApi";
+import { useUpdateUserMutation } from "redux/user/userApi";
 import AddressForm from "../../../Checkout/Components/AddressForm/AddressForm";
-import { setCredentials } from "../../../../redux/auth/authSlice";
+import { setCredentials } from "redux/auth/authSlice";
 import { useDispatch } from "react-redux";
-import { errorMessage, successMessage } from "../../../../utils/toastMessages";
+import { errorMessage, successMessage } from "utils/toastMessages";
 interface Props {
   user: IUser;
 }
@@ -49,9 +44,7 @@ function Addresses({ user }: Props) {
         throw new Error(response?.message);
       }
 
-      dispatch(
-        setCredentials({ user: newUser, role: user.role!, email: null })
-      );
+      dispatch(setCredentials({ user: newUser, role: user.role!, email: null }));
       setCurrentAddress(null);
       successMessage("address deleted successfully");
     } catch (err) {
@@ -119,16 +112,11 @@ function Addresses({ user }: Props) {
           >
             <ArrowBack />
           </Box>
-          <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
-            Addresses
-          </Typography>
+          <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>Addresses</Typography>
         </Box>
         <Box sx={topMenuItem} onClick={() => setNewAddress(true)}>
           <Button variant="contained" sx={addressBtn}>
-            <AddLocation
-              className="addIcon"
-              sx={{ margin: "0 0.2rem", color: "common.digitaRed" }}
-            />
+            <AddLocation className="addIcon" sx={{ margin: "0 0.2rem", color: "common.digitaRed" }} />
             Add New Address
           </Button>
         </Box>
@@ -139,18 +127,11 @@ function Addresses({ user }: Props) {
       {user?.addresses.length === 0 && (
         <EmptyList
           title={"Addresses"}
-          image={
-            "https://www.pngitem.com/pimgs/m/267-2677986_red-contact-icon-png-transparent-png.png"
-          }
+          image={"https://www.pngitem.com/pimgs/m/267-2677986_red-contact-icon-png-transparent-png.png"}
         />
       )}
       {user?.addresses.map((item) => (
-        <Address
-          key={item?._id}
-          address={item}
-          editAddress={editAddress}
-          deleteAddress={deleteAddress}
-        />
+        <Address key={item?._id} address={item} editAddress={editAddress} deleteAddress={deleteAddress} />
       ))}
       <Modal
         open={newAddress}

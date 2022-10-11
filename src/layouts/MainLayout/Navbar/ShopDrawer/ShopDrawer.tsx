@@ -31,19 +31,9 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
   const subtotal = getSubtotal(cartItems);
 
   return (
-    <Drawer
-      anchor="right"
-      open={displayDrawer["right"]}
-      onClose={toggleDrawer("right", false)}
-    >
+    <Drawer anchor="right" open={displayDrawer["right"]} onClose={toggleDrawer("right", false)}>
       <Box padding={2} position={"relative"}>
-        <Box
-          position={"absolute"}
-          right={4}
-          top={6}
-          sx={{ cursor: "pointer" }}
-          onClick={toggleDrawer("right", false)}
-        >
+        <Box position={"absolute"} right={4} top={6} sx={{ cursor: "pointer" }} onClick={toggleDrawer("right", false)}>
           <CloseRounded fontSize="large" color="secondary" />
         </Box>
         <Box textAlign={"center"} marginBottom={2}>
@@ -111,11 +101,7 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
           >
             VIEW CARD
           </Button>
-          <Button
-            variant="contained"
-            fullWidth={true}
-            onClick={checkoutHandler}
-          >
+          <Button variant="contained" fullWidth={true} onClick={checkoutHandler}>
             {!user ? "LOGIN & " : ""} CHECKOUT
           </Button>
         </Box>

@@ -1,5 +1,5 @@
-import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
+import { Box, Button, Typography } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
 import { FilterTitleWrapper, PriceSlider } from "../../styles";
 
@@ -26,12 +26,7 @@ function PriceFilter({ drawer }: Props) {
       }}
     >
       <FilterTitleWrapper className={`${drawer && "underline"}`}>
-        <Typography
-          component={"h4"}
-          variant="body1"
-          color="primary"
-          fontWeight={600}
-        >
+        <Typography component={"h4"} variant="body1" color="primary" fontWeight={600}>
           PRICE
         </Typography>
       </FilterTitleWrapper>
@@ -52,15 +47,8 @@ function PriceFilter({ drawer }: Props) {
           justifyContent: "space-between",
         }}
       >
-        <Typography
-          variant="body2"
-          color="primary"
-        >{`Price : $${value[0]} — $${value[1]}`}</Typography>
-        <Button
-          variant="contained"
-          sx={{ paddingY: "4px" }}
-          onClick={addPriceQueryParams}
-        >
+        <Typography variant="body2" color="primary">{`Price : $${value[0]} — $${value[1]}`}</Typography>
+        <Button variant="contained" sx={{ paddingY: "4px" }} onClick={addPriceQueryParams}>
           Filter
         </Button>
       </Box>
