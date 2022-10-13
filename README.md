@@ -1,46 +1,98 @@
-# Getting Started with Create React App
+# Digita Online Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> E-commerce application.
 
-## Available Scripts
+> Live demo [_here_](https://www.example.com).
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+This project is a fully responsive Modern Full Stack Ecommerce application with Payments functionality. With Modern design, animations, the ability to add and edit products on the admin panel, all advanced cart functionalities and many more features that you can see on the features section.
+Check out [Digita-webshop-backend](https://github.com/digita-webshop/digita-webshop-backend) repository for backend
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies Used
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React - version 18.1.0
+- Typescript - version 4.7.2
+- Material Ui - version 5.9.1
+- Redux Toolkit - version 1.8.3
+- RTK Query - version
+- React Router - version 6.3.0
+- Swiper - version 8.2.3
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Full checkout process including the dispatch and storage of the generated order to database
+Login / Signup with email
+View & Update Account
+Add / Remove Multiple Addresses
+Add / Remove item to Cart
+Add / Remove products as admin
+Add / Remove item to Wishlist
+Add comments to products
+Make Order / Online Payment
+View Orders History
+Fully Responsive – Digita is a fully responsive template and works perfectly on all screen sizes and mobile devices.
 
-### `npm run build`
+## Key Features Overview
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- admin panel -->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Admin Panel
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Admin panel provides a clean, friendly user interface and many various functionalities including:
 
-### `npm run eject`
+- Add / delete/ edit products and articles
+- Manage all orders
+- Edit and update your account information
+- Add / delete / edit addresses
+- Delete users and user reviews
+- Add / delete admins (by having a super admin account)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img src="https://media.publit.io/file/admin-panel-overview.gif" alt="admin panel overview GIF" width=80% height=auto>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### User Panel
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+User panel offers efficient features like:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Observe and manage orders
+- Manage and edit wishlist
+- Edit and update your account information including profile image, email, userName, phone, password
+- Add / delete / edit addresses
 
-## Learn More
+<img src="https://media.publit.io/file/user-panel-overview.gif" alt="user panel overview GIF" width=80% height=auto>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Setup
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Follow the following steps to get development environment running.
+
+- Clone _'digita-webshop-frontend.git'_ repository
+
+  ```bash
+  git clone https://github.com/digita-webshop/digita-webshop-frontend.git
+  ```
+
+- Install dependencies
+
+  ```bash
+  npm install
+  ```
+
+- start development server
+
+  ```bash
+  npm start
+  ```
+
+---
+
+## Project Status
+
+Project is: _complete_ .
+
+## Contact
+
+Created by [@tohiidd]() - feel free to contact me!
+
+## License
+
+This project is open source and available under the [MIT](https://github.com/digita-webshop/digita-webshop-frontend/blob/main/LICENSE.md) license.
