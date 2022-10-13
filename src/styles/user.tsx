@@ -90,6 +90,8 @@ export const userAvatarStyle = {
     borderRadius: "50%",
     border: "2px solid #eee",
     transition: "all 100ms ease-in",
+    aspectRatio: "1",
+    objectFit: "cover",
     "&:hover ": {
       borderColor: "common.digitaRed",
     },

@@ -51,7 +51,7 @@ const ProductItem = ({ product, listView }: Props) => {
   const cart = cartData?.data?.products ?? [];
   const cartItems = user ? cart : cartList;
   const inCart = isInList(cartItems, _id!);
-  const cartItem = cartItems.find((item) => item.productId._id === _id);
+  const cartItem = cartItems.find((item) => item?.productId?._id === _id);
 
   const { addToCartHandler, cartIsLoading } = useAddToCart(inCart, product, setOpenCart);
 

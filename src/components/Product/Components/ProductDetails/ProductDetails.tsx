@@ -57,7 +57,7 @@ const ProductDetails = ({ product }: Props) => {
   const cart = cartData?.data?.products ?? [];
   const cartItems = user ? cart : cartList;
   const inCart = isInList(cartItems, product?._id!);
-  const cartItem = cartItems.find((item) => item.productId._id === product?._id);
+  const cartItem = cartItems.find((item) => item?.productId?._id === product?._id);
 
   const { data: wishlistData } = useGetWishlistQuery(role ?? "");
   const wishlist = wishlistData?.data ?? [];
