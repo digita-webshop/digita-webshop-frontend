@@ -22,8 +22,8 @@ const Cart = () => {
 
   const [cartUpdated, setCartUpdated] = useState<UpdateCart | null>(null);
 
-  const { data: cartData } = useGetAllCartItemQuery();
-  const cart = cartData?.data.products ?? [];
+  const { data: cartData, isLoading } = useGetAllCartItemQuery();
+  const cart = cartData?.data?.products ?? [];
   const cartItems = user ? cart : cartList;
 
   let cartSubtotal = subtotal;
@@ -34,9 +34,9 @@ const Cart = () => {
   return (
     <CartContainer>
       {cartUpdated && <CartUpdated item={cartUpdated.item} type={cartUpdated.type} setCartUpdated={setCartUpdated} />}
-      {cartList.length === 0 ? (
+      {cartItems.length === 0 && !isLoading ? (
         <Box sx={{ padding: "35px 0 50px" }}>
-          <Button variant="contained" LinkComponent={Link} href="/shop">
+          <Button variant="contained" component={Link} to="/shop">
             Return to shop
           </Button>
         </Box>

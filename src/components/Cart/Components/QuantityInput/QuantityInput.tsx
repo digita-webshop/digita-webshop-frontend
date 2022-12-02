@@ -3,25 +3,38 @@ import { CustomBtn } from "../../styles";
 import { ICartItem } from "types/cart";
 import { useDispatch } from "react-redux";
 import { updateCart } from "redux/cart/cartSlice";
+import { useAppSelector } from "redux/store";
+import { useAddToCartMutation } from "redux/cart/cartApi";
 
 type Props = {
   cartItem: ICartItem;
 };
 
 const QuantityInput = ({ cartItem }: Props) => {
+  const { user } = useAppSelector((state) => state.reducer.auth);
+
+  const [addToCart] = useAddToCartMutation();
   const dispatch = useDispatch();
 
   const isMax = cartItem.quantity >= cartItem.productId.quantity;
 
-  const inputClickHandler = (value: number) => () => {
+  const inputClickHandler = (value: number) => async () => {
     if (cartItem.quantity <= 1 && value === -1) return;
 
     if (isMax && value === +1) return;
 
     let updatedCartItem = { ...cartItem };
     updatedCartItem.quantity += value;
-
-    dispatch(updateCart(updatedCartItem));
+    if (user) {
+      try {
+        const res = await addToCart(updatedCartItem).unwrap();
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      dispatch(updateCart(updatedCartItem));
+    }
   };
 
   return (

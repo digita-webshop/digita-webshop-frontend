@@ -94,6 +94,7 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
     } catch (err: any) {
       console.log(err);
       setErrorMessage(err?.data?.message);
+      loadingRef?.current.complete();
     }
   };
 

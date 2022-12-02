@@ -31,6 +31,7 @@ const Reviews = () => {
   if (searchValue) {
     queries = `${queries} &search=${searchValue}`;
   }
+
   const path = isArticlePage ? "articles" : "products";
   const {
     data: reviewsData,

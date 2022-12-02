@@ -6,18 +6,33 @@ import { ICartItem } from "types/cart";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "redux/cart/cartSlice";
 import { Link } from "react-router-dom";
+import { useDeleteFromCartMutation } from "redux/cart/cartApi";
+import { useAppSelector } from "redux/store";
 
 type Props = {
   cartItem: ICartItem;
 };
 
 const CartListTableRow = ({ cartItem }: Props) => {
+  const { user } = useAppSelector((state) => state.reducer.auth);
+
   const theme = useTheme();
   const matchesSm = useMediaQuery(theme.breakpoints.down("sm"));
   const dispatch = useDispatch();
 
-  const deleteCartHandler = () => {
-    dispatch(removeFromCart(cartItem?._id));
+  const [deleteFromCart] = useDeleteFromCartMutation();
+
+  const deleteCartHandler = async () => {
+    if (user) {
+      try {
+        const res = await deleteFromCart(cartItem?._id).unwrap();
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      dispatch(removeFromCart(cartItem?._id));
+    }
   };
   return (
     <TableRow key={cartItem._id}>
