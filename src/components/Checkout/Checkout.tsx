@@ -26,6 +26,7 @@ import { cartModal } from "components/Home/Components/Products/styles";
 import { Add, Close } from "@mui/icons-material";
 import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 import { getSubtotal } from "utils/getSubtotal";
+import { useAddOrderMutation } from "redux/orders/ordersApi";
 
 function Checkout() {
   const { user } = useAppSelector((state) => state.reducer.auth);
@@ -41,12 +42,14 @@ function Checkout() {
   const notesRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
 
-  const { data: cartData, isLoading, isError } = useGetAllCartItemQuery();
+  const { data: cartData } = useGetAllCartItemQuery();
   const cart = cartData?.data;
+  console.log(cart);
 
   const subtotal = getSubtotal(cart?.products!);
 
   const [updateUser] = useUpdateUserMutation();
+  const [addOrder] = useAddOrderMutation();
 
   const displayAddressesToggler = () => {
     if (!currentAddress || user?.addresses.length === 1) return;
@@ -100,16 +103,21 @@ function Checkout() {
     setDisplayAddresses(false);
   };
 
-  const submitOrderHandler = () => {
-    // const order = {
-    //   date: selectedDate,
-    //   paymentMethod: selectedPaymentMethod,
-    //   address: currentAddress,
-    //   notes: notesRef?.current?.value,
-    //   products: [{ product: productObject, quantity: 3, color: "red" }],
-    //   total: subtotal,
-    // };
-    // TODO send order data
+  const submitOrderHandler = async () => {
+    const order = {
+      date: selectedDate,
+      paymentMethod: selectedPaymentMethod,
+      address: currentAddress,
+      notes: notesRef?.current?.value,
+      products: cart?.products,
+      coupon: couponValue,
+    };
+    try {
+      const res = await addOrder({ path: user?.role!, order }).unwrap();
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Box bgcolor={"white"}>
