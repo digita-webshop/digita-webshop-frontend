@@ -27,7 +27,8 @@ import { Add, Close } from "@mui/icons-material";
 import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 import { getSubtotal } from "utils/getSubtotal";
 import { useAddOrderMutation } from "redux/orders/ordersApi";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import Loading from "components/Loading/Loading";
 
 function Checkout() {
   const { user } = useAppSelector((state) => state.reducer.auth);
@@ -39,12 +40,13 @@ function Checkout() {
   const [couponValue, setCouponValue] = useState("");
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("cash");
   const [currentAddress, setCurrentAddress] = useState<IAddress | null>(user?.addresses[0] ?? null);
+  const [addressError, setAddressError] = useState("");
 
   const notesRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { data: cartData } = useGetAllCartItemQuery();
+  const { data: cartData, isLoading } = useGetAllCartItemQuery();
   const cart = cartData?.data;
   console.log(cart);
 
@@ -106,6 +108,14 @@ function Checkout() {
   };
 
   const submitOrderHandler = async () => {
+    if (!currentAddress) {
+      window.document.getElementById("error")?.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "center",
+      });
+      return setAddressError("Please add an address!");
+    }
     const order = {
       date: selectedDate,
       paymentMethod: selectedPaymentMethod,
@@ -123,9 +133,30 @@ function Checkout() {
       console.log(err);
     }
   };
+  if (cart && cart?.products.length === 0 && !isLoading) {
+    return <Navigate to="/cart" replace />;
+  }
+  if (!cart && isLoading) {
+    return <Loading full />;
+  }
   return (
     <Box bgcolor={"white"}>
       <Container maxWidth={"lg"} sx={{ py: "50px" }}>
+        {addressError && !currentAddress && (
+          <Box
+            sx={{
+              backgroundColor: "common.digitaRed",
+              padding: "10px 15px",
+              marginBottom: "40px",
+            }}
+            id="error"
+          >
+            <Typography sx={{ color: "white ", fontWeight: 500, display: "flex", alignItems: "center", gap: "3px" }}>
+              <Close />
+              {addressError}
+            </Typography>
+          </Box>
+        )}
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
             <Grid container rowSpacing={2} sx={{ padding: "25px", border: "2px solid #eaeaea" }}>
@@ -201,7 +232,7 @@ function Checkout() {
                 </Box>
               </Grid>
               <Grid item xs={12}>
-                <OrderTable cartItems={cart?.products!} subtotal={subtotal} />
+                <OrderTable cartItems={cart?.products!} subtotal={subtotal} currentAddress={currentAddress} />
               </Grid>
               <Grid item xs={12}>
                 <PaymentMethod

@@ -39,7 +39,7 @@ export const ordersApi = api.injectEndpoints({
           body: order,
         };
       },
-      invalidatesTags: ["User"],
+      invalidatesTags: ["User", "Cart"],
     }),
     deleteOrder: build.mutation<any, OrderRequest>({
       query(data) {
@@ -54,9 +54,4 @@ export const ordersApi = api.injectEndpoints({
   }),
 });
 
-export const {
-  useGetAllOrdersQuery,
-  useGetUserOrdersQuery,
-  useAddOrderMutation,
-  useDeleteOrderMutation,
-} = ordersApi;
+export const { useGetAllOrdersQuery, useGetUserOrdersQuery, useAddOrderMutation, useDeleteOrderMutation } = ordersApi;
