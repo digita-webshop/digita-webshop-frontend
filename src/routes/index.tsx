@@ -4,7 +4,19 @@ import MainLayout from "../layouts/MainLayout/MainLayout";
 import PanelLayout from "../layouts/PanelLayout/PanelLayout";
 import UserLayout from "../layouts/UserLayout/UserLayout";
 
-import { AboutUs, Article, Blog, Cart, Checkout, ContactUs, Home, PageNotFound, Product, Shop } from "../pages/Main";
+import {
+  AboutUs,
+  Article,
+  Blog,
+  Cart,
+  Checkout,
+  ContactUs,
+  Home,
+  OrderConfirm,
+  PageNotFound,
+  Product,
+  Shop,
+} from "../pages/Main";
 import {
   AddArticle,
   AddProduct,
@@ -34,8 +46,23 @@ function AppRoutes() {
         { path: "/article/:id", element: <Article /> },
         { path: "/about-us", element: <AboutUs /> },
         { path: "/contact-us", element: <ContactUs /> },
-        { path: "/checkout", element: <Checkout /> },
+        {
+          path: "/checkout",
+          element: (
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          ),
+        },
         { path: "/cart", element: <Cart /> },
+        {
+          path: "/order-confirm",
+          element: (
+            <PrivateRoute>
+              <OrderConfirm />
+            </PrivateRoute>
+          ),
+        },
         { path: "*", element: <PageNotFound /> },
       ],
     },

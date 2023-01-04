@@ -7,4 +7,5 @@ export { default as Checkout } from "./Checkout/Checkout";
 export { default as Cart } from "./Cart/Cart";
 export { default as Article } from "./Article/Article";
 export { default as Product } from "./Product/Product";
+export { default as OrderConfirm } from "./OrderConfirm/OrderConfirm";
 export { default as PageNotFound } from "./404/404";

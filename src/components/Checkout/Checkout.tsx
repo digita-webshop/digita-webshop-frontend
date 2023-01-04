@@ -27,6 +27,7 @@ import { Add, Close } from "@mui/icons-material";
 import { useGetAllCartItemQuery } from "redux/cart/cartApi";
 import { getSubtotal } from "utils/getSubtotal";
 import { useAddOrderMutation } from "redux/orders/ordersApi";
+import { useNavigate } from "react-router-dom";
 
 function Checkout() {
   const { user } = useAppSelector((state) => state.reducer.auth);
@@ -41,6 +42,7 @@ function Checkout() {
 
   const notesRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { data: cartData } = useGetAllCartItemQuery();
   const cart = cartData?.data;
@@ -115,8 +117,10 @@ function Checkout() {
     try {
       const res = await addOrder({ path: user?.role!, order }).unwrap();
       console.log(res);
-    } catch (error) {
-      console.log(error);
+      navigate("/order-confirm");
+    } catch (err: any) {
+      errorMessage(err?.data.message);
+      console.log(err);
     }
   };
   return (
@@ -219,8 +223,13 @@ function Checkout() {
                 </Typography>
               </Grid>
               <Grid item xs={12}>
-                <Button variant="contained" sx={checkoutProceedBtn} onClick={submitOrderHandler}>
-                  proceed to paypal
+                <Button
+                  variant="contained"
+                  sx={checkoutProceedBtn}
+                  onClick={submitOrderHandler}
+                  disabled={selectedPaymentMethod === "paypal"}
+                >
+                  {selectedPaymentMethod === "cash" ? "place order" : " proceed to paypal"}
                 </Button>
               </Grid>
             </Grid>

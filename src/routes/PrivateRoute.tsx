@@ -9,8 +9,6 @@ const PrivateRoute = ({ children }: Props) => {
   const { pathname } = location;
   const { role } = useAppSelector((state) => state.reducer.auth);
 
-  console.log(pathname);
-
   if (role === "superAdmin" && pathname.includes("/user")) {
     return <Navigate to="/" replace state={{ from: location }} />;
   }
@@ -25,6 +23,9 @@ const PrivateRoute = ({ children }: Props) => {
 
   if (!role && (pathname.includes("user") || pathname.includes("panel"))) {
     return <Navigate to="/?login=open" replace state={{ from: location }} />;
+  }
+  if (!role && (pathname.includes("/checkout") || pathname.includes("/confirm-order"))) {
+    return <Navigate to="/?login=open" replace />;
   }
 
   return children;
