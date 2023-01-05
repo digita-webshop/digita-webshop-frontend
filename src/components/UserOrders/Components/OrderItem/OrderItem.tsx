@@ -6,18 +6,20 @@ import PendingIcon from "@mui/icons-material/Pending";
 import AssignmentReturnIcon from "@mui/icons-material/AssignmentReturn";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { between, wrapper } from "styles/user";
+import { ICartItem } from "types/cart";
+import { getReadableDate } from "utils/getReadableDate";
+import { getSubtotal } from "utils/getSubtotal";
 
 interface T {
   id: string;
-  price: number;
   date: string;
-  image: string;
   status: string;
+  products: ICartItem[];
 }
 
-const OrderItem = ({ id, price, date, image, status }: T) => {
+const OrderItem = ({ id, date, status, products }: T) => {
   return (
-    <Box sx={wrapper}>
+    <Box sx={{ ...wrapper, border: "1px solid #d8d8d8", borderRadius: "12px" }}>
       <Box sx={between}>
         <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
           {status === "pending" && (
@@ -54,22 +56,28 @@ const OrderItem = ({ id, price, date, image, status }: T) => {
         sx={{
           display: "flex",
           flexDirection: { xs: "column", sm: "row" },
+          flexWrap: "wrap",
           gap: 2,
           mt: 2,
         }}
       >
-        <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>{date}</Typography>
         <Box sx={{ display: "flex", gap: 1 }}>
-          <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>Code</Typography>
+          <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>Date:</Typography>
+          <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>{getReadableDate(date)}</Typography>
+        </Box>
+        <Box sx={{ display: "flex", gap: 1 }}>
+          <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>Code:</Typography>
           <Typography>{id}</Typography>
         </Box>
         <Box sx={{ display: "flex", gap: 1 }}>
-          <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>Price</Typography>
-          <Typography>{`${price} $`}</Typography>
+          <Typography sx={{ color: "gray", fontSize: { xs: "14px", sm: "16px" } }}>Price: </Typography>
+          <Typography>{` $${getSubtotal(products) + 20}`}</Typography>
         </Box>
       </Box>
-      <Box sx={{ mt: 2 }}>
-        <Box component="img" src={image} alt="empty" className="orderImg" />
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px", mt: 2, img: { aspectRatio: "1" } }}>
+        {products?.map(({ productId }) => (
+          <img src={productId?.image} alt={productId?.title} className="orderImg" />
+        ))}
       </Box>
 
       <Box
