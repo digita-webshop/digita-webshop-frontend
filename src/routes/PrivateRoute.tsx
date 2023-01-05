@@ -24,9 +24,6 @@ const PrivateRoute = ({ children }: Props) => {
   if (!role && (pathname.includes("user") || pathname.includes("panel"))) {
     return <Navigate to="/?login=open" replace state={{ from: location }} />;
   }
-  if (!role && (pathname.includes("/checkout") || pathname.includes("/confirm-order"))) {
-    return <Navigate to="/?login=open" replace />;
-  }
 
   return children;
 };

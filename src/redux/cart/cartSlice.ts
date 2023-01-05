@@ -18,16 +18,12 @@ const cartSlice = createSlice({
   reducers: {
     addProductToCart(state, action: { payload: ICartItem }) {
       let cartItem = action.payload;
-      let isInCart = state.cartList.some(
-        (item) => item?.productId._id === cartItem?.productId._id
-      );
+      let isInCart = state.cartList.some((item) => item?.productId._id === cartItem?.productId._id);
 
       if (!isInCart) {
         state.cartList.push(cartItem);
       } else if (isInCart) {
-        let cartItemIndex = state.cartList.findIndex(
-          (item) => item?.productId._id === cartItem?.productId._id
-        );
+        let cartItemIndex = state.cartList.findIndex((item) => item?.productId._id === cartItem?.productId._id);
         state.cartList[cartItemIndex].quantity += cartItem.quantity;
       }
       state.subtotal = getSubtotal(state.cartList);
@@ -36,9 +32,7 @@ const cartSlice = createSlice({
     updateCart(state, action) {
       let cartItem = action.payload;
 
-      let cartItemIndex = state.cartList.findIndex(
-        (item) => item?.productId._id === cartItem?.productId._id
-      );
+      let cartItemIndex = state.cartList.findIndex((item) => item?.productId._id === cartItem?.productId._id);
       const cartList = [...state.cartList];
       cartList[cartItemIndex] = cartItem;
       state.cartList = cartList;
@@ -46,14 +40,15 @@ const cartSlice = createSlice({
     },
 
     removeFromCart(state, action) {
-      state.cartList = state.cartList.filter(
-        (item) => item._id !== action.payload
-      );
+      state.cartList = state.cartList.filter((item) => item._id !== action.payload);
+      state.subtotal = getSubtotal(state.cartList);
+    },
+    removeAllCartItems(state) {
+      state.cartList = [];
       state.subtotal = getSubtotal(state.cartList);
     },
   },
 });
 
-export const { removeFromCart, addProductToCart, updateCart } =
-  cartSlice.actions;
+export const { removeFromCart, addProductToCart, updateCart, removeAllCartItems } = cartSlice.actions;
 export default cartSlice.reducer;

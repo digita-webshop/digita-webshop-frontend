@@ -20,6 +20,8 @@ import { useAppSelector } from "redux/store";
 import { errorStyles, forgetPassStyles, FormFooter, FormWrapper, inputErrorStyles } from "./styles";
 import Header from "./Header/Header";
 import LoadingBar from "react-top-loading-bar";
+import { useAddMultipleCartItemsMutation } from "redux/cart/cartApi";
+import { removeAllCartItems } from "redux/cart/cartSlice";
 
 type Modal = "login" | "register" | "reset";
 type Props = {
@@ -28,6 +30,7 @@ type Props = {
 };
 function Login({ loginModalHandler, modalTypeToggle }: Props) {
   const { email, user } = useAppSelector((state) => state.reducer.auth);
+  const { cartList } = useAppSelector((state) => state.reducer.cart);
   const [enteredEmail, setEnteredEmail] = useState(email ?? "");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [validationError, setValidationError] = useState(false);
@@ -51,6 +54,7 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
   const passwordError = !passwordIsValid && validationError;
 
   const [login, { isLoading }] = useLoginMutation();
+  const [addMultipleCartItems] = useAddMultipleCartItemsMutation();
 
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
@@ -76,23 +80,29 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
           email: null,
         })
       );
-      loadingRef?.current.complete();
-      loginModalHandler(false)();
 
-      if (data.role === "admin" || data.role === "superAdmin") {
+      if (location.state?.from.pathname === "/checkout") {
+        try {
+          await addMultipleCartItems(cartList).unwrap();
+          dispatch(removeAllCartItems());
+        } catch (err: any) {
+          setErrorMessage(err?.data?.message);
+        }
+      }
+
+      if (data?.role === "admin" || data?.role === "superAdmin") {
         const path = location.state?.from ?? "/panel/dashboard";
         navigate(path, {
           replace: true,
         });
       }
-      if (data.role === "user") {
+      if (data?.role === "user") {
         const path = location.state?.from ?? "/user/status";
         navigate(path, { replace: true });
       }
+      loadingRef?.current?.complete();
       successMessage("login successfully");
-      console.log(response);
     } catch (err: any) {
-      console.log(err);
       setErrorMessage(err?.data?.message);
       loadingRef?.current.complete();
     }

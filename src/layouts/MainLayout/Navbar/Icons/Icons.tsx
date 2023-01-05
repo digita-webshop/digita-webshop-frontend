@@ -7,7 +7,7 @@ import {
   SearchOutlined,
 } from "@mui/icons-material";
 import { Badge, Box } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { iconsBadgeStyles, iconsWrapperStyles, IconWrapper } from "../styles";
 import ShopCart from "../ShopCart/ShopCart";
 import UserDropDown from "../UserDropDown/UserDropDown";
@@ -43,6 +43,7 @@ function Icons({
 }: Props) {
   const userDropRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const { user, role } = useAppSelector((state) => state.reducer.auth);
   const { cartList } = useAppSelector((state) => state.reducer.cart);
 
@@ -50,6 +51,9 @@ function Icons({
   const cart = cartData?.data?.products ?? [];
 
   const cartItems = user ? cart : cartList;
+
+  const showCartMenu =
+    matches && cartItems.length !== 0 && location.pathname !== "/checkout" && location.pathname !== "/cart";
 
   const handleToggle = () => {
     if (matches) {
@@ -126,7 +130,7 @@ function Icons({
         <IconWrapper
           sx={{
             "&:hover .shop-cart": {
-              display: matches && cartItems.length !== 0 ? "inline-block" : "none",
+              display: showCartMenu ? "inline-block" : "none",
             },
           }}
         >

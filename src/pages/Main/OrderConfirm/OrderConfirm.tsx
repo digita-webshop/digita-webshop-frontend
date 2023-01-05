@@ -1,12 +1,15 @@
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import { Box, Button, Container, Typography } from "@mui/material";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useAppSelector } from "redux/store";
 
 function OrderConfirm() {
   const { role } = useAppSelector((state) => state.reducer.auth);
 
+  if (!role) {
+    return <Navigate to="/" replace />;
+  }
   return (
     <Container
       sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: "75vh", padding: { xs: "0" } }}

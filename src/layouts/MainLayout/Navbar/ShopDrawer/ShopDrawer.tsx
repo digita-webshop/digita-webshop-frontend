@@ -24,8 +24,6 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
   const { data: cartData } = useGetAllCartItemQuery();
   const cart = cartData?.data?.products ?? [];
 
-  console.log(cart);
-
   const cartItems = user ? cart : cartList;
 
   const subtotal = getSubtotal(cartItems);
@@ -50,7 +48,7 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
           />
         </Box>
         <Divider />
-        <List sx={{ maxHeight: "360px", overflow: "auto" }}>
+        <List sx={{ maxHeight: "68vh", overflow: "auto" }}>
           {cartItems?.map((item) => (
             <ShopCartItem
               key={item?._id}

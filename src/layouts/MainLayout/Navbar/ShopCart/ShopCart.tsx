@@ -83,11 +83,9 @@ function ShopCart() {
             VIEW CARD
           </Button>
         </Link>
-        <Link component={RouterLink} to="/checkout" sx={{ textDecoration: "none", width: "50%" }}>
-          <Button variant="contained" fullWidth={true} onClick={checkoutHandler}>
-            {!user ? "LOGIN &" : ""} CHECKOUT
-          </Button>
-        </Link>
+        <Button variant="contained" sx={{ width: "50%" }} onClick={checkoutHandler}>
+          {!user ? "LOGIN &" : ""} CHECKOUT
+        </Button>
       </Box>
     </Box>
   );

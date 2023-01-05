@@ -16,7 +16,7 @@ export type GetAllCartItemsResponse = {
 type GetCartResponse = {
   code: number;
   message: string;
-  data: IProduct;
+  data: IProduct | IProduct[];
 };
 
 export const cartApi = api.injectEndpoints({
@@ -35,6 +35,16 @@ export const cartApi = api.injectEndpoints({
       },
       invalidatesTags: ["Cart"],
     }),
+    addMultipleCartItems: build.mutation<GetCartResponse, ICartItem[]>({
+      query(body) {
+        return {
+          url: `cart/add-multiple`,
+          method: "POST",
+          body,
+        };
+      },
+      invalidatesTags: ["Cart"],
+    }),
     deleteFromCart: build.mutation<any, string>({
       query(id) {
         return {
@@ -47,4 +57,9 @@ export const cartApi = api.injectEndpoints({
   }),
 });
 
-export const { useGetAllCartItemQuery, useAddToCartMutation, useDeleteFromCartMutation } = cartApi;
+export const {
+  useGetAllCartItemQuery,
+  useAddMultipleCartItemsMutation,
+  useAddToCartMutation,
+  useDeleteFromCartMutation,
+} = cartApi;

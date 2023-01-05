@@ -136,6 +136,9 @@ function Checkout() {
   if (cart && cart?.products.length === 0 && !isLoading) {
     return <Navigate to="/cart" replace />;
   }
+  if (!user) {
+    return <Navigate to="/?login=open" replace />;
+  }
   if (!cart && isLoading) {
     return <Loading full />;
   }
