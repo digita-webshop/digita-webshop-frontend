@@ -1,5 +1,5 @@
 import { FormEvent, useState, useRef } from "react";
-import { CloseRounded } from "@mui/icons-material";
+import { CloseRounded, Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -35,6 +35,7 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
   const [enteredPassword, setEnteredPassword] = useState("");
   const [validationError, setValidationError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [visibility, setVisibility] = useState(false);
 
   const loadingRef = useRef<any>(null);
   const dispatch = useDispatch();
@@ -144,15 +145,21 @@ function Login({ loginModalHandler, modalTypeToggle }: Props) {
                 </FormControl>
               </Grid>
               <Grid item xs={12}>
-                <FormControl fullWidth>
+                <FormControl fullWidth sx={{ position: "relative" }}>
                   <TextField
                     variant="standard"
                     label="Password"
-                    type={"password"}
+                    type={visibility ? "text" : "password"}
                     sx={passwordError ? inputErrorStyles : {}}
                     value={enteredPassword}
                     onChange={(e) => setEnteredPassword(e.target.value)}
                   />
+                  <Box
+                    sx={{ position: "absolute", bottom: "2px", right: "4px", cursor: "pointer" }}
+                    onClick={() => setVisibility((prev) => !prev)}
+                  >
+                    {visibility ? <VisibilityOff /> : <Visibility />}
+                  </Box>
                   {passwordError && (
                     <Typography
                       sx={{
