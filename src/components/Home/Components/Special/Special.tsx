@@ -20,7 +20,7 @@ const Special = () => {
   const { data: productsData, isLoading, isError } = useGetAllProductsQuery(`page=1&limit=9&sort=${selectedSorting}`);
   const products = productsData?.data ?? [];
 
-  const { data: cartData } = useGetAllCartItemQuery();
+  const { data: cartData } = useGetAllCartItemQuery(undefined, { skip: !!!user });
   const cart = cartData?.data?.products ?? [];
   const cartItems = user ? cart : cartList;
 

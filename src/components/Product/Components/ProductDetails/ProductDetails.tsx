@@ -53,13 +53,13 @@ const ProductDetails = ({ product }: Props) => {
   });
   const reviewsLength = reviewsData?.data.length ?? 0;
 
-  const { data: cartData } = useGetAllCartItemQuery();
+  const { data: cartData } = useGetAllCartItemQuery(undefined, { skip: !!!user });
   const cart = cartData?.data?.products ?? [];
   const cartItems = user ? cart : cartList;
   const inCart = isInList(cartItems, product?._id!);
   const cartItem = cartItems.find((item) => item?.productId?._id === product?._id);
 
-  const { data: wishlistData } = useGetWishlistQuery(role ?? "");
+  const { data: wishlistData } = useGetWishlistQuery(role ?? "", { skip: !!!user });
   const wishlist = wishlistData?.data ?? [];
   let wished = false;
   if (user) {

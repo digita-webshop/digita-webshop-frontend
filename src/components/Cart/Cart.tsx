@@ -22,7 +22,7 @@ const Cart = () => {
 
   const [cartUpdated, setCartUpdated] = useState<UpdateCart | null>(null);
 
-  const { data: cartData, isLoading } = useGetAllCartItemQuery();
+  const { data: cartData, isLoading } = useGetAllCartItemQuery(undefined, { skip: !!!user });
   const cart = cartData?.data?.products ?? [];
   const cartItems = user ? cart : cartList;
 

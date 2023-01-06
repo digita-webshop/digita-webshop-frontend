@@ -47,7 +47,7 @@ const ProductItem = ({ product, listView }: Props) => {
 
   const isCompared = isInList(compareList, _id!);
 
-  const { data: cartData } = useGetAllCartItemQuery();
+  const { data: cartData } = useGetAllCartItemQuery(undefined, { skip: !!!user });
   const cart = cartData?.data?.products ?? [];
   const cartItems = user ? cart : cartList;
   const inCart = isInList(cartItems, _id!);
@@ -55,7 +55,7 @@ const ProductItem = ({ product, listView }: Props) => {
 
   const { addToCartHandler, cartIsLoading } = useAddToCart(inCart, product, setOpenCart);
 
-  const { data: wishlistData } = useGetWishlistQuery(role!);
+  const { data: wishlistData } = useGetWishlistQuery(role!, { skip: !!!user });
   const wishlist = wishlistData?.data ?? [];
   let wished = false;
   if (user) {

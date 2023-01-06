@@ -13,7 +13,7 @@ function ShopCart() {
 
   const { checkoutHandler } = useCheckoutNavigate();
 
-  const { data: cartData, isLoading, isError } = useGetAllCartItemQuery();
+  const { data: cartData, isLoading, isError } = useGetAllCartItemQuery(undefined, { skip: !!!user });
   const cart = cartData?.data?.products ?? [];
 
   const cartItems = user ? cart : cartList;

@@ -21,7 +21,7 @@ function ShopDrawer({ displayDrawer, toggleDrawer }: ShopDrawerProps) {
 
   const navigate = useNavigate();
 
-  const { data: cartData } = useGetAllCartItemQuery();
+  const { data: cartData } = useGetAllCartItemQuery(undefined, { skip: !!!user });
   const cart = cartData?.data?.products ?? [];
 
   const cartItems = user ? cart : cartList;

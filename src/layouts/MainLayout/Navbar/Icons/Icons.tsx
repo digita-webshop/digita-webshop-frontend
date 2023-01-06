@@ -47,7 +47,7 @@ function Icons({
   const { user, role } = useAppSelector((state) => state.reducer.auth);
   const { cartList } = useAppSelector((state) => state.reducer.cart);
 
-  const { data: cartData } = useGetAllCartItemQuery();
+  const { data: cartData } = useGetAllCartItemQuery(undefined, { skip: !!!user });
   const cart = cartData?.data?.products ?? [];
 
   const cartItems = user ? cart : cartList;
