@@ -1,14 +1,5 @@
 import { useState } from "react";
-import {
-  Grid,
-  Rating,
-  Typography,
-  CardMedia,
-  CardContent,
-  Box,
-  Button,
-  Modal,
-} from "@mui/material";
+import { Grid, Rating, Typography, CardMedia, CardContent, Box, Button, Modal } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import { itemContent } from "../../styles";
 import { Link } from "react-router-dom";
@@ -32,13 +23,7 @@ const SpecialItem = ({ product, cartItems }: Props) => {
 
   const inCart = isInList(cartItems, _id!);
 
-  const cartItem = cartItems.find((item) => item?.productId._id === _id);
-
-  const { addToCartHandler, cartIsLoading } = useAddToCart(
-    inCart,
-    product,
-    setOpenCart
-  );
+  const { addToCartHandler, cartIsLoading } = useAddToCart(inCart, product, setOpenCart);
 
   return (
     <Grid item xs={12} sm={6} lg={4}>
@@ -81,9 +66,7 @@ const SpecialItem = ({ product, cartItems }: Props) => {
               value={rating}
               readOnly
               precision={0.5}
-              emptyIcon={
-                <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
-              }
+              emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
             />
           </Box>
           <CardContent sx={itemContent}>
@@ -104,26 +87,15 @@ const SpecialItem = ({ product, cartItems }: Props) => {
             >
               <Link to={`/product/${_id}`}>{title}</Link>
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ margin: "0.2rem" }}
-            >
+            <Typography variant="body2" color="text.secondary" sx={{ margin: "0.2rem" }}>
               <Box component="span" sx={{ textDecoration: "line-through" }}>
                 {offPrice !== 0 && `$${offPrice}.00`}
               </Box>
-              <Box
-                component="span"
-                sx={{ marginLeft: "5px", color: "red", fontWeight: "bold" }}
-              >
+              <Box component="span" sx={{ marginLeft: "5px", color: "red", fontWeight: "bold" }}>
                 {`$${price}.00`}
               </Box>
             </Typography>
-            <Button
-              variant="contained"
-              onClick={addToCartHandler}
-              sx={{ alignItems: "center", gap: "6px" }}
-            >
+            <Button variant="contained" onClick={addToCartHandler} sx={{ alignItems: "center", gap: "6px" }}>
               Add to cart
               {cartIsLoading && <DotSpinner color="white" />}
               {inCart && <ShoppingBasket fontSize="small" />}

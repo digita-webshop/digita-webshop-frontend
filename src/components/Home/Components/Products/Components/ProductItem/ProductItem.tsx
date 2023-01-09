@@ -43,7 +43,9 @@ const ProductItem = ({ product, listView }: Props) => {
 
   const [addWish, { isLoading: addWishLoading }] = useAddWishMutation();
   const [deleteWish, { isLoading: delWishLoading }] = useDeleteWishMutation();
+
   const { _id, title, price, offPrice, shortDescription, rating, image, gallery, colors, reviews } = product;
+  console.log(_id);
 
   const isCompared = isInList(compareList, _id!);
 

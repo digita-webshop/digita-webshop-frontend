@@ -49,7 +49,7 @@ const Special = () => {
         <Box>
           <Grid container spacing={{ xs: 2, md: 3 }}>
             {!isLoading && !isError
-              ? products.map((item) => <SpecialItem key={item._id!} product={item} cartItems={cartItems} />)
+              ? products.map((item) => <SpecialItem key={item?._id!} product={item} cartItems={cartItems} />)
               : Array(9)
                   .fill(null)
                   .map((item, index) => (
