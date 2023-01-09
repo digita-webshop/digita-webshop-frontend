@@ -36,9 +36,9 @@ const Products = () => {
         <ProductHeader selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         <Box>
           <Grid container spacing={{ xs: 2, md: 3 }}>
-            {!isLoading && !isError
+            {!isLoading && !isError && products.length > 0
               ? products.map((product) => (
-                  <Grid item xs={12} sm={4} md={3} key={product._id}>
+                  <Grid item xs={12} sm={4} md={3} key={product?._id}>
                     <ProductItem product={product} listView={false} />
                   </Grid>
                 ))
