@@ -95,4 +95,4 @@ Created by [@tohiidd]() - feel free to contact me!
 
 ## License
 
-This project is open source and available under the [MIT](https://github.com/digita-webshop/digita-webshop-frontend/blob/main/LICENSE.md) license.
+This project is open source and available under the [GPL-3.0 license](https://github.com/digita-webshop/digita-webshop-frontend/blob/main/License.md) license.
