@@ -2,7 +2,7 @@
 
 > E-commerce application.
 
-> Live demo [_here_](https://digita-webshop.vercel.app/).
+> Live demo [_here_](https://digita-webshop.iran.liara.run/).
 
 ## Introduction
 
