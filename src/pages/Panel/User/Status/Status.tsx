@@ -1,4 +1,4 @@
-import { UserStatus } from "../../../../components";
+import { UserStatus } from "components";
 
 function StatusPage() {
   return <UserStatus />;

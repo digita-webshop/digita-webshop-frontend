@@ -22,7 +22,7 @@ import { setCredentials } from "redux/auth/authSlice";
 import { errorMessage, successMessage } from "utils/toastMessages";
 import { useDispatch } from "react-redux";
 import { useUpdateUserMutation } from "redux/user/userApi";
-import Address from "components/Settings/Components/Addresses/Address/Address";
+import Address from "components/Settings/Addresses/Address/Address";
 import { cartModal } from "components/Home/Products/styles";
 import { Add, Close } from "@mui/icons-material";
 import { useGetAllCartItemQuery } from "redux/cart/cartApi";

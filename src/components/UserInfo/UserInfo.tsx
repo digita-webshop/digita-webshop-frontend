@@ -5,8 +5,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import { ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "redux/store";
-import General from "../Settings/Components/General/General";
-import Password from "../Settings/Components/Password/Password";
+import { General, Password } from "components/Settings";
 
 const PersonalInfo = () => {
   const { user } = useAppSelector((state) => state.reducer.auth);

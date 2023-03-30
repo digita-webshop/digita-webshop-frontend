@@ -17,23 +17,19 @@ export const wishlistApi = api.injectEndpoints({
       },
       providesTags: ["Wishlist"],
     }),
-    addWish: build.mutation<
-      WishlistResponse,
-      { path: string; id: string | undefined }
-    >({
+    addWish: build.mutation<WishlistResponse, { path: string; id: string | undefined }>({
       query(data) {
-        const { path, id } = data;
+        const { path: query, id } = data;
+        const path = query === "superAdmin" ? "superAdmin" : `${query}s`;
+
         return {
-          url: `${path}s/wish/${id}`,
+          url: `${path}/wish/${id}`,
           method: "POST",
         };
       },
       invalidatesTags: ["Wishlist"],
     }),
-    deleteWish: build.mutation<
-      WishlistResponse,
-      { path: string; id: string | undefined }
-    >({
+    deleteWish: build.mutation<WishlistResponse, { path: string; id: string | undefined }>({
       query(query) {
         const { path, id } = query;
         return {
@@ -46,8 +42,4 @@ export const wishlistApi = api.injectEndpoints({
   }),
 });
 
-export const {
-  useGetWishlistQuery,
-  useAddWishMutation,
-  useDeleteWishMutation,
-} = wishlistApi;
+export const { useGetWishlistQuery, useAddWishMutation, useDeleteWishMutation } = wishlistApi;

@@ -1,4 +1,4 @@
-import { UserOrders } from "../../../../components";
+import { UserOrders } from "components";
 
 const UserOrdersPage = () => {
   return <UserOrders />;

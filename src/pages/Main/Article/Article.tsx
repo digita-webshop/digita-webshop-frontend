@@ -29,7 +29,7 @@ function Article() {
   const { data: articleData, isLoading, isError } = useGetArticleQuery(id);
   const navigate = useNavigate();
 
-  const { title, writer, image, category, description, createdAt } = articleData?.data ?? {};
+  const { title, writer, image, category, description, createdAt } = articleData?.data || {};
 
   const date = getReadableDate(createdAt || "");
 
@@ -71,6 +71,7 @@ function Article() {
   if (isError) {
     return <Error />;
   }
+
   const contentState = convertFromRaw(JSON.parse(description || ""));
   const editorState = EditorState.createWithContent(contentState);
   return (
