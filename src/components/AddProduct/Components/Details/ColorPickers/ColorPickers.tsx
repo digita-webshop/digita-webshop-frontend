@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { Box } from "@mui/material";
-import { GreyTooltip, ProductColor } from "../../../../Product/styles";
-import { colorsList } from "components/Product/Components/ProductDetails/ColorPicker/data";
+import { GreyTooltip, ProductColor } from "components/Product/styles";
+import { colorsList } from "components/Product/ProductDetails/ColorPicker/data";
 
 interface Props {
   selectedColors: string[];
@@ -33,9 +33,7 @@ function ColorPickers({ selectedColors, setSelectedColors }: Props) {
         <GreyTooltip key={id} title={name} placement="top">
           <ProductColor
             sx={{ background: hex }}
-            className={`${
-              selectedColors.indexOf(name) !== -1 ? "selected" : ""
-            } admin`}
+            className={`${selectedColors.indexOf(name) !== -1 ? "selected" : ""} admin`}
             onClick={selectColorHandler(name)}
           ></ProductColor>
         </GreyTooltip>
