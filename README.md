@@ -9,7 +9,7 @@
 This project is a fully responsive Modern Full Stack Ecommerce application with Payments functionality. With Modern design, animations, the ability to add and edit products on the admin panel, all advanced cart functionalities and many more features that you can see on the features section.
 Check out [Digita-webshop-backend](https://github.com/digita-webshop/digita-webshop-backend) repository for backend
 
-## Technologies Used
+## 🔧 Technologies Used
 
 - React - version 18.1.0
 - Typescript - version 4.7.2
@@ -19,7 +19,7 @@ Check out [Digita-webshop-backend](https://github.com/digita-webshop/digita-webs
 - React Router - version 6.3.0
 - Swiper - version 8.2.3
 
-## Features
+## 🔥 Features
 
 Full checkout process including the dispatch and storage of the generated order to database
 Login / Signup with email
@@ -61,7 +61,7 @@ User panel offers efficient features like:
 
 <img src="https://media.publit.io/file/user-panel-overview.gif" alt="user panel overview GIF" width=80% height=auto>
 
-## Setup
+## 🚀 Setup
 
 Follow the following steps to get development environment running.
 
@@ -85,14 +85,35 @@ Follow the following steps to get development environment running.
 
 ---
 
-## Project Status
+## 🤝 Contributing
+
+The community is always looking for talented individuals to share their knowledge and creativity to build innovative projects that will change the world.
+
+Contributing to open source projects not only benefits the community, but it also helps you grow as a developer by learning new skills, collaborating with others, and gaining recognition for your contributions.
+
+We greatly appreciate any contribution you can make to our project. Whether it's a suggestion, bug report, or enhancement, your input is invaluable to us.
+
+
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+Don't forget to give our project a star to show your support! We're excited to see what amazing features you'll bring to our project. Thank you for your contributions!
+
+## ✅ Project Status
 
 Project is: _complete_ .
 
-## Contact
+## 💬 Contact
 
-Created by [@tohiidd]() - feel free to contact me!
+Created by [@tohiidd](), [@amirmalekian](), [@siavashsk](), [@monire91]()
+ <p>
+  if you need help, ask our. we will try to answer as soon as possible.
+ </p>
 
-## License
+## 📝 License
 
 This project is open source and available under the [GPL-3.0 license](https://github.com/digita-webshop/digita-webshop-frontend/blob/main/License).
