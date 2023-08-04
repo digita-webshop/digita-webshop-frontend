@@ -8,7 +8,6 @@ interface Props {
 function ShippingDatePicker({ setSelectedDate }: Props) {
   const selectedDay = (val: any) => {
     setSelectedDate(val);
-    console.log(val);
   };
   return (
     <Box

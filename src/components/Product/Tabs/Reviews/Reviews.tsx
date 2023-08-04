@@ -1,23 +1,23 @@
-import { Fragment, useState } from "react";
-import { ProductContentStyle, SubmitButton } from "../../styles";
-import { PFormControl } from "styles/panel";
-import { Typography, Box, Rating, Divider, Button, FormLabel, TextField } from "@mui/material";
+import {Fragment, useState} from "react";
+import {ProductContentStyle, SubmitButton} from "../../styles";
+import {PFormControl} from "styles/panel";
+import {Typography, Box, Rating, Divider, Button, FormLabel, TextField} from "@mui/material";
 import Review from "./Review/Review";
-import { useAppSelector } from "redux/store";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useAddReviewMutation } from "redux/reviews/reviewsApi";
-import { IReviews } from "types/product";
-import { useLoadReviews } from "hooks/useLoadReviews";
+import {useAppSelector} from "redux/store";
+import {useLocation, useNavigate} from "react-router-dom";
+import {useAddReviewMutation} from "redux/reviews/reviewsApi";
+import {IReviews} from "types/product";
+import {useLoadReviews} from "hooks/useLoadReviews";
 
 interface Props {
   reviews: IReviews[] | [];
   id: string;
 }
-const Reviews = ({ reviews, id }: Props) => {
-  const { user } = useAppSelector((state) => state.reducer.auth);
+const Reviews = ({reviews, id}: Props) => {
+  const {user} = useAppSelector((state) => state.reducer.auth);
   const [rating, setRating] = useState(1);
   const [reviewDescription, setReviewDescription] = useState("");
-  const { indexOfLoadedReviews, loadMoreReviewsHandler } = useLoadReviews(reviews);
+  const {indexOfLoadedReviews, loadMoreReviewsHandler} = useLoadReviews(reviews);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -26,8 +26,8 @@ const Reviews = ({ reviews, id }: Props) => {
   const submitReviewHandler = async () => {
     if (!user) {
       navigate(
-        { pathname: location.pathname, search: "tab=reviews&login=open" },
-        { state: { from: { pathname: location.pathname, search: "tab=reviews" } }, replace: true }
+        {pathname: location.pathname, search: "tab=reviews&login=open"},
+        {state: {from: {pathname: location.pathname, search: "tab=reviews"}}, replace: true}
       );
       return;
     }
@@ -40,7 +40,6 @@ const Reviews = ({ reviews, id }: Props) => {
           description: reviewDescription,
         },
       }).unwrap();
-      console.log(response);
       if (response.code === 200) {
         setReviewDescription("");
         setRating(1);
@@ -50,7 +49,7 @@ const Reviews = ({ reviews, id }: Props) => {
     }
   };
   return (
-    <Box sx={{ display: "flex", justifyContent: "center" }} id="reviews">
+    <Box sx={{display: "flex", justifyContent: "center"}} id="reviews">
       <Box sx={ProductContentStyle}>
         {reviews?.length !== 0 ? (
           reviews
@@ -82,7 +81,7 @@ const Reviews = ({ reviews, id }: Props) => {
           <Button
             variant="contained"
             color="error"
-            sx={{ display: "block", margin: "10px 0 0 auto" }}
+            sx={{display: "block", margin: "10px 0 0 auto"}}
             onClick={loadMoreReviewsHandler}
           >
             {indexOfLoadedReviews < reviews.length ? "Load More..." : "close"}
@@ -110,12 +109,12 @@ const Reviews = ({ reviews, id }: Props) => {
             }}
           >
             Your rating
-            <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
+            <Typography component={"span"} sx={{color: "#f03637", marginLeft: "2px"}}>
               *
             </Typography>
           </Typography>
 
-          <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+          <Box sx={{display: "flex", gap: "10px", flexWrap: "wrap"}}>
             {[1, 2, 3, 4, 5].map((rate) => (
               <Fragment key={rate}>
                 {rate !== 1 && <Divider orientation="vertical" variant="middle" flexItem />}
@@ -125,7 +124,7 @@ const Reviews = ({ reviews, id }: Props) => {
                     "& .MuiRating-root": {
                       color: rate === rating ? "#faaf00" : "common.digitaGrey6",
                     },
-                    "&:hover .MuiRating-root": { color: "#faaf00" },
+                    "&:hover .MuiRating-root": {color: "#faaf00"},
                   }}
                   onClick={() => setRating(rate)}
                 >
@@ -138,9 +137,9 @@ const Reviews = ({ reviews, id }: Props) => {
 
         <Box>
           <PFormControl>
-            <FormLabel color="primary" sx={{ fontSize: "15px", color: "#333333", marginBottom: "5px" }}>
+            <FormLabel color="primary" sx={{fontSize: "15px", color: "#333333", marginBottom: "5px"}}>
               Your review
-              <Typography component={"span"} sx={{ color: "#f03637", marginLeft: "2px" }}>
+              <Typography component={"span"} sx={{color: "#f03637", marginLeft: "2px"}}>
                 *
               </Typography>
             </FormLabel>

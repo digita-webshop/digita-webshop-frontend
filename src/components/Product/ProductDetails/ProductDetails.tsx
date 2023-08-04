@@ -88,7 +88,6 @@ const ProductDetails = ({ product }: Props) => {
         setAddedWish(false);
       }
       setOpenWish(true);
-      console.log(response);
     } catch (err) {
       console.log(err);
     }

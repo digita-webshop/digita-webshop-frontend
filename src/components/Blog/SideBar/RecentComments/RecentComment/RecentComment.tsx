@@ -1,15 +1,14 @@
-import { Typography } from "@mui/material";
+import {Typography} from "@mui/material";
 import Link from "@mui/material/Link";
-import { Link as RouterLink } from "react-router-dom";
+import {Link as RouterLink} from "react-router-dom";
 
 type props = {
-  id: string;
   title: string;
   userName: string;
   articleId: string;
 };
 
-const RecentComment = ({ id, userName, title, articleId }: props) => {
+const RecentComment = ({userName, title, articleId}: props) => {
   return (
     <Typography variant="body2" color="text.secondary" pt={2}>
       {userName} on&nbsp;

@@ -1,16 +1,11 @@
-import { Typography, Skeleton, Box } from "@mui/material";
+import {Typography, Skeleton, Box} from "@mui/material";
 import RecentComment from "./RecentComment/RecentComment";
-import { FilterTitleWrapper } from "components/Shop/styles";
-import { useGetAllReviewsQuery } from "redux/reviews/reviewsApi";
+import {FilterTitleWrapper} from "components/Shop/styles";
+import {useGetAllReviewsQuery} from "redux/reviews/reviewsApi";
 
 function RecentComments() {
-  const {
-    data: reviewsData,
-    isLoading,
-    isError,
-  } = useGetAllReviewsQuery({ path: "articles", queries: "page=0 &limit=4" });
+  const {data: reviewsData, isLoading, isError} = useGetAllReviewsQuery({path: "articles", queries: "page=0 &limit=4"});
   const reviews = reviewsData?.data ?? [];
-  console.log(reviewsData);
 
   return (
     <Box
@@ -30,10 +25,9 @@ function RecentComments() {
       {!isLoading && !isError
         ? reviews.map((review) => (
             <RecentComment
-              key={review._id!}
-              id={review._id!}
+              key={review._id}
               title={review?.articleId?.title}
-              articleId={review.articleId._id!}
+              articleId={review?.articleId?._id}
               userName={review?.userId?.userName ?? "deleted account "}
             />
           ))

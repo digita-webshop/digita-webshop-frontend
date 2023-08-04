@@ -1,17 +1,17 @@
-import React, { useRef, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper";
-import { Box, Modal, useMediaQuery, useTheme } from "@mui/material";
-import { GallerySwiperWrapper, magnifyButtonStyles, mainSwiperWrapper, swiperImageWrapper } from "../../styles";
-import { ChevronLeft, ChevronRight, Search } from "@mui/icons-material";
+import React, {useRef, useState} from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination} from "swiper";
+import {Box, Modal, useMediaQuery, useTheme} from "@mui/material";
+import {GallerySwiperWrapper, magnifyButtonStyles, mainSwiperWrapper, swiperImageWrapper} from "../../styles";
+import {ChevronLeft, ChevronRight, Search} from "@mui/icons-material";
 import GalleryModal from "./GalleryModal/GalleryModal";
 import ReactImageMagnify from "react-image-magnify";
-import { IGallery } from "types/product";
+import {IGallery} from "types/product";
 
 interface Props {
   gallery: IGallery[];
 }
-export default function Gallery({ gallery }: Props) {
+export default function Gallery({gallery}: Props) {
   const [slideIndex, setSlideIndex] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   const mainSwiperRef = useRef(null) as any;
@@ -23,6 +23,7 @@ export default function Gallery({ gallery }: Props) {
     mainSwiperRef.current.swiper.slideTo(index);
     setSlideIndex(index);
   };
+
   return (
     <>
       <Box sx={mainSwiperWrapper}>
@@ -40,7 +41,7 @@ export default function Gallery({ gallery }: Props) {
           }}
           modules={matchesMd ? [] : [Pagination]}
         >
-          {gallery.map(({ _id, image }) => (
+          {gallery.map(({_id, image}) => (
             <SwiperSlide key={_id}>
               <Box sx={swiperImageWrapper}>
                 {matchesMd ? (
@@ -50,7 +51,6 @@ export default function Gallery({ gallery }: Props) {
                         alt: "product slider image",
                         isFluidWidth: true,
                         src: image,
-                        srcSet: image,
                         sizes: "(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px",
                       },
                       largeImage: {
@@ -75,7 +75,7 @@ export default function Gallery({ gallery }: Props) {
       <Modal
         open={openModal}
         onClose={() => setOpenModal(false)}
-        sx={{ "& .MuiBackdrop-root": { backgroundColor: "rgba(0,0,0,0.85)" } }}
+        sx={{"& .MuiBackdrop-root": {backgroundColor: "rgba(0,0,0,0.85)"}}}
       >
         <div>
           <GalleryModal gallery={gallery} setOpenModal={setOpenModal} slideIndex={slideIndex} />
@@ -112,7 +112,7 @@ export default function Gallery({ gallery }: Props) {
             },
           }}
         >
-          {gallery.map(({ _id, image }, index) => (
+          {gallery.map(({_id, image}, index) => (
             <SwiperSlide key={_id}>
               <Box onClick={sliderClickHandler(index)}>
                 <img

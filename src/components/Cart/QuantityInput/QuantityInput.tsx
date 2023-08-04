@@ -28,7 +28,6 @@ const QuantityInput = ({ cartItem }: Props) => {
     if (user) {
       try {
         const res = await addToCart(updatedCartItem).unwrap();
-        console.log(res);
       } catch (err) {
         console.log(err);
       }

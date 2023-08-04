@@ -55,7 +55,6 @@ function Shop() {
   };
 
   const { data: productsData, isLoading, isError } = useGetAllProductsQuery(queries);
-  console.log(productsData);
   const products = productsData?.data ?? [];
   const productsLength = productsData?.total ?? 0;
 

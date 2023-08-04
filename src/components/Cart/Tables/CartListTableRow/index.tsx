@@ -26,7 +26,6 @@ const CartListTableRow = ({ cartItem }: Props) => {
     if (user) {
       try {
         const res = await deleteFromCart(cartItem?._id).unwrap();
-        console.log(res);
       } catch (err) {
         console.log(err);
       }

@@ -50,7 +50,6 @@ function AddArticle() {
       }
       successMessage(response.message);
       navigate("/panel/articles/list", { replace: true });
-      console.log(response);
     } catch (err) {
       console.log(err);
     }

@@ -1,13 +1,13 @@
-import { FormEvent, KeyboardEvent, useState, useEffect } from "react";
-import { Grid } from "@mui/material";
-import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
-import { useNavigate, useParams } from "react-router-dom";
-import { useAddProductMutation, useUpdateProductMutation } from "redux/products/productsApi";
-import { errorMessage, successMessage } from "utils/toastMessages";
-import { IProduct } from "types/product";
-import { CardWrapper, PFormLabel } from "styles/panel";
-import { TextEditor } from "components";
-import { ContentHeader, Details, Gallery, Sidebar } from "components/AddProduct";
+import {FormEvent, KeyboardEvent, useState, useEffect} from "react";
+import {Grid} from "@mui/material";
+import {convertFromRaw, convertToRaw, EditorState} from "draft-js";
+import {useNavigate, useParams} from "react-router-dom";
+import {useAddProductMutation, useUpdateProductMutation} from "redux/products/productsApi";
+import {errorMessage, successMessage} from "utils/toastMessages";
+import {IProduct} from "types/product";
+import {CardWrapper, PFormLabel} from "styles/panel";
+import {TextEditor} from "components";
+import {ContentHeader, Details, Gallery, Sidebar} from "components/AddProduct";
 
 export interface ITag {
   id: string;
@@ -19,7 +19,7 @@ function AddProduct() {
   const [selectedBrand, setSelectedBrand] = useState("apple");
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [enteredShortDesc, setEnteredShortDesc] = useState("");
-  const [addedImages, setAddedImages] = useState<any>([{ image: "" }]);
+  const [addedImages, setAddedImages] = useState<any>([{image: ""}]);
   const [enteredPrice, setEnteredPrice] = useState<number | string>("");
   const [enteredOffPrice, setEnteredOffPrice] = useState<number | string>("");
   const [enteredQuantity, setEnteredQuantity] = useState<number | string>("");
@@ -28,7 +28,7 @@ function AddProduct() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [product, setProduct] = useState<IProduct>();
 
-  const { id }: any = useParams();
+  const {id}: any = useParams();
   const [addProduct] = useAddProductMutation();
   const [updateProduct] = useUpdateProductMutation();
   const navigate = useNavigate();
@@ -58,7 +58,6 @@ function AddProduct() {
     if (id) {
       newProduct["_id"] = product?._id;
     }
-    console.log(newProduct);
 
     try {
       let response;
@@ -67,9 +66,8 @@ function AddProduct() {
       } else {
         response = await addProduct(newProduct).unwrap();
       }
-      console.log(response);
       successMessage(response?.message);
-      navigate("/panel/products/list", { replace: true });
+      navigate("/panel/products/list", {replace: true});
     } catch (err: any) {
       console.log(err);
       errorMessage(err.message);
@@ -94,7 +92,7 @@ function AddProduct() {
         setSelectedCategory(productData.category);
         setAddedImages(productData.gallery);
         const tagList = productData.tags.map((tag: any, index: number) => {
-          return { id: `${index}`, name: tag };
+          return {id: `${index}`, name: tag};
         });
         setTags(tagList);
         setEnteredQuantity(productData.quantity);
@@ -130,7 +128,7 @@ function AddProduct() {
           />
           <Gallery setAddedImages={setAddedImages} addedImages={addedImages} />
           <CardWrapper mt={4}>
-            <PFormLabel sx={{ display: "block", ml: "5px", mb: "10px" }}>description</PFormLabel>
+            <PFormLabel sx={{display: "block", ml: "5px", mb: "10px"}}>description</PFormLabel>
             <TextEditor editorState={editorState} setEditorState={setEditorState} />
           </CardWrapper>
         </Grid>

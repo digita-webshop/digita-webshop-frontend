@@ -26,7 +26,6 @@ function UsersTable({ isUsersPage }: Props) {
 
   const { data: usersData, isLoading, isError } = useGetAllUsersQuery(userType);
   const users = usersData?.data ?? [];
-  console.log(usersData);
 
   const [deleteUser] = useDeleteUserMutation();
 

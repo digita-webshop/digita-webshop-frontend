@@ -1,5 +1,5 @@
-import { IProduct } from "../../types/product";
-import { createSlice } from "@reduxjs/toolkit";
+import {IProduct} from "../../types/product";
+import {createSlice} from "@reduxjs/toolkit";
 
 interface State {
   compareList: IProduct[];
@@ -20,7 +20,6 @@ const compareSlice = createSlice({
 
       if (state.compareList.length === 0) {
         state.compareList.push(product);
-        console.log(product?.category);
 
         state.category = product?.category;
       } else if (
@@ -33,9 +32,7 @@ const compareSlice = createSlice({
     },
     removeFromCompareList(state, action) {
       const id = action.payload;
-      state.compareList = state.compareList.filter(
-        (product) => product._id !== id
-      );
+      state.compareList = state.compareList.filter((product) => product._id !== id);
       if (state.compareList.length === 0) {
         state.category = "";
       }
@@ -43,5 +40,5 @@ const compareSlice = createSlice({
   },
 });
 
-export const { addToCompareList, removeFromCompareList } = compareSlice.actions;
+export const {addToCompareList, removeFromCompareList} = compareSlice.actions;
 export default compareSlice.reducer;

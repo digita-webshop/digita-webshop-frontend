@@ -13,7 +13,6 @@ function Orders() {
 
   const { data: ordersData, isLoading, isError } = useGetAllOrdersQuery();
   const orders = ordersData?.data ?? [];
-  console.log(ordersData);
 
   let filteredOrders = orders;
   if (selectedStatus) {
